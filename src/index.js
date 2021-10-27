@@ -25,17 +25,22 @@ import rgroup_img6 from './A06.png'
     render() {
       return (
         <div className="app">
+          <h1>Selected R Group:</h1>
+          <div className="app-rgroup-selected">
+            <RGroupWidget img='http://127.0.0.1:5000/r-group-A01'/>
+          </div>
+          <h1>R Group Options:</h1>
           <div className="app-rgroup-row1">
-            <RGroupWidget img={rgroup_img1}/>
-            <RGroupWidget img={rgroup_img2}/>
+            <RGroupWidget img='http://127.0.0.1:5000/r-group-A01'/>
+            <RGroupWidget img='http://127.0.0.1:5000/r-group-A02'/>
           </div>
           <div className="app-rgroup-row2">
-            <RGroupWidget img={rgroup_img3}/>
-            <RGroupWidget img={rgroup_img4}/>
+              <RGroupWidget img='http://127.0.0.1:5000/r-group-A03'/>
+              <RGroupWidget img='http://127.0.0.1:5000/r-group-A04'/>
           </div>
           <div className="app-rgroup-row3">
-            <RGroupWidget img={rgroup_img5}/>
-            <RGroupWidget img={rgroup_img6}/>
+            <RGroupWidget img='http://127.0.0.1:5000/r-group-A05'/>
+            <RGroupWidget img='http://127.0.0.1:5000/r-group-A06'/>
           </div>
         </div>
       );
