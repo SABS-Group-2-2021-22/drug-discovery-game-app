@@ -6,7 +6,7 @@ import './index.css';
       super(props);
       this.state = {
         id: props.id,
-        img: undefined,
+        img: 'Null',
       };
       this.fetchImage();
     }
@@ -24,9 +24,9 @@ import './index.css';
       const url = 'http://127.0.0.1:5000/r-group-'
       console.log(url+this.state.id)
       fetch(url+this.state.id)
-        .then(response => {
-          this.setState({img: response.text()});
-        })
+        .then( (response) => response.json())
+        .then( img_data => { 
+                    this.setState({img: img_data }) })
         .catch(err => {
           throw Error(err.message);
         });
@@ -34,9 +34,9 @@ import './index.css';
 
     render(){
       
-    
+      let img_encoding = 'data:image/jpeg;base64,';
       return (
-        <img src={this.state.img} alt='R Group' onClick={this.imageClick} />
+        <img src={this.state.img.img_html} alt='R Group' onClick={this.imageClick} />
       )
     }
   }
