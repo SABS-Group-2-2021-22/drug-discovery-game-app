@@ -22,7 +22,6 @@ import './index.css';
 
     fetchImage = () => {
       const url = 'http://127.0.0.1:5000/r-group-'
-      console.log(url+this.state.id)
       fetch(url+this.state.id)
         .then( (response) => response.json())
         .then( img_data => { 
@@ -33,8 +32,6 @@ import './index.css';
     }
 
     render(){
-      
-      let img_encoding = 'data:image/jpeg;base64,';
       return (
         <img src={this.state.img.img_html} alt='R Group' onClick={this.imageClick} />
       )
@@ -62,13 +59,12 @@ import './index.css';
         <div className="app">
           <h1>Selected R Group:</h1>
           <div className="app-rgroup-selected">
-            {console.log(this.state.selected_r_group)}
-            <RGroupWidget key={this.state.selected_r_group} id={this.state.selected_r_group} callBackFunction = {this.setSelectedRGroupCallback}/>
+            <RGroupWidget key={this.state.selected_r_group} id={this.state.selected_r_group} callBackFunction={this.setSelectedRGroupCallback}/>
           </div>
           <h1>R Group Options:</h1>
           <div className="app-rgroup-row1">
             <RGroupWidget key='A01' id='A01' selectRGroupCallback={this.setSelectedRGroupCallback}/>
-            <RGroupWidget key='A02' id='A02' selectRGroupCallback={this.setSelectedRGroupCallback}/>
+            <RGroupWidget key='A50' id='A50' selectRGroupCallback={this.setSelectedRGroupCallback}/>
           </div>
           <div className="app-rgroup-row2">
             <RGroupWidget key='A03' id='A03' selectRGroupCallback = {this.setSelectedRGroupCallback}/>
