@@ -6,9 +6,12 @@ import './index.css';
       super(props);
       this.state = {
         id: props.id,
+        img: undefined,
       };
+      this.fetchImage();
     }
 
+    
     sendRGroup = (r_group_id) => {
       this.props.selectRGroupCallback(r_group_id);
     }
@@ -17,10 +20,23 @@ import './index.css';
       this.sendRGroup(this.state.id)
     }
 
-    render(){
+    fetchImage = () => {
       const url = 'http://127.0.0.1:5000/r-group-'
+      console.log(url+this.state.id)
+      fetch(url+this.state.id)
+        .then(response => {
+          this.setState({img: response.text()});
+        })
+        .catch(err => {
+          throw Error(err.message);
+        });
+    }
+
+    render(){
+      
+    
       return (
-        <img src={url + this.state.id} alt='R Group' onClick={this.imageClick} />
+        <img src={this.state.img} alt='R Group' onClick={this.imageClick} />
       )
     }
   }
@@ -37,12 +53,11 @@ import './index.css';
 
     setSelectedRGroupCallback = (r_group_id) => {
       this.setState({selected_r_group: r_group_id}, () => {
-        console.log(this.state.selected_r_group);
-    });
+        console.log(this.state.selected_r_group)
+    })
     }
 
     render() {
-      var url = 'http://127.0.0.1:5000/r-group-'
       return (
         <div className="app">
           <h1>Selected R Group:</h1>
@@ -52,8 +67,8 @@ import './index.css';
           </div>
           <h1>R Group Options:</h1>
           <div className="app-rgroup-row1">
-            <RGroupWidget key='A01' id='A01' selectRGroupCallback = {this.setSelectedRGroupCallback}/>
-            <RGroupWidget key='A02' id='A02' selectRGroupCallback = {this.setSelectedRGroupCallback}/>
+            <RGroupWidget key='A01' id='A01' selectRGroupCallback={this.setSelectedRGroupCallback}/>
+            <RGroupWidget key='A02' id='A02' selectRGroupCallback={this.setSelectedRGroupCallback}/>
           </div>
           <div className="app-rgroup-row2">
             <RGroupWidget key='A03' id='A03' selectRGroupCallback = {this.setSelectedRGroupCallback}/>
