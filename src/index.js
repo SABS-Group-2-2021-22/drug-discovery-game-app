@@ -39,7 +39,9 @@ import Full_Molecule_file from '/home/sabsr3/DrugDiscoveryGame/drug-discovery-ga
 
     render(){
       return (
+        <div class = "container">
         <img src={this.state.img.img_html} alt='R Group' onClick={this.imageClick} />
+        </div>
       )
     }
   }
@@ -104,10 +106,24 @@ import Full_Molecule_file from '/home/sabsr3/DrugDiscoveryGame/drug-discovery-ga
   }
   
   class R_Group_Card extends React.Component{
+    constructor(props) {
+      super(props);
+      this.state = {
+        selected_r_group: 'A04',
+        id: props.id,
+      };
+    }
+
+    setSelectedRGroupCallback = (r_group_id) => {
+      this.setState({selected_r_group: r_group_id}, () => {
+        console.log(this.state.selected_r_group)
+    })
+    }
     render(){
+
       return(
         <div class="card" style={{width: "20rem"}} >
-        <R_Group_Image/>
+        <RGroupWidget key={this.state.id} id={this.state.id} selectRGroupCallback={this.setSelectedRGroupCallback}/>
         <div class="card-body">
           <R_Group_Stats/>
         </div>
@@ -122,25 +138,25 @@ import Full_Molecule_file from '/home/sabsr3/DrugDiscoveryGame/drug-discovery-ga
     render(){
       return(
         <div class='container' className="r_group_list">
-          {Array.from({ length: 10 }, (_, i) => <R_Group_Card/>)}
+          {Array.from({ length: 8}, (_, i) => <R_Group_Card id={'A0' + (i+1).toString()}/>)}
         </div>
       )
     }
   }
   
   class App extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        selected_r_group: 'A04',
-      };
-    }
+    // constructor(props) {
+    //   super(props);
+    //   this.state = {
+    //     selected_r_group: 'A04',
+    //   };
+    // }
 
-    setSelectedRGroupCallback = (r_group_id) => {
-      this.setState({selected_r_group: r_group_id}, () => {
-        console.log(this.state.selected_r_group)
-    })
-    }
+    // setSelectedRGroupCallback = (r_group_id) => {
+    //   this.setState({selected_r_group: r_group_id}, () => {
+    //     console.log(this.state.selected_r_group)
+    // })
+    // }
 
     render() {
       return (
