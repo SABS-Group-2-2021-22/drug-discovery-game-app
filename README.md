@@ -1,3 +1,31 @@
+# Drug Design Game Webapp
+This is the code repository of the frontend of the drug design game web-app.
+The frontend relies on the backend, the instructions include how to run the backend. 
+## Installation and run instructions
+
+### Backend
+Running the backend (assumes dependencies are already installed in a conda environment called `dd_game`)
+```
+cd drug-discovery-game-backend
+conda activate dd_game
+export FLASK_APP=ddg_api
+flask run
+```
+### Frontend
+Do this in a separate terminal tab or window. 
+
+Install the dependencies: 
+```
+cd drug-discovery-game-app
+npm install
+
+```
+Run the web-app server:
+```
+npm start
+```
+View the web-app locally in your browser: `http://localhost:3000`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
