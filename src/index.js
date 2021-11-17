@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';        //TODO: this looks like an install / import error, directly importing this is bad practice?
 import "./index.css";
-import A01_file from '/Users/guy/Documents/University_of_Oxford/SABS_YEAR_1/Drug_Discovery_Game/drug-discovery-game-app/src/A01.png';
-import Full_Molecule_file from '/Users/guy/Documents/University_of_Oxford/SABS_YEAR_1/Drug_Discovery_Game/drug-discovery-game-app/src/A01+B01+scaffold.png';
+import A01_file from '/home/sabsr3/DrugDiscoveryGame/drug-discovery-game-app/src/A01.png';
+import Full_Molecule_file from '/home/sabsr3/DrugDiscoveryGame/drug-discovery-game-app/src/A01_B01_scaffold.png';
 
 // USE BOOTSTRAP - ITS SO USEFUL
 
