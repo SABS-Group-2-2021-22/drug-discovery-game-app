@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import "./index.css";
+import A01_file from '/Users/guy/Documents/University_of_Oxford/SABS_YEAR_1/Drug_Discovery_Game/drug-discovery-game-app/src/A01.png';
+import Full_Molecule_file from '/Users/guy/Documents/University_of_Oxford/SABS_YEAR_1/Drug_Discovery_Game/drug-discovery-game-app/src/A01+B01+scaffold.png';
+
+// USE BOOTSTRAP - ITS SO USEFUL
+
   class RGroupWidget extends React.Component{
     constructor(props){
       super(props);
@@ -38,7 +44,89 @@ import './index.css';
     }
   }
 
-   
+  class R_Group_Stats extends React.Component{
+    render(){
+      return(
+        <div class="container" className="r_group_stats">
+        <div class="row">
+          <div class="col">
+            MW = TEST
+          <div/>
+        </div>
+        <div class="row">
+          <div class="col">
+            logP = TEST
+          </div>
+          <div class="col">
+            TPSA = TEST
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            HA = TEST
+          </div>
+          <div class="col">
+            Hydrogen Acceptors = TEST
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            Hydrogen Donors = TEST
+          </div>
+          <div class="col">
+            Rings = TEST
+          </div>
+        </div>
+        </div>
+        </div>
+        )
+      }
+    }
+
+  class R_Group_Image extends React.Component{
+    render(){
+      return(
+        <div class = "container">
+          <img src={A01_file} alt='AO1'/>
+        </div>
+      )
+    }
+  }
+
+  class Full_Image extends React.Component{
+    render(){
+      return(
+        <div className="current_drug">
+          <img src={Full_Molecule_file} alt='AO1'/>
+        </div>
+      )
+    }
+  }
+  
+  class R_Group_Card extends React.Component{
+    render(){
+      return(
+        <div class="card" style={{width: "20rem"}} >
+        <R_Group_Image/>
+        <div class="card-body">
+          <R_Group_Stats/>
+        </div>
+      </div>
+      )
+    }
+  }
+
+
+
+  class R_Group_Card_List extends React.Component{
+    render(){
+      return(
+        <div class='container' className="r_group_list">
+          {Array.from({ length: 10 }, (_, i) => <R_Group_Card/>)}
+        </div>
+      )
+    }
+  }
   
   class App extends React.Component {
     constructor(props) {
@@ -56,24 +144,18 @@ import './index.css';
 
     render() {
       return (
-        <div className="app">
-          <h1>Selected R Group:</h1>
-          <div className="app-rgroup-selected">
-            <RGroupWidget key={this.state.selected_r_group} id={this.state.selected_r_group} callBackFunction={this.setSelectedRGroupCallback}/>
+        <div class="container" className = "app">
+          <div class="row">
+          <div class ="col-3">
+            <R_Group_Card_List/>
           </div>
-          <h1>R Group Options:</h1>
-          <div className="app-rgroup-row1">
-            <RGroupWidget key='A01' id='A01' selectRGroupCallback={this.setSelectedRGroupCallback}/>
-            <RGroupWidget key='A50' id='A50' selectRGroupCallback={this.setSelectedRGroupCallback}/>
+          <div  class ="col-3">
+            <R_Group_Card_List/>
           </div>
-          <div className="app-rgroup-row2">
-            <RGroupWidget key='A03' id='A03' selectRGroupCallback = {this.setSelectedRGroupCallback}/>
-            <RGroupWidget key='A04' id='A04' selectRGroupCallback = {this.setSelectedRGroupCallback}/>
+          <div  class ="col-6">
+            <Full_Image/>
           </div>
-          <div className="app-rgroup-row3">
-            <RGroupWidget key='A05' id='A05' selectRGroupCallback = {this.setSelectedRGroupCallback}/>
-            <RGroupWidget key='A06' id='A06' selectRGroupCallback = {this.setSelectedRGroupCallback}/>
-          </div>
+        </div>
         </div>
       );
     }
