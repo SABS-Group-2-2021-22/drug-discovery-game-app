@@ -9,18 +9,19 @@ class RGroupWidget extends React.Component {
     super(props);
     this.state = {
       id: props.id,
+      group_nr: props.r_group_nr,
       img: 'Null',
     };
     this.fetchImage();
   }
 
 
-  sendRGroup = (r_group_id) => {
-    this.props.selectRGroupCallback(r_group_id);
+  sendRGroup = (r_group_id, r_group_nr) => {
+    this.props.selectRGroupCallback(r_group_id, r_group_nr);
   }
 
   imageClick = () => {
-    this.sendRGroup(this.state.id)
+    this.sendRGroup(this.state.id, this.state.group_nr)
   }
 
   fetchImage = () => {
@@ -93,15 +94,17 @@ class MoleculeImage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.id,
+      r_groups: props.r_groups,
       img: 'Null',
     };
     this.fetchImage();
   }
 
   fetchImage = () => {
-    const url = 'http://127.0.0.1:5000/r-group-'
-    fetch(url + this.state.id)
+    const base_url = 'http://127.0.0.1:5000/molecule'
+
+    
+    fetch(base_url + '?r1=' + this.state.r_groups[0]+ '&r2=' + this.state.r_groups[1])
       .then((response) => response.json())
       .then(img_data => {
         this.setState({ img: img_data })
@@ -125,13 +128,15 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected_r_group: 'A04',
+      selected_r_group: ['A01', 'B01'],
     };
   }
 
-  setSelectedRGroupCallback = (r_group_id) => {
-    this.setState({ selected_r_group: r_group_id }, () => {
-      console.log(this.state.selected_r_group)
+  setSelectedRGroupCallback = (r_group_id, r_group_nr) => {
+    var id_list = this.state.selected_r_group ;
+    id_list[r_group_nr-1] = r_group_id ;
+    this.setState({ selected_r_group: id_list }, () => {
+      console.log(this.state.selected_r_group) ;
     })
   }
 
@@ -142,17 +147,17 @@ class App extends React.Component {
           <div class="col-3">
             <div class='container' className="r_group_list">
               {Array.from({ length: 8 }, (_, i) =>
-                <RGroupWidget key={'A0' + (i + 1).toString()} id={'A0' + (i + 1).toString()} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
+                <RGroupWidget key={'A0' + (i + 1).toString()} id={'A0' + (i + 1).toString()} r_group_nr={1} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
             </div>
           </div>
           <div class="col-3">
             <div class='container' className="r_group_list">
               {Array.from({ length: 8 }, (_, i) =>
-                <RGroupWidget key={'A0' + (i + 1).toString()} id={'A0' + (i + 1).toString()} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
+                <RGroupWidget key={'B0' + (i + 1).toString()} id={'B0' + (i + 1).toString()} r_group_nr={2} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
             </div>
           </div>
           <div class="col-6">
-            <MoleculeImage key={this.state.selected_r_group} id={this.state.selected_r_group} />
+            <MoleculeImage key={this.state.selected_r_group} r_groups={this.state.selected_r_group} />
           </div>
         </div>
       </div>
