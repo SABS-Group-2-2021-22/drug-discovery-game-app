@@ -45,7 +45,7 @@ class RGroupWidget extends React.Component {
           <img src={this.state.img} alt='R Group' onClick={this.imageClick} />
         </div>
         <div class="card-body">
-          <RGroupStats key={this.state.stats} stats={this.state.stats}/>
+          <RGroupStats key={this.state.stats} stats={this.state.stats} />
         </div>
       </div>
     )
@@ -104,6 +104,7 @@ class MoleculeImage extends React.Component {
     this.state = {
       r_groups: props.r_groups,
       img: 'Null',
+      drug_stats: 'Null',
     };
     this.fetchImage();
   }
@@ -111,11 +112,13 @@ class MoleculeImage extends React.Component {
   fetchImage = () => {
     const base_url = 'http://127.0.0.1:5000/molecule'
 
-    
-    fetch(base_url + '?r1=' + this.state.r_groups[0]+ '&r2=' + this.state.r_groups[1])
+
+    fetch(base_url + '?r1=' + this.state.r_groups[0] + '&r2=' + this.state.r_groups[1])
       .then((response) => response.json())
-      .then(img_data => {
-        this.setState({ img: img_data })
+      .then(molecule => {
+        this.setState({ img: molecule.img_html })
+        this.setState({ drug_stats: molecule.drug_props })
+        console.log(molecule.drug_props)
       })
       .catch(err => {
         throw Error(err.message);
@@ -124,8 +127,51 @@ class MoleculeImage extends React.Component {
 
   render() {
     return (
-      <div className="current_drug">
-        <img src={this.state.img.img_html} alt='AO1' />
+      <div class="container">
+        <div class="container">
+          <img src={this.state.img} alt='Drug' />
+        </div>
+        <div class="card-body">
+          <MoleculeStats key={this.state.drug_stats} stats={this.state.drug_stats} />
+        </div>
+      </div>
+    )
+  }
+}
+
+
+class MoleculeStats extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      stats_dict: props.stats,
+    };
+  }
+  render() {
+    return (
+      <div class="container" className="molecule_stats">
+        <div class="row">
+          <div class="col">
+            Human Clearance = {this.state.stats_dict.clearance_human}
+            <div />
+          </div>
+          <div class="row">
+            <div class="col">
+              Mouse Clearance = {this.state.stats_dict.clearance_mouse}
+            </div>
+            <div class="col">
+              log d = {this.state.stats_dict.logd}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              pampa = {this.state.stats_dict.pampa}
+            </div>
+            <div class="col">
+              Pic 50 = {this.state.stats_dict.pic50}
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
@@ -141,10 +187,10 @@ class App extends React.Component {
   }
 
   setSelectedRGroupCallback = (r_group_id, r_group_nr) => {
-    var id_list = this.state.selected_r_group ;
-    id_list[r_group_nr-1] = r_group_id ;
+    var id_list = this.state.selected_r_group;
+    id_list[r_group_nr - 1] = r_group_id;
     this.setState({ selected_r_group: id_list }, () => {
-      console.log(this.state.selected_r_group) ;
+      console.log(this.state.selected_r_group);
     })
   }
 
