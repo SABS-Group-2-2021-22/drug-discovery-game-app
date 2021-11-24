@@ -11,8 +11,9 @@ class RGroupWidget extends React.Component {
       id: props.id,
       group_nr: props.r_group_nr,
       img: 'Null',
+      stats: 'Null',
     };
-    this.fetchImage();
+    this.fetchRGroup();
   }
 
 
@@ -24,12 +25,13 @@ class RGroupWidget extends React.Component {
     this.sendRGroup(this.state.id, this.state.group_nr)
   }
 
-  fetchImage = () => {
+  fetchRGroup = () => {
     const url = 'http://127.0.0.1:5000/r-group-'
     fetch(url + this.state.id)
       .then((response) => response.json())
-      .then(img_data => {
-        this.setState({ img: img_data })
+      .then(r_group => {
+        this.setState({ img: r_group.img_html })
+        this.setState({ stats: r_group.stats })
       })
       .catch(err => {
         throw Error(err.message);
@@ -40,10 +42,10 @@ class RGroupWidget extends React.Component {
     return (
       <div class="card" style={{ width: "20rem" }} >
         <div class="container">
-          <img src={this.state.img.img_html} alt='R Group' onClick={this.imageClick} />
+          <img src={this.state.img} alt='R Group' onClick={this.imageClick} />
         </div>
         <div class="card-body">
-          <RGroupStats />
+          <RGroupStats key={this.state.stats} stats={this.state.stats}/>
         </div>
       </div>
     )
@@ -51,36 +53,42 @@ class RGroupWidget extends React.Component {
 }
 
 class RGroupStats extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      stats_dict: props.stats,
+    };
+  }
   render() {
     return (
       <div class="container" className="r_group_stats">
         <div class="row">
           <div class="col">
-            MW = TEST
+            MW = {this.state.stats_dict.MW}
             <div />
           </div>
           <div class="row">
             <div class="col">
-              logP = TEST
+              logP = {this.state.stats_dict.logP}
             </div>
             <div class="col">
-              TPSA = TEST
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              HA = TEST
-            </div>
-            <div class="col">
-              Hydrogen Acceptors = TEST
+              TPSA = {this.state.stats_dict.TPSA}
             </div>
           </div>
           <div class="row">
             <div class="col">
-              Hydrogen Donors = TEST
+              HA = {this.state.stats_dict.HA}
             </div>
             <div class="col">
-              Rings = TEST
+              Hydrogen Acceptors = {this.state.stats_dict.h_acc}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Hydrogen Donors = {this.state.stats_dict.h_don}
+            </div>
+            <div class="col">
+              Rings = {this.state.stats_dict.rings}
             </div>
           </div>
         </div>
