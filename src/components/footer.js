@@ -6,7 +6,7 @@ function Footer() {
       <footer class="py-5 bg-dark fixed-bottom">
         <div class="container">
           <p class="m-0 text-center text-white">
-            Copyright &copy; Drug Discovery Game 2021 - SABS
+            Insert text here
           </p>
         </div>
       </footer>
