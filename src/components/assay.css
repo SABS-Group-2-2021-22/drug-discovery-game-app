@@ -1,0 +1,41 @@
+.assay {
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    min-height: 82vh;
+}
+
+.molecule-chooser_bar {
+    display: flex;
+    background-color: blueviolet;
+    flex-grow: 2;
+    min-height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.assay_button_bar {
+    display: flex;
+    background-color: orange;
+    flex-grow: 0.5;
+    min-height: 100%;
+    flex-direction: column;
+}
+
+.assay_button {
+    display: flex;
+    background-color: mediumaquamarine;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    outline-style: solid;
+}
+
+.display_molecule_bar {
+    display: flex;
+    background-color: pink;
+    flex-grow: 4;
+    min-height: 100%;
+    align-items: center;
+    justify-content: center;
+}
