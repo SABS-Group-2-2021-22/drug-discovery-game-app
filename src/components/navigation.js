@@ -22,6 +22,21 @@ function Navigation() {
                     App
                   </NavLink>
                 </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/assay">
+                    Assay
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/analysis">
+                    Analysis
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/results">
+                    Results
+                  </NavLink>
+                </li>
               </ul>
             </div>
           </div>
