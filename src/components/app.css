@@ -1,0 +1,105 @@
+.r_group_stats {
+    font-size: 13px;
+  }
+  
+  .asset__item img {
+    max-width: 100%;
+  }
+
+  .wrapper{
+    height: 83vh;
+    margin: 0;
+  }
+
+  .app {
+    display: flex;
+    flex: 1;
+    background-color: blue;
+    flex-direction: row;
+    padding: 40px;
+    height: 100%;
+  }
+
+  .r-group-selection {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: chartreuse;
+    padding:10px;
+  }
+
+  .A-group-list {
+    background-color: brown;
+    padding: 5px; 
+    overflow-y:scroll;
+  }
+  
+
+  .B-group-list {
+    padding: 5px; 
+    background-color: red; 
+    overflow-y:scroll;
+  } 
+
+  .rgroup-img {
+    width:210px;
+    height: auto;
+  }
+
+
+  .mol-visbox {
+    display: flex;
+    flex:3 ; 
+    flex-direction: column;
+  }
+
+  .rendered-molecule {
+    display: flex;
+    flex: 1;
+    background-color: yellow;
+    padding: 15px;
+    justify-content: center;
+    align-content: center;
+  } 
+
+
+  .molecule{
+    display: flex;
+    width: 500px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+  }
+
+  .molecule img {
+    display: flex;
+    width:500px;
+    height:auto;
+    justify-content: space-around;
+    align-content: space-around;
+  }
+
+  .control-panel {
+    display: flex;
+    background-color: pink;
+    justify-content: space-around;
+    padding: 10px;
+  }
+
+  .control-panel button{
+    background-color: #0f1372;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 80px;
+  }
+
+  .control-panel button:hover{
+    opacity: 0.7;
+  }
+
+  .control-panel button:active{
+    background-color: #0c0e51;
+    opacity: 1;
+  }
