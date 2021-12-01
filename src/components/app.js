@@ -43,7 +43,7 @@ class RGroupWidget extends React.Component {
       // <div class="card" style={{ width: "20rem" }} >
       <div class="card" >
         <div class="container">
-          <img src={this.state.img} alt='R Group' onClick={this.imageClick} />
+          <img className="rgroup-img" src={this.state.img} alt='R Group' onClick={this.imageClick} />
         </div>
         <div class="card-body">
           <RGroupStats key={this.state.stats} stats={this.state.stats} />
@@ -128,12 +128,10 @@ class MoleculeImage extends React.Component {
 
   render() {
     return (
-      <div class="container">
-        <div class="container">
+      <div class="molecule">
           <img src={this.state.img} alt='Drug' />
-        </div>
-        <div class="card-body">
-          <MoleculeStats key={this.state.drug_stats} stats={this.state.drug_stats} />
+          <div className="molecule-card" class="card-body">
+            <MoleculeStats key={this.state.drug_stats} stats={this.state.drug_stats} />
         </div>
       </div>
     )
@@ -178,6 +176,18 @@ class MoleculeStats extends React.Component {
   }
 }
 
+class ControlPanel extends React.Component{
+  render() {
+    return (
+      <div className="control-panel">
+      <button>Clear</button>
+      <button>Save</button>
+      <button>Assay</button>
+      </div>
+    );
+  }
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -200,19 +210,19 @@ class App extends React.Component {
       <div className="app">
         <div className="r-group-selection">
         <div className='A-group-list' >
-            {/* <text>List A</text> */}
               {Array.from({ length: 8 }, (_, i) =>
                 <RGroupWidget key={'A0' + (i + 1).toString()} id={'A0' + (i + 1).toString()} r_group_nr={1} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
             </div>
             <div className="B-group-list">
-            {/* <text>List B</text> */}
               {Array.from({ length: 8 }, (_, i) =>
                 <RGroupWidget key={'B0' + (i + 1).toString()} id={'B0' + (i + 1).toString()} r_group_nr={2} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
             </div>
           </div>
+          <div className="mol-visbox">
         <div className="rendered-molecule">
-        <text>Molecule</text>
           <MoleculeImage key={this.state.selected_r_group} r_groups={this.state.selected_r_group} />
+        </div>
+        <ControlPanel />
         </div>
       </div>
       </div>
