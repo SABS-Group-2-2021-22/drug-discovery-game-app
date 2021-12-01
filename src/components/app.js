@@ -209,14 +209,6 @@ class App extends React.Component {
           <div className="r-group-selection">
             <RGroupList r_group_category={1} selectRGroupCallback={this.setSelectedRGroupCallback}/>
             <RGroupList r_group_category={2} selectRGroupCallback={this.setSelectedRGroupCallback}/>
-            {/* <div className='A-group-list' >
-              {Array.from({ length: 8 }, (_, i) =>
-                <RGroupWidget key={'A0' + (i + 1).toString()} id={'A0' + (i + 1).toString()} r_group_nr={1} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
-            </div>
-            <div className="B-group-list">
-              {Array.from({ length: 8 }, (_, i) =>
-                <RGroupWidget key={'B0' + (i + 1).toString()} id={'B0' + (i + 1).toString()} r_group_nr={2} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
-            </div> */}
           </div>
           <div className="mol-visbox">
             <div className="rendered-molecule">
