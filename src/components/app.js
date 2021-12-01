@@ -1,7 +1,6 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-// import "./index.css";
+import "../index.css";
 
 
 class RGroupWidget extends React.Component {
@@ -40,9 +39,9 @@ class RGroupWidget extends React.Component {
 
   render() {
     return (
-      <div class="card" style={{ width: "20rem" }} >
-        <div class="container">molselection
-          <img src={this.state.img} alt='R Group' onClick={this.imageClick} />
+      <div class="card" >
+        <div class="container">
+          <img className="rgroup-img" src={this.state.img} alt='R Group' onClick={this.imageClick} />
         </div>
         <div class="card-body">
           <RGroupStats key={this.state.stats} stats={this.state.stats} />
@@ -64,15 +63,15 @@ class RGroupStats extends React.Component {
       <div class="container" className="r_group_stats">
         <div class="row">
           <div class="col">
-            MW = {this.state.stats_dict.MW}
+            MW = {Number(this.state.stats_dict.MW).toFixed(1)}
             <div />
           </div>
           <div class="row">
             <div class="col">
-              logP = {this.state.stats_dict.logP}
+              logP = {Number(this.state.stats_dict.logP).toFixed(2)}
             </div>
             <div class="col">
-              TPSA = {this.state.stats_dict.TPSA}
+              TPSA = {Number(this.state.stats_dict.TPSA).toFixed(2)}
             </div>
           </div>
           <div class="row">
@@ -80,12 +79,12 @@ class RGroupStats extends React.Component {
               HA = {this.state.stats_dict.HA}
             </div>
             <div class="col">
-              Hydrogen Acceptors = {this.state.stats_dict.h_acc}
+              H Acc. = {this.state.stats_dict.h_acc}
             </div>
           </div>
           <div class="row">
             <div class="col">
-              Hydrogen Donors = {this.state.stats_dict.h_don}
+              H Don. = {this.state.stats_dict.h_don}
             </div>
             <div class="col">
               Rings = {this.state.stats_dict.rings}
@@ -127,13 +126,11 @@ class MoleculeImage extends React.Component {
 
   render() {
     return (
-      <div class="container">
-        <div class="container">
-          <img src={this.state.img} alt='Drug' />
-        </div>
-        <div class="card-body">
-          <MoleculeStats key={this.state.drug_stats} stats={this.state.drug_stats} />
-        </div>
+      <div class="molecule">
+        <img src={this.state.img} alt='Drug' />
+        {/* <div className="molecule-card" class="card-body">
+            <MoleculeStats key={this.state.drug_stats} stats={this.state.drug_stats} />
+        </div> */}
       </div>
     )
   }
@@ -168,7 +165,7 @@ class MoleculeStats extends React.Component {
               pampa = {this.state.stats_dict.pampa}
             </div>
             <div class="col">
-              Pic 50 = {this.state.stats_dict.pic50}
+              pIC_50 = {this.state.stats_dict.pic50}
             </div>
           </div>
         </div>
@@ -177,6 +174,17 @@ class MoleculeStats extends React.Component {
   }
 }
 
+class ControlPanel extends React.Component {
+  render() {
+    return (
+      <div className="control-panel">
+        <button>Clear</button>
+        <button>Save</button>
+        <button>Assay</button>
+      </div>
+    );
+  }
+}
 
 class App extends React.Component {
   constructor(props) {
@@ -196,36 +204,56 @@ class App extends React.Component {
 
   render() {
     return (
-      <div class="container" className="app">
-        <div class="row">
-          <div class="col-3">
-            <div class='container' className="r_group_list">
+      <div className="wrapper">
+        <div className="app">
+          <div className="r-group-selection">
+            <div className='A-group-list' >
               {Array.from({ length: 8 }, (_, i) =>
                 <RGroupWidget key={'A0' + (i + 1).toString()} id={'A0' + (i + 1).toString()} r_group_nr={1} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
             </div>
-          </div>
-          <div class="col-3">
-            <div class='container' className="r_group_list">
+            <div className="B-group-list">
               {Array.from({ length: 8 }, (_, i) =>
                 <RGroupWidget key={'B0' + (i + 1).toString()} id={'B0' + (i + 1).toString()} r_group_nr={2} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
             </div>
           </div>
-          <div class="col-6">
-            <MoleculeImage key={this.state.selected_r_group} r_groups={this.state.selected_r_group} />
+          <div className="mol-visbox">
+            <div className="rendered-molecule">
+              <MoleculeImage key={this.state.selected_r_group} r_groups={this.state.selected_r_group} />
+            </div>
+            <ControlPanel />
           </div>
         </div>
       </div>
+
     );
   }
 }
 
 
+
+{/* 
+class RGroupList extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      r_group_category: props.r_group_category,
+      r_group_nr: props.r_group_nr,
+    };
+  }
+  render () {
+    <div className='A-group-list' >
+              {Array.from({ length: 8 }, (_, i) =>
+                <RGroupWidget key={'A0' + (i + 1).toString()} id={'A0' + (i + 1).toString()} r_group_nr={1} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
+            </div>
+  }
+} */}
+
 export default App;
 
-// ========================================
+{/* // ========================================
 
 // ReactDOM.render(
 //   <App />,
 //   document.getElementById('root')
-// );
+// ); */}
 
