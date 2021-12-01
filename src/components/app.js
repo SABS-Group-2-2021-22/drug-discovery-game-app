@@ -1,7 +1,7 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-// import "./index.css";
+import "../index.css";
 
 
 class RGroupWidget extends React.Component {
@@ -40,8 +40,9 @@ class RGroupWidget extends React.Component {
 
   render() {
     return (
-      <div class="card" style={{ width: "20rem" }} >
-        <div class="container">molselection
+      // <div class="card" style={{ width: "20rem" }} >
+      <div class="card" >
+        <div class="container">
           <img src={this.state.img} alt='R Group' onClick={this.imageClick} />
         </div>
         <div class="card-body">
@@ -177,7 +178,6 @@ class MoleculeStats extends React.Component {
   }
 }
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -196,24 +196,25 @@ class App extends React.Component {
 
   render() {
     return (
-      <div class="container" className="app">
-        <div class="row">
-          <div class="col-3">
-            <div class='container' className="r_group_list">
+      <div className="wrapper">
+      <div className="app">
+        <div className="r-group-selection">
+        <div className='A-group-list' >
+            {/* <text>List A</text> */}
               {Array.from({ length: 8 }, (_, i) =>
                 <RGroupWidget key={'A0' + (i + 1).toString()} id={'A0' + (i + 1).toString()} r_group_nr={1} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
             </div>
-          </div>
-          <div class="col-3">
-            <div class='container' className="r_group_list">
+            <div className="B-group-list">
+            {/* <text>List B</text> */}
               {Array.from({ length: 8 }, (_, i) =>
                 <RGroupWidget key={'B0' + (i + 1).toString()} id={'B0' + (i + 1).toString()} r_group_nr={2} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
             </div>
           </div>
-          <div class="col-6">
-            <MoleculeImage key={this.state.selected_r_group} r_groups={this.state.selected_r_group} />
-          </div>
+        <div className="rendered-molecule">
+        <text>Molecule</text>
+          <MoleculeImage key={this.state.selected_r_group} r_groups={this.state.selected_r_group} />
         </div>
+      </div>
       </div>
     );
   }
