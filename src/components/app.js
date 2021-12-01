@@ -175,12 +175,53 @@ class MoleculeStats extends React.Component {
 }
 
 class ControlPanel extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      r_groups: props.r_groups,
+      saved_molecules: 'Null',
+    };
+  }
+  
+  state = {
+    text: "Save"
+  }
+  changeText = (text) => {
+
+    this.setState({ text }); 
+  } 
+  save_molecule() {
+    const base_url = 'http://127.0.0.1:5000/save'
+    fetch(base_url + '?r1=' + this.state.r_groups[0] + '&r2=' + this.state.r_groups[1])
+    .then((response) => response.json())
+    .then(saved_molecule => {
+      this.setState({ saved_molecules: saved_molecule.saved_mols})
+      console.log(saved_molecule.saved_mols)
+    })
+    .catch(err => {
+      throw Error(err.message);
+    });
+    
+  }
+
+  get_saved_molecules() {
+    const base_url = 'http://127.0.0.1:5000/savedmolecules'
+    .then((response) => response.json())
+    .then(saved_molecule => {
+      this.setState({ saved_molecules: saved_molecule.saved_mols})
+      console.log(saved_molecule.saved_mols)
+    })
+    .catch(err => {
+      throw Error(err.message);
+    });
+  }
   render() {
+    const { text } = this.state;
     return (
       <div className="control-panel">
         <button>Clear</button>
-        <button>Save</button>
-        <button>Assay</button>
+        <button onClick={ () => { this.save_molecule()}}>Save</button>
+        <button>{this.state.saved_molecules}</button>
       </div>
     );
   }
@@ -220,7 +261,7 @@ class App extends React.Component {
             <div className="rendered-molecule">
               <MoleculeImage key={this.state.selected_r_group} r_groups={this.state.selected_r_group} />
             </div>
-            <ControlPanel />
+            <ControlPanel r_groups={this.state.selected_r_group} />
           </div>
         </div>
       </div>
