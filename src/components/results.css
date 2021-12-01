@@ -1,0 +1,47 @@
+.results {
+    display: flex;
+    flex-direction: row;
+    background-color: greenyellow;
+    min-height: 82vh;
+    flex-wrap: wrap;
+}
+
+.real_molecule {
+    display: flex;
+    background-color: darkkhaki;
+    /* flex-grow: 3; */
+    max-height: 70%;
+    min-width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.chosen_molecule {
+    display: flex;
+    background-color: darkred;
+    /* flex-grow: 3; */
+    max-height: 70%;
+    min-width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.spider_plot {
+    display: flex;
+    background-color:darkslateblue;
+    /* flex-grow: 1; */
+    max-height: 30%;
+    min-width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.explanation_results {
+    display: flex;
+    background-color:darkturquoise;
+    /* flex-grow: 1; */
+    max-height: 30%;
+    min-width: 50%;
+    align-items: center;
+    justify-content: center;
+}
