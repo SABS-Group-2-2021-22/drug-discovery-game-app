@@ -207,14 +207,16 @@ class App extends React.Component {
       <div className="wrapper">
         <div className="app">
           <div className="r-group-selection">
-            <div className='A-group-list' >
+            <RGroupList r_group_category={1} selectRGroupCallback={this.setSelectedRGroupCallback}/>
+            <RGroupList r_group_category={2} selectRGroupCallback={this.setSelectedRGroupCallback}/>
+            {/* <div className='A-group-list' >
               {Array.from({ length: 8 }, (_, i) =>
                 <RGroupWidget key={'A0' + (i + 1).toString()} id={'A0' + (i + 1).toString()} r_group_nr={1} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
             </div>
             <div className="B-group-list">
               {Array.from({ length: 8 }, (_, i) =>
                 <RGroupWidget key={'B0' + (i + 1).toString()} id={'B0' + (i + 1).toString()} r_group_nr={2} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
-            </div>
+            </div> */}
           </div>
           <div className="mol-visbox">
             <div className="rendered-molecule">
@@ -231,22 +233,35 @@ class App extends React.Component {
 
 
 
-{/* 
+
 class RGroupList extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       r_group_category: props.r_group_category,
-      r_group_nr: props.r_group_nr,
+      r_group_map: {1: 'A', 2: 'B'},
     };
   }
-  render () {
-    <div className='A-group-list' >
-              {Array.from({ length: 8 }, (_, i) =>
-                <RGroupWidget key={'A0' + (i + 1).toString()} id={'A0' + (i + 1).toString()} r_group_nr={1} selectRGroupCallback={this.setSelectedRGroupCallback} />)}
-            </div>
+
+  render() {
+    return (
+    <div className='r-group-list' >
+      {Array.from({ length: 9 }, (_, i) =>
+        <RGroupWidget key={this.state.r_group_map[this.state.r_group_category] + '0' + (i + 1).toString()}
+          id={this.state.r_group_map[this.state.r_group_category] + '0' + (i + 1).toString()}
+                r_group_nr={this.state.r_group_category}
+            selectRGroupCallback={this.props.selectRGroupCallback} />).concat(
+            Array.from({ length: 41 }, (_, i) =>
+              <RGroupWidget key={this.state.r_group_map[this.state.r_group_category] + (i + 10).toString()}
+                id={this.state.r_group_map[this.state.r_group_category] + (i + 10).toString()}
+                r_group_nr={this.state.r_group_category}
+                selectRGroupCallback={this.props.selectRGroupCallback} />)
+
+          )}
+    </div>
+    );
   }
-} */}
+}
 
 export default App;
 

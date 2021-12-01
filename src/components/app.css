@@ -29,14 +29,7 @@
     padding:10px;
   }
 
-  .A-group-list {
-    background-color: brown;
-    padding: 5px; 
-    overflow-y:scroll;
-  }
-  
-
-  .B-group-list {
+  .r-group-list {
     padding: 5px; 
     background-color: red; 
     overflow-y:scroll;
