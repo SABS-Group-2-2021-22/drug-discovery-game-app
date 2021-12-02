@@ -39,13 +39,11 @@ class RGroupWidget extends React.Component {
 
   render() {
     return (
-      <div class="card" >
-        <div class="container">
-          <img className="rgroup-img" src={this.state.img} alt='R Group' onClick={this.imageClick} />
-        </div>
-        <div class="card-body">
+      <div className="r-group-container">
+      <div className="r-group-card" >
+          <img className="r-group-img" src={this.state.img} alt='R Group' onClick={this.imageClick} />
           <RGroupStats key={this.state.stats} stats={this.state.stats} />
-        </div>
+      </div>
       </div>
     )
   }
@@ -97,6 +95,38 @@ class RGroupStats extends React.Component {
 }
 
 
+
+
+class RGroupList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      r_group_category: props.r_group_category,
+      r_group_map: {1: 'A', 2: 'B'},
+    };
+  }
+
+  render() {
+    return (
+    <div className='r-group-list' >
+      {Array.from({ length: 9 }, (_, i) =>
+        <RGroupWidget key={this.state.r_group_map[this.state.r_group_category] + '0' + (i + 1).toString()}
+          id={this.state.r_group_map[this.state.r_group_category] + '0' + (i + 1).toString()}
+                r_group_nr={this.state.r_group_category}
+            selectRGroupCallback={this.props.selectRGroupCallback} />).concat(
+            Array.from({ length: 41 }, (_, i) =>
+              <RGroupWidget key={this.state.r_group_map[this.state.r_group_category] + (i + 10).toString()}
+                id={this.state.r_group_map[this.state.r_group_category] + (i + 10).toString()}
+                r_group_nr={this.state.r_group_category}
+                selectRGroupCallback={this.props.selectRGroupCallback} />)
+
+          )}
+    </div>
+    );
+  }
+}
+
+
 class MoleculeImage extends React.Component {
   constructor(props) {
     super(props);
@@ -128,9 +158,6 @@ class MoleculeImage extends React.Component {
     return (
       <div class="molecule">
         <img src={this.state.img} alt='Drug' />
-        {/* <div className="molecule-card" class="card-body">
-            <MoleculeStats key={this.state.drug_stats} stats={this.state.drug_stats} />
-        </div> */}
       </div>
     )
   }
@@ -225,35 +252,6 @@ class App extends React.Component {
 
 
 
-
-class RGroupList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      r_group_category: props.r_group_category,
-      r_group_map: {1: 'A', 2: 'B'},
-    };
-  }
-
-  render() {
-    return (
-    <div className='r-group-list' >
-      {Array.from({ length: 9 }, (_, i) =>
-        <RGroupWidget key={this.state.r_group_map[this.state.r_group_category] + '0' + (i + 1).toString()}
-          id={this.state.r_group_map[this.state.r_group_category] + '0' + (i + 1).toString()}
-                r_group_nr={this.state.r_group_category}
-            selectRGroupCallback={this.props.selectRGroupCallback} />).concat(
-            Array.from({ length: 41 }, (_, i) =>
-              <RGroupWidget key={this.state.r_group_map[this.state.r_group_category] + (i + 10).toString()}
-                id={this.state.r_group_map[this.state.r_group_category] + (i + 10).toString()}
-                r_group_nr={this.state.r_group_category}
-                selectRGroupCallback={this.props.selectRGroupCallback} />)
-
-          )}
-    </div>
-    );
-  }
-}
 
 export default App;
 
