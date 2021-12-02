@@ -14,7 +14,7 @@
   .app {
     display: flex;
     flex: 1;
-    background-color: blue;
+    background-color: white; /* blue; */
     flex-direction: row;
     padding: 40px;
     height: 100%;
@@ -25,17 +25,39 @@
     flex: 1;
     flex-direction: row;
     justify-content: space-around;
-    background-color: chartreuse;
+    background-color:white; /* chartreuse; */
     padding:10px;
   }
 
   .r-group-list {
     padding: 5px; 
-    background-color: red; 
+    background-color: white; /* red; */ 
     overflow-y:scroll;
   } 
 
-  .rgroup-img {
+  .r-group-container {
+    padding-top: 5px;
+  }
+
+  .r-group-card {
+    background-color: white ;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #212529;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+
+  .r-group-card:hover {
+    opacity: 0.5;
+  }
+
+  .r-group-card:active {
+    background-color: darkgray;
+  }
+
+  .r-group-img {
     width:210px;
     height: auto;
   }
@@ -50,7 +72,7 @@
   .rendered-molecule {
     display: flex;
     flex: 1;
-    background-color: yellow;
+    background-color:white; /* yellow; */
     padding: 15px;
     justify-content: center;
     align-content: center;
@@ -59,7 +81,7 @@
 
   .molecule{
     display: flex;
-    width: 500px;
+    height: 55vh;
     flex-direction: column;
     justify-content: space-around;
     align-content: space-around;
@@ -67,21 +89,20 @@
 
   .molecule img {
     display: flex;
-    width:500px;
-    height:auto;
+    max-height:100%;
     justify-content: space-around;
     align-content: space-around;
   }
 
   .control-panel {
     display: flex;
-    background-color: pink;
+    background-color: white; /* pink; */
     justify-content: space-around;
     padding: 10px;
   }
 
   .control-panel button{
-    background-color: #0f1372;
+    background-color: #212529;
     color: white;
     border: none;
     border-radius: 8px;
@@ -93,6 +114,6 @@
   }
 
   .control-panel button:active{
-    background-color: #0c0e51;
+    background-color: #0d0e10;
     opacity: 1;
   }
