@@ -217,6 +217,7 @@ class ControlPanel extends React.Component {
       }
 
   render() {
+    const { text } = this.state;
     return (
       <div className="control-panel">
         <button>Clear</button>
