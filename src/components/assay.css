@@ -39,7 +39,8 @@
 
 .display_molecule_bar {
     display: flex;
-    background-color: pink;
+    /* background-color: pink; */
+    background-color: white;
     flex-grow: 4;
     min-height: 100%;
     align-items: center;
@@ -81,4 +82,8 @@
 
   .molecule-widget > .molecule img {
     width:210px;
+  }
+
+  .display_molecule_bar > .molecule img {
+    width:80%;
   }

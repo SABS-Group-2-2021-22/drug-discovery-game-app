@@ -14,10 +14,19 @@ class Assay_Buttons extends React.Component {
 }
 
 class MoleculeWidget extends React.Component {
+
+    sendMolecule = (r_groups) => {
+        this.props.selectMoleculeCallback(r_groups)
+    }
+
+    imageClick = () => {
+        this.sendMolecule(this.props.r_groups)
+      }
+
     render() {
       return (
           <div className='molecule-container'> 
-        <div className="molecule-widget">
+        <div className="molecule-widget" onClick={this.imageClick} >
             <MoleculeImage key={this.props.key} r_groups={this.props.r_groups} />
         </div>
         </div>
@@ -27,10 +36,23 @@ class MoleculeWidget extends React.Component {
 
 
 class MoleculeList extends React.Component {
+    render() {
+        return (
+            <div className='molecule-list' >
+                    {Array.from({ length: this.props.saved_mol_list.length }, (_, i) =>
+                    <MoleculeWidget key={this.props.saved_mol_list[i]} r_groups={this.props.saved_mol_list[i]} selectMoleculeCallback={this.props.selectMoleculeCallback}/>)}
+            </div>
+        );
+    }
+}
+
+
+class Assay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             list: [],
+            selected_mol: ['A01', 'B01'],
         };
         this.getSavedMolecules();
     }
@@ -49,24 +71,18 @@ class MoleculeList extends React.Component {
             });
     }
 
-    render() {
-        return (
-            <div className='molecule-list' >
-                {Array.from({ length: this.state.list.length }, (_, i) =>
-                    <MoleculeWidget key={this.state.list[i]} r_groups={this.state.list[i]} />)}
-            </div>
-        );
-    }
-}
+    setSelectedMoleculeCallback = (r_group_ids) => {
+        this.setState({ selected_mol: r_group_ids }, () => {
+          console.log(this.state.selected_mol);
+        })
+      }
 
-
-class Assay extends React.Component {
     render() {
         return (
             <div className="wrapper">
             <div className="assay">
                 <div className="molecule-chooser_bar">
-                    <MoleculeList />
+                    <MoleculeList saved_mol_list={this.state.list} selectMoleculeCallback={this.setSelectedMoleculeCallback}/>
                 </div>
                 <div className="assay_button_bar">
                     <Assay_Buttons label="pIC50" />
@@ -79,10 +95,7 @@ class Assay extends React.Component {
 
                 </div>
                 <div className="display_molecule_bar">
-                    Selected molecule
-                    + assay values
-                    + descriptor values
-                    + filter pass/fail
+                    <MoleculeImage key={this.state.selected_mol} r_groups={this.state.selected_mol} />
                 </div>
 
             </div>
