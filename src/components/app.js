@@ -202,11 +202,25 @@ class MoleculeStats extends React.Component {
 }
 
 class ControlPanel extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      current_r_groups: props.current_r_groups,
+    };
+  }
+
+  saveMolecule = () => {
+    const base_url = 'http://127.0.0.1:5000/save'
+    fetch(base_url + '?r1=' + this.state.current_r_groups[0] 
+                   + '&r2=' + this.state.current_r_groups[1], 
+                   {method: 'POST'})
+      }
+
   render() {
     return (
       <div className="control-panel">
         <button>Clear</button>
-        <button>Save</button>
+        <button onClick={this.saveMolecule}>Save</button>
         <button>Assay</button>
       </div>
     );
@@ -241,7 +255,7 @@ class App extends React.Component {
             <div className="rendered-molecule">
               <MoleculeImage key={this.state.selected_r_group} r_groups={this.state.selected_r_group} />
             </div>
-            <ControlPanel />
+            <ControlPanel current_r_groups={this.state.selected_r_group}/>
           </div>
         </div>
       </div>
@@ -251,7 +265,7 @@ class App extends React.Component {
 }
 
 
-
+export {MoleculeImage, }
 
 export default App;
 
