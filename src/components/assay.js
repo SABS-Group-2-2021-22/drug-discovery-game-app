@@ -1,15 +1,42 @@
 import React from 'react';
-import {MoleculeImage} from './app';
+import { MoleculeImage } from './app';
 import "./assay.css";
 
-class Assay_Buttons extends React.Component {
+
+class AssayPanel extends React.Component {
     render() {
         return (
-            <div className="assay_button">
-                {this.props.label}
+            <div className='assay-panel'>
+                <Assay_Buttons label="pIC50" />
+                <Assay_Buttons label="Clearance Mouse" />
+                <Assay_Buttons label="Clearance Human" />
+                <Assay_Buttons label="LogD" />
+                <Assay_Buttons label="PAMPA" />
+                <Assay_Buttons label="Run filters" />
+                <Assay_Buttons label="Calculate Descriptors" />
             </div>
         )
+    }
+}
 
+class Assay_Buttons extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            label: props.label,
+        }
+    }
+    runAssay = () => {
+        console.log(this.state.label)
+    }
+    render() {
+        return (
+            <div className="button-box">
+            <button className="assay_button" onClick={this.runAssay}>
+                {this.state.label}
+            </button>
+            </div>
+        )
     }
 }
 
@@ -21,16 +48,16 @@ class MoleculeWidget extends React.Component {
 
     imageClick = () => {
         this.sendMolecule(this.props.r_groups)
-      }
+    }
 
     render() {
-      return (
-          <div className='molecule-container'> 
-        <div className="molecule-widget" onClick={this.imageClick} >
-            <MoleculeImage key={this.props.key} r_groups={this.props.r_groups} />
-        </div>
-        </div>
-      )
+        return (
+            <div className='molecule-container'>
+                <div className="molecule-widget" onClick={this.imageClick} >
+                    <MoleculeImage key={this.props.key} r_groups={this.props.r_groups} />
+                </div>
+            </div>
+        )
     }
 }
 
@@ -39,8 +66,8 @@ class MoleculeList extends React.Component {
     render() {
         return (
             <div className='molecule-list' >
-                    {Array.from({ length: this.props.saved_mol_list.length }, (_, i) =>
-                    <MoleculeWidget key={this.props.saved_mol_list[i]} r_groups={this.props.saved_mol_list[i]} selectMoleculeCallback={this.props.selectMoleculeCallback}/>)}
+                {Array.from({ length: this.props.saved_mol_list.length }, (_, i) =>
+                    <MoleculeWidget key={this.props.saved_mol_list[i]} r_groups={this.props.saved_mol_list[i]} selectMoleculeCallback={this.props.selectMoleculeCallback} />)}
             </div>
         );
     }
@@ -73,32 +100,25 @@ class Assay extends React.Component {
 
     setSelectedMoleculeCallback = (r_group_ids) => {
         this.setState({ selected_mol: r_group_ids }, () => {
-          console.log(this.state.selected_mol);
+            console.log(this.state.selected_mol);
         })
-      }
+    }
 
     render() {
         return (
             <div className="wrapper">
-            <div className="assay">
-                <div className="molecule-chooser_bar">
-                    <MoleculeList saved_mol_list={this.state.list} selectMoleculeCallback={this.setSelectedMoleculeCallback}/>
-                </div>
-                <div className="assay_button_bar">
-                    <Assay_Buttons label="pIC50" />
-                    <Assay_Buttons label="Clearance Mouse" />
-                    <Assay_Buttons label="Clearance Human" />
-                    <Assay_Buttons label="LogD" />
-                    <Assay_Buttons label="PAMPA" />
-                    <Assay_Buttons label="Run filters" />
-                    <Assay_Buttons label="Calculate Descriptors" />
+                <div className="assay">
+                    <div className="molecule-chooser_bar">
+                        <MoleculeList saved_mol_list={this.state.list} selectMoleculeCallback={this.setSelectedMoleculeCallback} />
+                    </div>
+                    <div className="assay_button_bar">
+                        <AssayPanel />
+                    </div>
+                    <div className="display_molecule_bar">
+                        <MoleculeImage key={this.state.selected_mol} r_groups={this.state.selected_mol} />
+                    </div>
 
                 </div>
-                <div className="display_molecule_bar">
-                    <MoleculeImage key={this.state.selected_mol} r_groups={this.state.selected_mol} />
-                </div>
-
-            </div>
             </div>
         )
     }

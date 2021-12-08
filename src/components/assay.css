@@ -20,13 +20,13 @@
     justify-content: center;
 }
 
-.assay_button_bar {
+/* .assay_button_bar {
     display: flex;
     background-color: orange;
     flex-grow: 0.5;
     min-height: 100%;
     flex-direction: column;
-}
+} */
 
 .assay_button {
     display: flex;
@@ -86,4 +86,39 @@
 
   .display_molecule_bar > .molecule img {
     width:80%;
+  }
+
+
+
+  .assay-panel {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    /* background-color: pink; */
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+
+  .button-box {
+    padding: 10px;
+  }
+
+  .assay-panel button{
+    background-color: #212529;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 200px;
+    padding: 30px;
+  }
+
+
+  .assay-panel button:hover{
+    opacity: 0.7;
+  }
+
+  .assay-panel button:active{
+    background-color: #0d0e10;
+    opacity: 1;
   }
