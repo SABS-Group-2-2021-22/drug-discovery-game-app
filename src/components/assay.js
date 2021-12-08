@@ -16,8 +16,10 @@ class Assay_Buttons extends React.Component {
 class MoleculeWidget extends React.Component {
     render() {
       return (
-        <div className="r-group-container">
+          <div className='molecule-container'> 
+        <div className="molecule-widget">
             <MoleculeImage key={this.props.key} r_groups={this.props.r_groups} />
+        </div>
         </div>
       )
     }
@@ -61,6 +63,7 @@ class MoleculeList extends React.Component {
 class Assay extends React.Component {
     render() {
         return (
+            <div className="wrapper">
             <div className="assay">
                 <div className="molecule-chooser_bar">
                     <MoleculeList />
@@ -82,6 +85,7 @@ class Assay extends React.Component {
                     + filter pass/fail
                 </div>
 
+            </div>
             </div>
         )
     }

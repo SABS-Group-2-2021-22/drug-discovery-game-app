@@ -1,16 +1,22 @@
+
+  .wrapper{
+    height: 84vh;
+    margin: 0;
+  }
+
 .assay {
     display: flex;
     flex-direction: row;
     background-color: black;
-    min-height: 82vh;
+    height: 100%;
 }
 
 .molecule-chooser_bar {
     display: flex;
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
+    background-color: white;
     flex-grow: 2;
     min-height: 100%;
-    align-items: center;
     justify-content: center;
 }
 
@@ -38,4 +44,41 @@
     min-height: 100%;
     align-items: center;
     justify-content: center;
+    overflow-y:scroll;
 }
+
+.molecule-list {
+    padding: 5px; 
+    /* background-color: red;  */
+    background-color: white;
+    overflow-y:scroll;
+}
+
+.molecule-container {
+    padding-top: 5px;
+}
+
+.molecule-widget {
+    background-color: white ;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #212529;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  .molecule-widget:hover {
+    opacity: 0.5;
+  }
+
+  .molecule-widget:active {
+    background-color: darkgray;
+  }
+
+  .molecule-widget > .molecule{
+    height:210px;
+  }
+
+  .molecule-widget > .molecule img {
+    width:210px;
+  }
