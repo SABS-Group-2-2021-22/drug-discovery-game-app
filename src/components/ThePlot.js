@@ -14,7 +14,7 @@ class ThePlot extends Component {
   }
 
   componentDidMount() {
-    const endpoint = "./Data.json";
+    const endpoint = "http://127.0.0.1:5000/plot";
     fetch(endpoint)
       .then((response) => response.json())
       .then((data) => {
@@ -24,6 +24,7 @@ class ThePlot extends Component {
 
   addTraces(data) {
     var lines = {};
+    console.log(data)
     data.forEach((data) => {
       for (let key in data) {
         console.log(key);
@@ -122,29 +123,21 @@ class ThePlot extends Component {
             width: 1000,
             height: 500,
             title: "Analysis Plot",
-            xaxis: {title:{text: this.state.x_axis}},
-            yaxis: {title:{text: this.state.y_axis}}
+            xaxis: { title: { text: this.state.x_axis } },
+            yaxis: { title: { text: this.state.y_axis } },
           }}
         />
         <div>
           <button onClick={() => this.relayout("logd", "x")}>logd</button>
-          <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button>
-          <button onClick={() => this.relayout("HA", "x")}>HA</button>
+          <button onClick={() => this.relayout("pic50", "x")}>pic50</button>
+          <button onClick={() => this.relayout("--", "x")}>--</button>
           <button onClick={() => this.relayout("MW", "x")}>MW</button>
-          <button onClick={() => this.relayout("h_acc", "x")}>h acc</button>
-          <button onClick={() => this.relayout("h_don", "x")}>h don</button>
-          <button onClick={() => this.relayout("rings", "x")}>rings</button>
-          <button onClick={() => this.relayout("logP", "x")}>logP</button>
         </div>
         <div>
           <button onClick={() => this.relayout("logd", "y")}>logd</button>
-          <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button>
-          <button onClick={() => this.relayout("HA", "y")}>HA</button>
+          <button onClick={() => this.relayout("pic50", "y")}>pic50</button>
+          <button onClick={() => this.relayout("--", "y")}>--</button>
           <button onClick={() => this.relayout("MW", "y")}>MW</button>
-          <button onClick={() => this.relayout("h_acc", "y")}>h acc</button>
-          <button onClick={() => this.relayout("h_don", "y")}>h don</button>
-          <button onClick={() => this.relayout("rings", "y")}>rings</button>
-          <button onClick={() => this.relayout("logP", "y")}>logP</button>
         </div>
       </div>
     );
@@ -153,4 +146,21 @@ class ThePlot extends Component {
 
 export default ThePlot;
 
-//
+
+//          <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button>
+//          <button onClick={() => this.relayout("HA", "x")}>HA</button>
+//          <button onClick={() => this.relayout("MW", "x")}>MW</button>
+//          <button onClick={() => this.relayout("h_acc", "x")}>h acc</button>
+//         <button onClick={() => this.relayout("h_don", "x")}>h don</button>
+//          <button onClick={() => this.relayout("rings", "x")}>rings</button>
+//         <button onClick={() => this.relayout("logP", "x")}>logP</button>
+
+
+
+//          <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button>
+//          <button onClick={() => this.relayout("HA", "y")}>HA</button>
+//         <button onClick={() => this.relayout("MW", "y")}>MW</button>
+//          <button onClick={() => this.relayout("h_acc", "y")}>h acc</button>
+//          <button onClick={() => this.relayout("h_don", "y")}>h don</button>
+//          <button onClick={() => this.relayout("rings", "y")}>rings</button>
+//          <button onClick={() => this.relayout("logP", "y")}>logP</button>///
