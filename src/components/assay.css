@@ -21,13 +21,10 @@
     justify-content: center;
 }
 
-.assay_button_bar {
+/* .assay_button_bar {
     display: flex;
-    /* background-color: orange; */
-    /* flex-grow: 0.5;
-    min-height: 100%; */
     flex-direction: column;
-}
+} */
 
 .assay_button {
     display: flex;
