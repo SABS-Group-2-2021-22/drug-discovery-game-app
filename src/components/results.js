@@ -2,10 +2,21 @@ import React from 'react';
 import "./results.css";
 import styles from "./results.module.css";
 // import ChosenMol from '../drug-discovery-game-app/src/A04.png'
-import Roche_mol from '/home/sabsr3/Drugdiscoverygame2021-2/drug-discovery-game-app/src/target_mol.png'; // Tell webpack this JS file uses this image
+// import Roche_mol from '/home/sabsr3/Drugdiscoverygame2021-2/drug-discovery-game-app/src/target_mol.png'; // Tell webpack this JS file uses this image
 //console.log(Roche_mol); // /Roche_mol.84287d09.png
 
-class Results extends React.Component {
+import { MoleculeImage } from './app';
+
+class Results extends React.Component {    
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected_mol: ['A01', 'B01'],
+            Roche_mol: ['A05', 'B07'],
+        };
+    };
+
+
 
     onButtonClickHandler = () => {
         window.alert('Saved')
@@ -33,10 +44,13 @@ class Results extends React.Component {
                 <div className="real_molecule_image_and_descriptors">
                     <div className="real_molecule_image">
                         <figure>
-                            <p> <img src={Roche_mol}
+                        <div className="display_molecule_bar">
+                            <MoleculeImage key={this.state.Roche_mol} r_groups={this.state.Roche_mol} />
+                        </div>
+                            {/* <p> <img src={Roche_mol}
                                 // width="400"
                                 // height="300"
-                                alt="Roche_molecule" /> </p>
+                                alt="Roche_molecule" /> </p> */}
                             <figcaption>Below is the molecule that Roche chose
                             </figcaption>
                         </figure>
@@ -66,10 +80,16 @@ class Results extends React.Component {
                 <div className="chosen_molecule_image_and_descriptors">
                         <div className="chosen_molecule_image">
                             <figure>
-                                <p> <img src={Roche_mol} 
+                                <div className="display_molecule_bar">
+                                    <MoleculeImage key={this.state.selected_mol} r_groups={this.state.selected_mol} />
+                                 </div>
+                                
+                                {/* PUT SPIDER PLOT HERE WHERE IMAGE THING WAS!!!! */}
+
+                                {/* <p> <img src={Roche_mol} 
                                     // width="400"
                                     // height="300"
-                                    alt="Roche_molecule" /> </p>
+                                    alt="Roche_molecule" /> </p> */}
                                 <figcaption>Below is the molecule that you chose - need to change image
                                 </figcaption>
                             </figure>
@@ -103,17 +123,19 @@ class Results extends React.Component {
                 <div className="spider_plot_image">
 
                 <figure>
-                    <p> <img src={Roche_mol}
+                    {/* <p> <img src={Roche_mol}
                         // width="400"
                         // height="300"
-                        alt="Roche_molecule" /> </p>
-                    <figcaption>Below is a Spider PLot
+                        alt="Roche_molecule" /> </p> */}
+                    <figcaption>Below is a Spider Plot
                     </figcaption>
                 </figure>
                 </div>
 
 
             </div>
+
+            {/* Explanation of results */  }
             <div className = "explanation_results">
                 Explanation of what went right/wrong
                 
@@ -129,47 +151,49 @@ class Results extends React.Component {
 }
 
 
-class App extends React.Component{
+// class App extends React.Component{
 
-    onButtonClickHandler = () => {
-      window.alert('Hi')
-    };
+//     onButtonClickHandler = () => {
+//       window.alert('Hi')
+//     };
   
-    render(){ 
-      return(<div className="App">
-        <button onClick={this.onButtonClickHandler}>Enter</button>
-      </div>);
+//     render(){ 
+//       return(<div className="App">
+//         <button onClick={this.onButtonClickHandler}>Enter</button>
+//       </div>);
   
-    }
-  }  
+//     }
+//   }  
 
-class ControlPanel extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        current_r_groups: props.current_r_groups,
-      };
-    }
+// class ControlPanel extends React.Component {
+//     constructor(props) {
+//       super(props);
+//       this.state = {
+//         current_r_groups: props.current_r_groups,
+//       };
+//     }
   
-    saveMolecule = () => {
-      const base_url = 'http://127.0.0.1:5000/save'
-      fetch(base_url + '?r1=' + this.state.current_r_groups[0] 
-                     + '&r2=' + this.state.current_r_groups[1], 
-                     {method: 'POST'})
-        }
+//     saveMolecule = () => {
+//       const base_url = 'http://127.0.0.1:5000/save'
+//       fetch(base_url + '?r1=' + this.state.current_r_groups[0] 
+//                      + '&r2=' + this.state.current_r_groups[1], 
+//                      {method: 'POST'})
+//         }
   
-    render() {
-      const { text } = this.state;
-      return (
-        <div className="control-panel">
-          <button>Clear</button>
-          <button onClick={this.saveMolecule}>Save</button>
-          <button>Assay</button>
-        </div>
-      );
-    }
-  }
+//     render() {
+//       const { text } = this.state;
+//       return (
+//         <div className="control-panel">
+//           <button>Clear</button>
+//           <button onClick={this.saveMolecule}>Save</button>
+//           <button>Assay</button>
+//         </div>
+//       );
+//     }
+//   }
 
+
+// export {MoleculeImage, } */ Is this needed */
 export default Results;
 
 // import logo from '/home/sabsr3/Drugdiscoverygame2021-2/drug-discovery-game-app/src/A04.png'; // Tell webpack this JS file uses this image
