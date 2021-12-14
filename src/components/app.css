@@ -14,7 +14,8 @@
   .app {
     display: flex;
     flex: 1;
-    background-color: white; /* blue; */
+    background-color: white;
+    /* background-color: blue; */
     flex-direction: row;
     padding: 40px;
     height: 100%;
@@ -25,13 +26,15 @@
     flex: 1;
     flex-direction: row;
     justify-content: space-around;
-    background-color:white; /* chartreuse; */
+    /* background-color:chartreuse; */
+    background-color:white; 
     padding:10px;
   }
 
   .r-group-list {
     padding: 5px; 
-    background-color: white; /* red; */ 
+    /* background-color: red;  */
+    background-color: white;
     overflow-y:scroll;
   } 
 
@@ -72,14 +75,15 @@
   .rendered-molecule {
     display: flex;
     flex: 1;
-    background-color:white; /* yellow; */
+    background-color:white;
+    /* background-color: yellow; */
     padding: 15px;
     justify-content: center;
     align-content: center;
   } 
 
 
-  .molecule{
+  .rendered-molecule > .molecule{
     display: flex;
     height: 55vh;
     flex-direction: column;
@@ -87,7 +91,7 @@
     align-content: space-around;
   }
 
-  .molecule img {
+  .rendered-molecule > .molecule img {
     display: flex;
     max-height:100%;
     justify-content: space-around;
@@ -96,7 +100,8 @@
 
   .control-panel {
     display: flex;
-    background-color: white; /* pink; */
+    background-color: white;
+    /* background-color: pink; */
     justify-content: space-around;
     padding: 10px;
   }

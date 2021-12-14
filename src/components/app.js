@@ -61,31 +61,31 @@ class RGroupStats extends React.Component {
       <div class="container" className="r_group_stats">
         <div class="row">
           <div class="col">
-            MW = {Number(this.state.stats_dict.MW).toFixed(1)}
+            MW: {Number(this.state.stats_dict.MW).toFixed(1)}
             <div />
           </div>
           <div class="row">
             <div class="col">
-              logP = {Number(this.state.stats_dict.logP).toFixed(2)}
+              logP: {Number(this.state.stats_dict.logP).toFixed(2)}
             </div>
             <div class="col">
-              TPSA = {Number(this.state.stats_dict.TPSA).toFixed(2)}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              HA = {this.state.stats_dict.HA}
-            </div>
-            <div class="col">
-              H Acc. = {this.state.stats_dict.h_acc}
+              TPSA: {Number(this.state.stats_dict.TPSA).toFixed(2)}
             </div>
           </div>
           <div class="row">
             <div class="col">
-              H Don. = {this.state.stats_dict.h_don}
+              HA: {this.state.stats_dict.HA}
             </div>
             <div class="col">
-              Rings = {this.state.stats_dict.rings}
+              H Acc.: {this.state.stats_dict.h_acc}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              H Don.: {this.state.stats_dict.h_don}
+            </div>
+            <div class="col">
+              Rings: {this.state.stats_dict.rings}
             </div>
           </div>
         </div>
@@ -202,11 +202,26 @@ class MoleculeStats extends React.Component {
 }
 
 class ControlPanel extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      current_r_groups: props.current_r_groups,
+    };
+  }
+
+  saveMolecule = () => {
+    const base_url = 'http://127.0.0.1:5000/save'
+    fetch(base_url + '?r1=' + this.state.current_r_groups[0] 
+                   + '&r2=' + this.state.current_r_groups[1], 
+                   {method: 'POST'})
+      }
+
   render() {
+    const { text } = this.state;
     return (
       <div className="control-panel">
         <button>Clear</button>
-        <button>Save</button>
+        <button onClick={this.saveMolecule}>Save</button>
         <button>Assay</button>
       </div>
     );
@@ -241,7 +256,7 @@ class App extends React.Component {
             <div className="rendered-molecule">
               <MoleculeImage key={this.state.selected_r_group} r_groups={this.state.selected_r_group} />
             </div>
-            <ControlPanel />
+            <ControlPanel current_r_groups={this.state.selected_r_group}/>
           </div>
         </div>
       </div>
@@ -251,7 +266,7 @@ class App extends React.Component {
 }
 
 
-
+export {MoleculeImage, }
 
 export default App;
 
