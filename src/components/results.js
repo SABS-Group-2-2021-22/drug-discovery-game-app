@@ -6,6 +6,15 @@ import Roche_mol from '/home/sabsr3/Drugdiscoverygame2021-2/drug-discovery-game-
 //console.log(Roche_mol); // /Roche_mol.84287d09.png
 
 class Results extends React.Component {
+
+    onButtonClickHandler = () => {
+        window.alert('Saved')
+      };
+
+    endclick = () => {
+        window.alert('Thank you for playing')
+      };
+
     render() {
         console.log('Renderer started')
         return (
@@ -107,9 +116,10 @@ class Results extends React.Component {
             </div>
             <div className = "explanation_results">
                 Explanation of what went right/wrong
+                
                 <div className="control-panel">
-                <button>End</button>
-                <button onClick={this.saveMolecule}>Save</button>
+                <button onClick={this.endclick}>End</button>
+                <button onClick={this.onButtonClickHandler}>Save</button>
                 </div>
 
             </div>
@@ -118,6 +128,20 @@ class Results extends React.Component {
     }
 }
 
+
+class App extends React.Component{
+
+    onButtonClickHandler = () => {
+      window.alert('Hi')
+    };
+  
+    render(){ 
+      return(<div className="App">
+        <button onClick={this.onButtonClickHandler}>Enter</button>
+      </div>);
+  
+    }
+  }  
 
 class ControlPanel extends React.Component {
     constructor(props) {
