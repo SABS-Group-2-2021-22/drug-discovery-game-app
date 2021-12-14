@@ -37,6 +37,7 @@
 
 .display_molecule_bar {
     display: flex;
+    flex-direction: column;
     /* background-color: pink; */
     background-color: white;
     flex-grow: 4;
@@ -44,6 +45,16 @@
     align-items: center;
     justify-content: center;
     overflow-y:scroll;
+}
+
+.selected-mol-stats{
+  width: 90%;
+  padding: 15px;
+  padding-bottom: 50px;
+}
+
+.selected-mol-stats > .assay-stats {
+  font-size: 18px;
 }
 
 .molecule-list {
@@ -74,18 +85,27 @@
     background-color: darkgray;
   }
 
-  .molecule-widget > .molecule{
+  /* .molecule-widget > .molecule{
     height:210px;
-  }
+  } */
 
   .molecule-widget > .molecule img {
-    width:210px;
+    width:240px;
   }
 
   .display_molecule_bar > .molecule img {
     width:80%;
+    flex: 1 1 auto;
   }
 
+  .assay-stats {
+    font-size: 12px;
+    width:240px;
+  }
+
+  .assay-stats > .row {
+    padding-left:18px;
+  } 
 
 
   .assay-panel {
@@ -108,7 +128,10 @@
     border: none;
     border-radius: 8px;
     width: 200px;
-    padding: 30px;
+    flex: 1 1 auto;
+    min-height: 10px;
+    max-height: 90px;
+    margin-bottom: 10px;
   }
 
 
