@@ -65,7 +65,7 @@ class MoleculeWidget extends React.Component {
             <div className='molecule-container'>
                 <div className="molecule-widget" onClick={this.imageClick} >
                     <MoleculeImage key={this.props.key} r_groups={this.props.r_groups} />
-                    {(this.props.r_groups[0] + this.props.r_groups[1]) in this.props.assay_dict && <MoleculeStats assay_stats={this.props.assay_dict[this.props.r_groups[0] + this.props.r_groups[1]]} ></MoleculeStats>}
+                    {(this.props.r_groups[0] + this.props.r_groups[1]) in this.props.assay_dict && <MoleculeStats key={this.props.assay_dict[this.props.r_groups[0] + this.props.r_groups[1]]} assay_stats={this.props.assay_dict[this.props.r_groups[0] + this.props.r_groups[1]]} ></MoleculeStats>}
                 </div>
             </div>
         )
@@ -217,7 +217,7 @@ class Assay extends React.Component {
                         <button label="pIC50" onClick={() => this.setState({ assay_dict: { ...this.state.assay_dict, pIC50: 'Yes' } })}>pIC50</button>
                         <button label="Clearance Mouse" onClick={() => this.setState({ assay_dict: { ...this.state.assay_dict, c_mouse: 'Yes' } })}>Clearance Mouse</button>
                         <button label="Clearance Human" onClick={() => this.setState({ assay_dict: { ...this.state.assay_dict, c_human: 'Yes' } })}>Clearance Human</button>
-                        <button label="LogD" onClick={() => this.setState({ assay_dict: { ...this.state.assay_dict, logD: 'Yes' } })}>LogD</button>
+                        <button label="LogD" onClick={() => this.setState({ assay_dict: { ...this.state.assay_dict, LogD: 'Yes' } })}>LogD</button>
                         <button label="PAMPA" onClick={() => this.setState({ assay_dict: { ...this.state.assay_dict, PAMPA: 'Yes' } })}>PAMPA</button>
                         <button label="Run filters" >Run filters</button>
                         <button label="Calculate Descriptors" >Calculate Descriptors</button>
