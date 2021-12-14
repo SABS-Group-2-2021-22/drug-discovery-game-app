@@ -7,6 +7,7 @@
 .assay {
     display: flex;
     flex-direction: row;
+    flex: 1, 1, 3;
     background-color: black;
     height: 100%;
 }
@@ -22,9 +23,6 @@
 
 /* .assay_button_bar {
     display: flex;
-    background-color: orange;
-    flex-grow: 0.5;
-    min-height: 100%;
     flex-direction: column;
 } */
 
