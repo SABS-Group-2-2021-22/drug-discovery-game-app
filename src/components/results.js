@@ -107,11 +107,44 @@ class Results extends React.Component {
             </div>
             <div className = "explanation_results">
                 Explanation of what went right/wrong
+                <div className="control-panel">
+                <button>End</button>
+                <button onClick={this.saveMolecule}>Save</button>
+                </div>
+
             </div>
         </div>
         )
     }
 }
+
+
+class ControlPanel extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        current_r_groups: props.current_r_groups,
+      };
+    }
+  
+    saveMolecule = () => {
+      const base_url = 'http://127.0.0.1:5000/save'
+      fetch(base_url + '?r1=' + this.state.current_r_groups[0] 
+                     + '&r2=' + this.state.current_r_groups[1], 
+                     {method: 'POST'})
+        }
+  
+    render() {
+      const { text } = this.state;
+      return (
+        <div className="control-panel">
+          <button>Clear</button>
+          <button onClick={this.saveMolecule}>Save</button>
+          <button>Assay</button>
+        </div>
+      );
+    }
+  }
 
 export default Results;
 
