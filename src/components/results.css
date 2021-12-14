@@ -1,3 +1,7 @@
+div{
+    white-space: pre-wrap;  /* So a {"\n"} in a div on the results page results in a newline on the webpage */
+}
+
 .results {
     display: flex;
     flex-direction: row;
@@ -8,16 +12,71 @@
 
 .real_molecule {
     display: flex;
+    flex-direction: column;  /* whether boxes in real_molecule arranged in a row or column */
     background-color: darkkhaki;
     /* flex-grow: 3; */
     max-height: 70%;
+    min-width: 50%;
+    align-items: center; 
+    justify-content: center;
+}
+
+.real_molecule_title {
+    display: flex;
+    background-color: pink;
+    /* flex-grow: 3; */
+    max-height: 100%;
     min-width: 50%;
     align-items: center;
     justify-content: center;
 }
 
+.real_molecule_image_and_descriptors {
+    display: flex;
+    flex-direction: row;  /* whether boxes in this box are arranged in a row or column */
+    background-color: purple;
+    /* flex-grow: 3; */
+    max-height: 90%;          /* so takes up all the top LH box */ 
+    max-width: 90%;          /* was  max-height: 70%; min-width: 50%;*/
+    min-width: 80%;
+    align-items: center;
+    justify-content: center;
+}
+
+.real_molecule_image {
+    display: flex;
+    background-color: orange;
+    /* flex-grow: 3; */
+    max-height: 100%;
+    min-width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.real_molecule_descriptors {
+    display: flex;
+    background-color: yellow;
+    /* flex-grow: 3; */
+    /* max-height: 100%; */
+    min-height:80%;
+    min-width: 40%;
+    align-items: baseline; /* Align at top of container */
+    justify-content: center;
+}
+
+figure {
+    display: table;
+    max-height: 70%;
+    min-width: 50%;
+  }
+  figcaption {
+    display: table-caption;
+    caption-side: top;
+  }
+
 .chosen_molecule {
     display: flex;
+    flex-direction: column;  /* whether boxes in in this box are arranged in a row or column */
     background-color: darkred;
     /* flex-grow: 3; */
     max-height: 70%;
@@ -26,11 +85,75 @@
     justify-content: center;
 }
 
+.chosen_molecule_title{
+    display: flex;
+    background-color: palevioletred;
+    /* flex-grow: 3; */
+    max-height: 100%;
+    min-width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.chosen_molecule_image_and_descriptors {
+    display: flex;
+    flex-direction: row;  /* whether boxes in this box are arranged in a row or column */
+    background-color: mediumslateblue;
+    /* flex-grow: 3; */
+    max-height: 90%;          /* so takes up all the top LH box */ 
+    max-width: 90%;          /* was  max-height: 70%; min-width: 50%;*/
+    min-width: 80%;
+    align-items: center;
+    justify-content: center;
+}
+
+.chosen_molecule_image {
+    display: flex;
+    background-color: lightsalmon;
+    /* flex-grow: 3; */
+    max-height: 100%;
+    min-width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.chosen_molecule_descriptors {
+    display: flex;
+    background-color: palegoldenrod;
+    /* flex-grow: 3; */
+    /* max-height: 100%; */
+    min-height:80%;
+    min-width: 40%;
+    align-items: baseline; /* Align at top of container */
+    justify-content: center;
+}
+
 .spider_plot {
     display: flex;
+    flex-direction: column;  /* whether boxes in in this box are arranged in a row or column */
     background-color:darkslateblue;
     /* flex-grow: 1; */
     max-height: 30%;
+    min-width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.spider_plot_title{
+    display: flex;
+    background-color: darksalmon;
+    /* flex-grow: 3; */
+    max-height: 100%;
+    min-width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.spider_plot_image{
+    display: flex;
+    background-color: darkorchid;
+    /* flex-grow: 3; */
+    max-height: 100%;
     min-width: 50%;
     align-items: center;
     justify-content: center;
