@@ -65,7 +65,12 @@ class MoleculeWidget extends React.Component {
             <div className='molecule-container'>
                 <div className="molecule-widget" onClick={this.imageClick} >
                     <MoleculeImage key={this.props.key} r_groups={this.props.r_groups} />
-                    {(this.props.r_groups[0] + this.props.r_groups[1]) in this.props.assay_dict && <MoleculeStats key={this.props.assay_dict[this.props.r_groups[0] + this.props.r_groups[1]]} assay_stats={this.props.assay_dict[this.props.r_groups[0] + this.props.r_groups[1]]} ></MoleculeStats>}
+                    {(this.props.r_groups[0] + this.props.r_groups[1]) in this.props.assay_dict
+                        &&
+                        <MoleculeStats
+                            key={this.props.key}
+                            assay_stats={this.props.assay_dict[this.props.r_groups[0] + this.props.r_groups[1]]}
+                        />}
                 </div>
             </div>
         )
@@ -75,45 +80,28 @@ class MoleculeWidget extends React.Component {
 
 
 class MoleculeStats extends React.Component {
-    constructor(props) {
-        super(props);
-        console.log(props.assay_stats)
-        this.state = {
-            assay_dict: props.assay_stats,
-        };
-    }
     render() {
         return (
-            <div class="container" className="r_group_stats">
+            <div class="container" className="assay-stats">
                 <div class="row">
-                    <div class="col">
-                        pIC50: {Number(this.state.assay_dict.pic50).toFixed(1)}
-                        <div />
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            Clearance Mouse: {this.state.assay_dict.clearance_mouse}
-                        </div>
-                        <div class="col">
-                            Clearance Human: {this.state.assay_dict.clearance_human}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            LogD: {this.state.assay_dict.logd}
-                        </div>
-                        <div class="col">
-                            PAMPA: {this.state.assay_dict.pampa}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            Filters: FILTER VAL
-                        </div>
-                        <div class="col">
-                            Descr.: DESCR.
-                        </div>
-                    </div>
+                    pIC50: {Number(this.props.assay_stats.pic50).toFixed(1)}
+                </div>
+                <div class="row">
+                    Clearance Mouse: {this.props.assay_stats.clearance_mouse}
+                </div>
+                <div class="row">
+                    Clearance Human: {this.props.assay_stats.clearance_human}
+                </div>
+                <div class="row">
+                    LogD: {this.props.assay_stats.logd}
+                </div>
+                <div class="row">
+                    PAMPA: {this.props.assay_stats.pampa}
+                </div>
+                <div class="row">
+                    Filters: FILTER VAL
+                </div>
+                <div class="row"> Descr.: DESCR.
                 </div>
             </div>
         )
@@ -148,6 +136,7 @@ class Assay extends React.Component {
             assays_have_run: false,
         };
         this.getSavedMolecules();
+        this.triggerAllAssay();
     }
 
     triggerAllAssay = () => {
@@ -226,11 +215,13 @@ class Assay extends React.Component {
                     </div>
                     <div className="display_molecule_bar">
                         <MoleculeImage key={this.state.selected_mol} r_groups={this.state.selected_mol} />
-                        {this.state.pIC50}
-                        {this.state.c_mouse}
-                        {this.state.c_human}
-                        {this.state.LogD}
-                        {this.state.PAMPA}
+                        <div className='selected-mol-stats'>
+                            {(this.state.selected_mol[0] + this.state.selected_mol[1]) in this.state.assay_results
+                                && <MoleculeStats
+                                    key={this.state.selected_mol}
+                                    assay_stats={this.state.assay_results[this.state.selected_mol[0] + this.state.selected_mol[1]]}
+                                />}
+                        </div>
                     </div>
 
                 </div>
