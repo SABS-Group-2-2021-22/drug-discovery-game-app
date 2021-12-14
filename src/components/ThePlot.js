@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Plot from "react-plotly.js";
 
+
 class ThePlot extends Component {
   constructor(props) {
     super();
@@ -10,7 +11,10 @@ class ThePlot extends Component {
       revision: 0,
       x_axis: "--",
       y_axis: "--",
-    };
+      assay_results: {}
+    }; 
+    this.retrieveAssayData();
+
   }
 
   componentDidMount() {
@@ -21,6 +25,21 @@ class ThePlot extends Component {
         this.setState({ data: Array.from(data) });
       });
   }
+
+  retrieveAssayData() {
+           const base_url = 'http://127.0.0.1:5000/getplotdata'
+        fetch(base_url)
+            .then((response) => response.json())
+            .then(response => {
+                this.setState({ assay_results: response.assay_dict }, () => {
+                    console.log(this.state.assay_results);
+                })
+            })
+            .catch(err => {
+                throw Error(err.message);
+            });
+  }
+
 
   addTraces(data) {
     var lines = {};
