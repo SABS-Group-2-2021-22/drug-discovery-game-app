@@ -16,7 +16,8 @@ div{
     background-color: darkkhaki;
     /* flex-grow: 3; */
     max-height: 70%;
-    min-width: 50%;
+    /* min-width: 50%; */
+    width:50%;
     align-items: center; 
     justify-content: center;
 }
@@ -80,7 +81,8 @@ figure {
     background-color: darkred;
     /* flex-grow: 3; */
     max-height: 70%;
-    min-width: 50%;
+    /* min-width: 50%; */
+    width: 50%;
     align-items: center;
     justify-content: center;
 }
