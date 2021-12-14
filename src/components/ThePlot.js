@@ -11,34 +11,36 @@ class ThePlot extends Component {
       revision: 0,
       x_axis: "--",
       y_axis: "--",
-      assay_results: {}
     }; 
     this.retrieveAssayData();
 
   }
 
-  componentDidMount() {
-    const endpoint = "http://127.0.0.1:5000/plot";
-    fetch(endpoint)
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({ data: Array.from(data) });
-      });
-  }
 
   retrieveAssayData() {
-           const base_url = 'http://127.0.0.1:5000/getplotdata'
-        fetch(base_url)
+           const url = 'http://127.0.0.1:5000/getplotdata'
+        fetch(url)
             .then((response) => response.json())
             .then(response => {
-                this.setState({ assay_results: response.assay_dict }, () => {
-                    console.log(this.state.assay_results);
+                this.setState({ data: response.assay_dict }, () => {
+                    console.log(this.state.data);
                 })
             })
             .catch(err => {
                 throw Error(err.message);
             });
   }
+
+ /*
+ componentDidMount() {
+   const endpoint = "http://127.0.0.1:5000/plot";
+    fetch(endpoint)
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({ data: Array.from(data) });
+      });
+  }
+*/
 
 
   addTraces(data) {
@@ -68,7 +70,7 @@ class ThePlot extends Component {
     return traces;
   }
 
-  createButtons(data, axis) {
+/*  createButtons(data, axis) {
     const params = [
       "--",
       "logd",
@@ -122,6 +124,8 @@ class ThePlot extends Component {
     console.log(updatemenus);
     return updatemenus;
   }
+
+*/
 
   relayout(param, axis) {
     console.log(axis);
