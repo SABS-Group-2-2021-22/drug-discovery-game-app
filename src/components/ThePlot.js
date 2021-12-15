@@ -154,7 +154,6 @@ class ThePlot extends Component {
           <button onClick={() => this.relayout("--", "x")}>--</button>
           <button onClick={() => this.relayout("logd", "x")}>logd</button>
           <button onClick={() => this.relayout("pic50", "x")}>pic50</button>
-          <button onClick={() => this.relayout("MW", "x")}>MW</button>
           <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button>
           <button onClick={() => this.relayout("HA", "x")}>HA</button>
           <button onClick={() => this.relayout("MW", "x")}>MW</button>
@@ -167,7 +166,6 @@ class ThePlot extends Component {
           <button onClick={() => this.relayout("--", "y")}>--</button>
           <button onClick={() => this.relayout("logd", "y")}>logd</button>
           <button onClick={() => this.relayout("pic50", "y")}>pic50</button>
-          <button onClick={() => this.relayout("MW", "y")}>MW</button>
           <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button>
           <button onClick={() => this.relayout("HA", "y")}>HA</button>
           <button onClick={() => this.relayout("MW", "y")}>MW</button>
