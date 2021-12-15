@@ -11,19 +11,19 @@ class Results extends React.Component {
         };
     };
 
-    fetchChosenMolecule() {
-        const base_url = 'http://127.0.0.1:5000/chosenmolecule'
-        fetch(base_url)
-            .then((response) => response.json())
-            .then(chosen_mol => {
-                this.setState({ final: 'A0' + chosen_mol.chosen_mol }) /* Remove 'A0' when have changed analysis page st */
-                console.log(chosen_mol)
-                console.log(this.state.final)
-            })
-            .catch(err => {
-                throw Error(err.message);
-            });
-    };
+    // fetchChosenMolecule() {
+    //     const base_url = 'http://127.0.0.1:5000/chosenmolecule'
+    //     fetch(base_url)
+    //         .then((response) => response.json())
+    //         .then(chosen_mol => {
+    //             this.setState({ final: 'A0' + chosen_mol.chosen_mol }) /* Remove 'A0' when have changed analysis page st */
+    //             console.log(chosen_mol)
+    //             console.log(this.state.final)
+    //         })
+    //         .catch(err => {
+    //             throw Error(err.message);
+    //         });
+    // };
 
     onButtonClickHandler = () => {
         window.alert('Saved')
