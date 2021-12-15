@@ -6,7 +6,7 @@ class Results extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            final: ['A01', 'B01'],
+            final: ['A05', 'B07'],
             Roche_mol: ['A05', 'B07'],
         };
     };
