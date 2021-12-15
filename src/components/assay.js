@@ -50,6 +50,7 @@ class MoleculeWidget extends React.Component {
             assays_have_run: (r_group_string in this.props.assay_dict),
             assay_dict: (r_group_string in this.props.assay_dict) ? this.props.assay_dict[r_group_string] : {},
         }
+        console.log(this.props.r_groups[0] + this.props.r_groups[1])
     }
 
     sendMolecule = (r_groups) => {
@@ -65,11 +66,13 @@ class MoleculeWidget extends React.Component {
             <div className='molecule-container'>
                 <div className="molecule-widget" onClick={this.imageClick} >
                     <MoleculeImage key={this.props.key} r_groups={this.props.r_groups} />
-                    {(this.props.r_groups[0] + this.props.r_groups[1]) in this.props.assay_dict
+                    {/* {(this.props.r_groups[0] + this.props.r_groups[1]) in this.props.assay_dict */}
+                    {this.props.specific_dict !== undefined && this.props.specific_dict.assays !== undefined
                         &&
                         <MoleculeStats
                             key={this.props.key}
-                            assay_stats={this.props.assay_dict[this.props.r_groups[0] + this.props.r_groups[1]]}
+                            assay_stats={this.props.specific_dict}
+                        // assay_stats={this.props.assay_dict[this.props.r_groups[0] + this.props.r_groups[1]]}
                         />}
                 </div>
             </div>
@@ -84,19 +87,19 @@ class MoleculeStats extends React.Component {
         return (
             <div class="container" className="assay-stats">
                 <div class="row">
-                    pIC50: {Number(this.props.assay_stats.pic50).toFixed(1)}
+                    pIC50: {Number(this.props.assay_stats.assays.pic50).toFixed(1)}
                 </div>
                 <div class="row">
-                    Clearance Mouse: {this.props.assay_stats.clearance_mouse}
+                    Clearance Mouse: {this.props.assay_stats.assays.clearance_mouse}
                 </div>
                 <div class="row">
-                    Clearance Human: {this.props.assay_stats.clearance_human}
+                    Clearance Human: {this.props.assay_stats.assays.clearance_human}
                 </div>
                 <div class="row">
-                    LogD: {this.props.assay_stats.logd}
+                    LogD: {this.props.assay_stats.assays.logd}
                 </div>
                 <div class="row">
-                    PAMPA: {this.props.assay_stats.pampa}
+                    PAMPA: {this.props.assay_stats.assays.pampa}
                 </div>
                 <div class="row">
                     Filters: FILTER VAL
@@ -118,6 +121,7 @@ class MoleculeList extends React.Component {
                         r_groups={this.props.saved_mol_list[i]}
                         assays_have_run={this.props.assays_have_run}
                         assay_dict={this.props.assay_dict}
+                        specific_dict={this.props.all_mol_info[this.props.saved_mol_list[i][0] + this.props.saved_mol_list[i][1]]}
                         selectMoleculeCallback={this.props.selectMoleculeCallback}
                     />)}
             </div>
@@ -134,9 +138,10 @@ class Assay extends React.Component {
             assay_dict: { pIC50: 'No', c_mouse: 'No', c_human: 'No', LogD: 'No', PAMPA: 'No' },
             assay_results: {},
             assays_have_run: false,
+            all_mol_info: {},
         };
         this.getSavedMolecules();
-        this.triggerAllAssay();
+        // this.triggerAllAssay();
     }
 
     triggerAllAssay = () => {
@@ -148,18 +153,35 @@ class Assay extends React.Component {
             '&clearance_human=' + this.state.assay_dict.c_human +
             '&logd=' + this.state.assay_dict.LogD +
             '&pampa=' + this.state.assay_dict.PAMPA
+        let molecule_key = this.state.selected_mol[0] + this.state.selected_mol[1];
         fetch(base_url)
             .then((response) => response.json())
             .then(response => {
-                this.setState({ assay_results: response.assay_dict }, () => {
-                    console.log(this.state.assay_results);
-                })
+                // this.setState({ assay_results: response.assay_dict }, () => {
+                //     console.log(this.state.assay_results);
+                // })
+                this.updateDict(response)
                 this.setState({ assays_have_run: true })
             })
             .catch(err => {
                 throw Error(err.message);
             });
         this.resetSelection()
+    }
+
+    updateDict = (response) => {
+        let dict_copy = Object.assign(this.state.all_mol_info)
+        let key = Object.keys(response.assay_dict)[0]
+        Object.keys(response.assay_dict[key]).forEach(function (assay_key) {
+            if (!dict_copy[key].hasOwnProperty('assays')){
+                dict_copy[key]['assays'] = {}
+            }
+            if (!dict_copy[key]['assays'].hasOwnProperty(assay_key)) {
+                dict_copy[key]['assays'][assay_key] = response.assay_dict[key][assay_key]
+            }
+        }
+        );
+        this.setState({all_mol_info: dict_copy})
     }
 
     resetSelection = () => {
@@ -186,6 +208,17 @@ class Assay extends React.Component {
             .catch(err => {
                 throw Error(err.message);
             });
+        const all_info_url = 'http://127.0.0.1:5000/get_all_mol_info'
+        fetch(all_info_url)
+            .then((response) => response.json())
+            .then(molecule_dict => {
+                this.setState({ all_mol_info: molecule_dict }, () => {
+                    console.log(this.state.all_mol_info);
+                })
+            })
+            .catch(err => {
+                throw Error(err.message);
+            });
     }
 
 
@@ -200,7 +233,7 @@ class Assay extends React.Component {
             <div className="wrapper">
                 <div className="assay">
                     <div className="molecule-chooser_bar">
-                        <MoleculeList saved_mol_list={this.state.list} assays_have_run={this.state.assays_have_run} assay_dict={this.state.assay_results} selectMoleculeCallback={this.setSelectedMoleculeCallback} />
+                        <MoleculeList saved_mol_list={this.state.list} assays_have_run={this.state.assays_have_run} assay_dict={this.state.assay_results} all_mol_info={this.state.all_mol_info} selectMoleculeCallback={this.setSelectedMoleculeCallback} />
                     </div>
                     <div className="assay-panel">
                         <button label="pIC50" onClick={() => this.setState({ assay_dict: { ...this.state.assay_dict, pIC50: 'Yes' } })}>pIC50</button>
@@ -219,7 +252,9 @@ class Assay extends React.Component {
                             {(this.state.selected_mol[0] + this.state.selected_mol[1]) in this.state.assay_results
                                 && <MoleculeStats
                                     key={this.state.selected_mol}
-                                    assay_stats={this.state.assay_results[this.state.selected_mol[0] + this.state.selected_mol[1]]}
+                                    // this.props.all_mol_info[this.props.saved_mol_list[i][0]+this.props.saved_mol_list[i][1]]
+                                    // assay_stats={this.state.assay_results[this.state.selected_mol[0] + this.state.selected_mol[1]]}
+                                    assay_stats={this.state.all_mol_info[this.state.selected_mol[0] + this.state.selected_mol[1]]}
                                 />}
                         </div>
                     </div>
