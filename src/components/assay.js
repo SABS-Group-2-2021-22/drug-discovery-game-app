@@ -249,11 +249,12 @@ class Assay extends React.Component {
                     <div className="display_molecule_bar">
                         <MoleculeImage key={this.state.selected_mol} r_groups={this.state.selected_mol} />
                         <div className='selected-mol-stats'>
-                            {(this.state.selected_mol[0] + this.state.selected_mol[1]) in this.state.assay_results
-                                && <MoleculeStats
+                            { 
+                            this.state.all_mol_info.hasOwnProperty(this.state.selected_mol[0] + this.state.selected_mol[1]) &&
+                            this.state.all_mol_info[this.state.selected_mol[0] + this.state.selected_mol[1]].hasOwnProperty('assays')
+                                && 
+                                <MoleculeStats
                                     key={this.state.selected_mol}
-                                    // this.props.all_mol_info[this.props.saved_mol_list[i][0]+this.props.saved_mol_list[i][1]]
-                                    // assay_stats={this.state.assay_results[this.state.selected_mol[0] + this.state.selected_mol[1]]}
                                     assay_stats={this.state.all_mol_info[this.state.selected_mol[0] + this.state.selected_mol[1]]}
                                 />}
                         </div>
