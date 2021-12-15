@@ -42,17 +42,6 @@ class Assay_Buttons extends React.Component {
 }
 
 class MoleculeWidget extends React.Component {
-    constructor(props) {
-        super(props);
-        const r_group_string = this.props.r_groups[0] + this.props.r_groups[1]
-
-        this.state = {
-            assays_have_run: (r_group_string in this.props.assay_dict),
-            assay_dict: (r_group_string in this.props.assay_dict) ? this.props.assay_dict[r_group_string] : {},
-        }
-        console.log(this.props.r_groups[0] + this.props.r_groups[1])
-    }
-
     sendMolecule = (r_groups) => {
         this.props.selectMoleculeCallback(r_groups)
     }
@@ -66,11 +55,11 @@ class MoleculeWidget extends React.Component {
             <div className='molecule-container'>
                 <div className="molecule-widget" onClick={this.imageClick} >
                     <MoleculeImage key={this.props.key} r_groups={this.props.r_groups} />
-                    {this.props.specific_dict !== undefined
+                    {this.props.molecule_stats !== undefined
                         &&
                         <MoleculeStats
                             key={this.props.key}
-                            assay_stats={this.props.specific_dict}
+                            molecule_stats={this.props.molecule_stats}
                         />}
                 </div>
             </div>
@@ -84,9 +73,9 @@ class MoleculeStats extends React.Component {
     render() {
         return (
             <div className="mol-stats">
-                {this.props.assay_stats.hasOwnProperty('assays') && <Assays assay_stats={this.props.assay_stats} />}
-                {this.props.assay_stats.hasOwnProperty('lipinski') && <Filters assay_stats={this.props.assay_stats} />}
-                {this.props.assay_stats.hasOwnProperty('descriptors') && <Descriptors assay_stats={this.props.assay_stats} />}
+                {this.props.molecule_stats.hasOwnProperty('assays') && <Assays molecule_stats={this.props.molecule_stats} />}
+                {this.props.molecule_stats.hasOwnProperty('lipinski') && <Filters molecule_stats={this.props.molecule_stats} />}
+                {this.props.molecule_stats.hasOwnProperty('descriptors') && <Descriptors molecule_stats={this.props.molecule_stats} />}
             </div >
         )
     }
@@ -98,19 +87,19 @@ class Assays extends React.Component {
             <div class="container" className="assay-stats">
                 <div class="row" className="stats-type-header"> Assay Data: </div>
                 <div class="row">
-                    pIC50: {Number(this.props.assay_stats.assays.pic50).toFixed(1)}
+                    pIC50: {Number(this.props.molecule_stats.assays.pic50).toFixed(1)}
                 </div>
                 <div class="row">
-                    Clearance Mouse: {this.props.assay_stats.assays.clearance_mouse}
+                    Clearance Mouse: {this.props.molecule_stats.assays.clearance_mouse}
                 </div>
                 <div class="row">
-                    Clearance Human: {this.props.assay_stats.assays.clearance_human}
+                    Clearance Human: {this.props.molecule_stats.assays.clearance_human}
                 </div>
                 <div class="row">
-                    LogD: {this.props.assay_stats.assays.logd}
+                    LogD: {this.props.molecule_stats.assays.logd}
                 </div>
                 <div class="row">
-                    PAMPA: {this.props.assay_stats.assays.pampa}
+                    PAMPA: {this.props.molecule_stats.assays.pampa}
                 </div>
             </div>
         )
@@ -122,16 +111,16 @@ class Filters extends React.Component {
             <div class="container" className="filter-stats">
                 <div class="row" className="stats-type-header"> Lipinski Filters: </div>
                 <div class="row">
-                    MW: {this.props.assay_stats.lipinski.MW ? 'Pass' : 'Fail'}
+                    MW: {this.props.molecule_stats.lipinski.MW ? 'Pass' : 'Fail'}
                 </div>
                 <div class="row">
-                    H Acc.: {this.props.assay_stats.lipinski.h_acc ? 'Pass' : 'Fail'}
+                    H Acc.: {this.props.molecule_stats.lipinski.h_acc ? 'Pass' : 'Fail'}
                 </div>
                 <div class="row">
-                    H Don.:{this.props.assay_stats.lipinski.h_don ? 'Pass' : 'Fail'}
+                    H Don.:{this.props.molecule_stats.lipinski.h_don ? 'Pass' : 'Fail'}
                 </div>
                 <div class="row">
-                    logP {this.props.assay_stats.lipinski.logP ? 'Pass' : 'Fail'}
+                    logP {this.props.molecule_stats.lipinski.logP ? 'Pass' : 'Fail'}
                 </div>
             </div>
         )
@@ -144,25 +133,25 @@ class Descriptors extends React.Component {
             <div class="container" className="descriptor-stats">
                 <div class="row" className="stats-type-header"> Molecule Descriptors: </div>
                 <div class="row">
-                    HA: {this.props.assay_stats.descriptors.HA}
+                    HA: {this.props.molecule_stats.descriptors.HA}
                 </div>
                 <div class="row">
-                    MW: {Number(this.props.assay_stats.descriptors.MW).toFixed(1)}
+                    MW: {Number(this.props.molecule_stats.descriptors.MW).toFixed(1)}
                 </div>
                 <div class="row">
-                    TPSA:{Number(this.props.assay_stats.descriptors.TPSA).toFixed(1)}
+                    TPSA:{Number(this.props.molecule_stats.descriptors.TPSA).toFixed(1)}
                 </div>
                 <div class="row">
-                    H Acc.: {this.props.assay_stats.descriptors.h_acc}
+                    H Acc.: {this.props.molecule_stats.descriptors.h_acc}
                 </div>
                 <div class="row">
-                    H Don.: {this.props.assay_stats.descriptors.h_don}
+                    H Don.: {this.props.molecule_stats.descriptors.h_don}
                 </div>
                 <div class="row">
-                    logP: {Number(this.props.assay_stats.descriptors.logP).toFixed(2)}
+                    logP: {Number(this.props.molecule_stats.descriptors.logP).toFixed(2)}
                 </div>
                 <div class="row">
-                    Rings: {this.props.assay_stats.descriptors.rings}
+                    Rings: {this.props.molecule_stats.descriptors.rings}
                 </div>
             </div>
         )
@@ -177,9 +166,7 @@ class MoleculeList extends React.Component {
                     <MoleculeWidget
                         key={this.props.saved_mol_list[i]}
                         r_groups={this.props.saved_mol_list[i]}
-                        assays_have_run={this.props.assays_have_run}
-                        assay_dict={this.props.assay_dict}
-                        specific_dict={this.props.all_mol_info[this.props.saved_mol_list[i][0] + this.props.saved_mol_list[i][1]]}
+                        molecule_stats={this.props.all_mol_info[this.props.saved_mol_list[i][0] + this.props.saved_mol_list[i][1]]}
                         selectMoleculeCallback={this.props.selectMoleculeCallback}
                     />)}
             </div>
@@ -193,28 +180,25 @@ class Assay extends React.Component {
         this.state = {
             list: [],
             selected_mol: ['A01', 'B01'],
-            assay_dict: { pIC50: 'No', c_mouse: 'No', c_human: 'No', LogD: 'No', PAMPA: 'No' },
-            assay_results: {},
-            assays_have_run: false,
+            assay_selection: { pIC50: 'No', c_mouse: 'No', c_human: 'No', LogD: 'No', PAMPA: 'No' },
             all_mol_info: {},
         };
         this.getSavedMolecules();
     }
 
-    triggerAllAssay = () => {
+    getAssays = () => {
         const base_url = 'http://127.0.0.1:5000/assays?' +
             'r1=' + this.state.selected_mol[0] +
             '&r2=' + this.state.selected_mol[1] +
-            '&pic50=' + this.state.assay_dict.pIC50 +
-            '&clearance_mouse=' + this.state.assay_dict.c_mouse +
-            '&clearance_human=' + this.state.assay_dict.c_human +
-            '&logd=' + this.state.assay_dict.LogD +
-            '&pampa=' + this.state.assay_dict.PAMPA
+            '&pic50=' + this.state.assay_selection.pIC50 +
+            '&clearance_mouse=' + this.state.assay_selection.c_mouse +
+            '&clearance_human=' + this.state.assay_selection.c_human +
+            '&logd=' + this.state.assay_selection.LogD +
+            '&pampa=' + this.state.assay_selection.PAMPA
         fetch(base_url)
             .then((response) => response.json())
             .then(response => {
                 this.updateDict(response, 'assays')
-                this.setState({ assays_have_run: true })
             })
             .catch(err => {
                 throw Error(err.message);
@@ -230,7 +214,6 @@ class Assay extends React.Component {
             .then((response) => response.json())
             .then(response => {
                 this.updateDict(response, 'descriptors')
-                this.setState({ assays_have_run: true })
             })
     }
 
@@ -242,7 +225,6 @@ class Assay extends React.Component {
             .then((response) => response.json())
             .then(response => {
                 this.updateDict(response, 'lipinski')
-                this.setState({ assays_have_run: true })
             })
     }
 
@@ -260,13 +242,11 @@ class Assay extends React.Component {
         }
         );
         this.setState({ all_mol_info: dict_copy })
-        console.log(this.state.selected_mol)
-        console.log(this.state.all_mol_info)
     }
 
     resetSelection = () => {
         this.setState({
-            assay_dict: {
+            assay_selection: {
                 pIC50: 'No',
                 c_mouse: 'No',
                 c_human: 'No',
@@ -313,17 +293,17 @@ class Assay extends React.Component {
             <div className="wrapper">
                 <div className="assay">
                     <div className="molecule-chooser_bar">
-                        <MoleculeList saved_mol_list={this.state.list} assays_have_run={this.state.assays_have_run} assay_dict={this.state.assay_results} all_mol_info={this.state.all_mol_info} selectMoleculeCallback={this.setSelectedMoleculeCallback} />
+                        <MoleculeList saved_mol_list={this.state.list} all_mol_info={this.state.all_mol_info} selectMoleculeCallback={this.setSelectedMoleculeCallback} />
                     </div>
                     <div className="assay-panel">
-                        <button label="pIC50" onClick={() => this.setState({ assay_dict: { ...this.state.assay_dict, pIC50: 'Yes' } })}>pIC50</button>
-                        <button label="Clearance Mouse" onClick={() => this.setState({ assay_dict: { ...this.state.assay_dict, c_mouse: 'Yes' } })}>Clearance Mouse</button>
-                        <button label="Clearance Human" onClick={() => this.setState({ assay_dict: { ...this.state.assay_dict, c_human: 'Yes' } })}>Clearance Human</button>
-                        <button label="LogD" onClick={() => this.setState({ assay_dict: { ...this.state.assay_dict, LogD: 'Yes' } })}>LogD</button>
-                        <button label="PAMPA" onClick={() => this.setState({ assay_dict: { ...this.state.assay_dict, PAMPA: 'Yes' } })}>PAMPA</button>
+                        <button label="pIC50" onClick={() => this.setState({ assay_selection: { ...this.state.assay_selection, pIC50: 'Yes' } })}>pIC50</button>
+                        <button label="Clearance Mouse" onClick={() => this.setState({ assay_selection: { ...this.state.assay_selection, c_mouse: 'Yes' } })}>Clearance Mouse</button>
+                        <button label="Clearance Human" onClick={() => this.setState({ assay_selection: { ...this.state.assay_selection, c_human: 'Yes' } })}>Clearance Human</button>
+                        <button label="LogD" onClick={() => this.setState({ assay_selection: { ...this.state.assay_selection, LogD: 'Yes' } })}>LogD</button>
+                        <button label="PAMPA" onClick={() => this.setState({ assay_selection: { ...this.state.assay_selection, PAMPA: 'Yes' } })}>PAMPA</button>
                         <button label="Run filters" onClick={this.getFilters}>Run filters</button>
                         <button label="Calculate Descriptors" onClick={this.getDescriptors} >Calculate Descriptors</button>
-                        <button label="Run Assays" onClick={this.triggerAllAssay}>Run Assays</button>
+                        <button label="Run Assays" onClick={this.getAssays}>Run Assays</button>
 
                     </div>
                     <div className="display_molecule_bar">
@@ -331,11 +311,9 @@ class Assay extends React.Component {
                         <div className='selected-mol-stats'>
                             {
                                 this.state.all_mol_info.hasOwnProperty(this.state.selected_mol[0] + this.state.selected_mol[1]) &&
-                                this.state.all_mol_info[this.state.selected_mol[0] + this.state.selected_mol[1]].hasOwnProperty('assays')
-                                &&
                                 <MoleculeStats
                                     key={this.state.selected_mol}
-                                    assay_stats={this.state.all_mol_info[this.state.selected_mol[0] + this.state.selected_mol[1]]}
+                                    molecule_stats={this.state.all_mol_info[this.state.selected_mol[0] + this.state.selected_mol[1]]}
                                 />}
                         </div>
                     </div>
