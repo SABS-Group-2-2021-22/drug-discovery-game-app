@@ -7,7 +7,7 @@ class Results extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selected_mol: ['A01', 'B01'],
+            final: ['A01', 'B01'],
             Roche_mol: ['A05', 'B07'],
         };
     };
@@ -76,7 +76,7 @@ class Results extends React.Component {
                         <div className="chosen_molecule_image">
                             <figure>
                                 <div className="display_molecule_bar">
-                                    <MoleculeImage key={this.state.selected_mol} r_groups={this.state.selected_mol} />
+                                    <MoleculeImage key={this.state.final} r_groups={this.state.final} />
                                  </div>
                                 <figcaption>
                                     Below is the molecule that you chose - need to change image
