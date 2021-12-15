@@ -53,8 +53,25 @@
   padding-bottom: 50px;
 }
 
-.selected-mol-stats > .assay-stats {
-  font-size: 18px;
+.selected-mol-stats > .mol-stats {
+  display:flex;
+  flex-direction: row;
+  font-size: 12px;
+}
+
+.selected-mol-stats > .mol-stats > .assay-stats{
+  width: 100%;
+  padding-right: 50px;
+}
+
+.selected-mol-stats > .mol-stats > .filter-stats{
+  width: 100%;
+  padding-right: 50px;
+}
+
+.selected-mol-stats > .mol-stats > .descriptor-stats{
+  width: 100%;
+  padding-right: 50px;
 }
 
 .molecule-list {
@@ -98,16 +115,16 @@
     flex: 1 1 auto;
   }
 
-  .assay-stats {
+  .mol-stats {
     font-size: 12px;
     width:240px;
-  }
-
-  .assay-stats > .row {
     padding-left:18px;
     white-space: nowrap;
-  } 
+  }
 
+  .stats-type-header {
+    font-weight: bold;
+  }
 
   .assay-panel {
     display: flex;
