@@ -10,9 +10,9 @@ div{
     flex-wrap: wrap;
 }
 
-.real_molecule {
+.real-molecule {
     display: flex;
-    flex-direction: column;  /* whether boxes in real_molecule arranged in a row or column */
+    flex-direction: column;  /* whether boxes in real-molecule arranged in a row or column */
     background-color: darkkhaki;
     /* flex-grow: 3; */
     max-height: 70%;
@@ -22,7 +22,7 @@ div{
     justify-content: center;
 }
 
-.real_molecule_title {
+.real-molecule-title {
     display: flex;
     background-color: pink;
     /* flex-grow: 3; */
@@ -32,7 +32,7 @@ div{
     justify-content: center;
 }
 
-.real_molecule_image_and_descriptors {
+.real-molecule-image-and-descriptors {
     display: flex;
     flex-direction: row;  /* whether boxes in this box are arranged in a row or column */
     background-color: purple;
@@ -44,7 +44,7 @@ div{
     justify-content: center;
 }
 
-.real_molecule_image {
+.real-molecule-image {
     display: flex;
     background-color: orange;
     /* flex-grow: 3; */
@@ -54,7 +54,7 @@ div{
     justify-content: center;
 }
 
-.real_molecule_descriptors {
+.real-molecule-descriptors {
     display: flex;
     background-color: yellow;
     /* flex-grow: 3; */
@@ -75,7 +75,7 @@ figure {
     caption-side: top;
   }
 
-.chosen_molecule {
+.chosen-molecule {
     display: flex;
     flex-direction: column;  /* whether boxes in in this box are arranged in a row or column */
     background-color: darkred;
@@ -87,7 +87,7 @@ figure {
     justify-content: center;
 }
 
-.chosen_molecule_title{
+.chosen-molecule-title{
     display: flex;
     background-color: palevioletred;
     /* flex-grow: 3; */
@@ -97,7 +97,7 @@ figure {
     justify-content: center;
 }
 
-.chosen_molecule_image_and_descriptors {
+.chosen-molecule-image-and-descriptors {
     display: flex;
     flex-direction: row;  /* whether boxes in this box are arranged in a row or column */
     background-color: mediumslateblue;
@@ -109,7 +109,7 @@ figure {
     justify-content: center;
 }
 
-.chosen_molecule_image {
+.chosen-molecule-image {
     display: flex;
     background-color: lightsalmon;
     /* flex-grow: 3; */
@@ -119,7 +119,7 @@ figure {
     justify-content: center;
 }
 
-.chosen_molecule_descriptors {
+.chosen-molecule-descriptors {
     display: flex;
     background-color: palegoldenrod;
     /* flex-grow: 3; */
@@ -130,7 +130,7 @@ figure {
     justify-content: center;
 }
 
-.spider_plot {
+.spider-plot {
     display: flex;
     flex-direction: column;  /* whether boxes in in this box are arranged in a row or column */
     background-color:darkslateblue;
@@ -141,7 +141,7 @@ figure {
     justify-content: center;
 }
 
-.spider_plot_title{
+.spider-plot-title{
     display: flex;
     background-color: darksalmon;
     /* flex-grow: 3; */
@@ -151,7 +151,7 @@ figure {
     justify-content: center;
 }
 
-.spider_plot_image{
+.spider-plot-image{
     display: flex;
     background-color: darkorchid;
     /* flex-grow: 3; */
@@ -161,7 +161,7 @@ figure {
     justify-content: center;
 }
 
-.explanation_results {
+.explanation-results {
     display: flex;
     background-color:darkturquoise;
     /* flex-grow: 1; */
@@ -195,3 +195,11 @@ figure {
     background-color: #0d0e10;
     opacity: 1;
   }
+
+/* Text syles for results page */
+/* Red bold text*/
+.results > .red_bold{ 
+    font-size: xx-large;
+    font-weight: bold;
+    color: red;
+}
