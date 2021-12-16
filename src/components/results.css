@@ -2,13 +2,12 @@
     height: 84vh;
     margin: 0;
   }
-.results {
+/* .results {
     display: flex;
     flex-direction: column;
-    /* background-color: greenyellow; */
     height:100%;
     flex-wrap: wrap;
-}
+} */
 
 .results img {
     width:350px;
@@ -70,6 +69,8 @@
 .molecule-display{
     display: flex;
     flex-direction: row;
+    /* align-items: center;
+    justify-content: center; */
 }
 
 
@@ -137,36 +138,41 @@
 
 
 
-/* .results {
+
+
+.results {
   display: flex;
   flex-direction: row;
   background-color: greenyellow;
   min-height: 82vh;
   flex-wrap: wrap;
-} */
-/* 
+}
+
 .real-molecule {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;  /* whether boxes in real-molecule arranged in a row or column */
   background-color: darkkhaki;
-  max-height: 70%;
+  /* flex-grow: 3; */
+  /* max-height: 70%; */
+  height: 50%;
+  /* min-width: 50%; */
   width:50%;
   align-items: center; 
   justify-content: center;
-} */
+}
 
 
-
-/* .molecule-image-and-descriptors {
+.molecule-image-and-descriptors {
   display: flex;
-  flex-direction: row;  
+  flex-direction: row;  /* whether boxes in this box are arranged in a row or column */
   background-color: purple;
-  flex-grow: 3;
-  max-height: 90%;         
+  /* flex-grow: 3; */
+  max-height: 90%;          /* so takes up all the top LH box */ 
+  max-width: 90%;          /* was  max-height: 70%; min-width: 50%;*/
   min-width: 80%;
   align-items: center;
   justify-content: center;
-} */
+}
 
 .molecule-image {
   display: flex;
@@ -186,6 +192,7 @@
   /* max-height: 100%; */
   min-height:80%;
   min-width: 40%;
+  max-width:50%;
   align-items: baseline; /* Align at left of container */
 }
 
@@ -208,7 +215,8 @@ figcaption {
   flex-direction: column;  /* whether boxes in in this box are arranged in a row or column */
   background-color: darkred;
   /* flex-grow: 3; */
-  max-height: 70%;
+  /* max-height: 70%; */
+  height: 50%;
   /* min-width: 50%; */
   width: 50%;
   align-items: center;
@@ -220,8 +228,10 @@ figcaption {
   flex-direction: column;  /* whether boxes in in this box are arranged in a row or column */
   background-color:darkslateblue;
   /* flex-grow: 1; */
-  max-height: 30%;
-  min-width: 50%;
+  /* max-height: 30%;
+  min-width: 50%; */
+  width:50%;
+  height:50%;
   align-items: center;
   justify-content: center;
 }
@@ -250,8 +260,10 @@ figcaption {
   display: flex;
   background-color:darkturquoise;
   /* flex-grow: 1; */
-  max-height: 30%;
-  min-width: 50%;
+  /* max-height: 30%;
+  min-width: 50%; */
+  width:50%;
+  height:50%;
   align-items: center;
   justify-content: center;
 }

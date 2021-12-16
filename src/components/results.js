@@ -65,51 +65,42 @@ class Results extends React.Component {
 
     render() {
         return (
-            <div className="wrapper">
+            // <div className="wrapper">
                 <div className="results">
-                    <div className='molecule-image-and-descriptors'>
-                        {/* Roche's molecule */}
+  
+
                         <div className="real-molecule">
+                        <div className='molecule-image-and-descriptors'>
                             <div className="title">
                                 Roche's molecule
                             </div>
-                            <div className="molecule-display">
+                            {/* <div className="molecule-display">
                                 <MoleculeImage key={this.state.roche_mol} r_groups={this.state.roche_mol} />
                                 {this.state.roche_mol_stats !== undefined ?
                                     <Assays molecule_stats={this.state.roche_mol_stats} /> : ''}
                             </div>
+                        </div> */}
+
+                        <div className="molecule-image">
+                        <figure>
+                            <div className="display_molecule_bar">
+                                {/* <div className="molecule-display"> */}
+                                {this.state.chosen_mol !== undefined ?
+                                    <MoleculeImage key={this.state.chosen_mol} r_groups={this.state.chosen_mol} />
+                                    : ''}
+                            </div>
+                            <figcaption>
+                                Below is the molecule that Roche chose
+                            </figcaption>
+                        </figure>
                         </div>
-{/* 
-    <div className="molecule-image-and-descriptors">
-        <div className="molecule-image">
-            <figure>
-                <div className="display_molecule_bar">
-                    <MoleculeImage
-                        key={this.state.Roche_mol}
-                        r_groups={this.state.Roche_mol}
-                        alt="Roche_molecule" />    
-                </div>
-                <figcaption>
-                    Below is the molecule that Roche chose
-                </figcaption>
-            </figure>
 
-        </div>
+                    </div>
 
-        <div class="container" className="molecule-descriptors">
-            <div className="row">Descriptors:</div>
-            <div className="row">pIC50: number units </div>
-            <div className="row">logD: number units</div>
-            <div className="row">Mouse clearance: descriptor</div>
-            <div className="row">Human clearane: descriptor</div>
-            <div className="row">Permeability: descriptor</div>
-        </div>
-
-
-
-    </div>
-
-</div> */}
+                    <div class="container" className="molecule-descriptors">
+                        {this.state.chosen_mol_stats !== undefined ?
+                            <Assays molecule_stats={this.state.chosen_mol_stats} /> : ''}
+                    </div>
 
                         {/* Chosen molecule */}
                         <div className="chosen_molecule">
@@ -117,6 +108,7 @@ class Results extends React.Component {
                                 Final molecule
                             </div>
                             <div className="molecule-display">
+                                
                                 {this.state.chosen_mol !== undefined ?
                                     <MoleculeImage key={this.state.chosen_mol} r_groups={this.state.chosen_mol} />
                                     : ''}
@@ -135,7 +127,7 @@ class Results extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            // </div>
         );
     }
 }
@@ -143,109 +135,109 @@ class Results extends React.Component {
 export default Results;
 
 
-
-// {/* Roche's molecule */ }
-// <div className="real-molecule">
-//     <div className="title">
-//         Roche's molecule
-//     </div>
-
-//     <div className="molecule-image-and-descriptors">
-//         <div className="molecule-image">
-//             <figure>
-//                 <div className="display_molecule_bar">
-//                     <MoleculeImage
-//                         key={this.state.Roche_mol}
-//                         r_groups={this.state.Roche_mol}
-//                         alt="Roche_molecule" />    {/* Alt text not working */}
+// render() {
+//     return (
+//         <div className="wrapper">
+//             {/* Roche's molecule */}
+//             <div className="real-molecule">
+//                 <div className="title">
+//                     Roche's molecule
 //                 </div>
-//                 <figcaption>
-//                     Below is the molecule that Roche chose
-//                 </figcaption>
-//             </figure>
 
-//         </div>
+//                 <div className="molecule-image-and-descriptors">
+//                     <div className="molecule-image">
+//                         <figure>
+//                             <div className="display_molecule_bar">
+//                                 {/* <div className="molecule-display"> */}
+//                                 {this.state.chosen_mol !== undefined ?
+//                                     <MoleculeImage key={this.state.chosen_mol} r_groups={this.state.chosen_mol} />
+//                                     : ''}
+//                             </div>
+//                             <figcaption>
+//                                 Below is the molecule that Roche chose
+//                             </figcaption>
+//                         </figure>
 
-//         <div class="container" className="molecule-descriptors">
-//             <div className="row">Descriptors:</div>
-//             <div className="row">pIC50: number units </div>
-//             <div className="row">logD: number units</div>
-//             <div className="row">Mouse clearance: descriptor</div>
-//             <div className="row">Human clearane: descriptor</div>
-//             <div className="row">Permeability: descriptor</div>
-//         </div>
+//                     </div>
+
+//                     <div class="container" className="molecule-descriptors">
+//                         {this.state.chosen_mol_stats !== undefined ?
+//                             <Assays molecule_stats={this.state.chosen_mol_stats} /> : ''}
+//                     </div>
 
 
 
-//     </div>
-
-// </div>
 
 
-// {/* Chosen molecule */ }
-// <div className="chosen-molecule">
-//     <div className="title">
-//         Final molecule
-//     </div>
-
-//     <div className="molecule-image-and-descriptors">
-//         <div className="molecule-image">
-//             <figure>
-//                 <div className="display_molecule_bar">
-//                     <MoleculeImage key={this.state.final} r_groups={this.state.final} />
 //                 </div>
-//                 <figcaption>
-//                     Below is the molecule that you chose - need to change image
-//                 </figcaption>
-//             </figure>
 
-//         </div>
-
-//         <div class="container" className="molecule-descriptors">
-//             <div className="row">Descriptors:</div>
-//             <div className="row">pIC50: number units</div>
-//             <div className="row">logD: number units</div>
-//             <div className="row">Mouse clearance: descriptor</div>
-//             <div className="row">Human clearane: descriptor</div>
-//             <div className="row">Permeability: descriptor</div>
-//         </div>
-
-//     </div>
-
-// </div>
+//             </div>
 
 
-// {/* Spider plot */ }
-// <div className="spider-plot">
-//     <div className="title">
-//         Spider Plot
-//     </div>
-//     <div className="spider-plot-image">
-//         <figure>
-//             {/* PUT SPIDER PLOT HERE WHERE IMAGE THING WAS/IS!!!! */}
+//             {/* Chosen molecule */}
+//             <div className="chosen-molecule">
+//                 <div className="title">
+//                     Final molecule
+//                 </div>
 
-//             {/* <p> <img src={IMAGE_NAME}
+//                 <div className="molecule-image-and-descriptors">
+//                     <div className="molecule-image">
+//                         <figure>
+//                             <div className="display_molecule_bar">
+//                                 <MoleculeImage key={this.state.final} r_groups={this.state.final} />
+//                             </div>
+//                             <figcaption>
+//                                 Below is the molecule that you chose - need to change image
+//                             </figcaption>
+//                         </figure>
+
+//                     </div>
+
+//                     <div class="container" className="molecule-descriptors">
+//                         <div className="row">Descriptors:</div>
+//                         <div className="row">pIC50: number units</div>
+//                         <div className="row">logD: number units</div>
+//                         <div className="row">Mouse clearance: descriptor</div>
+//                         <div className="row">Human clearane: descriptor</div>
+//                         <div className="row">Permeability: descriptor</div>
+//                     </div>
+
+//                 </div>
+
+//             </div>
+
+
+//             {/* Spider plot */}
+//             <div className="spider-plot">
+//                 <div className="title">
+//                     Spider Plot
+//                 </div>
+//                 <div className="spider-plot-image">
+//                     <figure>
+//                         {/* PUT SPIDER PLOT HERE WHERE IMAGE THING WAS/IS!!!! */}
+
+//                         {/* <p> <img src={IMAGE_NAME}
 //                     // width="400"
 //                     // height="300"
 //                     alt="molecule" /> </p> */}
-//             <figcaption>Below is a Spider Plot
-//             </figcaption>
-//         </figure>
-//     </div>
+//                         <figcaption>Below is a Spider Plot
+//                         </figcaption>
+//                     </figure>
+//                 </div>
 
 
-// </div>
+//             </div>
 
-// {/* Explanation of results */ }
-// <div className="explanation-results">
-//     Explanation of what went right/wrong
+//             {/* Explanation of results */}
+//             <div className="explanation-results">
+//                 Explanation of what went right/wrong
 
-//     <div className="control-panel">
-//         <button onClick={this.endclick}>End</button>
-//         <button onClick={this.onButtonClickHandler}>Save</button>
-//     </div>
+//                 <div className="control-panel">
+//                     <button onClick={this.endclick}>End</button>
+//                     <button onClick={this.onButtonClickHandler}>Save</button>
+//                 </div>
 
-// </div>
+//             </div>
 //         </div >
 //     )
 // }
