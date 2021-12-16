@@ -110,7 +110,7 @@
   }
 
   .display_molecule_bar > .molecule img {
-    width:80%;
+    max-width:80%;
     flex: 1 1 auto;
   }
 
