@@ -1,13 +1,38 @@
 import React, { Component } from "react";
-import Plot from "react-plotly.js";
 import "./analysis.css";
-import ThePlot from './ThePlot.js'
 
-class Rubbish extends React.Component {
+import { Link } from "react-router-dom"
+
+import ThePlot from './ThePlot.js'
+import { MoleculeList } from './assay';
+
+
+class SelectorPanel extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      current_r_groups: props.current_r_groups,
+    };
+  }
+
+  chooseMolecule = () => {
+    this.props.chooseMoleculeCallback()
+  }
+
+  submitMolecule = () => {
+    this.props.submitMoleculeCallback()
+  }
+
   render() {
+    const { text } = this.state;
     return (
-      <div>Bla</div>
-    )
+      <div className="control-panel">
+        <button onClick={this.chooseMolecule}>Choose This Molecule</button>
+        <Link to='/results'>
+          <button onClick={this.submitMolecule}>Reveal Final Molecule</button>
+        </Link>
+      </div>
+    );
   }
 }
 
@@ -15,67 +40,80 @@ class Analysis extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { value_A: 0, value_B: 0, final: [0, 0] };
-
-    this.handleSelect_A = this.handleSelect_A.bind(this);
-    this.handleSelect_B = this.handleSelect_B.bind(this);
-    this.chooseMolecule = this.chooseMolecule.bind(this);
-    this.fetchChosenMolecule = this.fetchChosenMolecule.bind(this);
-  }
-
-  handleSelect_A(event) {
-    this.setState({ value_A: event.target.value });
-  }
-
-  handleSelect_B(event) {
-    this.setState({ value_B: event.target.value });
-  }
-
-  chooseMolecule() {
-    const base_url = 'http://127.0.0.1:5000/choose';
-    fetch(base_url + '?r1=' + this.state.value_A + '&r2=' + this.state.value_B, { method: "POST" });
+    this.state = {
+      list: [],
+      clicked_mol: ['A01', 'B01'],
+      all_mol_info: {},
+      chosen_mol: undefined,
+    };
+    this.getSavedMolecules();
 
   }
 
-  fetchChosenMolecule() {
-    const base_url = 'http://127.0.0.1:5000/chosenmolecule'
-    fetch(base_url)
+  getSavedMolecules = () => {
+    const url = 'http://127.0.0.1:5000/savedmolecules'
+    fetch(url)
       .then((response) => response.json())
-      .then(chosen_mol => {
-        this.setState({ final: chosen_mol.chosen_mol })
-        console.log(chosen_mol)
-        console.log(this.state.final)
+      .then(molecule_list => {
+        this.setState({ list: molecule_list.saved_mols }, () => {
+          console.log(this.state.list);
+        })
       })
       .catch(err => {
         throw Error(err.message);
       });
-  };
+    const all_info_url = 'http://127.0.0.1:5000/get_all_mol_info'
+    fetch(all_info_url)
+      .then((response) => response.json())
+      .then(molecule_dict => {
+        this.setState({ all_mol_info: molecule_dict }, () => {
+          console.log(this.state.all_mol_info);
+        })
+      })
+      .catch(err => {
+        throw Error(err.message);
+      });
+  }
 
+  setSelectedMoleculeCallback = (r_group_ids) => {
+    this.setState({ clicked_mol: r_group_ids }, () => {
+      console.log(this.state.clicked_mol);
+    })
+  }
+
+  chooseMoleculeCallback = () => {
+    this.setState({ chosen_mol: this.state.clicked_mol })
+  }
+
+  submitMoleculeCallback = () => {
+    const base_url = 'http://127.0.0.1:5000/choose';
+    fetch(base_url +
+      '?r1=' + this.state.chosen_mol[0] +
+      '&r2=' + this.state.chosen_mol[1],
+      { method: "POST" }
+    );
+  }
 
   render() {
     return (
-      <div className="analysis">
-        <select name="selectList" id="selectList" onChange={this.handleSelect_A}>
-          {Array.from({ length: 50 }, (_, i) => <option value={i}>{"A0" + i}</option>)}
-        </select>
-        <select name="selectList" id="selectList" onChange={this.handleSelect_B}>
-          {Array.from({ length: 50 }, (_, i) => <option value={i}>{"B0" + i}</option>)}
-        </select>
+      <div className="wrapper">
+        <div className="analysis">
+          <div className="final-molecule-bar">
+            <SelectorPanel
+              chooseMoleculeCallback={this.chooseMoleculeCallback}
+              submitMoleculeCallback={this.submitMoleculeCallback}
+            />
+            <MoleculeList
+              saved_mol_list={this.state.list}
+              all_mol_info={this.state.all_mol_info}
+              selectMoleculeCallback={this.setSelectedMoleculeCallback}
+            />
+          </div>
+          <div className="comparison-graph">
+            <ThePlot />
+          </div>
 
-        <div>You selected {this.state.value_A} and {this.state.value_B}</div>
-        <div>
-          <button onClick={() => this.chooseMolecule()}>Choose This Molecule</button>
         </div>
-        <div>
-          <button onClick={() => this.fetchChosenMolecule()}>Reveal final molecule</button>
-        </div>
-        <div>
-          You have chosen {this.state.final[0][0]} and {this.state.final[0][1]} as the final molecule
-        </div><
-          div className="comparison_graph">
-          <ThePlot />
-        </div>
-
       </div>
     );
   }
