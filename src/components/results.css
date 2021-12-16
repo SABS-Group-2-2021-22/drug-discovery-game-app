@@ -28,9 +28,13 @@
     height: 50%;
 }
 
+.molecule-display{
+    display: flex;
+    flex-direction: row;
+}
 
 
-.real_molecule {
+.real-molecule {
     display: flex;
     flex-direction: column;
     /* background-color: darkkhaki; */
