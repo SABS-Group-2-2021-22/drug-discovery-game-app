@@ -8,7 +8,6 @@
     display: flex;
     flex-direction: row;
     flex: 1, 1, 3;
-    background-color: black;
     height: 100%;
 }
 
@@ -44,7 +43,7 @@
     min-height: 100%;
     align-items: center;
     justify-content: center;
-    overflow-y:scroll;
+    /* overflow-y:scroll; */
 }
 
 .selected-mol-stats{

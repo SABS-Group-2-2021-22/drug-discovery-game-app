@@ -323,5 +323,6 @@ class Assay extends React.Component {
         )
     }
 }
+export {MoleculeList, }
 
 export default Assay;
