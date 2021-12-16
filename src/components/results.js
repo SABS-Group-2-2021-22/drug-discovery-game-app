@@ -14,7 +14,8 @@ class Results extends React.Component {
     this.getChosenMolecule();
   }
   getChosenMolecule = () => {
-    const base_url = 'http://127.0.0.1:5000/chosenmolecule'
+    // const base_url = 'http://127.0.0.1:5000/chosenmolecule'
+    const base_url = 'http://drug-discovery-game-backend.herokuapp.com/chosenmolecule'
     fetch(base_url)
       .then((response) => response.json())
       .then(response => {
