@@ -135,9 +135,9 @@ class Results extends React.Component {
 
                     {/* Spider plot */}
                     <div className="spider-plot">
-                        <div className="spider-plot-title">
+                        {/* <div className="spider-plot-title">
                             Spider Plot
-                        </div>
+                        </div> */}
                         <SpiderPlot />
                     </div>
 
