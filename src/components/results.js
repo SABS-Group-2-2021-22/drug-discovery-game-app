@@ -43,7 +43,7 @@ class Results extends React.Component {
     fetch(url)
       .then((response) => response.json())
       .then(response => {
-        this.setState({ chosen_mol_stats: response })
+        this.setState({ chosen_mol_stats:  {'assays': response.assays[chosen_mol[0] + chosen_mol[1]] } })
       })
 
     url = 'http://127.0.0.1:5000/assays?' +
@@ -57,7 +57,7 @@ class Results extends React.Component {
     fetch(url)
       .then((response) => response.json())
       .then(response => {
-        this.setState({ roche_mol_stats: response })
+        this.setState({ roche_mol_stats: {'assays': response.assays[this.state.roche_mol[0] + this.state.roche_mol[1]] }})
         console.log(this.state.roche_mol_stats)
       })
 
