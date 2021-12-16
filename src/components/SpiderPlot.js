@@ -17,7 +17,7 @@ class SpiderPlot extends Component {
     }
 
     retrieveSpiderData() {
-        const endpoint = 'http://127.0.0.1:5000/getspiderdata'
+        const endpoint = 'https://drug-discovery-game-backend.herokuapp.com/getspiderdata'
         fetch (endpoint)
             .then((response) => response.json())
             .then(response => {

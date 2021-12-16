@@ -25,7 +25,7 @@ class RGroupWidget extends React.Component {
   }
 
   fetchRGroup = () => {
-    const url = 'http://127.0.0.1:5000/r-group-'
+    const url = 'https://drug-discovery-game-backend.herokuapp.com/r-group-'
     fetch(url + this.state.id)
       .then((response) => response.json())
       .then(r_group => {
@@ -139,7 +139,7 @@ class MoleculeImage extends React.Component {
   }
 
   fetchImage = () => {
-    const base_url = 'http://127.0.0.1:5000/molecule'
+    const base_url = 'https://drug-discovery-game-backend.herokuapp.com/molecule'
 
 
     fetch(base_url + '?r1=' + this.state.r_groups[0] + '&r2=' + this.state.r_groups[1])
@@ -210,7 +210,7 @@ class ControlPanel extends React.Component {
   }
 
   saveMolecule = () => {
-    const base_url = 'http://127.0.0.1:5000/save'
+    const base_url = 'https://drug-discovery-game-backend.herokuapp.com/save'
     fetch(base_url + '?r1=' + this.state.current_r_groups[0] 
                    + '&r2=' + this.state.current_r_groups[1], 
                    {method: 'POST'})

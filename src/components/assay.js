@@ -187,7 +187,7 @@ class Assay extends React.Component {
     }
 
     getAssays = () => {
-        const base_url = 'http://127.0.0.1:5000/assays?' +
+        const base_url = 'https://drug-discovery-game-backend.herokuapp.com/assays?' +
             'r1=' + this.state.selected_mol[0] +
             '&r2=' + this.state.selected_mol[1] +
             '&pic50=' + this.state.assay_selection.pIC50 +
@@ -207,7 +207,7 @@ class Assay extends React.Component {
     }
 
     getDescriptors = () => {
-        const base_url = 'http://127.0.0.1:5000/descriptors?' +
+        const base_url = 'https://drug-discovery-game-backend.herokuapp.com/descriptors?' +
             'r1=' + this.state.selected_mol[0] +
             '&r2=' + this.state.selected_mol[1]
         fetch(base_url)
@@ -218,7 +218,7 @@ class Assay extends React.Component {
     }
 
     getFilters = () => {
-        const base_url = 'http://127.0.0.1:5000/lipinski?' +
+        const base_url = 'https://drug-discovery-game-backend.herokuapp.com/lipinski?' +
             'r1=' + this.state.selected_mol[0] +
             '&r2=' + this.state.selected_mol[1]
         fetch(base_url)
@@ -257,7 +257,7 @@ class Assay extends React.Component {
     }
 
     getSavedMolecules = () => {
-        const url = 'http://127.0.0.1:5000/savedmolecules'
+        const url = 'https://drug-discovery-game-backend.herokuapp.com/savedmolecules'
         fetch(url)
             .then((response) => response.json())
             .then(molecule_list => {
@@ -268,7 +268,7 @@ class Assay extends React.Component {
             .catch(err => {
                 throw Error(err.message);
             });
-        const all_info_url = 'http://127.0.0.1:5000/get_all_mol_info'
+        const all_info_url = 'https://drug-discovery-game-backend.herokuapp.com/get_all_mol_info'
         fetch(all_info_url)
             .then((response) => response.json())
             .then(molecule_dict => {

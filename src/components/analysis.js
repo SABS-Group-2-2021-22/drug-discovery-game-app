@@ -51,7 +51,7 @@ class Analysis extends React.Component {
   }
 
   getSavedMolecules = () => {
-    const url = 'http://127.0.0.1:5000/savedmolecules'
+    const url = 'https://drug-discovery-game-backend.herokuapp.com/savedmolecules'
     fetch(url)
       .then((response) => response.json())
       .then(molecule_list => {
@@ -62,7 +62,7 @@ class Analysis extends React.Component {
       .catch(err => {
         throw Error(err.message);
       });
-    const all_info_url = 'http://127.0.0.1:5000/get_all_mol_info'
+    const all_info_url = 'https://drug-discovery-game-backend.herokuapp.com/get_all_mol_info'
     fetch(all_info_url)
       .then((response) => response.json())
       .then(molecule_dict => {
@@ -86,7 +86,7 @@ class Analysis extends React.Component {
   }
 
   submitMoleculeCallback = () => {
-    const base_url = 'http://127.0.0.1:5000/choose';
+    const base_url = 'https://drug-discovery-game-backend.herokuapp.com/choose';
     fetch(base_url +
       '?r1=' + this.state.chosen_mol[0] +
       '&r2=' + this.state.chosen_mol[1],
