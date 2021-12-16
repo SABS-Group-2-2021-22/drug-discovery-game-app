@@ -33,7 +33,7 @@ class Results extends React.Component {
             <div className="chosen_molecule">Final Molecule
               {this.state.chosen_mol !== undefined ?
                 <MoleculeImage key={this.state.chosen_mol} r_groups={this.state.chosen_mol} />
-                : 'img'}
+                : ''}
             </div>
           </div>
           <div className='molecule-results-analysis'>
