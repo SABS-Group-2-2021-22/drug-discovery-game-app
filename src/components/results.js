@@ -14,9 +14,11 @@ class Results extends React.Component {
             roche_mol: ['A05', 'B07'],
             roche_mol_stats: undefined,
             chosen_mol_stats: undefined,
+            comp_obj: {}
         };
         this.getChosenMolecule();
         // this.getStats();
+        this.getComparisonTxt();
     }
     getChosenMolecule = () => {
         const base_url = 'http://127.0.0.1:5000/chosenmolecule'
@@ -67,7 +69,16 @@ class Results extends React.Component {
         const endpoint = 'http://127.0.0.1:5000/comparisontxt'
         fetch(endpoint)
             .then((response) => response.json())
-            .then(response => )
+            .then(response => {
+                this.setState({ comp_obj: response.comparison})
+            })
+        
+    }
+    dispComparisonTxt() {
+        let obj = this.state.comp_obj;
+        var str = obj['pic50'] + '\n' + obj['logd'] + '\n' + obj['clearance_human'];
+        return str;
+
     }
 
     render() {
@@ -149,7 +160,7 @@ class Results extends React.Component {
 
                     {/* Explanation of results */}
                     <div className="explanation-results">
-                        Explanation of what went right/wrong
+                        {this.dispComparisonTxt()}
                     </div>
                 </div >
             </div>
