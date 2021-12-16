@@ -63,6 +63,12 @@ class Results extends React.Component {
 
     }
 
+    getComparisonTxt () {
+        const endpoint = 'http://127.0.0.1:5000/comparisontxt'
+        fetch(endpoint)
+            .then((response) => response.json())
+            .then(response => )
+    }
 
     render() {
         return (
