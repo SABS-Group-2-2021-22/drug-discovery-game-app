@@ -32,13 +32,13 @@ class Analysis extends React.Component {
   }
 
   chooseMolecule() {
-    const base_url = 'http://127.0.0.1:5000/choose';
+    const base_url = 'https://drug-discovery-game-backend.herokuapp.com/choose';
     fetch(base_url + '?r1=' + this.state.value_A + '&r2=' + this.state.value_B, { method: "POST" });
 
   }
 
   fetchChosenMolecule() {
-    const base_url = 'http://127.0.0.1:5000/chosenmolecule'
+    const base_url = 'https://drug-discovery-game-backend.herokuapp.com/chosenmolecule'
     fetch(base_url)
       .then((response) => response.json())
       .then(chosen_mol => {

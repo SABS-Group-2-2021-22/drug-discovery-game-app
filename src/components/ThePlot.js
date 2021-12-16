@@ -18,7 +18,7 @@ class ThePlot extends Component {
 
 
   retrieveAssayData() {
-        const url = 'http://127.0.0.1:5000/getplotdata'
+        const url = 'https://drug-discovery-game-backend.herokuapp.com/getplotdata'
         fetch(url)
             .then((response) => response.json())
             .then(response => {
