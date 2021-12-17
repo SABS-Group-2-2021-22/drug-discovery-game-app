@@ -203,7 +203,8 @@ class Assay extends React.Component {
             .catch(err => {
                 throw Error(err.message);
             });
-        this.resetSelection()
+        this.resetSelection();
+        this.props.updateTimeAndMoneyCallback();
     }
 
     getDescriptors = () => {
