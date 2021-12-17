@@ -73,6 +73,8 @@ class SpiderPlot extends Component {
 
     layout() {
         let layout = {
+            autosize: false,
+            width: 500,
             polar: {
                 radialaxis: {
                     visible: true,
