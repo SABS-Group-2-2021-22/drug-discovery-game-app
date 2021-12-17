@@ -85,80 +85,70 @@ class Results extends React.Component {
     return (
       <div className="wrapper">
         <div className="results">
-          {/* Roche's molecule */}
-          <div className="real-molecule">
-            <div className="title">
-              Roche's molecule
-            </div>
+          <div className='molecule-choices'>
+            <div className="real-molecule">
+              <div className="title">
+                Roche's molecule
+              </div>
 
-            <div className="molecule-image-and-descriptors">
-              <div className="molecule-image">
-                <figure>
-                  <div className="display_molecule_bar">
-                    {/* <div className="molecule-display"> */}
-                    <MoleculeImage key={this.state.roche_mol} r_groups={this.state.roche_mol} />
-                  </div>
-                  {/* <figcaption>
+              <div className="molecule-image-and-descriptors">
+                <div className="molecule-image">
+                  <figure>
+                    <div className="display_molecule_bar">
+                      <MoleculeImage key={this.state.roche_mol} r_groups={this.state.roche_mol} />
+                    </div>
+                    {/* <figcaption>
                                         Below is the molecule that Roche chose.
                                     </figcaption>  */}
-                </figure>
-              </div>
-              <div class="container" className="molecule-descriptors">
-                {this.state.roche_mol_stats !== undefined ?
-                  <Assays molecule_stats={this.state.roche_mol_stats} /> : ''}
+                  </figure>
+                </div>
+                <div class="container" className="molecule-descriptors">
+                  {this.state.roche_mol_stats !== undefined ?
+                    <Assays molecule_stats={this.state.roche_mol_stats} /> : ''}
+                </div>
               </div>
             </div>
-          </div>
+            <div className="chosen-molecule">
+              <div className="title">
+                Your molecule
+              </div>
 
-
-          {/* Chosen molecule */}
-          <div className="chosen-molecule">
-            <div className="title">
-              Final molecule
-            </div>
-
-            <div className="molecule-image-and-descriptors">
-              <div className="molecule-image">
-                <figure>
-                  <div className="display_molecule_bar">
-                    {this.state.chosen_mol !== undefined ?
-                      <MoleculeImage key={this.state.chosen_mol} r_groups={this.state.chosen_mol} />
-                      : ''}
-                  </div>
-                  {/* <figcaption>
+              <div className="molecule-image-and-descriptors">
+                <div className="molecule-image">
+                  <figure>
+                    <div className="display_molecule_bar">
+                      {this.state.chosen_mol !== undefined ?
+                        <MoleculeImage key={this.state.chosen_mol} r_groups={this.state.chosen_mol} />
+                        : ''}
+                    </div>
+                    {/* <figcaption>
                                         Below is the molecule that you chose.
                                     </figcaption> */}
-                </figure>
+                  </figure>
 
-              </div>
+                </div>
 
-              <div class="container" className="molecule-descriptors">
-                {this.state.chosen_mol_stats !== undefined ?
-                  <Assays molecule_stats={this.state.chosen_mol_stats} /> : ''}
+                <div class="container" className="molecule-descriptors">
+                  {this.state.chosen_mol_stats !== undefined ?
+                    <Assays molecule_stats={this.state.chosen_mol_stats} /> : ''}
+                </div>
+
               </div>
 
             </div>
-
           </div>
-
+          <div className="plot-and-explanation">
+            <div className="spider-plot">
+            <SpiderPlot />
+            </div>
+            <div className='explanation-and-button'>
+              {this.dispComparisonTxt()}
+            <button> End Game </button>
+            </div>
+          </div>
         </div>
-        <div className="plot-and-explanation" />
-        {/* Spider plot */}
-        <div className="spider-plot">
-          {/* <div className="spider-plot-title">
-                            Spider Plot
-                        </div> */}
-          <SpiderPlot />
-        </div>
-
-        {/* Explanation of results */}
-
-        <div className="explanation-results">
-          {this.dispComparisonTxt()}
-        </div>
-      </div>
-        </div >
-        )
+      </div >
+    )
   }
 }
 
