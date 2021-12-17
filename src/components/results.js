@@ -1,6 +1,8 @@
 import React from 'react';
 import "./results.css";
 
+import { Link } from "react-router-dom"
+
 import SpiderPlot from "./SpiderPlot.js";
 
 import { MoleculeImage } from './app'
@@ -139,11 +141,11 @@ class Results extends React.Component {
           </div>
           <div className="plot-and-explanation">
             <div className="spider-plot">
-            <SpiderPlot />
+              <SpiderPlot />
             </div>
             <div className='explanation-and-button'>
               {this.dispComparisonTxt()}
-            <button> End Game </button>
+              <Link to='/'><button> End Game </button></Link>
             </div>
           </div>
         </div>

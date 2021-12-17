@@ -166,6 +166,11 @@ figcaption {
   text-align: justify;
 }
 
+.explanation-and-button a {
+  width:fit-content;
+  align-self: flex-end;
+}
+
 .explanation-and-button button{
   background-color: #212529;
   color: white;
@@ -173,7 +178,6 @@ figcaption {
   border-radius: 8px;
   width: 130px;
   height: 50px;
-  align-self: flex-end;
   margin-right:50px;
 }
 
@@ -186,3 +190,4 @@ figcaption {
   background-color: #0d0e10;
   opacity: 1;
 }
+
