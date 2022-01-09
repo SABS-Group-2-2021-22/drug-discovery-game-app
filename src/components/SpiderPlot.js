@@ -36,14 +36,10 @@ class SpiderPlot extends Component {
 
     restructureData() {
         for (const [key, value] of Object.entries(this.state.user_data)) {
-           console.log(key)
-           console.log(value)
             this.state.user_r.push(value)
             this.state.user_params.push(key)
         };
         for (const [key, value] of Object.entries(this.state.ref_data)) {
-           console.log(key)
-           console.log(value)
             this.state.ref_r.push(value)
             this.state.ref_params.push(key)
         };
