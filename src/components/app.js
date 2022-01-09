@@ -134,6 +134,7 @@ class MoleculeImage extends React.Component {
       r_groups: props.r_groups,
       img: 'Null',
       drug_stats: 'Null',
+      size: props.size
     };
     this.fetchImage();
   }
@@ -142,7 +143,8 @@ class MoleculeImage extends React.Component {
     const base_url = 'http://127.0.0.1:5000/molecule'
 
 
-    fetch(base_url + '?r1=' + this.state.r_groups[0] + '&r2=' + this.state.r_groups[1])
+    fetch(base_url + '?r1=' + this.state.r_groups[0] + '&r2=' + this.state.r_groups[1] +
+          '&size=' + this.state.size)
       .then((response) => response.json())
       .then(molecule => {
         this.setState({ img: molecule.img_html })
@@ -254,7 +256,8 @@ class App extends React.Component {
           </div>
           <div className="mol-visbox">
             <div className="rendered-molecule">
-              <MoleculeImage key={this.state.selected_r_group} r_groups={this.state.selected_r_group} />
+              <MoleculeImage key={this.state.selected_r_group} r_groups={this.state.selected_r_group} 
+                            size={"800,800"} />
             </div>
             <ControlPanel current_r_groups={this.state.selected_r_group}/>
           </div>

@@ -54,7 +54,8 @@ class MoleculeWidget extends React.Component {
         return (
             <div className='molecule-container'>
                 <div className="molecule-widget" onClick={this.imageClick} >
-                    <MoleculeImage key={this.props.key} r_groups={this.props.r_groups} />
+                    <MoleculeImage key={this.props.key} r_groups={this.props.r_groups} 
+                        size={"800,800"} />
                     {this.props.molecule_stats !== undefined
                         &&
                         <MoleculeStats
@@ -308,7 +309,7 @@ class Assay extends React.Component {
 
                     </div>
                     <div className="display_molecule_bar">
-                        <MoleculeImage key={this.state.selected_mol} r_groups={this.state.selected_mol} />
+                        <MoleculeImage key={this.state.selected_mol} r_groups={this.state.selected_mol} size={"800,800"} />
                         <div className='selected-mol-stats'>
                             {
                                 this.state.all_mol_info.hasOwnProperty(this.state.selected_mol[0] + this.state.selected_mol[1]) &&
