@@ -1,41 +1,25 @@
 import React, { Component, useEffect } from "react";
 import Plot from "react-plotly.js";
-import { MoleculeImage } from './app';
-import './analysis.css'
+import { MoleculeImage } from "./app";
+import "./analysis.css";
 
+//should probably use a class with states for hover and positions
 
 class ThePlot extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
-      data: [],
       x_axis: "--",
       y_axis: "--",
-      hover_mol: ['A01', 'B01'],
+      hover_mol: ["A01,", "B01"],
       hover: false,
       xpositionState: 0,
-      ypositionState: 0
-    }; 
-    this.retrieveAssayData();
+      ypositionState: 0,
+    };
   }
-
-  retrieveAssayData() {
-        const url = 'http://127.0.0.1:5000/getplotdata'
-        fetch(url)
-            .then((response) => response.json())
-            .then(response => {
-                this.setState({ data: response.assay_dict }, () => {
-                    console.log(this.state.data);
-                console.log(response)
-                })
-            })
-            .catch(err => {
-                throw Error(err.message);
-            });
-  }
-
 
   addTraces(data) {
+    console.log(data)
     var lines = {};
     data.forEach((data) => {
       for (let key in data) {
@@ -45,7 +29,6 @@ class ThePlot extends Component {
         };
       }
     });
-
     let traces = [];
     for (const [key, value] of Object.entries(lines)) {
       traces.push({
@@ -54,8 +37,8 @@ class ThePlot extends Component {
         x: value.x,
         y: value.y,
         name: key,
-    })
-  }
+      });
+    }
     return traces;
   }
 
@@ -93,37 +76,40 @@ class ThePlot extends Component {
     }
   }
 
-  onHover = event => {
-    event.points.forEach(point => {
-      let mol = point.data.name
-      let r_arr = [mol.slice(0, 3), mol.slice(3, 6)]
-      this.setState({ hover_mol: r_arr, hover: true })
-      const getMousePos = e => {
-    
+  onHover = (event) => {
+    event.points.forEach((point) => {
+      let mol = point.data.name;
+      let r_arr = [mol.slice(0, 3), mol.slice(3, 6)];
+      this.setState({ hover_mol: r_arr, hover: true });
+      const getMousePos = (e) => {
         const posX = e.clientX;
         const posY = e.clientY;
-        this.setState({xpositionState: posX + 15});
-        this.setState({ypositionState: posY + 15})}
+        this.setState({ xpositionState: posX + 15 });
+        this.setState({ ypositionState: posY + 15 });
+      };
       document.addEventListener("mousemove", getMousePos);
-      return function cleanup()  {
-      document.removeEventListener("mousemove", getMousePos)};
-      
-    })
-  }
+      return function cleanup() {
+        document.removeEventListener("mousemove", getMousePos);
+      };
+    });
+  };
 
-  onUnhover = event => {
-    this.setState({hover: false})
-    
-  }
+  onUnhover = (event) => {
+    this.setState({ hover: false });
+  };
 
   render() {
+      if (this.props.analysis.data) {
+          return (null)
+      }
+      else{
     return (
       <div>
         <div>
           {this.showCard()}
         </div>
         <Plot
-          data={this.addTraces(this.state.data)}
+          data={this.addTraces(this.props.analysis.data)}
           layout={{
             width: 1000,
             height: 500,
@@ -162,14 +148,8 @@ class ThePlot extends Component {
     );
   }
 }
-
-
-
+}
 
 export default ThePlot;
-
-
-
-
 
 

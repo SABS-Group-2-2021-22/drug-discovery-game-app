@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./analysis.css";
-
 import { Link } from "react-router-dom"
-
 import ThePlot from './ThePlot.js'
 import { MoleculeList } from './assay';
+import { connect } from 'react-redux'
+import { retrieveAssayData } from '../actions';
 
 
 class SelectorPanel extends React.Component {
@@ -37,62 +37,68 @@ class SelectorPanel extends React.Component {
 }
 
 class Analysis extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       list: [],
-      clicked_mol: ['A01', 'B01'],
+      clicked_mol: ["A01", "B01"],
       all_mol_info: {},
       chosen_mol: undefined,
     };
     this.getSavedMolecules();
+  }
 
+  componentDidMount() {
+    // dispatches action from componenetDidMount
+    this.props.dispatch(retrieveAssayData());        
   }
 
   getSavedMolecules = () => {
-    const url = 'http://127.0.0.1:5000/savedmolecules'
+    const url = "http://127.0.0.1:5000/savedmolecules";
     fetch(url)
       .then((response) => response.json())
-      .then(molecule_list => {
+      .then((molecule_list) => {
         this.setState({ list: molecule_list.saved_mols }, () => {
           console.log(this.state.list);
-        })
+        });
       })
-      .catch(err => {
+      .catch((err) => {
         throw Error(err.message);
       });
-    const all_info_url = 'http://127.0.0.1:5000/get_all_mol_info'
+    const all_info_url = "http://127.0.0.1:5000/get_all_mol_info";
     fetch(all_info_url)
       .then((response) => response.json())
-      .then(molecule_dict => {
+      .then((molecule_dict) => {
         this.setState({ all_mol_info: molecule_dict }, () => {
           console.log(this.state.all_mol_info);
-        })
+        });
       })
-      .catch(err => {
+      .catch((err) => {
         throw Error(err.message);
       });
-  }
+  };
 
   setSelectedMoleculeCallback = (r_group_ids) => {
     this.setState({ clicked_mol: r_group_ids }, () => {
       console.log(this.state.clicked_mol);
-    })
-  }
+    });
+  };
 
   chooseMoleculeCallback = () => {
-    this.setState({ chosen_mol: this.state.clicked_mol })
-  }
+    this.setState({ chosen_mol: this.state.clicked_mol });
+  };
 
   submitMoleculeCallback = () => {
-    const base_url = 'http://127.0.0.1:5000/choose';
-    fetch(base_url +
-      '?r1=' + this.state.chosen_mol[0] +
-      '&r2=' + this.state.chosen_mol[1],
+    const base_url = "http://127.0.0.1:5000/choose";
+    fetch(
+      base_url +
+        "?r1=" +
+        this.state.chosen_mol[0] +
+        "&r2=" +
+        this.state.chosen_mol[1],
       { method: "POST" }
     );
-  }
+  };
 
   render() {
     return (
@@ -110,13 +116,22 @@ class Analysis extends React.Component {
             />
           </div>
           <div className="comparison-graph">
-            <ThePlot />
+            <ThePlot
+              //passes state.analysis to ThePlot from the store
+              analysis={this.props.analysis}
+            />
           </div>
-
         </div>
       </div>
     );
   }
 }
 
-export default Analysis;
+//maps the analysis state from the store to props
+function mapStateToProps(state) {
+  return {
+    analysis: state.analysis
+  }
+}
+//connects the Analysis component and the mapping function (&then exports)
+export default connect(mapStateToProps)(Analysis);

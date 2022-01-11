@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import "./index.css";
+import { createStore, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import analysis from './reducers';
+import { devToolsEnhancer } from 'redux-devtools-extension'
 
 // import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -13,6 +18,9 @@ import {
   Results,
   Footer,
 } from "./components";
+
+const composedEnhancer = compose(devToolsEnhancer(), applyMiddleware(thunk))
+const store = createStore(analysis, composedEnhancer);
 
 class Index extends React.Component {
   constructor(props) {
@@ -49,13 +57,15 @@ class Index extends React.Component {
           <Route path="/results" element={<Results />} />
         </Routes>
         <Footer time={this.state.time} money={this.state.money}/>
-      </Router>
+      </Router> 
     )
   }
 }
 
 ReactDOM.render(
-  <Index/>,
+  <Provider store={store}>
+    <Index />
+  </Provider>,
 
   document.getElementById("root")
 );
