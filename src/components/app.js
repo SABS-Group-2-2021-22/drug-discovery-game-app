@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { Link } from "react-router-dom"
 import "./app.css";
 
 
@@ -224,7 +225,9 @@ class ControlPanel extends React.Component {
       <div className="control-panel">
         <button>Clear</button>
         <button onClick={this.saveMolecule}>Save</button>
-        <button>Assay</button>
+        <Link to='/assay'>
+          <button>Assay</button>
+        </Link>
       </div>
     );
   }
