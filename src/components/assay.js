@@ -121,7 +121,7 @@ class Filters extends React.Component {
                     H Don.:{this.props.molecule_stats.lipinski.h_don ? 'Pass' : 'Fail'}
                 </div>
                 <div class="row">
-                    logP {this.props.molecule_stats.lipinski.logP ? 'Pass' : 'Fail'}
+                    logP: {this.props.molecule_stats.lipinski.logP ? 'Pass' : 'Fail'}
                 </div>
             </div>
         )
