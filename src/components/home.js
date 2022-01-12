@@ -8,8 +8,8 @@ function Home() {
     return (
         <div className="wrapper">
             <div className="home">
-                <div className="text-area">
-                    <div className="title">Welcome to the Drug Discovery Game </div>
+                <div className="hometitle">Welcome to the Drug Discovery Game </div>
+                <div className="pic-and-text">
                     <div className="picture"> <img src={pymolpic} /> </div>
                     <div className="text">
                         MMP-12 is an 18 kDa, monomeric enzyme implicated in emphysema and
@@ -18,15 +18,18 @@ function Home() {
                         good lipophilicity, medium to high permeability, and good metabolic stability. You have
                         30 weeks and £100,000 to design, assay, and screen your
                         molecules. At the end you will have to pick a final molecule to take forward.
+                        </div>
                     </div>
-                    <div className="control-panel">
-                    <Link to='/app'>
-                        <button>Start</button>
-                    </Link>
-                    </div>
+                    <div className="button-area">
+                            <div className="control-panel">
+                                <Link to='/app'>
+                                    <button>Start</button>
+                                </Link>
+                            </div>
                 </div>
             </div>
-        </div>
+
+        </div >
     );
 }
 
