@@ -62,7 +62,7 @@ class RGroupStats extends React.Component {
       <div class="container" className="r_group_stats">
         <div class="row">
           <div class="col">
-            MW: {Number(this.state.stats_dict.MW).toFixed(1)}
+            MW: {Number(this.state.stats_dict.MW).toFixed(1)} Da
             <div />
           </div>
           <div class="row">
