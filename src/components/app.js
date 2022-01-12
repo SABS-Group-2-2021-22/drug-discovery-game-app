@@ -70,7 +70,7 @@ class RGroupStats extends React.Component {
               logP: {Number(this.state.stats_dict.logP).toFixed(2)}
             </div>
             <div class="col">
-              TPSA: {Number(this.state.stats_dict.TPSA).toFixed(2)}
+              TPSA: {Number(this.state.stats_dict.TPSA).toFixed(2)} {"Å\u00b2"}
             </div>
           </div>
           <div class="row">
