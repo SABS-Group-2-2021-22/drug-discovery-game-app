@@ -62,7 +62,7 @@ class RGroupStats extends React.Component {
       <div class="container" className="r_group_stats">
         <div class="row">
           <div class="col">
-            MW: {Number(this.state.stats_dict.MW).toFixed(1)}
+            MW: {Number(this.state.stats_dict.MW).toFixed(1)} Da
             <div />
           </div>
           <div class="row">
@@ -70,7 +70,7 @@ class RGroupStats extends React.Component {
               logP: {Number(this.state.stats_dict.logP).toFixed(2)}
             </div>
             <div class="col">
-              TPSA: {Number(this.state.stats_dict.TPSA).toFixed(2)}
+              TPSA: {Number(this.state.stats_dict.TPSA).toFixed(2)} {"Å\u00b2"}
             </div>
           </div>
           <div class="row">

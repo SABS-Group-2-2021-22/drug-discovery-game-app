@@ -121,7 +121,7 @@ class Filters extends React.Component {
                     H Don.:{this.props.molecule_stats.lipinski.h_don ? 'Pass' : 'Fail'}
                 </div>
                 <div class="row">
-                    logP {this.props.molecule_stats.lipinski.logP ? 'Pass' : 'Fail'}
+                    logP: {this.props.molecule_stats.lipinski.logP ? 'Pass' : 'Fail'}
                 </div>
             </div>
         )
@@ -137,10 +137,10 @@ class Descriptors extends React.Component {
                     HA: {this.props.molecule_stats.descriptors.HA}
                 </div>
                 <div class="row">
-                    MW: {Number(this.props.molecule_stats.descriptors.MW).toFixed(1)}
+                    MW: {Number(this.props.molecule_stats.descriptors.MW).toFixed(1)} Da
                 </div>
                 <div class="row">
-                    TPSA:{Number(this.props.molecule_stats.descriptors.TPSA).toFixed(1)}
+                    TPSA:{Number(this.props.molecule_stats.descriptors.TPSA).toFixed(1)} {"Å\u00b2"}
                 </div>
                 <div class="row">
                     H Acc.: {this.props.molecule_stats.descriptors.h_acc}
