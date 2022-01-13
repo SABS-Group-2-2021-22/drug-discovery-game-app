@@ -99,17 +99,13 @@ class ThePlot extends Component {
   };
 
   render() {
-      if (this.props.analysis.data) {
-          return (null)
-      }
-      else{
     return (
       <div>
         <div>
           {this.showCard()}
         </div>
         <Plot
-          data={this.addTraces(this.props.analysis.data)}
+          data={this.addTraces(this.props.data.assay_dict)}
           layout={{
             width: 1000,
             height: 500,
@@ -148,7 +144,7 @@ class ThePlot extends Component {
     );
   }
 }
-}
+
 
 export default ThePlot;
 

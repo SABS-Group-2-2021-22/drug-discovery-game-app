@@ -12,10 +12,11 @@ export function retrieveAssayDataSucceeded(analysis) {
 export function retrieveAssayData() {
   return dispatch => {
     api.retrieveAssayData()
-    .then(response => response.json())
     .then(response => {
-        dispatch(retrieveAssayDataSucceeded(response.assay_dict))
-    })  
+        dispatch(retrieveAssayDataSucceeded(response))
+    })
+
+      
 }}   
     
 /*    axios.get("http://127.0.0.1:5000/getplotdata")

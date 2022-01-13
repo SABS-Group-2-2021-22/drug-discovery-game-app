@@ -7,6 +7,7 @@ import thunk from 'redux-thunk'
 import analysis from './reducers';
 import { devToolsEnhancer } from 'redux-devtools-extension'
 
+
 // import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
@@ -19,8 +20,7 @@ import {
   Footer,
 } from "./components";
 
-const composedEnhancer = compose(devToolsEnhancer(), applyMiddleware(thunk))
-const store = createStore(analysis, composedEnhancer);
+const store = createStore(analysis, compose(applyMiddleware(thunk), devToolsEnhancer()));
 
 class Index extends React.Component {
   constructor(props) {

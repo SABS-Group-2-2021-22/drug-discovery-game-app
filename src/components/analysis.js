@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./analysis.css";
 import { Link } from "react-router-dom"
-import ThePlot from './ThePlot.js'
+import ThePlot from './ThePlotRedux.js'
 import { MoleculeList } from './assay';
 import { connect } from 'react-redux'
 import { retrieveAssayData } from '../actions';
@@ -116,10 +116,10 @@ class Analysis extends React.Component {
             />
           </div>
           <div className="comparison-graph">
-            <ThePlot
+            {this.props.data && <ThePlot
               //passes state.analysis to ThePlot from the store
-              analysis={this.props.analysis}
-            />
+              data={this.props.data}
+            />}
           </div>
         </div>
       </div>
@@ -130,7 +130,7 @@ class Analysis extends React.Component {
 //maps the analysis state from the store to props
 function mapStateToProps(state) {
   return {
-    analysis: state.analysis
+    data: state.analysis.data
   }
 }
 //connects the Analysis component and the mapping function (&then exports)
