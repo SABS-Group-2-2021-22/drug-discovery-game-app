@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import "./index.css";
+import { createStore } from 'redux'
 
 // import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -13,6 +14,8 @@ import {
   Results,
   Footer,
 } from "./components";
+
+const store = createStore(r_groups)
 
 class Index extends React.Component {
   constructor(props) {
