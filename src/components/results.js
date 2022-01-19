@@ -97,7 +97,8 @@ class Results extends React.Component {
                 <div className="molecule-image">
                   <figure>
                     <div className="display_molecule_bar">
-                      <MoleculeImage key={this.state.roche_mol} r_groups={this.state.roche_mol} />
+                      <MoleculeImage key={this.state.roche_mol} r_groups={this.state.roche_mol}
+                          size={"800,800"} />
                     </div>
                     {/* <figcaption>
                                         Below is the molecule that Roche chose.
@@ -120,7 +121,8 @@ class Results extends React.Component {
                   <figure>
                     <div className="display_molecule_bar">
                       {this.state.chosen_mol !== undefined ?
-                        <MoleculeImage key={this.state.chosen_mol} r_groups={this.state.chosen_mol} />
+                        <MoleculeImage key={this.state.chosen_mol} r_groups={this.state.chosen_mol} 
+                            size={"800,800"}/>
                         : ''}
                     </div>
                     {/* <figcaption>

@@ -50,6 +50,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: '1';
+    position: 'fixed'
 }
 
 .comparison-graph button{
@@ -67,6 +69,14 @@
   }
 
   .comparison-graph button:active{
-    background-color: #0d0e10;
+    background-color: #e2159e;
     opacity: 1;
+  }
+
+.show-hover > .molecule img{
+    border: 1px solid rgb(12, 10, 10);
+    width: 120px;
+    z-index: 3;
+    position: absolute;
+    display: flex;
   }

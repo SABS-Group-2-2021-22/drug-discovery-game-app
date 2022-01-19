@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import Plot from "react-plotly.js";
+import { MoleculeImage } from './app';
+import './analysis.css'
 
 
 class ThePlot extends Component {
@@ -11,11 +13,13 @@ class ThePlot extends Component {
       revision: 0,
       x_axis: "--",
       y_axis: "--",
+      hover_mol: ['A01', 'B01'],
+      hover: false,
+      xpositionState: 0,
+      ypositionState: 0
     }; 
     this.retrieveAssayData();
-
   }
-
 
   retrieveAssayData() {
         const url = 'http://127.0.0.1:5000/getplotdata'
@@ -24,6 +28,7 @@ class ThePlot extends Component {
             .then(response => {
                 this.setState({ data: response.assay_dict }, () => {
                     console.log(this.state.data);
+                console.log(response)
                 })
             })
             .catch(err => {
@@ -31,24 +36,11 @@ class ThePlot extends Component {
             });
   }
 
- /*
- componentDidMount() {
-   const endpoint = "http://127.0.0.1:5000/plot";
-    fetch(endpoint)
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({ data: Array.from(data) });
-      });
-  }
-*/
-
 
   addTraces(data) {
     var lines = {};
-    console.log(data)
     data.forEach((data) => {
       for (let key in data) {
-        console.log(key);
         lines[key] = {
           x: [data[key][this.state.x_axis]],
           y: [data[key][this.state.y_axis]],
@@ -56,7 +48,6 @@ class ThePlot extends Component {
       }
     });
 
-    console.log(lines);
     let traces = [];
     for (const [key, value] of Object.entries(lines)) {
       traces.push({
@@ -65,71 +56,12 @@ class ThePlot extends Component {
         x: value.x,
         y: value.y,
         name: key,
-      });
-    }
+    })
+  }
     return traces;
   }
 
-/*  createButtons(data, axis) {
-    const params = [
-      "--",
-      "logd",
-      "TPSA",
-      "HA",
-      "MW",
-      "h_acc",
-      "h_don",
-      "rings",
-      "logP",
-    ];
-
-    let buttons = [];
-    for (let i = 0; i < params.length; i++) {
-      let param = params[i];
-      var axis_arr = [];
-      var key_arr = [];
-      data.forEach((data) => {
-        for (let key in data) {
-          axis_arr.push([data[key][param]]);
-          key_arr.push(parseInt(key));
-        }
-      });
-      var axis_dict = new Object();
-      buttons.push({
-        args: [(axis_dict[axis] = axis_arr), key_arr],
-        method: "update",
-        name: param,
-        label: param,
-      });
-    }
-    console.log(buttons);
-    return buttons;
-  }
-
-  updateMenus() {
-    var updatemenus = [
-      {
-        buttons: this.createButtons(this.state.data, "x"),
-        showactive: true,
-        x: 0.45,
-        y: 1.05,
-      },
-      {
-        buttons: this.createButtons(this.state.data, "y"),
-        showactive: true,
-        x: 0.55,
-        y: 1.05,
-      },
-    ];
-    console.log(updatemenus);
-    return updatemenus;
-  }
-
-*/
-
   relayout(param, axis) {
-    console.log(axis);
-
     if (axis == "x") {
       this.setState({ x_axis: param });
     } else if (axis == "y") {
@@ -137,9 +69,61 @@ class ThePlot extends Component {
     }
   }
 
+  showCard() {
+    if (this.state.hover == true) {
+      return (
+        <figure
+          className="show-hover"
+          style={{
+            position: "fixed",
+            zIndex: 2,
+            minWidth: 120,
+            opacity: 0.95,
+            display: "flex",
+            flexShrink: 0,
+            left: this.state.xpositionState,
+            top: this.state.ypositionState,
+          }}
+        >
+          <MoleculeImage
+            key={this.state.hover_mol}
+            r_groups={this.state.hover_mol}
+            size={"250,250"}
+          />
+        </figure>
+      );
+    }
+  }
+
+  onHover = event => {
+    event.points.forEach(point => {
+      let mol = point.data.name
+      let r_arr = [mol.slice(0, 3), mol.slice(3, 6)]
+      this.setState({ hover_mol: r_arr, hover: true })
+      const getMousePos = e => {
+    
+        const posX = e.clientX;
+        const posY = e.clientY;
+        this.setState({xpositionState: posX + 15});
+        this.setState({ypositionState: posY + 15})}
+      document.addEventListener("mousemove", getMousePos);
+      return function cleanup()  {
+      document.removeEventListener("mousemove", getMousePos)};
+      
+    })
+  }
+
+  onUnhover = event => {
+    this.setState({hover: false})
+    
+  }
+
   render() {
     return (
       <div>
+        <div>
+          {this.showCard()}
+        </div>
         <Plot
           data={this.addTraces(this.state.data)}
           layout={{
@@ -149,6 +133,8 @@ class ThePlot extends Component {
             xaxis: { title: { text: this.state.x_axis } },
             yaxis: { title: { text: this.state.y_axis } },
           }}
+          onHover={this.onHover}
+          onUnhover={this.onUnhover}
         />
         <div>
           <button onClick={() => this.relayout("--", "x")}>--</button>
@@ -178,6 +164,9 @@ class ThePlot extends Component {
     );
   }
 }
+
+
+
 
 export default ThePlot;
 

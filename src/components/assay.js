@@ -54,7 +54,8 @@ class MoleculeWidget extends React.Component {
         return (
             <div className='molecule-container'>
                 <div className="molecule-widget" onClick={this.imageClick} >
-                    <MoleculeImage key={this.props.key} r_groups={this.props.r_groups} />
+                    <MoleculeImage key={this.props.key} r_groups={this.props.r_groups} 
+                        size={"800,800"} />
                     {this.props.molecule_stats !== undefined
                         &&
                         <MoleculeStats
@@ -120,7 +121,7 @@ class Filters extends React.Component {
                     H Don.:{this.props.molecule_stats.lipinski.h_don ? 'Pass' : 'Fail'}
                 </div>
                 <div class="row">
-                    logP {this.props.molecule_stats.lipinski.logP ? 'Pass' : 'Fail'}
+                    logP: {this.props.molecule_stats.lipinski.logP ? 'Pass' : 'Fail'}
                 </div>
             </div>
         )
@@ -136,10 +137,10 @@ class Descriptors extends React.Component {
                     HA: {this.props.molecule_stats.descriptors.HA}
                 </div>
                 <div class="row">
-                    MW: {Number(this.props.molecule_stats.descriptors.MW).toFixed(1)}
+                    MW: {Number(this.props.molecule_stats.descriptors.MW).toFixed(1)} Da
                 </div>
                 <div class="row">
-                    TPSA:{Number(this.props.molecule_stats.descriptors.TPSA).toFixed(1)}
+                    TPSA:{Number(this.props.molecule_stats.descriptors.TPSA).toFixed(1)} {"Å\u00b2"}
                 </div>
                 <div class="row">
                     H Acc.: {this.props.molecule_stats.descriptors.h_acc}
@@ -309,7 +310,7 @@ class Assay extends React.Component {
 
                     </div>
                     <div className="display_molecule_bar">
-                        <MoleculeImage key={this.state.selected_mol} r_groups={this.state.selected_mol} />
+                        <MoleculeImage key={this.state.selected_mol} r_groups={this.state.selected_mol} size={"800,800"} />
                         <div className='selected-mol-stats'>
                             {
                                 this.state.all_mol_info.hasOwnProperty(this.state.selected_mol[0] + this.state.selected_mol[1]) &&

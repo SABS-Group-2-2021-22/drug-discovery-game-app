@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { Link } from "react-router-dom"
 import "./app.css";
 
 
@@ -61,7 +62,7 @@ class RGroupStats extends React.Component {
       <div class="container" className="r_group_stats">
         <div class="row">
           <div class="col">
-            MW: {Number(this.state.stats_dict.MW).toFixed(1)}
+            MW: {Number(this.state.stats_dict.MW).toFixed(1)} Da
             <div />
           </div>
           <div class="row">
@@ -69,7 +70,7 @@ class RGroupStats extends React.Component {
               logP: {Number(this.state.stats_dict.logP).toFixed(2)}
             </div>
             <div class="col">
-              TPSA: {Number(this.state.stats_dict.TPSA).toFixed(2)}
+              TPSA: {Number(this.state.stats_dict.TPSA).toFixed(2)} {"Å\u00b2"}
             </div>
           </div>
           <div class="row">
@@ -134,6 +135,7 @@ class MoleculeImage extends React.Component {
       r_groups: props.r_groups,
       img: 'Null',
       drug_stats: 'Null',
+      size: props.size
     };
     this.fetchImage();
   }
@@ -142,7 +144,8 @@ class MoleculeImage extends React.Component {
     const base_url = 'http://127.0.0.1:5000/molecule'
 
 
-    fetch(base_url + '?r1=' + this.state.r_groups[0] + '&r2=' + this.state.r_groups[1])
+    fetch(base_url + '?r1=' + this.state.r_groups[0] + '&r2=' + this.state.r_groups[1] +
+          '&size=' + this.state.size)
       .then((response) => response.json())
       .then(molecule => {
         this.setState({ img: molecule.img_html })
@@ -222,7 +225,9 @@ class ControlPanel extends React.Component {
       <div className="control-panel">
         <button>Clear</button>
         <button onClick={this.saveMolecule}>Save</button>
-        <button>Assay</button>
+        <Link to='/assay'>
+          <button>Assay</button>
+        </Link>
       </div>
     );
   }
@@ -254,7 +259,8 @@ class App extends React.Component {
           </div>
           <div className="mol-visbox">
             <div className="rendered-molecule">
-              <MoleculeImage key={this.state.selected_r_group} r_groups={this.state.selected_r_group} />
+              <MoleculeImage key={this.state.selected_r_group} r_groups={this.state.selected_r_group} 
+                            size={"800,800"} />
             </div>
             <ControlPanel current_r_groups={this.state.selected_r_group}/>
           </div>
