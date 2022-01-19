@@ -198,13 +198,14 @@ class Assay extends React.Component {
         fetch(base_url)
             .then((response) => response.json())
             .then(response => {
-                this.updateDict(response, 'assays')
+                this.updateDict(response, 'assays');
+                this.props.updateTimeAndMoneyCallback();
             })
             .catch(err => {
                 throw Error(err.message);
             });
         this.resetSelection();
-        this.props.updateTimeAndMoneyCallback();
+        
     }
 
     getDescriptors = () => {

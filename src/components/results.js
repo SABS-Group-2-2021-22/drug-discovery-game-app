@@ -90,7 +90,7 @@ class Results extends React.Component {
           <div className='molecule-choices'>
             <div className="real-molecule">
               <div className="title">
-                Roche's molecule
+                Molecule with desired profile
               </div>
 
               <div className="molecule-image-and-descriptors">
