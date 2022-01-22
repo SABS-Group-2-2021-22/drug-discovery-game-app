@@ -1,4 +1,12 @@
 
-export default function r_groups(state = { selected_r_group: ['A01', 'B01']}, action){
-    return state
+export default function r_groups(state = { r_groups: []}, action){
+    if (action.type === "FETCH_R_GROUP_SUCCEEDED") {
+        return {
+          r_groups: action.payload.r_groups
+        };
+    }
+    return state;
 }
+
+
+

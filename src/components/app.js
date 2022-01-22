@@ -2,6 +2,7 @@ import React from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom"
 import "./app.css";
+import { connect } from 'react-redux'
 
 
 class RGroupWidget extends React.Component {
@@ -233,6 +234,7 @@ class ControlPanel extends React.Component {
   }
 }
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -248,6 +250,8 @@ class App extends React.Component {
       console.log(this.state.selected_r_group);
     })
   }
+
+
 
   render() {
     return (
@@ -271,15 +275,25 @@ class App extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    selected_r_group: state.r_groups.selected_r_group
+  }
+}
+
+export default {
+  r_groups_map: connect(mapStateToProps)(ControlPanel)
+}
+
 
 export {MoleculeImage, }
 
-export default App;
 
-{/* // ========================================
+
+/* // ========================================
 
 // ReactDOM.render(
 //   <App />,
 //   document.getElementById('root')
-// ); */}
+// ); */
 
