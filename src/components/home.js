@@ -16,6 +16,7 @@ class Home extends React.Component {
   }
 
   render() {
+    console.log(this.props.r_groups)
     return (
       <div className="wrapper">
         <div className="home">
@@ -37,7 +38,7 @@ class Home extends React.Component {
           </div>
           <div className="button-area">
             <div className="control-panel">
-              <Link to="/app">
+              <Link to="/app_redux/app_redux">
                 <button>Start</button>
               </Link>
             </div>
