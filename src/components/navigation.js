@@ -36,6 +36,11 @@ function Navigation() {
                     Results
                   </NavLink>
                 </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/sketcher">
+                    Sketcher
+                  </NavLink>
+                </li>
               </ul>
             </div>
           </div>
