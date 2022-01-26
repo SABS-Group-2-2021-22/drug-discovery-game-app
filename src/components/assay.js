@@ -1,5 +1,5 @@
 import React from 'react';
-import { MoleculeImage } from './app';
+import { MoleculeImage } from './build';
 import "./assay.css";
 
 

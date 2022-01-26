@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 import SpiderPlot from "./SpiderPlot.js";
 
-import { MoleculeImage } from './app'
+import { MoleculeImage } from './build'
 import { Assays } from './assay'
 
 class Results extends React.Component {

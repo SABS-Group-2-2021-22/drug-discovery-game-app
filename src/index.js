@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   Navigation,
   Home,
-  App,
+  Build,
   Assay,
   Analysis,
   Results,
@@ -43,7 +43,7 @@ class Index extends React.Component {
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/app" element={<App />} />
+          <Route path="/build" element={<Build />} />
           <Route path="/assay" element={<Assay updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>} />
           <Route path="/analysis" element={<Analysis />} />
           <Route path="/results" element={<Results />} />

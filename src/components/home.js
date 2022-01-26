@@ -14,7 +14,11 @@ function Home() {
             <div className="home">
                 <div className="hometitle">Welcome to the Drug Discovery Game </div>
                 <div className="pic-and-text">
-                    <div className="picture"> <img src={pymolpic} /> </div>
+                    <div className="picture"> {/*trying to add in docked version instead - can jsut delete commented out stuff. It doesn't work at the moment*/}
+                    {/* <script src="https://3Dmol.org/build/3Dmol-min.js" async></script>     
+         <div style="height: 400px; width: 400px; position: relative;" class='viewer_3Dmoljs' data-pdb='2POR' data-backgroundcolor='0xffffff' data-style='stick' ></div>     */}
+                         <img src={pymolpic} />
+                          </div>
                     <div className="text">
                         MMP-12 is an 18 kDa, monomeric enzyme implicated in emphysema and
                         asthma, and has been identified
@@ -25,7 +29,7 @@ function Home() {
                         <div className="button-area">
                         </div>
                         <div className="control-panel">
-                            <Link to='/app'>
+                            <Link to='/build'>
                                 <button>Start</button>
                             </Link>
                         </div>
