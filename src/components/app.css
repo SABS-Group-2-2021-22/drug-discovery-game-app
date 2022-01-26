@@ -122,3 +122,7 @@
     background-color: #0d0e10;
     opacity: 1;
   }
+
+  .row {
+    --bs-gutter-x: 1rem; /*Gives room in row for units to fit in the card */
+  }
