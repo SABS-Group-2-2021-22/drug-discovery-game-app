@@ -69,11 +69,50 @@
     /* color: red; */
   }
 
-  .button-area{
+  .button-and-logo-area{
     display:flex;
     flex-direction: row;
+    background-color:white;
     width:100%;
     height: 20%;
     justify-content: space-around;
     align-items: center;
+  }
+
+  .button-area{
+    display:flex;
+    flex-direction: row;
+    background-color:white;
+    width:100%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logos-area {
+    display: flex;
+    flex-direction: row;
+    /* background-color: greenyellow; */
+    /* min-height: 82vh; */
+    height:100%;
+    width:80%;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+  }
+
+  .logo{
+    display:flex;
+    flex-direction: column;
+    /* flex:1; */
+    max-width:3px;
+    max-height: 3px;
+    height:100%;
+    justify-content: space-around;
+    /* justify-content: flex-end; */
+    align-items: center;
+    background-color:white;
+    object-fit: 'contain';
   }
