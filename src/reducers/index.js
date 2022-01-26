@@ -1,4 +1,10 @@
+import { combineReducers } from 'redux';
 
-export default function r_groups(state = { selected_r_group: ['A01', 'B01']}, action){
-    return state
-}
+import { loginReducer } from "./login_reducer"
+
+// create root reducer by combining all reducers, each of which only accesses a subset of state dict
+const rootReducer = combineReducers({
+    login: loginReducer
+});
+
+export default rootReducer
