@@ -2,6 +2,10 @@ import React from 'react';
 import "./home.css";
 import { Link } from "react-router-dom"
 import pymolpic from './pymolMMP12.png'
+import sabs from './sabs-logo.png'
+import oxuni from './oxlogo-sq-border.png'
+import roche from './Roche.png'
+import epsrc from './EPSRC_logo.png'
 
 
 function Home() {
@@ -18,14 +22,24 @@ function Home() {
                         good lipophilicity, medium to high permeability, and good metabolic stability. You have
                         30 weeks and £100,000 to design, assay, and screen your
                         molecules. At the end you will have to pick a final molecule to take forward.
+                        <div className="button-area">
+                        </div>
+                        <div className="control-panel">
+                            <Link to='/app'>
+                                <button>Start</button>
+                            </Link>
                         </div>
                     </div>
-                    <div className="button-area">
-                            <div className="control-panel">
-                                <Link to='/app'>
-                                    <button>Start</button>
-                                </Link>
-                            </div>
+                </div>
+                <div className="button-and-logo-area"> {/*actually no longer conatins the start button */}
+                    <div className="logos-area">
+                        <div className="logo"> <img src={sabs} height='120px' />  </div>
+                        <div className="logo"> <img src={epsrc} height='100px' /> </div>
+                        <div className="logo"> <img src={oxuni} height='100px' /> </div>
+                        <div className="logo"> <img src={roche} height='100px' /> </div>
+                    </div>
+
+
                 </div>
             </div>
 
