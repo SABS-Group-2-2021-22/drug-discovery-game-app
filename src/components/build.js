@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom"
-import "./app.css";
+import "./build.css";
 
 
 class RGroupWidget extends React.Component {
@@ -233,7 +233,7 @@ class ControlPanel extends React.Component {
   }
 }
 
-class App extends React.Component {
+class Build extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -252,7 +252,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <div className="app">
+        <div className="build">
           <div className="r-group-selection">
             <RGroupList r_group_category={1} selectRGroupCallback={this.setSelectedRGroupCallback}/>
             <RGroupList r_group_category={2} selectRGroupCallback={this.setSelectedRGroupCallback}/>
@@ -274,12 +274,12 @@ class App extends React.Component {
 
 export {MoleculeImage, }
 
-export default App;
+export default Build;
 
 {/* // ========================================
 
 // ReactDOM.render(
-//   <App />,
+//   <Build />,
 //   document.getElementById('root')
 // ); */}
 
