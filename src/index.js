@@ -12,6 +12,7 @@ import {
   Analysis,
   Results,
   Footer,
+  Sketcher,
 } from "./components";
 
 class Index extends React.Component {
@@ -47,6 +48,7 @@ class Index extends React.Component {
           <Route path="/assay" element={<Assay updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>} />
           <Route path="/analysis" element={<Analysis />} />
           <Route path="/results" element={<Results />} />
+          <Route path="/sketcher" element={<Sketcher />} />
         </Routes>
         <Footer time={this.state.time} money={this.state.money}/>
       </Router>
