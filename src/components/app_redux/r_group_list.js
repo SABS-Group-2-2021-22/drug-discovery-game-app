@@ -17,10 +17,12 @@ class RGroupList extends React.Component {
 
   render() {
     return (
-      <div className="r-group_list">
+      <div className="r-group-list">
         {Array.from({ length: 50 }, (_, i) => (
           <RGroupWidget
-            r_group_id={this.createRGroupID(this.props.r_group_pos, i+1)}
+            key={this.createRGroupID(this.props.r_group_pos, i + 1)}
+            r_group_id={this.createRGroupID(this.props.r_group_pos, i + 1)}
+            size="800,800"
           />
         ))}
       </div>

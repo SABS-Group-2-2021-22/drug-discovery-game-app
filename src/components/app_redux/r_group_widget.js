@@ -1,11 +1,33 @@
 import React from "react";
-import "../app.css"
-import { connect } from "react-redux"
+import RGroupStats from "./r_group_stats.js";
+import "../app.css";
+import { connect } from "react-redux";
+import { selectRGroup } from "../../actions";
 
 class RGroupWidget extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  selectRGroups = () => {
+    if (this.props.r_group_id.charAt(0) === "A") {
+      this.props.dispatch(
+        selectRGroup(
+          this.props.r_group_id,
+          this.props.selected_r_groups["B"],
+          this.props.size
+        )
+      );
+    } else {
+      this.props.dispatch(
+        selectRGroup(
+          this.props.selected_r_groups["A"],
+          this.props.r_group_id,
+          this.props.size
+        )
+      );
+    }
+  };
 
   render() {
     return (
@@ -13,8 +35,12 @@ class RGroupWidget extends React.Component {
         <div className="r-group-card">
           <img
             className="r-group-img"
-            src={this.props.r_groups[this.props.r_group_id].data.img_html}
+            src={this.props.r_groups[[this.props.r_group_id]].data.img_html}
             alt="R Group"
+            onClick={this.selectRGroups}
+          />
+          <RGroupStats
+            stats={this.props.r_groups[this.props.r_group_id].data.stats}
           />
         </div>
       </div>
@@ -24,10 +50,9 @@ class RGroupWidget extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    r_groups: state.r_groups,
+    r_groups: state.all_r_groups,
+    selected_r_groups: state.selected_r_groups,
   };
 }
 
 export default connect(mapStateToProps)(RGroupWidget);
-
-

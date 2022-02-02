@@ -3,7 +3,7 @@ import "./home.css";
 import { Link } from "react-router-dom";
 import pymolpic from "./pymolMMP12.png";
 import { connect } from 'react-redux'
-import { fetchRGroup } from "../actions";
+import { fetchRGroup, selectRGroup } from "../actions";
 
 
 class Home extends React.Component {
@@ -13,10 +13,17 @@ class Home extends React.Component {
 
   componentWillMount() {
     this.props.dispatch(fetchRGroup());
+    this.props.dispatch(
+      selectRGroup(
+        this.props.selected_r_groups['A'],
+        this.props.selected_r_groups['B'],
+        "800,800",
+      )
+    );
+    
   }
 
   render() {
-    console.log(this.props.r_groups)
     return (
       <div className="wrapper">
         <div className="home">
@@ -52,6 +59,7 @@ class Home extends React.Component {
 function mapStateToProps(state) {
   return {
     r_groups: state.r_groups,
+    selected_r_groups: state.selected_r_groups
   };
 }
 

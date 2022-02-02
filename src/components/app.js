@@ -112,6 +112,7 @@ class RGroupList extends React.Component {
     super(props);
     this.state = {
       r_group_pos: props.r_group_pos,
+      r_group_nr: 0
     };
   }
 
@@ -131,7 +132,8 @@ class RGroupList extends React.Component {
   render() {
     return (
       <div className="r-group-list">
-        <RGroupWidget
+       
+       {Array.from({ })} <RGroupWidget
           r_group_id={"B05"}
           selectRGroupCallback={this.props.selectRGroupCallback}
         />

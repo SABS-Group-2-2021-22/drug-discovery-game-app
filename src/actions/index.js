@@ -1,12 +1,12 @@
-import * as api from '../api'
+import * as api from "../api";
 
 export function fetchRGroupSucceeded(r_group_obj) {
-    return {
-        type: "FETCH_R_GROUP_SUCCEEDED",
-        payload: {
-            r_groups: r_group_obj,
-        }
-    }
+  return {
+    type: "FETCH_R_GROUP_SUCCEEDED",
+    payload: {
+      r_groups: r_group_obj,
+    },
+  };
 }
 
 export function fetchRGroup() {
@@ -33,18 +33,43 @@ export function fetchRGroup() {
   };
 }
 
+export function selectRGroupSucceeded(r_group_id_A, r_group_id_B, molecule) {
+  return {
+    type: "SEL_R_FETCH_MOL_SUCCEEDED",
+    payload: {
+      r_group_id_A: r_group_id_A,
+      r_group_id_B: r_group_id_B,
+      molecule: molecule,
+    },
+  };
+}
+
+export function selectRGroup(r_group_id_A, r_group_id_B, size) {
+  return (dispatch) => {
+    api.fetchMolecule(r_group_id_A, r_group_id_B, size).then((response) => {
+      const molecule = response;
+      dispatch(selectRGroupSucceeded(r_group_id_A, r_group_id_B, molecule));
+    });
+  };
+}
 
 
-/*         return (dispatch) => {
-          api.fetchRGroup(id).then((response) => {
-            dispatch(fetchRGroupSucceeded(id, response));
-          });
-        }; */
-        
+export function saveMoleculeSucceeded(molecule) {
+  return {
+    type: "SAVE_MOLECULE_SUCCEEDED",
+    payload: {
+      saved_mol: molecule
+    }
+  }
+}
 
-/*       return (dispatch) => {
-        api.fetchRGroup(id).then((response) => {
-          dispatch(fetchRGroupSucceeded(id, response));
-        });
-      }; */
-
+export function saveMolecule(selected_r_groups) {
+  console.log(selected_r_groups) 
+  const id = selected_r_groups.A + selected_r_groups.B
+  let molecule = {}
+  molecule[id] = selected_r_groups.molecule
+  console.log(molecule)
+    return(dispatch) => {
+      dispatch(saveMoleculeSucceeded(molecule))
+    }
+} 
