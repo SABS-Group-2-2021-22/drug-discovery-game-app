@@ -3,7 +3,8 @@ import { userService } from '../services';
 
 
 export const userActions = {
-    login
+    login,
+    logout
 };
 
 // defines login action with request to api via service 
@@ -26,4 +27,11 @@ function login(username) {
     function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
     function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
     function failure(user) { return { type: userConstants.LOGIN_FAILURE, user } }
+}
+
+
+function logout() {
+    userService.logout();
+    console.log('Logout run')
+    return { type: userConstants.LOGOUT };
 }

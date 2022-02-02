@@ -18,6 +18,11 @@ export function loginReducer(state = initialState, action) {
             };
         case userConstants.LOGIN_FAILURE:
             return {};
+        case userConstants.LOGOUT:
+            return {
+                loggedIn: false,
+                user: action.user
+            };
         default:
             return state
     }

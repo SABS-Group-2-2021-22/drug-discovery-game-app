@@ -1,7 +1,8 @@
 
 
 export const userService = {
-    login
+    login,
+    logout
 };
 
 function login(username){
@@ -21,6 +22,10 @@ function login(username){
         });
 }
 
+function logout() {
+    // remove user from local browser storage
+    localStorage.removeItem('user');
+}
 
 function handleResponse(response) {
     return response.text().then(text => {

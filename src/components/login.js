@@ -8,8 +8,8 @@ class LoginPage extends React.Component {
     constructor(props) {
         super(props);
 
-        //reset login status
-        // this.props.logout();
+        //reset login status when loading login page
+        this.props.logout();
 
         this.state = {
             username: '',
@@ -33,7 +33,7 @@ class LoginPage extends React.Component {
     }
 
     render() {
-        const { loggingIn } = this.props;
+        const { loggingIn, loggedIn } = this.props;
         const { username, submitted } = this.state;
 
         if (this.props.loggedIn) {
@@ -67,7 +67,7 @@ function mapState(state) {
 
 const actionCreators = {
     login: userActions.login,
-    // logout: userActions.logout
+    logout: userActions.logout
 };
 
 const connectedLoginPage = connect(mapState, actionCreators)(LoginPage);
