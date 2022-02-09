@@ -27,7 +27,6 @@ export function fetchRGroup() {
       }
     }
   }
-  console.log(r_group_obj);
   return (dispatch) => {
     dispatch(fetchRGroupSucceeded(r_group_obj));
   };
@@ -53,23 +52,88 @@ export function selectRGroup(r_group_id_A, r_group_id_B, size) {
   };
 }
 
-
-export function saveMoleculeSucceeded(molecule) {
+export function saveMoleculeSucceeded(saved_mols) {
   return {
     type: "SAVE_MOLECULE_SUCCEEDED",
     payload: {
-      saved_mol: molecule
+      saved_mols: saved_mols
+    }
+  };
+}
+
+export function fetchDescriptorsSucceeded(mol, descriptors) {
+  return {
+    type: "FETCH_DESCRIPTORS_SUCCEEDED",
+    payload: {
+      molecule: mol,
+      descriptors: descriptors,
+    },
+  };
+}
+
+export function fetchFiltersSucceeded(mol, filters) {
+  return {
+    type: "FETCH_FILTERS_SUCCEEDED",
+    payload: {
+      molecule: mol,
+      filters: filters,
     }
   }
 }
 
-export function saveMolecule(selected_r_groups) {
-  console.log(selected_r_groups) 
-  const id = selected_r_groups.A + selected_r_groups.B
-  let molecule = {}
-  molecule[id] = selected_r_groups.molecule
-  console.log(molecule)
-    return(dispatch) => {
-      dispatch(saveMoleculeSucceeded(molecule))
+export function saveMolecule(saved_mols, selected_r_groups) {
+  const mol_id = selected_r_groups.A + selected_r_groups.B;
+  saved_mols[mol_id] = selected_r_groups.molecule;
+  return async (dispatch) => {
+    const { post_saved } = await api.postSaved(
+      selected_r_groups.A,
+      selected_r_groups.B
+    );
+    await dispatch(saveMoleculeSucceeded(saved_mols));
+    api.fetchDescriptors(selected_r_groups.A, selected_r_groups.B).then((response) => {
+      let descriptors = response.data.descriptors[mol_id]
+      dispatch(fetchDescriptorsSucceeded(mol_id, descriptors))
+    });
+    api.fetchFilters(selected_r_groups.A, selected_r_groups.B).then((response) => {
+      let filters = response.data.lipinski[mol_id]
+      dispatch(fetchFiltersSucceeded(mol_id, filters))
+    })
+  };
+}
+
+export function selectMoleculeSucceeded(selected_mol) {
+  return {
+    type: "SELECT_MOLECULE_SUCCEEDED",
+    payload: {
+      selected_mol: selected_mol,
+    },
+  };
+}
+
+export function selectMolecule(selected_mol) {
+  return (dispatch) => {
+    dispatch(selectMoleculeSucceeded(selected_mol));
+  };
+}
+
+export function runAssaySucceeded(selected_mol, assays) {
+  return {
+    type: 'RUN_ASSAY_SUCCEEDED',
+    payload: {
+      molecule: selected_mol,
+      assays_run: assays,
     }
-} 
+  }
+}
+
+export function runAssay(selected_mol, assays) {
+  return (dispatch) => {
+    dispatch(runAssaySucceeded(selected_mol, assays));
+  }
+}
+
+
+
+
+
+

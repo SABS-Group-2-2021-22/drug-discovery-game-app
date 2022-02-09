@@ -1,6 +1,5 @@
 import React from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
 import "../app.css";
 import RGroupList from "./r_group_list.js"
 import MoleculeImage from "./molecule_display.js";

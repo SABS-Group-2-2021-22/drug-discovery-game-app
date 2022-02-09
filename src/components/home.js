@@ -15,12 +15,11 @@ class Home extends React.Component {
     this.props.dispatch(fetchRGroup());
     this.props.dispatch(
       selectRGroup(
-        this.props.selected_r_groups['A'],
-        this.props.selected_r_groups['B'],
-        "800,800",
+        this.props.selected_r_groups["A"],
+        this.props.selected_r_groups["B"],
+        "800,800"
       )
     );
-    
   }
 
   render() {
