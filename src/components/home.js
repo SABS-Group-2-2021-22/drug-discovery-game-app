@@ -31,7 +31,7 @@ class _Home extends React.Component {
                             </div>
                             <div className="control-panel">
                                 {this.props.loggedIn ?
-                                    <Link to='/app'>
+                                    <Link to='/build'>
                                         <button>Start</button>
                                     </Link>
                                     : <Link to='/login'>
