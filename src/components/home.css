@@ -6,36 +6,30 @@
   .home {
     display: flex;
     flex-direction: column;
-    /* background-color: greenyellow; */
-    /* min-height: 82vh; */
     height:100%;
     width:100%;
     flex-wrap: wrap;
-    /* justify-content: space-around; */
     align-items: center;
   }
 
   .hometitle{
     display: flex;
-    /* background-color: pink; */
-    /* flex-grow: 3; */
-    /* max-height: 25%;
-    min-height: 25%; */
+    min-height: 25%;
     height:20%;
     width:100%;
-    /* min-height:100%; */
-    /* min-width: 50%; */
     background-color: white;
     align-items: center;
     justify-content: center;
-    font-size: xxx-large;
+    font-size: 4vw;
     font-weight: bold;  /* Red bold text for title */
-    /* color: red; */
+    padding-left: 30pt;
+    padding-right: 30pt;
   }
 
   .pic-and-text{
     display:flex;
     flex-direction: row;
+    flex: 1 1 auto;
     width:70%;
     height: 60%;
     justify-content: space-around;
@@ -46,27 +40,32 @@
   .picture{
     display:flex;
     flex-direction: column;
-    width:85%;
-    height: 60%;
+    flex: 1;
     justify-content: space-around;
     align-items: center;
     background-color:white
   }
 
+  .picture > img {
+    max-width:100%;
+  }
+
+  .text-and-button{
+    flex: 1;
+  }
+
   .text{
     display: flex;
     flex-direction: column;
-    /* background-color: pink; */
-    /* flex-grow: 3; */
     max-height: 100%;
     min-height: 25%;
-    /* min-height:100%; */
-    /* min-width: 50%; */
     width:100%;
+    max-width:100%;
     align-items: center;
     justify-content: center;
-    font-size: large;
-    /* color: red; */
+    font-size: 1.2vw;
+    text-align: justify;
+    margin-bottom: 10pt;;
   }
 
   .button-and-logo-area{
@@ -74,30 +73,18 @@
     flex-direction: row;
     background-color:white;
     width:100%;
-    height: 20%;
+    height: 15%;
     justify-content: space-around;
     align-items: center;
   }
 
-  .button-area{
-    display:flex;
-    flex-direction: row;
-    background-color:white;
-    width:100%;
-    height: 20%;
-    justify-content: center;
-    align-items: center;
-  }
 
   .logos-area {
     display: flex;
     flex-direction: row;
-    /* background-color: greenyellow; */
-    /* min-height: 82vh; */
     height:100%;
     width:80%;
     flex-wrap: wrap;
-    /* justify-content: space-around; */
     align-items: center;
     justify-content: space-around;
     background-color: white;
@@ -105,14 +92,18 @@
 
   .logo{
     display:flex;
+    flex:1 ;
     flex-direction: column;
-    /* flex:1; */
-    max-width:3px;
-    max-height: 3px;
     height:100%;
     justify-content: space-around;
-    /* justify-content: flex-end; */
     align-items: center;
     background-color:white;
     object-fit: 'contain';
+  }
+
+  .logo > img {
+    max-width:100%;
+    max-height:70%;
+    width: auto;
+    height: auto;
   }

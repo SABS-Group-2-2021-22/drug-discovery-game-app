@@ -5,3 +5,4 @@ export { default as Build } from "./build";
 export { default as Assay } from "./assay";
 export { default as Analysis } from "./analysis";
 export { default as Results } from "./results";
+export { LoginPage as LoginPage } from "./login";
