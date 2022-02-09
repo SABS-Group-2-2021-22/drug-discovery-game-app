@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    flex-direction: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* Change color of link */
+a {
+    color: #FFF;
+}
+
+a:hover {
+    color: #9a9c9e;
+}
