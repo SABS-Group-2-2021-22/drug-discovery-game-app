@@ -11,6 +11,8 @@ import { connect } from "react-redux";
 class AppRedux extends React.Component {
     constructor(props) {
         super(props);
+        this.state ={
+        filter_selection: props.filter_selection}
     }
 
     render() {
@@ -18,8 +20,8 @@ class AppRedux extends React.Component {
           <div className="wrapper">
             <div className="app">
               <div className="r-group-selection">
-                <RGroupList r_group_pos={"A"}/>
-                <RGroupList r_group_pos={"B"}/>
+                <RGroupList r_group_pos={"A"} filter_selection = {this.state.filter_selection} />
+                <RGroupList r_group_pos={"B"} filter_selection = {this.state.filter_selection} />
               </div>
               <div className="mol-visbox">
                 <div className="rendered-molecule">
