@@ -7,6 +7,9 @@ import "ketcher-react/dist/index.css";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import Miew from "miew";
+import { resolveTypeReferenceDirective } from "typescript";
+import userEvent from "@testing-library/user-event";
+const { base64encode, base64decode } = require('nodejs-base64');
 
 (window as any).Miew = Miew;
 
@@ -28,9 +31,14 @@ export class Sketcher extends React.Component {
     (window as any).ketcher = ketcher;
   };
 
-  logMolecule = () => {
-    this.ketcher.getMolfile()
-      .then((response) => {console.log(response);})
+  logMolecule = async () => {
+    const mol = await this.ketcher.getMolfile();
+    const multiline_mol = Buffer.from(mol).toString('base64')
+    const url = 'http://127.0.0.1:5000/sketcher_save_molecule?' +
+    'mol=' + multiline_mol
+  fetch(url)
+    .then((response) => response.json())
+    .then((response) => {console.log(response);})
     ;
   }
 
