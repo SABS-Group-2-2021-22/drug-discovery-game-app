@@ -2,30 +2,32 @@ import React from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom"
 import "./app.css";
+import { connect } from 'react-redux'
+
 
 
 class RGroupWidget extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      r_group_id: props.r_group_id,
       id: props.id,
       group_nr: props.r_group_nr,
-      img: 'Null',
-      stats: 'Null',
+      img: "Null",
+      stats: "Null",
     };
-    this.fetchRGroup();
+ //   this.fetchRGroup();
   }
-
 
   sendRGroup = (r_group_id, r_group_nr) => {
     this.props.selectRGroupCallback(r_group_id, r_group_nr);
-  }
+  };
 
   imageClick = () => {
-    this.sendRGroup(this.state.id, this.state.group_nr)
-  }
+    this.sendRGroup(this.state.id, this.state.group_nr);
+  };
 
-  fetchRGroup = () => {
+  /*  fetchRGroup = () => {
     const url = 'http://127.0.0.1:5000/r-group-'
     fetch(url + this.state.id)
       .then((response) => response.json())
@@ -37,16 +39,23 @@ class RGroupWidget extends React.Component {
         throw Error(err.message);
       });
   }
+  */
 
   render() {
+    console.log(this.state.r_group_id);
     return (
       <div className="r-group-container">
-      <div className="r-group-card" >
-          <img className="r-group-img" src={this.state.img} alt='R Group' onClick={this.imageClick} />
+        <div className="r-group-card">
+          <img
+            className="r-group-img"
+            src={this.props.r_groups[this.state.r_group_id].data.img_html}
+            alt="R Group"
+            onClick={this.imageClick}
+          />
           <RGroupStats key={this.state.stats} stats={this.state.stats} />
+        </div>
       </div>
-      </div>
-    )
+    );
   }
 }
 
@@ -102,27 +111,33 @@ class RGroupList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      r_group_category: props.r_group_category,
-      r_group_map: {1: 'A', 2: 'B'},
+      r_group_pos: props.r_group_pos,
+      r_group_nr: 0
     };
   }
 
+  createRGroupID = (pos) => {
+    let id_arr = [];
+    for (let i = 1; i < 51; i++) {
+      if (i < 10) {
+        id_arr.push(String(pos + 0 + i));
+      } else {
+        id_arr.push(String(pos + i));
+      }
+    }
+    return (id_arr)
+  };
+
+
   render() {
     return (
-    <div className='r-group-list' >
-      {Array.from({ length: 9 }, (_, i) =>
-        <RGroupWidget key={this.state.r_group_map[this.state.r_group_category] + '0' + (i + 1).toString()}
-          id={this.state.r_group_map[this.state.r_group_category] + '0' + (i + 1).toString()}
-                r_group_nr={this.state.r_group_category}
-            selectRGroupCallback={this.props.selectRGroupCallback} />).concat(
-            Array.from({ length: 41 }, (_, i) =>
-              <RGroupWidget key={this.state.r_group_map[this.state.r_group_category] + (i + 10).toString()}
-                id={this.state.r_group_map[this.state.r_group_category] + (i + 10).toString()}
-                r_group_nr={this.state.r_group_category}
-                selectRGroupCallback={this.props.selectRGroupCallback} />)
-
-          )}
-    </div>
+      <div className="r-group-list">
+       
+       {Array.from({ })} <RGroupWidget
+          r_group_id={"B05"}
+          selectRGroupCallback={this.props.selectRGroupCallback}
+        />
+      </div>
     );
   }
 }
@@ -233,6 +248,7 @@ class ControlPanel extends React.Component {
   }
 }
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -249,13 +265,15 @@ class App extends React.Component {
     })
   }
 
+
+
   render() {
     return (
       <div className="wrapper">
         <div className="app">
           <div className="r-group-selection">
-            <RGroupList r_group_category={1} selectRGroupCallback={this.setSelectedRGroupCallback}/>
-            <RGroupList r_group_category={2} selectRGroupCallback={this.setSelectedRGroupCallback}/>
+            <RGroupList r_group_pos={'A'} selectRGroupCallback={this.setSelectedRGroupCallback}/>
+            <RGroupList r_group_pos={'B'} selectRGroupCallback={this.setSelectedRGroupCallback}/>
           </div>
           <div className="mol-visbox">
             <div className="rendered-molecule">
@@ -271,15 +289,23 @@ class App extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    r_groups: state.r_groups
+  }
+}
+
+export default connect(mapStateToProps)(RGroupWidget)
+
 
 export {MoleculeImage, }
 
-export default App;
 
-{/* // ========================================
+
+/* // ========================================
 
 // ReactDOM.render(
 //   <App />,
 //   document.getElementById('root')
-// ); */}
+// ); */
 
