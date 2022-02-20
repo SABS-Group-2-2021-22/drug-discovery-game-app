@@ -7,25 +7,57 @@ class AssayPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      assays_run: [],
+      selected_assays: [],
+      assays_run: null,
+      selected_mol: null,
     };
   }
 
+  componentDidMount() {
+    this.setState({
+      selected_mol: this.props.selected_mol,
+      assays_run: this.props.assays_run,
+    });
+  }
+
   runAssays = () => {
+    let assays_run = this.state.assays_run;
+    let selected_assays = this.state.selected_assays;
+    for (var i = 0; i < selected_assays.length; i++) {
+      assays_run[selected_assays[i]] = true
+    }
+    console.log(assays_run)
     this.props.dispatch(
-      runAssay(this.props.selected_mol, this.state.assays_run)
+      runAssay(this.props.selected_mol, assays_run)
     );
   };
 
   onClick = (label) => {
-    let arr = this.state.assays_run;
-    arr.push(label);
-    this.setState({ assays_run: arr });
+    console.log(this.state.assays_run)
+    let arr = this.state.selected_assays;
+    if (arr.includes(label) == false){
+      arr.push(label);
+    }
+    this.setState({ selected_assays: arr });
   };
+
+  resetSelection = () => {
+    this.setState({
+      selected_assays: [],
+      assays_run: this.props.assays_run,
+      selected_mol: this.props.selected_mol,
+    });
+  };
+
+  componentDidUpdate() {
+    if (this.state.selected_mol !== this.props.selected_mol) {
+      this.resetSelection();
+    }
+  }
 
   render() {
     return (
-      <div className='assay-panel'>
+      <div className="assay-panel">
         <button
           label="pIC50"
           onClick={() => {
@@ -88,6 +120,7 @@ class AssayPanel extends React.Component {
         <button
           label="Run_Assays"
           onClick={() => {
+            this.onClick("drug_props")
             this.runAssays();
           }}
         >
@@ -99,9 +132,10 @@ class AssayPanel extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {
-        selected_mol: state.selected_mol,
-    }
+  return {
+    selected_mol: state.selected_mol,
+    assays_run: state.saved_mols[state.selected_mol].data.assays_run,
+  };
 }
 
 export default connect(mapStateToProps)(AssayPanel);

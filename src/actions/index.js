@@ -127,6 +127,7 @@ export function runAssaySucceeded(selected_mol, assays) {
 }
 
 export function runAssay(selected_mol, assays) {
+  console.log(assays)
   return (dispatch) => {
     dispatch(runAssaySucceeded(selected_mol, assays));
   }
