@@ -15,7 +15,7 @@ class AssayRedux extends React.Component {
     return (
       <div className="wrapper">
         <div className="assay">
-          <div className="molecule-choose_bar">
+          <div className="molecule-chooser_bar">
             <MoleculeList />
           </div>
             <AssayPanel />

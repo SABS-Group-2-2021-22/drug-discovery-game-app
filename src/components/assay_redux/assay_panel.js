@@ -75,7 +75,7 @@ class AssayPanel extends React.Component {
           Clearance Mouse
         </button>
         <button
-          label="Clearanace Human"
+          label="Clearanace Humam"
           onClick={() => {
             this.onClick("clearance_human");
           }}
