@@ -31,7 +31,6 @@ export class Sketcher extends React.Component <SketcherType>{
   constructor(props: any) {
     super(props);
     this.handleOnInit = this.handleOnInit.bind(this);
-    this.logMolecule = this.logMolecule.bind(this);
     this.triggerSaving = this.triggerSaving.bind(this);
   }
 
@@ -41,19 +40,6 @@ export class Sketcher extends React.Component <SketcherType>{
     this.ketcher = ketcher;
     (window as any).ketcher = ketcher;
   };
-
-  logMolecule = async () => {
-    const mol = await this.ketcher.getMolfile();
-    const multiline_mol = Buffer.from(mol).toString('base64')
-    const url = 'http://127.0.0.1:5000/sketcher_save_molecule?' +
-    'mol=' + multiline_mol
-  fetch(url)
-    .then((response) => response.json())
-    .then((response) => {console.log(response);})
-    ;
-  }
-
-  
 
   triggerSaving = async () => {
       const mol = await this.ketcher.getMolfile();
