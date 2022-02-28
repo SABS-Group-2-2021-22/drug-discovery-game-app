@@ -18,3 +18,9 @@ export function fetchMolecule(r_group_id_A, r_group_id_B, size) {
     "/molecule" + "?r1=" + r_group_id_A + "&r2=" + r_group_id_B + "&size=" + size
   );
 }
+
+export function fetchsketchedMolecule(mol_block) {
+  return client.get(
+    "/sketcher_save_molecule" + "?mol=" + mol_block 
+  );
+}

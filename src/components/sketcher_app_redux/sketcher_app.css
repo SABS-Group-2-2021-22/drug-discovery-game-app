@@ -1,0 +1,15 @@
+.control-panel {
+    display: flex;
+    background-color: white;
+    /* background-color: pink; */
+    justify-content: space-around;
+    padding: 10px;
+  }
+
+  .control-panel button{
+    background-color: #212529;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 80px;
+  }

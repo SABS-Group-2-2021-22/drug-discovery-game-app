@@ -45,7 +45,7 @@ class Home extends React.Component {
           </div>
           <div className="button-area">
             <div className="control-panel">
-              <Link to="/app_redux/app_redux">
+              <Link to="/app">
                 <button>Start</button>
               </Link>
             </div>

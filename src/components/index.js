@@ -5,4 +5,4 @@ export { default as AppRedux } from "./app_redux/app_redux";
 export { default as Assay } from "./assay";
 export { default as Analysis } from "./analysis";
 export { default as Results } from "./results";
-export { default as Sketcher } from "./sketcher";
+export { default as SketcherAppRedux } from "./sketcher_app_redux/sketcher_app_redux";

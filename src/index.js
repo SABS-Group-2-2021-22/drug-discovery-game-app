@@ -17,8 +17,9 @@ import {
   Analysis,
   Results,
   Footer,
-  Sketcher,
+  SketcherAppRedux,
 } from "./components";
+
 
 const store = createStore(r_groups, compose(applyMiddleware(thunk), devToolsEnhancer()))
 
@@ -51,11 +52,11 @@ class Index extends React.Component {
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/app_redux/app_redux" element={<AppRedux />} />
+          <Route path="/app" element={<AppRedux />} />
           <Route path="/assay" element={<Assay updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>} />
           <Route path="/analysis" element={<Analysis />} />
           <Route path="/results" element={<Results />} />
-          <Route path="/sketcher" element={<Sketcher />} />
+          <Route path="/sketcher" element={<SketcherAppRedux />} />
         </Routes>
         <Footer time={this.state.time} money={this.state.money}/>
       </Router>

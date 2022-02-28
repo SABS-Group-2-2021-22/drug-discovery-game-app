@@ -2,7 +2,8 @@
 const initialState = {
   all_r_groups: [],
   selected_r_groups: {'A': 'A01', 'B': 'B01', 'molecule':[]},
-  saved_mols: []
+  saved_mols: [],
+  saved_sketched_mols: []
   }
 
 export default function r_groups(state = initialState, action) {
@@ -28,6 +29,12 @@ export default function r_groups(state = initialState, action) {
       return {
         ...state,
         saved_mols: [...state.saved_mols, action.payload.saved_mol]
+      }
+    }
+    case "SAVE_SKETCHED_MOLECULE_SUCCEEDED": {
+      return {
+        ...state, 
+        saved_sketched_mols: [...state.saved_sketched_mols, action.payload.saved_mol]
       }
     }
     default: {

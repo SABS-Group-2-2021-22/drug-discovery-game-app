@@ -73,3 +73,21 @@ export function saveMolecule(selected_r_groups) {
       dispatch(saveMoleculeSucceeded(molecule))
     }
 } 
+
+export function saveSketchedMolecule(mol_block) {
+  return (dispatch) => {
+    api.fetchsketchedMolecule(mol_block).then((response) => {
+      const molecule = response;
+      dispatch(saveSketchedMoleculeSucceeded(molecule));
+    });
+  };
+}
+
+export function saveSketchedMoleculeSucceeded(molecule) {
+  return {
+    type: "SAVE_SKETCHED_MOLECULE_SUCCEEDED",
+    payload: {
+      saved_mol: molecule
+    }
+}
+}
