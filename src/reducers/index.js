@@ -2,8 +2,8 @@
 const initialState = {
   all_r_groups: [],
   selected_r_groups: {'A': 'A01', 'B': 'B01', 'molecule':[]},
-  saved_mols: [],
-  saved_sketched_mols: []
+  saved_mols: {},
+  saved_sketched_mols: {}
   }
 
 export default function r_groups(state = initialState, action) {
@@ -28,8 +28,68 @@ export default function r_groups(state = initialState, action) {
     case "SAVE_MOLECULE_SUCCEEDED": {
       return {
         ...state,
-        saved_mols: [...state.saved_mols, action.payload.saved_mol]
-      }
+        saved_mols: action.payload.saved_mols,
+      };
+    }
+    case "SELECT_MOLECULE_SUCCEEDED": {
+      return {
+        ...state,
+        selected_mol: action.payload.selected_mol,
+      };
+    }
+
+    case "FETCH_DESCRIPTORS_SUCCEEDED": {
+      return {
+        ...state,
+        saved_mols: {
+          ...state.saved_mols,
+          [action.payload.molecule]: {
+            ...state.saved_mols[action.payload.molecule],
+            data: {
+              ...state.saved_mols[action.payload.molecule].data,
+              descriptors: action.payload.descriptors,
+            },
+          },
+        },
+      };
+    }
+
+    case "FETCH_FILTERS_SUCCEEDED": {
+      return {
+        ...state,
+        saved_mols: {
+          ...state.saved_mols,
+          [action.payload.molecule]: {
+            ...state.saved_mols[action.payload.molecule],
+            data: {
+              ...state.saved_mols[action.payload.molecule].data,
+              filters: action.payload.filters,
+            },
+          },
+        },
+      };
+    }
+    case "RUN_ASSAY_SUCCEEDED": {
+      return {
+        ...state,
+        saved_mols: {
+          ...state.saved_mols,
+          [action.payload.molecule]: {
+            ...state.saved_mols[action.payload.molecule],
+            data: {
+              ...state.saved_mols[action.payload.molecule].data,
+              assays_run: action.payload.assays_run
+              
+              
+              
+              /* [
+                ...state.saved_mols[action.payload.molecule].data.assays_run,
+                action.payload.assays_run,
+              ], */
+            },
+          },
+        },
+      };
     }
     case "SAVE_SKETCHED_MOLECULE_SUCCEEDED": {
       return {

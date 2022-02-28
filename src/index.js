@@ -13,7 +13,7 @@ import {
   Navigation,
   Home,
   AppRedux,
-  Assay,
+  AssayRedux,
   Analysis,
   Results,
   Footer,
@@ -53,7 +53,7 @@ class Index extends React.Component {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/app" element={<AppRedux />} />
-          <Route path="/assay" element={<Assay updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>} />
+          <Route path="/assay" element={<AssayRedux updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>} />
           <Route path="/analysis" element={<Analysis />} />
           <Route path="/results" element={<Results />} />
           <Route path="/sketcher" element={<SketcherAppRedux />} />
