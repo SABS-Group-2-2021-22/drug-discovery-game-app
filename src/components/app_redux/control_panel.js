@@ -36,7 +36,7 @@ class ControlPanel extends React.Component {
       <div className="control-panel">
         <button>Clear</button>
         <button onClick={this.saveMolecule}>Save</button>
-        <Link to="../assay_redux/assay_redux">
+        <Link to="/assay">
           <button onClick={this.initSelectMolecule}>Assay</button>
         </Link>
       </div>

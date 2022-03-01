@@ -10,7 +10,7 @@ class SketcherControlPanel extends React.Component {
 
 render() {
     return (
-              <div className="control-panel">
+              <div className="sketcher-control-panel">
                 <button>Clear</button>
                 <button onClick={this.props.triggerSaving }>Save</button>
                 <Link to="./../assay">

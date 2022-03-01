@@ -122,7 +122,8 @@ export function runAssaySucceeded(selected_mol, assays) {
     payload: {
       molecule: selected_mol,
       assays_run: assays,
-    }
+    },
+}
 } 
 
 export function saveSketchedMolecule(mol_block) {
@@ -130,7 +131,7 @@ export function saveSketchedMolecule(mol_block) {
     api.fetchsketchedMolecule(mol_block).then((response) => {
       const molecule = response;
       dispatch(saveSketchedMoleculeSucceeded(molecule));
-    });
+    })
   };
 }
 
@@ -143,7 +144,6 @@ export function saveSketchedMoleculeSucceeded(molecule) {
 }
 }
 
-}
 
 export function runAssay(selected_mol, assays) {
   console.log(assays)

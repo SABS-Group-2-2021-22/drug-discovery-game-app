@@ -7,14 +7,7 @@ import "ketcher-react/dist/index.css";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import Miew from "miew";
-import { saveSketchedMolecule} from "../../actions/actions";
-import { resolveTypeReferenceDirective } from "typescript";
-import userEvent from "@testing-library/user-event";
-import { connect, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import SketcherControlPanel from "./sketcher_control_panel";
-import {Dispatch} from 'redux';
-const { base64encode, base64decode } = require('nodejs-base64');
 
 
 (window as any).Miew = Miew;
@@ -50,7 +43,7 @@ export class Sketcher extends React.Component <SketcherType>{
 
   render() {
     return (
-      <div>
+      <div className="ketcher_div">
         <Editor
           staticResourcesUrl={""}
           structServiceProvider={structServiceProvider}

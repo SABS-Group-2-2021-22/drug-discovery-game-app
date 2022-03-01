@@ -1,15 +1,48 @@
-.control-panel {
+.sketcher_builder{
+    height: 84vh;
+    margin: 0;
     display: flex;
+    flex-direction: row;
+  }
+
+.sketcher-control-panel {
+    display: flex;
+    background-color: black; 
     background-color: white;
-    /* background-color: pink; */
     justify-content: space-around;
     padding: 10px;
   }
-
-  .control-panel button{
+  .sketcher-control-panel button{
     background-color: #212529;
     color: white;
     border: none;
     border-radius: 8px;
     width: 80px;
   }
+
+.sketched_molecules {
+    flex-grow: 2;
+    min-height: 100%;
+    justify-content: center;
+    overflow-y:scroll;
+    min-width: 15%;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+.molecule_list {
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
+}
+.ketcher {
+  display: flex;
+  flex-direction: row; 
+  min-width: 85%;
+}
+
+.ketcher_div {
+  display: flex;
+  flex-direction: column;
+  min-width: 85%;
+}

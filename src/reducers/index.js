@@ -3,7 +3,7 @@ const initialState = {
   all_r_groups: [],
   selected_r_groups: {'A': 'A01', 'B': 'B01', 'molecule':[]},
   saved_mols: {},
-  saved_sketched_mols: {}
+  saved_sketched_mols: []
   }
 
 export default function r_groups(state = initialState, action) {

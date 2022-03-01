@@ -3,6 +3,7 @@ import { connect, useDispatch } from "react-redux";
 import SketchedMoleculeList from "./sketched_molecule_list";
 import Sketcher from "./sketcher"
 import { saveSketchedMolecule} from "../../actions";
+import "./sketcher_app.css"
 
 class SketcherAppRedux extends React.Component {
     constructor(props) {
@@ -16,8 +17,7 @@ class SketcherAppRedux extends React.Component {
 
     render() {
         return (
-            <div className='wrapper'>
-                <div className="app">
+                <div className="sketcher_builder">
                     <div className="sketched_molecules">
                         <SketchedMoleculeList/>
                     </div>
@@ -25,7 +25,6 @@ class SketcherAppRedux extends React.Component {
                         <Sketcher saveSketchedMoleculeChild = {this.saveSketchedMoleculeParent}/>
                     </div>
                 </div>
-            </div>
         )
     }
 }

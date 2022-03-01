@@ -1,20 +1,35 @@
 import React from "react";
+// import "../assay.css";
+import SketcherMoleculeWidget from "./sketcher_molecule_widget"
+import { connect } from "react-redux";
 
-class SketchedMoleculeList extends React.Component {
-        render() {
-            return (
-                <div className='sketched-molecule-list' >
-                    {/* {Array.from({ length: this.props.saved_mol_list.length }, (_, i) =>
-                        <MoleculeWidget
-                            key={this.props.saved_mol_list[i]}
-                            r_groups={this.props.saved_mol_list[i]}
-                            molecule_stats={this.props.all_mol_info[this.props.saved_mol_list[i][0] + this.props.saved_mol_list[i][1]]}
-                            selectMoleculeCallback={this.props.selectMoleculeCallback}
-                        />)} */}
-                    SketcherMoleculeList goes here
-                </div>
-            );
-        }
+class SketcherMoleculeList extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="molecule-list">
+      {(Object.keys(this.props.saved_sketched_mols).length === 0) && "Draw some molecules and they appear here!"}
+      {(Object.keys(this.props.saved_sketched_mols).length  > 0) && Array.from(
+        { length: Object.keys(this.props.saved_sketched_mols).length },
+        (_, i) => (
+          <SketcherMoleculeWidget
+            key={Object.keys(this.props.saved_sketched_mols)[i]}
+            mol_id={Object.keys(this.props.saved_sketched_mols)[i]}
+          />
+        )
+      )}
+      </div>
+    );
+  }
+}
+
+function mapStateToProps(state) {
+    return {
+        saved_sketched_mols: state.saved_sketched_mols
     }
+}
 
-export default SketchedMoleculeList
+export default connect(mapStateToProps)(SketcherMoleculeList)
