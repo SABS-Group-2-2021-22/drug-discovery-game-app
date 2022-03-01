@@ -122,15 +122,37 @@ export function runAssaySucceeded(selected_mol, assays) {
     payload: {
       molecule: selected_mol,
       assays_run: assays,
-    }
-  }
+    },
+  };
 }
 
 export function runAssay(selected_mol, assays) {
-  console.log(assays)
   return (dispatch) => {
     dispatch(runAssaySucceeded(selected_mol, assays));
-  }
+  };
+}
+
+export function chooseMoleculeSucceeded(selected_mol) {
+  return {
+    type: 'CHOOSE_MOLECULE_SUCCEEDED',
+    payload: {
+      chosen_mol: selected_mol
+    },
+  };
+}
+
+export function chooseMolecule(selected_mol) {
+  return (dispatch) => {
+    dispatch(chooseMoleculeSucceeded(selected_mol));
+  };
+}
+
+export function submitMolecule(selected_mol) {
+  r_group_A = selected_mol.slice(0, 3) 
+  r_group_B = selected_mol.slice(3, 6)
+  return (
+    api.postChosen(r_group_A, r_group_b)
+  );
 }
 
 
