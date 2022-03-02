@@ -50,9 +50,9 @@ class Index extends React.Component {
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/app_redux/app_redux" element={<AppRedux />} />
-          <Route path="/assay_redux/assay_redux" element={<AssayRedux updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>} />
-          <Route path="/analysis_redux/analysis_redux" element={<AnalysisRedux />} />
+          <Route path="/app" element={<AppRedux />} />
+          <Route path="/assay" element={<AssayRedux updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>} />
+          <Route path="/analysis" element={<AnalysisRedux />} />
           <Route path="/results" element={<Results />} />
         </Routes>
         <Footer time={this.state.time} money={this.state.money}/>

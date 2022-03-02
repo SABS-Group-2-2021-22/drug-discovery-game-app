@@ -1,6 +1,5 @@
 import React from "react";
 import "../assay.css"
-import { connect } from "react-redux"
 import  MoleculeImage  from "./molecule_image.js"
 import MoleculeStats from "./molecule_stats_widget.js"
 
@@ -10,7 +9,6 @@ class MoleculeWidget extends React.Component {
   }
 
   render() {
-    console.log(this.props.mol_id)
     return (
       <div className="molecule-container">
         <div className="molecule-widget">
@@ -22,10 +20,4 @@ class MoleculeWidget extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    saved_mols: state.saved_mols,
-  };
-}
-
-export default connect(mapStateToProps)(MoleculeWidget);
+export default MoleculeWidget

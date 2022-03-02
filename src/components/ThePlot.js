@@ -96,6 +96,7 @@ class ThePlot extends Component {
   }
 
   onHover = event => {
+    console.log(this.state.data);
     event.points.forEach(point => {
       let mol = point.data.name
       let r_arr = [mol.slice(0, 3), mol.slice(3, 6)]

@@ -75,7 +75,7 @@ export default function r_groups(state = initialState, action) {
             ...state.saved_mols[action.payload.molecule],
             data: {
               ...state.saved_mols[action.payload.molecule].data,
-              assays_run: [action.payload.assays_run]
+              assays_run: action.payload.assays_run
             },
           },
         },
@@ -85,6 +85,12 @@ export default function r_groups(state = initialState, action) {
       return {
         ...state,
         chosen_mol: action.payload.chosen_mol
+      }
+    }
+    case "CONSTRUCT_PLOT_OBJECT_SUCCEEDED": {
+      return {
+        ...state,
+        plot_data: action.payload.plot_data
       }
     }
     default: {

@@ -1,7 +1,9 @@
 import React from "react";
 import "../analysis.css";
 import { connect } from "react-redux";
-import { chooseMolecule, postChosen } from "../..actions";
+import { chooseMolecule } from "../../actions";
+import { postChosen } from "../../actions";
+import { Link } from "react-router-dom";
 
 class SelectorPanel extends React.Component {
   constructor(props) {
