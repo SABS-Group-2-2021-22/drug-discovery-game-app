@@ -1,5 +1,5 @@
 import React from "react";
-import { connect, useDispatch } from "react-redux";
+import { connect} from "react-redux";
 import SketchedMoleculeList from "./sketched_molecule_list";
 import Sketcher from "./sketcher"
 import { saveSketchedMolecule} from "../../actions";

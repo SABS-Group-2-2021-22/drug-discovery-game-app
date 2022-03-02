@@ -116,6 +116,13 @@ export function selectMolecule(selected_mol) {
   };
 }
 
+export function runAssay(selected_mol, assays) {
+  console.log(assays)
+  return (dispatch) => {
+    dispatch(runAssaySucceeded(selected_mol, assays));
+  }
+}
+
 export function runAssaySucceeded(selected_mol, assays) {
   return {
     type: 'RUN_ASSAY_SUCCEEDED',
@@ -144,12 +151,22 @@ export function saveSketchedMoleculeSucceeded(molecule) {
 }
 }
 
-
-export function runAssay(selected_mol, assays) {
+export function runSketchedAssay(selected_mol, assays) {
   console.log(assays)
   return (dispatch) => {
-    dispatch(runAssaySucceeded(selected_mol, assays));
+    dispatch(runSketchedAssaySucceeded(selected_mol, assays));
   }
 }
+
+export function runSketchedAssaySucceeded(selected_mol, assays) {
+  return {
+    type: 'RUN_SKETCHED_ASSAY_SUCCEEDED',
+    payload: {
+      molecule: selected_mol,
+      assays_run: assays,
+    },
+}
+} 
+
 
 
