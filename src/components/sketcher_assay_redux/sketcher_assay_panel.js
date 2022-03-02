@@ -116,6 +116,15 @@ class SketcherAssayPanel extends React.Component {
         >
           Calculate Descriptors
         </button>
+        <button
+          label="Calculate Descriptors"
+          onClick={() => {
+            this.onClick("tanimoto");
+            this.runAssays();
+          }}
+        >
+          Calculate Tanimoto Similarity to Clinical Drug
+        </button>
 
         {/* <button
           label="Run_Assays"

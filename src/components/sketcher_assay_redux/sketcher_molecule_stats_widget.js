@@ -3,6 +3,7 @@ import "../assay.css";
 import { connect } from "react-redux";
 import SketcherFilters from "./sketcher_filter_display.js"
 import SketcherDescriptors from "./sketcher_descriptor_display.js"
+import SketcherTanimoto from "./sketcher_tanimoto_display.js"
 
 
 class SketcherMoleculeStats extends React.Component {
@@ -18,8 +19,8 @@ class SketcherMoleculeStats extends React.Component {
         )}
         {this.props.saved_mols[this.props.mol_id].data.assays_run
           .descriptors && <SketcherDescriptors mol_id={this.props.mol_id} />}
-        {/* {this.props.saved_mols[this.props.mol_id].data.assays_run
-          .drug_props && <Assays mol_id={this.props.mol_id} />} */}
+        {this.props.saved_mols[this.props.mol_id].data.assays_run
+          .tanimoto && <SketcherTanimoto mol_id={this.props.mol_id} />}
       </div>
     );
   }
@@ -35,8 +36,8 @@ function mapStateToProps(state) {
     state.saved_sketched_mols[state.selected_mol].data.assays_run.filters,
   descriptors_run:
     state.saved_sketched_mols[state.selected_mol].data.assays_run.descriptors,
-  drug_props_run:
-    state.saved_sketched_mols[state.selected_mol].data.assays_run.drug_props,
+  tanimoto_run:
+    state.saved_sketched_mols[state.selected_mol].data.assays_run.tanimoto,
   };
 }
 
