@@ -109,6 +109,7 @@ export default function r_groups(state = initialState, action) {
           },
         },
       };
+    }
     case "CHOOSE_MOLECULE_SUCCEEDED": {
       return {
         ...state,

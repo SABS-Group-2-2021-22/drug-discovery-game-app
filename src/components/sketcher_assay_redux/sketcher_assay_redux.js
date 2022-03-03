@@ -5,6 +5,7 @@ import SketcherMoleculeList  from "./sketcher_molecule_list.js";
 import SketcherMoleculeImage from "./sketcher_molecule_image.js";
 import SketcherAssayPanel from "./sketcher_assay_panel.js";
 import SketcherMoleculeStats from "./sketcher_molecule_stats.js";
+import SketcherControlPanel from "./sketcher_control_panel.js"
 
 class SketcherAssayRedux extends React.Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class SketcherAssayRedux extends React.Component {
             <div className='selected-mol-stats'>
               <SketcherMoleculeStats selected_mol={this.props.selected_mol}/>
             </div>
+            <SketcherControlPanel />
           </div>
         </div>
       </div>

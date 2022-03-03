@@ -195,16 +195,6 @@ export function constructPlotObj(saved_mols) {
   };
 }
 
-export function runAssaySucceeded(selected_mol, assays) {
-  return {
-    type: 'RUN_ASSAY_SUCCEEDED',
-    payload: {
-      molecule: selected_mol,
-      assays_run: assays,
-    },
-}
-} 
-
 export function saveSketchedMolecule(mol_block) {
   return (dispatch) => {
     api.fetchsketchedMolecule(mol_block).then((response) => {
@@ -239,6 +229,41 @@ export function runSketchedAssaySucceeded(selected_mol, assays) {
     },
 }
 } 
+
+export function constructPlotObjSketcherSucceeded(plot_data) {
+  return {
+    type: 'CONSTRUCT_PLOT_OBJECT_SUCCEEDED',
+    payload: {
+      plot_data: plot_data
+    }
+  }
+}
+
+export function constructPlotObjSketcher(saved_sketched_mols) {
+  let plot_data = {};
+  for (const [k, v] of Object.entries(saved_sketched_mols)) {
+    let assay_obj = {};
+    const assays_run = Object.keys(v.data.assays_run).reduce(
+      (c, k) => ((c[k.toLowerCase().trim()] = v.data.assays_run[k]), c),
+      {}
+    );
+    if (v.data.assays_run.descriptors) {
+      var descriptor_obj = v.data.descriptors;
+    } else {
+      var descriptor_obj = {};
+    }
+    let blank = { "--": 0 };
+    let metrics = {
+      ...assay_obj,
+      ...descriptor_obj,
+      ...blank,
+    };
+    plot_data[k] = metrics;
+  }
+  return (dispatch) => {
+    dispatch(constructPlotObjSketcherSucceeded(plot_data));
+  };
+}
 
 
 
