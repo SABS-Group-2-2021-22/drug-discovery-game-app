@@ -5,6 +5,7 @@ import  MoleculeList  from "./molecule_list.js";
 import MoleculeImage from "./molecule_image.js";
 import AssayPanel from "./assay_panel.js";
 import MoleculeStats from "./molecule_stats.js";
+import ControlPanel from "./control_panel.js"
 
 class AssayRedux extends React.Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class AssayRedux extends React.Component {
             <div className='selected-mol-stats'>
               <MoleculeStats selected_mol={this.props.selected_mol}/>
             </div>
+            <ControlPanel />
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ export { default as Footer } from "./footer";
 export { default as Home } from "./home";
 export { default as AppRedux } from "./app_redux/app_redux";
 export { default as AssayRedux } from "./assay_redux/assay_redux";
-export { default as Analysis } from "./analysis";
+export { default as AnalysisRedux } from "./analysis_redux/analysis_redux";
 export { default as Results } from "./results";
 export { default as SketcherAppRedux } from "./sketcher_app_redux/sketcher_app_redux";
 export { default as SketcherAssayRedux } from "./sketcher_assay_redux/sketcher_assay_redux";

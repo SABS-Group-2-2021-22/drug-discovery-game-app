@@ -19,18 +19,6 @@ class ControlPanel extends React.Component {
     this.props.dispatch(selectMolecule(Object.keys(this.props.saved_mols)[0]));
   };
 
- /* fetchDescriptors = () => {
-    this.props.dispatch(
-      fetchDescriptors(
-        this.props.selected_r_groups["A"],
-        this.props.selected_r_groups["B"]
-      )
-    );
-  }; */
-
-  //make saveMolecule call an action creator that fires 3 different actions to get all data
-
-
   render() {
     return (
       <div className="control-panel">
@@ -41,7 +29,7 @@ class ControlPanel extends React.Component {
         </Link>
       </div>
     );
-  }
+  };
 }
 
 function mapStateToProps(state) {

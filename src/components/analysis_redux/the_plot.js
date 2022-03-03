@@ -1,63 +1,42 @@
-import React, { Component, useEffect } from "react";
+import React from "react";
 import Plot from "react-plotly.js";
-import { MoleculeImage } from './app';
-import './analysis.css'
+import  MoleculeImage  from "./molecule_image.js";
+import "../analysis.css";
+import { connect } from "react-redux";
 
-
-class ThePlot extends Component {
+class ThePlot extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
-      data: [],
-      layout: {},
-      revision: 0,
       x_axis: "--",
       y_axis: "--",
-      hover_mol: ['A01', 'B01'],
+      hover_mol: ["A01", "B01"],
       hover: false,
       xpositionState: 0,
-      ypositionState: 0
-    }; 
-    this.retrieveAssayData();
+      ypositionState: 0,
+    };
   }
-
-  retrieveAssayData() {
-        const url = 'http://127.0.0.1:5000/getplotdata'
-        fetch(url)
-            .then((response) => response.json())
-            .then(response => {
-                this.setState({ data: response.assay_dict }, () => {
-                    console.log(this.state.data);
-                console.log(response)
-                })
-            })
-            .catch(err => {
-                throw Error(err.message);
-            });
-  }
-
 
   addTraces(data) {
     var lines = {};
     data.forEach((data) => {
-      for (let key in data) {
-        lines[key] = {
-          x: [data[key][this.state.x_axis]],
-          y: [data[key][this.state.y_axis]],
+      for (let k in data) {
+        lines[k] = {
+          x: [data[k][this.state.x_axis]],
+          y: [data[k][this.state.y_axis]],
         };
       }
     });
-
     let traces = [];
-    for (const [key, value] of Object.entries(lines)) {
+    for (const [k, v] of Object.entries(lines)) {
       traces.push({
         type: "scatter",
         mode: "markers",
-        x: value.x,
-        y: value.y,
-        name: key,
-    })
-  }
+        x: v.x,
+        y: v.y,
+        name: k,
+      });
+    }
     return traces;
   }
 
@@ -87,46 +66,39 @@ class ThePlot extends Component {
         >
           <MoleculeImage
             key={this.state.hover_mol}
-            r_groups={this.state.hover_mol}
-            size={"250,250"}
+            mol_id={this.state.hover_mol}
           />
         </figure>
       );
     }
   }
 
-  onHover = event => {
-    console.log(this.state.data);
-    event.points.forEach(point => {
-      let mol = point.data.name
-      let r_arr = [mol.slice(0, 3), mol.slice(3, 6)]
-      this.setState({ hover_mol: r_arr, hover: true })
-      const getMousePos = e => {
-    
+  onHover = (event) => {
+    event.points.forEach((point) => {
+      this.setState({ hover_mol: point.data.name, hover: true });
+      const getMousePos = (e) => {
         const posX = e.clientX;
         const posY = e.clientY;
-        this.setState({xpositionState: posX + 15});
-        this.setState({ypositionState: posY + 15})}
+        this.setState({ xpositionState: posX + 15 });
+        this.setState({ ypositionState: posY + 15 });
+      };
       document.addEventListener("mousemove", getMousePos);
-      return function cleanup()  {
-      document.removeEventListener("mousemove", getMousePos)};
-      
-    })
-  }
+      return function cleanup() {
+        document.removeEventListener("mousemove", getMousePos);
+      };
+    });
+  };
 
-  onUnhover = event => {
-    this.setState({hover: false})
-    
-  }
+  onUnhover = (event) => {
+    this.setState({ hover: false });
+  };
 
   render() {
     return (
       <div>
-        <div>
-          {this.showCard()}
-        </div>
+        <div>{this.showCard()}</div>
         <Plot
-          data={this.addTraces(this.state.data)}
+          data={this.addTraces([this.props.plot_data])}
           layout={{
             width: 1000,
             height: 500,
@@ -140,7 +112,7 @@ class ThePlot extends Component {
         <div>
           <button onClick={() => this.relayout("--", "x")}>--</button>
           <button onClick={() => this.relayout("logd", "x")}>logd</button>
-          <button onClick={() => this.relayout("pic50", "x")}>pic50</button>
+          <button onClick={() => this.relayout("pic50", "x")}>pIC50</button>
           <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button>
           <button onClick={() => this.relayout("HA", "x")}>HA</button>
           <button onClick={() => this.relayout("MW", "x")}>MW</button>
@@ -152,7 +124,7 @@ class ThePlot extends Component {
         <div>
           <button onClick={() => this.relayout("--", "y")}>--</button>
           <button onClick={() => this.relayout("logd", "y")}>logd</button>
-          <button onClick={() => this.relayout("pic50", "y")}>pic50</button>
+          <button onClick={() => this.relayout("pic50", "y")}>pIC50</button>
           <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button>
           <button onClick={() => this.relayout("HA", "y")}>HA</button>
           <button onClick={() => this.relayout("MW", "y")}>MW</button>
@@ -166,13 +138,10 @@ class ThePlot extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    plot_data: state.plot_data,
+  };
+}
 
-
-
-export default ThePlot;
-
-
-
-
-
-
+export default connect(mapStateToProps)(ThePlot);

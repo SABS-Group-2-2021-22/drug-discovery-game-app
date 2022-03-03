@@ -43,4 +43,8 @@ export function fetchFilters(r_group_id_A, r_group_id_B) {
   )
 }
 
-// /save?r1=A01&r2=B01
+export function postChosen(r_group_id_A, r_group_id_B) {
+  return client.post(
+    "/choose?r1=" + r_group_id_A + "&r2=" + r_group_id_B
+  );
+}

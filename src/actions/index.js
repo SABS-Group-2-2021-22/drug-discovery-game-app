@@ -116,11 +116,83 @@ export function selectMolecule(selected_mol) {
   };
 }
 
+export function runAssaySucceeded(selected_mol, assays) {
+  return {
+    type: 'RUN_ASSAY_SUCCEEDED',
+    payload: {
+      molecule: selected_mol,
+      assays_run: assays,
+    },
+  };
+}
+
 export function runAssay(selected_mol, assays) {
-  console.log(assays)
   return (dispatch) => {
     dispatch(runAssaySucceeded(selected_mol, assays));
+  };
+}
+
+export function chooseMoleculeSucceeded(selected_mol) {
+  return {
+    type: 'CHOOSE_MOLECULE_SUCCEEDED',
+    payload: {
+      chosen_mol: selected_mol
+    },
+  };
+}
+
+export function chooseMolecule(selected_mol) {
+  return (dispatch) => {
+    dispatch(chooseMoleculeSucceeded(selected_mol));
+  };
+}
+
+export function postChosen(selected_mol) {
+  const r_group_A = selected_mol.slice(0, 3) 
+  const r_group_B = selected_mol.slice(3, 6)
+  return (
+    api.postChosen(r_group_A, r_group_B)
+  );
+}
+
+export function constructPlotObjSucceeded(plot_data) {
+  return {
+    type: 'CONSTRUCT_PLOT_OBJECT_SUCCEEDED',
+    payload: {
+      plot_data: plot_data
+    }
   }
+}
+
+export function constructPlotObj(saved_mols) {
+  let plot_data = {};
+  for (const [k, v] of Object.entries(saved_mols)) {
+    let assay_obj = {};
+    const assays_run = Object.keys(v.data.assays_run).reduce(
+      (c, k) => ((c[k.toLowerCase().trim()] = v.data.assays_run[k]), c),
+      {}
+    );
+    for (const [K, V] of Object.entries(v.data.drug_props)) {
+      if (K in assays_run) {
+        assay_obj[K] = V;
+      }
+    }
+    if (v.data.assays_run.descriptors) {
+      var descriptor_obj = v.data.descriptors;
+    } else {
+      var descriptor_obj = {};
+    }
+    let blank = { "--": 0 };
+    let metrics = {
+      ...assay_obj,
+      ...descriptor_obj,
+      ...blank,
+    };
+    plot_data[k] = metrics;
+  }
+  return (dispatch) => {
+    dispatch(constructPlotObjSucceeded(plot_data));
+  };
 }
 
 export function runAssaySucceeded(selected_mol, assays) {

@@ -37,7 +37,6 @@ export default function r_groups(state = initialState, action) {
         selected_mol: action.payload.selected_mol,
       };
     }
-
     case "FETCH_DESCRIPTORS_SUCCEEDED": {
       return {
         ...state,
@@ -53,7 +52,6 @@ export default function r_groups(state = initialState, action) {
         },
       };
     }
-
     case "FETCH_FILTERS_SUCCEEDED": {
       return {
         ...state,
@@ -79,13 +77,6 @@ export default function r_groups(state = initialState, action) {
             data: {
               ...state.saved_mols[action.payload.molecule].data,
               assays_run: action.payload.assays_run
-              
-              
-              
-              /* [
-                ...state.saved_mols[action.payload.molecule].data.assays_run,
-                action.payload.assays_run,
-              ], */
             },
           },
         },
@@ -118,6 +109,17 @@ export default function r_groups(state = initialState, action) {
           },
         },
       };
+    case "CHOOSE_MOLECULE_SUCCEEDED": {
+      return {
+        ...state,
+        chosen_mol: action.payload.chosen_mol
+      }
+    }
+    case "CONSTRUCT_PLOT_OBJECT_SUCCEEDED": {
+      return {
+        ...state,
+        plot_data: action.payload.plot_data
+      }
     }
     default: {
       return state;
