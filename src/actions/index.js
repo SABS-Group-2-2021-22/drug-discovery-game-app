@@ -214,7 +214,6 @@ export function saveSketchedMoleculeSucceeded(molecule) {
 }
 
 export function runSketchedAssay(selected_mol, assays) {
-  console.log(assays)
   return (dispatch) => {
     dispatch(runSketchedAssaySucceeded(selected_mol, assays));
   }
@@ -242,18 +241,13 @@ export function constructPlotObjSketcherSucceeded(plot_data) {
 export function constructPlotObjSketcher(saved_sketched_mols) {
   let plot_data = {};
   for (const [k, v] of Object.entries(saved_sketched_mols)) {
-    let assay_obj = {};
-    const assays_run = Object.keys(v.data.assays_run).reduce(
-      (c, k) => ((c[k.toLowerCase().trim()] = v.data.assays_run[k]), c),
-      {}
-    );
     if (v.data.assays_run.descriptors) {
       var descriptor_obj = v.data.descriptors;
     } else {
       var descriptor_obj = {};
     }
     if (v.data.assays_run.tanimoto) {
-      var tanimoto_obj = v.data.tanimoto;
+      var tanimoto_obj = {tanimoto: v.data.tanimoto};
     } else {
       var tanimoto_obj = {};
     }
