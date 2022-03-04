@@ -252,10 +252,15 @@ export function constructPlotObjSketcher(saved_sketched_mols) {
     } else {
       var descriptor_obj = {};
     }
+    if (v.data.assays_run.tanimoto) {
+      var tanimoto_obj = v.data.tanimoto;
+    } else {
+      var tanimoto_obj = {};
+    }
     let blank = { "--": 0 };
     let metrics = {
-      ...assay_obj,
       ...descriptor_obj,
+      ...tanimoto_obj,
       ...blank,
     };
     plot_data[k] = metrics;

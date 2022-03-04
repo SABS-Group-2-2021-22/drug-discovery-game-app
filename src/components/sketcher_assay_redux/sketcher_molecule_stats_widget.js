@@ -14,7 +14,7 @@ class SketcherMoleculeStats extends React.Component {
   render() {
     return (
       <div className="mol-stats">
-        {this.props.saved_mols[this.props.mol_id].data.assays_run.filters && (
+        {this.props.saved_mols[this.props.mol_id].data.assays_run.lipinski && (
           <SketcherFilters mol_id={this.props.mol_id} />
         )}
         {this.props.saved_mols[this.props.mol_id].data.assays_run
@@ -32,8 +32,8 @@ function mapStateToProps(state) {
     saved_mols: state.saved_sketched_mols,
     assays_run: 
     state.saved_sketched_mols[state.selected_mol].data.assays_run,
-  filters_run: 
-    state.saved_sketched_mols[state.selected_mol].data.assays_run.filters,
+  lipinski_run: 
+    state.saved_sketched_mols[state.selected_mol].data.assays_run.lipinski,
   descriptors_run:
     state.saved_sketched_mols[state.selected_mol].data.assays_run.descriptors,
   tanimoto_run:

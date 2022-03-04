@@ -58,50 +58,10 @@ class SketcherAssayPanel extends React.Component {
   render() {
     return (
       <div className="assay-panel">
-        {/* <button
-          label="pIC50"
-          onClick={() => {
-            this.onClick("pIC50");
-          }}
-        >
-          pIC50
-        </button>
         <button
-          label="Clearance Mouse"
+          label="Run Lipinski Filters"
           onClick={() => {
-            this.onClick("clearance_mouse");
-          }}
-        >
-          Clearance Mouse
-        </button>
-        <button
-          label="Clearance Humam"
-          onClick={() => {
-            this.onClick("clearance_human");
-          }}
-        >
-          Clearance Human
-        </button>
-        <button
-          label="LogD"
-          onClick={() => {
-            this.onClick("logd");
-          }}
-        >
-          LogD
-        </button>
-        <button
-          label="PAMPA"
-          onClick={() => {
-            this.onClick("pampa");
-          }}
-        >
-          PAMPA
-        </button> */}
-        <button
-          label="Run Filters"
-          onClick={() => {
-            this.onClick("filters");
+            this.onClick("lipinski");
             this.runAssays();
           }}
         >
@@ -117,7 +77,7 @@ class SketcherAssayPanel extends React.Component {
           Calculate Descriptors
         </button>
         <button
-          label="Calculate Descriptors"
+          label="Calculate Tanimoto"
           onClick={() => {
             this.onClick("tanimoto");
             this.runAssays();
@@ -125,16 +85,6 @@ class SketcherAssayPanel extends React.Component {
         >
           Calculate Tanimoto Similarity to Clinical Drug
         </button>
-
-        {/* <button
-          label="Run_Assays"
-          onClick={() => {
-            this.onClick("drug_props")
-            this.runAssays();
-          }}
-        >
-          Run Assays
-        </button> */}
       </div>
     );
   }

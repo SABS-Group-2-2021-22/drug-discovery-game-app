@@ -116,6 +116,7 @@ class SketcherThePlot extends React.Component {
           <button onClick={() => this.relayout("h_don", "x")}>h don</button>
           <button onClick={() => this.relayout("rings", "x")}>rings</button>
           <button onClick={() => this.relayout("logP", "x")}>logP</button>
+          <button onClick={() => this.relayout("tanimoto", "x")}>Tanimoto</button>
         </div>
         <div>
           <button onClick={() => this.relayout("--", "y")}>Set Y axis-</button>
@@ -124,6 +125,7 @@ class SketcherThePlot extends React.Component {
           <button onClick={() => this.relayout("h_don", "y")}>h don</button>
           <button onClick={() => this.relayout("rings", "y")}>rings</button>
           <button onClick={() => this.relayout("logP", "y")}>logP</button>
+          <button onClick={() => this.relayout("tanimoto", "y")}>Tanimoto</button>
         </div>
       </div>
     );
