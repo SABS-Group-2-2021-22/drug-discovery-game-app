@@ -161,7 +161,7 @@ figcaption {
   justify-content: space-around;
   align-content: center;
   padding: 20px;
-  padding-left:0px;
+  padding-left:10px;
   padding-right:50px;
   text-align: justify;
 }

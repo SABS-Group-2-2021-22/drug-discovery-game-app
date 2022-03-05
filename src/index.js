@@ -15,7 +15,7 @@ import {
   AppRedux,
   AssayRedux,
   AnalysisRedux,
-  Results,
+  ResultsRedux,
   Footer,
 } from "./components";
 
@@ -53,7 +53,7 @@ class Index extends React.Component {
           <Route path="/app" element={<AppRedux />} />
           <Route path="/assay" element={<AssayRedux updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>} />
           <Route path="/analysis" element={<AnalysisRedux />} />
-          <Route path="/results" element={<Results />} />
+          <Route path="/results" element={<ResultsRedux />} />
         </Routes>
         <Footer time={this.state.time} money={this.state.money}/>
       </Router>

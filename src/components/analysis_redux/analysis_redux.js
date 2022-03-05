@@ -4,14 +4,18 @@ import SelectorPanel from "./selector_panel.js";
 import MoleculeList from "./molecule_list.js";
 import ThePlot from "./the_plot.js";
 import { connect } from "react-redux";
+import { fetchRoche } from "../../actions";
 
 class AnalysisRedux extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.dispatch(fetchRoche())
+  }
+
   render() {
-    console.log('analysis')
     return (
       <div className="wrapper">
         <div className="analysis">

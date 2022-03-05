@@ -3,6 +3,8 @@ const initialState = {
   all_r_groups: [],
   selected_r_groups: {'A': 'A01', 'B': 'B01', 'molecule':[]},
   saved_mols: {},
+  spider_data: {},
+  comp_text: {},
   }
 
 export default function r_groups(state = initialState, action) {
@@ -91,6 +93,24 @@ export default function r_groups(state = initialState, action) {
       return {
         ...state,
         plot_data: action.payload.plot_data
+      }
+    }
+    case "FETCH_ROCHE_SUCCEEDED": {
+      return {
+        ...state,
+          Roche: action.payload.Roche
+      }
+    }
+    case "FETCH_SPIDER_SUCCEEDED": {
+      return {
+        ...state,
+        spider_data: action.payload.spider_data
+      }
+    }
+    case "FETCH_COMP_TEXT_SUCCEEDED": {
+      return {
+        ...state,
+        comp_text: action.payload.comp_text
       }
     }
     default: {
