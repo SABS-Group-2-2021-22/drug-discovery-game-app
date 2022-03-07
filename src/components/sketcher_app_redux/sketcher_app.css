@@ -33,18 +33,19 @@
   }
 
 .molecule_list {
-  justify-content: center;
-  text-align: center;
-  vertical-align: middle;
   height: 100%;
   width: 100%;
+  display:flex;
+  flex-direction: column;
 }
 
 .placeholder_text {
-  flex: 1;
-  /* height: 100%;
-  width: 100%; */
-  transform: translate(0%, 2000%)
+  padding: 4%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  height: 100%;
 }
 .ketcher {
   display: flex;

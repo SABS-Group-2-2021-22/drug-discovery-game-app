@@ -14,7 +14,7 @@ class SketcherMoleculeImage extends React.Component {
 
   render() {
     return (
-      <div class="molecule">
+      <div className="molecule">
         <img
           src={this.props.saved_mols[this.props.mol_id].data.img_html}
           alt="Drug"

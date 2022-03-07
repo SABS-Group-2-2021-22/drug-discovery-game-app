@@ -1,6 +1,7 @@
 import React from "react";
 import { connect} from "react-redux";
 import SketchedMoleculeList from "./sketched_molecule_list";
+import SketcherPopUp from "./sketcher_pop_up";
 import Sketcher from "./sketcher"
 import { saveSketchedMolecule} from "../../actions";
 import "./sketcher_app.css"
@@ -24,9 +25,21 @@ class SketcherAppRedux extends React.Component {
                     <div className="ketcher">
                         <Sketcher saveSketchedMoleculeChild = {this.saveSketchedMoleculeParent}/>
                     </div>
+                    <div>
+                    {(this.props.sketcher_error[this.props.sketcher_error.length - 1] === 1) && <SketcherPopUp/>}
+                    </div>
                 </div>
+
         )
     }
 }
 
-export default connect( ) (SketcherAppRedux)
+function mapStateToProps(state) {
+    return {
+      sketcher_error: state.sketcher_error
+    };
+  }
+  
+
+
+export default connect (mapStateToProps) (SketcherAppRedux)

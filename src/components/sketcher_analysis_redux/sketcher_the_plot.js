@@ -100,8 +100,8 @@ class SketcherThePlot extends React.Component {
         <Plot
           data={this.addTraces([this.props.plot_data])}
           layout={{
-            width: 1800,
-            height: 1000,
+            // width: 1800,
+            // height: 1000,
             title: "Analysis Plot",
             xaxis: { title: { text: this.state.x_axis } },
             yaxis: { title: { text: this.state.y_axis } },

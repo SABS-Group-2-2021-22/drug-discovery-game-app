@@ -14,13 +14,19 @@ class SketcherMoleculeStats extends React.Component {
   render() {
     return (
       <div className="mol-stats">
-        {this.props.saved_mols[this.props.mol_id].data.assays_run.lipinski && (
-          <SketcherFilters mol_id={this.props.mol_id} />
-        )}
+        <center>
+        {this.props.saved_mols[this.props.mol_id].data.assays_run.lipinski ? 
+          "Lipinksi Rules Checked ✅" : "Lipinksi Rules Checked 🚫" 
+        }
+        </center>
+        <center>
         {this.props.saved_mols[this.props.mol_id].data.assays_run
-          .descriptors && <SketcherDescriptors mol_id={this.props.mol_id} />}
+          .descriptors ? "Descriptors Calculated ✅": "Descriptors Calculated 🚫"}
+        </center>
+        <center>
         {this.props.saved_mols[this.props.mol_id].data.assays_run
-          .tanimoto && <SketcherTanimoto mol_id={this.props.mol_id} />}
+          .tanimoto ? "Tanimoto Similarity Calculated ✅": "Tanimoto Similarity Calculated 🚫"}
+        </center>
       </div>
     );
   }

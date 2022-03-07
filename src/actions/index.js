@@ -199,7 +199,13 @@ export function saveSketchedMolecule(mol_block) {
   return (dispatch) => {
     api.fetchsketchedMolecule(mol_block).then((response) => {
       const molecule = response;
-      dispatch(saveSketchedMoleculeSucceeded(molecule));
+      if (molecule.data !== 'failure') {
+        dispatch(saveSketchedMoleculeSucceeded(molecule));
+      }
+      else {
+        dispatch(saveSketchedMoleculeFailed());
+      }
+
     })
   };
 }
@@ -211,6 +217,31 @@ export function saveSketchedMoleculeSucceeded(molecule) {
       saved_mol: molecule
     }
 }
+}
+
+export function saveSketchedMoleculeFailed() {
+  return {
+    type: "SAVE_SKETCHED_MOLECULE_FAILED",
+    payload: {
+      sketcher_error: 1
+    }
+}
+}
+
+export function closePopUp() {
+  return (dispatch) => {
+        dispatch(closePopUpSucceeded());
+
+    }
+  };
+
+export function closePopUpSucceeded() {
+  return {
+    type: 'POPUP_CLOSED_SUCCEEDED',
+    payload: {
+      sketcher_error: 0,
+    },
+  }
 }
 
 export function runSketchedAssay(selected_mol, assays) {

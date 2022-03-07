@@ -11,7 +11,7 @@ class SketcherMoleculeList extends React.Component {
   render() {
     return (
       <div className="molecule_list">
-      {(Object.keys(this.props.saved_sketched_mols).length === 0) && <div className="placeholder_text"> Draw some molecules and they appear here!</div>}
+      {(Object.keys(this.props.saved_sketched_mols).length === 0) && <center className="placeholder_text"> Draw some molecules and they appear here!</center>}
       {(Object.keys(this.props.saved_sketched_mols).length  > 0) && Array.from(
         { length: Object.keys(this.props.saved_sketched_mols).length },
         (_, i) => (

@@ -4,6 +4,7 @@ const initialState = {
   selected_r_groups: {'A': 'A01', 'B': 'B01', 'molecule':[]},
   saved_mols: {},
   saved_sketched_mols: [],
+  sketcher_error: [],
   }
 
 export default function r_groups(state = initialState, action) {
@@ -86,6 +87,18 @@ export default function r_groups(state = initialState, action) {
       return {
         ...state, 
         saved_sketched_mols: [...state.saved_sketched_mols, action.payload.saved_mol]
+      }
+    }
+    case "SAVE_SKETCHED_MOLECULE_FAILED": {
+      return {
+        ...state, 
+        sketcher_error: [...state.sketcher_error, action.payload.sketcher_error]
+      }
+    }
+    case "POPUP_CLOSED_SUCCEEDED": {
+      return {
+        ...state, 
+        sketcher_error: [...state.sketcher_error, action.payload.sketcher_error]
       }
     }
     case 'RUN_SKETCHED_ASSAY_SUCCEEDED': {

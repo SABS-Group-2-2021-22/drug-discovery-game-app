@@ -37,7 +37,6 @@ export class Sketcher extends React.Component <SketcherType>{
   triggerSaving = async () => {
       const mol = await this.ketcher.getMolfile();
       const multiline_mol = Buffer.from(mol).toString('base64')
-      console.log(multiline_mol)
       this.props.saveSketchedMoleculeChild(multiline_mol)
   }
 
