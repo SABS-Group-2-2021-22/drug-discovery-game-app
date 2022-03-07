@@ -6,10 +6,10 @@
     max-width: 100%;
   }
 
-  .wrapper{
+  /* .wrapper{
     height: 83vh;
     margin: 0;
-  }
+  } */
 
   .build {
     display: flex;
@@ -29,6 +29,7 @@
     /* background-color:chartreuse; */
     background-color:white; 
     padding:10px;
+    margin-bottom: 10pt;
   }
 
   .r-group-list {
@@ -61,8 +62,9 @@
   }
 
   .r-group-img {
-    width:210px;
+    width:100%;
     height: auto;
+    min-width: 100pt;
   }
 
 
@@ -70,6 +72,7 @@
     display: flex;
     flex:3 ; 
     flex-direction: column;
+    margin-bottom: 20pt;
   }
 
   .rendered-molecule {

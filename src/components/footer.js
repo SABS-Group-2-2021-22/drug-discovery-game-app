@@ -10,9 +10,9 @@ class _Footer extends React.Component {
   userStatus = () => {
     return (
       <div className="user-status-box">
-      <h5> {this.props.user.username} </h5>
-      <Link to='/login' onClick={this.props.logout}> Log out </Link>
-    </div>
+        <h5> {this.props.user.username} </h5>
+        <Link to='/login' onClick={this.props.logout}> Log out </Link>
+      </div>
     )
   }
 
@@ -22,17 +22,17 @@ class _Footer extends React.Component {
         <footer class="py-3 bg-dark fixed-bottom">
           <div class="container">
             <div className="user-status">
-          <p class="m-0 text-start text-white">
-              { this.props.loggedIn && this.userStatus() }
-            </p>
+              <p class="m-0 text-start text-white">
+                {this.props.loggedIn && this.userStatus()}
+              </p>
             </div>
             <div className="time-money-status">
-            <p class="m-0 text-end text-white">
-              <h5>🕑: {this.props.time} weeks left</h5>
-            </p>
-            <p class="m-0 text-end text-white">
-              <h5>💰: £{this.props.money}</h5>
-            </p>
+              <p class="m-0 text-end text-white">
+                <h5>🕑: {this.props.time} weeks left</h5>
+              </p>
+              <p class="m-0 text-end text-white">
+                <h5>💰: £{this.props.money}</h5>
+              </p>
             </div>
           </div>
         </footer>
@@ -44,7 +44,7 @@ class _Footer extends React.Component {
 
 function mapState(state) {
   const { login } = state;
-  const { loggedIn, user } = login ; 
+  const { loggedIn, user } = login;
   return { loggedIn, user };
 }
 
