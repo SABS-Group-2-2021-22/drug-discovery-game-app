@@ -56,8 +56,8 @@ export function saveMoleculeSucceeded(saved_mols) {
   return {
     type: "SAVE_MOLECULE_SUCCEEDED",
     payload: {
-      saved_mols: saved_mols
-    }
+      saved_mols: saved_mols,
+    },
   };
 }
 
@@ -77,8 +77,8 @@ export function fetchFiltersSucceeded(mol, filters) {
     payload: {
       molecule: mol,
       filters: filters,
-    }
-  }
+    },
+  };
 }
 
 export function saveMolecule(saved_mols, selected_r_groups) {
@@ -90,14 +90,18 @@ export function saveMolecule(saved_mols, selected_r_groups) {
       selected_r_groups.B
     );
     await dispatch(saveMoleculeSucceeded(saved_mols));
-    api.fetchDescriptors(selected_r_groups.A, selected_r_groups.B).then((response) => {
-      let descriptors = response.data.descriptors[mol_id]
-      dispatch(fetchDescriptorsSucceeded(mol_id, descriptors))
-    });
-    api.fetchFilters(selected_r_groups.A, selected_r_groups.B).then((response) => {
-      let filters = response.data.lipinski[mol_id]
-      dispatch(fetchFiltersSucceeded(mol_id, filters))
-    })
+    api
+      .fetchDescriptors(selected_r_groups.A, selected_r_groups.B)
+      .then((response) => {
+        let descriptors = response.data.descriptors[mol_id];
+        dispatch(fetchDescriptorsSucceeded(mol_id, descriptors));
+      });
+    api
+      .fetchFilters(selected_r_groups.A, selected_r_groups.B)
+      .then((response) => {
+        let filters = response.data.lipinski[mol_id];
+        dispatch(fetchFiltersSucceeded(mol_id, filters));
+      });
   };
 }
 
@@ -118,7 +122,7 @@ export function selectMolecule(selected_mol) {
 
 export function runAssaySucceeded(selected_mol, assays) {
   return {
-    type: 'RUN_ASSAY_SUCCEEDED',
+    type: "RUN_ASSAY_SUCCEEDED",
     payload: {
       molecule: selected_mol,
       assays_run: assays,
@@ -132,36 +136,13 @@ export function runAssay(selected_mol, assays) {
   };
 }
 
-export function chooseMoleculeSucceeded(selected_mol) {
-  return {
-    type: 'CHOOSE_MOLECULE_SUCCEEDED',
-    payload: {
-      chosen_mol: selected_mol
-    },
-  };
-}
-
-export function chooseMolecule(selected_mol) {
-  return (dispatch) => {
-    dispatch(chooseMoleculeSucceeded(selected_mol));
-  };
-}
-
-export function postChosen(selected_mol) {
-  const r_group_A = selected_mol.slice(0, 3) 
-  const r_group_B = selected_mol.slice(3, 6)
-  return (
-    api.postChosen(r_group_A, r_group_B)
-  );
-}
-
 export function constructPlotObjSucceeded(plot_data) {
   return {
-    type: 'CONSTRUCT_PLOT_OBJECT_SUCCEEDED',
+    type: "CONSTRUCT_PLOT_OBJECT_SUCCEEDED",
     payload: {
-      plot_data: plot_data
-    }
-  }
+      plot_data: plot_data,
+    },
+  };
 }
 
 export function constructPlotObj(saved_mols) {
@@ -294,6 +275,98 @@ export function constructPlotObjSketcher(saved_sketched_mols) {
     dispatch(constructPlotObjSketcherSucceeded(plot_data));
   };
 }
+export function fetchRocheSucceeded(Roche) {
+  return {
+    type: "FETCH_ROCHE_SUCCEEDED",
+    payload: {
+      Roche: Roche,
+    },
+  };
+}
+
+export function fetchRoche() {
+  return (dispatch) => {
+    api.fetchMolecule("A05", "B07", "800,800").then((response) => {
+      dispatch(fetchRocheSucceeded(response));
+    });
+  };
+}
+
+
+export function fetchSpiderObjSucceeded(spider_data) {
+  return {
+    type: "FETCH_SPIDER_SUCCEEDED",
+    payload: {
+      spider_data: spider_data,
+    },
+  };
+}
+
+export function fetchCompTextSucceeded(comp_text) {
+  return {
+    type: "FETCH_COMP_TEXT_SUCCEEDED",
+    payload: {
+      comp_text: comp_text,
+    },
+  };
+}
+
+export function chooseMoleculeSucceeded(selected_mol) {
+  return {
+    type: "CHOOSE_MOLECULE_SUCCEEDED",
+    payload: {
+      chosen_mol: selected_mol,
+    },
+  };
+}
+
+export function postChosenSucceeded() {
+  return {
+    type: "POST_CHOSEN_SUCCEEDED",
+  };
+}
+
+export function chooseMolecule(selected_mol) {
+  return async (dispatch) => {
+    dispatch(chooseMoleculeSucceeded(selected_mol));
+    const r_group_A = selected_mol.slice(0, 3);
+    const r_group_B = selected_mol.slice(3, 6);
+    await api.postChosen(r_group_A, r_group_B)
+    dispatch(postChosenSucceeded())
+  };
+}
+
+export function postChosen(selected_mol) {
+  const r_group_A = selected_mol.slice(0, 3);
+  const r_group_B = selected_mol.slice(3, 6);
+  return async (dispatch) => {
+    const { post_chosen } = await api.postChosen(r_group_A, r_group_B);
+    await dispatch(postChosenSucceeded());
+    await api.fetchSpiderObj().then((response) => {
+      dispatch(fetchSpiderObjSucceeded(response));
+    });
+    await api.fetchCompText().then((response) => {
+      dispatch(fetchCompTextSucceeded(response));
+    });
+  };
+}
+
+export function fetchSpiderObj() {
+  return (dispatch) => {
+    api.fetchSpiderObj().then((response) => {
+      dispatch(fetchSpiderObjSucceeded(response));
+    });
+  };
+}
+
+export function fetchCompText() {
+  return (dispatch) => {
+    api.fetchCompText().then((response) => {
+      dispatch(fetchCompTextSucceeded(response));
+    });
+  };
+}
+
 
 
 

@@ -48,3 +48,11 @@ export function postChosen(r_group_id_A, r_group_id_B) {
     "/choose?r1=" + r_group_id_A + "&r2=" + r_group_id_B
   );
 }
+
+export function fetchSpiderObj() {
+  return client.get("/getspiderdata");
+}
+
+export function fetchCompText() {
+  return client.get("/comparisontxt");
+}

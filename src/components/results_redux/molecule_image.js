@@ -1,25 +1,24 @@
 import React from "react";
-import "../analysis.css";
+import "../results.css";
 import { connect } from "react-redux";
-import { selectMolecule } from "../../actions";
 
 class MoleculeImage extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  selectMolecule = () => {
-    this.props.dispatch(selectMolecule(this.props.mol_id));
+  srcRoute = () => {
+    if (this.props.mol_id === "Roche") {
+      return this.props.Roche.data.img_html;
+    } else {
+      return this.props.saved_mols[this.props.mol_id].data.img_html;
+    }
   };
 
   render() {
     return (
       <div className="molecule">
-        <img
-          src={this.props.saved_mols[this.props.mol_id].data.img_html}
-          alt="Drug"
-          onClick={this.selectMolecule}
-        />
+        <img src={this.srcRoute()} alt="Drug" />
       </div>
     );
   }
@@ -28,6 +27,7 @@ class MoleculeImage extends React.Component {
 function mapStateToProps(state) {
   return {
     saved_mols: state.saved_mols,
+    Roche: state.Roche,
   };
 }
 

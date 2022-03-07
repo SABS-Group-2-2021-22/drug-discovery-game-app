@@ -2,28 +2,38 @@ import React from "react";
 import "../analysis.css";
 import { connect } from "react-redux";
 import { chooseMolecule } from "../../actions";
-import { postChosen } from "../../actions";
+import { fetchSpiderObj } from "../../actions";
+import { fetchCompText } from "../../actions";
 import { Link } from "react-router-dom";
 
 class SelectorPanel extends React.Component {
   constructor(props) {
     super(props);
   }
-
   chooseMolecule = () => {
     this.props.dispatch(chooseMolecule(this.props.selected_mol));
+  };
+
+  fetchSpider = () => {
+    this.props.dispatch(fetchSpiderObj())
+  };
+
+  fetchCompText = () => {
+    this.props.dispatch(fetchCompText())
   }
 
-  submitMolecule = () => {
-      this.props.dispatch(postChosen(this.props.chosen_mol));
+  submitResult = () => {
+    this.fetchSpider();
+    this.fetchCompText();
   }
+
 
   render() {
     return (
       <div className="control-panel">
         <button onClick={this.chooseMolecule}>Choose This Molecule</button>
         <Link to="/results">
-          <button onClick={this.submitMolecule}>Reveal Final Molecule</button>
+          <button onClick={this.submitResult}>Reveal Final Molecule</button>
         </Link>
       </div>
     );
