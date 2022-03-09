@@ -11,6 +11,7 @@ class SketcherSelectorPanel extends React.Component {
   }
 
   chooseMolecule = () => {
+    console.log("SELECTED " + this.props.selected_mol)
     this.props.dispatch(chooseMolecule(this.props.selected_mol));
   }
 
@@ -22,7 +23,7 @@ class SketcherSelectorPanel extends React.Component {
     return (
       <div className="control-panel">
         <button onClick={this.chooseMolecule}>Choose This Molecule</button>
-        <Link to="/results">
+        <Link to="/sketcher-results">
           <button onClick={this.submitMolecule}>Reveal Final Molecule</button>
         </Link>
       </div>

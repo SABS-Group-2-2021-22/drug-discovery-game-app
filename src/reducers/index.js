@@ -113,13 +113,7 @@ export default function r_groups(state = initialState, action) {
             data: {
               ...state.saved_sketched_mols[action.payload.molecule].data,
               assays_run: action.payload.assays_run
-              
-              
-              
-              /* [
-                ...state.saved_mols[action.payload.molecule].data.assays_run,
-                action.payload.assays_run,
-              ], */
+            
             },
           },
         },

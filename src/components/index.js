@@ -8,3 +8,4 @@ export { default as ResultsRedux } from "./results_redux/results_redux";
 export { default as SketcherAppRedux } from "./sketcher_app_redux/sketcher_app_redux";
 export { default as SketcherAssayRedux } from "./sketcher_assay_redux/sketcher_assay_redux";
 export { default as SketcherAnalysisRedux } from "./sketcher_analysis_redux/sketcher_analysis_redux";
+export { default as SketcherResultsRedux } from "./sketcher_results_redux/sketcher_results_redux";

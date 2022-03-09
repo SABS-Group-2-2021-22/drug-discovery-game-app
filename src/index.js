@@ -20,6 +20,7 @@ import {
   SketcherAppRedux,
   SketcherAssayRedux,
   SketcherAnalysisRedux,
+  SketcherResultsRedux,
 } from "./components";
 
 
@@ -61,6 +62,7 @@ class Index extends React.Component {
           <Route path="/sketcher" element={<SketcherAppRedux />} />
           <Route path="/sketcher-assay" element={<SketcherAssayRedux />} />
           <Route path="/sketcher-analysis" element={<SketcherAnalysisRedux />} />
+          <Route path="/sketcher-results" element={<SketcherResultsRedux />} />
         </Routes>
         <Footer time={this.state.time} money={this.state.money}/>
       </Router>
