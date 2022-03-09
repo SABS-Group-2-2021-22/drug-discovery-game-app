@@ -3,7 +3,7 @@ import "./home.css";
 import { Link } from "react-router-dom";
 import pymolpic from "./pymolMMP12.png";
 import { connect } from 'react-redux'
-import { fetchRGroup, selectRGroup } from "../actions";
+import { fetchRGroup, selectRGroup, setGamemodeAction } from "../actions";
 
 
 class Home extends React.Component {
@@ -20,6 +20,14 @@ class Home extends React.Component {
         "800,800"
       )
     );
+  }
+
+  setBuilderMode = () => {
+    this.props.dispatch(setGamemodeAction('builder'))
+  }
+
+  setSketcherMode = () => {
+    this.props.dispatch(setGamemodeAction('sketcher'))
   }
 
   render() {
@@ -44,8 +52,14 @@ class Home extends React.Component {
           </div>
           <div className="button-area">
             <div className="control-panel">
+            {/* <Link to="/app"> */}
+              <button onClick={this.setBuilderMode}>Beginner</button>
+              {/* </Link> */}
+              {/* <Link to="/app"> */}
+              <button onClick={this.setSketcherMode}>Advanced</button>
+              {/* </Link> */}
               <Link to="/app">
-                <button>Start</button>
+              <button>Start</button>
               </Link>
             </div>
           </div>

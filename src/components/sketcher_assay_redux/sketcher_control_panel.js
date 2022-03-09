@@ -18,7 +18,7 @@ class SketcherControlPanel extends React.Component {
   render() {
     return ( 
       <div className="control-panel">
-        <Link to="/sketcher-analysis">
+        <Link to="/analysis">
           <button onClick={this.initPlotData}>Analysis</button>
         </Link>
       </div>

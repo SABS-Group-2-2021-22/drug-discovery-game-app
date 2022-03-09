@@ -125,6 +125,12 @@ export default function r_groups(state = initialState, action) {
         chosen_mol: action.payload.chosen_mol
       }
     }
+    case "CHOOSE_SKETCHED_MOLECULE_SUCCEEDED": {
+      return {
+        ...state,
+        chosen_mol: action.payload.chosen_mol
+      }
+    }
     case "CONSTRUCT_PLOT_OBJECT_SUCCEEDED": {
       return {
         ...state,
@@ -147,6 +153,12 @@ export default function r_groups(state = initialState, action) {
       return {
         ...state,
         comp_text: action.payload.comp_text
+      }
+    }
+    case "GAME_MODE_SET": {
+      return {
+        ...state,
+        gamemode: action.payload.gamemode
       }
     }
     default: {

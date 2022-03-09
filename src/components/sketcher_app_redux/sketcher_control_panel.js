@@ -21,7 +21,7 @@ render() {
               <div className="sketcher-control-panel">
                 <button>Clear</button>
                 <button onClick={this.props.triggerSaving }>Save</button>
-                <Link to="/sketcher-assay">
+                <Link to="/assay">
                   <button onClick={this.initSelectMolecule}>Assay</button>
                 </Link>
               </div>

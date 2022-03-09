@@ -42,22 +42,22 @@ class SketcherResultsRedux extends React.Component {
                     <div className="molecule-image">
                       <figure>
                         <div className="display_molecule_bar">
-                          <SketcherMoleculeImage mol_id={this.props.chosen_mol} />
+                          <SketcherMoleculeImage mol_id={this.props.chosen_mol[0]} />
                         </div>
                       </figure>
                     </div>
                     <div class="container" className="molecule-descriptors">
-                      {/* <SketcherAssays mol_id={this.props.chosen_mol} /> */}
+                      <SketcherAssays mol_id={this.props.chosen_mol[0]} />
                     </div>
                   </div>
                 </div>
               </div>
               <div className="plot-and-explanation">
                 <div className="spider-plot">
-                  {/* <SketcherSpiderPlot /> */}
+                  <SketcherSpiderPlot />
                 </div>
                 <div className='explanation-and-button'>
-                  {/* <SketcherComparisonText /> */}
+                  <SketcherComparisonText />
                   <Link to="/">
                     <button> End Game </button>
                   </Link>

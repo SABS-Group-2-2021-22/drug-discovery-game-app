@@ -100,8 +100,8 @@ class SketcherThePlot extends React.Component {
         <Plot
           data={this.addTraces([this.props.plot_data])}
           layout={{
-            // width: 1800,
-            // height: 1000,
+            width: 1800,
+            height: 1000,
             title: "Analysis Plot",
             xaxis: { title: { text: this.state.x_axis } },
             yaxis: { title: { text: this.state.y_axis } },
@@ -111,6 +111,10 @@ class SketcherThePlot extends React.Component {
         />
         <div>
           <button onClick={() => this.relayout("--", "x")}>Set X axis</button>
+          <button onClick={() => this.relayout("logd", "x")}>logd</button>
+          <button onClick={() => this.relayout("pic50", "x")}>pIC50</button>
+          <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button>
+          <button onClick={() => this.relayout("HA", "x")}>HA</button>
           <button onClick={() => this.relayout("MW", "x")}>MW</button>
           <button onClick={() => this.relayout("h_acc", "x")}>h acc</button>
           <button onClick={() => this.relayout("h_don", "x")}>h don</button>
@@ -120,6 +124,10 @@ class SketcherThePlot extends React.Component {
         </div>
         <div>
           <button onClick={() => this.relayout("--", "y")}>Set Y axis-</button>
+          <button onClick={() => this.relayout("logd", "y")}>logd</button>
+          <button onClick={() => this.relayout("pic50", "y")}>pIC50</button>
+          <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button>
+          <button onClick={() => this.relayout("HA", "y")}>HA</button>
           <button onClick={() => this.relayout("MW", "y")}>MW</button>
           <button onClick={() => this.relayout("h_acc", "y")}>h acc</button>
           <button onClick={() => this.relayout("h_don", "y")}>h don</button>

@@ -59,6 +59,46 @@ class SketcherAssayPanel extends React.Component {
     return (
       <div className="assay-panel">
         <button
+          label="pIC50"
+          onClick={() => {
+            this.onClick("pIC50");
+          }}
+        >
+          pIC50
+        </button>
+        <button
+          label="Clearance Mouse"
+          onClick={() => {
+            this.onClick("clearance_mouse");
+          }}
+        >
+          Clearance Mouse
+        </button>
+        <button
+          label="Clearanace Humam"
+          onClick={() => {
+            this.onClick("clearance_human");
+          }}
+        >
+          Clearance Human
+        </button>
+        <button
+          label="LogD"
+          onClick={() => {
+            this.onClick("logd");
+          }}
+        >
+          LogD
+        </button>
+        <button
+          label="PAMPA"
+          onClick={() => {
+            this.onClick("pampa");
+          }}
+        >
+          PAMPA
+        </button>
+        <button
           label="Run Lipinski Filters"
           onClick={() => {
             this.onClick("lipinski");
@@ -77,13 +117,13 @@ class SketcherAssayPanel extends React.Component {
           Calculate Descriptors
         </button>
         <button
-          label="Calculate Tanimoto"
+          label="Run_Assays"
           onClick={() => {
-            this.onClick("tanimoto");
+            this.onClick("drug_props")
             this.runAssays();
           }}
         >
-          Calculate Tanimoto Similarity to Clinical Drug
+          Run Assays
         </button>
       </div>
     );

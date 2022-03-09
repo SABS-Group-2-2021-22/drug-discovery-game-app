@@ -36,26 +36,6 @@ function Navigation() {
                     Results
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/sketcher">
-                    Sketcher
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/sketcher-assay">
-                    Sketcher Assay
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/sketcher-analysis">
-                    Sketcher Analysis
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/sketcher-results">
-                    Sketcher Results
-                  </NavLink>
-                </li>
               </ul>
             </div>
           </div>

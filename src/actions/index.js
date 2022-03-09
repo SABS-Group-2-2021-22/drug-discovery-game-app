@@ -253,6 +253,16 @@ export function constructPlotObjSketcherSucceeded(plot_data) {
 export function constructPlotObjSketcher(saved_sketched_mols) {
   let plot_data = {};
   for (const [k, v] of Object.entries(saved_sketched_mols)) {
+    let assay_obj = {};
+    const assays_run = Object.keys(v.data.assays_run).reduce(
+      (c, k) => ((c[k.toLowerCase().trim()] = v.data.assays_run[k]), c),
+      {}
+    );
+    for (const [K, V] of Object.entries(v.data.drug_props)) {
+      if (K in assays_run) {
+        assay_obj[K] = V;
+      }
+    }
     if (v.data.assays_run.descriptors) {
       var descriptor_obj = v.data.descriptors;
     } else {
@@ -265,6 +275,7 @@ export function constructPlotObjSketcher(saved_sketched_mols) {
     }
     let blank = { "--": 0 };
     let metrics = {
+      ...assay_obj,
       ...descriptor_obj,
       ...tanimoto_obj,
       ...blank,
@@ -275,6 +286,60 @@ export function constructPlotObjSketcher(saved_sketched_mols) {
     dispatch(constructPlotObjSketcherSucceeded(plot_data));
   };
 }
+
+export function chooseSketchedMolecule(id, smiles) {
+  return async (dispatch) => {
+    dispatch(chooseSketchedMoleculeSucceeded(id, smiles));
+    await api.postSketchedChosen(id, smiles)
+    dispatch(postSketchedChosenSucceeded())
+  };
+}
+
+
+export function chooseSketchedMoleculeSucceeded(id, smiles) {
+  return {
+    type: "CHOOSE_SKETCHED_MOLECULE_SUCCEEDED",
+    payload: {
+      chosen_mol: [id, smiles],
+    },
+  };
+}
+
+export function postSketchedChosen(id, smiles) {
+  return async (dispatch) => {
+    const { post_chosen } = await api.postChosen(id, smiles);
+    await dispatch(postChosenSucceeded());
+    await api.fetchSketchedSpiderObj().then((response) => {
+      dispatch(fetchSpiderObjSucceeded(response));
+    });
+    await api.fetchSketchedCompText().then((response) => {
+      dispatch(fetchCompTextSucceeded(response));
+    });
+  };
+}
+
+export function postSketchedChosenSucceeded() {
+  return {
+    type: "POST_SKETCHED_CHOSEN_SUCCEEDED",
+  };
+}
+
+export function fetchSketchedSpiderObj() {
+  return (dispatch) => {
+    api.fetchSketchedSpiderObj().then((response) => {
+      dispatch(fetchSpiderObjSucceeded(response));
+    });
+  };
+}
+
+export function fetchSketchedCompText() {
+  return (dispatch) => {
+    api.fetchSketchedCompText().then((response) => {
+      dispatch(fetchCompTextSucceeded(response));
+    });
+  };
+}
+
 export function fetchRocheSucceeded(Roche) {
   return {
     type: "FETCH_ROCHE_SUCCEEDED",
@@ -366,6 +431,21 @@ export function fetchCompText() {
     });
   };
 }
+
+export function setGamemodeActionSucceeded(mode) {
+  return {
+    type: "GAME_MODE_SET",
+    payload: {
+      gamemode: mode
+    }
+}
+}
+
+export function setGamemodeAction(mode) {
+  return (dispatch) => {
+        dispatch(setGamemodeActionSucceeded(mode));
+    }
+  };
 
 
 

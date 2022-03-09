@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import SketcherFilters from "./sketcher_filter_display.js";
 import SketcherDescriptors from "./sketcher_descriptor_display.js";
 import SketcherTanimoto from "./sketcher_tanimoto_display.js";
+import SketcherAssays from "./sketcher_assay_display.js";
 
 class SketcherMoleculeStats extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class SketcherMoleculeStats extends React.Component {
         {this.props.saved_mols[this.props.mol_id].data.assays_run
           .descriptors && <SketcherDescriptors mol_id={this.props.mol_id} />}
         {this.props.saved_mols[this.props.mol_id].data.assays_run
-          .tanimoto && <SketcherTanimoto mol_id={this.props.mol_id} />}
+          .drug_props && <SketcherAssays mol_id={this.props.mol_id} />}
       </div>
     );
   };

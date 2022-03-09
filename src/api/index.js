@@ -49,10 +49,25 @@ export function postChosen(r_group_id_A, r_group_id_B) {
   );
 }
 
+export function postSketchedChosen(id, smiles) {
+  return client.post(
+    "/sketcher_choose?id=" + id+ "&smiles=" + smiles
+  );
+}
+
+export function fetchSketchedSpiderObj() {
+  return client.get("/sketcher_getspiderdata");
+}
+
 export function fetchSpiderObj() {
   return client.get("/getspiderdata");
+}
+
+export function fetchSketchedCompText() {
+  return client.get("/sketcher_comparisontxt");
 }
 
 export function fetchCompText() {
   return client.get("/comparisontxt");
 }
+

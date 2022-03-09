@@ -26,7 +26,7 @@ class SketcherMoleculeImage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    saved_mols: state.saved_sketcher_mols,
+    saved_mols: state.saved_sketched_mols,
     Roche: state.Roche,
   };
 }
