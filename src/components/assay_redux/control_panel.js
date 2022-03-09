@@ -2,7 +2,7 @@ import React from "react";
 import "../assay.css";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { constructPlotObj } from "../../actions";
+import { analysisActions } from "../../actions";
 
 class ControlPanel extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class ControlPanel extends React.Component {
   initPlotData = () => {
     // creates object for plotting - firing it here just speeds 
     // ...things up a bit
-    this.props.dispatch(constructPlotObj(this.props.saved_mols));
+    this.props.constructPlotObj(this.props.saved_mols);
   };
 
   render() {
@@ -32,4 +32,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(ControlPanel);
+const actionCreators = {
+  constructPlotObj: analysisActions.constructPlotObj,
+}
+
+export default connect(mapStateToProps, actionCreators)(ControlPanel);

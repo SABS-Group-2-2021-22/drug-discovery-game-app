@@ -1,32 +1,31 @@
 import React from "react";
 import "../analysis.css";
 import { connect } from "react-redux";
-import { chooseMolecule } from "../../actions";
-import { fetchSpiderObj } from "../../actions";
-import { fetchCompText } from "../../actions";
+import { selectorActions } from "../../actions";
+import { analysisActions } from "../../actions";
 import { Link } from "react-router-dom";
 
 class SelectorPanel extends React.Component {
   constructor(props) {
     super(props);
   }
+
   chooseMolecule = () => {
-    this.props.dispatch(chooseMolecule(this.props.selected_mol));
+    this.props.chooseMolecule(this.props.selected_mol);
   };
 
   fetchSpider = () => {
-    this.props.dispatch(fetchSpiderObj())
+    this.props.fetchSpiderObj();
   };
 
   fetchCompText = () => {
-    this.props.dispatch(fetchCompText())
-  }
+    this.props.fetchCompText();
+  };
 
   submitResult = () => {
     this.fetchSpider();
     this.fetchCompText();
-  }
-
+  };
 
   render() {
     return (
@@ -37,7 +36,7 @@ class SelectorPanel extends React.Component {
         </Link>
       </div>
     );
-  };
+  }
 }
 
 function mapStateToProps(state) {
@@ -47,4 +46,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(SelectorPanel);
+const actionCreators = {
+  chooseMolecule: selectorActions.chooseMolecule,
+  fetchSpiderObj: analysisActions.fetchSpiderObj,
+  fetchCompText: analysisActions.fetchCompText,
+}
+
+export default connect(mapStateToProps, actionCreators)(SelectorPanel);

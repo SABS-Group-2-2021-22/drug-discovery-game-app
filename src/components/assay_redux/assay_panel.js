@@ -1,7 +1,7 @@
 import React from "react";
 import "../assay.css";
 import { connect } from "react-redux";
-import { runAssay, updateTime, updateMoney } from "../../actions";
+import { assayActions, gameActions } from "../../actions";
 
 class AssayPanel extends React.Component {
   constructor(props) {
@@ -24,29 +24,19 @@ class AssayPanel extends React.Component {
   costAssays = (assay) => {
     let arr = this.state.cost_assays;
     arr.push(assay);
-    this.setState({cost_assays: arr})
-  }
+    this.setState({ cost_assays: arr });
+  };
 
   resetCostAssays = () => {
-    this.setState({cost_assays: []})
-  }
+    this.setState({ cost_assays: [] });
+  };
 
   updateTime = () => {
-    this.props.dispatch(
-      updateTime(
-        this.state.cost_assays,
-        this.props.time
-      )
-    );
+    this.props.updateTime(this.state.cost_assays, this.props.time);
   };
 
   updateMoney = () => {
-    this.props.dispatch(
-      updateMoney(
-        this.state.cost_assays,
-        this.props.money
-      )
-    );
+    this.props.updateMoney(this.state.cost_assays, this.props.money);
   };
 
   runAssays = () => {
@@ -58,7 +48,7 @@ class AssayPanel extends React.Component {
     this.updateTime();
     this.updateMoney();
     this.resetCostAssays();
-    this.props.dispatch(runAssay(this.props.selected_mol, assays_run));
+    this.props.runAssay(this.props.selected_mol, assays_run);
   };
 
   onClick = (label) => {
@@ -100,7 +90,7 @@ class AssayPanel extends React.Component {
           label="Clearance Mouse"
           onClick={() => {
             this.onClick("clearance_mouse");
-            this.costAssays("clearance_mouse")
+            this.costAssays("clearance_mouse");
           }}
         >
           Clearance Mouse
@@ -118,7 +108,7 @@ class AssayPanel extends React.Component {
           label="LogD"
           onClick={() => {
             this.onClick("logd");
-            this.costAssays("logd")
+            this.costAssays("logd");
           }}
         >
           LogD
@@ -127,7 +117,7 @@ class AssayPanel extends React.Component {
           label="PAMPA"
           onClick={() => {
             this.onClick("pampa");
-            this.costAssays("pampa")
+            this.costAssays("pampa");
           }}
         >
           PAMPA
@@ -174,4 +164,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(AssayPanel);
+const actionCreators = {
+  updateMoney: gameActions.updateMoney,
+  updateTime: gameActions.updateTime,
+  runAssay: assayActions.runAssay,
+};
+
+export default connect(mapStateToProps, actionCreators)(AssayPanel);

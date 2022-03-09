@@ -4,7 +4,7 @@ import SelectorPanel from "./selector_panel.js";
 import MoleculeList from "./molecule_list.js";
 import ThePlot from "./the_plot.js";
 import { connect } from "react-redux";
-import { fetchRoche } from "../../actions";
+import { initActions } from "../../actions";
 
 class AnalysisRedux extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class AnalysisRedux extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchRoche())
+    this.props.fetchRoche();
   }
 
   render() {
@@ -32,4 +32,13 @@ class AnalysisRedux extends React.Component {
   }
 }
 
-export default connect()(AnalysisRedux);
+function mapStateToProps(state) {
+  return {
+  };
+}
+
+const actionCreators = {
+  fetchRoche: initActions.fetchRoche,
+};
+
+export default connect(mapStateToProps, actionCreators)(AnalysisRedux);

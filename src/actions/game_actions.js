@@ -1,8 +1,10 @@
+import * as api from "../api";
+
 export const gameActions = {
-    updateTime,
-    updateMoney,
-    resetGame,
-}
+  updateTime,
+  updateMoney,
+  resetGame,
+};
 
 function updateTimeSucceeded(time) {
   return {

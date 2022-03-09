@@ -1,7 +1,7 @@
 import React from "react";
 import "../analysis.css";
 import { connect } from "react-redux";
-import { selectMolecule } from "../../actions";
+import { selectorActions } from "../../actions";
 
 class MoleculeImage extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class MoleculeImage extends React.Component {
   }
 
   selectMolecule = () => {
-    this.props.dispatch(selectMolecule(this.props.mol_id));
+    this.props.selectMolecule(this.props.mol_id);
   };
 
   render() {
@@ -31,4 +31,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(MoleculeImage);
+const actionCreators = {
+  selectMolecule: selectorActions.selectMolecule,
+};
+
+export default connect(mapStateToProps, actionCreators)(MoleculeImage);

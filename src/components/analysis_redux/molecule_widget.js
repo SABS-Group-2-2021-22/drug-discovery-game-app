@@ -2,7 +2,6 @@ import React from "react";
 import "../analysis.css";
 import MoleculeImage from "./molecule_image.js";
 import MoleculeStats from "./molecule_stats.js";
-import { connect } from "react-redux"
 
 class MoleculeWidget extends React.Component {
   constructor(props) {

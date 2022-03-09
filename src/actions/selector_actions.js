@@ -4,7 +4,7 @@ export const selectorActions = {
   selectRGroup,
   selectMolecule,
   chooseMolecule,
-  postChosen,
+  //postChosen,
 };
 
 function selectRGroupSucceeded(r_group_id_A, r_group_id_B, molecule) {
@@ -67,7 +67,7 @@ function postChosenSucceeded() {
   };
 }
 
-function postChosen(selected_mol) {
+/*function postChosen(selected_mol) {
   const r_group_A = selected_mol.slice(0, 3);
   const r_group_B = selected_mol.slice(3, 6);
   return async (dispatch) => {
@@ -80,4 +80,4 @@ function postChosen(selected_mol) {
       dispatch(fetchCompTextSucceeded(response));
     });
   };
-}
+} */

@@ -2,9 +2,8 @@ import React from "react";
 import "./home.css";
 import { Link } from "react-router-dom";
 import pymolpic from "./pymolMMP12.png";
-import { connect } from 'react-redux'
-import { fetchRGroup, selectRGroup } from "../actions";
-
+import { connect } from "react-redux";
+import { initActions, selectorActions } from "../actions";
 
 class Home extends React.Component {
   constructor(props) {
@@ -12,14 +11,14 @@ class Home extends React.Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(fetchRGroup());
-    this.props.dispatch(
-      selectRGroup(
+    this.props.fetchRGroup();
+    
+      this.props.selectRGroup(
         this.props.selected_r_groups["A"],
         this.props.selected_r_groups["B"],
         "800,800"
       )
-    );
+    
   }
 
   render() {
@@ -58,8 +57,13 @@ class Home extends React.Component {
 function mapStateToProps(state) {
   return {
     r_groups: state.r_groups,
-    selected_r_groups: state.selected_r_groups
+    selected_r_groups: state.selected_r_groups,
   };
 }
 
-export default connect(mapStateToProps)(Home);
+const actionCreators = {
+  fetchRGroup: initActions.fetchRGroup,
+  selectRGroup: selectorActions.selectRGroup,
+};
+
+export default connect(mapStateToProps, actionCreators)(Home);

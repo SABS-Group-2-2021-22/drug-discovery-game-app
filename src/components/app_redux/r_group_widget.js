@@ -2,7 +2,7 @@ import React from "react";
 import RGroupStats from "./r_group_stats.js";
 import "../app.css";
 import { connect } from "react-redux";
-import { selectRGroup } from "../../actions";
+import { selectorActions } from "../../actions";
 
 class RGroupWidget extends React.Component {
   constructor(props) {
@@ -11,20 +11,16 @@ class RGroupWidget extends React.Component {
 
   selectRGroups = () => {
     if (this.props.r_group_id.charAt(0) === "A") {
-      this.props.dispatch(
-        selectRGroup(
-          this.props.r_group_id,
-          this.props.selected_r_groups["B"],
-          this.props.size
-        )
+      this.props.selectRGroup(
+        this.props.r_group_id,
+        this.props.selected_r_groups["B"],
+        this.props.size
       );
     } else {
-      this.props.dispatch(
-        selectRGroup(
-          this.props.selected_r_groups["A"],
-          this.props.r_group_id,
-          this.props.size
-        )
+      this.props.selectRGroup(
+        this.props.selected_r_groups["A"],
+        this.props.r_group_id,
+        this.props.size
       );
     }
   };
@@ -55,4 +51,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(RGroupWidget);
+const actionCreators = {
+  selectRGroup: selectorActions.selectRGroup,
+};
+
+export default connect(mapStateToProps, actionCreators)(RGroupWidget);
