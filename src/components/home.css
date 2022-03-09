@@ -20,7 +20,7 @@
     width:100%;
     flex-wrap: wrap;
     align-items: center;
-    padding-bottom: 50pt;
+    /* padding-bottom: 50pt; */
   }
 
   .hometitle{

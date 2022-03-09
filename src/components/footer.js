@@ -11,7 +11,7 @@ class _Footer extends React.Component {
     return (
       <div className="user-status-box">
         <h5> {this.props.user.username} </h5>
-        <Link to='/login' onClick={this.props.logout}> Log out </Link>
+        <Link className='navigation-link' to='/login' onClick={this.props.logout}> Log out </Link>
       </div>
     )
   }
@@ -19,7 +19,6 @@ class _Footer extends React.Component {
   render() {
     return (
       <div className="footer">
-        <footer class="py-3 bg-dark fixed-bottom">
           <div class="container">
             <div className="user-status">
               <p class="m-0 text-start text-white">
@@ -35,7 +34,7 @@ class _Footer extends React.Component {
               </p>
             </div>
           </div>
-        </footer>
+        {/* </footer> */}
       </div>
     );
   }
