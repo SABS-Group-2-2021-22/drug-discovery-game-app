@@ -4,7 +4,7 @@ import "./index.css";
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
-import r_groups from './reducers'
+import rootReducer from './reducers'
 import { devToolsEnhancer } from 'redux-devtools-extension'
 
 // import * as serviceWorker from "./serviceWorker";
@@ -16,10 +16,10 @@ import {
   AssayRedux,
   AnalysisRedux,
   ResultsRedux,
-  Footer,
+  FooterRedux,
 } from "./components";
 
-const store = createStore(r_groups, compose(applyMiddleware(thunk), devToolsEnhancer()))
+const store = createStore(rootReducer, compose(applyMiddleware(thunk), devToolsEnhancer()))
 
 class Index extends React.Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class Index extends React.Component {
           <Route path="/analysis" element={<AnalysisRedux />} />
           <Route path="/results" element={<ResultsRedux />} />
         </Routes>
-        <Footer time={this.state.time} money={this.state.money}/>
+        <FooterRedux/>
       </Router>
     )
   }

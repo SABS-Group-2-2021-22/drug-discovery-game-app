@@ -1,5 +1,7 @@
 
 const initialState = {
+  time: 30.0,
+  money: 100000.0,
   all_r_groups: [],
   selected_r_groups: {'A': 'A01', 'B': 'B01', 'molecule':[]},
   saved_mols: {},
@@ -7,7 +9,7 @@ const initialState = {
   comp_text: {},
   }
 
-export default function r_groups(state = initialState, action) {
+export default function appReducer(state = initialState, action) {
   switch (action.type) {
     case "FETCH_R_GROUP_SUCCEEDED": {
       return {
@@ -83,6 +85,19 @@ export default function r_groups(state = initialState, action) {
         },
       };
     }
+    case "UPDATE_TIME_SUCCEEDED": {
+      return {
+        ...state,
+        time: action.payload.time
+      };
+    }
+    case "UPDATE_MONEY_SUCCEEDED": {
+      return {
+        ...state,
+        money: action.payload.money
+      };
+    }
+    
     case "CHOOSE_MOLECULE_SUCCEEDED": {
       return {
         ...state,
@@ -113,11 +128,15 @@ export default function r_groups(state = initialState, action) {
         comp_text: action.payload.comp_text
       }
     }
+    case "RESET_GAME_SUCCEEDED": {
+      return initialState
+    }
     default: {
       return state;
     }
   }
 }
+
 
 
 

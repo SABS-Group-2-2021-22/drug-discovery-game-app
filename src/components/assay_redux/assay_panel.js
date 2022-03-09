@@ -1,7 +1,7 @@
 import React from "react";
 import "../assay.css";
 import { connect } from "react-redux";
-import { runAssay } from "../../actions";
+import { runAssay, updateTime, updateMoney } from "../../actions";
 
 class AssayPanel extends React.Component {
   constructor(props) {
@@ -10,6 +10,7 @@ class AssayPanel extends React.Component {
       selected_assays: [],
       assays_run: null,
       selected_mol: null,
+      cost_assays: [],
     };
   }
 
@@ -20,22 +21,49 @@ class AssayPanel extends React.Component {
     });
   }
 
+  costAssays = (assay) => {
+    let arr = this.state.cost_assays;
+    arr.push(assay);
+    this.setState({cost_assays: arr})
+  }
+
+  resetCostAssays = () => {
+    this.setState({cost_assays: []})
+  }
+
+  updateTime = () => {
+    this.props.dispatch(
+      updateTime(
+        this.state.cost_assays,
+        this.props.time
+      )
+    );
+  };
+
+  updateMoney = () => {
+    this.props.dispatch(
+      updateMoney(
+        this.state.cost_assays,
+        this.props.money
+      )
+    );
+  };
+
   runAssays = () => {
     let assays_run = this.state.assays_run;
     let selected_assays = this.state.selected_assays;
     for (var i = 0; i < selected_assays.length; i++) {
-      assays_run[selected_assays[i]] = true
+      assays_run[selected_assays[i]] = true;
     }
-    console.log(assays_run)
-    this.props.dispatch(
-      runAssay(this.props.selected_mol, assays_run)
-    );
+    this.updateTime();
+    this.updateMoney();
+    this.resetCostAssays();
+    this.props.dispatch(runAssay(this.props.selected_mol, assays_run));
   };
 
   onClick = (label) => {
-    console.log(this.state.assays_run)
     let arr = this.state.selected_assays;
-    if (arr.includes(label) == false){
+    if (arr.includes(label) == false) {
       arr.push(label);
     }
     this.setState({ selected_assays: arr });
@@ -52,6 +80,7 @@ class AssayPanel extends React.Component {
   componentDidUpdate() {
     if (this.state.selected_mol !== this.props.selected_mol) {
       this.resetSelection();
+      this.resetCostAssays();
     }
   }
 
@@ -62,6 +91,7 @@ class AssayPanel extends React.Component {
           label="pIC50"
           onClick={() => {
             this.onClick("pIC50");
+            this.costAssays("pIC50");
           }}
         >
           pIC50
@@ -70,6 +100,7 @@ class AssayPanel extends React.Component {
           label="Clearance Mouse"
           onClick={() => {
             this.onClick("clearance_mouse");
+            this.costAssays("clearance_mouse")
           }}
         >
           Clearance Mouse
@@ -78,6 +109,7 @@ class AssayPanel extends React.Component {
           label="Clearanace Humam"
           onClick={() => {
             this.onClick("clearance_human");
+            this.costAssays("clearance_human");
           }}
         >
           Clearance Human
@@ -86,6 +118,7 @@ class AssayPanel extends React.Component {
           label="LogD"
           onClick={() => {
             this.onClick("logd");
+            this.costAssays("logd")
           }}
         >
           LogD
@@ -94,6 +127,7 @@ class AssayPanel extends React.Component {
           label="PAMPA"
           onClick={() => {
             this.onClick("pampa");
+            this.costAssays("pampa")
           }}
         >
           PAMPA
@@ -120,7 +154,7 @@ class AssayPanel extends React.Component {
         <button
           label="Run_Assays"
           onClick={() => {
-            this.onClick("drug_props")
+            this.onClick("drug_props");
             this.runAssays();
           }}
         >
@@ -135,6 +169,8 @@ function mapStateToProps(state) {
   return {
     selected_mol: state.selected_mol,
     assays_run: state.saved_mols[state.selected_mol].data.assays_run,
+    time: state.time,
+    money: state.money,
   };
 }
 

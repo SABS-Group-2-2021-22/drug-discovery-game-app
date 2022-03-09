@@ -5,6 +5,7 @@ import MoleculeImage from "./molecule_image.js";
 import Assays from "./assay_display.js"
 import SpiderPlot from "./spider_plot.js"
 import ComparisonText from "./comparison_text.js"
+import { resetGame } from "../../actions";
 import { Link } from "react-router-dom";
 
 
@@ -12,6 +13,11 @@ class ResultsRedux extends React.Component {
     constructor(props) {
         super(props)
     };
+
+    resetGame = () => {
+        this.props.dispatch(resetGame())
+    }
+
 
     render() {
         if (!this.props.spider_data.data || !this.props.comp_text.data) {
@@ -59,7 +65,7 @@ class ResultsRedux extends React.Component {
                 <div className='explanation-and-button'>
                   <ComparisonText />
                   <Link to="/">
-                    <button> End Game </button>
+                    <button onClick={this.resetGame}> End Game </button>
                   </Link>
                 </div>
               </div>
