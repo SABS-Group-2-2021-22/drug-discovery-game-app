@@ -15,17 +15,6 @@
     justify-content: space-between;
 }
 
-/* Change color of link */
-/* .navigation-link {
-    color: #FFF;
-    text-decoration: none;
-}
-
-.navigation-link:hover {
-    color: #9a9c9e;
-    text-decoration: none;
-} */
-
 .user-status-box h5{
     font-weight: 400;
     font-size: max(3vh, 15px);
