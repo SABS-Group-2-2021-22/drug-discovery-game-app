@@ -235,7 +235,12 @@ class ControlPanel extends React.Component {
     const base_url = 'http://127.0.0.1:5000/save'
     fetch(base_url + '?r1=' + this.state.current_r_groups[0] 
                    + '&r2=' + this.state.current_r_groups[1], 
-                   {method: 'POST'})
+                  {
+                    method: 'POST',
+                    headers: {'Content-Type' : 'application/json'} ,  
+                    body: localStorage.getItem('user')
+                  })
+                   
       }
 
   render() {
@@ -314,6 +319,7 @@ export default Build;
 >>>>>>> main:src/components/build.js
 
 
+<<<<<<< HEAD
 /* // ========================================
 
 // ReactDOM.render(
@@ -321,3 +327,5 @@ export default Build;
 //   document.getElementById('root')
 // ); */
 
+=======
+>>>>>>> main

@@ -1,13 +1,13 @@
 import React from "react";
 import "./home.css";
 import { Link } from "react-router-dom";
-import pymolpic from "./pymolMMP12.png";
+import pymolpic from "../../assets/pymolMMP12.png";
 import { connect } from "react-redux";
 import { initActions, selectorActions } from "../../actions";
-import sabs from "./sabs-logo.png";
-import oxuni from "./oxlogo-sq-border.png";
-import roche from "./Roche.png";
-import epsrc from "./EPSRC_logo.png";
+import sabs from "../../assets/sabs-logo-tight.png";
+import oxuni from "../../assets/oxlogo-sq-border.png";
+import roche from "../../assets/Roche.png";
+import epsrc from "../../assets/EPSRC_logo.png";
 
 class Home extends React.Component {
   constructor(props) {
