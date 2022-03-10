@@ -1,8 +1,4 @@
-.wrapper{
-    height: 84vh;
-    margin: 0;
-  }
-  
+
   .home {
     display: flex;
     flex-direction: column;

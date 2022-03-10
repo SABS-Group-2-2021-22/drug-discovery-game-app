@@ -52,7 +52,11 @@ class Analysis extends React.Component {
 
   getSavedMolecules = () => {
     const url = 'http://127.0.0.1:5000/savedmolecules'
-    fetch(url)
+    fetch(url, {
+      method: 'POST',
+      headers: {'Content-Type' : 'application/json'} ,  
+      body: localStorage.getItem('user')
+    })
       .then((response) => response.json())
       .then(molecule_list => {
         this.setState({ list: molecule_list.saved_mols }, () => {
@@ -63,7 +67,11 @@ class Analysis extends React.Component {
         throw Error(err.message);
       });
     const all_info_url = 'http://127.0.0.1:5000/get_all_mol_info'
-    fetch(all_info_url)
+    fetch(all_info_url, {
+      method: 'POST',
+      headers: {'Content-Type' : 'application/json'} ,  
+      body: localStorage.getItem('user')
+    })
       .then((response) => response.json())
       .then(molecule_dict => {
         this.setState({ all_mol_info: molecule_dict }, () => {

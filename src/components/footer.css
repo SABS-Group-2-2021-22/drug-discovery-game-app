@@ -1,3 +1,13 @@
+
+.footer{
+    height:10%;
+    background-color: #212529;
+    position: absolute;
+    bottom:0;
+    width:100%;
+    padding-top: 1vh;
+}
+
 .container{
     display: flex;
     flex-direction: flex;
@@ -5,11 +15,23 @@
     justify-content: space-between;
 }
 
-/* Change color of link */
-a {
-    color: #FFF;
+.user-status-box h5{
+    font-weight: 400;
+    font-size: max(3vh, 15px);
 }
 
-a:hover {
-    color: #9a9c9e;
+.user-status-box h5{
+    font-weight: 400;
+    font-size: max(3vh, 15px);
+    margin: 0;
+}
+
+.user-status-box a{
+    font-weight: 400;
+    font-size: max(2vh, 15px);
+}
+
+p > h5 {
+    font-weight: 400;
+    font-size: max(2vh, 15px);
 }

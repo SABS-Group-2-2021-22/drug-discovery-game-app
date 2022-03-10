@@ -216,7 +216,12 @@ class ControlPanel extends React.Component {
     const base_url = 'http://127.0.0.1:5000/save'
     fetch(base_url + '?r1=' + this.state.current_r_groups[0] 
                    + '&r2=' + this.state.current_r_groups[1], 
-                   {method: 'POST'})
+                  {
+                    method: 'POST',
+                    headers: {'Content-Type' : 'application/json'} ,  
+                    body: localStorage.getItem('user')
+                  })
+                   
       }
 
   render() {
@@ -275,11 +280,4 @@ class Build extends React.Component {
 export {MoleculeImage, }
 
 export default Build;
-
-{/* // ========================================
-
-// ReactDOM.render(
-//   <Build />,
-//   document.getElementById('root')
-// ); */}
 
