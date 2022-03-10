@@ -15,7 +15,7 @@ class Builder extends React.Component {
     render() {
         return (
           <div className="wrapper">
-            <div className="app">
+            <div className="build">
               <div className="r-group-selection">
                 <RGroupList r_group_pos={"A"}/>
                 <RGroupList r_group_pos={"B"}/>

@@ -1,6 +1,6 @@
 import React, { Component, useEffect } from "react";
 import Plot from "react-plotly.js";
-import { MoleculeImage } from './app';
+import { MoleculeImage } from './build';
 import './analysis.css'
 
 

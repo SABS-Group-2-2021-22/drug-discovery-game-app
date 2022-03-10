@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import pymolpic from "./pymolMMP12.png";
 import { connect } from "react-redux";
 import { initActions, selectorActions } from "../../actions";
+import sabs from "./sabs-logo.png";
+import oxuni from "./oxlogo-sq-border.png";
+import roche from "./Roche.png";
+import epsrc from "./EPSRC_logo.png";
 
 class Home extends React.Component {
   constructor(props) {
@@ -29,21 +33,50 @@ class Home extends React.Component {
               {" "}
               <img src={pymolpic} />{" "}
             </div>
-            <div className="text">
-              MMP-12 is an 18 kDa, monomeric enzyme implicated in emphysema and
-              asthma, and has been identified as a target with therapeutic
-              potential. Your job is to design a potent inhibitor of MMP12 with
-              good lipophilicity, medium to high permeability, and good
-              metabolic stability. You have 30 weeks and £100,000 to design,
-              assay, and screen your molecules. At the end you will have to pick
-              a final molecule to take forward.
+            <div className="text-and-button">
+              <div className="text">
+                MMP-12 is an 18 kDa, monomeric enzyme implicated in emphysema
+                and asthma, and has been identified as a target with therapeutic
+                potential. Your job is to design a potent inhibitor of MMP12
+                with good lipophilicity, medium to high permeability, and good
+                metabolic stability. You have 30 weeks and £100,000 to design,
+                assay, and screen your molecules. At the end you will have to
+                pick a final molecule to take forward.
+              </div>
+              <div className="control-panel">
+                {this.props.loggedIn ? (
+                  <Link to="/build">
+                    <button>Start</button>
+                  </Link>
+                ) : (
+                  <Link to="/login">
+                    <button>Start</button>
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
-          <div className="button-area">
-            <div className="control-panel">
-              <Link to="/app">
-                <button>Start</button>
-              </Link>
+
+          <div className="button-and-logo-area">
+            {" "}
+            {/*actually no longer conatins the start button */}
+            <div className="logos-area">
+              <div className="logo">
+                {" "}
+                <img src={sabs} height="120px" />{" "}
+              </div>
+              <div className="logo">
+                {" "}
+                <img src={epsrc} height="100px" />{" "}
+              </div>
+              <div className="logo">
+                {" "}
+                <img src={oxuni} height="100px" />{" "}
+              </div>
+              <div className="logo">
+                {" "}
+                <img src={roche} height="100px" />{" "}
+              </div>
             </div>
           </div>
         </div>
@@ -54,6 +87,7 @@ class Home extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    loggedIn: state.login.login,
     r_groups: state.init.r_groups,
     selected_r_groups: state.selector.selected_r_groups,
   };

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 import SpiderPlot from "./SpiderPlot.js";
 
-import { MoleculeImage } from './app'
+import { MoleculeImage } from './build'
 import { Assays } from './assay'
 
 class Results extends React.Component {
@@ -90,7 +90,7 @@ class Results extends React.Component {
           <div className='molecule-choices'>
             <div className="real-molecule">
               <div className="title">
-                Roche's molecule
+                Molecule with desired profile
               </div>
 
               <div className="molecule-image-and-descriptors">

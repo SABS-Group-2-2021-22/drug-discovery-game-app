@@ -17,6 +17,7 @@ import {
   Analysis,
   Results,
   Footer,
+  LoginPage
 } from "./components/body";
 
 const store = createStore(appReducer, compose(applyMiddleware(thunk), devToolsEnhancer()))
@@ -50,10 +51,11 @@ class Index extends React.Component {
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/app" element={<Builder />} />
+          <Route path="/builder" element={<Builder />} />
           <Route path="/assay" element={<Assay updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>} />
           <Route path="/analysis" element={<Analysis />} />
           <Route path="/results" element={<Results/>} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
         <Footer/>
       </Router>

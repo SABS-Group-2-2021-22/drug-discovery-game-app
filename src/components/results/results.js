@@ -29,11 +29,11 @@ class Results extends React.Component {
               <div className="title">Molecule with desired profile</div>
               <div className="molecule-image-and-descriptors">
                 <div className="molecule-image">
-                  <figure>
-                    <div className="display_molecule_bar">
+                  
+                    
                       <MoleculeImage mol_id={"Roche"} />
-                    </div>
-                  </figure>
+                    
+                  
                 </div>
                 <div class="container" className="molecule-descriptors">
                   <Assays mol_id={"Roche"} />
@@ -44,11 +44,7 @@ class Results extends React.Component {
               <div className="title">Your Molecule</div>
               <div className="molecule-image-and-descriptors">
                 <div className="molecule-image">
-                  <figure>
-                    <div className="display_molecule_bar">
                       <MoleculeImage mol_id={this.props.chosen_mol} />
-                    </div>
-                  </figure>
                 </div>
                 <div class="container" className="molecule-descriptors">
                   <Assays mol_id={this.props.chosen_mol} />
@@ -61,7 +57,9 @@ class Results extends React.Component {
               <SpiderPlot />
             </div>
             <div className="explanation-and-button">
-              <ComparisonText />
+              <div className="explanation">
+                <ComparisonText />
+              </div>
               <Link to="/">
                 <button onClick={this.resetGame}> End Game </button>
               </Link>

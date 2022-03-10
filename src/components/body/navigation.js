@@ -17,8 +17,8 @@ function Navigation() {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/app">
-                    App
+                  <NavLink className="nav-link" to="/build">
+                    Build
                   </NavLink>
                 </li>
                 <li className="nav-item">

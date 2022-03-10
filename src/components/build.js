@@ -1,9 +1,13 @@
 import React from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom"
+<<<<<<< HEAD:src/components/app.js
 import "./app.css";
 import { connect } from 'react-redux'
 
+=======
+import "./build.css";
+>>>>>>> main:src/components/build.js
 
 
 class RGroupWidget extends React.Component {
@@ -248,8 +252,12 @@ class ControlPanel extends React.Component {
   }
 }
 
+<<<<<<< HEAD:src/components/app.js
 
 class App extends React.Component {
+=======
+class Build extends React.Component {
+>>>>>>> main:src/components/build.js
   constructor(props) {
     super(props);
     this.state = {
@@ -270,7 +278,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <div className="app">
+        <div className="build">
           <div className="r-group-selection">
             <RGroupList r_group_pos={'A'} selectRGroupCallback={this.setSelectedRGroupCallback}/>
             <RGroupList r_group_pos={'B'} selectRGroupCallback={this.setSelectedRGroupCallback}/>
@@ -300,12 +308,16 @@ export default connect(mapStateToProps)(RGroupWidget)
 
 export {MoleculeImage, }
 
+<<<<<<< HEAD:src/components/app.js
+=======
+export default Build;
+>>>>>>> main:src/components/build.js
 
 
 /* // ========================================
 
 // ReactDOM.render(
-//   <App />,
+//   <Build />,
 //   document.getElementById('root')
 // ); */
 
