@@ -69,25 +69,29 @@ class SpiderPlot extends Component {
 
     layout() {
         let layout = {
-            autosize: false,
-            width: 500,
+            responsive: true,
+            // autosize: false,
+            // width: 500,
             polar: {
                 radialaxis: {
                     visible: true,
                     range: [0, 8]
                 }
             },
-            showlegend: true
+            showlegend: true,
         };
         return layout
     }
 
 render() {
     return (
-        <div>
+        <div className='spider-plot-container'>
             <Plot
             data={this.addTraces()}
             layout={this.layout()}
+            useResizeHandler={true}
+            style={{width: '100%',
+                    height: '100%'}}
             />
         </div>
     )

@@ -1,45 +1,46 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+import "./navigation.css";
+
 function Navigation() {
     return (
         <div className="navigation">
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
           <div className="container">
-            <NavLink className="navbar-brand" to="/">
+            <NavLink className="navigation-brand" to="/">
               Drug Discovery Game
             </NavLink>
             <div>
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/">
+              <ul className="navigation-bar">
+                <li className="navigation-item">
+                  <NavLink className="navigation-link" to="/">
                     Home
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/build">
+                <li className="navigation-item">
+                  <NavLink className="navigation-link" to="/build">
                     Build
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/assay">
+                <li className="navigation-item">
+                  <NavLink className="navigation-link" to="/assay">
                     Assay
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/analysis">
+                <li className="navigation-item">
+                  <NavLink className="navigation-link" to="/analysis">
                     Analysis
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/results">
+                <li className="navigation-item">
+                  <NavLink className="navigation-link" to="/results">
                     Results
                   </NavLink>
                 </li>
               </ul>
             </div>
           </div>
-        </nav>
+        {/* </nav> */}
       </div>
     );
 }

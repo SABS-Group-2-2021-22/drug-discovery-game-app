@@ -6,6 +6,7 @@ body {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* position: absolute; */
   }
   
   code {
@@ -13,6 +14,36 @@ body {
       monospace;
   }
 
+  html, body {
+    height: 100%;
+    margin: 0; padding: 0;  /* to avoid scrollbars */
+  }
+  
+  #root {
+    display: flex;
+    flex: 1;
+    height:100%;
+    min-height: 100%;
+    flex-direction: column;
+    margin: 0; padding: 0;  /* to avoid scrollbars */
 
+  }
+  
+  .wrapper{
+      /* flex: 1; */
+      /* max-height: 85%; */
+      /* margin: 0; */
+      /* flex: 1 1; */
+      /* max-height: 85%; */
+      /* margin: 0; */
+      /* -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing:border-box; */
+      /* height: 100%; */
+      position: absolute;
+      top:10%;
+      bottom:10%;
+      width: 100%;
+    }
 
  
