@@ -6,7 +6,6 @@ body {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* position: absolute; */
   }
   
   code {
@@ -30,16 +29,6 @@ body {
   }
   
   .wrapper{
-      /* flex: 1; */
-      /* max-height: 85%; */
-      /* margin: 0; */
-      /* flex: 1 1; */
-      /* max-height: 85%; */
-      /* margin: 0; */
-      /* -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing:border-box; */
-      /* height: 100%; */
       position: absolute;
       top:10%;
       bottom:10%;
