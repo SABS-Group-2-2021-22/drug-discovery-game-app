@@ -1,4 +1,4 @@
-const intitialState = {
+const initialState = {
   saved_mols: {},
 };
 
@@ -8,6 +8,36 @@ export function assayReducer(state = initialState, action) {
       return {
         ...state,
         saved_mols: action.payload.saved_mols,
+      };
+    }
+    case "FETCH_DESCRIPTORS_SUCCEEDED": {
+      return {
+        ...state,
+        saved_mols: {
+          ...state.saved_mols,
+          [action.payload.molecule]: {
+            ...state.saved_mols[action.payload.molecule],
+            data: {
+              ...state.saved_mols[action.payload.molecule].data,
+              descriptors: action.payload.descriptors,
+            },
+          },
+        },
+      };
+    }
+    case "FETCH_FILTERS_SUCCEEDED": {
+      return {
+        ...state,
+        saved_mols: {
+          ...state.saved_mols,
+          [action.payload.molecule]: {
+            ...state.saved_mols[action.payload.molecule],
+            data: {
+              ...state.saved_mols[action.payload.molecule].data,
+              filters: action.payload.filters,
+            },
+          },
+        },
       };
     }
     case "RUN_ASSAY_SUCCEEDED": {

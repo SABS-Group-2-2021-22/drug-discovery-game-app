@@ -4,7 +4,7 @@ import "./index.css";
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
-import rootReducer from './reducers'
+import appReducer from './reducers'
 import { devToolsEnhancer } from 'redux-devtools-extension'
 
 // import * as serviceWorker from "./serviceWorker";
@@ -12,14 +12,14 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   Navigation,
   Home,
-  AppRedux,
-  AssayRedux,
-  AnalysisRedux,
-  ResultsRedux,
-  FooterRedux,
-} from "./components";
+  Builder,
+  Assay,
+  Analysis,
+  Results,
+  Footer,
+} from "./components/body";
 
-const store = createStore(rootReducer, compose(applyMiddleware(thunk), devToolsEnhancer()))
+const store = createStore(appReducer, compose(applyMiddleware(thunk), devToolsEnhancer()))
 
 class Index extends React.Component {
   constructor(props) {
@@ -50,12 +50,12 @@ class Index extends React.Component {
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/app" element={<AppRedux />} />
-          <Route path="/assay" element={<AssayRedux updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>} />
-          <Route path="/analysis" element={<AnalysisRedux />} />
-          <Route path="/results" element={<ResultsRedux />} />
+          <Route path="/app" element={<Builder />} />
+          <Route path="/assay" element={<Assay updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>} />
+          <Route path="/analysis" element={<Analysis />} />
+          <Route path="/results" element={<Results/>} />
         </Routes>
-        <FooterRedux/>
+        <Footer/>
       </Router>
     )
   }

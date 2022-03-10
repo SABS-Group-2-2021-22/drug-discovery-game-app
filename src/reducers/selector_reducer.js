@@ -2,7 +2,7 @@ const initialState = {
   selected_r_groups: { A: "A01", B: "B01", molecule: [] },
 };
 
-export function selectorReducer(state=initialState, action) {
+export function selectorReducer(state = initialState, action) {
     switch (action.type) {
       case "SEL_R_FETCH_MOL_SUCCEEDED": {
         return {
