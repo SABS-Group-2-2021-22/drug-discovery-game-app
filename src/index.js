@@ -9,6 +9,9 @@ import { devToolsEnhancer } from 'redux-devtools-extension';
 
 import rootReducer from './reducers';
 
+import store from './store'
+
+
 // import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
@@ -22,7 +25,7 @@ import {
   LoginPage,
 } from "./components";
 
-const store = createStore(rootReducer, compose(applyMiddleware(thunk), devToolsEnhancer()))
+// const store = createStore(rootReducer, compose(applyMiddleware(thunk), devToolsEnhancer()))
 
 class Index extends React.Component {
   constructor(props) {
@@ -68,10 +71,10 @@ class Index extends React.Component {
 ReactDOM.render(
   <Provider store={store}>
     <Index />
-  </Provider>,
+  </Provider>, 
 
 
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // serviceWorker.unregister();
