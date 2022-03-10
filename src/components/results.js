@@ -95,15 +95,15 @@ class Results extends React.Component {
 
               <div className="molecule-image-and-descriptors">
                 <div className="molecule-image">
-                  <figure>
-                    <div className="display_molecule_bar">
-                      <MoleculeImage key={this.state.roche_mol} r_groups={this.state.roche_mol}
-                          size={"800,800"} />
-                    </div>
-                    {/* <figcaption>
+                  {/* <figure> */}
+                  {/* <div className="display_molecule_bar"> */}
+                  <MoleculeImage key={this.state.roche_mol} r_groups={this.state.roche_mol}
+                    size={"800,800"} />
+                  {/* </div> */}
+                  {/* <figcaption>
                                         Below is the molecule that Roche chose.
                                     </figcaption>  */}
-                  </figure>
+                  {/* </figure> */}
                 </div>
                 <div class="container" className="molecule-descriptors">
                   {this.state.roche_mol_stats !== undefined ?
@@ -118,17 +118,17 @@ class Results extends React.Component {
 
               <div className="molecule-image-and-descriptors">
                 <div className="molecule-image">
-                  <figure>
-                    <div className="display_molecule_bar">
-                      {this.state.chosen_mol !== undefined ?
-                        <MoleculeImage key={this.state.chosen_mol} r_groups={this.state.chosen_mol} 
-                            size={"800,800"}/>
-                        : ''}
-                    </div>
-                    {/* <figcaption>
+                  {/* <figure> */}
+                  {/* <div className="display_molecule_bar"> */}
+                  {this.state.chosen_mol !== undefined ?
+                    <MoleculeImage key={this.state.chosen_mol} r_groups={this.state.chosen_mol}
+                      size={"800,800"} />
+                    : ''}
+                  {/* </div> */}
+                  {/* <figcaption>
                                         Below is the molecule that you chose.
                                     </figcaption> */}
-                  </figure>
+                  {/* </figure> */}
 
                 </div>
 
@@ -146,7 +146,9 @@ class Results extends React.Component {
               <SpiderPlot />
             </div>
             <div className='explanation-and-button'>
-              {this.dispComparisonTxt()}
+              <div className='explanation'>
+                {this.dispComparisonTxt()}
+              </div>
               <Link to='/'><button> End Game </button></Link>
             </div>
           </div>

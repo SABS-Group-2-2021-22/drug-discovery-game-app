@@ -136,7 +136,7 @@ class ThePlot extends Component {
           }}
           useResizeHandler={true}
           style={{width: '100%',
-          height: '90%'}}
+                  height: '90%'}}
           onHover={this.onHover}
           onUnhover={this.onUnhover}
         />
