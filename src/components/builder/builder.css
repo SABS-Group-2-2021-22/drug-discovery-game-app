@@ -1,4 +1,5 @@
-.r_group_stats {
+
+  .r_group_stats {
     font-size: 13px;
   }
   
@@ -6,18 +7,16 @@
     max-width: 100%;
   }
 
-  .wrapper{
-    height: 83vh;
-    margin: 0;
-  }
 
   .build {
     display: flex;
     flex: 1;
     background-color: white;
-    /* background-color: blue; */
     flex-direction: row;
-    padding: 40px;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
     height: 100%;
   }
 
@@ -26,14 +25,13 @@
     flex: 1;
     flex-direction: row;
     justify-content: space-around;
-    /* background-color:chartreuse; */
     background-color:white; 
-    padding:10px;
+    padding-left:10px;
+    padding-right:10px;
   }
 
   .r-group-list {
     padding: 5px; 
-    /* background-color: red;  */
     background-color: white;
     overflow-y:scroll;
   } 
@@ -61,8 +59,9 @@
   }
 
   .r-group-img {
-    width:210px;
+    width:100%;
     height: auto;
+    min-width: 100pt;
   }
 
 
@@ -76,7 +75,6 @@
     display: flex;
     flex: 1;
     background-color:white;
-    /* background-color: yellow; */
     padding: 15px;
     justify-content: center;
     align-content: center;
@@ -101,7 +99,6 @@
   .control-panel {
     display: flex;
     background-color: white;
-    /* background-color: pink; */
     justify-content: space-around;
     padding: 10px;
   }

@@ -1,0 +1,37 @@
+
+.footer{
+    height:10%;
+    background-color: #212529;
+    position: absolute;
+    bottom:0;
+    width:100%;
+    padding-top: 1vh;
+}
+
+.container{
+    display: flex;
+    flex-direction: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.user-status-box h5{
+    font-weight: 400;
+    font-size: max(3vh, 15px);
+}
+
+.user-status-box h5{
+    font-weight: 400;
+    font-size: max(3vh, 15px);
+    margin: 0;
+}
+
+.user-status-box a{
+    font-weight: 400;
+    font-size: max(2vh, 15px);
+}
+
+p > h5 {
+    font-weight: 400;
+    font-size: max(2vh, 15px);
+}
