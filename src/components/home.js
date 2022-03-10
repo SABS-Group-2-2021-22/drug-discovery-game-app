@@ -52,14 +52,11 @@ class Home extends React.Component {
           </div>
           <div className="button-area">
             <div className="control-panel">
-            {/* <Link to="/app"> */}
+            <Link to="/app">
               <button onClick={this.setBuilderMode}>Beginner</button>
-              {/* </Link> */}
-              {/* <Link to="/app"> */}
-              <button onClick={this.setSketcherMode}>Advanced</button>
-              {/* </Link> */}
+              </Link>
               <Link to="/app">
-              <button>Start</button>
+              <button onClick={this.setSketcherMode}>Advanced</button>
               </Link>
             </div>
           </div>

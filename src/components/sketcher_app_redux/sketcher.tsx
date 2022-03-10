@@ -32,6 +32,8 @@ export class Sketcher extends React.Component <SketcherType>{
   handleOnInit = async (ketcher: Ketcher) => {
     this.ketcher = ketcher;
     (window as any).ketcher = ketcher;
+    const initial_data = "O=C(O)C(NS(=O)(=O)c1ccccc1)"
+    this.ketcher.setMolecule(initial_data);
   };
 
   triggerSaving = async () => {
