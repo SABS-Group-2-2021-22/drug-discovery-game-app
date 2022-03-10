@@ -281,10 +281,3 @@ export {MoleculeImage, }
 
 export default Build;
 
-{/* // ========================================
-
-// ReactDOM.render(
-//   <Build />,
-//   document.getElementById('root')
-// ); */}
-

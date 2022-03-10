@@ -93,24 +93,10 @@
     background-color: darkgray;
   }
 
-  /* .molecule-widget > .molecule{
-    height:210px;
-  } */
 
   .molecule-widget > .molecule img {
     width:240px;
   }
-
-
-  /* .display_molecule_bar > .molecule {
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
-   /*  max-height: 100%;
-    margin-top: 20pt;
-    margin-bottom: 20pt;
-    width: 50%;
-  } */
 
 
   .display_molecule_bar > .molecule{
@@ -139,7 +125,6 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    /* background-color: pink; */
     justify-content: space-between;
     padding: 10px;
     width: 20%;

@@ -34,7 +34,6 @@ class _Footer extends React.Component {
               </p>
             </div>
           </div>
-        {/* </footer> */}
       </div>
     );
   }

@@ -1,18 +1,4 @@
-/* html, body {
-  height: 100%;
-  margin: 0; padding: 0;  /* to avoid scrollbars */
-/* }
 
-#root {
-  display: flax;
-  min-height: 100%;
-  flex-direction: column;
-}
-
-.wrapper{
-    flex: 1;
-  }
-   */ 
   .home {
     display: flex;
     flex-direction: column;
@@ -20,7 +6,6 @@
     width:100%;
     flex-wrap: wrap;
     align-items: center;
-    /* padding-bottom: 50pt; */
   }
 
   .hometitle{

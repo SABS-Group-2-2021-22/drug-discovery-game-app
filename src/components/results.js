@@ -19,7 +19,6 @@ class Results extends React.Component {
       comp_obj: {}
     };
     this.getChosenMolecule();
-    // this.getStats();
     this.getComparisonTxt();
   }
   getChosenMolecule = () => {
@@ -30,9 +29,6 @@ class Results extends React.Component {
         this.setState({ chosen_mol: response.chosen_mol })
         this.getStats(response.chosen_mol)
       })
-    // .then(response => {
-    //   this.getStats(response.chosen_mol)
-    // })
   }
 
   getStats = (chosen_mol) => {
@@ -95,15 +91,8 @@ class Results extends React.Component {
 
               <div className="molecule-image-and-descriptors">
                 <div className="molecule-image">
-                  {/* <figure> */}
-                  {/* <div className="display_molecule_bar"> */}
                   <MoleculeImage key={this.state.roche_mol} r_groups={this.state.roche_mol}
                     size={"800,800"} />
-                  {/* </div> */}
-                  {/* <figcaption>
-                                        Below is the molecule that Roche chose.
-                                    </figcaption>  */}
-                  {/* </figure> */}
                 </div>
                 <div class="container" className="molecule-descriptors">
                   {this.state.roche_mol_stats !== undefined ?
@@ -118,18 +107,10 @@ class Results extends React.Component {
 
               <div className="molecule-image-and-descriptors">
                 <div className="molecule-image">
-                  {/* <figure> */}
-                  {/* <div className="display_molecule_bar"> */}
                   {this.state.chosen_mol !== undefined ?
                     <MoleculeImage key={this.state.chosen_mol} r_groups={this.state.chosen_mol}
                       size={"800,800"} />
                     : ''}
-                  {/* </div> */}
-                  {/* <figcaption>
-                                        Below is the molecule that you chose.
-                                    </figcaption> */}
-                  {/* </figure> */}
-
                 </div>
 
                 <div class="container" className="molecule-descriptors">

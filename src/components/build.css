@@ -76,14 +76,12 @@
     display: flex;
     flex:3 ; 
     flex-direction: column;
-    /* margin-bottom: 20pt; */
   }
 
   .rendered-molecule {
     display: flex;
     flex: 1;
     background-color:white;
-    /* background-color: yellow; */
     padding: 15px;
     justify-content: center;
     align-content: center;
@@ -108,7 +106,6 @@
   .control-panel {
     display: flex;
     background-color: white;
-    /* background-color: pink; */
     justify-content: space-around;
     padding: 10px;
   }

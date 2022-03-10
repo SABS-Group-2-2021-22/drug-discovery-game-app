@@ -40,7 +40,6 @@ function Navigation() {
               </ul>
             </div>
           </div>
-        {/* </nav> */}
       </div>
     );
 }
