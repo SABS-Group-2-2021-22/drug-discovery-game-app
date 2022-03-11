@@ -29,7 +29,7 @@ class SelectorPanel extends React.Component {
 
   render() {
     return (
-      <div className="control-panel">
+      <div className="selector-panel">
         <button onClick={this.chooseMolecule}>Choose This Molecule</button>
         <Link to="/results">
           <button onClick={this.submitResult}>Reveal Final Molecule</button>

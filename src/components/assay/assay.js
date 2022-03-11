@@ -16,16 +16,18 @@ class Assay extends React.Component {
     return (
       <div className="wrapper">
         <div className="assay">
-          <div className="molecule-chooser_bar">
+          <div className="molecule-chooser-bar">
             <MoleculeList />
           </div>
             <AssayPanel />
-          <div className="display_molecule_bar">
+          <div className="mol-visbox">
+          <div className="rendered-molecule">
             <MoleculeImage mol_id={this.props.selected_mol} />
+            </div>
             <div className='selected-mol-stats'>
               <MoleculeStats selected_mol={this.props.selected_mol}/>
+              <ControlPanel />
             </div>
-            <ControlPanel />
           </div>
         </div>
       </div>

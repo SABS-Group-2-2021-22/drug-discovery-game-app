@@ -96,7 +96,7 @@
     align-content: space-around;
   }
 
-  .control-panel {
+  .build > .mol-visbox > .control-panel {
     display: flex;
     background-color: white;
     justify-content: space-around;

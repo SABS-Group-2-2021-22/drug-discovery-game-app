@@ -3,15 +3,20 @@
     flex-direction: row;
     flex: 1, 1, auto;
     height: 100%;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
 }
 
-.molecule-chooser_bar {
+.molecule-chooser-bar {
     display: flex;
     background-color: white;
     flex-grow: 2;
     min-height: 100%;
     justify-content: center;
     padding-bottom: 10pt;
+    max-width: 250pt;
 }
 
 
@@ -24,28 +29,47 @@
     outline-style: solid;
 }
 
-.display_molecule_bar {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    flex-grow: 4;
-    min-height: 100%;
-    align-items: center;
-    justify-content: center;
-    max-width: 50%;
+
+.assay > .mol-visbox {
+  display: flex;
+  flex:3 ; 
+  flex-direction: column;
 }
 
 
+.assay > .rendered-molecule {
+  display: flex;
+  background-color:white;
+  padding: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  justify-content: center;
+  align-content: center;
+} 
+
+.assay > .rendered-molecule > .molecule{
+  display: flex;
+  height: 45vh;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+.assay > .rendered-molecule > .molecule img {
+  display: flex;
+  max-height:100%;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
 .selected-mol-stats{
   width: 100%;
-  padding: 15px;
-  padding-bottom: 50px;
 }
 
 .selected-mol-stats > .mol-stats {
   display:flex;
   flex-direction: row;
-  font-size: 0.8vw;
+  font-size: max(0.8vw, 10px);
   width:100%;
   justify-content: space-between;
 }
@@ -97,18 +121,6 @@
     width:240px;
   }
 
-
-  .display_molecule_bar > .molecule{
-    display: flex;
-    height: 55vh;
-    flex-direction: column;
-  }
-
-  .display_molecule_bar > .molecule img {
-    max-height:100%;
-    max-width: 100%;
-  }
-
   .mol-stats {
     font-size: 12px;
     width:240px;
@@ -155,4 +167,17 @@
   .assay-panel button:active{
     background-color: #0d0e10;
     opacity: 1;
+  }
+
+.control-panel {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px;
+  }
+
+.control-panel button {
+    padding: 5px;
+    margin-right: 4vw;
+    width: 100px;
   }

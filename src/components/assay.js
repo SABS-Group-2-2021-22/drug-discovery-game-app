@@ -303,7 +303,7 @@ class Assay extends React.Component {
         return (
             <div className="wrapper">
                 <div className="assay">
-                    <div className="molecule-chooser_bar">
+                    <div className="molecule-chooser-bar">
                         <MoleculeList saved_mol_list={this.state.list} all_mol_info={this.state.all_mol_info} selectMoleculeCallback={this.setSelectedMoleculeCallback} />
                     </div>
                     <div className="assay-panel">
