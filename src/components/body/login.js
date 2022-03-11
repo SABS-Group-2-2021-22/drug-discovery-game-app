@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { userActions } from '../actions';
+import { userActions } from '../../actions';
 
 import './login.css'
 
@@ -39,7 +39,7 @@ class LoginPage extends React.Component {
         const { username, submitted } = this.state;
 
         if (this.props.loggedIn) {
-            return <Navigate to='/build' />
+            return <Navigate to='/builder' />
         }
         return (
             <div className='wrapper'>
@@ -63,7 +63,7 @@ class LoginPage extends React.Component {
     }
 }
 
-function mapState(state) {
+function mapStateToProps(state) {
     const { loggingIn, loggedIn } = state.login;
     return { loggingIn, loggedIn };
 }
@@ -73,5 +73,4 @@ const actionCreators = {
     logout: userActions.logout
 };
 
-const connectedLoginPage = connect(mapState, actionCreators)(LoginPage);
-export { connectedLoginPage as LoginPage }
+export default connect(mapStateToProps, actionCreators)(LoginPage);

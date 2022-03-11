@@ -1,10 +1,25 @@
-import { combineReducers } from 'redux';
-
+import { combineReducers } from "redux";
+import { analysisReducer } from "./analysis_reducer";
+import { gameReducer } from "./game_reducer";
+import { initReducer } from "./init_reducer";
+import { selectorReducer } from "./selector_reducer";
+import { assayReducer } from "./assay_reducer";
 import { loginReducer } from "./login_reducer"
 
-// create root reducer by combining all reducers, each of which only accesses a subset of state dict
-const rootReducer = combineReducers({
-    login: loginReducer,
+const appReducer = combineReducers({
+  analysis: analysisReducer,
+  game: gameReducer,
+  init: initReducer,
+  selector: selectorReducer,
+  assay: assayReducer,
+  login: loginReducer,
 });
 
-export default rootReducer
+const rootReducer = (state, action) => {
+  if (action.type === "RESET_GAME_SUCCEEDED") {
+    return appReducer(undefined, action)
+  }
+  return appReducer(state, action)
+}
+
+export default rootReducer;
