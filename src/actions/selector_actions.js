@@ -4,7 +4,6 @@ export const selectorActions = {
   selectRGroup,
   selectMolecule,
   chooseMolecule,
-  //postChosen,
 };
 
 function selectRGroupSucceeded(r_group_id_A, r_group_id_B, molecule) {
@@ -66,18 +65,3 @@ function postChosenSucceeded() {
     type: "POST_CHOSEN_SUCCEEDED",
   };
 }
-
-/*function postChosen(selected_mol) {
-  const r_group_A = selected_mol.slice(0, 3);
-  const r_group_B = selected_mol.slice(3, 6);
-  return async (dispatch) => {
-    const { post_chosen } = await api.postChosen(r_group_A, r_group_B);
-    await dispatch(postChosenSucceeded());
-    await api.fetchSpiderObj().then((response) => {
-      dispatch(fetchSpiderObjSucceeded(response));
-    });
-    await api.fetchCompText().then((response) => {
-      dispatch(fetchCompTextSucceeded(response));
-    });
-  };
-} */

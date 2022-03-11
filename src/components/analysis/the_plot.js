@@ -95,21 +95,22 @@ class ThePlot extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="plot-container">
         <div>{this.showCard()}</div>
         <Plot
           data={this.addTraces([this.props.plot_data])}
           layout={{
-            width: 1000,
-            height: 500,
+            responsive: true,
             title: "Analysis Plot",
             xaxis: { title: { text: this.state.x_axis } },
             yaxis: { title: { text: this.state.y_axis } },
           }}
+          useResizeHandler={true}
+          style={{ width: "100%", height: "90%" }}
           onHover={this.onHover}
           onUnhover={this.onUnhover}
         />
-        <div>
+        <div className="plot-button-row">
           <button onClick={() => this.relayout("--", "x")}>--</button>
           <button onClick={() => this.relayout("logd", "x")}>logd</button>
           <button onClick={() => this.relayout("pic50", "x")}>pIC50</button>
@@ -121,7 +122,7 @@ class ThePlot extends React.Component {
           <button onClick={() => this.relayout("rings", "x")}>rings</button>
           <button onClick={() => this.relayout("logP", "x")}>logP</button>
         </div>
-        <div>
+        <div className="plot-button-row">
           <button onClick={() => this.relayout("--", "y")}>--</button>
           <button onClick={() => this.relayout("logd", "y")}>logd</button>
           <button onClick={() => this.relayout("pic50", "y")}>pIC50</button>
