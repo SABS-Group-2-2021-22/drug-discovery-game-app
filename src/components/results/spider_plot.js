@@ -47,7 +47,7 @@ class SpiderPlot extends React.Component {
 
   layout() {
     let layout = {
-      autosize: false,
+      responsive: true,
       width: 500,
       polar: {
         radialaxis: {
@@ -63,7 +63,12 @@ class SpiderPlot extends React.Component {
   render() {
     return (
       <div className='spider-plot-container'>
-        <Plot data={this.addTraces()} layout={this.layout()} />
+        <Plot 
+        data={this.addTraces()} 
+        layout={this.layout()} 
+        useResizeHandler={true}
+        style={{width: '100%',
+                height: '100%'}}/>
       </div>
     );
   }
