@@ -62,7 +62,7 @@ class SpiderPlot extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='spider-plot-container'>
         <Plot data={this.addTraces()} layout={this.layout()} />
       </div>
     );
