@@ -17,9 +17,6 @@ export function gameReducer(state=initialState, action) {
           money: action.payload.money,
         };
       }
-      case "RESET_GAME_SUCCEEDED": {
-        return initialState;
-      }
       default: {
         return state;
       }

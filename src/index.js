@@ -4,7 +4,7 @@ import "./index.css";
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
-import appReducer from './reducers'
+import rootReducer from './reducers'
 import { devToolsEnhancer } from 'redux-devtools-extension'
 
 // import * as serviceWorker from "./serviceWorker";
@@ -20,7 +20,7 @@ import {
   LoginPage
 } from "./components/body";
 
-const store = createStore(appReducer, compose(applyMiddleware(thunk), devToolsEnhancer()))
+const store = createStore(rootReducer, compose(applyMiddleware(thunk), devToolsEnhancer()))
 
 class Index extends React.Component {
   constructor(props) {

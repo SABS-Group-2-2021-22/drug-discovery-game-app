@@ -15,4 +15,11 @@ const appReducer = combineReducers({
   login: loginReducer,
 });
 
-export default appReducer;
+const rootReducer = (state, action) => {
+  if (action.type === "RESET_GAME_SUCCEEDED") {
+    return appReducer(undefined, action)
+  }
+  return appReducer(state, action)
+}
+
+export default rootReducer;
