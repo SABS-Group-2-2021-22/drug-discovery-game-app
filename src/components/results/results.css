@@ -150,7 +150,7 @@ figcaption {
 
 .explanation {
   text-align: justify;
-  font-size: max(11px, 1.2vw);
+  font-size: min(max(11px, 1.2vw), 18px);
 }
 
 .explanation-and-button a {
