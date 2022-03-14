@@ -14,40 +14,38 @@ class Introduction extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
-    this.props.fetchRGroup();
-    this.props.selectRGroup(
-      this.props.selected_r_groups["A"],
-      this.props.selected_r_groups["B"],
-      "800,800"
-    );
-  }
+  // componentWillMount() {
+  //   this.props.fetchRGroup();
+  //   this.props.selectRGroup(
+  //     this.props.selected_r_groups["A"],
+  //     this.props.selected_r_groups["B"],
+  //     "800,800"
+  //   );
+  // }
 
   render() {
     return (
       <div className="wrapper">
         <div className="introduction">
-          <div className="introductiontitle">Welcome to the Drug Discovery Game </div>
+          <div className="introductiontitle">What are we designing our drug for? </div>
           <div className="pic-and-text">
+            <div className="text-and-button">
+              <div className="text">
+                <p>Matrix metalloproteinase 12 (MMP-12) is an enzyme implicated in emphysema and asthma. It has been identified as a possible drug target.
+                  {"\n"}  {"\n"}  MMP-12 is made by immune cells in the lungs, and it is thought that it can cause damage and inflammation in the lungs.
+                  {"\n"}  {"\n"} You are going to try to design a drug which stops MMP-12 from acting in the lungs.
+                </p>
+              </div>
+              <div className="control-panel">
+                <Link to="/builder">
+                  <button>Next</button>
+                </Link>
+              </div>
+            </div>
             <div className="picture">
               {" "}
               <img src={pymolpic} />{" "}
-            </div>
-            <div className="text-and-button">
-              <div className="text">
-                Hello
-              </div>
-              <div className="control-panel">
-                {this.props.loggedIn ? (
-                  <Link to="/builder">
-                    <button>Start</button>
-                  </Link>
-                ) : (
-                  <Link to="/login">
-                    <button>Start</button>
-                  </Link>
-                )}
-              </div>
+              <div className="text">MMP-12</div>
             </div>
           </div>
 
@@ -79,17 +77,18 @@ class Introduction extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    loggedIn: state.login.login,
-    r_groups: state.init.r_groups,
-    selected_r_groups: state.selector.selected_r_groups,
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     loggedIn: state.login.login,
+//     r_groups: state.init.r_groups,
+//     selected_r_groups: state.selector.selected_r_groups,
+//   };
+// }
 
-const actionCreators = {
-  fetchRGroup: initActions.fetchRGroup,
-  selectRGroup: selectorActions.selectRGroup,
-};
+// const actionCreators = {
+//   fetchRGroup: initActions.fetchRGroup,
+//   selectRGroup: selectorActions.selectRGroup,
+// };
 
-export default connect(mapStateToProps, actionCreators)(Introduction);
+// export default connect(mapStateToProps, actionCreators)(Introduction);
+export default (Introduction);

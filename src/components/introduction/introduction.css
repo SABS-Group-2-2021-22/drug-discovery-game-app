@@ -43,6 +43,7 @@
 
   .picture > img {
     max-width:100%;
+    width:80%
   }
 
   .text-and-button{
@@ -60,7 +61,8 @@
     justify-content: center;
     font-size: 1.2vw;
     text-align: justify;
-    margin-bottom: 10pt;;
+    margin-bottom: 10pt;
+    white-space:pre-line;
   }
 
   .button-and-logo-area{
