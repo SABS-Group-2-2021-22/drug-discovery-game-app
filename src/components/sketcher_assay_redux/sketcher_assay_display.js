@@ -1,5 +1,5 @@
 import React from "react";
-import "../assay.css";
+import "../assay/assay.css";
 import { connect } from "react-redux";
 
 class SketcherAssays extends React.Component {

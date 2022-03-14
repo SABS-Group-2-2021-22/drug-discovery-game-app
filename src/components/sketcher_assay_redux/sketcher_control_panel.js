@@ -1,8 +1,8 @@
 import React from "react";
-import "../assay.css";
+import "../assay/assay.css";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { constructPlotObjSketcher } from "../../actions";
+import { sketcherActions } from "../../actions";
 
 class SketcherControlPanel extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class SketcherControlPanel extends React.Component {
   initPlotData = () => {
     // creates object for plotting - firing it here just speeds 
     // ...things up a bit
-    this.props.dispatch(constructPlotObjSketcher(this.props.saved_mols));
+    this.props.dispatch(sketcherActions.constructPlotObjSketcher(this.props.saved_mols));
   };
 
   render() {

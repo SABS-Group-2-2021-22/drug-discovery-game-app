@@ -1,0 +1,183 @@
+.results {
+  display: flex;
+  flex-direction: row;
+  height:100%;
+  width:100%;
+  flex-wrap: wrap;
+}
+
+.molecule-choices {
+  display:flex;
+  flex-direction: row;
+  width:100%;
+  height: min(50%, calc(100% - 350px));
+  justify-content: space-around;
+  z-index: 1;
+}
+
+.plot-and-explanation {
+  display:flex;
+  flex-direction: row;
+  width:100%;
+  height: max(50%, 350px);
+  justify-content: space-around;
+  position: fixed;
+  bottom: 10%;;
+}
+
+.title {
+  display: flex;
+  max-height: 100%;
+  min-height: 25%;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  font-size: max(23px, 1vw);
+  font-weight: bold;  /* Red bold text for title */
+}
+
+.molecule-image-and-descriptors {
+  display: flex;
+  flex-direction: row;  /* whether boxes in this box are arranged in a row or column */
+  max-height: 90%;          /* so takes up all the top LH box */ 
+  max-width: 90%;          /* was  max-height: 70%; min-width: 50%;*/
+  min-width: 80%;
+  align-items: center;
+  justify-content: center;
+}
+
+.molecule-image {
+  display: flex;
+  width:60%;
+  height: 100%;
+}
+
+.molecule-image > .molecule {
+  width: 100%;
+  height: 100%;
+}
+
+.molecule-image > .molecule > img {
+  height: 90%;
+}
+
+
+.molecule-descriptors {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline; /* Align at left of container */
+  font-size: max(1.5vh, 10px);
+}
+
+.molecule-descriptors > .row {
+  padding-left:18px;
+} 
+
+figcaption {
+  display: table-caption;
+  caption-side: top;
+}
+
+.real-molecule {
+  display: flex;
+  flex-direction: column;  /* whether boxes in real-molecule arranged in a row or column */
+  height:90%;
+  width:45%;
+  align-items: center; 
+  justify-content: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #212529;
+  border-radius: 5px;
+  padding: 5px;
+  margin:15px;
+  
+}
+
+.chosen-molecule {
+  display: flex;
+  flex-direction: column;  /* whether boxes in in this box are arranged in a row or column */
+  height:90%;
+  width:45%;
+  align-items: center; 
+  justify-content: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #212529;
+  border-radius: 5px;
+  padding: 5px;
+  margin:15px;
+}
+
+
+.spider-plot {
+  display: flex;
+  flex-direction: column;  /* whether boxes in in this box are arranged in a row or column */
+  width:50%;
+  height:100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.spider-plot-container {
+  width: max(100%, 400px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height:100%;
+}
+
+
+.spider-plot-image{
+  display: flex;
+  max-height: 90%;
+  min-width: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.explanation-and-button {
+  display: flex;
+  flex-direction: column;
+  height:100%;
+  width:45%;
+  justify-content: center;
+  padding: 20px;
+  padding-left:0px;
+  padding-right:50px;
+
+}
+
+.explanation {
+  text-align: justify;
+  font-size: min(max(11px, 1.2vw), 18px);
+}
+
+.explanation-and-button a {
+  width:fit-content;
+  align-self: flex-end;
+}
+
+.explanation-and-button button{
+  background-color: #212529;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  width: 130px;
+  height: 50px;
+  margin-right:50px;
+  margin-top:50px;
+  font-size: max(15px, 1vw);
+}
+
+
+.explanation-and-button button:hover{
+  opacity: 0.7;
+  font-weight: bold;
+
+}
+
+.explanation-and-button button:active{
+  background-color: #0d0e10;
+  opacity: 1;
+}

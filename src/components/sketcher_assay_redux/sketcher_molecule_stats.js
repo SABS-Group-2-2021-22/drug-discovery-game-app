@@ -1,5 +1,5 @@
 import React from "react";
-import "../assay.css";
+import "../assay/assay.css";
 import { connect } from "react-redux";
 import SketcherFilters from "./sketcher_filter_display.js"
 import SketcherDescriptors from "./sketcher_descriptor_display.js"

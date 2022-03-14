@@ -1,7 +1,7 @@
 import React from "react";
 import Plot from "react-plotly.js";
 import  SketcherMoleculeImage  from "./sketcher_molecule_image.js";
-import "../analysis.css";
+import "../analysis/analysis.css";
 import { connect } from "react-redux";
 
 class SketcherThePlot extends React.Component {

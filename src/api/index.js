@@ -71,3 +71,6 @@ export function fetchCompText() {
   return client.get("/comparisontxt");
 }
 
+export function resetGame() {
+  return client.get("/reset");
+}

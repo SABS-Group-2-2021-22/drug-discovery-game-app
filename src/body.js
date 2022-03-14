@@ -1,14 +1,16 @@
 import {
     Home,
-    AppRedux,
-    AssayRedux,
-    AnalysisRedux,
-    ResultsRedux,
+    Builder,
+    Assay,
+    Analysis,
+    Results,
     SketcherAppRedux,
     SketcherAssayRedux,
     SketcherAnalysisRedux,
     SketcherResultsRedux,
-  } from "./components";
+  } from "./components/body";
+
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { connect } from "react-redux";
 import React from 'react';
@@ -42,10 +44,10 @@ import ReactDOM from 'react-dom';
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/app" element={(this.props.gamemode === 'builder') ? <AppRedux />: <SketcherAppRedux/>} />
-            <Route path="/assay" element={(this.props.gamemode === 'builder') ?< AssayRedux updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>: <SketcherAssayRedux/>}  />
-            <Route path="/analysis" element={(this.props.gamemode === 'builder') ?< AnalysisRedux/>: <SketcherAnalysisRedux/>}  />
-            <Route path="/results" element={(this.props.gamemode === 'builder') ?< ResultsRedux/>: <SketcherResultsRedux/>} />
+            <Route path="/app" element={(this.props.gamemode === 'builder') ? <Builder />: <SketcherAppRedux/>} />
+            <Route path="/assay" element={(this.props.gamemode === 'builder') ?< Assay updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>: <SketcherAssayRedux/>}  />
+            <Route path="/analysis" element={(this.props.gamemode === 'builder') ?< Analysis/>: <SketcherAnalysisRedux/>}  />
+            <Route path="/results" element={(this.props.gamemode === 'builder') ?< Results/>: <SketcherResultsRedux/>} />
         </Routes>
     )
   } 

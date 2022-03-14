@@ -1,7 +1,7 @@
 import React from "react";
-import "../assay.css";
+import "../assay/assay.css";
 import { connect } from "react-redux";
-import { runSketchedAssay } from "../../actions";
+import { sketcherActions } from "../../actions";
 
 class SketcherAssayPanel extends React.Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class SketcherAssayPanel extends React.Component {
     }
     console.log(assays_run)
     this.props.dispatch(
-      runSketchedAssay(this.props.selected_mol, assays_run)
+      sketcherActions.runSketchedAssay(this.props.selected_mol, assays_run)
     );
   };
 

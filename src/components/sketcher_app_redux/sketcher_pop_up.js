@@ -1,5 +1,5 @@
 import React from "react";
-import { closePopUp} from "../../actions";
+import { sketcherActions } from "../../actions";
 import { connect} from "react-redux";
 import {Text} from "react-native";
 import Modal from 'react-bootstrap/Modal';
@@ -12,7 +12,7 @@ class SketcherPopUp extends React.Component {
     }
 
     turn_error_off = () => {
-        this.props.dispatch(closePopUp())
+        this.props.dispatch(sketcherActions.closePopUp())
     }
 
     render () {

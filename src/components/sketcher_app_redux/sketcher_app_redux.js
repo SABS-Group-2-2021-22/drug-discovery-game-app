@@ -3,7 +3,7 @@ import { connect} from "react-redux";
 import SketchedMoleculeList from "./sketched_molecule_list";
 import SketcherPopUp from "./sketcher_pop_up";
 import Sketcher from "./sketcher"
-import { saveSketchedMolecule} from "../../actions";
+import { sketcherActions } from "../../actions";
 import "./sketcher_app.css"
 
 class SketcherAppRedux extends React.Component {
@@ -13,7 +13,7 @@ class SketcherAppRedux extends React.Component {
     }
 
     saveSketchedMoleculeParent(input) {
-        this.props.dispatch(saveSketchedMolecule(input))
+        this.props.dispatch(sketcherActions.saveSketchedMolecule(input))
     }
 
     render() {

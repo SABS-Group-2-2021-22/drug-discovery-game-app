@@ -1,5 +1,5 @@
 import React from "react";
-import "../analysis.css";
+import "../analysis/analysis.css";
 import SketcherMoleculeImage from "./sketcher_molecule_image.js";
 import SketcherMoleculeStats from "./sketcher_molecule_stats.js";
 

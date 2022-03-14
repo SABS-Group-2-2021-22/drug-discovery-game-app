@@ -1,5 +1,5 @@
 import React from "react";
-import "../assay.css"
+import "../assay/assay.css"
 import { connect } from "react-redux"
 import  SketcherMoleculeImage  from "./sketcher_molecule_image.js"
 import SketcherMoleculeStats from "./sketcher_molecule_stats_widget.js"

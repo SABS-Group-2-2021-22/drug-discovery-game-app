@@ -1,7 +1,7 @@
 import React from "react";
-import "../assay.css";
+import "../assay/assay.css";
 import { connect } from "react-redux";
-import { selectMolecule } from "../../actions";
+import { sketcherActions } from "../../actions";
 
 class SketcherMoleculeImage extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class SketcherMoleculeImage extends React.Component {
   }
 
   selectMolecule = () => {
-    this.props.dispatch(selectMolecule(this.props.mol_id));
+    this.props.dispatch(sketcherActions.selectMolecule(this.props.mol_id));
   };
 
   render() {

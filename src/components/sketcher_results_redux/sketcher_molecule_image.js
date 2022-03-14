@@ -1,5 +1,5 @@
 import React from "react";
-import "../results.css";
+import "../results/results.css";
 import { connect } from "react-redux";
 
 class SketcherMoleculeImage extends React.Component {
