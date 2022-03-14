@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { sketcherActions } from "../../actions";
+import { selectorActions, sketcherActions } from "../../actions";
 import '../builder/builder.css';
 import { connect } from "react-redux";
 
@@ -12,7 +12,7 @@ class SketcherControlPanel extends React.Component {
 }
 
 initSelectMolecule = () => {
-  this.props.dispatch(sketcherActions.selectMolecule(Object.keys(this.props.saved_mols)[0]));
+  this.props.dispatch(selectorActions.selectMolecule(Object.keys(this.props.saved_mols)[0]));
 };
 
 
@@ -31,7 +31,7 @@ render() {
 
 function mapStateToProps(state) {
   return {
-    saved_mols: state.saved_sketched_mols
+    saved_mols: state.sketcher.saved_sketched_mols
   };
 }
 

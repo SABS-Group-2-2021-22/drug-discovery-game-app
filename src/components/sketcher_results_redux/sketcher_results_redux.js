@@ -72,8 +72,8 @@ class SketcherResultsRedux extends React.Component {
 function mapStateToProps(state) {
     return {
         spider_data: state.spider_data,
-        comp_text: state.comp_text,
-        chosen_mol: state.chosen_mol,
+        comp_text: state.sketcher.comp_text,
+        chosen_mol: state.sketcher.chosen_mol,
     };
 }
 

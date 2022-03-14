@@ -35,9 +35,9 @@ class SketcherSelectorPanel extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    selected_mol: state.selected_mol,
-    chosen_mol: state.chosen_mol,
-    saved_mols: state.saved_sketched_mols,
+    selected_mol: state.selector.selected_mol,
+    chosen_mol: state.selector.chosen_mol,
+    saved_mols: state.sketcher.saved_sketched_mols,
   };
 }
 

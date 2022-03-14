@@ -1,6 +1,7 @@
 const initialState = {
     saved_sketched_mols: [],
     sketcher_error: [],
+    gamemode: 'builder',
 }
 
 

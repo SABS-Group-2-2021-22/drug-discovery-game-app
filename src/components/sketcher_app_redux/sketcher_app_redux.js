@@ -26,7 +26,7 @@ class SketcherAppRedux extends React.Component {
                         <Sketcher saveSketchedMoleculeChild = {this.saveSketchedMoleculeParent}/>
                     </div>
                     <div>
-                    {(this.props.sketcher_error[this.props.sketcher_error.length - 1] === 1) && <SketcherPopUp/>}
+                    {/* {(this.props.sketcher_error[this.props.sketcher_error.length - 1] === 1) && <SketcherPopUp/>} */}
                     </div>
                 </div>
 
@@ -36,7 +36,8 @@ class SketcherAppRedux extends React.Component {
 
 function mapStateToProps(state) {
     return {
-      sketcher_error: state.sketcher_error
+      sketcher_error: state.sketcher.sketcher_error,
+      saved_sketched_molecules: state.sketcher.saved_sketched_molecules
     };
   }
   

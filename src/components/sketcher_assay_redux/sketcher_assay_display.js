@@ -53,14 +53,14 @@ function mapStateToProps(state) {
   return {
     //each assay has to be individually accessed from 'assays_run' to force a component update
     // ...simply throwing saved_mols in as a prop is not sufficient
-    pIC50_run: state.saved_sketched_mols[state.selected_mol].data.assays_run.pIC50,
+    pIC50_run: state.sketcher.saved_sketched_mols[state.selector.selected_mol].data.assays_run.pIC50,
     mouse_run:
-      state.saved_sketched_mols[state.selected_mol].data.assays_run.clearance_mouse,
+      state.sketcher.saved_sketched_mols[state.selector.selected_mol].data.assays_run.clearance_mouse,
     human_run:
-      state.saved_sketched_mols[state.selected_mol].data.assays_run.clearance_human,
-    logd_run: state.saved_sketched_mols[state.selected_mol].data.assays_run.logd,
-    pampa_run: state.saved_sketched_mols[state.selected_mol].data.assays_run.pampa,
-    saved_mols: state.saved_sketched_mols,
+      state.sketcher.saved_sketched_mols[state.selector.selected_mol].data.assays_run.clearance_human,
+    logd_run: state.sketcher.saved_sketched_mols[state.selector.selected_mol].data.assays_run.logd,
+    pampa_run: state.sketcher.saved_sketched_mols[state.selector.selected_mol].data.assays_run.pampa,
+    saved_mols: state.sketcher.saved_sketched_mols,
   };
 }
 

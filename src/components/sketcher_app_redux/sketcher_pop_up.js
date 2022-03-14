@@ -37,7 +37,7 @@ class SketcherPopUp extends React.Component {
 
 function mapStateToProps(state) {
     return {
-      sketcher_error: state.sketcher_error
+      sketcher_error: state.sketcher.sketcher_error
     };
   }
   

@@ -53,8 +53,8 @@ class SketcherAssays extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    saved_mols: state.saved_sketched_mols,
-    Roche: state.Roche
+    saved_mols: state.sketcher.saved_sketched_mols,
+    Roche: state.sketcher.Roche
   };
 }
 

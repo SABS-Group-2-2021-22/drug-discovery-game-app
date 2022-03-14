@@ -34,15 +34,15 @@ class SketcherMoleculeStats extends React.Component {
 function mapStateToProps(state) {
   return {
     //each assay has to be individually accessed from 'assays_run' to force a component update
-    saved_mols: state.saved_sketched_mols,
+    saved_mols: state.sketcher.saved_sketched_mols,
     assays_run: 
-    state.saved_sketched_mols[state.selected_mol].data.assays_run,
+    state.sketcher.saved_sketched_mols[state.selector.selected_mol].data.assays_run,
   lipinski_run: 
-    state.saved_sketched_mols[state.selected_mol].data.assays_run.lipinski,
+    state.sketcher.saved_sketched_mols[state.selector.selected_mol].data.assays_run.lipinski,
   descriptors_run:
-    state.saved_sketched_mols[state.selected_mol].data.assays_run.descriptors,
+    state.sketcher.saved_sketched_mols[state.selector.selected_mol].data.assays_run.descriptors,
   drug_props_run:
-      state.saved_sketched_mols[state.selected_mol].data.assays_run.drug_props,
+      state.sketcher.saved_sketched_mols[state.selector.selected_mol].data.assays_run.drug_props,
   };
 }
 

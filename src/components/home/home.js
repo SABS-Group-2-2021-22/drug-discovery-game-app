@@ -24,10 +24,13 @@ class Home extends React.Component {
   }
 
   setBuilderMode = () => {
+    console.log('Builder mode set')
     this.props.dispatch(sketcherActions.setGamemodeAction('builder'))
+
   }
 
   setSketcherMode = () => {
+    console.log('Builder mode set')
     this.props.dispatch(sketcherActions.setGamemodeAction('sketcher'))
   }
 

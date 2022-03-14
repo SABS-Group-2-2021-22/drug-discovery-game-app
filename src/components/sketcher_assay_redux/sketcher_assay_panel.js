@@ -132,8 +132,8 @@ class SketcherAssayPanel extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    selected_mol: state.selected_mol,
-    assays_run: state.saved_sketched_mols[state.selected_mol].data.assays_run,
+    selected_mol: state.selector.selected_mol,
+    assays_run: state.sketcher.saved_sketched_mols[state.selector.selected_mol].data.assays_run,
   };
 }
 
