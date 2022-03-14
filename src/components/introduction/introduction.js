@@ -1,5 +1,5 @@
 import React from "react";
-import "./home.css";
+import "./introduction.css";
 import { Link } from "react-router-dom";
 import pymolpic from "../../assets/pymolMMP12.png";
 import { connect } from "react-redux";
@@ -9,7 +9,7 @@ import oxuni from "../../assets/oxlogo-sq-border.png";
 import roche from "../../assets/Roche.png";
 import epsrc from "../../assets/EPSRC_logo.png";
 
-class Home extends React.Component {
+class Introduction extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -26,8 +26,8 @@ class Home extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <div className="home">
-          <div className="hometitle">Welcome to the Drug Discovery Game </div>
+        <div className="introduction">
+          <div className="introductiontitle">Welcome to the Drug Discovery Game </div>
           <div className="pic-and-text">
             <div className="picture">
               {" "}
@@ -35,13 +35,7 @@ class Home extends React.Component {
             </div>
             <div className="text-and-button">
               <div className="text">
-                MMP-12 is an 18 kDa, monomeric enzyme implicated in emphysema
-                and asthma, and has been identified as a target with therapeutic
-                potential. Your job is to design a potent inhibitor of MMP12
-                with good lipophilicity, medium to high permeability, and good
-                metabolic stability. You have 30 weeks and £100,000 to design,
-                assay, and screen your molecules. At the end you will have to
-                pick a final molecule to take forward.
+                Hello
               </div>
               <div className="control-panel">
                 {this.props.loggedIn ? (
@@ -98,4 +92,4 @@ const actionCreators = {
   selectRGroup: selectorActions.selectRGroup,
 };
 
-export default connect(mapStateToProps, actionCreators)(Home);
+export default connect(mapStateToProps, actionCreators)(Introduction);
