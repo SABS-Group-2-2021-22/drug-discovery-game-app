@@ -14,15 +14,6 @@ class Introduction2 extends React.Component {
     super(props);
   }
 
-  // componentWillMount() {
-  //   this.props.fetchRGroup();
-  //   this.props.selectRGroup(
-  //     this.props.selected_r_groups["A"],
-  //     this.props.selected_r_groups["B"],
-  //     "800,800"
-  //   );
-  // }
-
   render() {
     return (
       <div className="wrapper">
@@ -88,18 +79,4 @@ class Introduction2 extends React.Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     loggedIn: state.login.login,
-//     r_groups: state.init.r_groups,
-//     selected_r_groups: state.selector.selected_r_groups,
-//   };
-// }
-
-// const actionCreators = {
-//   fetchRGroup: initActions.fetchRGroup,
-//   selectRGroup: selectorActions.selectRGroup,
-// };
-
-// export default connect(mapStateToProps, actionCreators)(Introduction);
 export default (Introduction2);
