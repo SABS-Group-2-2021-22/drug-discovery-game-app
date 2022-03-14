@@ -9,7 +9,7 @@ import oxuni from "../../assets/oxlogo-sq-border.png";
 import roche from "../../assets/Roche.png";
 import epsrc from "../../assets/EPSRC_logo.png";
 
-class Introduction extends React.Component {
+class Introduction2 extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -27,17 +27,25 @@ class Introduction extends React.Component {
     return (
       <div className="wrapper">
         <div className="introduction">
-          <div className="introductiontitle">What are we designing our drug for? </div>
+          <div className="introductiontitle">What should the drug be like? </div>
           <div className="pic-and-text">
             <div className="text-and-button">
               <div className="text">
-                <p>Matrix metalloproteinase 12 (MMP-12) is an enzyme implicated in emphysema and asthma. It has been identified as a possible drug target.
-                  {"\n"}  {"\n"}  MMP-12 is made by immune cells in the lungs, and it is thought that it can cause damage and inflammation in the lungs.
-                  {"\n"}  {"\n"} You are going to try to design a drug which stops MMP-12 from acting in the lungs.
+                <p>As you learnt in the training, what a drug should be like depends on what condition you are trying to treat. But, in general you want to maximise potency, permeability and solubility; and minimise clearance and lipophilicity.
+                  {"\n"}  {"\n"}
+                  Here we want:
+                  {"\n"}  - Good lipophilicity (i.e. logD ≥ 1),
+                  {"\n"}  - Medium to high permeability (PAMPA),
+                  {"\n"}  -  Good metabolic stability (low clearance) in mouse and human, and
+                  {"\n"}  -  High potency.
+                  {"\n"} This is called the target compound profile (TCP).
                 </p>
               </div>
               <div className="control-panel">
-                <Link to="/introduction2">
+                <Link to="/introduction">
+                  <button>Back</button>
+                </Link>
+                <Link to="/introduction3">
                   <button>Next</button>
                 </Link>
                 <Link to="/builder">
@@ -94,4 +102,4 @@ class Introduction extends React.Component {
 // };
 
 // export default connect(mapStateToProps, actionCreators)(Introduction);
-export default (Introduction);
+export default (Introduction2);

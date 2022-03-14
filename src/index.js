@@ -13,6 +13,8 @@ import {
   Navigation,
   Home,
   Introduction,
+  Introduction2,
+  Introduction3,
   Builder,
   Assay,
   Analysis,
@@ -54,6 +56,8 @@ class Index extends React.Component {
           <Route path="/" element={<Home />} />
           <Route path="/builder" element={<Builder />} />
           <Route path="/introduction" element={<Introduction />} />
+          <Route path="/introduction2" element={<Introduction2 />} />
+          <Route path="/introduction3" element={<Introduction3 />} />
           <Route path="/assay" element={<Assay updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>} />
           <Route path="/analysis" element={<Analysis />} />
           <Route path="/results" element={<Results/>} />
