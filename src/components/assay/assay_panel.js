@@ -84,7 +84,10 @@ class AssayPanel extends React.Component {
             this.costAssays("pIC50");
           }}
         >
-          pIC50
+          <p>pIC50
+            {"\n"}Cost $70
+            {"\n"}Duration: 1 week
+          </p>
         </button>
         <button
           label="Clearance Mouse"
@@ -93,7 +96,10 @@ class AssayPanel extends React.Component {
             this.costAssays("clearance_mouse");
           }}
         >
-          Clearance Mouse
+          <p>Clearance Mouse
+            {"\n"}Cost $7,000
+            {"\n"}Duration: 3 week
+          </p>
         </button>
         <button
           label="Clearance Humam"
@@ -102,7 +108,10 @@ class AssayPanel extends React.Component {
             this.costAssays("clearance_human");
           }}
         >
-          Clearance Human
+          <p>Clearance Human
+            {"\n"}Cost $9,000
+            {"\n"}Duration: 3.5 weeks
+          </p>
         </button>
         <button
           label="LogD"
@@ -111,7 +120,10 @@ class AssayPanel extends React.Component {
             this.costAssays("logd");
           }}
         >
-          LogD
+          <p>LogD
+            {"\n"}Cost $1,000
+            {"\n"}Duration: 1.5 weeks
+          </p>
         </button>
         <button
           label="PAMPA"
@@ -120,7 +132,10 @@ class AssayPanel extends React.Component {
             this.costAssays("pampa");
           }}
         >
-          PAMPA
+          <p>PAMPA
+            {"\n"}Cost $700
+            {"\n"}Duration: 1 week
+          </p>
         </button>
         <button
           label="Run Filters"
