@@ -30,7 +30,7 @@ class Home extends React.Component {
   }
 
   setSketcherMode = () => {
-    console.log('Builder mode set')
+    console.log('Sketcher mode set')
     this.props.dispatch(sketcherActions.setGamemodeAction('sketcher'))
   }
 
@@ -57,16 +57,24 @@ class Home extends React.Component {
               <div className="control-panel">
                 {this.props.loggedIn ?
                    (
+                     <div>
                     <Link to="/build">
                       <button onClick={this.setBuilderMode} >Beginner</button>
+                      </Link>
+
+                      <Link to="/build">
                       <button onClick={this.setSketcherMode} >Advanced</button>
                     </Link>
+                    </div>
                   ) : (
+                    <div>
                     <Link to="/login">
                       <button>Beginner</button>
+                      </Link>
+                      <Link to="/login">
                       <button >Advanced</button>
-
                     </Link>
+                    </div>
                   )}
                   
               </div>
