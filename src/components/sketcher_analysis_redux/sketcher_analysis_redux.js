@@ -3,7 +3,7 @@ import "../analysis/analysis.css";
 import SketcherSelectorPanel from "./sketcher_selector_panel.js";
 import SketcherMoleculeList from "./sketcher_molecule_list.js";
 import SketcherThePlot from "./sketcher_the_plot.js";
-import { sketcherActions } from "../../actions";
+import { initActions } from "../../actions";
 import { connect } from "react-redux";
 
 class SketcherAnalysisRedux extends React.Component {
@@ -12,7 +12,7 @@ class SketcherAnalysisRedux extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(sketcherActions.fetchRoche())
+    this.props.dispatch(initActions.fetchRoche())
   }
 
   render() {

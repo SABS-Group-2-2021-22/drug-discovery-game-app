@@ -142,7 +142,7 @@ class SketcherThePlot extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    plot_data: state.sketcher.plot_data,
+    plot_data: state.analysis.plot_data,
   };
 }
 

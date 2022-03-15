@@ -28,7 +28,7 @@ class SketcherMoleculeStats extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    saved_mols: state.sketcher.saved_mols,
+    saved_mols: state.sketcher.saved_sketched_mols,
   };
 }
 

@@ -71,8 +71,8 @@ class SpiderPlot extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        chosen_mol_spider: state.sketcher.spider_data.data.param_dict['0'],
-        ref_mol_spider: state.sketcher.spider_data.data.param_dict['1']
+        chosen_mol_spider: state.analysis.spider_data.data.param_dict['0'],
+        ref_mol_spider: state.analysis.spider_data.data.param_dict['1']
     }
 }
 

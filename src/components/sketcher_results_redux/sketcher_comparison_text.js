@@ -20,7 +20,7 @@ class SketcherComparisonText extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    comp_text: state.sketcher.comp_text.data.comparison,
+    comp_text: state.analysis.comp_text.data.comparison,
   };
 }
 
