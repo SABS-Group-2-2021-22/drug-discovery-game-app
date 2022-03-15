@@ -28,7 +28,7 @@ export function sketcherReducer(state = initialState, action) {
         case 'RUN_SKETCHED_ASSAY_SUCCEEDED': {
             return {
                 ...state,
-                saved_mols: {
+                saved_sketched_mols: {
                     ...state.saved_sketched_mols,
                     [action.payload.molecule]: {
                         ...state.saved_sketched_mols[action.payload.molecule],

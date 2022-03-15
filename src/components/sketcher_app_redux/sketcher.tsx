@@ -23,8 +23,6 @@ export class Sketcher extends React.Component <SketcherType>{
 
   constructor(props: any) {
     super(props);
-    this.handleOnInit = this.handleOnInit.bind(this);
-    this.triggerSaving = this.triggerSaving.bind(this);
   }
 
   static defaultProps = {profileStore:{}}

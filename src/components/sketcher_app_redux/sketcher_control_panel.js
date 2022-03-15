@@ -6,13 +6,10 @@ import { connect } from "react-redux";
 
 
 class SketcherControlPanel extends React.Component {
-  constructor(props) {
-    super(props);
-    this.initSelectMolecule = this.initSelectMolecule.bind(this);
-}
 
 initSelectMolecule = () => {
   this.props.dispatch(selectorActions.selectMolecule(Object.keys(this.props.saved_mols)[0]));
+  console.log(Object.keys(this.props.saved_mols)[0])
 };
 
 
@@ -34,5 +31,7 @@ function mapStateToProps(state) {
     saved_mols: state.sketcher.saved_sketched_mols
   };
 }
+
+
 
 export default connect(mapStateToProps) (SketcherControlPanel)

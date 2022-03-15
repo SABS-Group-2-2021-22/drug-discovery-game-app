@@ -20,7 +20,7 @@ export const sketcherActions = {
       api.fetchsketchedMolecule(mol_block).then((response) => {
         const molecule = response;
         if (molecule.data !== 'failure') {
-          dispatch(closePopUp(molecule));
+          dispatch(saveSketchedMoleculeSucceeded(molecule));
         }
         else {
           dispatch(saveSketchedMoleculeFailed());

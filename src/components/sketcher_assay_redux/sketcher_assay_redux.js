@@ -35,7 +35,7 @@ class SketcherAssayRedux extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    selected_mol: state.sketcher.selected_mol,
+    selected_mol: state.selector.selected_mol,
   };
 }
 
