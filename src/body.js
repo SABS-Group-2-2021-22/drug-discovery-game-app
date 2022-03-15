@@ -56,7 +56,7 @@ import ReactDOM from 'react-dom';
 
 function mapStateToProps(state) {
     return {
-        gamemode: state.gamemode
+        gamemode: state.sketcher.gamemode
     };
   }
 

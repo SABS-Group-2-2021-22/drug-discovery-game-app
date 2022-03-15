@@ -25,13 +25,13 @@ class Home extends React.Component {
 
   setBuilderMode = () => {
     console.log('Builder mode set')
-    this.props.dispatch(sketcherActions.setGamemodeAction('builder'))
+    this.props.setGamemode('builder')
 
   }
 
   setSketcherMode = () => {
     console.log('Sketcher mode set')
-    this.props.dispatch(sketcherActions.setGamemodeAction('sketcher'))
+    this.props.setGamemode('sketcher')
   }
 
   render() {
@@ -61,7 +61,6 @@ class Home extends React.Component {
                     <Link to="/build">
                       <button onClick={this.setBuilderMode} >Beginner</button>
                       </Link>
-
                       <Link to="/build">
                       <button onClick={this.setSketcherMode} >Advanced</button>
                     </Link>
@@ -69,10 +68,10 @@ class Home extends React.Component {
                   ) : (
                     <div>
                     <Link to="/login">
-                      <button>Beginner</button>
+                      <button onClick={this.setBuilderMode}>Beginner</button>
                       </Link>
                       <Link to="/login">
-                      <button >Advanced</button>
+                      <button onClick={this.setSketcherMode}>Advanced</button>
                     </Link>
                     </div>
                   )}
@@ -120,6 +119,7 @@ function mapStateToProps(state) {
 const actionCreators = {
   fetchRGroup: initActions.fetchRGroup,
   selectRGroup: selectorActions.selectRGroup,
+  setGamemode: sketcherActions.setGamemodeAction
 };
 
 export default connect(mapStateToProps, actionCreators)(Home);
