@@ -29,7 +29,7 @@ class Index extends React.Component {
       money: undefined,
       time: undefined,
       };
-      this.updateTimeAndMoney();
+      // this.updateTimeAndMoney();
 }
   updateTimeAndMoney = () => {
     const base_url = 'http://127.0.0.1:5000/update_time_money'
@@ -52,7 +52,8 @@ class Index extends React.Component {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/builder" element={<Builder />} />
-          <Route path="/assay" element={<Assay updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>} />
+          {/* <Route path="/assay" element={<Assay updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>} /> */}
+          <Route path="/assay" element={<Assay/>} />
           <Route path="/analysis" element={<Analysis />} />
           <Route path="/results" element={<Results/>} />
           <Route path="/login" element={<LoginPage />} />
