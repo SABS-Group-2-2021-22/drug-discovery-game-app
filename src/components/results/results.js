@@ -76,6 +76,7 @@ function mapStateToProps(state) {
     spider_data: state.analysis.spider_data,
     comp_text: state.analysis.comp_text,
     chosen_mol: state.selector.chosen_mol,
+    gamemode: state.game.gamemode,
   };
 }
 
