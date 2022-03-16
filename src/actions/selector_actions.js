@@ -4,6 +4,7 @@ export const selectorActions = {
   selectRGroup,
   selectMolecule,
   chooseMolecule,
+  postChosenSucceeded,
 };
 
 function selectRGroupSucceeded(r_group_id_A, r_group_id_B, molecule) {

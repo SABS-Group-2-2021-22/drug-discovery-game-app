@@ -17,6 +17,12 @@ export function gameReducer(state=initialState, action) {
           money: action.payload.money,
         };
       }
+      case "GAME_MODE_SET": {
+        return {
+            ...state,
+            gamemode: action.payload.gamemode
+        }
+      }
       default: {
         return state;
       }

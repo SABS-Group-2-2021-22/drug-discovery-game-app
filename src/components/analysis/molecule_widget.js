@@ -9,7 +9,6 @@ class MoleculeWidget extends React.Component {
   }
 
   render() {
-    console.log(this.props.mol_id)
     return (
       <div className="molecule-container">
         <div className="molecule-widget">

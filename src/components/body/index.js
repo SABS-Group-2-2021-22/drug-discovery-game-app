@@ -6,3 +6,8 @@ export { default as Assay } from "../assay/assay";
 export { default as Analysis } from "../analysis/analysis";
 export { default as Results } from "../results/results";
 export { default as LoginPage } from "./login"
+
+export { default as SketcherAppRedux } from "../sketcher_app_redux/sketcher_app_redux"
+export { default as SketcherAssayRedux } from "../sketcher_assay_redux/sketcher_assay_redux"
+export { default as SketcherAnalysisRedux } from "../sketcher_analysis_redux/sketcher_analysis_redux"
+export { default as SketcherResultsRedux } from "../sketcher_results_redux/sketcher_results_redux"

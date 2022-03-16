@@ -4,6 +4,7 @@ export const gameActions = {
   updateTime,
   updateMoney,
   resetGame,
+  setGamemodeAction,
 };
 
 function updateTimeSucceeded(time) {
@@ -79,4 +80,19 @@ function resetGame() {
     api.resetGame();
     dispatch(resetGameSucceeded());
   };
+}
+
+function setGamemodeAction(mode) {
+  return (dispatch) => {
+        dispatch(setGamemodeActionSucceeded(mode));
+    }
+  };
+
+function setGamemodeActionSucceeded(mode) {
+  return {
+    type: "GAME_MODE_SET",
+    payload: {
+      gamemode: mode
+    }
+}
 }
