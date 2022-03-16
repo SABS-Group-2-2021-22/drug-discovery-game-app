@@ -3,7 +3,7 @@ import "./home.css";
 import { Link } from "react-router-dom";
 import pymolpic from "../../assets/pymolMMP12.png";
 import { connect } from "react-redux";
-import { initActions, selectorActions, sketcherActions  } from "../../actions";
+import { initActions, selectorActions, gameActions  } from "../../actions";
 import sabs from "../../assets/sabs-logo-tight.png";
 import oxuni from "../../assets/oxlogo-sq-border.png";
 import roche from "../../assets/Roche.png";
@@ -82,7 +82,7 @@ class Home extends React.Component {
 
           <div className="button-and-logo-area">
             {" "}
-            {/*actually no longer conatins the start button */}
+            {/*actually no longer contains the start button */}
             <div className="logos-area">
               <div className="logo">
                 {" "}
@@ -119,7 +119,7 @@ function mapStateToProps(state) {
 const actionCreators = {
   fetchRGroup: initActions.fetchRGroup,
   selectRGroup: selectorActions.selectRGroup,
-  setGamemode: sketcherActions.setGamemodeAction
+  setGamemode: gameActions.setGamemodeAction
 };
 
 export default connect(mapStateToProps, actionCreators)(Home);

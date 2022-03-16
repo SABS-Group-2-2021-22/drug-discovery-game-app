@@ -11,13 +11,13 @@ class SketcherMoleculeList extends React.Component {
   render() {
     return (
       <div className="molecule_list">
-      {(Object.keys(this.props.saved_sketched_mols).length === 0) && <center className="placeholder_text"> Draw some molecules and they appear here!</center>}
-      {(Object.keys(this.props.saved_sketched_mols).length  > 0) && Array.from(
-        { length: Object.keys(this.props.saved_sketched_mols).length },
+      {(Object.keys(this.props.saved_mols).length === 0) && <center className="placeholder_text"> Draw some molecules and they appear here!</center>}
+      {(Object.keys(this.props.saved_mols).length  > 0) && Array.from(
+        { length: Object.keys(this.props.saved_mols).length },
         (_, i) => (
           <SketcherMoleculeWidget
-            key={Object.keys(this.props.saved_sketched_mols)[i]}
-            mol_id={Object.keys(this.props.saved_sketched_mols)[i]}
+            key={Object.keys(this.props.saved_mols)[i]}
+            mol_id={Object.keys(this.props.saved_mols)[i]}
           />
         )
       )}
@@ -28,8 +28,8 @@ class SketcherMoleculeList extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        saved_sketched_mols: state.sketcher.saved_sketched_mols
-    }
+      saved_mols: state.assay.saved_mols,
+    };
 }
 
 export default connect(mapStateToProps)(SketcherMoleculeList)

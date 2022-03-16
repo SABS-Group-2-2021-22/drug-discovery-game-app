@@ -7,15 +7,11 @@ class SketcherMoleculeImage extends React.Component {
     super(props);
   }
 
-  // selectMolecule = () => {
-    // this.props.dispatch(selectMolecule(this.props.mol_id));
-  // };
-
   render() {
     return (
       <div className="molecule">
         <img
-          src={this.props.saved_sketched_mols[this.props.mol_id].data.img_html}
+          src={this.props.saved_mols[this.props.mol_id].data.img_html}
           alt="drug"
         />
       </div>
@@ -25,7 +21,7 @@ class SketcherMoleculeImage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    saved_sketched_mols: state.sketcher.saved_sketched_mols
+    saved_mols: state.assay.saved_mols,
   };
 }
 

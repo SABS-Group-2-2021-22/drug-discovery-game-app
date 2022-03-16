@@ -9,7 +9,6 @@ class SketcherControlPanel extends React.Component {
 
 initSelectMolecule = () => {
   this.props.dispatch(selectorActions.selectMolecule(Object.keys(this.props.saved_mols)[0]));
-  console.log(Object.keys(this.props.saved_mols)[0])
 };
 
 
@@ -28,7 +27,7 @@ render() {
 
 function mapStateToProps(state) {
   return {
-    saved_mols: state.sketcher.saved_sketched_mols
+    saved_mols: state.assay.saved_mols,
   };
 }
 

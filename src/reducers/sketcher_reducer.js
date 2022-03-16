@@ -1,18 +1,11 @@
 const initialState = {
     saved_sketched_mols: [],
     sketcher_error: [],
-    gamemode: 'builder',
 }
 
 
 export function sketcherReducer(state = initialState, action) {
     switch (action.type) {
-        case "SAVE_SKETCHED_MOLECULE_SUCCEEDED": {
-            return {
-                ...state,
-                saved_sketched_mols: [...state.saved_sketched_mols, action.payload.saved_mol]
-            }
-        }
         case "SAVE_SKETCHED_MOLECULE_FAILED": {
             return {
                 ...state,
@@ -25,32 +18,26 @@ export function sketcherReducer(state = initialState, action) {
                 sketcher_error: [...state.sketcher_error, action.payload.sketcher_error]
             }
         }
-        case 'RUN_SKETCHED_ASSAY_SUCCEEDED': {
-            return {
-                ...state,
-                saved_sketched_mols: {
-                    ...state.saved_sketched_mols,
-                    [action.payload.molecule]: {
-                        ...state.saved_sketched_mols[action.payload.molecule],
-                        data: {
-                            ...state.saved_sketched_mols[action.payload.molecule].data,
-                            assays_run: action.payload.assays_run
+        // case 'RUN_SKETCHED_ASSAY_SUCCEEDED': {
+        //     return {
+        //         ...state,
+        //         saved_sketched_mols: {
+        //             ...state.saved_sketched_mols,
+        //             [action.payload.molecule]: {
+        //                 ...state.saved_sketched_mols[action.payload.molecule],
+        //                 data: {
+        //                     ...state.saved_sketched_mols[action.payload.molecule].data,
+        //                     assays_run: action.payload.assays_run
 
-                        },
-                    },
-                },
-            };
-        }
+        //                 },
+        //             },
+        //         },
+        //     };
+        // }
         case "CHOOSE_SKETCHED_MOLECULE_SUCCEEDED": {
             return {
                 ...state,
                 chosen_mol: action.payload.chosen_mol
-            }
-        }
-        case "GAME_MODE_SET": {
-            return {
-                ...state,
-                gamemode: action.payload.gamemode
             }
         }
         default: {

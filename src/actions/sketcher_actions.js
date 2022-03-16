@@ -12,15 +12,15 @@ export const sketcherActions = {
     postSketchedChosen,
     fetchSketchedSpiderObj,
     fetchSketchedCompText,
-    setGamemodeAction,
   };
 
- function saveSketchedMolecule(mol_block) {
+ function saveSketchedMolecule(smiles, mol_block, saved_mols) {
     return (dispatch) => {
       api.fetchsketchedMolecule(mol_block).then((response) => {
         const molecule = response;
         if (molecule.data !== 'failure') {
-          dispatch(saveSketchedMoleculeSucceeded(molecule));
+          saved_mols[smiles] = molecule
+          dispatch(saveSketchedMoleculeSucceeded(saved_mols));
         }
         else {
           dispatch(saveSketchedMoleculeFailed());
@@ -30,11 +30,11 @@ export const sketcherActions = {
     };
   }
   
-   function saveSketchedMoleculeSucceeded(molecule) {
+   function saveSketchedMoleculeSucceeded(saved_mols) {
     return {
       type: "SAVE_SKETCHED_MOLECULE_SUCCEEDED",
       payload: {
-        saved_mol: molecule
+        saved_mols: saved_mols
       }
   }
   }
@@ -177,19 +177,4 @@ export const sketcherActions = {
         dispatch(analysisActions.fetchCompTextSucceeded(response));
       });
     };
-  }
-
-  function setGamemodeAction(mode) {
-    return (dispatch) => {
-          dispatch(setGamemodeActionSucceeded(mode));
-      }
-    };
-  
-  function setGamemodeActionSucceeded(mode) {
-    return {
-      type: "GAME_MODE_SET",
-      payload: {
-        gamemode: mode
-      }
-  }
   }

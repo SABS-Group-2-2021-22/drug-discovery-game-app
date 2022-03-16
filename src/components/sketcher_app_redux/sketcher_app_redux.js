@@ -12,8 +12,8 @@ class SketcherAppRedux extends React.Component {
         this.saveSketchedMoleculeParent = this.saveSketchedMoleculeParent.bind(this);
     }
 
-    saveSketchedMoleculeParent(input) {
-        this.props.dispatch(sketcherActions.saveSketchedMolecule(input))
+    saveSketchedMoleculeParent(smiles, input) {
+        this.props.dispatch(sketcherActions.saveSketchedMolecule(smiles, input, this.props.saved_mols))
     }
 
     render() {
@@ -36,8 +36,8 @@ class SketcherAppRedux extends React.Component {
 
 function mapStateToProps(state) {
     return {
-      sketcher_error: state.sketcher.sketcher_error,
-      saved_sketched_molecules: state.sketcher.saved_sketched_molecules
+        saved_mols: state.assay.saved_mols,
+        sketcher_error: state.sketcher.sketcher_error,
     };
   }
   

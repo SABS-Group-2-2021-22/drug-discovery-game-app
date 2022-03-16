@@ -46,9 +46,9 @@ class Index extends React.Component {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/build" element={(this.props.gamemode === 'builder') ? <Builder />: <SketcherAppRedux/>} />
-              <Route path="/assay" element={(this.props.gamemode === 'builder') ?< Assay updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>: <SketcherAssayRedux/>}  />
-              <Route path="/analysis" element={(this.props.gamemode === 'builder') ?< Analysis/>: <SketcherAnalysisRedux/>}  />
-              <Route path="/results" element={(this.props.gamemode === 'builder') ?< Results/>: <SketcherResultsRedux/>} />
+              <Route path="/assay" element={< Assay updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>}  />
+              <Route path="/analysis" element={< Analysis/>}  />
+              <Route path="/results" element={< Results/>}  />
           
             <Route path="/login" element={<LoginPage />} />
           </Routes>
@@ -60,7 +60,7 @@ class Index extends React.Component {
   
   function mapStateToProps(state) {
     return {
-      gamemode: state.sketcher.gamemode,
+      gamemode: state.game.gamemode,
     };
   }
   
