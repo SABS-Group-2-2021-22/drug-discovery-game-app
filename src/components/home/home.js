@@ -3,7 +3,7 @@ import "./home.css";
 import { Link } from "react-router-dom";
 import pymolpic from "../../assets/pymolMMP12.png";
 import { connect } from "react-redux";
-import { initActions, selectorActions, gameActions  } from "../../actions";
+import { initActions, selectorActions, gameActions } from "../../actions";
 import sabs from "../../assets/sabs-logo-tight.png";
 import oxuni from "../../assets/oxlogo-sq-border.png";
 import roche from "../../assets/Roche.png";
@@ -40,42 +40,45 @@ class Home extends React.Component {
         <div className="home">
           <div className="hometitle">Welcome to the Drug Discovery Game </div>
           <div className="pic-and-text">
-            <div className="picture">
-              {" "}
-              <img src={pymolpic} />{" "}
-            </div>
             <div className="text-and-button">
               <div className="text">
-                MMP-12 is an 18 kDa, monomeric enzyme implicated in emphysema
-                and asthma, and has been identified as a target with therapeutic
-                potential. Your job is to design a potent inhibitor of MMP12
-                with good lipophilicity, medium to high permeability, and good
-                metabolic stability. You have 30 weeks and £100,000 to design,
-                assay, and screen your molecules. At the end you will have to
-                pick a final molecule to take forward.
+                <p>
+                  The Drug Discovery Game is an interactive game exploring the process
+                  of drug discovery based on actual data from drugs in clinical trials
+                  or on the market. Players grow a core fragment from pre-defined vectors,
+                  guided by biophysical and pharmacological assay data. The aim is to develop
+                  a final compound within a specified budget with a potency close to that of
+                  the published compound. This serves as both an educative tool for training
+                  medicinal chemists in robust decision making, but also as a tool for training
+                  machine learning algorithms in the decisions made by pharmaceutical research
+                  scientists. It is developed by researchers from the University of Oxford in
+                  collaboration with scientists from Roche.
+                  {"\n"}
+                  {"\n"}
+                </p>
               </div>
-              <div className="control-panel">
+              <div className="control-panel-home">
                 {this.props.loggedIn ?
-                   (
-                     <div>
-                    <Link to="/introduction">
-                      <button onClick={this.setBuilderMode} >Beginner</button>
+                  (
+                    <div>
+                      <Link to="/introduction">
+                        <button onClick={this.setBuilderMode} >Beginner</button>
                       </Link>
                       <Link to="/introduction">
-                      <button onClick={this.setSketcherMode} >Advanced</button>
-                    </Link>
+                        <button onClick={this.setSketcherMode} >Advanced</button>
+                      </Link>
                     </div>
                   ) : (
                     <div>
-                    <Link to="/login">
-                      <button onClick={this.setBuilderMode}>Beginner</button>
+                      <Link to="/login">
+                        <button onClick={this.setBuilderMode}>Beginner</button>
                       </Link>
                       <Link to="/login">
-                      <button onClick={this.setSketcherMode}>Advanced</button>
-                    </Link>
+                        <button onClick={this.setSketcherMode}>Advanced</button>
+                      </Link>
                     </div>
                   )}
-                  
+
               </div>
             </div>
           </div>
