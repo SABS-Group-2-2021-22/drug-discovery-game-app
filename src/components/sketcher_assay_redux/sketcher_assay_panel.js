@@ -1,16 +1,15 @@
 import React from "react";
-import "./assay.css";
+import "../assay/assay.css";
 import { connect } from "react-redux";
-import { assayActions, gameActions } from "../../actions";
+import { sketcherActions } from "../../actions";
 
-class AssayPanel extends React.Component {
+class SketcherAssayPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       selected_assays: [],
       assays_run: null,
       selected_mol: null,
-      cost_assays: [],
     };
   }
 
@@ -21,39 +20,22 @@ class AssayPanel extends React.Component {
     });
   }
 
-  costAssays = (assay) => {
-    let arr = this.state.cost_assays;
-    arr.push(assay);
-    this.setState({ cost_assays: arr });
-  };
-
-  resetCostAssays = () => {
-    this.setState({ cost_assays: [] });
-  };
-
-  updateTime = () => {
-    this.props.updateTime(this.state.cost_assays, this.props.time);
-  };
-
-  updateMoney = () => {
-    this.props.updateMoney(this.state.cost_assays, this.props.money);
-  };
-
   runAssays = () => {
     let assays_run = this.state.assays_run;
     let selected_assays = this.state.selected_assays;
     for (var i = 0; i < selected_assays.length; i++) {
-      assays_run[selected_assays[i]] = true;
+      assays_run[selected_assays[i]] = true
     }
-    this.updateTime();
-    this.updateMoney();
-    this.resetCostAssays();
-    this.props.runAssay(this.props.selected_mol, assays_run);
+    console.log(assays_run)
+    this.props.dispatch(
+      sketcherActions.runSketchedAssay(this.props.selected_mol, assays_run)
+    );
   };
 
   onClick = (label) => {
+    console.log(this.state.assays_run)
     let arr = this.state.selected_assays;
-    if (arr.includes(label) == false) {
+    if (arr.includes(label) == false){
       arr.push(label);
     }
     this.setState({ selected_assays: arr });
@@ -70,7 +52,6 @@ class AssayPanel extends React.Component {
   componentDidUpdate() {
     if (this.state.selected_mol !== this.props.selected_mol) {
       this.resetSelection();
-      this.resetCostAssays();
     }
   }
 
@@ -81,70 +62,50 @@ class AssayPanel extends React.Component {
           label="pIC50"
           onClick={() => {
             this.onClick("pIC50");
-            this.costAssays("pIC50");
           }}
         >
-          <p>pIC50
-            {"\n"}Cost $70
-            {"\n"}Duration: 1 week
-          </p>
+          pIC50
         </button>
         <button
           label="Clearance Mouse"
           onClick={() => {
             this.onClick("clearance_mouse");
-            this.costAssays("clearance_mouse");
           }}
         >
-          <p>Clearance Mouse
-            {"\n"}Cost $7,000
-            {"\n"}Duration: 3 week
-          </p>
+          Clearance Mouse
         </button>
         <button
-          label="Clearance Humam"
+          label="Clearanace Humam"
           onClick={() => {
             this.onClick("clearance_human");
-            this.costAssays("clearance_human");
           }}
         >
-          <p>Clearance Human
-            {"\n"}Cost $9,000
-            {"\n"}Duration: 3.5 weeks
-          </p>
+          Clearance Human
         </button>
         <button
           label="LogD"
           onClick={() => {
             this.onClick("logd");
-            this.costAssays("logd");
           }}
         >
-          <p>LogD
-            {"\n"}Cost $1,000
-            {"\n"}Duration: 1.5 weeks
-          </p>
+          LogD
         </button>
         <button
           label="PAMPA"
           onClick={() => {
             this.onClick("pampa");
-            this.costAssays("pampa");
           }}
         >
-          <p>PAMPA
-            {"\n"}Cost $700
-            {"\n"}Duration: 1 week
-          </p>
+          PAMPA
         </button>
         <button
-          label="Run Filters"
+          label="Run Lipinski Filters"
           onClick={() => {
-            this.onClick("filters");
+            this.onClick("lipinski");
             this.runAssays();
           }}
         >
-          Run Filters
+          Check Lipinski Rules
         </button>
         <button
           label="Calculate Descriptors"
@@ -155,11 +116,10 @@ class AssayPanel extends React.Component {
         >
           Calculate Descriptors
         </button>
-
         <button
           label="Run_Assays"
           onClick={() => {
-            this.onClick("drug_props");
+            this.onClick("drug_props")
             this.runAssays();
           }}
         >
@@ -173,16 +133,8 @@ class AssayPanel extends React.Component {
 function mapStateToProps(state) {
   return {
     selected_mol: state.selector.selected_mol,
-    assays_run: state.assay.saved_mols[state.selector.selected_mol].data.assays_run,
-    time: state.game.time,
-    money: state.game.money,
+    assays_run: state.sketcher.saved_sketched_mols[state.selector.selected_mol].data.assays_run,
   };
 }
 
-const actionCreators = {
-  updateMoney: gameActions.updateMoney,
-  updateTime: gameActions.updateTime,
-  runAssay: assayActions.runAssay,
-};
-
-export default connect(mapStateToProps, actionCreators)(AssayPanel);
+export default connect(mapStateToProps)(SketcherAssayPanel);

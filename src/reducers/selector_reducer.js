@@ -27,6 +27,12 @@ export function selectorReducer(state = initialState, action) {
           chosen_mol: action.payload.chosen_mol,
         };
       }
+      case "CHOOSE_SKETCHED_MOLECULE_SUCCEEDED": {
+        return {
+            ...state,
+            chosen_mol: action.payload.chosen_mol
+        }
+    }
       default:
           return state
     }

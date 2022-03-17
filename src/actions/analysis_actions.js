@@ -4,6 +4,8 @@ export const analysisActions = {
   constructPlotObj,
   fetchSpiderObj,
   fetchCompText,
+  fetchSpiderObjSucceeded,
+  fetchCompTextSucceeded,
 };
 
 function constructPlotObjSucceeded(plot_data) {

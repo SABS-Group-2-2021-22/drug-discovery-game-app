@@ -40,6 +40,7 @@ class LoginPage extends React.Component {
 
         if (this.props.loggedIn) {
             return <Navigate to='/introduction' />
+            // return <Navigate to='/build' />
         }
         return (
             <div className='wrapper'>

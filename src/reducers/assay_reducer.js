@@ -10,6 +10,12 @@ export function assayReducer(state = initialState, action) {
         saved_mols: action.payload.saved_mols,
       };
     }
+    case "SAVE_SKETCHED_MOLECULE_SUCCEEDED": {
+      return {
+          ...state,
+          saved_mols: action.payload.saved_mols,
+      }
+    }
     case "FETCH_DESCRIPTORS_SUCCEEDED": {
       return {
         ...state,
@@ -55,6 +61,22 @@ export function assayReducer(state = initialState, action) {
         },
       };
     }
+    case 'RUN_SKETCHED_ASSAY_SUCCEEDED': {
+      return {
+          ...state,
+          saved_mols: {
+              ...state.saved_mols,
+              [action.payload.molecule]: {
+                  ...state.saved_mols[action.payload.molecule],
+                  data: {
+                      ...state.saved_mols[action.payload.molecule].data,
+                      assays_run: action.payload.assays_run
+
+                  },
+              },
+          },
+      };
+  }
     default: {
       return state;
     }
