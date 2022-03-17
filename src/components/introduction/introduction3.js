@@ -23,11 +23,12 @@ class Introduction3 extends React.Component {
             <div className="text-and-button">
               <div className="text">
                 <p>There are 4 stages.
-                  {"\n"}1. Design some molecules.
-                  {"\n"}2. Run some experiments (assays) and calculations
-                  to find out some properties of the molecules you have designed. Based on this you can go back and design some more molecules.
-                  {"\n"}3. Compare the properties of different molecules you have designed.
-                  {"\n"}4. Find out how you did.
+                  {"\n"}1. Design potential lead compounds.
+                  {"\n"}2. Perform assays (experiments) and run calculations to determine the properties 
+                  of the molecules you have designed. With this additional information, you can then go
+                   back and develop improved compounds.
+                  {"\n"}3. Compare the properties of the different molecules you have designed.
+                  {"\n"}4. Find out how your drug compares to the molecule chosen by Roche to target MMP12
 
                   {"\n"}  {"\n"}You start the game with £100,000 and 30 weeks, running experiments will reduce both of these. 
                   The game ends when you run out of budget, time or if you are happy with the molecule you have made and decide to end the game.

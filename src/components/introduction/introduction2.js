@@ -22,9 +22,9 @@ class Introduction2 extends React.Component {
           <div className="pic-and-text">
             <div className="text-and-button">
               <div className="text">
-                <p>As you learnt in the training, what a drug should be like depends on what condition you are trying to treat. But, in general you want to maximise potency, permeability and solubility; and minimise clearance and lipophilicity.
+                <p>As you learnt in the training, the optimal properties of a certain drug depend on the specific condition you are trying to treat.
                   {"\n"}  {"\n"}
-                  Here we want:
+                  To target MMP-12, preferable properties are:
                   {"\n"}  - Good lipophilicity (i.e. logD ≥ 1),
                   {"\n"}  - Medium to high permeability (PAMPA),
                   {"\n"}  -  Good metabolic stability (low clearance) in mouse and human, and
