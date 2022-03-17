@@ -42,6 +42,7 @@ class Home extends React.Component {
           <div className="pic-and-text">
             <div className="text-and-button">
               <div className="text">
+                <p>
                 The Drug Discovery Game is an interactive game exploring the process
                 of drug discovery based on actual data from drugs in clinical trials
                 or on the market. Players grow a core fragment from pre-defined vectors,
@@ -52,8 +53,11 @@ class Home extends React.Component {
                 machine learning algorithms in the decisions made by pharmaceutical research
                 scientists. It is developed by researchers from the University of Oxford in
                 collaboration with scientists from Roche.
+                {"\n"}
+                {"\n"}
+                </p>
               </div>
-              <div className="control-panel">
+              <div className="control-panel-home">
                 {this.props.loggedIn ?
                   (
                     <div>
