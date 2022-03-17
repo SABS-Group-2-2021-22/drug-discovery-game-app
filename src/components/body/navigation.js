@@ -18,6 +18,11 @@ function Navigation() {
                   </NavLink>
                 </li>
                 <li className="navigation-item">
+                  <NavLink className="navigation-link" to="/introduction">
+                    Introduction
+                  </NavLink>
+                </li>
+                <li className="navigation-item">
                   <NavLink className="navigation-link" to="/build">
                     Build
                   </NavLink>

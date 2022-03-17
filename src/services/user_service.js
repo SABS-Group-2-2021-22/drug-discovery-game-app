@@ -10,6 +10,7 @@ function login(username){
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({ username })
+        // body: username,
     };
 
     return fetch(`http://127.0.0.1:5000/users/authenticate`, requestOptions)
@@ -17,6 +18,7 @@ function login(username){
         .then(user => {
             // stores user details in local storage to maintain login state between page refreshes
             localStorage.setItem('user', JSON.stringify(user));
+            // localStorage.setItem('user', user);
 
             return user;
         });

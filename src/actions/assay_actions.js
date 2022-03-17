@@ -26,6 +26,7 @@ function saveMolecule(saved_mols, selected_r_groups) {
     api
       .fetchDescriptors(selected_r_groups.A, selected_r_groups.B)
       .then((response) => {
+        console.log(response)
         let descriptors = response.data.descriptors[mol_id];
         dispatch(fetchDescriptorsSucceeded(mol_id, descriptors));
       });

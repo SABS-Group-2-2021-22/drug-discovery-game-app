@@ -11,7 +11,7 @@ class LoginPage extends React.Component {
         super(props);
 
         //reset login status when loading login page
-        this.props.logout();
+        // this.props.logout();
 
         this.state = {
             username: '',
@@ -39,7 +39,7 @@ class LoginPage extends React.Component {
         const { username, submitted } = this.state;
 
         if (this.props.loggedIn) {
-            return <Navigate to='/build' />
+            return <Navigate to='/introduction' />
         }
         return (
             <div className='wrapper'>

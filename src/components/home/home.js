@@ -58,10 +58,10 @@ class Home extends React.Component {
                 {this.props.loggedIn ?
                    (
                      <div>
-                    <Link to="/build">
+                    <Link to="/introduction">
                       <button onClick={this.setBuilderMode} >Beginner</button>
                       </Link>
-                      <Link to="/build">
+                      <Link to="/introduction">
                       <button onClick={this.setSketcherMode} >Advanced</button>
                     </Link>
                     </div>

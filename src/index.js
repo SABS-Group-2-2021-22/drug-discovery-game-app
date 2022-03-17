@@ -15,6 +15,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   Navigation,
   Home,
+  Introduction,
+  Introduction2,
+  Introduction3,
   Builder,
   Assay,
   Analysis,
