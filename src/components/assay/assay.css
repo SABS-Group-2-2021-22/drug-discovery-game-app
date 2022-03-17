@@ -143,11 +143,11 @@
   }
 
   .assay-name {
-    font-size: 20px;
+    font-size: 2vh
   }
   
   .assay-cost-and-time {
-    font-size: 16px;
+    font-size: 1.6vh;
     font-weight: lighter;
   }
 
@@ -167,6 +167,8 @@
     max-height: 90px;
     margin-bottom: 10px;
     white-space:pre-line;
+    width:200px;
+    height:90px;
   }
 
 
