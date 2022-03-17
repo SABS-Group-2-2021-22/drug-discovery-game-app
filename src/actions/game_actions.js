@@ -95,11 +95,13 @@ function saveGame() {
     api.saveGame();
     dispatch(saveGameSucceeded());
   };
+}
+
 function setGamemodeAction(mode) {
   return (dispatch) => {
         dispatch(setGamemodeActionSucceeded(mode));
-    }
-  };
+    };
+  }
 
 function setGamemodeActionSucceeded(mode) {
   return {
@@ -107,5 +109,5 @@ function setGamemodeActionSucceeded(mode) {
     payload: {
       gamemode: mode
     }
-}
+  };
 }
