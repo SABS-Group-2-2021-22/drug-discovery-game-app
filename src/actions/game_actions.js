@@ -4,6 +4,7 @@ export const gameActions = {
   updateTime,
   updateMoney,
   resetGame,
+  saveGame,
   setGamemodeAction,
 };
 
@@ -82,6 +83,18 @@ function resetGame() {
   };
 }
 
+
+function saveGameSucceeded() {
+  return {
+    type: "SAVE_GAME_SUCCEEDED",
+  };
+}
+
+function saveGame() {
+  return (dispatch) => {
+    api.saveGame();
+    dispatch(saveGameSucceeded());
+  };
 function setGamemodeAction(mode) {
   return (dispatch) => {
         dispatch(setGamemodeActionSucceeded(mode));

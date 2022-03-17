@@ -6,7 +6,8 @@ const client = axios.create({
     baseURL: API_BASE_URL,
     headers: {
         'Content-Type': 'application/json',
-    }
+        'username': localStorage.user,
+    },
 })
 
 export function fetchRGroup(id) {
@@ -73,4 +74,8 @@ export function fetchCompText() {
 
 export function resetGame() {
   return client.get("/reset");
+}
+
+export function saveGame() {
+  return client.get("/save_game_data");
 }
