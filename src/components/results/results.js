@@ -45,10 +45,10 @@ class Results extends React.Component {
               <div className="title">Your Molecule</div>
               <div className="molecule-image-and-descriptors">
                 <div className="molecule-image">
-                      <MoleculeImage mol_id={this.props.chosen_mol} />
+                      <MoleculeImage mol_id={(this.props.gamemode === 'builder') ? this.props.chosen_mol: this.props.chosen_mol[0]} />
                 </div>
                 <div class="container" className="molecule-descriptors">
-                  <Assays mol_id={this.props.chosen_mol} />
+                  <Assays mol_id={(this.props.gamemode === 'builder') ? this.props.chosen_mol: this.props.chosen_mol[0]} />
                 </div>
               </div>
             </div>
@@ -77,6 +77,7 @@ function mapStateToProps(state) {
     spider_data: state.analysis.spider_data,
     comp_text: state.analysis.comp_text,
     chosen_mol: state.selector.chosen_mol,
+    gamemode: state.game.gamemode,
   };
 }
 
