@@ -1,8 +1,14 @@
 .sketcher_builder{
-    height: 84vh;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex: 1, auto;
+  flex-direction: row;
+  background-color: white;
+  height: 100%;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+
   }
 
 .sketcher-control-panel {
@@ -25,11 +31,13 @@
     min-height: 100%;
     justify-content: center;
     overflow-y:scroll;
-    min-width: 15%;
+    min-width: 20%;
     text-align: center;
     vertical-align: middle;
     height: 100%;
     width: 100%;
+    padding-bottom: 10pt;
+    max-width: 250pt;
   }
 
 .molecule_list {
@@ -50,7 +58,7 @@
 .ketcher {
   display: flex;
   flex-direction: row; 
-  min-width: 85%;
+  min-width: 80%;
 }
 
 .ketcher_div {
