@@ -13,7 +13,8 @@ class Results extends React.Component {
     super(props);
   }
 
-  resetGame = () => {
+  save_and_resetGame = () => {
+    this.props.saveGame();
     this.props.resetGame();
   };
 
@@ -61,7 +62,7 @@ class Results extends React.Component {
                 <ComparisonText />
               </div>
               <Link to="/">
-                <button onClick={this.resetGame}> End Game </button>
+                <button onClick={this.save_and_resetGame}> End Game </button>
               </Link>
             </div>
           </div>
@@ -81,6 +82,7 @@ function mapStateToProps(state) {
 
 const actionCreators = {
   resetGame: gameActions.resetGame,
+  saveGame: gameActions.saveGame,
 };
 
 export default connect(mapStateToProps, actionCreators)(Results);

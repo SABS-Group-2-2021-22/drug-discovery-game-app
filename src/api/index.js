@@ -55,3 +55,7 @@ export function fetchCompText() {
 export function resetGame() {
   return client.get("/reset");
 }
+
+export function saveGame() {
+  return client.get("/save_game_data");
+}
