@@ -70,26 +70,6 @@ const store = createStore(rootReducer, compose(applyMiddleware(thunk), devToolsE
 //   };
 // }
 
-//   render() {
-//     return (
-//       <Router>
-//         <Navigation />
-//         <Routes>
-//           <Route path="/" element={<Home />} />
-//           <Route path="/builder" element={<Builder />} />
-//           <Route path="/introduction" element={<Introduction />} />
-//           <Route path="/introduction2" element={<Introduction2 />} />
-//           <Route path="/introduction3" element={<Introduction3 />} />
-//           <Route path="/assay" element={<Assay updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>} />
-//           <Route path="/analysis" element={<Analysis />} />
-//           <Route path="/results" element={<Results/>} />
-//           <Route path="/login" element={<LoginPage />} />
-//         </Routes>
-//         <Footer/>
-//       </Router>
-//     )
-//   }
-// }
 // connect(mapStateToProps)(Index);
 
 ReactDOM.render(
