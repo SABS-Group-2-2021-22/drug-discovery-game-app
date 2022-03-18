@@ -84,10 +84,14 @@ class AssayPanel extends React.Component {
             this.costAssays("pIC50");
           }}
         >
-          <p>pIC50
-            {"\n"}Cost $70
-            {"\n"}Duration: 1 week
-          </p>
+          <div className="assay-name">
+            pIC50
+          </div>
+          <div className="assay-cost-and-time">
+            <p> Cost $70
+              {"\n"}Duration: 1 week
+            </p>
+          </div>
         </button>
         <button
           label="Clearance Mouse"
@@ -96,10 +100,14 @@ class AssayPanel extends React.Component {
             this.costAssays("clearance_mouse");
           }}
         >
-          <p>Clearance Mouse
-            {"\n"}Cost $7,000
-            {"\n"}Duration: 3 week
-          </p>
+          <div className="assay-name">
+            Clearance Mouse
+          </div>
+          <div className="assay-cost-and-time">
+            <p> Cost $7,000
+              {"\n"}Duration: 3 week
+            </p>
+          </div>
         </button>
         <button
           label="Clearance Humam"
@@ -108,10 +116,13 @@ class AssayPanel extends React.Component {
             this.costAssays("clearance_human");
           }}
         >
-          <p>Clearance Human
-            {"\n"}Cost $9,000
+          <div className="assay-name">
+            Clearance Human
+          </div>
+          <div className="assay-cost-and-time">
+            Cost $9,000
             {"\n"}Duration: 3.5 weeks
-          </p>
+          </div>
         </button>
         <button
           label="LogD"
@@ -120,10 +131,13 @@ class AssayPanel extends React.Component {
             this.costAssays("logd");
           }}
         >
-          <p>LogD
-            {"\n"}Cost $1,000
-            {"\n"}Duration: 1.5 weeks
-          </p>
+          <div className="assay-name">
+            LogD
+          </div>
+          <div className="assay-cost-and-time">
+          Cost $1,000
+            {"\n"} Duration: 1.5 weeks
+          </div>
         </button>
         <button
           label="PAMPA"
@@ -132,10 +146,13 @@ class AssayPanel extends React.Component {
             this.costAssays("pampa");
           }}
         >
-          <p>PAMPA
-            {"\n"}Cost $700
+          <div className="assay-name">
+            PAMPA
+          </div>
+          <div className="assay-cost-and-time">
+            Cost $700
             {"\n"}Duration: 1 week
-          </p>
+          </div>
         </button>
         <button
           label="Run Filters"
@@ -144,7 +161,9 @@ class AssayPanel extends React.Component {
             this.runAssays();
           }}
         >
-          Run Filters
+          <div className="assay-name">
+            Run Filters
+          </div>
         </button>
         <button
           label="Calculate Descriptors"
@@ -153,7 +172,9 @@ class AssayPanel extends React.Component {
             this.runAssays();
           }}
         >
-          Calculate Descriptors
+          <div className="assay-name">
+            Calculate Descriptors
+          </div>
         </button>
 
         <button
@@ -163,7 +184,9 @@ class AssayPanel extends React.Component {
             this.runAssays();
           }}
         >
-          Run Assays
+          <div className="assay-name">
+            Run Assays
+          </div>
         </button>
       </div>
     );
