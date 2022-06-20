@@ -29,6 +29,7 @@ class SketcherMoleculeList extends React.Component {
 function mapStateToProps(state) {
     return {
       saved_mols: state.assay.saved_mols,
+      no_of_mols: Object.keys(state.assay.saved_mols).length
     };
 }
 

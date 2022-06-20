@@ -18,6 +18,7 @@ class SketcherAppRedux extends React.Component {
 
     render() {
         return (
+            <div className="wrapper">
                 <div className="sketcher_builder">
                     <div className="sketched_molecules">
                         <SketchedMoleculeList/>
@@ -29,6 +30,7 @@ class SketcherAppRedux extends React.Component {
                     {(this.props.sketcher_error[this.props.sketcher_error.length - 1] === 1) && <SketcherPopUp/>}
                     </div>
                 </div>
+            </div>
 
         )
     }
