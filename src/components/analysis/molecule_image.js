@@ -8,6 +8,7 @@ class MoleculeImage extends React.Component {
     super(props);
   }
 
+  // fires the selectMolecule action when clicking the molecule's image
   selectMolecule = () => {
     this.props.selectMolecule(this.props.mol_id);
   };

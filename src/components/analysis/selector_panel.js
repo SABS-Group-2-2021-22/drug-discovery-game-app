@@ -11,16 +11,35 @@ class SelectorPanel extends React.Component {
     super(props);
   }
 
+  // Fire the chooseMolecule or chooseSketcherMolecule (mode dependent) when
+  // ...the choose molecule button is clicked
   chooseMolecule = () => {
-    if (this.props.gamemode === 'builder') {this.props.chooseMolecule(this.props.selected_mol)} else {this.props.chooseSketchedMolecule(this.props.selected_mol, this.props.saved_mols[this.props.selected_mol].data.smiles)};
+    if (this.props.gamemode === "builder") {
+      this.props.chooseMolecule(this.props.selected_mol);
+    } else {
+      this.props.chooseSketchedMolecule(
+        this.props.selected_mol,
+        this.props.saved_mols[this.props.selected_mol].data.smiles
+      );
+    }
   };
 
+  // retrieve data for the spider plot on the results page
   fetchSpider = () => {
-    if (this.props.gamemode === 'builder') {this.props.fetchSpiderObj()} else {this.props.fetchSketcherSpiderObj()};
+    if (this.props.gamemode === "builder") {
+      this.props.fetchSpiderObj();
+    } else {
+      this.props.fetchSketcherSpiderObj();
+    }
   };
 
+  // retrieve data for the comparison text on the results page
   fetchCompText = () => {
-    if (this.props.gamemode ==='builder') {this.props.fetchCompText()} else {this.props.fetchSketcherCompText()};
+    if (this.props.gamemode === "builder") {
+      this.props.fetchCompText();
+    } else {
+      this.props.fetchSketcherCompText();
+    }
   };
 
   submitResult = () => {
@@ -56,6 +75,6 @@ const actionCreators = {
   fetchSketcherSpiderObj: sketcherActions.fetchSketchedSpiderObj,
   fetchSketcherCompText: sketcherActions.fetchSketchedCompText,
   chooseSketchedMolecule: sketcherActions.chooseSketchedMolecule,
-}
+};
 
 export default connect(mapStateToProps, actionCreators)(SelectorPanel);

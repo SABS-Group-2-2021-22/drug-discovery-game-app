@@ -8,6 +8,7 @@ class MoleculeImage extends React.Component {
     super(props);
   }
 
+  // updates id of selected molecule in the store
   selectMolecule = () => {
     this.props.selectMolecule(this.props.mol_id);
   };

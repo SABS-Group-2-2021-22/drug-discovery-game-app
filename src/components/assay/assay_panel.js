@@ -14,6 +14,8 @@ class AssayPanel extends React.Component {
     };
   }
 
+  // set selected_mol and its assays_run states to the first compound
+  // in store on page load
   componentDidMount() {
     this.setState({
       selected_mol: this.props.selected_mol,
@@ -21,24 +23,30 @@ class AssayPanel extends React.Component {
     });
   }
 
+  // add the cost of the assay run and update the cost_assays state
   costAssays = (assay) => {
     let arr = this.state.cost_assays;
     arr.push(assay);
     this.setState({ cost_assays: arr });
   };
 
+  // clear the list of assay fees
   resetCostAssays = () => {
     this.setState({ cost_assays: [] });
   };
 
+  // update the total time left in the store
   updateTime = () => {
     this.props.updateTime(this.state.cost_assays, this.props.time);
   };
 
+  //update the total money left in the store
   updateMoney = () => {
     this.props.updateMoney(this.state.cost_assays, this.props.money);
   };
 
+  // run the assay (essentially store which have been run and update time and
+  // mondey)
   runAssays = () => {
     let assays_run = this.state.assays_run;
     let selected_assays = this.state.selected_assays;
@@ -51,6 +59,7 @@ class AssayPanel extends React.Component {
     this.props.runAssay(this.props.selected_mol, assays_run);
   };
 
+  // select the assay
   onClick = (label) => {
     let arr = this.state.selected_assays;
     if (arr.includes(label) == false) {
@@ -67,6 +76,7 @@ class AssayPanel extends React.Component {
     });
   };
 
+  // update selections and cost on a state change
   componentDidUpdate() {
     if (this.state.selected_mol !== this.props.selected_mol) {
       this.resetSelection();
@@ -84,11 +94,11 @@ class AssayPanel extends React.Component {
             this.costAssays("pIC50");
           }}
         >
-          <div className="assay-name">
-            pIC50
-          </div>
+          <div className="assay-name">pIC50</div>
           <div className="assay-cost-and-time">
-            <p> Cost $70
+            <p>
+              {" "}
+              Cost $70
               {"\n"}Duration: 1 week
             </p>
           </div>
@@ -100,11 +110,11 @@ class AssayPanel extends React.Component {
             this.costAssays("clearance_mouse");
           }}
         >
-          <div className="assay-name">
-            Clearance Mouse
-          </div>
+          <div className="assay-name">Clearance Mouse</div>
           <div className="assay-cost-and-time">
-            <p> Cost $7,000
+            <p>
+              {" "}
+              Cost $7,000
               {"\n"}Duration: 3 week
             </p>
           </div>
@@ -116,9 +126,7 @@ class AssayPanel extends React.Component {
             this.costAssays("clearance_human");
           }}
         >
-          <div className="assay-name">
-            Clearance Human
-          </div>
+          <div className="assay-name">Clearance Human</div>
           <div className="assay-cost-and-time">
             Cost $9,000
             {"\n"}Duration: 3.5 weeks
@@ -131,11 +139,9 @@ class AssayPanel extends React.Component {
             this.costAssays("logd");
           }}
         >
-          <div className="assay-name">
-            LogD
-          </div>
+          <div className="assay-name">LogD</div>
           <div className="assay-cost-and-time">
-          Cost $1,000
+            Cost $1,000
             {"\n"} Duration: 1.5 weeks
           </div>
         </button>
@@ -146,9 +152,7 @@ class AssayPanel extends React.Component {
             this.costAssays("pampa");
           }}
         >
-          <div className="assay-name">
-            PAMPA
-          </div>
+          <div className="assay-name">PAMPA</div>
           <div className="assay-cost-and-time">
             Cost $700
             {"\n"}Duration: 1 week
@@ -161,9 +165,7 @@ class AssayPanel extends React.Component {
             this.runAssays();
           }}
         >
-          <div className="assay-name">
-            Run Filters
-          </div>
+          <div className="assay-name">Run Filters</div>
         </button>
         <button
           label="Calculate Descriptors"
@@ -172,9 +174,7 @@ class AssayPanel extends React.Component {
             this.runAssays();
           }}
         >
-          <div className="assay-name">
-            Calculate Descriptors
-          </div>
+          <div className="assay-name">Calculate Descriptors</div>
         </button>
 
         <button
@@ -184,9 +184,7 @@ class AssayPanel extends React.Component {
             this.runAssays();
           }}
         >
-          <div className="assay-name">
-            Run Assays
-          </div>
+          <div className="assay-name">Run Assays</div>
         </button>
       </div>
     );
@@ -196,7 +194,8 @@ class AssayPanel extends React.Component {
 function mapStateToProps(state) {
   return {
     selected_mol: state.selector.selected_mol,
-    assays_run: state.assay.saved_mols[state.selector.selected_mol].data.assays_run,
+    assays_run:
+      state.assay.saved_mols[state.selector.selected_mol].data.assays_run,
     time: state.game.time,
     money: state.game.money,
   };
