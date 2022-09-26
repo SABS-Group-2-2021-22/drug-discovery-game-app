@@ -42,7 +42,6 @@ class Index extends React.Component {
 
 
   render() {
-    console.log(this.props.gamemode);
     return (
       <Router>
         <Navigation />
