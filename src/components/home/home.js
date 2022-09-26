@@ -3,7 +3,7 @@ import "./home.css";
 import { Link } from "react-router-dom";
 import pymolpic from "../../assets/pymolMMP12.png";
 import { connect } from "react-redux";
-import { initActions, selectorActions, gameActions  } from "../../actions";
+import { initActions, selectorActions, gameActions } from "../../actions";
 import sabs from "../../assets/sabs-logo-tight.png";
 import oxuni from "../../assets/oxlogo-sq-border.png";
 import roche from "../../assets/Roche.png";
@@ -14,6 +14,8 @@ class Home extends React.Component {
     super(props);
   }
 
+  // fetches the r groups from the BE and selects the first r groups at each position
+  // ... for rapid rendering of the builder and sketcher pages
   componentWillMount() {
     this.props.fetchRGroup();
     this.props.selectRGroup(
@@ -24,15 +26,14 @@ class Home extends React.Component {
   }
 
   setBuilderMode = () => {
-    console.log('Builder mode set')
-    this.props.setGamemode('builder')
-
-  }
+    console.log("Builder mode set");
+    this.props.setGamemode("builder");
+  };
 
   setSketcherMode = () => {
-    console.log('Sketcher mode set')
-    this.props.setGamemode('sketcher')
-  }
+    console.log("Sketcher mode set");
+    this.props.setGamemode("sketcher");
+  };
 
   render() {
     return (
@@ -55,27 +56,25 @@ class Home extends React.Component {
                 pick a final molecule to take forward.
               </div>
               <div className="control-panel">
-                {this.props.loggedIn ?
-                   (
-                     <div>
+                {this.props.loggedIn ? (
+                  <div>
                     <Link to="/introduction">
-                      <button onClick={this.setBuilderMode} >Beginner</button>
-                      </Link>
-                      <Link to="/introduction">
-                      <button onClick={this.setSketcherMode} >Advanced</button>
-                    </Link>
-                    </div>
-                  ) : (
-                    <div>
-                    <Link to="/login">
                       <button onClick={this.setBuilderMode}>Beginner</button>
-                      </Link>
-                      <Link to="/login">
+                    </Link>
+                    <Link to="/introduction">
                       <button onClick={this.setSketcherMode}>Advanced</button>
                     </Link>
-                    </div>
-                  )}
-                  
+                  </div>
+                ) : (
+                  <div>
+                    <Link to="/login">
+                      <button onClick={this.setBuilderMode}>Beginner</button>
+                    </Link>
+                    <Link to="/login">
+                      <button onClick={this.setSketcherMode}>Advanced</button>
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -119,7 +118,7 @@ function mapStateToProps(state) {
 const actionCreators = {
   fetchRGroup: initActions.fetchRGroup,
   selectRGroup: selectorActions.selectRGroup,
-  setGamemode: gameActions.setGamemodeAction
+  setGamemode: gameActions.setGamemodeAction,
 };
 
 export default connect(mapStateToProps, actionCreators)(Home);

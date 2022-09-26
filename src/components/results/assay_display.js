@@ -7,6 +7,7 @@ class Assays extends React.Component {
     super(props);
   }
 
+  //ensure the metrics for the correct molecule are displayed
   srcRoute = () => {
     if (this.props.mol_id === "Roche") {
       return this.props.Roche.data.drug_props;
@@ -21,31 +22,15 @@ class Assays extends React.Component {
         <div class="row" className="stats-type-header">
           Assay Data:
         </div>
+        <div class="row">pIC50: {Number(this.srcRoute().pic50)}</div>
         <div class="row">
-          pIC50:{" "}
-          {Number(
-            this.srcRoute().pic50
-          )}
+          Clearance Mouse: {this.srcRoute().clearance_mouse}
         </div>
         <div class="row">
-          Clearance Mouse:{" "}
-          {
-              this.srcRoute().clearance_mouse
-          }
+          Clearance Human: {this.srcRoute().clearance_human}
         </div>
-        <div class="row">
-          Clearance Human:{" "}
-          {
-            this.srcRoute().clearance_human
-          }
-        </div>
-        <div class="row">
-          LogD: {this.srcRoute().logd}
-        </div>
-        <div class="row">
-          PAMPA:{" "}
-          {this.srcRoute().pampa}
-        </div>
+        <div class="row">LogD: {this.srcRoute().logd}</div>
+        <div class="row">PAMPA: {this.srcRoute().pampa}</div>
       </div>
     );
   }
@@ -54,7 +39,7 @@ class Assays extends React.Component {
 function mapStateToProps(state) {
   return {
     saved_mols: state.assay.saved_mols,
-    Roche: state.init.Roche
+    Roche: state.init.Roche,
   };
 }
 

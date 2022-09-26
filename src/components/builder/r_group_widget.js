@@ -9,6 +9,7 @@ class RGroupWidget extends React.Component {
     super(props);
   }
 
+  // store the r group id and positions when selected
   selectRGroups = () => {
     if (this.props.r_group_id.charAt(0) === "A") {
       this.props.selectRGroup(

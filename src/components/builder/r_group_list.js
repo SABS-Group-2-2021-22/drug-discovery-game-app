@@ -30,5 +30,4 @@ class RGroupList extends React.Component {
   }
 }
 
-export default RGroupList
-
+export default RGroupList;
