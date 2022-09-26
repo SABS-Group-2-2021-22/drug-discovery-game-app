@@ -3,6 +3,12 @@ const initialState = {
   comp_text: {},
 };
 
+/**
+ * updates spider_data and comp_text states
+ * @param {state_object} state the spider_data and comp_text states
+ * @param {action} action actions that update plot_data, spider_data, and comp_text
+ * @returns {state} updated state for plot_data, spider_data, and comp_text
+ */
 export function analysisReducer(state = initialState, action) {
   switch (action.type) {
     case "CONSTRUCT_PLOT_OBJECT_SUCCEEDED": {
@@ -24,7 +30,7 @@ export function analysisReducer(state = initialState, action) {
       };
     }
     default: {
-        return state;
+      return state;
     }
   }
 }

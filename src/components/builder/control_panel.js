@@ -9,6 +9,7 @@ class ControlPanel extends React.Component {
     super(props);
   }
 
+  // save the built molecule in the store
   saveMolecule = () => {
     this.props.saveMolecule(
       this.props.saved_mols,
@@ -16,6 +17,7 @@ class ControlPanel extends React.Component {
     );
   };
 
+  // set the first saved molecule as the selected molecule for the assay page
   initSelectMolecule = () => {
     this.props.selectMolecule(Object.keys(this.props.saved_mols)[0]);
   };

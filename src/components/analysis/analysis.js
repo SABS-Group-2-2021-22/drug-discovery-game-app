@@ -11,6 +11,8 @@ class Analysis extends React.Component {
     super(props);
   }
 
+  // Retrieves Roche's target compound from the BE for reduced lag
+  // ...on the results page
   componentDidMount() {
     this.props.fetchRoche();
   }

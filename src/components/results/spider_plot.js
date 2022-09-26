@@ -13,6 +13,7 @@ class SpiderPlot extends React.Component {
     };
   }
 
+  // restructure data from the store objec to local state objects
   restructureData() {
     for (const [key, value] of Object.entries(this.props.chosen_mol_spider)) {
       this.state.user_r.push(value);
@@ -24,6 +25,7 @@ class SpiderPlot extends React.Component {
     }
   }
 
+  // plot the data
   addTraces() {
     this.restructureData();
     let data = [
@@ -62,23 +64,23 @@ class SpiderPlot extends React.Component {
 
   render() {
     return (
-      <div className='spider-plot-container'>
-        <Plot 
-        data={this.addTraces()} 
-        layout={this.layout()} 
-        useResizeHandler={true}
-        style={{width: '100%',
-                height: '100%'}}/>
+      <div className="spider-plot-container">
+        <Plot
+          data={this.addTraces()}
+          layout={this.layout()}
+          useResizeHandler={true}
+          style={{ width: "100%", height: "100%" }}
+        />
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-    return {
-        chosen_mol_spider: state.analysis.spider_data.data.param_dict['0'],
-        ref_mol_spider: state.analysis.spider_data.data.param_dict['1']
-    }
+  return {
+    chosen_mol_spider: state.analysis.spider_data.data.param_dict["0"],
+    ref_mol_spider: state.analysis.spider_data.data.param_dict["1"],
+  };
 }
 
-export default connect(mapStateToProps)(SpiderPlot)
+export default connect(mapStateToProps)(SpiderPlot);

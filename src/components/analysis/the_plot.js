@@ -1,6 +1,6 @@
 import React from "react";
 import Plot from "react-plotly.js";
-import  MoleculeImage  from "./molecule_image.js";
+import MoleculeImage from "./molecule_image.js";
 import "./analysis.css";
 import { connect } from "react-redux";
 
@@ -17,6 +17,7 @@ class ThePlot extends React.Component {
     };
   }
 
+  // plot the data
   addTraces(data) {
     var lines = {};
     data.forEach((data) => {
@@ -36,18 +37,21 @@ class ThePlot extends React.Component {
         y: v.y,
         name: k,
       });
-    };
+    }
     return traces;
   }
 
+  // update the plot axes (metrics) when the metric buttons are clicked
   relayout(param, axis) {
     if (axis == "x") {
       this.setState({ x_axis: param });
     } else if (axis == "y") {
       this.setState({ y_axis: param });
-    };
+    }
   }
 
+  // when the mouse hovers over plot's data points, the molecule image
+  // ...and id for that compound is displayed as per the hover state being true
   showCard() {
     if (this.state.hover == true) {
       return (
@@ -70,9 +74,11 @@ class ThePlot extends React.Component {
           />
         </figure>
       );
-    };
+    }
   }
 
+  // when the mouse hovers over the plot, mouse coordinate states are updated
+  // ...and 'hover' is set to true
   onHover = (event) => {
     event.points.forEach((point) => {
       this.setState({ hover_mol: point.data.name, hover: true });
@@ -89,6 +95,7 @@ class ThePlot extends React.Component {
     });
   };
 
+  //set hover to false when the mouse leaves the data point
   onUnhover = (event) => {
     this.setState({ hover: false });
   };

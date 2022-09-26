@@ -7,6 +7,7 @@ class MoleculeImage extends React.Component {
     super(props);
   }
 
+  // ensure the image of the correct molecule is displayed
   srcRoute = () => {
     if (this.props.mol_id === "Roche") {
       return this.props.Roche.data.img_html;
