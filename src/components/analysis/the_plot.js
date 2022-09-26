@@ -120,7 +120,7 @@ class ThePlot extends React.Component {
         <div className="plot-button-row">
           <button onClick={() => this.relayout("--", "x")}>--</button>
           <button onClick={() => this.relayout("logd", "x")}>logd</button>
-          <button onClick={() => this.relayout("pic50", "x")}>pIC50</button>
+          <button onClick={() => this.relayout("pIC50", "x")}>pIC50</button>
           <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button>
           <button onClick={() => this.relayout("HA", "x")}>HA</button>
           <button onClick={() => this.relayout("MW", "x")}>MW</button>
@@ -132,7 +132,7 @@ class ThePlot extends React.Component {
         <div className="plot-button-row">
           <button onClick={() => this.relayout("--", "y")}>--</button>
           <button onClick={() => this.relayout("logd", "y")}>logd</button>
-          <button onClick={() => this.relayout("pic50", "y")}>pIC50</button>
+          <button onClick={() => this.relayout("pIC50", "y")}>pIC50</button>
           <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button>
           <button onClick={() => this.relayout("HA", "y")}>HA</button>
           <button onClick={() => this.relayout("MW", "y")}>MW</button>
