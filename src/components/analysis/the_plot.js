@@ -119,11 +119,11 @@ class ThePlot extends React.Component {
         />
         <div className="plot-button-row">
           <button onClick={() => this.relayout("--", "x")}>--</button>
-          <button onClick={() => this.relayout("logd", "x")}>logd</button>
+          <button onClick={() => this.relayout("logD", "x")}>logD</button>
           <button onClick={() => this.relayout("pIC50", "x")}>pIC50</button>
-          <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button>
+          <button onClick={() => this.relayout("TPSA (Å\u00b2)", "x")}>TPSA</button>
           <button onClick={() => this.relayout("HA", "x")}>HA</button>
-          <button onClick={() => this.relayout("MW", "x")}>MW</button>
+          <button onClick={() => this.relayout("MW (Da)", "x")}>MW</button>
           <button onClick={() => this.relayout("h_acc", "x")}>h acc</button>
           <button onClick={() => this.relayout("h_don", "x")}>h don</button>
           <button onClick={() => this.relayout("rings", "x")}>rings</button>
@@ -131,11 +131,11 @@ class ThePlot extends React.Component {
         </div>
         <div className="plot-button-row">
           <button onClick={() => this.relayout("--", "y")}>--</button>
-          <button onClick={() => this.relayout("logd", "y")}>logd</button>
+          <button onClick={() => this.relayout("logD", "y")}>logD</button>
           <button onClick={() => this.relayout("pIC50", "y")}>pIC50</button>
-          <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button>
+          <button onClick={() => this.relayout("TPSA (Å\u00b2)", "y")}>TPSA</button>
           <button onClick={() => this.relayout("HA", "y")}>HA</button>
-          <button onClick={() => this.relayout("MW", "y")}>MW</button>
+          <button onClick={() => this.relayout("MW (Da)", "y")}>MW</button>
           <button onClick={() => this.relayout("h_acc", "y")}>h acc</button>
           <button onClick={() => this.relayout("h_don", "y")}>h don</button>
           <button onClick={() => this.relayout("rings", "y")}>rings</button>
