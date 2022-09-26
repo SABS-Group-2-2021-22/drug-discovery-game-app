@@ -20,13 +20,13 @@ class Descriptors extends React.Component {
           MW:{" "}
           {Number(
             this.props.saved_mols[this.props.mol_id].data.descriptors.MW
-          ).toFixed(1)}
+          ).toFixed(1)} Da
         </div>
         <div class="row">
           TPSA:{" "}
           {Number(
             this.props.saved_mols[this.props.mol_id].data.descriptors.TPSA
-          ).toFixed(1)}
+          ).toFixed(1)} {"Å\u00b2"}
         </div>
         <div class="row">
           H Acc.:{" "}
