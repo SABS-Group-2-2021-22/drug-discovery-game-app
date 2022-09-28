@@ -1,5 +1,4 @@
 const initialState = {
-  saved_sketched_mols: [],
   sketcher_error: [],
 }; //the initial states for saved_sketched_mols and sketcher_error
 

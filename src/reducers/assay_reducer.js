@@ -82,6 +82,12 @@ export function assayReducer(state = initialState, action) {
         },
       };
     }
+    case "RESET": {
+      return {
+        ...state,
+        saved_mols: action.payload.saved_mols,
+      };
+    }
     default: {
       return state;
     }

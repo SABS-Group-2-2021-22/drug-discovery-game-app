@@ -9,6 +9,7 @@ import Body from './body'
 import rootReducer from './reducers'
 import { connect } from "react-redux";
 import { devToolsEnhancer } from 'redux-devtools-extension'
+import reduxReset from 'redux-reset'
 
 // import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -32,7 +33,7 @@ import {
 
 import Index from './routes'
 
-const store = createStore(rootReducer, compose(applyMiddleware(thunk), devToolsEnhancer()))
+const store = createStore(rootReducer, compose(applyMiddleware(thunk), reduxReset(), devToolsEnhancer()))
 
 // class Index extends React.Component {
 //   constructor(props) {
