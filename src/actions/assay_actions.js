@@ -44,10 +44,10 @@ function saveMolecule(saved_mols, selected_r_groups) {
         dispatch(fetchDescriptorsSucceeded(mol_id, descriptors));
       }); // dispatch fetchDescriptorsSucceeded synchronous action with the descriptors
     api
-      .fetchFilters(selected_r_groups.A, selected_r_groups.B) //fire api call to fetch the filters
+      .fetchLipinski(selected_r_groups.A, selected_r_groups.B) //fire api call to fetch the filters
       .then((response) => {
-        let filters = response.data.lipinski[mol_id];
-        dispatch(fetchFiltersSucceeded(mol_id, filters));
+        let lipinski = response.data.lipinski[mol_id];
+        dispatch(fetchLipinskiSucceeded(mol_id, lipinski));
       }); // dispatch fetchFiltersSucceeded synchronous action with the filters
   };
 }
@@ -99,15 +99,15 @@ function fetchDescriptorsSucceeded(mol, descriptors) {
 /**
  * Synchronous action that sends the molecule and its filters to the assayReducer
  * @param {state object} mol the molecule
- * @param {state object} filters the filters of the molecule
+ * @param {state object} lipinski whether the molecules passes Lipinski's Rule of 5 or not
  * @returns the molecule and its filters for a state change
  */
-export function fetchFiltersSucceeded(mol, filters) {
+export function fetchLipinskiSucceeded(mol, lipinski) {
   return {
-    type: "FETCH_FILTERS_SUCCEEDED",
+    type: "FETCH_LIPINSKI_SUCCEEDED",
     payload: {
       molecule: mol,
-      filters: filters,
+      lipinski: lipinski,
     },
   };
 }
