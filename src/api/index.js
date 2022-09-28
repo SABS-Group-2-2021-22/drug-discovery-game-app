@@ -43,7 +43,7 @@ export function fetchDescriptors(r_group_id_A, r_group_id_B) {
   );
 }
 
-export function fetchFilters(r_group_id_A, r_group_id_B) {
+export function fetchLipinski(r_group_id_A, r_group_id_B) {
   client.defaults.headers['username'] = localStorage.user
   return client.get(
     "/lipinski?r1=" + r_group_id_A + "&r2=" + r_group_id_B
