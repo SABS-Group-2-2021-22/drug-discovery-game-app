@@ -101,6 +101,20 @@ class ThePlot extends React.Component {
   };
 
   render() {
+    var axes_label = []
+    var state_iterator = [this.state.x_axis, this.state.y_axis]
+    for(var i=0, l = state_iterator.length; i < l; i++){
+    if (state_iterator[i] == "logd") {
+        axes_label[i] = "LogD"
+    } else if (state_iterator[i] == "pic50") {
+        axes_label[i] = "pIC50"
+    } else if (state_iterator[i] == "TPSA") {
+        axes_label[i] = "TPSA (Å\u00b2)"
+    } else if (state_iterator[i] == "MW") {
+        axes_label[i] = "MW (Da)"
+    } else {
+      axes_label[i] = state_iterator[i]
+    }}
     return (
       <div className="plot-container">
         <div>{this.showCard()}</div>
@@ -109,8 +123,8 @@ class ThePlot extends React.Component {
           layout={{
             responsive: true,
             title: "Analysis Plot",
-            xaxis: { title: { text: this.state.x_axis } },
-            yaxis: { title: { text: this.state.y_axis } },
+            xaxis: { title: { text: axes_label[0] } },
+            yaxis: { title: { text: axes_label[1] } },
           }}
           useResizeHandler={true}
           style={{ width: "100%", height: "90%" }}
@@ -119,11 +133,11 @@ class ThePlot extends React.Component {
         />
         <div className="plot-button-row">
           <button onClick={() => this.relayout("--", "x")}>--</button>
-          <button onClick={() => this.relayout("logD", "x")}>logD</button>
-          <button onClick={() => this.relayout("pIC50", "x")}>pIC50</button>
-          <button onClick={() => this.relayout("TPSA (Å\u00b2)", "x")}>TPSA</button>
+          <button onClick={() => this.relayout("logd", "x")}>logD</button>
+          <button onClick={() => this.relayout("pic50", "x")}>pIC50</button>
+          <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button>
           <button onClick={() => this.relayout("HA", "x")}>HA</button>
-          <button onClick={() => this.relayout("MW (Da)", "x")}>MW</button>
+          <button onClick={() => this.relayout("MW", "x")}>MW</button>
           <button onClick={() => this.relayout("h_acc", "x")}>h acc</button>
           <button onClick={() => this.relayout("h_don", "x")}>h don</button>
           <button onClick={() => this.relayout("rings", "x")}>rings</button>
@@ -131,11 +145,11 @@ class ThePlot extends React.Component {
         </div>
         <div className="plot-button-row">
           <button onClick={() => this.relayout("--", "y")}>--</button>
-          <button onClick={() => this.relayout("logD", "y")}>logD</button>
-          <button onClick={() => this.relayout("pIC50", "y")}>pIC50</button>
-          <button onClick={() => this.relayout("TPSA (Å\u00b2)", "y")}>TPSA</button>
+          <button onClick={() => this.relayout("logd", "y")}>logD</button>
+          <button onClick={() => this.relayout("pic50", "y")}>pIC50</button>
+          <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button>
           <button onClick={() => this.relayout("HA", "y")}>HA</button>
-          <button onClick={() => this.relayout("MW (Da)", "y")}>MW</button>
+          <button onClick={() => this.relayout("MW", "y")}>MW</button>
           <button onClick={() => this.relayout("h_acc", "y")}>h acc</button>
           <button onClick={() => this.relayout("h_don", "y")}>h don</button>
           <button onClick={() => this.relayout("rings", "y")}>rings</button>
