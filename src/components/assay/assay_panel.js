@@ -46,12 +46,34 @@ class AssayPanel extends React.Component {
   };
 
   // run the assay (essentially store which have been run and update time and
-  // mondey)
+  // money)
   runAssays = () => {
     let assays_run = this.state.assays_run;
     let selected_assays = this.state.selected_assays;
+    const assay_prices = {
+      pIC50: 70.0,
+      clearance_mouse: 7000.0,
+      clearance_human: 9000.0,
+      logd: 1000.0,
+      pampa: 700.0,
+    };
+  const assay_times = {
+    pIC50: 1.0,
+    clearance_mouse: 3.0,
+    clearance_human: 3.5,
+    logd: 1.5,
+    pampa: 1.0,
+  };
     for (var i = 0; i < selected_assays.length; i++) {
+      if (this.props.money - assay_prices[selected_assays[i]] < 0) {
+        console.log('Run out of money ')
+      }
+      else if (this.props.time - assay_times[selected_assays[i]] < 0) {
+        console.log('Run out of time ')
+      }
+      else {
       assays_run[selected_assays[i]] = true;
+    };
     }
     this.updateTime();
     this.updateMoney();
