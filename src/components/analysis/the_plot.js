@@ -110,6 +110,21 @@ class ThePlot extends React.Component {
   };
 
   render() {
+    var axes_label = [];
+    var state_iterator = [this.state.x_axis, this.state.y_axis];
+    for (var i = 0, l = state_iterator.length; i < l; i++) {
+      if (state_iterator[i] == "logd") {
+        axes_label[i] = "LogD";
+      } else if (state_iterator[i] == "pic50") {
+        axes_label[i] = "pIC50";
+      } else if (state_iterator[i] == "TPSA") {
+        axes_label[i] = "TPSA (Å\u00b2)";
+      } else if (state_iterator[i] == "MW") {
+        axes_label[i] = "MW (Da)";
+      } else {
+        axes_label[i] = state_iterator[i];
+      }
+    }
     return (
       <div className="plot-container">
         <div>{this.showCard()}</div>
@@ -118,8 +133,8 @@ class ThePlot extends React.Component {
           layout={{
             responsive: true,
             title: "Analysis Plot",
-            xaxis: { title: { text: this.state.x_axis } },
-            yaxis: { title: { text: this.state.y_axis } },
+            xaxis: { title: { text: axes_label[0] } },
+            yaxis: { title: { text: axes_label[1] } },
           }}
           useResizeHandler={true}
           style={{ width: "100%", height: "90%" }}
@@ -142,7 +157,7 @@ class ThePlot extends React.Component {
               </p>
             </div>
           )}
-          <button onClick={() => this.relayout("logd", "x")}>logd</button>
+          <button onClick={() => this.relayout("logd", "x")}>logD</button>
           <button onClick={() => this.relayout("pic50", "x")}>pIC50</button>
           <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button>
           <button onClick={() => this.relayout("HA", "x")}>HA</button>
@@ -154,7 +169,7 @@ class ThePlot extends React.Component {
         </div>
         <div className="plot-button-row">
           <button onClick={() => this.relayout("--", "y")}>--</button>
-          <button onClick={() => this.relayout("logd", "y")}>logd</button>
+          <button onClick={() => this.relayout("logd", "y")}>logD</button>
           <button onClick={() => this.relayout("pic50", "y")}>pIC50</button>
           <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button>
           <button onClick={() => this.relayout("HA", "y")}>HA</button>

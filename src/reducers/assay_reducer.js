@@ -38,7 +38,7 @@ export function assayReducer(state = initialState, action) {
         },
       };
     }
-    case "FETCH_FILTERS_SUCCEEDED": {
+    case "FETCH_LIPINSKI_SUCCEEDED": {
       return {
         ...state,
         saved_mols: {
@@ -47,7 +47,7 @@ export function assayReducer(state = initialState, action) {
             ...state.saved_mols[action.payload.molecule],
             data: {
               ...state.saved_mols[action.payload.molecule].data,
-              filters: action.payload.filters, //store filters in saved_mols.molecule.data.filters
+              lipinski: action.payload.lipinski, //store lipinski in saved_mols.molecule.data.lipinski
             },
           },
         },
@@ -81,6 +81,12 @@ export function assayReducer(state = initialState, action) {
             },
           },
         },
+      };
+    }
+    case "RESET": {
+      return {
+        ...state,
+        saved_mols: action.payload.saved_mols,
       };
     }
     case "TOGGLE_HELP_SUCCEEDED": {

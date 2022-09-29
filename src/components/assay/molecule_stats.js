@@ -1,7 +1,7 @@
 import React from "react";
 import "./assay.css";
 import { connect } from "react-redux";
-import Filters from "./filter_display.js";
+import Filters from "./lipinski_display.js";
 import Descriptors from "./descriptor_display.js";
 import Assays from "./assay_display.js";
 

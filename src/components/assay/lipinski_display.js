@@ -2,7 +2,7 @@ import React from "react";
 import "./assay.css";
 import { connect } from "react-redux";
 
-class Filters extends React.Component {
+class Lipinski extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -24,25 +24,25 @@ class Filters extends React.Component {
         </div>
         <div class="row">
           MW:{" "}
-          {this.props.saved_mols[this.props.mol_id].data.filters.MW
+          {this.props.saved_mols[this.props.mol_id].data.lipinski.MW
             ? "Pass"
             : "Fail"}
         </div>
         <div class="row">
           H Acc.:{" "}
-          {this.props.saved_mols[this.props.mol_id].data.filters.h_acc
+          {this.props.saved_mols[this.props.mol_id].data.lipinski.h_acc
             ? "Pass"
             : "Fail"}
         </div>
         <div class="row">
           H Don.:{" "}
-          {this.props.saved_mols[this.props.mol_id].data.filters.h_don
+          {this.props.saved_mols[this.props.mol_id].data.lipinski.h_don
             ? "Pass"
             : "Fail"}
         </div>
         <div class="row">
           logP:{" "}
-          {this.props.saved_mols[this.props.mol_id].data.filters.logP
+          {this.props.saved_mols[this.props.mol_id].data.lipinski.logP
             ? "Pass"
             : "Fail"}
         </div>
@@ -58,4 +58,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Filters);
+export default connect(mapStateToProps)(Lipinski);

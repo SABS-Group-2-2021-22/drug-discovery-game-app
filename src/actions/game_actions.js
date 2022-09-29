@@ -100,7 +100,10 @@ function updateMoney(assays, current_money) {
  */
 function resetGameSucceeded() {
   return {
-    type: "RESET_GAME_SUCCEEDED",
+    type: "RESET",
+    payload: {
+      saved_mols: {}
+    }
   };
 }
 

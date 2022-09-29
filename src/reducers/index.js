@@ -25,9 +25,6 @@ const appReducer = combineReducers({
  * @returns {reducer} A reset appReducer and thus store
  */
 const rootReducer = (state, action) => {
-  if (action.type === "RESET_GAME_SUCCEEDED") {
-    return appReducer(undefined, action);
-  }
   return appReducer(state, action);
 };
 
