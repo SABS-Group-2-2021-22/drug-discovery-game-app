@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { initActions, selectorActions } from "../../actions";
 import sabs from "../../assets/sabs-logo-tight.png";
 import oxuni from "../../assets/oxlogo-sq-border.png";
-import roche from "../../assets/Roche.png";
 import epsrc from "../../assets/EPSRC_logo.png";
 
 class Introduction extends React.Component {
