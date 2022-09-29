@@ -67,10 +67,6 @@ class Introduction3 extends React.Component {
                 {" "}
                 <img src={oxuni} height="100px" />{" "}
               </div>
-              <div className="logo">
-                {" "}
-                <img src={roche} height="100px" />{" "}
-              </div>
             </div>
           </div>
         </div>
