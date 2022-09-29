@@ -1,5 +1,6 @@
 const initialState = {
   saved_mols: {},
+  toggle_help: false,
 };
 
 /**
@@ -80,6 +81,12 @@ export function assayReducer(state = initialState, action) {
             },
           },
         },
+      };
+    }
+    case "TOGGLE_HELP_SUCCEEDED": {
+      return {
+        ...state,
+        toggle_help: action.payload.Bool,
       };
     }
     default: {

@@ -1,5 +1,6 @@
 const initialState = {
   all_r_groups: [],
+  help: [],
 };
 
 export function initReducer(state = initialState, action) {
@@ -14,6 +15,12 @@ export function initReducer(state = initialState, action) {
       return {
         ...state,
         Roche: action.payload.Roche,
+      };
+    }
+    case "FETCH_HELP_SUCCEEDED": {
+      return {
+        ...state,
+        help: action.payload.help,
       };
     }
     default:

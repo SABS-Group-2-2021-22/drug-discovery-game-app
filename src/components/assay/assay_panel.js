@@ -11,11 +11,12 @@ class AssayPanel extends React.Component {
       assays_run: null,
       selected_mol: null,
       cost_assays: [],
+      hover: [],
     };
   }
 
   // set selected_mol and its assays_run states to the first compound
-  // in store on page load
+  // ...in store on page load
   componentDidMount() {
     this.setState({
       selected_mol: this.props.selected_mol,
@@ -46,7 +47,7 @@ class AssayPanel extends React.Component {
   };
 
   // run the assay (essentially store which have been run and update time and
-  // mondey)
+  // ...money)
   runAssays = () => {
     let assays_run = this.state.assays_run;
     let selected_assays = this.state.selected_assays;
@@ -84,6 +85,16 @@ class AssayPanel extends React.Component {
     }
   }
 
+  onHover = (label) => {
+    this.setState({ hover: label });
+    console.log(this.state.hover);
+  };
+
+  onUnHover = () => {
+    this.setState({ hover: [] });
+    console.log(this.state.hover);
+  };
+
   render() {
     return (
       <div className="assay-panel">
@@ -92,6 +103,12 @@ class AssayPanel extends React.Component {
           onClick={() => {
             this.onClick("pIC50");
             this.costAssays("pIC50");
+          }}
+          onMouseEnter={() => {
+            this.onHover("pic50");
+          }}
+          onMouseLeave={() => {
+            this.onUnHover();
           }}
         >
           <div className="assay-name">pIC50</div>
@@ -103,11 +120,24 @@ class AssayPanel extends React.Component {
             </p>
           </div>
         </button>
+        {this.state.hover == "pic50" && this.props.toggle_help && (
+          <div className="hover-info-text-pic50">
+            <p>
+              <div>{this.props.help[0]}</div>
+            </p>
+          </div>
+        )}
         <button
           label="Clearance Mouse"
           onClick={() => {
             this.onClick("clearance_mouse");
             this.costAssays("clearance_mouse");
+          }}
+          onMouseEnter={() => {
+            this.onHover("clrmouse");
+          }}
+          onMouseLeave={() => {
+            this.onUnHover();
           }}
         >
           <div className="assay-name">Clearance Mouse</div>
@@ -119,11 +149,24 @@ class AssayPanel extends React.Component {
             </p>
           </div>
         </button>
+        {this.state.hover == "clrmouse" && this.props.toggle_help && (
+          <div className="hover-info-text-clrmouse">
+            <p>
+              <div>{this.props.help[1]}</div>
+            </p>
+          </div>
+        )}
         <button
           label="Clearance Humam"
           onClick={() => {
             this.onClick("clearance_human");
             this.costAssays("clearance_human");
+          }}
+          onMouseEnter={() => {
+            this.onHover("clrhuman");
+          }}
+          onMouseLeave={() => {
+            this.onUnHover();
           }}
         >
           <div className="assay-name">Clearance Human</div>
@@ -132,11 +175,24 @@ class AssayPanel extends React.Component {
             {"\n"}Duration: 3.5 weeks
           </div>
         </button>
+        {this.state.hover == "clrhuman" && this.props.toggle_help && (
+          <div className="hover-info-text-clrhuman">
+            <p>
+              <div>{this.props.help[2]}</div>
+            </p>
+          </div>
+        )}
         <button
           label="LogD"
           onClick={() => {
             this.onClick("logd");
             this.costAssays("logd");
+          }}
+          onMouseEnter={() => {
+            this.onHover("logd");
+          }}
+          onMouseLeave={() => {
+            this.onUnHover();
           }}
         >
           <div className="assay-name">LogD</div>
@@ -145,11 +201,24 @@ class AssayPanel extends React.Component {
             {"\n"} Duration: 1.5 weeks
           </div>
         </button>
+        {this.state.hover == "logd" && this.props.toggle_help && (
+          <div className="hover-info-text-logd">
+            <p>
+              <div>{this.props.help[3]}</div>
+            </p>
+          </div>
+        )}
         <button
           label="PAMPA"
           onClick={() => {
             this.onClick("pampa");
             this.costAssays("pampa");
+          }}
+          onMouseEnter={() => {
+            this.onHover("pampa");
+          }}
+          onMouseLeave={() => {
+            this.onUnHover();
           }}
         >
           <div className="assay-name">PAMPA</div>
@@ -158,34 +227,79 @@ class AssayPanel extends React.Component {
             {"\n"}Duration: 1 week
           </div>
         </button>
+        {this.state.hover == "pampa" && this.props.toggle_help && (
+          <div className="hover-info-text-pampa">
+            <p>
+              <div>{this.props.help[4]}</div>
+            </p>
+          </div>
+        )}
         <button
           label="Run Filters"
           onClick={() => {
             this.onClick("filters");
             this.runAssays();
           }}
+          onMouseEnter={() => {
+            this.onHover("chklip");
+          }}
+          onMouseLeave={() => {
+            this.onUnHover();
+          }}
         >
-          <div className="assay-name">Run Filters</div>
+          <div className="assay-name">Check Lipinski Rules</div>
         </button>
+        {this.state.hover == "chklip" && this.props.toggle_help && (
+          <div className="hover-info-text-chklip">
+            <p>
+              <div>{this.props.help[5]}</div>
+            </p>
+          </div>
+        )}
         <button
           label="Calculate Descriptors"
           onClick={() => {
             this.onClick("descriptors");
             this.runAssays();
           }}
+          onMouseEnter={() => {
+            this.onHover("descr");
+          }}
+          onMouseLeave={() => {
+            this.onUnHover();
+          }}
         >
           <div className="assay-name">Calculate Descriptors</div>
         </button>
-
+        {this.state.hover == "descr" && this.props.toggle_help && (
+          <div className="hover-info-text-descr">
+            <p>
+              <div>{this.props.help[6]}</div>
+            </p>
+          </div>
+        )}
         <button
           label="Run_Assays"
           onClick={() => {
             this.onClick("drug_props");
             this.runAssays();
           }}
+          onMouseEnter={() => {
+            this.onHover("run");
+          }}
+          onMouseLeave={() => {
+            this.onUnHover();
+          }}
         >
           <div className="assay-name">Run Assays</div>
         </button>
+        {this.state.hover == "run" && this.props.toggle_help && (
+          <div className="hover-info-text-run">
+            <p>
+              <div>{this.props.help[7]}</div>
+            </p>
+          </div>
+        )}
       </div>
     );
   }
@@ -198,6 +312,8 @@ function mapStateToProps(state) {
       state.assay.saved_mols[state.selector.selected_mol].data.assays_run,
     time: state.game.time,
     money: state.game.money,
+    help: state.init.help.assay,
+    toggle_help: state.assay.toggle_help,
   };
 }
 

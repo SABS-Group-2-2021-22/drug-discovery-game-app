@@ -5,11 +5,28 @@ import { connect } from "react-redux";
 class Descriptors extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      hover: "descr",
+    };
   }
+
+  shouldComponentUpdate = () => {
+    console.log(this.props.hover);
+    //this.setState({ hover: "descr" });
+  };
 
   render() {
     return (
       <div class="container" className="descriptor-stats">
+        <div className="hover-info-text-descr">
+          {this.props.hover == "descr" && (
+            <div className="info-text">
+              <p>
+                <div>{this.props.help[0]}</div>
+              </p>
+            </div>
+          )}
+        </div>
         <div class="row" className="stats-type-header">
           Molecule Descriptors:
         </div>
@@ -53,7 +70,8 @@ class Descriptors extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    saved_mols: state.assay.saved_mols
+    saved_mols: state.assay.saved_mols,
+    help: state.init.help.build,
   };
 }
 

@@ -23,6 +23,7 @@ class Home extends React.Component {
       this.props.selected_r_groups["B"],
       "800,800"
     );
+    this.props.fetchHelp();
   }
 
   setBuilderMode = () => {
@@ -116,6 +117,7 @@ function mapStateToProps(state) {
 }
 
 const actionCreators = {
+  fetchHelp: initActions.fetchHelp,
   fetchRGroup: initActions.fetchRGroup,
   selectRGroup: selectorActions.selectRGroup,
   setGamemode: gameActions.setGamemodeAction,
