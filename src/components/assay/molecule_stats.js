@@ -1,7 +1,7 @@
 import React from "react";
 import "./assay.css";
 import { connect } from "react-redux";
-import Filters from "./lipinski_display.js";
+import Lipinski from "./lipinski_display.js";
 import Descriptors from "./descriptor_display.js";
 import Assays from "./assay_display.js";
 
@@ -13,7 +13,7 @@ class MoleculeStats extends React.Component {
   render() {
     return (
       <div className="mol-stats">
-        {this.props.filters_run && <Filters mol_id={this.props.selected_mol} />}
+        {this.props.filters_run && <Lipinski mol_id={this.props.selected_mol} />}
         {this.props.descriptors_run && (
           <Descriptors mol_id={this.props.selected_mol} />
         )}
