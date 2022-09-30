@@ -91,12 +91,11 @@ function updateMoney(assays, current_money) {
         }
       }
     }
-  }
   let money = current_money - cost_sum; //calculate new amount of money
   return (dispatch) => {
     dispatch(updateMoneySucceeded(money));
   }; //dispatch money to the store via the updateMoneySucceded synchronous action
-
+} 
 /**
  * Synchronous action with no payload - simply sends a reset game signal to the rootReducer
  * @returns a type message only
