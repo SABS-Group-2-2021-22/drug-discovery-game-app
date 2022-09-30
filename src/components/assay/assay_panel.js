@@ -227,7 +227,7 @@ class AssayPanel extends React.Component {
             this.runDescriptorsOrLipinski();
           }}
         >
-          <div className="assay-name">Run Filters</div>
+          <div className="assay-name">Check Lipinski Rules</div>
         </button>
         <button
           label="Calculate Descriptors"
