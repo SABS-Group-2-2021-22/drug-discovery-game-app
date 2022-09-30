@@ -33,6 +33,7 @@ class ThePlot extends React.Component {
       traces.push({
         type: "scatter",
         mode: "markers",
+        marker: {size: 20},
         x: v.x,
         y: v.y,
         name: k,
