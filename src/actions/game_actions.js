@@ -30,7 +30,7 @@ function updateTimeSucceeded(time) {
  * @returns dispatches updateTimeSucceeded with the new time
  */
 function updateTime(assays, current_time) {
-  var time_sum = 0;
+  var time_max = 0;
   const assay_times = {
     pIC50: 1.0,
     clearance_mouse: 3.0,
@@ -41,11 +41,14 @@ function updateTime(assays, current_time) {
   for (const i of assays) {
     for (const [k, v] of Object.entries(assay_times)) {
       if (i === k) {
-        time_sum += v; //add time for each assay to total time
+        if (time_max < v) {
+          time_max = v;
+        }
+         // take the maximum time value so assays run in
       }
     }
   }
-  let time = current_time - time_sum; //calculate new time
+  let time = current_time - time_max; //calculate new time
   return (dispatch) => {
     dispatch(updateTimeSucceeded(time));
   }; //dispatch time to the store via the updateTimeSucceeded synchronous action
@@ -84,7 +87,8 @@ function updateMoney(assays, current_money) {
   for (const i of assays) {
     for (const [k, v] of Object.entries(assay_prices)) {
       if (i === k) {
-        cost_sum += v; //add money for each assay to total cost
+          cost_sum += v; //add money for each assay to total cost
+        }
       }
     }
   }
@@ -92,7 +96,6 @@ function updateMoney(assays, current_money) {
   return (dispatch) => {
     dispatch(updateMoneySucceeded(money));
   }; //dispatch money to the store via the updateMoneySucceded synchronous action
-}
 
 /**
  * Synchronous action with no payload - simply sends a reset game signal to the rootReducer
