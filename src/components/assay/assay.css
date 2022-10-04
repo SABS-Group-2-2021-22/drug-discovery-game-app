@@ -1,54 +1,51 @@
 .assay {
-    display: flex;
-    flex-direction: row;
-    flex: 1, 1, auto;
-    height: 100%;
-    padding-left: 3vw;
-    padding-right: 3vw;
-    padding-top: 3vh;
-    padding-bottom: 3vh;
+  display: flex;
+  flex-direction: row;
+  flex: 1, 1, auto;
+  height: 100%;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
 }
 
 .molecule-chooser-bar {
-    display: flex;
-    background-color: white;
-    flex-grow: 2;
-    min-height: 100%;
-    justify-content: center;
-    padding-bottom: 10pt;
-    max-width: 250pt;
+  display: flex;
+  background-color: white;
+  flex-grow: 2;
+  min-height: 100%;
+  justify-content: center;
+  padding-bottom: 10pt;
+  max-width: 250pt;
 }
-
 
 .assay_button {
-    display: flex;
-    background-color: mediumaquamarine;
-    flex-grow: 1;
-    align-items: center;
-    justify-content: center;
-    outline-style: solid;
+  display: flex;
+  background-color: mediumaquamarine;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  outline-style: solid;
 }
-
 
 .assay > .mol-visbox {
   display: flex;
-  flex:3 ; 
+  flex: 3;
   flex-direction: column;
 }
 
-
 .assay > .mol-visbox > .rendered-molecule {
   display: flex;
-  background-color:white;
+  background-color: white;
   padding: 15px;
   padding-top: 0px;
   padding-bottom: 0px;
   justify-content: center;
   align-content: center;
   height: 45vh;
-} 
+}
 
-.assay > .mol-visbox > .rendered-molecule > .molecule{
+.assay > .mol-visbox > .rendered-molecule > .molecule {
   display: flex;
   height: 45vh;
   flex-direction: column;
@@ -58,138 +55,136 @@
 
 .assay > .mol-visbox > .rendered-molecule > .molecule img {
   display: flex;
-  max-height:100%;
+  max-height: 100%;
   justify-content: space-around;
   align-content: space-around;
 }
 
-.selected-mol-stats{
+.selected-mol-stats {
   width: 100%;
 }
 
 .selected-mol-stats > .mol-stats {
-  display:flex;
+  display: flex;
   flex-direction: row;
   font-size: max(0.8vw, 10px);
-  width:100%;
+  width: 100%;
   justify-content: space-between;
 }
 
-.selected-mol-stats > .mol-stats > .assay-stats{
+.selected-mol-stats > .mol-stats > .assay-stats {
   width: 33%;
   padding-right: 50px;
 }
 
-.selected-mol-stats > .mol-stats > .filter-stats{
+.selected-mol-stats > .mol-stats > .lipinski-stats {
   width: 33%;
   padding-right: 50px;
 }
 
-.selected-mol-stats > .mol-stats > .descriptor-stats{
+.selected-mol-stats > .mol-stats > .descriptor-stats {
   width: 33%;
   padding-right: 50px;
 }
 
 .molecule-list {
-    padding: 5px; 
-    background-color: white;
-    overflow-y:scroll;
+  padding: 5px;
+  background-color: white;
+  overflow-y: scroll;
 }
 
 .molecule-container {
-    padding-top: 5px;
+  padding-top: 5px;
 }
 
 .molecule-widget {
-    background-color: white ;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #212529;
-    border-radius: 5px;
-    padding: 5px;
-  }
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #212529;
+  border-radius: 5px;
+  padding: 5px;
+}
 
-  .molecule-widget:hover {
-    opacity: 0.5;
-  }
+.molecule-widget:hover {
+  opacity: 0.5;
+}
 
-  .molecule-widget:active {
-    background-color: darkgray;
-  }
+.molecule-widget:active {
+  background-color: darkgray;
+}
 
+.molecule-widget > .molecule img {
+  width: 240px;
+}
 
-  .molecule-widget > .molecule img {
-    width:240px;
-  }
+.mol-stats {
+  font-size: 12px;
+  width: 240px;
+  padding-left: 18px;
+  white-space: nowrap;
+}
 
-  .mol-stats {
-    font-size: 12px;
-    width:240px;
-    padding-left:18px;
-    white-space: nowrap;
-  }
+.stats-type-header {
+  font-weight: bold;
+}
 
-  .stats-type-header {
-    font-weight: bold;
-  }
+.assay-panel {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  justify-content: space-between;
+  padding: 10px;
+  width: 20%;
+}
 
-  .assay-panel {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    justify-content: space-between;
-    padding: 10px;
-    width: 20%;
-  }
+.assay-name {
+  font-size: 2vh;
+}
 
-  .assay-name {
-    font-size: 2vh
-  }
-  
-  .assay-cost-and-time {
-    font-size: 1.6vh;
-    font-weight: lighter;
-  }
+.assay-cost-and-time {
+  font-size: 1.6vh;
+  font-weight: lighter;
+}
 
-  .button-box {
-    padding: 10px;
-  }
+.button-box {
+  padding: 10px;
+}
 
-  .assay-panel button{
-    background-color: #212529;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    min-width: 100px;
-    max-width: 200px;
-    flex: 1 1 auto;
-    min-height: 10px;
-    max-height: 90px;
-    margin-bottom: 10px;
-    white-space:pre-line;
-    width:200px;
-    height:90px;
-  }
+.assay-panel button {
+  background-color: #212529;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  min-width: 100px;
+  max-width: 200px;
+  flex: 1 1 auto;
+  min-height: 10px;
+  max-height: 90px;
+  margin-bottom: 10px;
+  white-space: pre-line;
+  width: 200px;
+  height: 90px;
+}
 
+.assay-panel button:hover {
+  opacity: 0.7;
+}
 
-  .assay-panel button:hover{
-    opacity: 0.7;
-  }
-
-  .assay-panel button:active{
-    background-color: #0d0e10;
-    opacity: 1;
-  }
+.assay-panel button:active {
+  background-color: #0d0e10;
+  opacity: 1;
+}
 
 .control-panel {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 10px;
-  }
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+}
 
 .control-panel button {
-    padding: 5px;
-    margin-right: 4vw;
-    width: 100px;
-  }
+  padding: 5px;
+  margin-right: 4vw;
+  width: 100px;
+}

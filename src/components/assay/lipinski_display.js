@@ -9,7 +9,7 @@ class Lipinski extends React.Component {
 
   render() {
     return (
-      <div class="container" className="filter-stats">
+      <div class="container" className="lipinski-stats">
         <div class="row" className="stats-type-header">
           Lipinski Filters:
         </div>
@@ -44,7 +44,7 @@ class Lipinski extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    saved_mols: state.assay.saved_mols
+    saved_mols: state.assay.saved_mols,
   };
 }
 

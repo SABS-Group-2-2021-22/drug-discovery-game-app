@@ -57,23 +57,21 @@ class AssayPanel extends React.Component {
       logd: 1000.0,
       pampa: 700.0,
     };
-  const assay_times = {
-    pIC50: 1.0,
-    clearance_mouse: 3.0,
-    clearance_human: 3.5,
-    logd: 1.5,
-    pampa: 1.0,
-  };
+    const assay_times = {
+      pIC50: 1.0,
+      clearance_mouse: 3.0,
+      clearance_human: 3.5,
+      logd: 1.5,
+      pampa: 1.0,
+    };
     for (var i = 0; i < selected_assays.length; i++) {
       if (this.props.money - assay_prices[selected_assays[i]] < 0) {
-        console.log('Run out of money ')
+        console.log("Run out of money ");
+      } else if (this.props.time - assay_times[selected_assays[i]] < 0) {
+        console.log("Run out of time ");
+      } else {
+        assays_run[selected_assays[i]] = true;
       }
-      else if (this.props.time - assay_times[selected_assays[i]] < 0) {
-        console.log('Run out of time ')
-      }
-      else {
-      assays_run[selected_assays[i]] = true;
-    };
     }
     this.updateTime();
     this.updateMoney();
@@ -187,7 +185,7 @@ class AssayPanel extends React.Component {
             this.runAssays();
           }}
         >
-          <div className="assay-name">Run Filters</div>
+          <div className="assay-name">Run Lipinski</div>
         </button>
         <button
           label="Calculate Descriptors"
