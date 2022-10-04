@@ -30,6 +30,23 @@ class AssayPanel extends React.Component {
     this.setState({ cost_assays: arr });
   };
 
+  // removes the cost of the assay, will be run if not enough time and money left
+  removecostAssays = (assay) => {
+    let arr = this.state.cost_assays;
+    arr = arr.filter(function (item) {
+      return item !== assay;
+    });
+    this.setState({ cost_assays: arr });
+  };
+
+  removeselectedAssays = (assay) => {
+    let arr = this.state.selected_assays;
+    arr = arr.filter(function (item) {
+      return item !== assay;
+    });
+    this.setState({ selected_assays: arr });
+  };
+
   // clear the list of assay fees
   resetCostAssays = () => {
     this.setState({ cost_assays: [] });
@@ -65,17 +82,36 @@ class AssayPanel extends React.Component {
       pampa: 1.0,
     };
     for (var i = 0; i < selected_assays.length; i++) {
-      if (this.props.money - assay_prices[selected_assays[i]] < 0) {
-        console.log("Run out of money ");
-      } else if (this.props.time - assay_times[selected_assays[i]] < 0) {
-        console.log("Run out of time ");
+      if (
+        ["drug_props", "filters", "descriptors"].includes(selected_assays[i])
+      ) {
       } else {
+        if (this.props.money - assay_prices[selected_assays[i]] < 0) {
+          this.removecostAssays(selected_assays[i]);
+          this.removeselectedAssays(selected_assays[i]);
+        } else if (this.props.time - assay_times[selected_assays[i]] < 0) {
+          this.removecostAssays(selected_assays[i]);
+          this.removeselectedAssays(selected_assays[i]);
+        } else {
+          assays_run[selected_assays[i]] = true;
+          this.updateTime();
+          this.updateMoney();
+        }
+      }
+    }
+    assays_run["drug_props"] = true;
+    this.resetCostAssays();
+    this.props.runAssay(this.props.selected_mol, assays_run);
+  };
+
+  runDescriptorsOrLipinski = () => {
+    let assays_run = this.state.assays_run;
+    let selected_assays = this.state.selected_assays;
+    for (var i = 0; i < selected_assays.length; i++) {
+      if (["filters", "descriptors"].includes(selected_assays[i])) {
         assays_run[selected_assays[i]] = true;
       }
     }
-    this.updateTime();
-    this.updateMoney();
-    this.resetCostAssays();
     this.props.runAssay(this.props.selected_mol, assays_run);
   };
 
@@ -179,25 +215,6 @@ class AssayPanel extends React.Component {
           </div>
         </button>
         <button
-          label="Run Filters"
-          onClick={() => {
-            this.onClick("filters");
-            this.runAssays();
-          }}
-        >
-          <div className="assay-name">Run Lipinski</div>
-        </button>
-        <button
-          label="Calculate Descriptors"
-          onClick={() => {
-            this.onClick("descriptors");
-            this.runAssays();
-          }}
-        >
-          <div className="assay-name">Calculate Descriptors</div>
-        </button>
-
-        <button
           label="Run_Assays"
           onClick={() => {
             this.onClick("drug_props");
@@ -205,6 +222,24 @@ class AssayPanel extends React.Component {
           }}
         >
           <div className="assay-name">Run Assays</div>
+        </button>
+        <button
+          label="Run Filters"
+          onClick={() => {
+            this.onClick("filters");
+            this.runDescriptorsOrLipinski();
+          }}
+        >
+          <div className="assay-name">Check Lipinski Rules</div>
+        </button>
+        <button
+          label="Calculate Descriptors"
+          onClick={() => {
+            this.onClick("descriptors");
+            this.runDescriptorsOrLipinski();
+          }}
+        >
+          <div className="assay-name">Calculate Descriptors</div>
         </button>
       </div>
     );
