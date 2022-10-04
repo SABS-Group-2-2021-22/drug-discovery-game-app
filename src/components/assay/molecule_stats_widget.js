@@ -1,10 +1,9 @@
 import React from "react";
 import "./assay.css";
 import { connect } from "react-redux";
-import Lipinski from "./lipinski_display.js"
-import Descriptors from "./descriptor_display.js"
-import Assays from "./assay_display.js"
-
+import Lipinski from "./lipinski_display.js";
+import Descriptors from "./descriptor_display.js";
+import Assays from "./assay_display.js";
 
 class MoleculeStats extends React.Component {
   constructor(props) {
@@ -14,7 +13,7 @@ class MoleculeStats extends React.Component {
   render() {
     return (
       <div className="mol-stats">
-        {this.props.saved_mols[this.props.mol_id].data.assays_run.filters && (
+        {this.props.saved_mols[this.props.mol_id].data.assays_run.lipinski && (
           <Lipinski mol_id={this.props.mol_id} />
         )}
         {this.props.saved_mols[this.props.mol_id].data.assays_run
@@ -33,4 +32,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(MoleculeStats)
+export default connect(mapStateToProps)(MoleculeStats);

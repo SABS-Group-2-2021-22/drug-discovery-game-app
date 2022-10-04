@@ -83,7 +83,7 @@ class AssayPanel extends React.Component {
     };
     for (var i = 0; i < selected_assays.length; i++) {
       if (
-        ["drug_props", "filters", "descriptors"].includes(selected_assays[i])
+        ["drug_props", "lipinski", "descriptors"].includes(selected_assays[i])
       ) {
       } else {
         if (this.props.money - assay_prices[selected_assays[i]] < 0) {
@@ -108,7 +108,7 @@ class AssayPanel extends React.Component {
     let assays_run = this.state.assays_run;
     let selected_assays = this.state.selected_assays;
     for (var i = 0; i < selected_assays.length; i++) {
-      if (["filters", "descriptors"].includes(selected_assays[i])) {
+      if (["lipinski", "descriptors"].includes(selected_assays[i])) {
         assays_run[selected_assays[i]] = true;
       }
     }
@@ -221,12 +221,12 @@ class AssayPanel extends React.Component {
             this.runAssays();
           }}
         >
-          <div className="assay-name">Run Assays</div>
+          <div className="assay-name">Run assays</div>
         </button>
         <button
           label="Run Filters"
           onClick={() => {
-            this.onClick("filters");
+            this.onClick("lipinski");
             this.runDescriptorsOrLipinski();
           }}
         >
