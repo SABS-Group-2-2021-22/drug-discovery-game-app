@@ -9,7 +9,7 @@ class Lipinski extends React.Component {
 
   render() {
     return (
-      <div class="container" className="filter-stats">
+      <div class="container" className="lipinski-stats">
         <div className="hover-info-text-lip">
           {this.props.hover == "lip" && (
             <div className="info-text">

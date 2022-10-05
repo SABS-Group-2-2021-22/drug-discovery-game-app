@@ -77,7 +77,7 @@
   padding-right: 50px;
 }
 
-.selected-mol-stats > .mol-stats > .filter-stats {
+.selected-mol-stats > .mol-stats > .lipinski-stats {
   width: 33%;
   padding-right: 50px;
 }
@@ -342,7 +342,7 @@
 .mol-stats > .hover-info-button-lip {
   position: absolute;
   z-index: 9;
-  margin-left: 12vh;
+  margin-left: 13vh;
 }
 
 .mol-stats > .hover-info-button-lip button {
@@ -395,7 +395,7 @@
 .mol-stats > .hover-info-button-assay {
   position: absolute;
   z-index: 9;
-  margin-left: 83vh;
+  margin-left: 84vh;
 }
 
 .mol-stats > .hover-info-button-assay button {

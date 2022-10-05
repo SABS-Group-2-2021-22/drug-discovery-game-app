@@ -1,7 +1,7 @@
 import React from "react";
 import "./assay.css";
 import { connect } from "react-redux";
-import Filters from "./lipinski_display.js";
+import Lipinski from "./lipinski_display.js";
 import Descriptors from "./descriptor_display.js";
 import Assays from "./assay_display.js";
 
@@ -26,11 +26,11 @@ class MoleculeStats extends React.Component {
   render() {
     return (
       <div className="mol-stats">
-        {this.props.filters_run && (
-          <Filters mol_id={this.props.selected_mol} hover={this.state.hover} />
+        {this.props.lipinski_run && (
+          <Lipinski mol_id={this.props.selected_mol} hover={this.state.hover} />
         )}
         <div className="hover-info-button-lip">
-          {this.props.toggle_help && this.props.filters_run && (
+          {this.props.toggle_help && this.props.lipinski_run && (
             <button
               className="hover-info-button-lip"
               onMouseEnter={() => {
@@ -76,9 +76,9 @@ class MoleculeStats extends React.Component {
 function mapStateToProps(state) {
   return {
     selected_mol: state.selector.selected_mol,
-    filters_run:
+    lipinski_run:
       state.assay.saved_mols[state.selector.selected_mol].data.assays_run
-        .filters,
+        .lipinski,
     descriptors_run:
       state.assay.saved_mols[state.selector.selected_mol].data.assays_run
         .descriptors,

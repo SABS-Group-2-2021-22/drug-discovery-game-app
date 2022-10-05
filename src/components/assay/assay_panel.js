@@ -31,6 +31,23 @@ class AssayPanel extends React.Component {
     this.setState({ cost_assays: arr });
   };
 
+  // removes the cost of the assay, will be run if not enough time and money left
+  removecostAssays = (assay) => {
+    let arr = this.state.cost_assays;
+    arr = arr.filter(function (item) {
+      return item !== assay;
+    });
+    this.setState({ cost_assays: arr });
+  };
+
+  removeselectedAssays = (assay) => {
+    let arr = this.state.selected_assays;
+    arr = arr.filter(function (item) {
+      return item !== assay;
+    });
+    this.setState({ selected_assays: arr });
+  };
+
   // clear the list of assay fees
   resetCostAssays = () => {
     this.setState({ cost_assays: [] });
@@ -47,16 +64,55 @@ class AssayPanel extends React.Component {
   };
 
   // run the assay (essentially store which have been run and update time and
-  // ...money)
+  // money)
   runAssays = () => {
     let assays_run = this.state.assays_run;
     let selected_assays = this.state.selected_assays;
+    const assay_prices = {
+      pIC50: 70.0,
+      clearance_mouse: 7000.0,
+      clearance_human: 9000.0,
+      logd: 1000.0,
+      pampa: 700.0,
+    };
+    const assay_times = {
+      pIC50: 1.0,
+      clearance_mouse: 3.0,
+      clearance_human: 3.5,
+      logd: 1.5,
+      pampa: 1.0,
+    };
     for (var i = 0; i < selected_assays.length; i++) {
-      assays_run[selected_assays[i]] = true;
+      if (
+        ["drug_props", "lipinski", "descriptors"].includes(selected_assays[i])
+      ) {
+      } else {
+        if (this.props.money - assay_prices[selected_assays[i]] < 0) {
+          this.removecostAssays(selected_assays[i]);
+          this.removeselectedAssays(selected_assays[i]);
+        } else if (this.props.time - assay_times[selected_assays[i]] < 0) {
+          this.removecostAssays(selected_assays[i]);
+          this.removeselectedAssays(selected_assays[i]);
+        } else {
+          assays_run[selected_assays[i]] = true;
+          this.updateTime();
+          this.updateMoney();
+        }
+      }
     }
-    this.updateTime();
-    this.updateMoney();
+    assays_run["drug_props"] = true;
     this.resetCostAssays();
+    this.props.runAssay(this.props.selected_mol, assays_run);
+  };
+
+  runDescriptorsOrLipinski = () => {
+    let assays_run = this.state.assays_run;
+    let selected_assays = this.state.selected_assays;
+    for (var i = 0; i < selected_assays.length; i++) {
+      if (["lipinski", "descriptors"].includes(selected_assays[i])) {
+        assays_run[selected_assays[i]] = true;
+      }
+    }
     this.props.runAssay(this.props.selected_mol, assays_run);
   };
 
@@ -235,10 +291,32 @@ class AssayPanel extends React.Component {
           </div>
         )}
         <button
+          label="Run_Assays"
+          onClick={() => {
+            this.onClick("drug_props");
+            this.runAssays();
+          }}
+          onMouseEnter={() => {
+            this.onHover("run");
+          }}
+          onMouseLeave={() => {
+            this.onUnHover();
+          }}
+        >
+          <div className="assay-name">Run Assays</div>
+        </button>
+        {this.state.hover == "run" && this.props.toggle_help && (
+          <div className="hover-info-text-run">
+            <p>
+              <div>{this.props.help[7]}</div>
+            </p>
+          </div>
+        )}
+        <button
           label="Run Filters"
           onClick={() => {
-            this.onClick("filters");
-            this.runAssays();
+            this.onClick("lipinski");
+            this.runDescriptorsOrLipinski();
           }}
           onMouseEnter={() => {
             this.onHover("chklip");
@@ -260,7 +338,7 @@ class AssayPanel extends React.Component {
           label="Calculate Descriptors"
           onClick={() => {
             this.onClick("descriptors");
-            this.runAssays();
+            this.runDescriptorsOrLipinski();
           }}
           onMouseEnter={() => {
             this.onHover("descr");
@@ -274,29 +352,7 @@ class AssayPanel extends React.Component {
         {this.state.hover == "descr" && this.props.toggle_help && (
           <div className="hover-info-text-descr">
             <p>
-              <div>{this.props.help[6]}</div>
-            </p>
-          </div>
-        )}
-        <button
-          label="Run_Assays"
-          onClick={() => {
-            this.onClick("drug_props");
-            this.runAssays();
-          }}
-          onMouseEnter={() => {
-            this.onHover("run");
-          }}
-          onMouseLeave={() => {
-            this.onUnHover();
-          }}
-        >
-          <div className="assay-name">Run Assays</div>
-        </button>
-        {this.state.hover == "run" && this.props.toggle_help && (
-          <div className="hover-info-text-run">
-            <p>
-              <div>{this.props.help[7]}</div>
+              <div>{this.props.help[5]}</div>
             </p>
           </div>
         )}
