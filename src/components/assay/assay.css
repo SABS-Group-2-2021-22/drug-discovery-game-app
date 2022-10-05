@@ -84,7 +84,6 @@
 
 .selected-mol-stats > .mol-stats > .descriptor-stats {
   width: 33%;
-  padding-right: 50px;
 }
 
 .molecule-list {
@@ -187,4 +186,235 @@
   padding: 5px;
   margin-right: 4vw;
   width: 100px;
+}
+
+.help-toggle {
+  z-index: 10;
+  margin-left: 90vw;
+  position: absolute;
+}
+
+.help-toggle button {
+  border-width: 1px;
+  border-radius: 8px;
+}
+
+.help-toggle button:active {
+  background-color: #6a6c6e;
+}
+
+.help-toggle > .inactivebutton button {
+  background-color: #fdfbfb;
+}
+
+.help-toggle > .activebutton button {
+  border-width: 3px;
+}
+
+.hover-info-text-pic50 {
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  display: flex;
+  margin-left: 22vh;
+  margin-top: 5px;
+  font-size: 15px;
+  z-index: 10;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #fdfbfb;
+  white-space: pre-line;
+  width: 35vh;
+}
+
+.hover-info-text-clrmouse {
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  display: flex;
+  margin-left: 22vh;
+  margin-top: 9.5vh;
+  font-size: 15px;
+  z-index: 10;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #fdfbfb;
+  white-space: pre-line;
+  width: 35vh;
+}
+
+.hover-info-text-clrhuman {
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  display: flex;
+  margin-left: 22vh;
+  margin-top: 18vh;
+  font-size: 15px;
+  z-index: 10;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #fdfbfb;
+  white-space: pre-line;
+  width: 35vh;
+}
+
+.hover-info-text-logd {
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  display: flex;
+  margin-left: 22vh;
+  margin-top: 27vh;
+  font-size: 15px;
+  z-index: 10;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #fdfbfb;
+  white-space: pre-line;
+  width: 35vh;
+}
+
+.hover-info-text-pampa {
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  display: flex;
+  margin-left: 22vh;
+  margin-top: 35.5vh;
+  font-size: 15px;
+  z-index: 10;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #fdfbfb;
+  white-space: pre-line;
+  width: 35vh;
+}
+
+.hover-info-text-chklip {
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  display: flex;
+  margin-left: 22vh;
+  margin-top: 44.5vh;
+  font-size: 15px;
+  z-index: 10;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #fdfbfb;
+  white-space: pre-line;
+  width: 35vh;
+}
+
+.hover-info-text-descr {
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  display: flex;
+  margin-left: 22vh;
+  margin-top: 53.5vh;
+  font-size: 15px;
+  z-index: 10;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #fdfbfb;
+  white-space: pre-line;
+  width: 35vh;
+}
+
+.hover-info-text-run {
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  display: flex;
+  margin-left: 22vh;
+  margin-top: 62.5vh;
+  font-size: 15px;
+  z-index: 10;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #fdfbfb;
+  white-space: pre-line;
+  width: 35vh;
+}
+
+.mol-stats > .hover-info-button-lip {
+  position: absolute;
+  z-index: 9;
+  margin-left: 13vh;
+}
+
+.mol-stats > .hover-info-button-lip button {
+  background-color: #fdfbfb;
+  border-radius: 12px;
+  border-width: 1.8px;
+}
+
+.hover-info-text-lip > .info-text {
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  display: flex;
+  margin-left: 15vh;
+  font-size: 12px;
+  z-index: 10;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #fdfbfb;
+  white-space: pre-line;
+  width: 19vh;
+}
+
+.mol-stats > .hover-info-button-descr {
+  position: absolute;
+  z-index: 9;
+  margin-left: 54vh;
+}
+
+.mol-stats > .hover-info-button-descr button {
+  background-color: #fdfbfb;
+  border-radius: 12px;
+  border-width: 1.8px;
+}
+
+.hover-info-text-descr > .info-text {
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  display: flex;
+  font-size: 12px;
+  z-index: 100;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #fdfbfb;
+  white-space: pre-line;
+  width: 19vh;
+}
+
+.mol-stats > .hover-info-button-assay {
+  position: absolute;
+  z-index: 9;
+  margin-left: 84vh;
+}
+
+.mol-stats > .hover-info-button-assay button {
+  background-color: #fdfbfb;
+  border-radius: 12px;
+  border-width: 1.8px;
+}
+
+.hover-info-text-assay > .info-text {
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  display: flex;
+  font-size: 12px;
+  z-index: 10;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #fdfbfb;
+  white-space: pre-line;
+  width: 19vh;
+  margin-left: 14vh;
 }

@@ -41,7 +41,7 @@ class SpiderPlot extends React.Component {
         r: this.state.ref_r,
         theta: this.state.ref_params,
         fill: "toself",
-        name: "Roche's Molecule",
+        name: "Desired profile",
       },
     ];
     return data;

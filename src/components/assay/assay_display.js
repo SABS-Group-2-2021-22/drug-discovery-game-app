@@ -10,6 +10,15 @@ class Assays extends React.Component {
   render() {
     return (
       <div class="container" className="assay-stats">
+        <div className="hover-info-text-assay">
+          {this.props.hover == "assay" && (
+            <div className="info-text">
+              <p>
+                <div>{this.props.help[9]}</div>
+              </p>
+            </div>
+          )}
+        </div>
         <div class="row" className="stats-type-header">
           Assay Data:
         </div>
@@ -53,6 +62,8 @@ function mapStateToProps(state) {
   return {
     //each assay has to be individually accessed from 'assays_run' to force a component update
     // ...simply throwing saved_mols in as a prop is not sufficient
+    assays_run:
+      state.assay.saved_mols[state.selector.selected_mol].data.assays_run,
     pIC50_run:
       state.assay.saved_mols[state.selector.selected_mol].data.assays_run.pIC50,
     mouse_run:
@@ -66,6 +77,7 @@ function mapStateToProps(state) {
     pampa_run:
       state.assay.saved_mols[state.selector.selected_mol].data.assays_run.pampa,
     saved_mols: state.assay.saved_mols,
+    help: state.init.help.assay,
   };
 }
 

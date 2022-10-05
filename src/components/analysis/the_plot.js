@@ -14,6 +14,7 @@ class ThePlot extends React.Component {
       hover: false,
       xpositionState: 0,
       ypositionState: 0,
+      helpHover: false,
     };
   }
 
@@ -101,21 +102,30 @@ class ThePlot extends React.Component {
     this.setState({ hover: false });
   };
 
+  onHelpHover = (event) => {
+    this.setState({ helpHover: true });
+  };
+
+  onUnHelpHover = (event) => {
+    this.setState({ helpHover: false });
+  };
+
   render() {
-    var axes_label = []
-    var state_iterator = [this.state.x_axis, this.state.y_axis]
-    for(var i=0, l = state_iterator.length; i < l; i++){
-    if (state_iterator[i] == "logd") {
-        axes_label[i] = "LogD"
-    } else if (state_iterator[i] == "pic50") {
-        axes_label[i] = "pIC50"
-    } else if (state_iterator[i] == "TPSA") {
-        axes_label[i] = "TPSA (Å\u00b2)"
-    } else if (state_iterator[i] == "MW") {
-        axes_label[i] = "MW (Da)"
-    } else {
-      axes_label[i] = state_iterator[i]
-    }}
+    var axes_label = [];
+    var state_iterator = [this.state.x_axis, this.state.y_axis];
+    for (var i = 0, l = state_iterator.length; i < l; i++) {
+      if (state_iterator[i] == "logd") {
+        axes_label[i] = "LogD";
+      } else if (state_iterator[i] == "pic50") {
+        axes_label[i] = "pIC50";
+      } else if (state_iterator[i] == "TPSA") {
+        axes_label[i] = "TPSA (Å\u00b2)";
+      } else if (state_iterator[i] == "MW") {
+        axes_label[i] = "MW (Da)";
+      } else {
+        axes_label[i] = state_iterator[i];
+      }
+    }
     return (
       <div className="plot-container">
         <div>{this.showCard()}</div>
@@ -133,7 +143,21 @@ class ThePlot extends React.Component {
           onUnhover={this.onUnhover}
         />
         <div className="plot-button-row">
+          <button
+            className="help-button"
+            onMouseEnter={this.onHelpHover}
+            onMouseLeave={this.onUnHelpHover}
+          >
+            ?
+          </button>
           <button onClick={() => this.relayout("--", "x")}>--</button>
+          {this.state.helpHover && (
+            <div className="help-info-text">
+              <p>
+                <div>{this.props.help[0]}</div>
+              </p>
+            </div>
+          )}
           <button onClick={() => this.relayout("logd", "x")}>logD</button>
           <button onClick={() => this.relayout("pic50", "x")}>pIC50</button>
           <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button>
@@ -164,6 +188,7 @@ class ThePlot extends React.Component {
 function mapStateToProps(state) {
   return {
     plot_data: state.analysis.plot_data,
+    help: state.init.help.analysis,
   };
 }
 

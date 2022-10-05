@@ -3,7 +3,25 @@ import * as api from "../api";
 export const initActions = {
   fetchRGroup,
   fetchRoche,
+  fetchHelp,
 };
+
+function fetchHelpSucceeded(help) {
+  return {
+    type: "FETCH_HELP_SUCCEEDED",
+    payload: {
+      help: help.data.info_dict,
+    },
+  };
+}
+
+function fetchHelp() {
+  return (dispatch) => {
+    api.fetchHelp().then((response) => {
+      dispatch(fetchHelpSucceeded(response));
+    });
+  };
+}
 
 /**
  * Synchronous action that sends the r group object to the store when dispatched

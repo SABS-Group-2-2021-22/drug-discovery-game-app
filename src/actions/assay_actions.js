@@ -3,6 +3,7 @@ import * as api from "../api";
 export const assayActions = {
   saveMolecule,
   runAssay,
+  toggleHelp,
 };
 
 /**
@@ -65,6 +66,21 @@ function runAssaySucceeded(selected_mol, assays) {
       molecule: selected_mol,
       assays_run: assays,
     },
+  };
+}
+
+function toggleHelpSucceeded(bool) {
+  return {
+    type: "TOGGLE_HELP_SUCCEEDED",
+    payload: {
+      Bool: bool,
+    },
+  };
+}
+
+function toggleHelp(bool) {
+  return (dispatch) => {
+    dispatch(toggleHelpSucceeded(bool));
   };
 }
 

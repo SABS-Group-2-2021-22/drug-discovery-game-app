@@ -10,8 +10,17 @@ class Lipinski extends React.Component {
   render() {
     return (
       <div class="container" className="lipinski-stats">
+        <div className="hover-info-text-lip">
+          {this.props.hover == "lip" && (
+            <div className="info-text">
+              <p>
+                <div>{this.props.help[8]}</div>
+              </p>
+            </div>
+          )}
+        </div>
         <div class="row" className="stats-type-header">
-          Lipinski Filters:
+          Lipinski Rules:
         </div>
         <div class="row">
           MW:{" "}
@@ -45,6 +54,7 @@ class Lipinski extends React.Component {
 function mapStateToProps(state) {
   return {
     saved_mols: state.assay.saved_mols,
+    help: state.init.help.assay,
   };
 }
 
