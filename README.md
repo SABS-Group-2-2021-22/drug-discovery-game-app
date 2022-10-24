@@ -36,7 +36,7 @@ Do this in a separate terminal tab or window.
 
 Install the dependencies: 
 ```
-cd drug-discovery-game-apps
+cd drug-discovery-game-app
 npm install
 ```
 Run the web-app server:
