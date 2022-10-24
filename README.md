@@ -3,8 +3,28 @@ This is the code repository of the frontend of the drug design game web-app.
 The frontend relies on the backend, the instructions include how to run the backend. 
 ## Installation and run instructions
 
+### Prerequisites
+
+You must have node and npm installed for the frontend server: [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+
+
+For Linux with apt package manager:
+```
+sudo apt install nodejs
+sudo apt install npm
+```
+
+For OSX:
+* with homebrew: `brew install node`
+* from [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+
+For Windows:
+* from [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+
+
+
 ### Backend
-Running the backend (assumes dependencies are already installed in a conda environment called `dd_game`)
+Running the backend (this assumes dependencies are already installed in a conda environment called `dd_game`, the backend repository for installation instructions)
 ```
 cd drug-discovery-game-backend
 conda activate dd_game
@@ -16,9 +36,8 @@ Do this in a separate terminal tab or window.
 
 Install the dependencies: 
 ```
-cd drug-discovery-game-app
+cd drug-discovery-game-apps
 npm install
-
 ```
 Run the web-app server:
 ```
@@ -66,33 +85,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
