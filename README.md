@@ -8,7 +8,7 @@ Running the backend (assumes dependencies are already installed in a conda envir
 ```
 cd drug-discovery-game-backend
 conda activate dd_game
-export FLASK_APP=ddg_api
+export FLASK_APP=api/service
 flask run
 ```
 ### Frontend
