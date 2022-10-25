@@ -171,7 +171,7 @@ class AssayPanel extends React.Component {
           <div className="assay-cost-and-time">
             <p>
               {" "}
-              Cost $70
+              Cost £70
               {"\n"}Duration: 1 week
             </p>
           </div>
@@ -200,7 +200,7 @@ class AssayPanel extends React.Component {
           <div className="assay-cost-and-time">
             <p>
               {" "}
-              Cost $7,000
+              Cost £7,000
               {"\n"}Duration: 3 week
             </p>
           </div>
@@ -227,7 +227,7 @@ class AssayPanel extends React.Component {
         >
           <div className="assay-name">Clearance Human</div>
           <div className="assay-cost-and-time">
-            Cost $9,000
+            Cost £9,000
             {"\n"}Duration: 3.5 weeks
           </div>
         </button>
@@ -253,7 +253,7 @@ class AssayPanel extends React.Component {
         >
           <div className="assay-name">LogD</div>
           <div className="assay-cost-and-time">
-            Cost $1,000
+            Cost £1,000
             {"\n"} Duration: 1.5 weeks
           </div>
         </button>
@@ -279,7 +279,7 @@ class AssayPanel extends React.Component {
         >
           <div className="assay-name">PAMPA</div>
           <div className="assay-cost-and-time">
-            Cost $700
+            Cost £700
             {"\n"}Duration: 1 week
           </div>
         </button>
