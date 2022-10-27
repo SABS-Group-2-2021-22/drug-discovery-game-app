@@ -29,7 +29,7 @@ class Builder extends React.Component {
           <div className="r-group-selection">
             <RGroupList r_group_pos={"A"} />
             <RGroupList r_group_pos={"B"} />
-            <div className="hover-info">
+            <div className="click-info">
               <button onClick={this.toggleInfo}>
                 ?
               </button>
