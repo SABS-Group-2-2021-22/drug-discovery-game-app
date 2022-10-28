@@ -32,7 +32,7 @@ class Analysis extends React.Component {
         </div>) : (
           <div className='unsavedmol'>       
           <Link to="/build">
-            <button className="mk_pre_test_button">Make something, Test it, then Analysis.</button>
+            <button className="mk_pre_test_button">Design and Make a molecule, Test it, then Analysis.</button>
           </Link></div>
         ) 
         }

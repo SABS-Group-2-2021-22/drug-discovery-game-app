@@ -24,7 +24,7 @@ function Navigation() {
                 </li>
                 <li className="navigation-item">
                   <NavLink className="navigation-link" to="/build">
-                    Make
+                    Design
                   </NavLink>
                 </li>
                 <li className="navigation-item">
