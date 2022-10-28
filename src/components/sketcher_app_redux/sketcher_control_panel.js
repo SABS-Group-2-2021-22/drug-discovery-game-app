@@ -13,21 +13,33 @@ initSelectMolecule = () => {
 
 
 render() {
+
+  if (this.props.saved_or_not == false) {
     return (
-              <div className="sketcher-control-panel">
-                <button>Clear</button>
-                <button onClick={this.props.triggerSaving }>Save</button>
-                <Link to="/assay">
-                  <button onClick={this.initSelectMolecule}>Assay</button>
-                </Link>
-              </div>
-            )
-        }
+      <div className="sketcher-control-panel">
+        <button>Clear</button>
+        <button onClick ={this.combinedtwofunction}>Make</button>
+      </div>)
+  }
+
+  else {
+
+    return (
+      <div className="sketcher-control-panel">
+        <button>Clear</button>
+        <button onClick={this.saveMolecule}>Make</button>
+        <Link to="/assay">
+          <button onClick={this.initSelectMolecule}>Test</button>
+        </Link>
+      </div>)
+  }
+}        
       }
 
 function mapStateToProps(state) {
   return {
     saved_mols: state.assay.saved_mols,
+    saved_or_not: state.assay.saved_or_not
   };
 }
 

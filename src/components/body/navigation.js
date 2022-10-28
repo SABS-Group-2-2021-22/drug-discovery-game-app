@@ -24,12 +24,12 @@ function Navigation() {
                 </li>
                 <li className="navigation-item">
                   <NavLink className="navigation-link" to="/build">
-                    Build
+                    Design
                   </NavLink>
                 </li>
                 <li className="navigation-item">
                   <NavLink className="navigation-link" to="/assay">
-                    Assay
+                    Test
                   </NavLink>
                 </li>
                 <li className="navigation-item">

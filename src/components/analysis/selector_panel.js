@@ -48,12 +48,18 @@ class SelectorPanel extends React.Component {
   };
 
   render() {
-    return (
-      <div className="selector-panel">
+    return ( <div className="selector-panel">
+        {this.props.selected_or_not ? (
+          <div>
         <button onClick={this.chooseMolecule}>Choose This Molecule</button>
         <Link to="/results">
           <button onClick={this.submitResult}>Reveal Final Molecule</button>
         </Link>
+        </div>
+        ) : (<div>
+        <button onClick={this.chooseMolecule}>Choose This Molecule</button>
+       </div> )
+        }
       </div>
     );
   }
@@ -63,6 +69,7 @@ function mapStateToProps(state) {
   return {
     saved_mols: state.assay.saved_mols,
     selected_mol: state.selector.selected_mol,
+    selected_or_not: state.selector.selected_or_not,
     chosen_mol: state.selector.chosen_mol,
     gamemode: state.game.gamemode,
   };
