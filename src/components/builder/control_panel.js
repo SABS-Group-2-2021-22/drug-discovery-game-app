@@ -21,14 +21,19 @@ class ControlPanel extends React.Component {
   initSelectMolecule = () => {
     this.props.selectMolecule(Object.keys(this.props.saved_mols)[0]);
   };
-  
+
+  combinedtwofunction = () => {
+    this.saveMolecule();
+    this.initSelectMolecule();
+  };
+
   render() {
 
     if (this.props.saved_or_not == false) {
       return (
         <div className="control-panel">
           <button>Clear</button>
-          <button onClick={this.saveMolecule}>Save</button>
+          <button onClick ={this.combinedtwofunction}>Save</button>
         </div>)
     }
 

@@ -31,7 +31,6 @@ class Assay extends React.Component {
     this.props.dispatch(sketcherActions.closePopUp())
 }
   render() {
-
       return (
         <div className="wrapper">
 
@@ -64,7 +63,7 @@ class Assay extends React.Component {
               </div>
             </div> </div>) : (<div className='unsavedmol'>       
                     <Link to="/build">
-                      <button>Come on man! save something!</button>
+                      <button className="mk_pre_test_button">Please make a molecule before test!</button>
                     </Link></div>)
             }
 
