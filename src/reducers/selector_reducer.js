@@ -1,4 +1,5 @@
 const initialState = {
+  selected_or_not : false,
   selected_r_groups: { A: "A01", B: "B01", molecule: [] }, //the inital r groups and an empty molecule
 };
 
@@ -13,6 +14,7 @@ export function selectorReducer(state = initialState, action) {
     case "SEL_R_FETCH_MOL_SUCCEEDED": {
       return {
         ...state,
+        selected_or_not : false,
         selected_r_groups: {
           ...state.selected_r_groups,
           molecule: action.payload.molecule, //store molecule in selected_r_groups.molecule
@@ -24,18 +26,21 @@ export function selectorReducer(state = initialState, action) {
     case "SELECT_MOLECULE_SUCCEEDED": {
       return {
         ...state,
+        selected_or_not : false,
         selected_mol: action.payload.selected_mol,
       };
     }
     case "CHOOSE_MOLECULE_SUCCEEDED": {
       return {
         ...state,
+        selected_or_not : true,
         chosen_mol: action.payload.chosen_mol,
       };
     }
     case "CHOOSE_SKETCHED_MOLECULE_SUCCEEDED": {
       return {
         ...state,
+        selected_or_not : true,
         chosen_mol: action.payload.chosen_mol,
       };
     }

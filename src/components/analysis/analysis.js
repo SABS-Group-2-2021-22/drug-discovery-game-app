@@ -5,7 +5,7 @@ import MoleculeList from "./molecule_list.js";
 import ThePlot from "./the_plot.js";
 import { connect } from "react-redux";
 import { initActions } from "../../actions";
-
+import { Link } from "react-router-dom"
 class Analysis extends React.Component {
   constructor(props) {
     super(props);
@@ -20,6 +20,7 @@ class Analysis extends React.Component {
   render() {
     return (
       <div className="wrapper">
+        {this.props.saved_or_not ? (
         <div className="analysis">
           <div className="final-molecule-bar">
             <SelectorPanel />
@@ -28,14 +29,20 @@ class Analysis extends React.Component {
           <div className="comparison-graph">
             <ThePlot />
           </div>
-        </div>
+        </div>) : (
+          <div className='unsavedmol'>       
+          <Link to="/build">
+            <button className="mk_pre_test_button">Make something, Test it, then Analysis.</button>
+          </Link></div>
+        ) 
+        }
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return {};
+  return {saved_or_not: state.assay.saved_or_not};
 }
 
 const actionCreators = {

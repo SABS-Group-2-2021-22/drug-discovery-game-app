@@ -33,7 +33,7 @@ class ControlPanel extends React.Component {
       return (
         <div className="control-panel">
           <button>Clear</button>
-          <button onClick ={this.combinedtwofunction}>Save</button>
+          <button onClick ={this.combinedtwofunction}>Make</button>
         </div>)
     }
 
@@ -42,9 +42,9 @@ class ControlPanel extends React.Component {
       return (
         <div className="control-panel">
           <button>Clear</button>
-          <button onClick={this.saveMolecule}>Save</button>
+          <button onClick={this.saveMolecule}>Make</button>
           <Link to="/assay">
-            <button onClick={this.initSelectMolecule}>Assay</button>
+            <button onClick={this.initSelectMolecule}>Test</button>
           </Link>
         </div>)
     }
