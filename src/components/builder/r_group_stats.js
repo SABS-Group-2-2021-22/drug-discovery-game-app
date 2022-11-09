@@ -9,7 +9,7 @@ class RGroupStats extends React.Component {
 
     render() {
         return (
-            <div class="container" className="r_group_stats">
+            <div class="container" className="r_group_stats" onClick={this.props.func}>
                 <div class="row">
                     <div class="col">
                         MW: {Number(this.props.stats.MW).toFixed(1)}  Da
