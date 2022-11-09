@@ -37,7 +37,8 @@ class RGroupWidget extends React.Component {
             onClick={this.selectRGroups}
           />
           <RGroupStats
-            stats={this.props.r_groups[this.props.r_group_id].data.stats}
+            stats={this.props.r_groups[[this.props.r_group_id]].data.stats}
+            func = {this.selectRGroups}
           />
         </div>
       </div>
