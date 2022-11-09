@@ -2,6 +2,8 @@ const initialState = {
   saved_or_not: false,
   saved_mols: {},
   toggle_help: false,
+  invoice_display: false,
+  invoice: false,
 };
 
 /**
@@ -102,6 +104,18 @@ export function assayReducer(state = initialState, action) {
         ...state,
         saved_or_not: true,
         toggle_help: action.payload.Bool,
+      };
+    }
+    case "INVOICE_DISPLAY_SUCCEEDED": {
+      return {
+        ...state,
+        invoice_display: action.payload.Bool,
+      };
+    }
+    case "SHOW_INVOICE_SUCCEEDED": {
+      return {
+        ...state,
+        invoice: action.payload.invoice,
       };
     }
     default: {

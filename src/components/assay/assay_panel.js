@@ -370,6 +370,9 @@ function mapStateToProps(state) {
     money: state.game.money,
     help: state.init.help.assay,
     toggle_help: state.assay.toggle_help,
+    invoice_display: state.assay.invoice_display,
+    invoice: state.assay.invoice,
+    selected_assays: state.assay.selected_assays,
   };
 }
 

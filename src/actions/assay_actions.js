@@ -4,6 +4,8 @@ export const assayActions = {
   saveMolecule,
   runAssay,
   toggleHelp,
+  invoiceDisplay,
+  showInvoice,
 };
 
 /**
@@ -53,6 +55,24 @@ function saveMolecule(saved_mols, selected_r_groups) {
   };
 }
 
+function showInvoiceSucceeded(invoice) {
+  return {
+    type: 'SHOW_INVOICE_SUCCEEDED',
+    payload: {
+      invoice: invoice
+    }
+  }
+}
+
+function showInvoice() {
+  return async (dispatch) => {
+    api.showInvoice().then((response)=>{
+      dispatch(showInvoiceSucceeded(response.data.placeholder))
+    })
+  }
+}
+
+
 /**
  * Synchronous action that sends the selected_mol and assays object to the assayReduxer
  * @param {state object} selected_mol the selected molecule
@@ -83,6 +103,22 @@ function toggleHelp(bool) {
     dispatch(toggleHelpSucceeded(bool));
   };
 }
+// invoice display
+function invoiceDisplaySucceeded(bool) {
+  return {
+    type: "INVOICE_DISPLAY_SUCCEEDED",
+    payload: {
+      Bool: bool,
+    },
+  };
+}
+
+function invoiceDisplay(bool) {
+  return (dispatch) => {
+    dispatch(invoiceDisplaySucceeded(bool));
+  };
+}
+
 
 /**
  * Asynchronous action that dispactes the runAssaySucceeded action

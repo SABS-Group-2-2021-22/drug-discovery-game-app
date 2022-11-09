@@ -12,13 +12,25 @@ import ControlPanel from "./control_panel.js";
 import { assayActions } from "../../actions";
 import { Link } from "react-router-dom"
 import { sketcherActions } from "../../actions";
+import Dropdown from 'react-bootstrap/Dropdown';
+
+
 class Assay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      help_toggle: false,
+      invoice_display: false
     };
   }
+
+  onShow = (event) => {
+    this.setState({ click: true });
+    console.log(this.props.help);
+  };
+
+  onHide = (event) => {
+    this.setState({ click: false });
+  };
 
   toggleHelp() {
     if (this.props.toggle_help) {
@@ -26,38 +38,77 @@ class Assay extends React.Component {
     } else {
       this.props.toggleHelp(true);
     }
+    console.log(this.props.toggle_help)
   }
-  turn_error_off = () => {
-    this.props.dispatch(sketcherActions.closePopUp())
-}
-  render() {
-      return (
-        <div className="wrapper">
 
-            {this.props.saved_or_not ? (
-            <div className="assay">
+  invoiceDisplay() {
+    if (this.props.invoice_display) {
+      this.props.invoiceDisplay(false);
+    } else {
+      this.props.invoiceDisplay(true);
+    }
+    console.log(this.props.invoice_display)
+  }
+
+  showInvoice() {
+    if (this.props.invoice) {
+      this.props.showInvoice(false);
+    } else {
+      this.props.showInvoice(true);
+    }
+    console.log(this.props.invoice)
+  }
+
+
+  render() {
+    return (
+      <div className="wrapper">
+        {this.props.saved_or_not ? (
+        <div className="assay">
+          <div className="display-buttons-assay">
             <div className="help-toggle">
               {this.props.toggle_help && (
-                <div className="activebutton">
-                  <button onClick={() => this.toggleHelp()}>toggle help</button>
+                <div className="toggle-activebutton">
+                  <button onClick={() => this.toggleHelp()}>toggle help: ON</button>
                 </div>
               )}
               {this.props.toggle_help == false && (
-                <div className="inactivebutton">
-                  <button onClick={() => this.toggleHelp()}>toggle help</button>
+                <div className="toggle-inactivebutton">
+                  <button onClick={() => this.toggleHelp()}>toggle help: OFF</button>
                 </div>
               )}
             </div>
-        
-            <div className="molecule-chooser-bar">
-              <MoleculeList />
+            <div className="invoice">
+              {this.props.invoice_display && (
+                <div className="invoice-activebutton">
+                  <button onClick={() => this.invoiceDisplay()}>hide invoice</button>
+                  { (
+                    <div className="info-invoice">
+                      <p>
+                        <div>{this.props.invoice}</div>
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+              {this.props.invoice_display == false && (
+                <div className="invoice-inactivebutton">
+                  <button onClick={() => {this.invoiceDisplay(); this.showInvoice();}}>
+                    show invoice                 
+                  </button>
+                </div>
+              )}
             </div>
-            <AssayPanel />
-            <div className="mol-visbox">
-              <div className="rendered-molecule">
-                <MoleculeImage mol_id={this.props.selected_mol} />
-              </div>
-              <div className="selected-mol-stats">
+            </div> 
+          <div className="molecule-chooser-bar">
+            <MoleculeList />
+          </div>
+          <AssayPanel />
+          <div className="mol-visbox">
+            <div className="rendered-molecule">
+              <MoleculeImage mol_id={this.props.selected_mol} />
+            </div>
+            <div className="selected-mol-stats">
                 <MoleculeStats selected_mol={this.props.selected_mol} />
                 <ControlPanel />
               </div>
@@ -73,17 +124,23 @@ class Assay extends React.Component {
   }
 }
 
+
 function mapStateToProps(state) {
   return {
     selected_mol: state.selector.selected_mol,
     toggle_help: state.assay.toggle_help,
     saved_or_not: state.assay.saved_or_not,
-    sketcher_error: state.sketcher.sketcher_error
+    sketcher_error: state.sketcher.sketcher_error,
+    invoice_display: state.assay.invoice_display,
+    invoice: state.assay.invoice,
+    selected_assays: state.assay.selected_assays,
   };
 }
 
 const actionCreators = {
   toggleHelp: assayActions.toggleHelp,
+  invoiceDisplay: assayActions.invoiceDisplay,
+  showInvoice: assayActions.showInvoice,
 };
 
 export default connect(mapStateToProps, actionCreators)(Assay);
