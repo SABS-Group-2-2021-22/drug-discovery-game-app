@@ -153,10 +153,10 @@ class AssayPanel extends React.Component {
   };
 
   toggleAssay = (button) => {
-    if (this.props.toggle_assay.button) {
+    if (this.props.toggle_assay[button]) {
       this.props.toggleAssay(button,false);
     } else {
-      console.log(this.props.toggle_assay)
+      console.log(this.props.toggle_assay[button])
       // console.log(this.props.toggle_assay.button)
       this.props.toggleAssay(button,true);
     }
