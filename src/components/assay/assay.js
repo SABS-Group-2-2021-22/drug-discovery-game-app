@@ -23,6 +23,8 @@ class Assay extends React.Component {
     };
   }
 
+
+  
   onShow = (event) => {
     this.setState({ click: true });
     console.log(this.props.help);
@@ -62,6 +64,9 @@ class Assay extends React.Component {
 
 
   render() {
+    var heading = ['ASSAY']
+    var body =[]
+    console.log(this.props.selected_assays)
     return (
       <div className="wrapper">
         {this.props.saved_or_not ? (
@@ -85,9 +90,19 @@ class Assay extends React.Component {
                   <button onClick={() => this.invoiceDisplay()}>hide invoice</button>
                   { (
                     <div className="info-invoice">
-                      <p>
-                        <div>{this.props.invoice}</div>
-                      </p>
+                      <table className="invoice-table">
+                        
+                      <thead>
+                        <tr>
+                            <th>{heading.map(head => <th>{head}</th>)}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         {/* {body.map(row => <TableRow row={row} />)} */}
+                          {this.props.selected_assays.map(row => <TableRow row={row} />)}
+                        </tbody>
+                     
+                      </table>
                     </div>
                   )}
                 </div>
@@ -122,6 +137,17 @@ class Assay extends React.Component {
         </div>
       );
 
+  }
+}
+
+class TableRow extends React.Component {
+  render() {
+      var row = this.props.row;
+      return (
+          <tr>
+              {row.map(val => <td>{val}</td>)}
+          </tr>
+      )
   }
 }
 

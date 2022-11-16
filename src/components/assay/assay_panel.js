@@ -82,6 +82,7 @@ class AssayPanel extends React.Component {
       logd: 1.5,
       pampa: 1.0,
     };
+    console.log(selected_assays)
     for (var i = 0; i < selected_assays.length; i++) {
       if (
         ["drug_props", "lipinski", "descriptors"].includes(selected_assays[i])
@@ -373,6 +374,7 @@ function mapStateToProps(state) {
     invoice_display: state.assay.invoice_display,
     invoice: state.assay.invoice,
     selected_assays: state.assay.selected_assays,
+    assay_prices: state.assay.assay_prices
   };
 }
 
