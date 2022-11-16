@@ -146,3 +146,19 @@
   white-space: pre-line;
   width: 50vh;
 }
+
+.build > .r-group-selection > .r-group-a {
+  overflow-y: scroll;
+}
+
+.build > .r-group-selection > .r-group-b {
+  overflow-y: scroll;
+}
+
+.molecule-chooser-bar{
+  padding: 5px;
+  background-color: white;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}

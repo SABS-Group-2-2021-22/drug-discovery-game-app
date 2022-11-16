@@ -3,6 +3,7 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./builder.css";
 import RGroupList from "./r_group_list.js";
 import MoleculeImage from "./molecule_display.js";
+import MoleculeList from "../assay/molecule_list.js";
 import ControlPanel from "./control_panel.js";
 import { connect } from "react-redux";
 
@@ -28,8 +29,14 @@ class Builder extends React.Component {
       <div className="wrapper">
         <div className="build">
           <div className="r-group-selection">
-            <RGroupList r_group_pos={"A"} />
-            <RGroupList r_group_pos={"B"} />
+            <div className="r-group-a">
+               Reactant Group A
+              <RGroupList r_group_pos={"A"} />
+            </div>
+            <div className='r-group-b'>
+               Reactant Group B
+              <RGroupList r_group_pos={"B"} />
+            </div>
             <div className="hover-info">
               <button onMouseEnter={this.onHover} onMouseLeave={this.onUnHover}>
                 ?
@@ -59,6 +66,10 @@ class Builder extends React.Component {
               <MoleculeImage />
             </div>
             <ControlPanel />
+          </div>
+          <div className="molecule-chooser-bar">
+              Your molecules:
+              <MoleculeList />
           </div>
         </div>
       </div>
