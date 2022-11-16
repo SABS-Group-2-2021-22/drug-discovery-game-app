@@ -30,7 +30,7 @@ class Introduction extends React.Component {
                 <Link to="/introduction2">
                   <button>Next</button>
                 </Link>
-                <Link to="/build">
+                <Link to="/loadingpage">
                   <button>Skip Introduction</button>
                 </Link>
               </div>
