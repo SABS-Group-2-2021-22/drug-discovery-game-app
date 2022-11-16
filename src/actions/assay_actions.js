@@ -4,6 +4,7 @@ export const assayActions = {
   saveMolecule,
   runAssay,
   toggleHelp,
+  toggleAssay
 };
 
 /**
@@ -81,6 +82,25 @@ function toggleHelpSucceeded(bool) {
 function toggleHelp(bool) {
   return (dispatch) => {
     dispatch(toggleHelpSucceeded(bool));
+  };
+}
+
+/* anissa changes */
+function toggleAssaySucceeded(button,bool) {
+  console.log(button)
+  console.log(bool)
+  return {
+    type: "TOGGLE_ASSAY_SUCCEEDED",
+    payload: {
+      button: button,
+      bool: bool,
+    },
+  };
+}
+
+function toggleAssay(button,bool) {
+  return (dispatch) => {
+    dispatch(toggleAssaySucceeded(button,bool));
   };
 }
 

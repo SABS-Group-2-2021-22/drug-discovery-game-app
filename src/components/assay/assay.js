@@ -23,6 +23,7 @@ class Assay extends React.Component {
       this.props.toggleHelp(true);
     }
   }
+  
 
   render() {
     return (
