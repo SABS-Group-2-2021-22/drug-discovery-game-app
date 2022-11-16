@@ -50,6 +50,7 @@ class Assay extends React.Component {
     console.log(this.props.invoice_display)
   }
 
+
   showInvoice() {
     if (this.props.invoice) {
       this.props.showInvoice(false);
