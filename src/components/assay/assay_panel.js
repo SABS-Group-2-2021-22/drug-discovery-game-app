@@ -68,7 +68,7 @@ class AssayPanel extends React.Component {
   // money)
   runAssays = () => {
     let assays_run = this.state.assays_run;
-    let selected_assays = this.state.selected_assays;
+    let selected_assays = this.props.selected_assays;
     const assay_prices = {
       pIC50: 70.0,
       clearance_mouse: 7000.0,
