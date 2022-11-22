@@ -100,7 +100,8 @@ class Assay extends React.Component {
                     </thead>
                     <tbody>
                          {/* {body.map(row => <TableRow row={row} />)} */}
-                          {this.props.selected_assays.map(row => <TableRow row={row} />)}
+                          {/* {this.props.selected_assays.map(row => <TableRow row={row} />)} */}
+                          placeholder 
                         </tbody>
                      
                       </table>
