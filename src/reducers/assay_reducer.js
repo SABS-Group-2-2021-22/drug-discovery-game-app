@@ -4,7 +4,9 @@ const initialState = {
   toggle_help: false,
   invoice_display: false,
   invoice: false,
-  toggle_assay: {pic50: false, clearance_mouse: false, clearance_human: false, logd:false, pampa:false}
+  toggle_assay: {pic50: false, clearance_mouse: false, clearance_human: false, logd:false, pampa:false},
+
+
 };
 
 /**
