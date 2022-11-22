@@ -12,6 +12,7 @@ class AssayPanel extends React.Component {
       selected_mol: null,
       cost_assays: [],
       hover: [],
+      
     };
   }
 
@@ -152,144 +153,295 @@ class AssayPanel extends React.Component {
     console.log(this.state.hover);
   };
 
+  toggleAssay = (button) => {
+    if (this.props.toggle_assay[button]) {
+      this.props.toggleAssay(button,false);
+    } else {
+      console.log(this.props.toggle_assay[button])
+      // console.log(this.props.toggle_assay.button)
+      this.props.toggleAssay(button,true);
+    }
+  }
+// or this.props.toggle_assay.button
   render() {
-    return (
+    return(
       <div className="assay-panel">
-        <button
-          label="pIC50"
-          onClick={() => {
-            this.onClick("pIC50");
-            this.costAssays("pIC50");
-          }}
-          onMouseEnter={() => {
-            this.onHover("pic50");
-          }}
-          onMouseLeave={() => {
-            this.onUnHover();
-          }}
-        >
-          <div className="assay-name">pIC50</div>
-          <div className="assay-cost-and-time">
-            <p>
-              {" "}
-              Cost £70
-              {"\n"}Duration: 1 week
-            </p>
-          </div>
-        </button>
+        {this.props.toggle_assay.pic50 && (
+          <div className="activebutton">
+            <button onClick={() => {
+              this.toggleAssay("pic50");
+              this.onClick("pic50");
+              this.costAssays("pic50")
+              }}
+              onMouseEnter={() => {
+                this.onHover("pic50");
+              }}
+              onMouseLeave={() => {
+                this.onUnHover();
+              }}
+              >
+              <div className="assay-name">pIC50</div>
+              <div className="assay-cost-and-time">
+                <p>
+                  {""}
+                  Cost £70
+                  {"\n"}Duration: 1 week
+                </p>
+              </div>
+            </button></div>
+        )}
+        {this.props.toggle_assay.pic50 == false && (
+          <div className="inactivebutton">
+            <button onClick={() => {
+              this.toggleAssay("pic50");
+              this.onClick("pic50");
+              this.costAssays("pic50")
+              }}
+              onMouseEnter={() => {
+                this.onHover("pic50");
+              }}
+              onMouseLeave={() => {
+                this.onUnHover();
+              }}
+              >
+              <div className="assay-name">pIC50</div>
+              <div className="assay-cost-and-time">
+                <p>
+                  {" "}
+                  Cost £70
+                  {"\n"}Duration: 1 week
+                </p></div></button></div>
+        )}
         {this.state.hover == "pic50" && this.props.toggle_help && (
-          <div className="hover-info-text-pic50">
-            <p>
-              <div>{this.props.help[0]}</div>
-            </p>
+        <div className="hover-info-text-pic50">
+          <p>
+            <div>{this.props.help[0]}</div>
+          </p>
+        </div>
+        )}
+        
+        {this.props.toggle_assay.clearance_mouse && (
+          <div className="activebutton">
+            <button onClick={() => {
+              this.toggleAssay("clearance_mouse");
+              this.onClick("clearance_mouse");
+              this.costAssays("clearance_mouse")
+              }}
+              onMouseEnter={() => {
+                this.onHover("clearance_mouse");
+              }}
+              onMouseLeave={() => {
+                this.onUnHover();
+              }}
+              >
+              <div className="assay-name">Clearance Mouse</div>
+              <div className="assay-cost-and-time">
+                <p>
+                  {" "}
+                  Cost £7,000
+                  {"\n"}Duration: 3 weeks
+                </p></div>
+              </button>
           </div>
         )}
-        <button
-          label="Clearance Mouse"
-          onClick={() => {
-            this.onClick("clearance_mouse");
-            this.costAssays("clearance_mouse");
-          }}
-          onMouseEnter={() => {
-            this.onHover("clrmouse");
-          }}
-          onMouseLeave={() => {
-            this.onUnHover();
-          }}
-        >
-          <div className="assay-name">Clearance Mouse</div>
-          <div className="assay-cost-and-time">
-            <p>
-              {" "}
-              Cost £7,000
-              {"\n"}Duration: 3 week
-            </p>
+        {this.props.toggle_assay.clearance_mouse == false && (
+          <div className="inactivebutton">
+            <button onClick={() => {
+              this.toggleAssay("clearance_mouse");
+              this.onClick("clearance_mouse");
+              this.costAssays("clearance_mouse")
+              }}
+              onMouseEnter={() => {
+                this.onHover("clearance_mouse");
+              }}
+              onMouseLeave={() => {
+                this.onUnHover();
+              }}
+              >
+              <div className="assay-name">Clearance Mouse</div>
+              <div className="assay-cost-and-time">
+                <p>
+                  {" "}
+                  Cost £7,000
+                  {"\n"}Duration: 3 weeks
+                </p>
+              </div>
+              </button>
           </div>
-        </button>
+        )}
         {this.state.hover == "clrmouse" && this.props.toggle_help && (
-          <div className="hover-info-text-clrmouse">
-            <p>
-              <div>{this.props.help[1]}</div>
-            </p>
+        <div className="hover-info-text-clrmouse">
+          <p>
+            <div>{this.props.help[1]}</div>
+          </p>
+        </div>
+        )}
+
+        {this.props.toggle_assay.clearance_human && (
+          <div className="activebutton">
+            <button onClick={() => {
+              this.toggleAssay("clearance_human");
+              this.onClick("clearance_human");
+              this.costAssays("clearance_human")
+              }}
+              onMouseEnter={() => {
+                this.onHover("clearance_human");
+              }}
+              onMouseLeave={() => {
+                this.onUnHover();
+              }}
+              >
+              <div className="assay-name">Clearance Human</div>
+              <div className="assay-cost-and-time">
+                Cost £9,000
+                {"\n"}Duration: 3.5 weeks
+              </div>
+              </button>
           </div>
         )}
-        <button
-          label="Clearance Humam"
-          onClick={() => {
-            this.onClick("clearance_human");
-            this.costAssays("clearance_human");
-          }}
-          onMouseEnter={() => {
-            this.onHover("clrhuman");
-          }}
-          onMouseLeave={() => {
-            this.onUnHover();
-          }}
-        >
-          <div className="assay-name">Clearance Human</div>
-          <div className="assay-cost-and-time">
-            Cost £9,000
-            {"\n"}Duration: 3.5 weeks
+        {this.props.toggle_assay.clearance_human == false && (
+          <div className="inactivebutton">
+            <button onClick={() => {
+              this.toggleAssay("clearance_human");
+              this.onClick("clearance_human");
+              this.costAssays("clearance_human")
+              }}
+              onMouseEnter={() => {
+                this.onHover("clearance_human");
+              }}
+              onMouseLeave={() => {
+                this.onUnHover();
+              }}
+              >
+              <div className="assay-name">Clearance Human</div>
+              <div className="assay-cost-and-time">
+                Cost £9,000
+                {"\n"}Duration: 3.5 weeks
+              </div>
+              </button>
           </div>
-        </button>
+        )}
         {this.state.hover == "clrhuman" && this.props.toggle_help && (
-          <div className="hover-info-text-clrhuman">
-            <p>
-              <div>{this.props.help[2]}</div>
-            </p>
+        <div className="hover-info-text-clrhuman">
+          <p>
+            <div>{this.props.help[2]}</div>
+          </p>
+        </div>
+        )}
+
+        {this.props.toggle_assay.logd && (
+          <div className="activebutton">
+            <button onClick={() => {
+              this.toggleAssay("logd");
+              this.onClick("logd");
+              this.costAssays("logd")
+              }}
+              onMouseEnter={() => {
+                this.onHover("logd");
+              }}
+              onMouseLeave={() => {
+                this.onUnHover();
+              }}
+              >
+              <div className="assay-name">LogD</div>
+              <div className="assay-cost-and-time">
+              <p>
+                  {" "}
+                  Cost £1,000
+                  {"\n"}Duration: 1.5 week
+                </p>
+              </div>
+              </button>
           </div>
         )}
-        <button
-          label="LogD"
-          onClick={() => {
-            this.onClick("logd");
-            this.costAssays("logd");
-          }}
-          onMouseEnter={() => {
-            this.onHover("logd");
-          }}
-          onMouseLeave={() => {
-            this.onUnHover();
-          }}
-        >
-          <div className="assay-name">LogD</div>
-          <div className="assay-cost-and-time">
-            Cost £1,000
-            {"\n"} Duration: 1.5 weeks
+        {this.props.toggle_assay.logd == false && (
+          <div className="inactivebutton">
+            <button onClick={() => {
+              this.toggleAssay("logd");
+              this.onClick("logd");
+              this.costAssays("logd")
+              }}
+              onMouseEnter={() => {
+                this.onHover("logd");
+              }}
+              onMouseLeave={() => {
+                this.onUnHover();
+              }}
+              >
+              <div className="assay-name">Log D</div>
+              <div className="assay-cost-and-time">
+                <p>
+                  {" "}
+                  Cost £1,000
+                  {"\n"}Duration: 1.5 week
+                </p>
+              </div>
+              </button>
           </div>
-        </button>
+        )}
         {this.state.hover == "logd" && this.props.toggle_help && (
-          <div className="hover-info-text-logd">
-            <p>
-              <div>{this.props.help[3]}</div>
-            </p>
+        <div className="hover-info-text-logd">
+          <p>
+            <div>{this.props.help[3]}</div>
+          </p>
+        </div>
+        )}
+        {this.props.toggle_assay.pampa && (
+          <div className="activebutton">
+            <button onClick={() => {
+              this.toggleAssay("pampa");
+              this.onClick("pampa");
+              this.costAssays("pampa")
+              }}
+              onMouseEnter={() => {
+                this.onHover("pampa");
+              }}
+              onMouseLeave={() => {
+                this.onUnHover();
+              }}
+              >
+              <div className="assay-name">PAMPA</div>
+              <div className="assay-cost-and-time">
+              <p>
+                  {" "}
+                  Cost £700
+                  {"\n"}Duration: 1 week
+                </p>
+              </div>
+              </button>
           </div>
         )}
-        <button
-          label="PAMPA"
-          onClick={() => {
-            this.onClick("pampa");
-            this.costAssays("pampa");
-          }}
-          onMouseEnter={() => {
-            this.onHover("pampa");
-          }}
-          onMouseLeave={() => {
-            this.onUnHover();
-          }}
-        >
-          <div className="assay-name">PAMPA</div>
-          <div className="assay-cost-and-time">
-            Cost £700
-            {"\n"}Duration: 1 week
+        {this.props.toggle_assay.pampa == false && (
+          <div className="inactivebutton">
+            <button onClick={() => {
+              this.toggleAssay("pampa");
+              this.onClick("pampa");
+              this.costAssays("pampa")
+              }}
+              onMouseEnter={() => {
+                this.onHover("pampa");
+              }}
+              onMouseLeave={() => {
+                this.onUnHover();
+              }}
+              >
+              <div className="assay-name">PAMPA</div>
+              <div className="assay-cost-and-time">
+                <p>
+                  {" "}
+                  Cost £700
+                  {"\n"}Duration: 1 week
+                </p>
+              </div>
+              </button>
           </div>
-        </button>
+        )}
         {this.state.hover == "pampa" && this.props.toggle_help && (
-          <div className="hover-info-text-pampa">
-            <p>
-              <div>{this.props.help[4]}</div>
-            </p>
-          </div>
+        <div className="hover-info-text-pampa">
+          <p>
+            <div>{this.props.help[4]}</div>
+          </p>
+        </div>
         )}
         <button
           label="Run_Assays"
@@ -362,6 +514,7 @@ class AssayPanel extends React.Component {
   }
 }
 
+
 function mapStateToProps(state) {
   return {
     selected_mol: state.selector.selected_mol,
@@ -374,7 +527,8 @@ function mapStateToProps(state) {
     invoice_display: state.assay.invoice_display,
     invoice: state.assay.invoice,
     selected_assays: state.assay.selected_assays,
-    assay_prices: state.assay.assay_prices
+    assay_prices: state.assay.assay_prices,
+    toggle_assay: state.assay.toggle_assay,
   };
 }
 
@@ -382,6 +536,7 @@ const actionCreators = {
   updateMoney: gameActions.updateMoney,
   updateTime: gameActions.updateTime,
   runAssay: assayActions.runAssay,
+  toggleAssay: assayActions.toggleAssay
 };
 
 export default connect(mapStateToProps, actionCreators)(AssayPanel);

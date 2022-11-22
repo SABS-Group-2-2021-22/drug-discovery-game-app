@@ -6,6 +6,7 @@ export const assayActions = {
   toggleHelp,
   invoiceDisplay,
   showInvoice,
+  toggleAssay
 };
 
 /**
@@ -119,6 +120,25 @@ function invoiceDisplay(bool) {
   };
 }
 
+
+/* anissa changes */
+function toggleAssaySucceeded(button,bool) {
+  console.log(button)
+  console.log(bool)
+  return {
+    type: "TOGGLE_ASSAY_SUCCEEDED",
+    payload: {
+      button: button,
+      bool: bool,
+    },
+  };
+}
+
+function toggleAssay(button,bool) {
+  return (dispatch) => {
+    dispatch(toggleAssaySucceeded(button,bool));
+  };
+}
 
 /**
  * Asynchronous action that dispactes the runAssaySucceeded action

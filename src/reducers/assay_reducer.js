@@ -4,6 +4,7 @@ const initialState = {
   toggle_help: false,
   invoice_display: false,
   invoice: false,
+  toggle_assay: {pic50: false, clearance_mouse: false, clearance_human: false, logd:false, pampa:false}
 };
 
 /**
@@ -118,6 +119,17 @@ export function assayReducer(state = initialState, action) {
         invoice: action.payload.invoice,
       };
     }
+
+    case "TOGGLE_ASSAY_SUCCEEDED": {
+      return {
+        ...state,
+        toggle_assay: {
+          ...state.toggle_assay,
+          [action.payload.button]: action.payload.bool,
+            },
+          };
+        }
+    
     default: {
       return state;
     }

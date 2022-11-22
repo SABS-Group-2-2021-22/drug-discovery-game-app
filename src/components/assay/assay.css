@@ -175,6 +175,17 @@
   opacity: 1;
 }
 
+/* anissa changes */
+.assay-panel > .inactivebutton button {
+  background-color: #212529;
+}
+
+.assay-panel > .activebutton button {
+  background-color: green;
+  border-width: 3px;
+}
+
+
 .control-panel {
   display: flex;
   justify-content: flex-end;
