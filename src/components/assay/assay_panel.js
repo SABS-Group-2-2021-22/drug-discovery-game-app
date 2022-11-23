@@ -42,6 +42,14 @@ class AssayPanel extends React.Component {
   };
 
   removeselectedAssays = (assay) => {
+    // iterate through toggle_assay, if assay_value is true, add to selected assay
+    // let arr = []
+    // let toggle_assay_dict = this.props.toggle_assay;
+    // for (var key in toggle_assay_dict){
+    //   if (toggle_assay_dict[key]) {
+    //     arr.push(key)
+    //   }
+    // }
     let arr = this.state.selected_assays;
     arr = arr.filter(function (item) {
       return item !== assay;
@@ -69,19 +77,15 @@ class AssayPanel extends React.Component {
   runAssays = () => {
     let assays_run = this.state.assays_run;
     
-    // anissa changes
     // iterate through toggle_assay, if assay_value is true, add to selected assay
     let arr = []
     let toggle_assay_dict = this.props.toggle_assay;
     for (var key in toggle_assay_dict){
-      console.log( key, toggle_assay_dict[key] );
       if (toggle_assay_dict[key]) {
         arr.push(key)
       }
     }
-
-    console.log(arr)
-  
+    // console.log(arr)
     let selected_assays = arr;
 
     const assay_prices = {
@@ -123,7 +127,18 @@ class AssayPanel extends React.Component {
 
   runDescriptorsOrLipinski = () => {
     let assays_run = this.state.assays_run;
-    let selected_assays = this.state.selected_assays;
+
+    // change selected_assays so it only contains assays that have been toggled true
+    let arr = []
+    let toggle_assay_dict = this.props.toggle_assay;
+    for (var key in toggle_assay_dict){
+      if (toggle_assay_dict[key]) {
+        arr.push(key)
+      }
+    }
+    // console.log(arr)
+    let selected_assays = arr;
+
     for (var i = 0; i < selected_assays.length; i++) {
       if (["lipinski", "descriptors"].includes(selected_assays[i])) {
         assays_run[selected_assays[i]] = true;
@@ -457,21 +472,22 @@ class AssayPanel extends React.Component {
           </p>
         </div>
         )}
-        <button
-          label="Run_Assays"
-          onClick={() => {
-            this.onClick("drug_props");
-            this.runAssays();
-          }}
-          onMouseEnter={() => {
-            this.onHover("run");
-          }}
-          onMouseLeave={() => {
-            this.onUnHover();
-          }}
-        >
+        <div className="inactivebutton">
+          <button
+            label="Run_Assays"
+            onClick={() => {
+              this.onClick("drug_props");
+              this.runAssays();
+            }}
+            onMouseEnter={() => {
+              this.onHover("run");
+            }}
+            onMouseLeave={() => {
+              this.onUnHover();
+            }}
+          >
           <div className="assay-name">Run Assays</div>
-        </button>
+          </button>
         {this.state.hover == "run" && this.props.toggle_help && (
           <div className="hover-info-text-run">
             <p>
@@ -479,21 +495,24 @@ class AssayPanel extends React.Component {
             </p>
           </div>
         )}
-        <button
-          label="Run Filters"
-          onClick={() => {
-            this.onClick("lipinski");
-            this.runDescriptorsOrLipinski();
-          }}
-          onMouseEnter={() => {
-            this.onHover("chklip");
-          }}
-          onMouseLeave={() => {
-            this.onUnHover();
-          }}
-        >
-          <div className="assay-name">Check Lipinski Rules</div>
-        </button>
+        </div>
+        <div className="inactivebutton">
+          <button
+            label="Run Filters"
+            onClick={() => {
+              this.onClick("lipinski");
+              this.runDescriptorsOrLipinski();
+            }}
+            onMouseEnter={() => {
+              this.onHover("chklip");
+            }}
+            onMouseLeave={() => {
+              this.onUnHover();
+            }}
+          >
+            <div className="assay-name">Check Lipinski Rules</div>
+          </button>
+        </div>
         {this.state.hover == "chklip" && this.props.toggle_help && (
           <div className="hover-info-text-chklip">
             <p>
@@ -501,21 +520,23 @@ class AssayPanel extends React.Component {
             </p>
           </div>
         )}
-        <button
-          label="Calculate Descriptors"
-          onClick={() => {
-            this.onClick("descriptors");
-            this.runDescriptorsOrLipinski();
-          }}
-          onMouseEnter={() => {
-            this.onHover("descr");
-          }}
-          onMouseLeave={() => {
-            this.onUnHover();
-          }}
-        >
-          <div className="assay-name">Calculate Descriptors</div>
-        </button>
+        <div className="inactivebutton">
+          <button
+            label="Calculate Descriptors"
+            onClick={() => {
+              this.onClick("descriptors");
+              this.runDescriptorsOrLipinski();
+            }}
+            onMouseEnter={() => {
+              this.onHover("descr");
+            }}
+            onMouseLeave={() => {
+              this.onUnHover();
+            }}
+          >
+            <div className="assay-name">Calculate Descriptors</div>
+          </button>
+        </div>
         {this.state.hover == "descr" && this.props.toggle_help && (
           <div className="hover-info-text-descr">
             <p>
