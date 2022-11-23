@@ -42,14 +42,6 @@ class AssayPanel extends React.Component {
   };
 
   removeselectedAssays = (assay) => {
-    // iterate through toggle_assay, if assay_value is true, add to selected assay
-    // let arr = []
-    // let toggle_assay_dict = this.props.toggle_assay;
-    // for (var key in toggle_assay_dict){
-    //   if (toggle_assay_dict[key]) {
-    //     arr.push(key)
-    //   }
-    // }
     let arr = this.state.selected_assays;
     arr = arr.filter(function (item) {
       return item !== assay;
@@ -212,7 +204,6 @@ class AssayPanel extends React.Component {
               <div className="assay-name">pIC50</div>
               <div className="assay-cost-and-time">
                 <p>
-                  {""}
                   Cost £70
                   {"\n"}Duration: 1 week
                 </p>
@@ -236,7 +227,6 @@ class AssayPanel extends React.Component {
               <div className="assay-name">pIC50</div>
               <div className="assay-cost-and-time">
                 <p>
-                  {" "}
                   Cost £70
                   {"\n"}Duration: 1 week
                 </p></div></button></div>
@@ -266,7 +256,6 @@ class AssayPanel extends React.Component {
               <div className="assay-name">Clearance Mouse</div>
               <div className="assay-cost-and-time">
                 <p>
-                  {" "}
                   Cost £7,000
                   {"\n"}Duration: 3 weeks
                 </p></div>
@@ -290,7 +279,6 @@ class AssayPanel extends React.Component {
               <div className="assay-name">Clearance Mouse</div>
               <div className="assay-cost-and-time">
                 <p>
-                  {" "}
                   Cost £7,000
                   {"\n"}Duration: 3 weeks
                 </p>
@@ -375,7 +363,6 @@ class AssayPanel extends React.Component {
               <div className="assay-name">LogD</div>
               <div className="assay-cost-and-time">
               <p>
-                  {" "}
                   Cost £1,000
                   {"\n"}Duration: 1.5 week
                 </p>
@@ -400,7 +387,6 @@ class AssayPanel extends React.Component {
               <div className="assay-name">Log D</div>
               <div className="assay-cost-and-time">
                 <p>
-                  {" "}
                   Cost £1,000
                   {"\n"}Duration: 1.5 week
                 </p>
@@ -432,7 +418,6 @@ class AssayPanel extends React.Component {
               <div className="assay-name">PAMPA</div>
               <div className="assay-cost-and-time">
               <p>
-                  {" "}
                   Cost £700
                   {"\n"}Duration: 1 week
                 </p>
@@ -457,7 +442,6 @@ class AssayPanel extends React.Component {
               <div className="assay-name">PAMPA</div>
               <div className="assay-cost-and-time">
                 <p>
-                  {" "}
                   Cost £700
                   {"\n"}Duration: 1 week
                 </p>
