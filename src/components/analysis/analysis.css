@@ -15,8 +15,8 @@
   min-height: 100%;
   justify-content: center;
   padding-bottom: 10pt;
-  margin-left: 5vw;
-  margin-right: 5vw;
+  margin-left: 0vw;
+  margin-right: 0vw;
   width: min(28vw, 350px);
 }
 
@@ -29,10 +29,11 @@
   background-color: #212529;
   color: white;
   border: none;
-  border-radius: 8px;
-  width: min(12vw, 150px);
+  border-radius: 10px;
+  width: min(7vw, 150px);
   height: 70px;
   font-size: max(14px, 1vw);
+  margin: 2px
 }
 
 .selector-panel button:hover {
@@ -131,5 +132,6 @@
   background-color: #fdfbfb;
   white-space: pre-line;
   width: 35vh;
-  margin-right: 86vh;
+  margin-right: 100vh;
+  align-items: center;
 }
