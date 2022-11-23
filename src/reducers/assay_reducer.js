@@ -118,6 +118,7 @@ export function assayReducer(state = initialState, action) {
         invoice: action.payload.invoice,
       };
     }
+
     case "TOGGLE_ASSAY_SUCCEEDED": {
       return {
         ...state,
@@ -129,7 +130,7 @@ export function assayReducer(state = initialState, action) {
             data: {
               ...state.saved_mols[action.payload.molecule].data,
               toggle_assay: {
-                ...state.toggle_assay,
+                ...state.saved_mols[action.payload.molecule].data.toggle_assay,
                 [action.payload.button]: action.payload.bool,
               },
             },

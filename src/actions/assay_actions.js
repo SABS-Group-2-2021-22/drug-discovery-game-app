@@ -35,7 +35,7 @@ function saveMoleculeSucceeded(saved_mols) {
 function saveMolecule(saved_mols, selected_r_groups) {
   const mol_id = selected_r_groups.A + selected_r_groups.B; //create molecule id
   saved_mols[mol_id] = selected_r_groups.molecule; //inserts the molecule into the local saved_mols object
-  saved_mols[mol_id].data.toggle_assay = {pic50: false, clearance_mouse: false, clearance_human: false, logd:false, pampa:false}
+  saved_mols[mol_id].data.toggle_assay = {pic50: false, clearance_mouse: false, clearance_human: false, logd:false, pampa:false} // anissa changes: add initial state for toggle_assay when you save the molecule
   return async (dispatch) => {
     const { post_saved } = await api.postSaved(
       selected_r_groups.A,
@@ -123,21 +123,22 @@ function invoiceDisplay(bool) {
 
 
 /* anissa changes */
-function toggleAssaySucceeded(button,bool) {
+function toggleAssaySucceeded(selected_mol,button,bool) {
   console.log(button)
   console.log(bool)
   return {
     type: "TOGGLE_ASSAY_SUCCEEDED",
     payload: {
+      molecule: selected_mol,
       button: button,
       bool: bool,
     },
   };
 }
 
-function toggleAssay(button,bool) {
+function toggleAssay(selected_mol,button,bool) {
   return (dispatch) => {
-    dispatch(toggleAssaySucceeded(button,bool));
+    dispatch(toggleAssaySucceeded(selected_mol,button,bool));
   };
 }
 

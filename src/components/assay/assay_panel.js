@@ -155,11 +155,11 @@ class AssayPanel extends React.Component {
 
   toggleAssay = (button) => {
     if (this.props.toggle_assay[button]) {
-      this.props.toggleAssay(button,false);
+      this.props.toggleAssay(this.props.selected_mol,button,false);
     } else {
       console.log(this.props.toggle_assay[button])
       // console.log(this.props.toggle_assay.button)
-      this.props.toggleAssay(button,true);
+      this.props.toggleAssay(this.props.selected_mol,button,true);
     }
   }
 // or this.props.toggle_assay.button
@@ -528,7 +528,8 @@ function mapStateToProps(state) {
     invoice: state.assay.invoice,
     selected_assays: state.assay.selected_assays,
     assay_prices: state.assay.assay_prices,
-    toggle_assay: state.assay.toggle_assay,
+     //toggle_assay: state.assay.toggle_assay,
+    toggle_assay: state.assay.saved_mols[state.selector.selected_mol].data.toggle_assay,
   };
 }
 
