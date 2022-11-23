@@ -20,10 +20,10 @@ class Loadingpage extends React.Component {
                 <div className="loadingpage">       
                     
                 <Link to="/build">
-                    <button className="loadingbutton">All groups loaded! Let's start!</button>
+                    <button className="loadingbutton">Let's Start!</button>
                 </Link> 
 
-                </div>):(<div className="loadingpage"> <p>Please wait for loading, a button will appear!</p> </div>)
+                </div>):(<div className="loadingpage"> <p>Loading....</p> </div>)
         }
       </div>
     );
