@@ -158,12 +158,11 @@
   min-width: 100px;
   max-width: 200px;
   flex: 1 1 auto;
-  min-height: 10px;
+  min-height: 40px;
   max-height: 90px;
   margin-bottom: 10px;
   white-space: pre-line;
   width: 200px;
-  height: 90px;
 }
 
 .assay-panel button:hover {
@@ -172,17 +171,14 @@
 
 .assay-panel button:active {
   background-color: #0d0e10;
-  opacity: 1;
 }
 
-/* anissa changes */
 .assay-panel > .inactivebutton button {
   background-color: #212529;
 }
 
 .assay-panel > .activebutton button {
   background-color: green;
-  border-width: 3px;
 }
 
 
