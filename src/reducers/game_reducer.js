@@ -1,6 +1,7 @@
 const initialState = {
   time: 30.0,
   money: 100000.0,
+  gamemode: 'builder',
 };
 
 /**

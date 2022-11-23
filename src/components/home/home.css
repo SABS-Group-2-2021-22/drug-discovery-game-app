@@ -49,6 +49,14 @@
     flex: 1;
   }
 
+  .advanced-button-wrapper{
+    cursor: not-allowed;
+  }
+
+  .advanced-button{
+    pointer-events: none;
+  }
+
   .text{
     display: flex;
     flex-direction: column;
