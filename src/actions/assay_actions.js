@@ -124,8 +124,6 @@ function invoiceDisplay(bool) {
 
 /* anissa changes */
 function toggleAssaySucceeded(selected_mol,button,bool) {
-  console.log(button)
-  console.log(bool)
   return {
     type: "TOGGLE_ASSAY_SUCCEEDED",
     payload: {
