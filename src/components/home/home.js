@@ -55,27 +55,35 @@ class Home extends React.Component {
                 assay, and screen your molecules. At the end you will have to
                 pick a final molecule to take forward.
               </div>
-              <div className="control-panel">
-                {this.props.loggedIn ? (
-                  <div>
+              {this.props.loggedIn ? (
+                <div className="control-panel">
+                  <div className="beginner-button">
                     <Link to="/introduction">
                       <button onClick={this.setBuilderMode}>Beginner</button>
                     </Link>
+                  </div>
+                  <div className="advanced-button">
                     <Link to="/introduction">
                       <button onClick={this.setSketcherMode}>Advanced</button>
                     </Link>
                   </div>
+                </div>
                 ) : (
-                  <div>
-                    <Link to="/login">
-                      <button onClick={this.setBuilderMode}>Beginner</button>
-                    </Link>
-                    <Link to="/login">
-                      <button onClick={this.setSketcherMode}>Advanced</button>
-                    </Link>
+                  <div className="control-panel">
+                    <div className="beginner-button">
+                      <Link to="/login">
+                        <button onClick={this.setBuilderMode}>Beginner</button>
+                      </Link>
+                    </div>
+                    <div className="advanced-button-wrapper">
+                      <div className="advanced-button">
+                        <Link to="/login">
+                          <button onClick={this.setSketcherMode}>Advanced</button>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 )}
-              </div>
             </div>
           </div>
 
