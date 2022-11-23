@@ -16,14 +16,14 @@ class Loadingpage extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        {this.props.allfetched ? (
+        {(this.props.rgfetched && this.props.helpfetched)? (
                 <div className="loadingpage">       
                     
                 <Link to="/build">
-                    <button className="loadingbutton">ALL drugs loaded! Let's start!</button>
+                    <button className="loadingbutton">All groups loaded! Let's start!</button>
                 </Link> 
 
-                </div>):(<div className="loadingpage"> <p>Please wait for drug loading, a button will appear!</p> </div>)
+                </div>):(<div className="loadingpage"> <p>Please wait for loading, a button will appear!</p> </div>)
         }
       </div>
     );
@@ -31,8 +31,8 @@ class Loadingpage extends React.Component {
 }
 function mapStateToProps(state) {
     return {
-
-      allfetched: state.init.allfetched
+      rgfetched: state.init.rgfetched,
+      helpfetched: state.init.helpfetched
     };
   }
 
