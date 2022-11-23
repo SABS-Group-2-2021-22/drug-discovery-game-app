@@ -1,7 +1,9 @@
 const initialState = {
   all_r_groups: [],
   help: [],
-  allfetched: false
+  rgfetched: false,
+  rochefetched: false,
+  helpfetched: false
 };
 
 export function initReducer(state = initialState, action) {
@@ -10,19 +12,21 @@ export function initReducer(state = initialState, action) {
       return {
         ...state,
         all_r_groups : action.payload.r_groups,
+        rgfetched: true,
       };
     }
     case "FETCH_ROCHE_SUCCEEDED": {
       return {
         ...state,
         Roche: action.payload.Roche,
+        rochefetched: true,
       };
     }
     case "FETCH_HELP_SUCCEEDED": {
       return {
         ...state,
         help: action.payload.help,
-        allfetched : true
+        helpfetched: true
       };
     }
     default:
