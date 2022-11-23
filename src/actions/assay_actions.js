@@ -3,6 +3,7 @@ import * as api from "../api";
 export const assayActions = {
   saveMolecule,
   runAssay,
+  calcAssay,
   toggleHelp,
   invoiceDisplay,
   showInvoice,
@@ -91,6 +92,16 @@ function runAssaySucceeded(selected_mol, assays) {
   };
 }
 
+function calcAssaySucceeded(selected_mol, assays) {
+  return {
+    type: "CALC_ASSAY_SUCCEEDED",
+    payload: {
+      molecule: selected_mol,
+      toggle_assay: assays,
+    },
+  };
+}
+
 function toggleHelpSucceeded(bool) {
   return {
     type: "TOGGLE_HELP_SUCCEEDED",
@@ -151,6 +162,12 @@ function toggleAssay(selected_mol,button,bool) {
 function runAssay(selected_mol, assays) {
   return (dispatch) => {
     dispatch(runAssaySucceeded(selected_mol, assays));
+  };
+}
+
+function calcAssay(selected_mol, assays) {
+  return (dispatch) => {
+    dispatch(calcAssaySucceeded(selected_mol, assays));
   };
 }
 

@@ -1,6 +1,7 @@
 const initialState = {
   time: 30.0,
   money: 100000.0,
+  subtotal: 100,
 };
 
 /**
@@ -21,6 +22,12 @@ export function gameReducer(state = initialState, action) {
       return {
         ...state,
         money: action.payload.money,
+      };
+    }
+    case "UPDATE_SUBTOTAL_SUCCEEDED": {
+      return {
+        ...state,
+        subtotal: action.payload.subtotal,
       };
     }
     case "GAME_MODE_SET": {

@@ -6,6 +6,7 @@ export const gameActions = {
   resetGame,
   saveGame,
   setGamemodeAction,
+  updateSubTotal,
 };
 
 /**
@@ -68,6 +69,15 @@ function updateMoneySucceeded(money) {
   };
 }
 
+function updateSubTotalSucceeded(subtotal) {
+  return {
+    type: "UPDATE_SUBTOTAL_SUCCEEDED",
+    payload: {
+      subtotal: subtotal,
+    },
+  };
+}
+
 /**
  * Asynchronous action that calculates the remaining money
  * and dispatches updateMoneySucceeded with the money object
@@ -96,6 +106,32 @@ function updateMoney(assays, current_money) {
     dispatch(updateMoneySucceeded(money));
   }; //dispatch money to the store via the updateMoneySucceded synchronous action
 } 
+
+function updateSubTotal(assays, current_subtotal) {
+  console.log('anything')
+    let cost_sum = 0;
+    const assay_prices = {
+      pIC50: 70.0,
+      clearance_mouse: 7000.0,
+      clearance_human: 9000.0,
+      logd: 1000.0,
+      pampa: 700.0,
+    }; //predfined cost of each assay
+    for (const i of assays) {
+      for (const [k, v] of Object.entries(assay_prices)) {
+        if (i === k) {
+          cost_sum += v; //add money for each assay to total cost
+          }
+        }
+      }
+    // console.log('cost_sum in subtotal',cost_sum)
+    let subtotal = current_subtotal - cost_sum; //calculate new amount of money
+    return (dispatch) => {
+      dispatch(updateSubTotalSucceeded(subtotal));
+    }; //dispatch money to the store via the updateMoneySucceded synchronous action
+  }
+
+
 /**
  * Synchronous action with no payload - simply sends a reset game signal to the rootReducer
  * @returns a type message only
