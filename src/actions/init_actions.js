@@ -4,6 +4,7 @@ export const initActions = {
   fetchRGroup,
   fetchRoche,
   fetchHelp,
+  countRGroup
 };
 
 function fetchHelpSucceeded(help) {
@@ -94,3 +95,29 @@ export function fetchRoche() {
     });
   };
 }
+
+export function countRGroupSucceeded() {
+  return {
+    type: "COUNTR_SUCCEEDED",
+  };
+}
+
+
+
+/**
+ * An asynchronous action that fires an api call to fetch the target compound
+ * (the one Roche chose)
+ * @param {}
+ * @returns {dispatch} dispatches fetchRocheSucceeded with the r group object
+ */
+export function countRGroup(all_r_groups) {
+  if (all_r_groups == 100) { 
+    return (dispatch) => {
+       dispatch(countRGroupSucceeded());
+      }
+    }
+  else { 
+    countRGroup(all_r_groups)
+   } 
+}
+

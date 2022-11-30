@@ -8,6 +8,7 @@ import {
     SketcherAssayRedux,
     SketcherAnalysisRedux,
     SketcherResultsRedux,
+    Loadingpage
   } from "./components/body";
 
 
@@ -44,6 +45,7 @@ import ReactDOM from 'react-dom';
     return (
         <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/loadingpage" element={<Loadingpage />} />
             <Route path="/app" element={(this.props.gamemode === 'builder') ? <Builder />: <SketcherAppRedux/>} />
             <Route path="/assay" element={(this.props.gamemode === 'builder') ?< Assay updateTimeAndMoneyCallback={this.updateTimeAndMoney}/>: <SketcherAssayRedux/>}  />
             <Route path="/analysis" element={(this.props.gamemode === 'builder') ?< Analysis/>: <SketcherAnalysisRedux/>}  />
