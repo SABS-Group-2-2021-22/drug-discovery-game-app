@@ -30,11 +30,11 @@ class Builder extends React.Component {
         <div className="build">
           <div className="r-group-selection">
             <div className="r-group-a">
-               Reactant Group A
+               R Group A
               <RGroupList r_group_pos={"A"} />
             </div>
             <div className='r-group-b'>
-               Reactant Group B
+               R Group B
               <RGroupList r_group_pos={"B"} />
             </div>
             <div className="hover-info">
