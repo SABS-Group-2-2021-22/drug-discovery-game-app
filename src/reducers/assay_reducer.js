@@ -2,6 +2,8 @@ const initialState = {
   saved_or_not: false,
   saved_mols: {},
   toggle_help: false,
+  invoice_display: false,
+  invoice: false,
 };
 
 /**
@@ -104,6 +106,39 @@ export function assayReducer(state = initialState, action) {
         toggle_help: action.payload.Bool,
       };
     }
+    case "INVOICE_DISPLAY_SUCCEEDED": {
+      return {
+        ...state,
+        invoice_display: action.payload.Bool,
+      };
+    }
+    case "SHOW_INVOICE_SUCCEEDED": {
+      return {
+        ...state,
+        invoice: action.payload.invoice,
+      };
+    }
+
+    case "TOGGLE_ASSAY_SUCCEEDED": {
+      return {
+        ...state,
+        saved_or_not: true,
+        saved_mols: {
+          ...state.saved_mols,
+          [action.payload.molecule]: {
+            ...state.saved_mols[action.payload.molecule],
+            data: {
+              ...state.saved_mols[action.payload.molecule].data,
+              toggle_assay: {
+                ...state.saved_mols[action.payload.molecule].data.toggle_assay,
+                [action.payload.button]: action.payload.bool, //store toggle_assay in saved_mols.molecule.data.toggle_assay
+              },
+            },
+          },
+        },
+      };
+    }
+    
     default: {
       return state;
     }

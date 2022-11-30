@@ -4,6 +4,9 @@ export const assayActions = {
   saveMolecule,
   runAssay,
   toggleHelp,
+  invoiceDisplay,
+  showInvoice,
+  toggleAssay
 };
 
 /**
@@ -32,6 +35,8 @@ function saveMoleculeSucceeded(saved_mols) {
 function saveMolecule(saved_mols, selected_r_groups) {
   const mol_id = selected_r_groups.A + selected_r_groups.B; //create molecule id
   saved_mols[mol_id] = selected_r_groups.molecule; //inserts the molecule into the local saved_mols object
+  saved_mols[mol_id].data.toggle_assay = {pIC50: false, clearance_mouse: false, clearance_human: false, logd:false, pampa:false} // adds initial state for toggle_assay when you save the molecule
+  
   return async (dispatch) => {
     const { post_saved } = await api.postSaved(
       selected_r_groups.A,
@@ -53,6 +58,26 @@ function saveMolecule(saved_mols, selected_r_groups) {
   };
 }
 
+function showInvoiceSucceeded(invoice) {
+  return {
+    type: 'SHOW_INVOICE_SUCCEEDED',
+    payload: {
+      invoice: invoice
+    }
+  }
+}
+
+// Asynchronous action that fetches content for the invoice from the backend
+function showInvoice() {
+  return async (dispatch) => {
+    api.showInvoice().then((response)=>{
+      dispatch(showInvoiceSucceeded(response.data.placeholder))
+    })
+  }
+}
+
+// Synchronous action that sends the invoice object to the store when dispatched
+
 /**
  * Synchronous action that sends the selected_mol and assays object to the assayReduxer
  * @param {state object} selected_mol the selected molecule
@@ -69,6 +94,7 @@ function runAssaySucceeded(selected_mol, assays) {
   };
 }
 
+// Synchronous action that sends the boolean state of toggle help button to the store when dispatched
 function toggleHelpSucceeded(bool) {
   return {
     type: "TOGGLE_HELP_SUCCEEDED",
@@ -81,6 +107,53 @@ function toggleHelpSucceeded(bool) {
 function toggleHelp(bool) {
   return (dispatch) => {
     dispatch(toggleHelpSucceeded(bool));
+  };
+}
+
+// Synchronous action that sends the boolean state of invoice display button to the store when dispatched
+function invoiceDisplaySucceeded(bool) {
+  return {
+    type: "INVOICE_DISPLAY_SUCCEEDED",
+    payload: {
+      Bool: bool,
+    },
+  };
+}
+
+function invoiceDisplay(bool) {
+  return (dispatch) => {
+    dispatch(invoiceDisplaySucceeded(bool));
+  };
+}
+
+
+/**
+ * Synchronous action that sends the boolean values of toggled assay buttons to the assayReducer
+ * @param {state object} selected_mol the selected molecule
+ * @param {state object} button the assay button object
+ * @param {state object} bool the true/false state
+ * @returns the selected_mol, assay button, and its true/false state for a state change by the assayReducer
+ */
+function toggleAssaySucceeded(selected_mol,button,bool) {
+  return {
+    type: "TOGGLE_ASSAY_SUCCEEDED",
+    payload: {
+      molecule: selected_mol,
+      button: button,
+      bool: bool,
+    },
+  };
+}
+/**
+ * Asynchronous action that dispatches the toggleAssaySucceeded action
+ * @param {state object} selected_mol the selected molecule
+ * @param {state object} button the assay button object
+ * @param {state object} bool the true/false state
+ * @returns dispatches toggleAssaySucceeded
+ */
+function toggleAssay(selected_mol,button,bool) {
+  return (dispatch) => {
+    dispatch(toggleAssaySucceeded(selected_mol,button,bool));
   };
 }
 

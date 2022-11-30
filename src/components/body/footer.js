@@ -50,6 +50,7 @@ function mapStateToProps(state) {
   return {
     time: state.game.time,
     money: state.game.money,
+    subtotal: state.game.subtotal,
     loggedIn: state.login.loggedIn,
     user: state.login.user,
   };
