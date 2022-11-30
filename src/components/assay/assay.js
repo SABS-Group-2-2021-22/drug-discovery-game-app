@@ -54,15 +54,6 @@ class Assay extends React.Component {
     console.log(selected_assays)
     this.props.updateSubTotal(selected_assays,this.props.subtotal)
   };
-  
-  onShow = (event) => {
-    this.setState({ click: true });
-    console.log(this.props.help);
-  };
-
-  onHide = (event) => {
-    this.setState({ click: false });
-  };
 
   toggleHelp() {
     if (this.props.toggle_help) {
