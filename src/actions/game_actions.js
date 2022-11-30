@@ -109,6 +109,7 @@ function updateMoney(assays, current_money) {
 
 function updateSubTotal(assays, cost_sum) {
   console.log(assays)
+  // let cost_sum = 0
     const assay_prices = {
       pIC50: 70.0,
       clearance_mouse: 7000.0,
@@ -116,6 +117,7 @@ function updateSubTotal(assays, cost_sum) {
       logd: 1000.0,
       pampa: 700.0,
     }; //predfined cost of each assay
+    cost_sum = 0
     for (const i of assays) {
       for (const [k, v] of Object.entries(assay_prices)) {
         if (i === k) {

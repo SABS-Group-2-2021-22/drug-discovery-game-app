@@ -37,11 +37,11 @@ class Assay extends React.Component {
     let arr = []
     let toggle_assay_dict = this.props.toggle_assay;
     for (var key in toggle_assay_dict){
-      if (toggle_assay_dict[key]) {
+      if (toggle_assay_dict[key] && !(key in arr)) {
         arr.push(key)
       }
     }
-    // console.log(arr)
+    console.log(arr)
     let selected_assays = arr;
     
     const assay_prices = {
@@ -58,7 +58,7 @@ class Assay extends React.Component {
       logd: 1.5,
       pampa: 1.0,
     };
-    console.log('fml')
+    console.log(selected_assays)
     this.props.updateSubTotal(selected_assays,this.props.subtotal)
     // selected_assays = []
     
