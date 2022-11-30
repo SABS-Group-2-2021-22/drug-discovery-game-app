@@ -36,7 +36,7 @@ function saveMoleculeSucceeded(saved_mols) {
 function saveMolecule(saved_mols, selected_r_groups) {
   const mol_id = selected_r_groups.A + selected_r_groups.B; //create molecule id
   saved_mols[mol_id] = selected_r_groups.molecule; //inserts the molecule into the local saved_mols object
-  saved_mols[mol_id].data.toggle_assay = {pIC50: false, clearance_mouse: false, clearance_human: false, logd:false, pampa:false} // anissa changes: add initial state for toggle_assay when you save the molecule
+  saved_mols[mol_id].data.toggle_assay = {pIC50: false, clearance_mouse: false, clearance_human: false, logd:false, pampa:false} // adds initial state for toggle_assay when you save the molecule
   
   return async (dispatch) => {
     const { post_saved } = await api.postSaved(
@@ -134,7 +134,13 @@ function invoiceDisplay(bool) {
 }
 
 
-/* anissa changes */
+/**
+ * Synchronous action that sends the boolean values of toggled assay buttons to the assayReducer
+ * @param {state object} selected_mol the selected molecule
+ * @param {state object} button the assay button object
+ * @param {state object} bool the true/false state
+ * @returns the selected_mol, assay button, and its true/false state for a state change by the assayReducer
+ */
 function toggleAssaySucceeded(selected_mol,button,bool) {
   return {
     type: "TOGGLE_ASSAY_SUCCEEDED",
@@ -145,7 +151,13 @@ function toggleAssaySucceeded(selected_mol,button,bool) {
     },
   };
 }
-
+/**
+ * Asynchronous action that dispatches the toggleAssaySucceeded action
+ * @param {state object} selected_mol the selected molecule
+ * @param {state object} button the assay button object
+ * @param {state object} bool the true/false state
+ * @returns dispatches toggleAssaySucceeded
+ */
 function toggleAssay(selected_mol,button,bool) {
   return (dispatch) => {
     dispatch(toggleAssaySucceeded(selected_mol,button,bool));

@@ -131,22 +131,13 @@ export function assayReducer(state = initialState, action) {
               ...state.saved_mols[action.payload.molecule].data,
               toggle_assay: {
                 ...state.saved_mols[action.payload.molecule].data.toggle_assay,
-                [action.payload.button]: action.payload.bool,
+                [action.payload.button]: action.payload.bool, //store toggle_assay in saved_mols.molecule.data.toggle_assay
               },
             },
           },
         },
       };
     }
-    // case "TOGGLE_ASSAY_SUCCEEDED": {
-    //   return {
-    //     ...state,
-    //     toggle_assay: {
-    //       ...state.toggle_assay,
-    //       [action.payload.button]: action.payload.bool,
-    //         },
-    //       };
-    //     }
     
     default: {
       return state;

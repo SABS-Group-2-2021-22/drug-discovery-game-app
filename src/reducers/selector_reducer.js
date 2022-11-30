@@ -1,9 +1,7 @@
 const initialState = {
   selected_or_not : false,
   selected_r_groups: { A: "A01", B: "B01", molecule: {} }, //the inital r groups and an empty molecule
-  // selected_r_groups: { A: "A01", B: "B01", molecule: {data: {toggle_assay: {pic50: false, clearance_mouse: false, clearance_human: false, logd:false, pampa:false}}} }, //the inital r groups and an empty molecule
-  // toggle_assay: {pic50: false, clearance_mouse: false, clearance_human: false, logd:false, pampa:false} // anissa changes
-};
+}
 
 /**
  * Controls state updates for selected_r_groups, selected_mol, and chosen_mol
@@ -22,11 +20,6 @@ export function selectorReducer(state = initialState, action) {
           A: action.payload.r_group_id_A, //store r_group_id_A in selected_r_groups.A
           B: action.payload.r_group_id_B, //store r_group_id_B in selected_r_groups.B
           molecule: action.payload.molecule,
-          // molecule: { //anissa changes
-          //   molecule: action.payload.molecule, //store molecule in selected_r_groups.molecule
-          //   toggle_assay: {
-          //     ...state.toggle_assay
-          //   }
           },
         };
       }

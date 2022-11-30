@@ -76,7 +76,17 @@ class AssayPanel extends React.Component {
   // money)
   runAssays = () => {
     let assays_run = this.state.assays_run;
-    let selected_assays = this.state.selected_assays;
+
+    // iterate through toggle_assay, if assay_value is true, add to selected assay
+    let arr = []
+    let toggle_assay_dict = this.props.toggle_assay;
+    for (var key in toggle_assay_dict){
+      if (toggle_assay_dict[key]) {
+        arr.push(key)
+      }
+    }
+    let selected_assays = arr;
+
     const assay_prices = {
       pIC50: 70.0,
       clearance_mouse: 7000.0,
@@ -209,7 +219,6 @@ class AssayPanel extends React.Component {
       this.props.toggleAssay(this.props.selected_mol,button,false);
     } else {
       console.log(this.props.toggle_assay[button])
-      // console.log(this.props.toggle_assay.button)
       this.props.toggleAssay(this.props.selected_mol,button,true);
     }
   }
@@ -556,7 +565,7 @@ class AssayPanel extends React.Component {
         {this.state.hover == "descr" && this.props.toggle_help && (
           <div className="hover-info-text-descr">
             <p>
-              <div>{this.props.help[5]}</div>
+              <div>{this.props.help[6]}</div>
             </p>
           </div>
         )}
@@ -580,7 +589,6 @@ function mapStateToProps(state) {
     invoice: state.assay.invoice,
     selected_assays: state.assay.selected_assays,
     assay_prices: state.assay.assay_prices,
-     //toggle_assay: state.assay.toggle_assay,
     toggle_assay: state.assay.saved_mols[state.selector.selected_mol].data.toggle_assay,
   };
 }
