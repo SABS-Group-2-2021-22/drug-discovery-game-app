@@ -217,12 +217,12 @@ class AssayPanel extends React.Component {
   render() {
     return(
       <div className="assay-panel">
-        {this.props.toggle_assay.pic50 && (
+        {this.props.toggle_assay.pIC50 && (
           <div className="activebutton">
             <button onClick={() => {
-              this.toggleAssay("pic50");
-              this.onClick("pic50");
-              this.costAssays("pic50")
+              this.toggleAssay("pIC50");
+              this.onClick("pIC50");
+              this.costAssays("pIC50")
               }}
               onMouseEnter={() => {
                 this.onHover("pic50");
@@ -241,12 +241,12 @@ class AssayPanel extends React.Component {
               </div>
             </button></div>
         )}
-        {this.props.toggle_assay.pic50 == false && (
+        {this.props.toggle_assay.pIC50 == false && (
           <div className="inactivebutton">
             <button onClick={() => {
-              this.toggleAssay("pic50");
-              this.onClick("pic50");
-              this.costAssays("pic50")
+              this.toggleAssay("pIC50");
+              this.onClick("pIC50");
+              this.costAssays("pIC50")
               }}
               onMouseEnter={() => {
                 this.onHover("pic50");
@@ -279,7 +279,7 @@ class AssayPanel extends React.Component {
               this.costAssays("clearance_mouse")
               }}
               onMouseEnter={() => {
-                this.onHover("clearance_mouse");
+                this.onHover("clrmouse");
               }}
               onMouseLeave={() => {
                 this.onUnHover();
@@ -303,7 +303,7 @@ class AssayPanel extends React.Component {
               this.costAssays("clearance_mouse")
               }}
               onMouseEnter={() => {
-                this.onHover("clearance_mouse");
+                this.onHover("clrmouse");
               }}
               onMouseLeave={() => {
                 this.onUnHover();
@@ -336,7 +336,7 @@ class AssayPanel extends React.Component {
               this.costAssays("clearance_human")
               }}
               onMouseEnter={() => {
-                this.onHover("clearance_human");
+                this.onHover("clrhuman");
               }}
               onMouseLeave={() => {
                 this.onUnHover();
@@ -358,7 +358,7 @@ class AssayPanel extends React.Component {
               this.costAssays("clearance_human")
               }}
               onMouseEnter={() => {
-                this.onHover("clearance_human");
+                this.onHover("clrhuman");
               }}
               onMouseLeave={() => {
                 this.onUnHover();

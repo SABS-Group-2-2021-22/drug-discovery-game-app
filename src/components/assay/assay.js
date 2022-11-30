@@ -199,7 +199,6 @@ class Assay extends React.Component {
                   <button onClick={() => {this.invoiceDisplay(); }}>hide invoice</button>
                   { (
                     <div className="info-invoice">
-                      {/* placeholder */}
                       <table className="invoice-table">
                       <th>Molecule Selected: {this.props.selected_mol}</th>
                         {/* <tr>Assay:{this.props.toggle_assay.pic50}</tr> */}
