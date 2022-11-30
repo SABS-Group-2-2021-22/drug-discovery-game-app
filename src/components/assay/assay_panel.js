@@ -32,9 +32,6 @@ class AssayPanel extends React.Component {
     this.setState({ cost_assays: arr });
   };
 
-  printone = () => {
-    console.log("one")
-  };
   // removes the cost of the assay, will be run if not enough time and money left
   removecostAssays = (assay) => {
     let arr = this.state.cost_assays;
@@ -125,48 +122,6 @@ class AssayPanel extends React.Component {
     this.resetCostAssays();
     this.props.runAssay(this.props.selected_mol, assays_run);
   };
-
-  // calcAssays = () => {
-  //   let toggle_assay = this.state.toggle_assay;
-  //   let selected_assays = this.state.selected_assays;
-  //   const assay_prices = {
-  //     pIC50: 70.0,
-  //     clearance_mouse: 7000.0,
-  //     clearance_human: 9000.0,
-  //     logd: 1000.0,
-  //     pampa: 700.0,
-  //   };
-  //   const assay_times = {
-  //     pIC50: 1.0,
-  //     clearance_mouse: 3.0,
-  //     clearance_human: 3.5,
-  //     logd: 1.5,
-  //     pampa: 1.0,
-  //   };
-  //   console.log(selected_assays)
-  //   for (var i = 0; i < selected_assays.length; i++) {
-  //     if (
-  //       ["drug_props", "lipinski", "descriptors"].includes(selected_assays[i])
-  //     ) {
-  //     } else {
-  //       if (this.props.money - assay_prices[selected_assays[i]] < 0) {
-  //         this.removecostAssays(selected_assays[i]);
-  //         this.removeselectedAssays(selected_assays[i]);
-  //       } else if (this.props.time - assay_times[selected_assays[i]] < 0) {
-  //         this.removecostAssays(selected_assays[i]);
-  //         this.removeselectedAssays(selected_assays[i]);
-  //       } else {
-  //         toggle_assay[selected_assays[i]] = true;
-  //         // this.updateTime();
-  //         console.log('calcassay');
-  //         this.updateSubTotal();
-  //       }
-  //     }
-  //   }
-  //   toggle_assay["drug_props"] = true;
-  //   this.resetCostAssays();
-  //   this.props.calcAssay(this.props.selected_mol, toggle_assay);
-  // };
 
   runDescriptorsOrLipinski = () => {
     let assays_run = this.state.assays_run;

@@ -9,7 +9,6 @@ import MoleculeImage from "./molecule_image.js";
 import AssayPanel from "./assay_panel.js";
 import MoleculeStats from "./molecule_stats.js";
 import ControlPanel from "./control_panel.js";
-// import { assayActions } from "../../actions";
 import { assayActions, gameActions } from "../../actions";
 import { Link } from "react-router-dom"
 import { sketcherActions } from "../../actions";
@@ -24,12 +23,6 @@ class Assay extends React.Component {
       cost_assays: [],
     };
   }
-
-  // updateSubTotal = () => {
-  //   // this.state.cost_assays, this.props.money
-  //   console.log('this.state.cost_assays,',this.state.cost_assays)
-  //   this.props.updateSubTotal(this.state.cost_assays,this.state.subtotal);
-  // };
 
   calcAssays = () => {
     let assays_run = this.state.assays_run;
@@ -60,74 +53,7 @@ class Assay extends React.Component {
     };
     console.log(selected_assays)
     this.props.updateSubTotal(selected_assays,this.props.subtotal)
-    // selected_assays = []
-    
-    
-    // {
-    //   if (
-    //     ["drug_props", "lipinski", "descriptors"].includes(selected_assays[i])
-    //   ) {
-    //   } else {
-    //     if (this.props.money - assay_prices[selected_assays[i]] < 0) {
-    //       this.removecostAssays(selected_assays[i]);
-    //       this.removeselectedAssays(selected_assays[i]);
-    //     } else if (this.props.time - assay_times[selected_assays[i]] < 0) {
-    //       this.removecostAssays(selected_assays[i]);
-    //       this.removeselectedAssays(selected_assays[i]);
-    //     } else {
-    //       this.props.toggle_assay[selected_assays[i]] = true;
-    //       // this.updateTime();
-    //       console.log('calcassay');
-    //       console.log('selected_assays',selected_assays)
-    //       this.updateSubTotal(selected_assays,[1]);
-    //     }
-    //   }
-    // }
-    // this.props.toggle_assay["drug_props"] = true;
-    // this.resetCostAssays();
-    // this.calcAssay(this.props.selected_mol, this.props.toggle_assay);
   };
-  
-  // calcAssays = () => {
-  //   let toggle_assay = this.state.toggle_assay;
-  //   let selected_assays = this.state.selected_assays;
-  //   const assay_prices = {
-  //     pIC50: 70.0,
-  //     clearance_mouse: 7000.0,
-  //     clearance_human: 9000.0,
-  //     logd: 1000.0,
-  //     pampa: 700.0,
-  //   };
-  //   const assay_times = {
-  //     pIC50: 1.0,
-  //     clearance_mouse: 3.0,
-  //     clearance_human: 3.5,
-  //     logd: 1.5,
-  //     pampa: 1.0,
-  //   };
-  //   console.log(selected_assays)
-  //   for (var i = 0; i < selected_assays.length; i++) {
-  //     if (
-  //       ["drug_props", "lipinski", "descriptors"].includes(selected_assays[i])
-  //     ) {
-  //     } else {
-  //       if (this.props.money - assay_prices[selected_assays[i]] < 0) {
-  //         this.removecostAssays(selected_assays[i]);
-  //         this.removeselectedAssays(selected_assays[i]);
-  //       } else if (this.props.time - assay_times[selected_assays[i]] < 0) {
-  //         this.removecostAssays(selected_assays[i]);
-  //         this.removeselectedAssays(selected_assays[i]);
-  //       } else {
-  //         toggle_assay[selected_assays[i]] = true;
-  //         // this.updateTime();
-  //         this.updateSubTotal();
-  //       }
-  //     }
-  //   }
-  //   // assays_run["drug_props"] = true;
-  //   this.resetCostAssays();
-  //   this.props.calcAssay(this.props.selected_mol, toggle_assay);
-  // };
   
   onShow = (event) => {
     this.setState({ click: true });
@@ -155,10 +81,7 @@ class Assay extends React.Component {
       this.props.invoiceDisplay(true);
     }
     console.log(this.props.invoice_display)
-    console.log(this.props.toggle_assay)
-    // console.log(this.props.subtotal)
-    // console.log(this.props.saved_mols[this.props.mol_id].data.assays_run)
-    
+    console.log(this.props.toggle_assay)    
   }
 
 
@@ -173,9 +96,6 @@ class Assay extends React.Component {
 
 
   render() {
-    // var heading = ['ASSAY', 'COST']
-    // var body =[]
-    // console.log(this.props.selected_assays)
     return (
       <div className="wrapper">
         {this.props.saved_or_not ? (
@@ -203,10 +123,10 @@ class Assay extends React.Component {
                       <th>Molecule Selected: {this.props.selected_mol}</th>
                         {/* <tr>Assay:{this.props.toggle_assay.pic50}</tr> */}
                         <tr>Cost for assays: £{this.props.subtotal}</tr>
-
-
+                        <tr>----------------------------------------</tr>
+                        <small>* If you have updated the list of assays you have planned to run, 
+                        double click 'hide invoice' to update the invoice * </small>
                       </table> 
-
                     </div>
                   )}
                 </div>
@@ -214,7 +134,7 @@ class Assay extends React.Component {
               {this.props.invoice_display == false && (
                 <div className="invoice-inactivebutton">
                   <button onClick={() => {this.invoiceDisplay(); this.showInvoice();this.calcAssays();}}>
-                    show invoice                 
+                    update invoice                 
                   </button>
                 </div>
               )}

@@ -38,7 +38,6 @@ class Footer extends React.Component {
             </p>
             <p class="m-0 text-end text-white">
               <h5>💰: £{this.props.money}</h5>
-              {/* <h5>Sub-total: £{this.props.subtotal}</h5> */}
             </p>
           </div>
         </div>

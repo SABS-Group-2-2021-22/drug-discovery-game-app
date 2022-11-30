@@ -3,7 +3,6 @@ import * as api from "../api";
 export const assayActions = {
   saveMolecule,
   runAssay,
-  calcAssay,
   toggleHelp,
   invoiceDisplay,
   showInvoice,
@@ -68,6 +67,7 @@ function showInvoiceSucceeded(invoice) {
   }
 }
 
+// Asynchronous action that fetches content for the invoice from the backend
 function showInvoice() {
   return async (dispatch) => {
     api.showInvoice().then((response)=>{
@@ -76,6 +76,7 @@ function showInvoice() {
   }
 }
 
+// Synchronous action that sends the invoice object to the store when dispatched
 
 /**
  * Synchronous action that sends the selected_mol and assays object to the assayReduxer
@@ -93,16 +94,7 @@ function runAssaySucceeded(selected_mol, assays) {
   };
 }
 
-function calcAssaySucceeded(selected_mol, assays) {
-  return {
-    type: "CALC_ASSAY_SUCCEEDED",
-    payload: {
-      molecule: selected_mol,
-      toggle_assay: assays,
-    },
-  };
-}
-
+// Synchronous action that sends the boolean state of toggle help button to the store when dispatched
 function toggleHelpSucceeded(bool) {
   return {
     type: "TOGGLE_HELP_SUCCEEDED",
@@ -117,7 +109,8 @@ function toggleHelp(bool) {
     dispatch(toggleHelpSucceeded(bool));
   };
 }
-// invoice display
+
+// Synchronous action that sends the boolean state of invoice display button to the store when dispatched
 function invoiceDisplaySucceeded(bool) {
   return {
     type: "INVOICE_DISPLAY_SUCCEEDED",
@@ -173,12 +166,6 @@ function toggleAssay(selected_mol,button,bool) {
 function runAssay(selected_mol, assays) {
   return (dispatch) => {
     dispatch(runAssaySucceeded(selected_mol, assays));
-  };
-}
-
-function calcAssay(selected_mol, assays) {
-  return (dispatch) => {
-    dispatch(calcAssaySucceeded(selected_mol, assays));
   };
 }
 

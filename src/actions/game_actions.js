@@ -108,8 +108,7 @@ function updateMoney(assays, current_money) {
 } 
 
 function updateSubTotal(assays, cost_sum) {
-  console.log(assays)
-  // let cost_sum = 0
+    console.log(assays)
     const assay_prices = {
       pIC50: 70.0,
       clearance_mouse: 7000.0,
@@ -125,8 +124,6 @@ function updateSubTotal(assays, cost_sum) {
           }
         }
       }
-    // console.log('cost_sum in subtotal',cost_sum)
-    // let subtotal =  cost_sum; //calculate new amount of money
     return (dispatch) => {
       dispatch(updateSubTotalSucceeded(cost_sum));
     }; //dispatch money to the store via the updateMoneySucceded synchronous action
