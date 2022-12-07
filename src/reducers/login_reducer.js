@@ -2,7 +2,7 @@ import { userConstants } from "../constants";
 
 // Check if user is already logged in
 let user = JSON.parse(localStorage.getItem('user'));
-const initialState = user ? { loggedIn: true, user, username: {}, token: '' } : {} ;
+const initialState = user ? { loggedIn: true, user, username: {}} : {} ;
 
 export function loginReducer(state = initialState, action) {
     switch (action.type) {

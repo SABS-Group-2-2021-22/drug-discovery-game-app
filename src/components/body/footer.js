@@ -15,7 +15,7 @@ class Footer extends React.Component {
       url:"/logout",
     })
     .then((response) => {
-       props.token()
+       localStorage.token
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)

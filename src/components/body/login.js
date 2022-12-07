@@ -54,7 +54,7 @@ class LoginPage extends React.Component {
             }
         })
         .then((response) => {
-            props.setToken(response.data.access_token)
+            localStorage.setItem('token', response.data.access_token);
         }).catch((error) => {
             if (error.response) {
                 console.log(error.response)
