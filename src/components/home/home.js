@@ -16,7 +16,7 @@ class Home extends React.Component {
   // fetches the r groups from the BE and selects the first r groups at each position
   // ... for rapid rendering of the builder and sketcher pages
   componentWillMount() {
-    this.props.fetchRGroup();
+    this.props.fetchRGroup(this.props.countRGroup);
     this.props.selectRGroup(
       this.props.selected_r_groups["A"],
       this.props.selected_r_groups["B"],
@@ -122,6 +122,7 @@ function mapStateToProps(state) {
 const actionCreators = {
   fetchHelp: initActions.fetchHelp,
   fetchRGroup: initActions.fetchRGroup,
+  countRGroup: initActions.countRGroup,
   selectRGroup: selectorActions.selectRGroup,
   setGamemode: gameActions.setGamemodeAction,
 };
