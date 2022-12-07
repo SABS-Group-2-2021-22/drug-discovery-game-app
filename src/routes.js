@@ -44,7 +44,7 @@ class Index extends React.Component {
 
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -57,10 +57,20 @@ class Index extends React.Component {
           <Route path="/analysis" element={< Analysis />} />
           <Route path="/results" element={< Results />} />
 
+          <Header token={removeToken}/>
           <Route path="/login" element={<LoginPage />} />
+          {!token && token!=="" &&token!== undefined?  
+          <Login setToken={setToken} />
+          :(
+            <>
+              <Routes>
+                <Route exact path="/profile" element={<Profile token={token} setToken={setToken}/>}></Route>
+              </Routes>
+            </>
+          )}
         </Routes>
         <Footer />
-      </Router>
+      </BrowserRouter>
     )
   }
 }

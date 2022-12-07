@@ -1,12 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import { userActions } from "../../actions";
 
 import "./footer.css";
 
 class Footer extends React.Component {
+
+  logMeOut = () => {
+    axios({
+      method: "POST",
+      url:"/logout",
+    })
+    .then((response) => {
+       props.token()
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+        }
+    })}
+
   userStatus = () => {
     return (
       <div className="user-status-box">
@@ -14,7 +31,7 @@ class Footer extends React.Component {
         <Link
           className="navigation-link"
           to="/login"
-          onClick={this.props.logout}
+          onClick={logMeOut} // {this.props.logout}
         >
           {" "}
           Log out{" "}
@@ -52,7 +69,7 @@ function mapStateToProps(state) {
     money: state.game.money,
     subtotal: state.game.subtotal,
     loggedIn: state.login.loggedIn,
-    user: state.login.user,
+    user: state.login.user
   };
 }
 
