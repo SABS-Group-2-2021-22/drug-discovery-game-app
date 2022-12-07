@@ -10,11 +10,6 @@ class Descriptors extends React.Component {
     };
   }
 
-  shouldComponentUpdate = () => {
-    console.log(this.props.hover);
-    //this.setState({ hover: "descr" });
-  };
-
   render() {
     return (
       <div class="container" className="descriptor-stats">
