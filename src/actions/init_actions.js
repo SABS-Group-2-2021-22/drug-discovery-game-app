@@ -45,6 +45,9 @@ function fetchRGroupSucceeded(r_group_obj) {
  * @param {}
  * @returns {dispatch} dispatches fetchRGroupSucceeded with the r group object
  */
+export function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
 function fetchRGroup() {
   const positions = ["A", "B"];
   var r_group_obj = {};
@@ -55,7 +58,8 @@ function fetchRGroup() {
         api.fetchRGroup(id).then((response) => {
           r_group_obj[id] = response;
         });
-      } else {
+      } 
+      else {
         let id = String(pos + i);
         api.fetchRGroup(id).then((response) => {
           r_group_obj[id] = response;
@@ -67,7 +71,48 @@ function fetchRGroup() {
     dispatch(fetchRGroupSucceeded(r_group_obj));
   };
 }
+// function fetchRGroup() {
+//   const positions = ["A", "B"];
+//   var r_group_obj = {};
+//   var all_rgroups_fetched = false;
+//   for (const pos of positions) {
+//     for (let i = 1; i < 51; i++) {
+//       if (i < 10) {
+//         let id = String(pos + 0 + i);
+//         api.fetchRGroup(id).then((response) => {
+//           r_group_obj[id] = response;
+//         }).then(() => {
+//           console.log(Object.keys(r_group_obj).length);
+//           all_rgroups_fetched = Object.keys(r_group_obj).length == 100;
+//           if (all_rgroups_fetched) {
+//             return (dispatch) => {
+//               console.log(all_rgroups_fetched)
+//               dispatch(fetchRGroupSucceeded(r_group_obj));
+//             };
+//           }});
+//       } else {
+//         let id = String(pos + i);
+//         api.fetchRGroup(id).then((response) => {
+//           r_group_obj[id] = response;
+//         }).then(() => {
+//           console.log(Object.keys(r_group_obj).length);
+//           all_rgroups_fetched = Object.keys(r_group_obj).length == 100;});
+//           if (all_rgroups_fetched) {
+//             return (dispatch) => {
+//               console.log(all_rgroups_fetched)
+//               dispatch(fetchRGroupSucceeded(r_group_obj));
+//             };
+//           }
+//         }
+        
+//     }
+//   }
 
+//   return (dispatch) => {
+//     console.log(all_rgroups_fetched)
+//     dispatch(fetchRGroupWaiting(r_group_obj));
+//   };
+// }
 /**
  * Synchronous action that sends the target compound to the store
  * @param {state object} Roche Roche's chosen molecule
@@ -96,28 +141,25 @@ export function fetchRoche() {
   };
 }
 
-export function countRGroupSucceeded() {
+/**
+ * An synchronous action 
+ */
+export function countRGroupNum(num) {
   return {
-    type: "COUNTR_SUCCEEDED",
+    type: "COUNTR_START",
+    payload: {
+      num: num,
+    },
   };
 }
 
-
-
 /**
- * An asynchronous action that fires an api call to fetch the target compound
- * (the one Roche chose)
- * @param {}
- * @returns {dispatch} dispatches fetchRocheSucceeded with the r group object
+ * An asynchronous action that get the num of Rgroup in store
  */
-export function countRGroup(all_r_groups) {
-  if (all_r_groups == 100) { 
+export function countRGroup(num) {
+    console.log(num)
     return (dispatch) => {
-       dispatch(countRGroupSucceeded());
-      }
-    }
-  else { 
-    countRGroup(all_r_groups)
-   } 
-}
+     dispatch(countRGroupNum(num));
+   }} 
+
 
