@@ -1,9 +1,10 @@
 const initialState = {
-  all_r_groups: [],
+  all_r_groups: {},
   help: [],
   rgfetched: false,
   rochefetched: false,
-  helpfetched: false
+  helpfetched: false,
+  countreached: false,
 };
 
 export function initReducer(state = initialState, action) {
@@ -29,6 +30,13 @@ export function initReducer(state = initialState, action) {
         helpfetched: true
       };
     }
+    case "COUNTR_SUCCEEDED": {
+      return {
+        ...state,
+        countreached: true
+      };
+    }
+
     default:
       return state;
   }

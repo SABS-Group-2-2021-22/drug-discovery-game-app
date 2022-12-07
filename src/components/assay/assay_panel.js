@@ -108,6 +108,7 @@ class AssayPanel extends React.Component {
     };
     console.log(selected_assays)
 
+
     for (var i = 0; i < selected_assays.length; i++) {
       if (
         ["drug_props", "lipinski", "descriptors"].includes(selected_assays[i])
@@ -258,7 +259,7 @@ class AssayPanel extends React.Component {
                 this.onUnHover();
               }}
               >
-              <div className="assay-name">Clearance Mouse</div>
+              <div className="assay-name">Mouse Clearance</div>
               <div className="assay-cost-and-time">
                 <p>
                   {" "}
@@ -282,7 +283,7 @@ class AssayPanel extends React.Component {
                 this.onUnHover();
               }}
               >
-              <div className="assay-name">Clearance Mouse</div>
+              <div className="assay-name">Mouse Clearance</div>
               <div className="assay-cost-and-time">
                 <p>
                   {" "}
@@ -315,7 +316,7 @@ class AssayPanel extends React.Component {
                 this.onUnHover();
               }}
               >
-              <div className="assay-name">Clearance Human</div>
+              <div className="assay-name">Human Clearance</div>
               <div className="assay-cost-and-time">
                 {" "}
                 Cost £9,000
@@ -338,7 +339,7 @@ class AssayPanel extends React.Component {
                 this.onUnHover();
               }}
               >
-              <div className="assay-name">Clearance Human</div>
+              <div className="assay-name">Human Clearance</div>
               <div className="assay-cost-and-time">
                 {" "}
                 Cost £9,000

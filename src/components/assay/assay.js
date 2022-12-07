@@ -110,14 +110,15 @@ class Assay extends React.Component {
                   <button onClick={() => {this.invoiceDisplay(); }}>hide invoice</button>
                   { (
                     <div className="info-invoice">
-                      <table className="invoice-table">
-                      <th>Molecule Selected: {this.props.selected_mol}</th>
-                        {/* <tr>Assay:{this.props.toggle_assay.pic50}</tr> */}
-                        <tr>Cost for assays: £{this.props.subtotal}</tr>
-                        <tr>----------------------------------------</tr>
-                        <small>* If you have updated the list of assays you have planned to run, 
-                        double click 'hide invoice' to update the invoice * </small>
-                      </table> 
+                      <text>
+                      Molecule Selected: {this.props.selected_mol}{"\n"}
+                      Cost for assays:<div id="cost">£{this.props.subtotal}</div>
+                      ----------------------------------------{"\n"}
+                      <small>* If you have updated the list of assays you have planned to run, 
+                        double click 'hide invoice' to update the invoice * </small> 
+                      </text>
+                      
+                      
                     </div>
                   )}
                 </div>

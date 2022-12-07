@@ -21,14 +21,13 @@ class Introduction2 extends React.Component {
           <div className="pic-and-text">
             <div className="text-and-button">
               <div className="text">
-                <p>As you learnt in the training, the optimal properties of a certain drug depend on the specific condition you are trying to treat.
+                <p>The optimal properties of a certain drug depend on the specific condition you are trying to treat.
                   {"\n"}  {"\n"}
-                  To target MMP-12, preferable properties are:
-                  {"\n"}  - Good lipophilicity (i.e. logD ≥ 1),
+                  The target compound profile or TCP (in terms of desired properties) for MMP-12 is indicated below:
+                  {"\n"}  - Good lipophilicity (i.e. logD ≥ 1 at neutral pH),
                   {"\n"}  - Medium to high permeability (PAMPA),
                   {"\n"}  -  Good metabolic stability (low clearance) in mouse and human, and
-                  {"\n"}  -  High potency.
-                  {"\n"} This is called the target compound profile (TCP).
+                  {"\n"}  -  High potency (i.e. pIC50 ≥ 6).
                 </p>
               </div>
               <div className="control-panel">

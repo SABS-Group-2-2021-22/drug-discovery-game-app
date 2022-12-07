@@ -23,7 +23,7 @@ function Navigation() {
                   </NavLink>
                 </li>
                 <li className="navigation-item">
-                  <NavLink className="navigation-link" to="/build">
+                  <NavLink className="navigation-link" to="/loadingpage">
                     Design
                   </NavLink>
                 </li>
