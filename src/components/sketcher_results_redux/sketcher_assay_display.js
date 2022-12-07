@@ -28,13 +28,13 @@ class SketcherAssays extends React.Component {
           )}
         </div>
         <div class="row">
-          Clearance Mouse:{" "}
+          Mouse Clearance:{" "}
           {
               this.srcRoute().clearance_mouse
           }
         </div>
         <div class="row">
-          Clearance Human:{" "}
+          Human Clearance:{" "}
           {
             this.srcRoute().clearance_human
           }

@@ -21,14 +21,14 @@ class Assays extends React.Component {
             )}
         </div>
         <div class="row">
-          Clearance Mouse:{" "}
+        Mouse Clearance:{" "}
           {this.props.saved_mols[this.props.mol_id].data.assays_run
             .clearance_mouse &&
             this.props.saved_mols[this.props.mol_id].data.drug_props
               .clearance_mouse}
         </div>
         <div class="row">
-          Clearance Human:{" "}
+          Human Clearance:{" "}
           {this.props.saved_mols[this.props.mol_id].data.assays_run
             .clearance_human &&
             this.props.saved_mols[this.props.mol_id].data.drug_props
