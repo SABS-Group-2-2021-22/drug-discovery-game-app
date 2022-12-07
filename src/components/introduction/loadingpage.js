@@ -12,10 +12,7 @@ class Loadingpage extends React.Component {
   constructor(props) {
     super(props);
   }
-/*  componentDidUpdate () {
-    this.props.countRGroup(Object.keys(this.props.all_r_groups).length);
-  }
-  */
+  
 /*  
 mount the function  before and after render, once the rgroup in store is 100, the lets go button appear
   */
@@ -25,9 +22,7 @@ mount the function  before and after render, once the rgroup in store is 100, th
   componentDidUpdate() {
     this.props.countRGroup(Object.keys(this.props.all_r_groups).length);
   }
-  componentDidMount() {
-    this.props.countRGroup(Object.keys(this.props.all_r_groups).length);
-  }
+
   render() {
 
     return (
