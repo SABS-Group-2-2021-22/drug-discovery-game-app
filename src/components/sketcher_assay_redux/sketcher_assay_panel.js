@@ -67,20 +67,20 @@ class SketcherAssayPanel extends React.Component {
           pIC50
         </button>
         <button
-          label="Clearance Mouse"
+          label="Mouse Clearance"
           onClick={() => {
             this.onClick("clearance_mouse");
           }}
         >
-          Clearance Mouse
+          Mouse Clearance
         </button>
         <button
-          label="Clearanace Humam"
+          label="Human Clearance"
           onClick={() => {
             this.onClick("clearance_human");
           }}
         >
-          Clearance Human
+          Human Clearance
         </button>
         <button
           label="LogD"

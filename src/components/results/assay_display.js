@@ -24,10 +24,10 @@ class Assays extends React.Component {
         </div>
         <div class="row">pIC50: {Number(this.srcRoute().pic50)}</div>
         <div class="row">
-          Clearance Mouse: {this.srcRoute().clearance_mouse}
+        Mouse Clearance: {this.srcRoute().clearance_mouse}
         </div>
         <div class="row">
-          Clearance Human: {this.srcRoute().clearance_human}
+          Human Clearance: {this.srcRoute().clearance_human}
         </div>
         <div class="row">LogD: {this.srcRoute().logd}</div>
         <div class="row">PAMPA: {this.srcRoute().pampa}</div>
