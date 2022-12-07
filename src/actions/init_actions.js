@@ -45,6 +45,9 @@ function fetchRGroupSucceeded(r_group_obj) {
  * @param {}
  * @returns {dispatch} dispatches fetchRGroupSucceeded with the r group object
  */
+export function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
 function fetchRGroup() {
   const positions = ["A", "B"];
   var r_group_obj = {};
@@ -55,7 +58,8 @@ function fetchRGroup() {
         api.fetchRGroup(id).then((response) => {
           r_group_obj[id] = response;
         });
-      } else {
+      } 
+      else {
         let id = String(pos + i);
         api.fetchRGroup(id).then((response) => {
           r_group_obj[id] = response;
