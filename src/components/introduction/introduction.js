@@ -23,7 +23,7 @@ class Introduction extends React.Component {
               <div className="text">
                 <p>Matrix metalloproteinase 12 (MMP-12) is an enzyme implicated in emphysema and asthma. It has been identified as a possible drug target.
                   {"\n"}  {"\n"}  MMP-12 is made by immune cells in the lungs, and it is thought that it can cause damage and inflammation in the lungs.
-                  {"\n"}  {"\n"} You are going to try to design a drug which stops MMP-12 from acting in the lungs.
+                  {"\n"}  {"\n"} You are going to try to design a compound with desired properties that inhibits MMP-12 in the body (including the lungs).
                 </p>
               </div>
               <div className="control-panel">
