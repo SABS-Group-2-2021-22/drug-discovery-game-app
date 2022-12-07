@@ -137,7 +137,9 @@ export function fetchRoche() {
   };
 }
 
-
+/**
+ * An synchronous action 
+ */
 export function countRGroupNum(num) {
   return {
     type: "COUNTR_START",
@@ -148,10 +150,7 @@ export function countRGroupNum(num) {
 }
 
 /**
- * An asynchronous action that fires an api call to fetch the target compound
- * (the one Roche chose)
- * @param {}
- * @returns {dispatch} dispatches fetchRocheSucceeded with the r group object
+ * An asynchronous action that get the num of Rgroup in store
  */
 export function countRGroup(num) {
     console.log(num)
