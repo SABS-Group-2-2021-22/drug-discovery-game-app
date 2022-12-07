@@ -28,7 +28,15 @@ class AssayPanel extends React.Component {
   // add the cost of the assay run and update the cost_assays state
   costAssays = (assay) => {
     let arr = this.state.cost_assays;
+
+    // remove assay from cost_assay if it has been selected and then unselected
+    if (arr.includes(assay)) {
+      arr = arr.filter(function (item) {
+        return item !== assay;
+      });
+    } else {
     arr.push(assay);
+    }
     this.setState({ cost_assays: arr });
   };
 
@@ -310,6 +318,7 @@ class AssayPanel extends React.Component {
               >
               <div className="assay-name">Human Clearance</div>
               <div className="assay-cost-and-time">
+                {" "}
                 Cost £9,000
                 {"\n"}Duration: 3.5 weeks
               </div>
@@ -332,6 +341,7 @@ class AssayPanel extends React.Component {
               >
               <div className="assay-name">Human Clearance</div>
               <div className="assay-cost-and-time">
+                {" "}
                 Cost £9,000
                 {"\n"}Duration: 3.5 weeks
               </div>
