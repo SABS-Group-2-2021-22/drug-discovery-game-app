@@ -4,7 +4,7 @@ const initialState = {
   rgfetched: false,
   rochefetched: false,
   helpfetched: false,
-  countreached: false,
+  num: 0
 };
 
 export function initReducer(state = initialState, action) {
@@ -30,10 +30,10 @@ export function initReducer(state = initialState, action) {
         helpfetched: true
       };
     }
-    case "COUNTR_SUCCEEDED": {
+    case "COUNTR_START": {
       return {
         ...state,
-        countreached: true
+        num: action.payload.num
       };
     }
 
