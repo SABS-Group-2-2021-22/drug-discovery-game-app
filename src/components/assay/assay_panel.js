@@ -99,6 +99,8 @@ class AssayPanel extends React.Component {
       pampa: 1.0,
     };
     console.log(selected_assays)
+
+
     for (var i = 0; i < selected_assays.length; i++) {
       if (
         ["drug_props", "lipinski", "descriptors"].includes(selected_assays[i])
