@@ -28,7 +28,7 @@ class Assay extends React.Component {
     let assays_run = this.state.assays_run;
     // iterate through toggle_assay, if assay_value is true, add to selected assay
     let arr = []
-    let toggle_assay_dict = this.props.toggle_assay;
+    let toggle_assay_dict = this.props.toggle_assay_container.data.toggle_assay;
     for (var key in toggle_assay_dict){
       if (toggle_assay_dict[key] && !(key in arr)) {
         arr.push(key)
@@ -72,7 +72,7 @@ class Assay extends React.Component {
       this.props.invoiceDisplay(true);
     }
     console.log(this.props.invoice_display)
-    console.log(this.props.toggle_assay)    
+    console.log(this.props.toggle_assay_container.data.toggle_assay)    
   }
 
 
@@ -164,7 +164,7 @@ function mapStateToProps(state) {
     invoice_display: state.assay.invoice_display,
     invoice: state.assay.invoice,
     selected_assays: state.assay.selected_assays,
-    toggle_assay: state.assay.saved_mols[state.selector.selected_mol].data.toggle_assay,
+    toggle_assay_container: state.assay.saved_mols[state.selector.selected_mol],
     money: state.game.money,
     subtotal: state.game.subtotal,
     cost_assays: state.assay.cost_assays
