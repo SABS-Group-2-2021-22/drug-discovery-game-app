@@ -145,7 +145,7 @@ class Assay extends React.Component {
                 <ControlPanel />
               </div>
             </div> </div>) : (<div className='unsavedmol'>       
-                    <Link to="/build">
+                    <Link to="/loadingpage">
                       <button className="mk_pre_test_button">Please make a molecule before test!</button>
                     </Link></div>)
             }
