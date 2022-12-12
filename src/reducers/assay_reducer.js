@@ -31,7 +31,6 @@ export function assayReducer(state = initialState, action) {
     case "FETCH_DESCRIPTORS_SUCCEEDED": {
       return {
         ...state,
-        saved_or_not: true,
         saved_mols: {
           ...state.saved_mols,
           [action.payload.molecule]: {
@@ -47,7 +46,7 @@ export function assayReducer(state = initialState, action) {
     case "FETCH_LIPINSKI_SUCCEEDED": {
       return {
         ...state,
-        saved_or_not: true,
+
         saved_mols: {
           ...state.saved_mols,
           [action.payload.molecule]: {
@@ -63,7 +62,7 @@ export function assayReducer(state = initialState, action) {
     case "RUN_ASSAY_SUCCEEDED": {
       return {
         ...state,
-        saved_or_not: true,
+
         saved_mols: {
           ...state.saved_mols,
           [action.payload.molecule]: {
@@ -79,7 +78,6 @@ export function assayReducer(state = initialState, action) {
     case "RUN_SKETCHED_ASSAY_SUCCEEDED": {
       return {
         ...state,
-        saved_or_not: true,
         saved_mols: {
           ...state.saved_mols,
           [action.payload.molecule]: {
@@ -95,14 +93,13 @@ export function assayReducer(state = initialState, action) {
     case "RESET": {
       return {
         ...state,
-        saved_or_not: true,
+        saved_or_not: false,
         saved_mols: action.payload.saved_mols,
       };
     }
     case "TOGGLE_HELP_SUCCEEDED": {
       return {
         ...state,
-        saved_or_not: true,
         toggle_help: action.payload.Bool,
       };
     }
@@ -122,7 +119,6 @@ export function assayReducer(state = initialState, action) {
     case "TOGGLE_ASSAY_SUCCEEDED": {
       return {
         ...state,
-        saved_or_not: true,
         saved_mols: {
           ...state.saved_mols,
           [action.payload.molecule]: {
