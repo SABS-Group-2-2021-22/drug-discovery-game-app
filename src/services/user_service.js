@@ -1,9 +1,17 @@
 import axios from "axios";
+import { useState } from 'react';
 
 export const userService = {
     login,
-    logout
+    logout,
+    logMeIn,
+    logMeOut
 };
+
+const [loginForm, setloginForm] = useState({
+  email: "",
+  password: ""
+})
 
 function login(username){
     const requestOptions = {
@@ -30,46 +38,45 @@ function logout() {
     localStorage.removeItem('user');
 }
 
-// function logMeIn(event) {
-//     axios({
-//         method: "POST",
-//         url:"/token",
-//         data:{
-//             email: loginForm.email,
-//             password: loginForm.password
-//          }
-//     })
-//     .then((response) => {
-//         props.setToken(response.data.access_token)
-//     }).catch((error) => {
-//         if (error.response) {
-//             console.log(error.response)
-//             console.log(error.response.status)
-//             console.log(error.response.headers)
-//         }
-//     })
+function logMeIn(){
+    axios({
+        method: "POST",
+        url:"/token",
+        data:{
+            email: loginForm.email,
+            password: loginForm.password
+        }
+    })
+    .then((response) => {
+        localStorage.setItem('token', response.data.access_token);
+    }).catch((error) => {
+        if (error.response) {
+            console.log(error.response)
+            console.log(error.response.status)
+            console.log(error.response.headers)
+        }
+    })
+    setloginForm(({
+        email: "",
+        password: ""}))
 
-//     setloginForm(({
-//         email: "",
-//         password: ""}))
+    event.preventDefault()
+}
 
-//     event.preventDefault()
-// }
-
-// function logMeOut() {
-//     axios({
-//         method: "POST",
-//         url:"/logout",
-//     })
-//     .then((response) => {
-//         localStorage.token
-//     }).catch((error) => {
-//         if (error.response) {
-//             console.log(error.response)
-//             console.log(error.response.status)
-//             console.log(error.response.headers)
-//         }
-// })}
+function logMeOut(){
+    axios({
+        method: "POST",
+        url:"/logout",
+    })
+    .then((response) => {
+        localStorage.token
+    }).catch((error) => {
+        if (error.response) {
+            console.log(error.response)
+            console.log(error.response.status)
+            console.log(error.response.headers)
+        }
+})}
 
 function handleResponse(response) {
     return response.text().then(text => {

@@ -9,21 +9,6 @@ import "./footer.css";
 
 class Footer extends React.Component {
 
-  logMeOut = () => {
-    axios({
-      method: "POST",
-      url:"/logout",
-    })
-    .then((response) => {
-       localStorage.token
-    }).catch((error) => {
-      if (error.response) {
-        console.log(error.response)
-        console.log(error.response.status)
-        console.log(error.response.headers)
-        }
-    })}
-
   userStatus = () => {
     return (
       <div className="user-status-box">
@@ -31,7 +16,7 @@ class Footer extends React.Component {
         <Link
           className="navigation-link"
           to="/login"
-          onClick={logMeOut} // {this.props.logout}
+          onClick={this.props.logMeOut} // {this.props.logout}
         >
           {" "}
           Log out{" "}
