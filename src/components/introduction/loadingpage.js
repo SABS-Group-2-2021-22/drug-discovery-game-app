@@ -12,24 +12,11 @@ class Loadingpage extends React.Component {
   constructor(props) {
     super(props);
   }
-  
-/*  
-mount the function  before and after render, once the rgroup in store is 100, the lets go button appear
-  */
-  componentDidUpdate() {
-    console.log('didupd')
-    this.props.countRGroup(Object.keys(this.props.all_r_groups).length);
-  }
-  componentDidMount() {
-    console.log('didmot')
-    this.props.countRGroup(Object.keys(this.props.all_r_groups).length);
-  }
 
   render() {
-
     return (
       <div className="wrapper">
-        {(this.props.rgfetched && this.props.helpfetched&& this.props.num == 100)? (
+        {(this.props.num == 100)? (
                 <div className="loadingpage">       
                     
                 <Link to="/build">

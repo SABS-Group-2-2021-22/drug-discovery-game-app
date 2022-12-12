@@ -46,7 +46,7 @@ function fetchRGroupSucceeded(r_group_obj) {
  * @returns {dispatch} dispatches fetchRGroupSucceeded with the r group object
  */
 
-function fetchRGroup() {
+function fetchRGroup(coutr) {
   const positions = ["A", "B"];
   var r_group_obj = {};
   for (const pos of positions) {
@@ -55,14 +55,19 @@ function fetchRGroup() {
         let id = String(pos + 0 + i);
         api.fetchRGroup(id).then((response) => {
           r_group_obj[id] = response;
-        });
-;
+        }).then(() => {
+          coutr(Object.keys(r_group_obj).length);
+          console.log(Object.keys(r_group_obj).length)});
+
+
       } 
       else {
         let id = String(pos + i);
         api.fetchRGroup(id).then((response) => {
           r_group_obj[id] = response;
-        });
+        }).then(() => {
+          coutr(Object.keys(r_group_obj).length);
+          console.log(Object.keys(r_group_obj).length)});
       }
     }
   }
@@ -114,7 +119,6 @@ export function countRGroupNum(num) {
  * An asynchronous action that get the num of Rgroup in store
  */
 export function countRGroup(num) {
-    console.log(num)
     return (dispatch) => {
      dispatch(countRGroupNum(num));
    }} 
