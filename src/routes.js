@@ -60,7 +60,7 @@ class Index extends React.Component {
           <Route path="/login" element={<LoginPage />} />
         </Routes>
         <Footer />
-      <Router>
+      </Router>
     )
   }
 }

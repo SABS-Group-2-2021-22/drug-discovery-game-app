@@ -1,4 +1,4 @@
-
+import axios from "axios";
 
 export const userService = {
     login,
@@ -56,20 +56,20 @@ function logout() {
 //     event.preventDefault()
 // }
 
-function logMeOut() {
-    axios({
-        method: "POST",
-        url:"/logout",
-    })
-    .then((response) => {
-        localStorage.token
-    }).catch((error) => {
-        if (error.response) {
-            console.log(error.response)
-            console.log(error.response.status)
-            console.log(error.response.headers)
-        }
-})}
+// function logMeOut() {
+//     axios({
+//         method: "POST",
+//         url:"/logout",
+//     })
+//     .then((response) => {
+//         localStorage.token
+//     }).catch((error) => {
+//         if (error.response) {
+//             console.log(error.response)
+//             console.log(error.response.status)
+//             console.log(error.response.headers)
+//         }
+// })}
 
 function handleResponse(response) {
     return response.text().then(text => {
