@@ -8,12 +8,13 @@ import { userActions } from '../../actions';
 
 import './login.css'
 
+token, removeToken, setToken = useToken();
+
 const [loginForm, setloginForm] = useState({
-  email: "",
-  password: ""
+    email: "",
+    password: ""
 })
 
-const { token, removeToken, setToken } = useToken();
 
 class LoginPage extends React.Component {
 
@@ -45,31 +46,6 @@ class LoginPage extends React.Component {
     //     }
     // }
 
-    logMeIn = (event) => {
-        axios({
-            method: "POST",
-            url:"/token",
-            data:{
-                email: loginForm.email,
-                password: loginForm.password
-            }
-        })
-        .then((response) => {
-            localStorage.setItem('token', response.data.access_token);
-        }).catch((error) => {
-            if (error.response) {
-                console.log(error.response)
-                console.log(error.response.status)
-                console.log(error.response.headers)
-            }
-        })
-        setloginForm(({
-            email: "",
-            password: ""}))
-
-        event.preventDefault()
-    }
-
     handleChange = (event) => { 
         const { value, name} = event.target
         setloginForm(prevNote => ({
@@ -90,7 +66,7 @@ class LoginPage extends React.Component {
                     <form name="form" onSubmit={this.handleSubmit}>
                         <div className={'form-group' + (submitted && !username ? ' has error' : '')}>
                             <label htmlFor='username'></label>
-                            <input type='text' className='form-control' name='username' value={username} onChange={handleChange} />
+                            <input type='text' className='form-control' name='username' value={username} onChange={this.handleChange} />
                         </div>
                         <div className='form-group'>
                             <button className='login-button' onClick={this.props.logMeIn}>Continue</button>

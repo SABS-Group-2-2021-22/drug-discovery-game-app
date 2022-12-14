@@ -8,11 +8,6 @@ export const userService = {
     logMeOut
 };
 
-const [loginForm, setloginForm] = useState({
-  email: "",
-  password: ""
-})
-
 function login(username){
     const requestOptions = {
         method: 'POST',
@@ -39,6 +34,11 @@ function logout() {
 }
 
 function logMeIn(){
+    const [loginForm, setloginForm] = useState({
+      email: "",
+      password: ""
+    })
+    
     axios({
         method: "POST",
         url:"/token",
