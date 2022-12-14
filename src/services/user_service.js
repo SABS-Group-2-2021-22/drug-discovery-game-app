@@ -33,12 +33,7 @@ function logout() {
     localStorage.removeItem('user');
 }
 
-function logMeIn(){
-    const [loginForm, setloginForm] = useState({
-      email: "",
-      password: ""
-    })
-    
+function logMeIn(loginForm, setloginForm){
     axios({
         method: "POST",
         url:"/token",
@@ -59,8 +54,6 @@ function logMeIn(){
     setloginForm(({
         email: "",
         password: ""}))
-
-    event.preventDefault()
 }
 
 function logMeOut(){

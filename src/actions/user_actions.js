@@ -1,5 +1,6 @@
 import { userConstants } from '../constants';
 import { userService } from '../services';
+import { useState } from 'react'
 
 
 export const userActions = {
@@ -27,6 +28,14 @@ function login(username) {
     function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
     function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
     function failure(user) { return { type: userConstants.LOGIN_FAILURE, user } }
+}
+
+function logMeIn(username){
+    const [loginForm, setloginForm] = useState({
+      email: "",
+      password: ""
+    })
+    userService.logMeIn(loginForm, setloginForm)
 }
 
 
