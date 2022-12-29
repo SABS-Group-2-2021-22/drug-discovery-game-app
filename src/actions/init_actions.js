@@ -65,7 +65,7 @@ function fetchRGroup(coutr) {
           r_group_obj[id] = response;
         }).then(() => {
           coutr(Object.keys(r_group_obj).length);
-          console.log(Object.keys(r_group_obj).length)});
+        });
       }
     }
   }
