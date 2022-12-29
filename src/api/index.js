@@ -87,7 +87,7 @@ export function saveGame() {
   return client.get("/save_game_data");
 }
 
-export function showInvoice() {
-  client.defaults.headers["username"] = localStorage.user;
-  return client.get("/info_invoice");
-}
+// export function showInvoice() {
+//   client.defaults.headers["username"] = localStorage.user;
+//   return client.get("/info_invoice");
+// }

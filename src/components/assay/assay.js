@@ -66,24 +66,27 @@ class Assay extends React.Component {
   
 
   invoiceDisplay() {
-    if (this.props.invoice_display) {
-      this.props.invoiceDisplay(false);
+    // if (this.props.invoice_display) {
+    if (this.state.invoice_display) {
+      this.setState({invoice_display: false}) ;
+      // this.props.invoiceDisplay(false);
     } else {
-      this.props.invoiceDisplay(true);
+      this.setState({invoice_display: true}) ;
+      // this.props.invoiceDisplay(true);
     }
-    console.log(this.props.invoice_display)
-    console.log(this.props.toggle_assay_container.data.toggle_assay)    
+    // console.log(this.props.invoice_display)
+    // console.log(this.props.toggle_assay_container.data.toggle_assay)    
   }
 
 
-  showInvoice() {
-    if (this.props.invoice) {
-      this.props.showInvoice(false);
-    } else {
-      this.props.showInvoice(true);
-    }
-    console.log(this.props.invoice)
-  }
+  // showInvoice() {
+  //   if (this.props.invoice) {
+  //     this.props.showInvoice(false);
+  //   } else {
+  //     this.props.showInvoice(true);
+  //   }
+  //   console.log(this.props.invoice)
+  // }
 
 
   render() {
@@ -105,14 +108,15 @@ class Assay extends React.Component {
               )}
             </div>
             <div className="invoice">
-              {this.props.invoice_display && (
+              {/* {this.props.invoice_display && ( */}
+              {this.state.invoice_display && (
                 <div className="invoice-activebutton">
                   <button onClick={() => {this.invoiceDisplay(); }}>hide invoice</button>
                   { (
                     <div className="info-invoice">
                       <text>
                       Molecule Selected: {this.props.selected_mol}{"\n"}
-                      Cost for assays:<div id="cost">£{this.props.subtotal}</div>
+                      {/* Cost for assays:<div id="cost">£{this.props.subtotal}</div> */}
                       ----------------------------------------{"\n"}
                       <small>* If you have updated the list of assays you have planned to run, 
                         double click 'hide invoice' to update the invoice * </small> 
@@ -123,9 +127,14 @@ class Assay extends React.Component {
                   )}
                 </div>
               )}
-              {this.props.invoice_display == false && (
+              {/* {this.props.invoice_display == false && ( */}
+              {this.state.invoice_display == false && (
                 <div className="invoice-inactivebutton">
-                  <button onClick={() => {this.invoiceDisplay(); this.showInvoice();this.calcAssays();}}>
+                  <button onClick={() => {
+                    this.invoiceDisplay(); 
+                    // this.showInvoice();
+                    this.calcAssays();
+                    }}>
                     update invoice                 
                   </button>
                 </div>
@@ -175,7 +184,7 @@ function mapStateToProps(state) {
 const actionCreators = {
   toggleHelp: assayActions.toggleHelp,
   invoiceDisplay: assayActions.invoiceDisplay,
-  showInvoice: assayActions.showInvoice,
+  // showInvoice: assayActions.showInvoice,
   updateSubTotal: gameActions.updateSubTotal,
   
 };
