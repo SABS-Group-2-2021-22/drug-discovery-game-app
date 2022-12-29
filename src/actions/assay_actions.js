@@ -130,30 +130,30 @@ function invoiceDisplay(bool) {
 /**
  * Synchronous action that sends the boolean values of toggled assay buttons to the assayReducer
  * @param {state object} selected_mol the selected molecule
- * @param {state object} button the assay button object
- * @param {state object} bool the true/false state
+ * @param {state object} assay_type the assay type of the toggle button
+ * @param {state object} is_selected the true/false state of teh assay toggle
  * @returns the selected_mol, assay button, and its true/false state for a state change by the assayReducer
  */
-function toggleAssaySucceeded(selected_mol,button,bool) {
+function toggleAssaySucceeded(selected_mol,assay_type,is_selected) {
   return {
     type: "TOGGLE_ASSAY_SUCCEEDED",
     payload: {
       molecule: selected_mol,
-      button: button,
-      bool: bool,
+      assay_type: assay_type,
+      is_selected: is_selected,
     },
   };
 }
 /**
  * Asynchronous action that dispatches the toggleAssaySucceeded action
  * @param {state object} selected_mol the selected molecule
- * @param {state object} button the assay button object
- * @param {state object} bool the true/false state
+ * @param {state object} assay_type the assay type of the toggle button
+ * @param {state object} is_selected the true/false state of the assay toggle
  * @returns dispatches toggleAssaySucceeded
  */
-function toggleAssay(selected_mol,button,bool) {
+function toggleAssay(selected_mol,assay_type,is_selected){
   return (dispatch) => {
-    dispatch(toggleAssaySucceeded(selected_mol,button,bool));
+    dispatch(toggleAssaySucceeded(selected_mol,assay_type,is_selected));
   };
 }
 
