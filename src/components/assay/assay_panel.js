@@ -512,10 +512,10 @@ function mapStateToProps(state) {
     subtotal: state.game.subtotal,
     help: state.init.help.assay,
     toggle_help: state.assay.toggle_help,
-    invoice_display: state.assay.invoice_display,
-    invoice: state.assay.invoice,
-    selected_assays: state.assay.selected_assays,
-    assay_prices: state.assay.assay_prices,
+    // invoice_display: state.assay.invoice_display,
+    // invoice: state.assay.invoice,
+    // selected_assays: state.assay.selected_assays,
+    // assay_prices: state.assay.assay_prices,
     toggle_assay: state.assay.saved_mols[state.selector.selected_mol].data.toggle_assay,
     all_molecules_assay_data: state.assay.saved_mols,
   };
@@ -526,7 +526,7 @@ const actionCreators = {
   // updateSubTotal: gameActions.updateSubTotal,
   updateTime: gameActions.updateTime,
   runAssay: assayActions.runAssay,
-  calcAssay: assayActions.calcAssay,
+  // calcAssay: assayActions.calcAssay,
   toggleAssay: assayActions.toggleAssay,
 };
 
