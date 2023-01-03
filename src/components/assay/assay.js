@@ -1,7 +1,4 @@
 import React from "react";
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import {Text} from "react-native";
 import "./assay.css";
 import { connect } from "react-redux";
 import MoleculeList from "./molecule_list.js";
@@ -9,10 +6,8 @@ import MoleculeImage from "./molecule_image.js";
 import AssayPanel from "./assay_panel.js";
 import MoleculeStats from "./molecule_stats.js";
 import ControlPanel from "./control_panel.js";
-import { assayActions, gameActions } from "../../actions";
+import { assayActions } from "../../actions";
 import { Link } from "react-router-dom"
-import { sketcherActions } from "../../actions";
-import Dropdown from 'react-bootstrap/Dropdown';
 
 class InvoiceAmount extends React.Component {
   constructor(props) {
@@ -191,14 +186,6 @@ function mapStateToProps(state) {
     selected_mol: state.selector.selected_mol,
     toggle_help: state.assay.toggle_help,
     saved_or_not: state.assay.saved_or_not,
-    sketcher_error: state.sketcher.sketcher_error,
-    invoice_display: state.assay.invoice_display,
-    invoice: state.assay.invoice,
-    selected_assays: state.assay.selected_assays,
-    toggle_assay_container: state.assay.saved_mols[state.selector.selected_mol],
-    money: state.game.money,
-    subtotal: state.game.subtotal,
-    cost_assays: state.assay.cost_assays,
     all_molecules_assay_data: state.assay.saved_mols,
   };
 }
@@ -206,7 +193,6 @@ function mapStateToProps(state) {
 const actionCreators = {
   toggleHelp: assayActions.toggleHelp,
   invoiceDisplay: assayActions.invoiceDisplay,
-  updateSubTotal: gameActions.updateSubTotal,
   
 };
 
