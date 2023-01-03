@@ -14,6 +14,19 @@ import { Link } from "react-router-dom"
 import { sketcherActions } from "../../actions";
 import Dropdown from 'react-bootstrap/Dropdown';
 
+class InvoiceAmount extends React.Component {
+  constructor(props) {
+    super(props); 
+  };
+
+  render() {
+    return (
+      <div className="invoice-amount">
+        £{this.props.cost} {'\n'} Duration:{this.props.time}
+      </div>
+    )
+  }
+}
 
 class Assay extends React.Component {
   constructor(props) {
@@ -24,35 +37,61 @@ class Assay extends React.Component {
     };
   }
 
-  calcAssays = () => {
-    let assays_run = this.state.assays_run;
-    // iterate through toggle_assay, if assay_value is true, add to selected assay
-    let arr = []
-    let toggle_assay_dict = this.props.toggle_assay_container.data.toggle_assay;
-    for (var key in toggle_assay_dict){
-      if (toggle_assay_dict[key] && !(key in arr)) {
-        arr.push(key)
-      }
-    }
-    console.log(arr)
-    let selected_assays = arr;
-    
-    const assay_prices = {
+
+  runAssays = () => {
+    const ASSAY_PRICES = {
       pIC50: 70.0,
       clearance_mouse: 7000.0,
       clearance_human: 9000.0,
       logd: 1000.0,
       pampa: 700.0,
     };
-    const assay_times = {
+    const ASSAY_TIMES = {
       pIC50: 1.0,
       clearance_mouse: 3.0,
       clearance_human: 3.5,
       logd: 1.5,
       pampa: 1.0,
     };
-    console.log(selected_assays)
-    this.props.updateSubTotal(selected_assays,this.props.subtotal)
+
+    // iterate through all saved molecules at once
+    let max_time = 0.
+    let total_cost = 0.
+
+    for ( var molecule_key in this.props.all_molecules_assay_data ) {
+
+      let assays_run = this.props.all_molecules_assay_data[molecule_key].data.assays_run ;
+      let toggle_assay_dict = this.props.all_molecules_assay_data[molecule_key].data.toggle_assay;
+
+      // iterate through toggle_assay, if assay_value is true, add to selected assay
+      let arr = []
+      for (var key in toggle_assay_dict){
+        if (toggle_assay_dict[key]) {
+          arr.push(key)
+        }
+      }
+      let selected_assays = arr;
+
+      for (var i = 0; i < selected_assays.length; i++) {
+        if (
+          ["drug_props", "lipinski", "descriptors"].includes(selected_assays[i])
+        ) 
+          {} 
+        else {
+            if (!assays_run[selected_assays[i]]){
+              if (max_time < ASSAY_TIMES[selected_assays[i]]) {
+                max_time = ASSAY_TIMES[selected_assays[i]] ;
+              }
+              total_cost = total_cost + ASSAY_PRICES[selected_assays[i]] ;
+          }
+        }
+      }
+    }
+    let cost = {
+      'time': max_time, 
+      'money': total_cost,
+  }
+    return cost
   };
 
   toggleHelp() {
@@ -66,27 +105,14 @@ class Assay extends React.Component {
   
 
   invoiceDisplay() {
-    // if (this.props.invoice_display) {
     if (this.state.invoice_display) {
       this.setState({invoice_display: false}) ;
-      // this.props.invoiceDisplay(false);
     } else {
       this.setState({invoice_display: true}) ;
-      // this.props.invoiceDisplay(true);
     }
-    // console.log(this.props.invoice_display)
-    // console.log(this.props.toggle_assay_container.data.toggle_assay)    
   }
 
 
-  // showInvoice() {
-  //   if (this.props.invoice) {
-  //     this.props.showInvoice(false);
-  //   } else {
-  //     this.props.showInvoice(true);
-  //   }
-  //   console.log(this.props.invoice)
-  // }
 
 
   render() {
@@ -108,7 +134,6 @@ class Assay extends React.Component {
               )}
             </div>
             <div className="invoice">
-              {/* {this.props.invoice_display && ( */}
               {this.state.invoice_display && (
                 <div className="invoice-activebutton">
                   <button onClick={() => {this.invoiceDisplay(); }}>hide invoice</button>
@@ -116,7 +141,7 @@ class Assay extends React.Component {
                     <div className="info-invoice">
                       <text>
                       Molecule Selected: {this.props.selected_mol}{"\n"}
-                      {/* Cost for assays:<div id="cost">£{this.props.subtotal}</div> */}
+                      <InvoiceAmount cost={this.runAssays().money} time={this.runAssays().time}/> 
                       ----------------------------------------{"\n"}
                       <small>* If you have updated the list of assays you have planned to run, 
                         double click 'hide invoice' to update the invoice * </small> 
@@ -127,15 +152,12 @@ class Assay extends React.Component {
                   )}
                 </div>
               )}
-              {/* {this.props.invoice_display == false && ( */}
               {this.state.invoice_display == false && (
                 <div className="invoice-inactivebutton">
                   <button onClick={() => {
                     this.invoiceDisplay(); 
-                    // this.showInvoice();
-                    this.calcAssays();
                     }}>
-                    update invoice                 
+                    Show invoice                 
                   </button>
                 </div>
               )}
@@ -176,15 +198,14 @@ function mapStateToProps(state) {
     toggle_assay_container: state.assay.saved_mols[state.selector.selected_mol],
     money: state.game.money,
     subtotal: state.game.subtotal,
-    cost_assays: state.assay.cost_assays
-    
+    cost_assays: state.assay.cost_assays,
+    all_molecules_assay_data: state.assay.saved_mols,
   };
 }
 
 const actionCreators = {
   toggleHelp: assayActions.toggleHelp,
   invoiceDisplay: assayActions.invoiceDisplay,
-  // showInvoice: assayActions.showInvoice,
   updateSubTotal: gameActions.updateSubTotal,
   
 };
