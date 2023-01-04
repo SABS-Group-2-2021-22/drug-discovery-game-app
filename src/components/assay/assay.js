@@ -120,19 +120,19 @@ class Assay extends React.Component {
             <div className="help-toggle">
               {this.props.toggle_help && (
                 <div className="toggle-activebutton">
-                  <button onClick={() => this.toggleHelp()}>toggle help: ON</button>
+                  <button onClick={() => this.toggleHelp()}>?</button>
                 </div>
               )}
               {this.props.toggle_help == false && (
                 <div className="toggle-inactivebutton">
-                  <button onClick={() => this.toggleHelp()}>toggle help: OFF</button>
+                  <button onClick={() => this.toggleHelp()}>?</button>
                 </div>
               )}
             </div>
             <div className="invoice">
               {this.state.invoice_display && (
                 <div className="invoice-activebutton">
-                  <button onClick={() => {this.invoiceDisplay(); }}>hide invoice</button>
+                  <button onClick={() => {this.invoiceDisplay(); }}>Hide invoice</button>
                   { (
                     <div className="info-invoice">
                       <text>
@@ -148,7 +148,7 @@ class Assay extends React.Component {
                   <button onClick={() => {
                     this.invoiceDisplay(); 
                     }}>
-                    Show invoice                 
+                    Invoice summary               
                   </button>
                 </div>
               )}
