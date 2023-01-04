@@ -188,8 +188,6 @@ function mapStateToProps(state) {
 
 const actionCreators = {
   toggleHelp: assayActions.toggleHelp,
-  invoiceDisplay: assayActions.invoiceDisplay,
-  
 };
 
 export default connect(mapStateToProps, actionCreators)(Assay);
