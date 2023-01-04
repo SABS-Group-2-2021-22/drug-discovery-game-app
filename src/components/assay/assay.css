@@ -253,6 +253,7 @@
 
 .invoice > .invoice-activebutton > .info-invoice {
   display: flex;
+  flex-direction: column;
   border-style: solid;
   border-width: 1px;
   padding: 2px;

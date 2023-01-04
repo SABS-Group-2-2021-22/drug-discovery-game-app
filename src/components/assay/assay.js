@@ -17,7 +17,8 @@ class InvoiceAmount extends React.Component {
   render() {
     return (
       <div className="invoice-amount">
-        £{this.props.cost} {'\n'} Duration:{this.props.time}
+        Running all of your assays will cost: {'\n'}
+        £{this.props.cost} {'\n'} Duration: {this.props.time} weeks
       </div>
     )
   }
@@ -135,14 +136,9 @@ class Assay extends React.Component {
                   { (
                     <div className="info-invoice">
                       <text>
-                      Molecule Selected: {this.props.selected_mol}{"\n"}
-                      <InvoiceAmount cost={this.runAssays().money} time={this.runAssays().time}/> 
-                      ----------------------------------------{"\n"}
-                      <small>* If you have updated the list of assays you have planned to run, 
-                        double click 'hide invoice' to update the invoice * </small> 
+                      Currently viewing molecule {this.props.selected_mol}{"\n"}
                       </text>
-                      
-                      
+                      <InvoiceAmount cost={this.runAssays().money} time={this.runAssays().time}/> 
                     </div>
                   )}
                 </div>
