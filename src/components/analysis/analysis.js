@@ -31,7 +31,7 @@ class Analysis extends React.Component {
           </div>
         </div>) : (
           <div className='unsavedmol'>       
-          <Link to="/build">
+          <Link to="/Loadingpage">
             <button className="mk_pre_test_button">Design and Make a molecule, Test it, then Analysis.</button>
           </Link></div>
         ) 
