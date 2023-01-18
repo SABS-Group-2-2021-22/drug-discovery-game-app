@@ -7,6 +7,7 @@ import SpiderPlot from "./spider_plot.js";
 import ComparisonText from "./comparison_text.js";
 import { gameActions } from "../../actions";
 import { Link } from "react-router-dom";
+import { userActions } from '../../actions';
 
 class Results extends React.Component {
   constructor(props) {
@@ -14,8 +15,11 @@ class Results extends React.Component {
   }
 
   save_and_resetGame = () => {
+    let saved_user = JSON.parse(localStorage.getItem('user'));
     this.props.saveGame();
     this.props.resetGame();
+    this.props.login(saved_user);
+    window.location.href="/";
   };
 
   render() {
@@ -84,6 +88,7 @@ function mapStateToProps(state) {
 const actionCreators = {
   resetGame: gameActions.resetGame,
   saveGame: gameActions.saveGame,
+  login: userActions.login,
 };
 
 export default connect(mapStateToProps, actionCreators)(Results);

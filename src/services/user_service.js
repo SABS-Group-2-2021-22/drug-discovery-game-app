@@ -1,5 +1,4 @@
 
-
 export const userService = {
     login,
     logout
@@ -28,6 +27,7 @@ function login(username){
 function logout() {
     // remove user from local browser storage
     localStorage.removeItem('user');
+    this.props.resetGame();
 }
 
 function handleResponse(response) {
