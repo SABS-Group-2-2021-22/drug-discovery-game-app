@@ -19,6 +19,7 @@ import {
   Introduction,
   Builder,
   Assay,
+  Docking,
   Analysis,
   Results,
   Footer,

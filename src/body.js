@@ -2,6 +2,7 @@ import {
     Home,
     Builder,
     Assay,
+    Docking,
     Analysis,
     Results,
     SketcherAppRedux,
@@ -34,6 +35,7 @@ import ReactDOM from 'react-dom';
             <Route path="/loadingpage" element={<Loadingpage />} />
             <Route path="/app" element={(this.props.gamemode === 'builder') ? <Builder />: <SketcherAppRedux/>} />
             <Route path="/assay" element={(this.props.gamemode === 'builder') ?< Assay />: <SketcherAssayRedux/>}  />
+            <Route path="/docking" element={<Docking />} />
             <Route path="/analysis" element={(this.props.gamemode === 'builder') ?< Analysis/>: <SketcherAnalysisRedux/>}  />
             <Route path="/results" element={(this.props.gamemode === 'builder') ?< Results/>: <SketcherResultsRedux/>} />
         </Routes>
