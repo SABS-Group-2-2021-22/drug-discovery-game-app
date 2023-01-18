@@ -127,7 +127,7 @@ export function assayReducer(state = initialState, action) {
               ...state.saved_mols[action.payload.molecule].data,
               toggle_assay: {
                 ...state.saved_mols[action.payload.molecule].data.toggle_assay,
-                [action.payload.button]: action.payload.bool, //store toggle_assay in saved_mols.molecule.data.toggle_assay
+                [action.payload.assay_type]: action.payload.is_selected, //store toggle_assay in saved_mols.molecule.data.toggle_assay
               },
             },
           },
