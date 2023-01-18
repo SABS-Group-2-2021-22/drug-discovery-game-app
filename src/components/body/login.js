@@ -44,7 +44,10 @@ class LoginPage extends React.Component {
         return (
             <div className='wrapper'>
                 <div className="login-page" >
-                    <h3>Enter a username</h3>
+                    <h3>Enter a username
+                    </h3>
+                    <text>                        Do not enter information that could be used to personally identify you
+                    </text>
                     <form name="form" onSubmit={this.handleSubmit}>
                         <div className={'form-group' + (submitted && !username ? ' has error' : '')}>
                             <label htmlFor='username'></label>
