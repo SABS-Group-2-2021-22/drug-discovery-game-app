@@ -26,7 +26,10 @@ class Builder extends React.Component {
 
   render() {
     return (
-      <div className="wrapper">
+      <div className="wrapper">  
+        <div className="header">
+
+          Select 2 R groups to design a molecule: </div>
         <div className="build">
           <div className="r-group-selection">
             <div className="r-group-a">
