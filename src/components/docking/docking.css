@@ -1,35 +1,25 @@
-.docking {
+.docking-elements {
   display: flex;
   flex-direction: row;
-  flex: 1, 1, 3;
+  flex: 1 4 auto;
   height: 100%;
+}
+
+.docking-and-button {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 70%;
   padding-left: 3vw;
   padding-right: 3vw;
   padding-top: 3vh;
-  padding-bottom: 3vh;
+  padding-bottom: 10vh;
 }
 
-  .final-molecule-bar {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  justify-content: center;
-  padding-bottom: 10pt;
-  margin-left: 0vw;
-  margin-right: flex;
-  width: min(28vw, 350px);
-}
-
-  .dockingtitle{
-    display: flex;
-    min-height: 25%;
-    height:20%;
-    width:100%;
+  .molstar{
+    flex-grow: 3;
+    min-width: 75%;
     background-color: white;
-    align-items: center;
-    justify-content: center;
-    font-size: 4vw;
-    font-weight: bold;  /* Red bold text for title */
-    padding-left: 30pt;
-    padding-right: 30pt;
-  }
+    padding-left: 10pt;
+    padding-right: 10pt;
+}
