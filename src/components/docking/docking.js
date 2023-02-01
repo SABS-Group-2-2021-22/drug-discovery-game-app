@@ -27,11 +27,14 @@ class Docking extends React.Component {
             <div className="molstar">
               <Molstar url={url}/>
             </div>
-            <div className="control-panel">
-              <div className="analysis-button">
-                <Link to="/analysis">
-                  <button>Analysis</button>
-                </Link>
+            <div className="affinity">
+              Affinity score: -8.0
+              <div className="control-panel">
+                <div className="analysis-button">
+                  <Link to="/analysis">
+                    <button>Analysis</button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

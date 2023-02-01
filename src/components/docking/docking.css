@@ -1,7 +1,7 @@
 .docking-elements {
   display: flex;
   flex-direction: row;
-  flex: 1 4 auto;
+  flex: 1 5 auto;
   height: 100%;
 }
 
@@ -20,6 +20,4 @@
     flex-grow: 3;
     min-width: 75%;
     background-color: white;
-    padding-left: 10pt;
-    padding-right: 10pt;
 }

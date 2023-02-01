@@ -15,6 +15,7 @@
     "flexbox-react": "^4.4.0",
     "history": "^5.2.0",
     "miew": "^0.10.1",
+    "molstar-react": "^0.5.1",
     "mstring": "^0.1.2",
     "nodejs-base64": "^2.0.0",
     "plotly.js": "^2.7.0",
