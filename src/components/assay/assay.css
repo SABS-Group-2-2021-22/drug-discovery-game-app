@@ -436,15 +436,15 @@ table {
   border-width: 1px;
   padding: 5px;
   display: flex;
-  margin-left: 22vh;
-  margin-top: 44.5vh;
+  margin-left: 210px;
+  margin-top: 58vh;
   font-size: 15px;
   z-index: 10;
   position: absolute;
   border-radius: 5px;
   background-color: #fdfbfb;
   white-space: pre-line;
-  width: 35vh;
+  width: 15vw;
 }
 
 .hover-info-text-descr {
@@ -452,15 +452,15 @@ table {
   border-width: 1px;
   padding: 5px;
   display: flex;
-  margin-left: 22vh;
-  margin-top: 53.5vh;
+  margin-left: 210px;
+  margin-top: 62vh;
   font-size: 15px;
   z-index: 10;
   position: absolute;
   border-radius: 5px;
   background-color: #fdfbfb;
   white-space: pre-line;
-  width: 35vh;
+  width: 15vw;
 }
 
 .hover-info-text-run {
@@ -468,15 +468,15 @@ table {
   border-width: 1px;
   padding: 5px;
   display: flex;
-  margin-left: 22vh;
-  margin-top: 62.5vh;
+  margin-left: 210px;
+  margin-top: 53vh;
   font-size: 15px;
   z-index: 10;
   position: absolute;
   border-radius: 5px;
   background-color: #fdfbfb;
   white-space: pre-line;
-  width: 35vh;
+  width: 15vw;
 }
 
 .mol-stats > .hover-info-button-lip {
