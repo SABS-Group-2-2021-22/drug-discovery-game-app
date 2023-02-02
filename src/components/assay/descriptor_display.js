@@ -5,9 +5,6 @@ import { connect } from "react-redux";
 class Descriptors extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   hover: "descr",
-    // };
   }
 
   render() {
