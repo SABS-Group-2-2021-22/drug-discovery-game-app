@@ -11,17 +11,18 @@ class Builder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hover: false,
+      toggle_help: false,
     };
   }
 
-  onHover = (event) => {
-    this.setState({ hover: true });
-    console.log(this.props.help);
-  };
-
-  onUnHover = (event) => {
-    this.setState({ hover: false });
+  toggleHelp = (event) => {
+    console.log(this.state.toggle_help)
+    if (this.state.toggle_help) {
+      this.setState({ toggle_help: false });
+    }
+    else {
+      this.setState({ toggle_help: true });
+    }
   };
 
   render() {
@@ -38,10 +39,10 @@ class Builder extends React.Component {
               <RGroupList r_group_pos={"B"} />
             </div>
             <div className="hover-info">
-              <button onMouseEnter={this.onHover} onMouseLeave={this.onUnHover}>
+              <button onClick={this.toggleHelp}>
                 ?
               </button>
-              {this.state.hover && (
+              {this.state.toggle_help && (
                 <div className="info-text">
                   <p>
                     <div>{this.props.help[0]}</div>
