@@ -240,10 +240,6 @@
   background-color: #6a6c6e;
 }
 
-.invoice > .invoice-activebutton {
-  flex:auto;
-}
-
 .invoice > .invoice-activebutton button {
   background-color: #fdfbfb;
 }
@@ -486,12 +482,12 @@ table {
 .mol-stats > .hover-info-button-lip {
   position: absolute;
   z-index: 9;
-  margin-left: 13vh;
+  margin-left: 8vw;
 }
 
 .mol-stats > .hover-info-button-lip button {
   background-color: #fdfbfb;
-  border-radius: 12px;
+  border-radius: 7px;
   border-width: 1.8px;
 }
 
@@ -500,29 +496,31 @@ table {
   border-width: 1px;
   padding: 5px;
   display: flex;
-  margin-left: 15vh;
+  margin-left: 11vw;
   font-size: 12px;
   z-index: 10;
   position: absolute;
   border-radius: 5px;
   background-color: #fdfbfb;
   white-space: pre-line;
-  width: 19vh;
+  width: 11vw;
+  height: 18vh;
+  overflow-y: scroll;
 }
 
-.mol-stats > .hover-info-button-descr {
+.mol-stats > .hover-info-button-desc {
   position: absolute;
   z-index: 9;
-  margin-left: 54vh;
+  margin-left: 27vw;
 }
 
-.mol-stats > .hover-info-button-descr button {
+.mol-stats > .hover-info-button-desc button {
   background-color: #fdfbfb;
-  border-radius: 12px;
+  border-radius: 7px;
   border-width: 1.8px;
 }
 
-.hover-info-text-descr > .info-text {
+.mol-stats > .descriptor-stats > .hover-info-text-desc > .info-text {
   border-style: solid;
   border-width: 1px;
   padding: 5px;
@@ -533,18 +531,21 @@ table {
   border-radius: 5px;
   background-color: #fdfbfb;
   white-space: pre-line;
-  width: 19vh;
+  width: 11vw;
+  margin-left:13.5vw;
+  height: 18vh;
+  overflow-y: scroll;
 }
 
 .mol-stats > .hover-info-button-assay {
   position: absolute;
-  z-index: 9;
-  margin-left: 84vh;
+  z-index: 30;
+  margin-left: 42vw;
 }
 
 .mol-stats > .hover-info-button-assay button {
   background-color: #fdfbfb;
-  border-radius: 12px;
+  border-radius: 7px;
   border-width: 1.8px;
 }
 
@@ -559,6 +560,11 @@ table {
   border-radius: 5px;
   background-color: #fdfbfb;
   white-space: pre-line;
-  width: 19vh;
-  margin-left: 14vh;
+  width: 11vw;
+  margin-left: 7vw;
+  margin-top: 3vh;
+  height: 18vh;
+  overflow-y: scroll;
 }
+
+

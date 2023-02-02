@@ -11,7 +11,7 @@ class Assays extends React.Component {
     return (
       <div class="container" className="assay-stats">
         <div className="hover-info-text-assay">
-          {this.props.hover == "assay" && (
+          {this.props.toggle_help && this.props.help_label == "assay" && (
             <div className="info-text">
               <p>
                 <div>{this.props.help[9]}</div>
@@ -78,6 +78,7 @@ function mapStateToProps(state) {
       state.assay.saved_mols[state.selector.selected_mol].data.assays_run.pampa,
     saved_mols: state.assay.saved_mols,
     help: state.init.help.assay,
+    toggle_help: state.assay.toggle_help,
   };
 }
 

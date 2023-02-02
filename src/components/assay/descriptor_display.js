@@ -5,19 +5,27 @@ import { connect } from "react-redux";
 class Descriptors extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      hover: "descr",
-    };
+    // this.state = {
+    //   hover: "descr",
+    // };
   }
 
   render() {
     return (
       <div class="container" className="descriptor-stats">
-        <div className="hover-info-text-descr">
-          {this.props.hover == "descr" && (
+        <div className="hover-info-text-desc">
+          {this.props.toggle_help && this.props.help_label == "descr" && (
             <div className="info-text">
               <p>
-                <div>{this.props.help[0]}</div>
+                <div>
+                  {this.props.help[2]}{'\n'}
+                  {this.props.help[3]}{'\n'}
+                  {this.props.help[4]}{'\n'}
+                  {this.props.help[5]}{'\n'}
+                  {this.props.help[6]}{'\n'}
+                  {this.props.help[7]}{'\n'}
+                  {this.props.help[8]}{'\n'}
+                </div>
               </p>
             </div>
           )}
@@ -67,6 +75,7 @@ function mapStateToProps(state) {
   return {
     saved_mols: state.assay.saved_mols,
     help: state.init.help.build,
+    toggle_help: state.assay.toggle_help,
   };
 }
 

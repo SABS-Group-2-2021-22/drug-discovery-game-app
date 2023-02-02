@@ -11,7 +11,7 @@ class Lipinski extends React.Component {
     return (
       <div class="container" className="lipinski-stats">
         <div className="hover-info-text-lip">
-          {this.props.hover == "lip" && (
+          {this.props.toggle_help && this.props.help_label == "lip" && (
             <div className="info-text">
               <p>
                 <div>{this.props.help[8]}</div>
@@ -55,6 +55,7 @@ function mapStateToProps(state) {
   return {
     saved_mols: state.assay.saved_mols,
     help: state.init.help.assay,
+    toggle_help: state.assay.toggle_help,
   };
 }
 
