@@ -133,26 +133,29 @@ class Assay extends React.Component {
               {this.state.invoice_display && (
                 <div className="invoice-activebutton">
                   <button onClick={() => {this.invoiceDisplay(); }}>Hide invoice</button>
-                  { (
+                </div>
+              )}
+
+
+              {this.state.invoice_display == false && (
+                <div className="invoice-inactivebutton">
+                  <button onClick={() => {
+                    this.invoiceDisplay(); 
+                    }}>
+                    Show invoice     
+                  </button>
+                </div>
+              )}
+            </div>
+            {this.state.invoice_display && (
                     <div className="info-invoice">
                       <text>
                       Currently viewing molecule {this.props.selected_mol}{"\n"}
                       </text>
                       <InvoiceAmount cost={this.runAssays().money} time={this.runAssays().time}/> 
                     </div>
-                  )}
-                </div>
               )}
-              {this.state.invoice_display == false && (
-                <div className="invoice-inactivebutton">
-                  <button onClick={() => {
-                    this.invoiceDisplay(); 
-                    }}>
-                    Invoice summary               
-                  </button>
-                </div>
-              )}
-            </div>
+
             </div> 
           <div className="molecule-chooser-bar">
             <MoleculeList />
