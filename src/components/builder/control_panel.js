@@ -22,18 +22,19 @@ class ControlPanel extends React.Component {
     this.props.selectMolecule(Object.keys(this.props.saved_mols)[0]);
   };
 
-  combinedtwofunction = () => {
-    this.saveMolecule();
-    this.initSelectMolecule();
-  };
+
+  resetRGroups = () => {
+    console.log('Running R groups');
+    this.props.selectRGroup('A00', 'B00', '800,800');
+  }
 
   render() {
 
     if (this.props.saved_or_not == false) {
       return (
         <div className="control-panel">
-          <button>Clear</button>
-          <button onClick ={this.combinedtwofunction}>Make</button>
+          <button onClick={this.resetRGroups}>Clear</button>
+          <button onClick ={this.saveMolecule}>Make</button>
         </div>)
     }
 
@@ -41,7 +42,7 @@ class ControlPanel extends React.Component {
 
       return (
         <div className="control-panel">
-          <button>Clear</button>
+          <button onClick={this.resetRGroups}>Clear</button>
           <button onClick={this.saveMolecule}>Make</button>
           <Link to="/assay">
             <button onClick={this.initSelectMolecule}>Test</button>
@@ -61,6 +62,7 @@ function mapStateToProps(state) {
 const actionCreators = {
   selectMolecule: selectorActions.selectMolecule,
   saveMolecule: assayActions.saveMolecule,
+  selectRGroup: selectorActions.selectRGroup,
 };
 
 export default connect(mapStateToProps, actionCreators)(ControlPanel);

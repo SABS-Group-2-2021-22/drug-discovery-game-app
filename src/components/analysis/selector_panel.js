@@ -48,7 +48,6 @@ class SelectorPanel extends React.Component {
   };
 
   render() {
-    // return ( <div className="selector-panel">
     return ( <div>
         {this.props.selected_or_not ? (
           <div className="selector-panel">
