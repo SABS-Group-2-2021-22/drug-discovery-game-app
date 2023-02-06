@@ -3,7 +3,8 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./builder.css";
 import RGroupList from "./r_group_list.js";
 import MoleculeImage from "./molecule_display.js";
-import MoleculeList from "../assay/molecule_list.js";
+// import MoleculeList from "../assay/molecule_list.js";
+import MoleculeList from "./molecule_list.js";
 import ControlPanel from "./control_panel.js";
 import { connect } from "react-redux";
 
@@ -68,10 +69,12 @@ class Builder extends React.Component {
             </div>
             <ControlPanel />
           </div>
+          { Object.keys(this.props.saved_mols).length > 0 && 
           <div className="molecule-chooser-bar">
-              Your molecules:
+              <p>Your molecules:</p>
               <MoleculeList />
           </div>
+          }
         </div>
       </div>
     );
@@ -81,6 +84,7 @@ class Builder extends React.Component {
 function mapStateToProps(state) {
   return {
     help: state.init.help.build,
+    saved_mols: state.assay.saved_mols
   };
 }
 

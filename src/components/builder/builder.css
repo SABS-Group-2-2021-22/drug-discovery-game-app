@@ -144,7 +144,9 @@
   border-radius: 5px;
   background-color: #fdfbfb;
   white-space: pre-line;
-  width: 50vh;
+  width: 20vw;
+  max-height: 50vh;
+  overflow-y: scroll;
 }
 
 .build > .r-group-selection > .r-group-a {
@@ -155,10 +157,69 @@
   overflow-y: scroll;
 }
 
-.molecule-chooser-bar{
+/* .build > .molecule-chooser-bar{
   padding: 5px;
   background-color: white;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
+}
+
+.build > .molecule-container{
+  width: 170px;
+  padding-top:5px;
+}
+
+.build > .molecule: img{
+  widht:160px;
+} */
+
+.build > .molecule-chooser-bar {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  flex-grow: 2;
+  min-height: 100%;
+  align-items: end;
+  padding-bottom: 10pt;
+  justify-content: flex-start;
+}
+
+.build > .molecule-chooser-bar p{
+  margin-right: 60px;
+}
+
+.build > .molecule-chooser-bar > .molecule-list {
+  padding: 5px;
+  background-color: white;
+  overflow-y: scroll;
+}
+
+
+
+.build > .molecule-chooser-bar > .molecule-list > .molecule-container {
+  padding-top: 5px;
+  width: 170px;
+}
+
+.build > .molecule-chooser-bar > .molecule-list > .molecule-container > .molecule {
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #212529;
+  border-radius: 5px;
+  padding: 5px;
+  width:170px
+}
+
+.molecule-widget:hover {
+  opacity: 0.5;
+}
+
+.molecule-widget:active {
+  background-color: darkgray;
+}
+
+.build > .molecule-chooser-bar > .molecule-list > .molecule-container > .molecule img {
+  width: 160px;
 }
