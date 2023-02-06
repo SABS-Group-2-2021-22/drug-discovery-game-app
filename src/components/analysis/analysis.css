@@ -59,7 +59,6 @@
   display: flex;
   /* flex-grow: 1.5; */
   min-height: 100%;
-  min-width: 85%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -82,6 +81,11 @@
   border-width: 1.8px;
   margin-right: 20px;
   margin-top: 1px;
+  font-size: min(1vw, 16px);
+}
+
+.comparison-graph .help-button:active {
+  background-color: #fdfbfb;
 }
 
 .comparison-graph button:not(.help-button) {
@@ -99,7 +103,7 @@
   margin-bottom: 1vh;
   display: flex;
   flex-direction: row;
-  width: 900px;
+  width: 60vw;
   justify-content: flex-end;
 }
 
@@ -131,7 +135,5 @@
   border-radius: 5px;
   background-color: #fdfbfb;
   white-space: pre-line;
-  width: 35vh;
-  margin-right: 100vh;
-  align-items: center;
+  margin-right: 47vw;
 }
