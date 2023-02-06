@@ -47,6 +47,33 @@
   opacity: 1;
 }
 
+.selector-panel-single-button {
+  display: flex;
+  justify-content: space-around;
+  padding-left:20px;
+  padding-right:20px;
+}
+
+ .selector-panel-single-button button {
+  background-color: #212529;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  height: 70px;
+  font-size: max(14px, 1vw);
+  margin: 2px
+}
+
+.selector-panel-single-button button:hover {
+  opacity: 0.7;
+  font-weight: bold;
+}
+
+.selector-panel-single-button button:active {
+  background-color: #0d0e10;
+  opacity: 1;
+}
+
 .final-molecule-bar .molecule-widget {
   padding: 15px;
   width: 100%;

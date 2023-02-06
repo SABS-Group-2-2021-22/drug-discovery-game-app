@@ -43,6 +43,7 @@
   justify-content: center;
   align-content: center;
   height: 45vh;
+  padding-top: 8vh;
 }
 
 .assay > .mol-visbox > .rendered-molecule > .molecule {
