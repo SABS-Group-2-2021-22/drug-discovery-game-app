@@ -197,7 +197,7 @@
 
 .help-toggle {
   z-index: 10;
-  margin-left: 43vw;
+  margin-left: max(43vw, 570px);
   position: absolute;
 }
 
