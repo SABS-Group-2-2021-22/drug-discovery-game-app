@@ -48,15 +48,16 @@ class SelectorPanel extends React.Component {
   };
 
   render() {
-    return ( <div className="selector-panel">
+    // return ( <div className="selector-panel">
+    return ( <div>
         {this.props.selected_or_not ? (
-          <div>
+          <div className="selector-panel">
         <button onClick={this.chooseMolecule}>Choose This Molecule</button>
         <Link to="/results">
           <button onClick={this.submitResult}>Reveal Final Molecule</button>
         </Link>
         </div>
-        ) : (<div>
+        ) : (<div className="selector-panel">
         <button onClick={this.chooseMolecule}>Choose This Molecule</button>
        </div> )
         }
