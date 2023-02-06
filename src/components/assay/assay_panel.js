@@ -283,9 +283,11 @@ class AssayPanel extends React.Component {
               >
               <div className="assay-name">Human Clearance</div>
               <div className="assay-cost-and-time">
+                <p>
                 {" "}
                 Cost £9,000
                 {"\n"}Duration: 3.5 weeks
+                </p>
               </div>
               </button>
           </div>
@@ -305,9 +307,11 @@ class AssayPanel extends React.Component {
               >
               <div className="assay-name">Human Clearance</div>
               <div className="assay-cost-and-time">
+              <p>
                 {" "}
                 Cost £9,000
                 {"\n"}Duration: 3.5 weeks
+                </p>
               </div>
               </button>
           </div>
@@ -465,7 +469,7 @@ class AssayPanel extends React.Component {
             this.onUnHover();
           }}
         >
-          <div className="assay-name">Check Lipinski Rules</div>
+          <div className="assay-name">Lipinski Rules</div>
         </button>
         {this.state.hover == "chklip" && this.props.toggle_help && (
           <div className="hover-info-text-chklip">
@@ -487,7 +491,7 @@ class AssayPanel extends React.Component {
             this.onUnHover();
           }}
         >
-          <div className="assay-name">Calculate Descriptors</div>
+          <div className="assay-name">Descriptors</div>
         </button>
         {this.state.hover == "descr" && this.props.toggle_help && (
           <div className="hover-info-text-descr">
