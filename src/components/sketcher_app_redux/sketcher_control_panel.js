@@ -17,8 +17,7 @@ render() {
   if (this.props.saved_or_not == false) {
     return (
       <div className="sketcher-control-panel">
-        <button>Clear</button>
-        <button onClick ={this.combinedtwofunction}>Make</button>
+        <button onClick ={this.props.triggerSaving}>Make</button>
       </div>)
   }
 
@@ -26,10 +25,9 @@ render() {
 
     return (
       <div className="sketcher-control-panel">
-        <button>Clear</button>
-        <button onClick={this.saveMolecule}>Make</button>
+        <button onClick={this.props.triggerSaving}>Make</button>
         <Link to="/assay">
-          <button onClick={this.initSelectMolecule}>Test</button>
+          <button>Test</button>
         </Link>
       </div>)
   }
