@@ -39,7 +39,6 @@
 
 .selector-panel button:hover {
   opacity: 0.7;
-  font-weight: bold;
 }
 
 .selector-panel button:active {
@@ -66,7 +65,6 @@
 
 .selector-panel-single-button button:hover {
   opacity: 0.7;
-  font-weight: bold;
 }
 
 .selector-panel-single-button button:active {
