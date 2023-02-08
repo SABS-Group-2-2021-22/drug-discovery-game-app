@@ -17,6 +17,7 @@ class MoleculeList extends React.Component {
             <MoleculeWidget
               key={Object.keys(this.props.saved_mols)[i]}
               mol_id={Object.keys(this.props.saved_mols)[i]}
+              selected_mol={this.props.selected_mol}
             />
           )
         )}
@@ -28,6 +29,7 @@ class MoleculeList extends React.Component {
 function mapStateToProps(state) {
   return {
     saved_mols: state.assay.saved_mols,
+    selected_mol: state.selector.selected_mol
   };
 }
 
