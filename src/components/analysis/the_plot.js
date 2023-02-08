@@ -138,7 +138,7 @@ class ThePlot extends React.Component {
             yaxis: { title: { text: axes_label[1] } },
           }}
           useResizeHandler={true}
-          style={{ width: "90%", height: "90%" }}
+          style={{ width: "99%", height: "99%" }}
           onHover={this.onHover}
           onUnhover={this.onUnhover}
         />

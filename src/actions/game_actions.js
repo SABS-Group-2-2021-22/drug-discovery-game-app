@@ -30,29 +30,11 @@ function updateTimeSucceeded(time) {
  * @param {state object} current_time the current time remaining
  * @returns dispatches updateTimeSucceeded with the new time
  */
-function updateTime(assays, current_time) {
-  var time_max = 0;
-  const assay_times = {
-    pIC50: 1.0,
-    clearance_mouse: 3.0,
-    clearance_human: 3.5,
-    logd: 1.5,
-    pampa: 1.0,
-  }; //predefined number of weeks each assay (weeks)
-  for (const i of assays) {
-    for (const [k, v] of Object.entries(assay_times)) {
-      if (i === k) {
-        if (time_max < v) {
-          time_max = v;
-        }
-         // take the maximum time value so assays run in
-      }
-    }
-  }
-  let time = current_time - time_max; //calculate new time
-  return (dispatch) => {
-    dispatch(updateTimeSucceeded(time));
-  }; //dispatch time to the store via the updateTimeSucceeded synchronous action
+  function updateTime(time_cost, current_time) {
+    let time = current_time - time_cost; //calculate new time
+    return (dispatch) => {
+      dispatch(updateTimeSucceeded(time));
+    }; //dispatch time to the store via the updateTimeSucceeded synchronous action
 }
 
 /**
@@ -85,26 +67,11 @@ function updateSubTotalSucceeded(subtotal) {
  * @param {state_object} current_money the current money remaining
  * @returns dispatches updateMoneySucceeded with the new amount of money
  */
-function updateMoney(assays, current_money) {
-  let cost_sum = 0;
-  const assay_prices = {
-    pIC50: 70.0,
-    clearance_mouse: 7000.0,
-    clearance_human: 9000.0,
-    logd: 1000.0,
-    pampa: 700.0,
-  }; //predfined cost of each assay
-  for (const i of assays) {
-    for (const [k, v] of Object.entries(assay_prices)) {
-      if (i === k) {
-          cost_sum += v; //add money for each assay to total cost
-        }
-      }
-    }
-  let money = current_money - cost_sum; //calculate new amount of money
+function updateMoney(cost, current_money) {
+  let money =  current_money - cost  
   return (dispatch) => {
-    dispatch(updateMoneySucceeded(money));
-  }; //dispatch money to the store via the updateMoneySucceded synchronous action
+      dispatch(updateMoneySucceeded(money));
+    }; //dispatch money to the store via the updateMoneySucceded synchronous action
 } 
 
 function updateSubTotal(assays, cost_sum) {

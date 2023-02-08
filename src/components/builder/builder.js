@@ -3,7 +3,8 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./builder.css";
 import RGroupList from "./r_group_list.js";
 import MoleculeImage from "./molecule_display.js";
-import MoleculeList from "../assay/molecule_list.js";
+// import MoleculeList from "../assay/molecule_list.js";
+import MoleculeList from "./molecule_list.js";
 import ControlPanel from "./control_panel.js";
 import { connect } from "react-redux";
 
@@ -11,17 +12,18 @@ class Builder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hover: false,
+      toggle_help: false,
     };
   }
 
-  onHover = (event) => {
-    this.setState({ hover: true });
-    console.log(this.props.help);
-  };
-
-  onUnHover = (event) => {
-    this.setState({ hover: false });
+  toggleHelp = (event) => {
+    console.log(this.state.toggle_help)
+    if (this.state.toggle_help) {
+      this.setState({ toggle_help: false });
+    }
+    else {
+      this.setState({ toggle_help: true });
+    }
   };
 
   render() {
@@ -38,10 +40,10 @@ class Builder extends React.Component {
               <RGroupList r_group_pos={"B"} />
             </div>
             <div className="hover-info">
-              <button onMouseEnter={this.onHover} onMouseLeave={this.onUnHover}>
+              <button onClick={this.toggleHelp}>
                 ?
               </button>
-              {this.state.hover && (
+              {this.state.toggle_help && (
                 <div className="info-text">
                   <p>
                     <div>{this.props.help[0]}</div>
@@ -67,10 +69,12 @@ class Builder extends React.Component {
             </div>
             <ControlPanel />
           </div>
+          { Object.keys(this.props.saved_mols).length > 0 && 
           <div className="molecule-chooser-bar">
-              Your molecules:
+              <p>Your molecules:</p>
               <MoleculeList />
           </div>
+          }
         </div>
       </div>
     );
@@ -80,6 +84,7 @@ class Builder extends React.Component {
 function mapStateToProps(state) {
   return {
     help: state.init.help.build,
+    saved_mols: state.assay.saved_mols
   };
 }
 

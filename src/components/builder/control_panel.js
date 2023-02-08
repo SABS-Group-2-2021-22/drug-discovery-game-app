@@ -11,10 +11,16 @@ class ControlPanel extends React.Component {
 
   // save the built molecule in the store
   saveMolecule = () => {
+    console.log(this.props.selected_r_groups)
+    if (this.props.selected_r_groups.A == 'A00' || this.props.selected_r_groups.B == 'B00'){
+      console.log('Blocked')
+    }
+    else{
     this.props.saveMolecule(
       this.props.saved_mols,
       this.props.selected_r_groups
     );
+    }
   };
 
   // set the first saved molecule as the selected molecule for the assay page
@@ -22,18 +28,18 @@ class ControlPanel extends React.Component {
     this.props.selectMolecule(Object.keys(this.props.saved_mols)[0]);
   };
 
-  combinedtwofunction = () => {
-    this.saveMolecule();
-    this.initSelectMolecule();
-  };
+
+  resetRGroups = () => {
+    this.props.selectRGroup('A00', 'B00', '800,800');
+  }
 
   render() {
 
     if (this.props.saved_or_not == false) {
       return (
         <div className="control-panel">
-          <button>Clear</button>
-          <button onClick ={this.combinedtwofunction}>Make</button>
+          <button onClick={this.resetRGroups}>Clear</button>
+          { (this.props.selected_r_groups.A == 'A00' || this.props.selected_r_groups.B == 'B00')? '' : <button onClick={this.saveMolecule}>Make</button>}
         </div>)
     }
 
@@ -41,8 +47,8 @@ class ControlPanel extends React.Component {
 
       return (
         <div className="control-panel">
-          <button>Clear</button>
-          <button onClick={this.saveMolecule}>Make</button>
+          <button onClick={this.resetRGroups}>Clear</button>
+          { (this.props.selected_r_groups.A == 'A00' || this.props.selected_r_groups.B == 'B00')? '' : <button onClick={this.saveMolecule}>Make</button>}
           <Link to="/assay">
             <button onClick={this.initSelectMolecule}>Test</button>
           </Link>
@@ -61,6 +67,7 @@ function mapStateToProps(state) {
 const actionCreators = {
   selectMolecule: selectorActions.selectMolecule,
   saveMolecule: assayActions.saveMolecule,
+  selectRGroup: selectorActions.selectRGroup,
 };
 
 export default connect(mapStateToProps, actionCreators)(ControlPanel);

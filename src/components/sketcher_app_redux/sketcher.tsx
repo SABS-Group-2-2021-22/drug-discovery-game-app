@@ -27,7 +27,7 @@ export class Sketcher extends React.Component <SketcherType>{
 
   static defaultProps = {profileStore:{}}
 
-  handleOnInit = async (ketcher: Ketcher) => {
+    handleOnInit = async (ketcher: any) => {          // change type to 'any' to resolve type conflict mentioned here https://github.com/epam/ketcher/issues/1970
     this.ketcher = ketcher;
     (window as any).ketcher = ketcher;
     const initial_data = "O=C(O)C(NS(=O)(=O)c1ccccc1)"

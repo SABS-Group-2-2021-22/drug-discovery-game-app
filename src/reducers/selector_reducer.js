@@ -1,6 +1,6 @@
 const initialState = {
   selected_or_not : false,
-  selected_r_groups: { A: "A01", B: "B01", molecule: {} }, //the inital r groups and an empty molecule
+  selected_r_groups: { A: "A00", B: "B00", molecule: {} }, //the inital r groups and an empty molecule
 }
 
 /**

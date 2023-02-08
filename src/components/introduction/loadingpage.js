@@ -1,5 +1,5 @@
 import React from "react";
-import "./loadingpage.css";
+import "./introduction.css";
 import { Link } from "react-router-dom";
 import pymolpic from "../../assets/pymolMMP12.png";
 import { connect } from "react-redux";
