@@ -1,25 +1,19 @@
+import * as api from "../api";
 
 export const userService = {
     login,
     logout
 };
 
-function login(username){
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify({ username })
-        // body: username,
-    };
-
-    return fetch(`http://127.0.0.1:5000/users/authenticate`, requestOptions)
-  //  return fetch(`https://drug-discovery-game-backend.onrender.com/users/authenticate`, requestOptions)
+function login(user){
+    const usernameDict = {
+        username: JSON.stringify({ user })
+    }
+    return api.fetchLogin(usernameDict)
         .then(handleResponse)
         .then(user => {
             // stores user details in local storage to maintain login state between page refreshes
             localStorage.setItem('user', JSON.stringify(user));
-            // localStorage.setItem('user', user);
-
             return user;
         });
 }

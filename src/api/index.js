@@ -11,6 +11,10 @@ const client = axios.create({
   },
 });
 
+export function fetchLogin(username){
+  return client.post("/users/authenticate", username);
+}
+
 export function fetchRGroup(id) {
   client.defaults.headers["username"] = localStorage.user;
   return client.get("/r-group-" + id);
