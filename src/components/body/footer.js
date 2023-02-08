@@ -16,8 +16,9 @@ class Footer extends React.Component {
           to="/login"
           onClick={this.props.logout}
         >
-          {" "}
-          Log out{" "}
+          <button onClick={this.props.logout}>Log out</button>
+          {/* {" "}
+          Log out{" "} */}
         </Link>
       </div>
     );

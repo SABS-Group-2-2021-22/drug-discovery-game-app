@@ -12,8 +12,9 @@ function login(username){
         // body: username,
     };
 
-    return fetch(`http://127.0.0.1:5000/users/authenticate`, requestOptions)
-  //  return fetch(`https://drug-discovery-game-backend.onrender.com/users/authenticate`, requestOptions)
+    // return fetch(`http://127.0.0.1:5000/users/authenticate`, requestOptions)
+   return fetch(`https://drug-design-game-backend.onrender.com/users/authenticate`, requestOptions)
+//    return fetch(`https://drug-discovery-game-backend.onrender.com/users/authenticate`, requestOptions)
         .then(handleResponse)
         .then(user => {
             // stores user details in local storage to maintain login state between page refreshes
