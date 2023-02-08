@@ -26,12 +26,26 @@ function login(username) {
     // local helper functions
     function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
     function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
-    function failure(user) { return { type: userConstants.LOGIN_FAILURE, user } }
+    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
 }
 
 
 function logout() {
-    userService.logout();
-    console.log('Logout run')
-    return { type: userConstants.LOGOUT };
+    return dispatch => {
+        dispatch(request());
+
+        userService.logout()
+        .then( () => {dispatch(success()); 
+        }, 
+        error => {
+            dispatch(failure(error.toString()));
+        } );
+        // console.log('Logout run')
+        // return { type: userConstants.LOGOUT };
+    
+    }
+    function request() { return { type: userConstants.LOGOUT_REQUEST } }
+    function success() { return { type: userConstants.LOGOUT_SUCCESS } }
+    function failure(error) { return { type: userConstants.LOGOUT_FAILURE , error} }
+
 }
