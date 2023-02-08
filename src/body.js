@@ -30,7 +30,8 @@ import ReactDOM from 'react-dom';
     updateTimeAndMoney = () => {
         // const base_url = 'http://127.0.0.1:5000/update_time_money'
         // const base_url = 'http://drug-discovery-game-backend.herokuapp.com/update_time_money'
-        const base_url = 'https://drug-discovery-game-backend.onrender.com/update_time_money'
+        // const base_url = 'https://drug-discovery-game-backend.onrender.com/update_time_money'
+        const base_url = 'https://drug-design-game-backend.onrender.com/update_time_money'
         fetch(base_url)
         .then((response) => response.json())
         .then(time_and_money => {
