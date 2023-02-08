@@ -10,6 +10,8 @@ class Assays extends React.Component {
   //ensure the metrics for the correct molecule are displayed
   srcRoute = () => {
     if (this.props.mol_id === "Roche") {
+      console.log('Roche');
+      console.log(this.props.Roche.data.drug_props);
       return this.props.Roche.data.drug_props;
     } else {
       return this.props.saved_mols[this.props.mol_id].data.drug_props;
