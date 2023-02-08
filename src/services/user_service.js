@@ -1,7 +1,9 @@
+import { gameActions } from "../actions";
+
 
 export const userService = {
     login,
-    logout
+    logout,
 };
 
 function login(username){
@@ -28,7 +30,7 @@ function login(username){
 function logout() {
     // remove user from local browser storage
     localStorage.removeItem('user');
-    this.props.resetGame();
+    gameActions.resetGame();
 }
 
 function handleResponse(response) {
