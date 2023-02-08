@@ -11,6 +11,7 @@ class MoleculeWidget extends React.Component {
     return (
       <div className="molecule-container">
           <MoleculeImage mol_id={this.props.mol_id} />
+          {this.props.mol_id}
       </div>
     );
   }
