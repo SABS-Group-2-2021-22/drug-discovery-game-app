@@ -53,6 +53,7 @@ class Index extends React.Component {
           <Route path="/introduction3" element={<Introduction3 />} />
           <Route path="/loadingpage" element={<Loadingpage />} />
           <Route path="/build" element={(this.props.gamemode === 'builder') ? <Builder /> : <SketcherAppRedux />} />
+          <Route path="/assay" element={< Assay />} />
           <Route path="/analysis" element={< Analysis />} />
           <Route path="/results" element={< Results />} />
 
