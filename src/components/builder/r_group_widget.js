@@ -27,9 +27,13 @@ class RGroupWidget extends React.Component {
   };
 
   render() {
+    const selected_r_group_style = {
+      color: (this.props.selected_r_groups["A"] == this.props.r_group_id || this.props.selected_r_groups["B"] == this.props.r_group_id ? "white" : "black"),
+      backgroundColor: (this.props.selected_r_groups["A"] == this.props.r_group_id || this.props.selected_r_groups["B"] == this.props.r_group_id ? "#212529" : "#FFFFFF")
+    };
     return (
       <div className="r-group-container">
-        <div className="r-group-card">
+        <div className="r-group-card" style={selected_r_group_style}>
           <img
             className="r-group-img"
             src={this.props.r_groups[[this.props.r_group_id]].data.img_html}
