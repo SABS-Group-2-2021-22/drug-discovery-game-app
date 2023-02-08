@@ -16,7 +16,7 @@ class Results extends React.Component {
 
   save_and_resetGame = () => {
     let saved_user = JSON.parse(localStorage.getItem('user'));
-    this.props.saveGame();
+    // this.props.saveGame(); // temporarily disabling any saving of user data
     this.props.resetGame();
     this.props.login(saved_user);
     window.location.href="/";
