@@ -12,11 +12,12 @@ class Docking extends React.Component {
   }
 
   render() {
-    let file = {filestring:"./1e7i.pdb", type:"pdb"}
-    // https://files.rcsb.org/view/
-    // let url = "http://localhost:5000/docking"
     let url = "http://localhost:5000/docking-6lu7.pdb"
-    console.log(file.filestring)
+    let molstar_props = {
+      url:url,
+      //showControls:true,
+      useInterface:true
+    }
     return (
       <div className="wrapper">
         <div className="docking-elements">
@@ -25,7 +26,7 @@ class Docking extends React.Component {
           </div>
           <div className="docking-and-button">
             <div className="molstar">
-              <Molstar url={url}/>
+              <Molstar {...molstar_props}/>
             </div>
             <div className="affinity">
               Affinity score: -8.0
