@@ -14,7 +14,7 @@ class Footer extends React.Component {
         <Link
           className="navigation-link"
           to="/login"
-          // onClick={this.props.logout}
+          onClick={this.props.logout}
         >
           <button onClick={this.props.logout}>Log out</button>
           {/* {" "}
