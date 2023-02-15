@@ -55,9 +55,16 @@ class SelectorPanel extends React.Component {
         <Link to="/results">
           <button onClick={this.submitResult}>Reveal Final Molecule</button>
         </Link>
+        <Link to="/assay">
+              <button> Back </button>
+            </Link>
         </div>
+        
         ) : (<div className="selector-panel-single-button">
         <button onClick={this.chooseMolecule}>Choose This Molecule</button>
+        <Link to="/assay">
+              <button> Back </button>
+            </Link>
        </div> )
         }
       </div>

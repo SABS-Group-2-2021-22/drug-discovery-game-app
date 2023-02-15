@@ -18,6 +18,9 @@ class ControlPanel extends React.Component {
   render() {
     return ( 
       <div className="control-panel">
+        <Link to="/build">
+          <button> Back </button>
+        </Link>
         <Link to="/analysis">
           <button onClick={this.initPlotData}>Analysis</button>
         </Link>

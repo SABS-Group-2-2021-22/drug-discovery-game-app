@@ -3,6 +3,7 @@ import Plot from "react-plotly.js";
 import MoleculeImage from "./molecule_image.js";
 import "./analysis.css";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class ThePlot extends React.Component {
   constructor(props) {
@@ -129,6 +130,7 @@ class ThePlot extends React.Component {
     return (
       <div className="plot-container">
         <div>{this.showCard()}</div>
+
         <Plot
           data={this.addTraces([this.props.plot_data])}
           layout={{
@@ -142,6 +144,7 @@ class ThePlot extends React.Component {
           onHover={this.onHover}
           onUnhover={this.onUnhover}
         />
+
         <div className="plot-button-row">
           <button
             className="help-button"
