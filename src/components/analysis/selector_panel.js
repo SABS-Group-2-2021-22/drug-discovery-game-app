@@ -9,6 +9,9 @@ import { Link } from "react-router-dom";
 class SelectorPanel extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      helpHover: false,
+    };
   }
 
   // Fire the chooseMolecule or chooseSketcherMolecule (mode dependent) when
@@ -22,6 +25,8 @@ class SelectorPanel extends React.Component {
         this.props.saved_mols[this.props.selected_mol].data.smiles
       );
     }
+    this.fetchSpider();
+    this.fetchCompText();
   };
 
   // retrieve data for the spider plot on the results page
@@ -42,31 +47,40 @@ class SelectorPanel extends React.Component {
     }
   };
 
-  submitResult = () => {
-    this.fetchSpider();
-    this.fetchCompText();
+  onHelpHover = (event) => {
+    this.setState({ helpHover: true });
+  };
+
+  onUnHelpHover = (event) => {
+    this.setState({ helpHover: false });
   };
 
   render() {
     return ( <div>
-        {this.props.selected_or_not ? (
-          <div className="selector-panel">
-        <button onClick={this.chooseMolecule}>Choose This Molecule</button>
-        <Link to="/results">
-          <button onClick={this.submitResult}>Reveal Final Molecule</button>
-        </Link>
-        <Link to="/assay">
+        <div className="selector-panel">
+        <div className="selector-panel-select-button">
+          <Link to="/assay">
               <button> Back </button>
-            </Link>
+          </Link>
+          <Link to="/results">
+              <button onClick={this.chooseMolecule}>Select Final Candidate</button>
+          </Link>
         </div>
-        
-        ) : (<div className="selector-panel-single-button">
-        <button onClick={this.chooseMolecule}>Choose This Molecule</button>
-        <Link to="/assay">
-              <button> Back </button>
-            </Link>
-       </div> )
-        }
+        <button
+            className="help-button"
+            onMouseEnter={this.onHelpHover}
+            onMouseLeave={this.onUnHelpHover}
+          >
+            ?
+        </button>
+        </div>
+        {this.state.helpHover && (
+            <div className="help-info-text">
+              <p>
+                <div>{this.props.help[1]}</div>
+              </p>
+            </div>
+          )}
       </div>
     );
   }
@@ -79,6 +93,7 @@ function mapStateToProps(state) {
     selected_or_not: state.selector.selected_or_not,
     chosen_mol: state.selector.chosen_mol,
     gamemode: state.game.gamemode,
+    help: state.init.help.analysis,
   };
 }
 

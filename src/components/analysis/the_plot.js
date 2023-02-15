@@ -153,6 +153,7 @@ class ThePlot extends React.Component {
           >
             ?
           </button>
+          x:&nbsp;
           <button onClick={() => this.relayout("--", "x")}>--</button>
           {this.state.helpHover && (
             <div className="help-info-text">
@@ -172,6 +173,7 @@ class ThePlot extends React.Component {
           <button onClick={() => this.relayout("logP", "x")}>logP</button>
         </div>
         <div className="plot-button-row">
+          y:&nbsp;
           <button onClick={() => this.relayout("--", "y")}>--</button>
           <button onClick={() => this.relayout("logd", "y")}>logD</button>
           <button onClick={() => this.relayout("pic50", "y")}>pIC50</button>
