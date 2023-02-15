@@ -3,8 +3,9 @@ import { NavLink } from "react-router-dom";
 
 import "./navigation.css";
 
-function Navigation() {
-    return (
+class Navigation extends React.Component {
+  render() {
+    return(
         <div className="navigation">
           <div className="container">
             <NavLink className="navigation-brand" to="/">
@@ -13,7 +14,7 @@ function Navigation() {
             <div>
               <ul className="navigation-bar">
                 <li className="navigation-item">
-                  <NavLink className="navigation-link" to="/">
+                  <NavLink className="navigation-home" to="/">
                     Home
                   </NavLink>
                 </li>
@@ -23,9 +24,10 @@ function Navigation() {
                   </NavLink>
                 </li>
                 <li className="navigation-item">
-                  <NavLink className="navigation-link" to="/loadingpage">
+                  <NavLink className="navigation-link" to="/build">
                     Design
                   </NavLink>
+                  
                 </li>
                 <li className="navigation-item">
                   <NavLink className="navigation-link" to="/assay">
@@ -46,7 +48,7 @@ function Navigation() {
             </div>
           </div>
       </div>
-    );
+  )};
 }
 
 export default Navigation

@@ -43,8 +43,18 @@
     flex-direction: column;
 }
 
+.navigation-home {
+    color: #FFF;
+    text-decoration: none;
+}
+
 .navigation-link {
     color: #FFF;
+    text-decoration: none;
+}
+
+.navigation-link.active {
+    color: red;
     text-decoration: none;
 }
 
@@ -52,6 +62,11 @@
     color: #9a9c9e;
     text-decoration: none;
 }
+
+/* .current {
+    color:red; 
+    border:1px solid red;
+  } */
 
 p > h5 {
     font-weight: 400;
