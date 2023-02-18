@@ -16,8 +16,7 @@ class Footer extends React.Component {
           to="/login"
           onClick={this.props.logout}
         >
-          {" "}
-          Log out{" "}
+          <button>Log out</button>
         </Link>
       </div>
     );
@@ -31,7 +30,7 @@ class Footer extends React.Component {
             <p class="m-0 text-start text-white">
               {this.props.loggedIn && this.userStatus()}
             </p>
-          </div>
+          </div>        
           <div className="time-money-status">
             <p class="m-0 text-end text-white">
               <h5>🕑: {this.props.time} weeks left</h5>

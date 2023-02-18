@@ -12,6 +12,16 @@ class Introduction extends React.Component {
   constructor(props) {
     super(props);
   }
+  
+  componentWillMount() {
+    this.props.num < 100 && this.props.fetchRGroup(this.props.countRGroup);
+    this.props.selectRGroup(
+      this.props.selected_r_groups["A"],
+      this.props.selected_r_groups["B"],
+      "800,800"
+    );
+    this.props.fetchHelp();
+  }
 
   render() {
     return (
@@ -66,4 +76,18 @@ class Introduction extends React.Component {
   }
 }
 
-export default (Introduction);
+function mapStateToProps(state) {
+  return {
+    num: state.init.num,
+    selected_r_groups: state.selector.selected_r_groups,
+  };
+}
+
+const actionCreators = {
+  fetchHelp: initActions.fetchHelp,
+  fetchRGroup: initActions.fetchRGroup,
+  countRGroup: initActions.countRGroup,
+  selectRGroup: selectorActions.selectRGroup,
+};
+
+export default connect(mapStateToProps, actionCreators)(Introduction);
