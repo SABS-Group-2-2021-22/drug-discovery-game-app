@@ -40,8 +40,6 @@ function logout() {
         error => {
             dispatch(failure(error.toString()));
         } );
-        // console.log('Logout run')
-        // return { type: userConstants.LOGOUT };
     
     }
     function request() { return { type: userConstants.LOGOUT_REQUEST } }
