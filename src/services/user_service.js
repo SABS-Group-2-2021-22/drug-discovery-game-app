@@ -1,7 +1,9 @@
+import { gameActions } from "../actions";
+
 
 export const userService = {
     login,
-    logout
+    logout,
 };
 
 function login(username){
@@ -12,8 +14,8 @@ function login(username){
         // body: username,
     };
 
-    // return fetch(`http://127.0.0.1:5000/users/authenticate`, requestOptions)
-   return fetch(`https://drug-design-game-backend.onrender.com/users/authenticate`, requestOptions)
+    return fetch(`http://127.0.0.1:5000/users/authenticate`, requestOptions)
+//    return fetch(`https://drug-design-game-backend.onrender.com/users/authenticate`, requestOptions)
 //    return fetch(`https://drug-discovery-game-backend.onrender.com/users/authenticate`, requestOptions)
         .then(handleResponse)
         .then(user => {
@@ -28,7 +30,7 @@ function login(username){
 function logout() {
     // remove user from local browser storage
     localStorage.removeItem('user');
-    this.props.resetGame();
+    gameActions.resetGame();
 }
 
 function handleResponse(response) {
