@@ -20,6 +20,12 @@ class Assays extends React.Component {
           )}
         </div>
         <div class="row" className="stats-type-header">
+          Date Created:
+        </div>
+        <div class="row">
+          Week {this.props.saved_mols[this.props.mol_id].data.date_created}
+        </div>
+        <div class="row" className="stats-type-header">
           Assay Data:
         </div>
         <div class="row">
