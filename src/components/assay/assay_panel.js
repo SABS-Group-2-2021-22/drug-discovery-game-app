@@ -456,50 +456,6 @@ class AssayPanel extends React.Component {
             </p>
           </div>
         )}
-        <button
-          label="Run Filters"
-          onClick={() => {
-            this.onClick("lipinski");
-            this.runDescriptorsOrLipinski();
-          }}
-          onMouseEnter={() => {
-            this.onHover("chklip");
-          }}
-          onMouseLeave={() => {
-            this.onUnHover();
-          }}
-        >
-          <div className="assay-name">Lipinski Rules</div>
-        </button>
-        {this.state.hover == "chklip" && this.props.toggle_help && (
-          <div className="hover-info-text-chklip">
-            <p>
-              <div>{this.props.help[5]}</div>
-            </p>
-          </div>
-        )}
-        <button
-          label="Calculate Descriptors"
-          onClick={() => {
-            this.onClick("descriptors");
-            this.runDescriptorsOrLipinski();
-          }}
-          onMouseEnter={() => {
-            this.onHover("descr");
-          }}
-          onMouseLeave={() => {
-            this.onUnHover();
-          }}
-        >
-          <div className="assay-name">Descriptors</div>
-        </button>
-        {this.state.hover == "descr" && this.props.toggle_help && (
-          <div className="hover-info-text-descr">
-            <p>
-              <div>{this.props.help[6]}</div>
-            </p>
-          </div>
-        )}
       </div>
     );
   }
