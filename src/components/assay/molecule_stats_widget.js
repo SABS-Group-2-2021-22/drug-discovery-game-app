@@ -13,11 +13,8 @@ class MoleculeStats extends React.Component {
   render() {
     return (
       <div className="mol-stats">
-        {this.props.saved_mols[this.props.mol_id].data.assays_run.lipinski && (
-          <Lipinski mol_id={this.props.mol_id} />
-        )}
-        {this.props.saved_mols[this.props.mol_id].data.assays_run
-          .descriptors && <Descriptors mol_id={this.props.mol_id} />}
+        <Lipinski mol_id={this.props.mol_id} />
+        <Descriptors mol_id={this.props.mol_id} />
         {this.props.saved_mols[this.props.mol_id].data.assays_run
           .drug_props && <Assays mol_id={this.props.mol_id} />}
       </div>
