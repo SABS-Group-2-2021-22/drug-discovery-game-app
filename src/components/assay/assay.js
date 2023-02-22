@@ -9,21 +9,6 @@ import ControlPanel from "./control_panel.js";
 import { assayActions } from "../../actions";
 import { Link } from "react-router-dom"
 
-class InvoiceAmount extends React.Component {
-  constructor(props) {
-    super(props); 
-  };
-
-  render() {
-    return (
-      <div className="invoice-amount">
-        Running all of your assays will cost: {'\n'}
-        £{this.props.cost} {'\n'} Duration: {this.props.time} weeks
-      </div>
-    )
-  }
-}
-
 class Assay extends React.Component {
   constructor(props) {
     super(props);
@@ -98,20 +83,14 @@ class Assay extends React.Component {
     }
     console.log(this.props.toggle_help)
   }
-  
-
-  invoiceDisplay() {
-    if (this.state.invoice_display) {
-      this.setState({invoice_display: false}) ;
-    } else {
-      this.setState({invoice_display: true}) ;
-    }
-  }
-
-
-
 
   render() {
+    const cost_color = {
+      color: (this.props.money - this.runAssays().money >= 0 ? "black" : "red"),
+    };
+    const duration_color = {
+      color: (this.props.time - this.runAssays().time >= 0 ? "black" : "red"),
+    };
     return (
       <div className="wrapper">
         {this.props.saved_or_not ? (
@@ -129,33 +108,6 @@ class Assay extends React.Component {
                 </div>
               )}
             </div>
-            <div className="invoice">
-              {this.state.invoice_display && (
-                <div className="invoice-activebutton">
-                  <button onClick={() => {this.invoiceDisplay(); }}>Hide invoice</button>
-                </div>
-              )}
-
-
-              {this.state.invoice_display == false && (
-                <div className="invoice-inactivebutton">
-                  <button onClick={() => {
-                    this.invoiceDisplay(); 
-                    }}>
-                    Show invoice     
-                  </button>
-                </div>
-              )}
-            </div>
-            {this.state.invoice_display && (
-                    <div className="info-invoice">
-                      <text>
-                      Currently viewing molecule {this.props.selected_mol}{"\n"}
-                      </text>
-                      <InvoiceAmount cost={this.runAssays().money} time={this.runAssays().time}/> 
-                    </div>
-              )}
-
             </div> 
           <div className="molecule-chooser-bar">
             <MoleculeList />
@@ -168,13 +120,24 @@ class Assay extends React.Component {
             <div className="selected-mol-stats">
                 <MoleculeStats selected_mol={this.props.selected_mol} />
                 <ControlPanel />
+            </div>
+          </div>
+          <div className="invoice">
+            <div className="invoice-amount">
+              Assay Invoice:
+              <div style={duration_color}>
+                Duration: {this.runAssays().time} weeks
               </div>
-            </div> </div>) : (<div className='unsavedmol'>       
+              <div style={cost_color}>
+                Cost: £{this.runAssays().money}
+              </div>
+            </div>
+          </div>
+            </div>) : (<div className='unsavedmol'>       
                     <Link to="/loadingpage">
                       <button className="mk_pre_test_button">Please make a molecule before test!</button>
                     </Link></div>)
             }
-
         </div>
       );
 
@@ -186,6 +149,8 @@ function mapStateToProps(state) {
     toggle_help: state.assay.toggle_help,
     saved_or_not: state.assay.saved_or_not,
     all_molecules_assay_data: state.assay.saved_mols,
+    money: state.game.money,
+    time: state.game.time,
   };
 }
 
