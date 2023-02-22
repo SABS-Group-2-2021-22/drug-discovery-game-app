@@ -43,20 +43,27 @@ class Introduction extends React.Component {
           </div>
 
           <div className="button-and-logo-area">
-            {" "}
+            {""}
             {/*actually no longer conatins the start button */}
             <div className="logos-area">
               <div className="logo">
-                {" "}
-                <img src={sabs} height="120px" />{" "}
+                {""} 
+                <img src={sabs} height="120px" />{""}
+                <div class="logo-text">
+                  <span>EPSRC SABS R³ CDT: Sustainable Approaches to Biomedical Science Responsible & Reproducible Research</span>
               </div>
+              </div>
+              
               <div className="logo">
                 {" "}
                 <img src={epsrc} height="100px" />{" "}
               </div>
               <div className="logo">
                 {" "}
-                <img src={oxuni} height="100px" />{" "}
+                <img src={oxuni} height="10px" />{""}
+                <div class="logo-text">
+                  <span>University of Oxford</span>
+              </div>
               </div>
             </div>
           </div>
