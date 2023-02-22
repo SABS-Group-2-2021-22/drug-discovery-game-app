@@ -64,6 +64,8 @@ class AssayPanel extends React.Component {
     let max_time = 0.
     let total_cost = 0.
 
+    let alert = false;
+
     for ( var molecule_key in this.props.all_molecules_assay_data ) {
 
       let assays_run = this.props.all_molecules_assay_data[molecule_key].data.assays_run ;
@@ -78,29 +80,42 @@ class AssayPanel extends React.Component {
       }
       let selected_assays = arr;
 
+      // iterate through selected assays and ensure that they do not exceed cost/time limits
+      let cost_sum = 0;
+      let time_sum = 0;
       for (var i = 0; i < selected_assays.length; i++) {
-        if (
-          ["drug_props", "lipinski", "descriptors"].includes(selected_assays[i])
-        ) 
-          {} 
-        else {
-          if (this.props.money - ASSAY_PRICES[selected_assays[i]] < 0) {
-            this.removeselectedAssays(selected_assays[i]);
-          } else if (this.props.time - ASSAY_TIMES[selected_assays[i]] < 0) {
-            this.removeselectedAssays(selected_assays[i]);
-          } else {
+        if (!["drug_props", "lipinski", "descriptors"].includes(selected_assays[i]) && !assays_run[selected_assays[i]]) {
+          cost_sum += ASSAY_PRICES[selected_assays[i]];
+          time_sum += ASSAY_TIMES[selected_assays[i]];
+        }
+      }
+
+      if (this.props.money - cost_sum < 0 || this.props.time - time_sum < 0) {
+        for (var i = 0; i < selected_assays.length; i++) {
+          this.removeselectedAssays(selected_assays[i]);
+        }
+        alert = true;
+      }
+      else {
+        for (var i = 0; i < selected_assays.length; i++) {
+          if (!["drug_props", "lipinski", "descriptors"].includes(selected_assays[i])) {
             if (!assays_run[selected_assays[i]]){
               assays_run[selected_assays[i]] = true;
               if (max_time < ASSAY_TIMES[selected_assays[i]]) {
                 max_time = ASSAY_TIMES[selected_assays[i]] ;
               }
               total_cost = total_cost + ASSAY_PRICES[selected_assays[i]] ;
+            }
           }
-          }
-        }
       }
       assays_run["drug_props"] = true;
       this.props.runAssay(molecule_key, assays_run);
+
+      }
+    }
+    if (alert) {
+      window.alert("Your choice of assays exceeds the cost and time limits! Please unselect some assays or proceed to Analysis")
+      alert = false;
     }
     this.updateTime(max_time);
     this.updateMoney(total_cost);
