@@ -27,12 +27,27 @@
   padding-right:20px;
 }
 
- .selector-panel-select-button {
+.selector-panel-back-button {
+  
+  display: flex;
   background-color: #212529;
   color: white;
   border: none;
   border-radius: 10px;
   height: 70px;
+  width: 10px;
+  font-size: max(14px, 1vw);
+  margin: 2px
+}
+ .selector-panel-select-button {
+  
+  display: flex;
+  background-color: #212529;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  height: 70px;
+  width: flex;
   font-size: max(14px, 1vw);
   margin: 2px
 }
