@@ -144,47 +144,57 @@ class ThePlot extends React.Component {
           onHover={this.onHover}
           onUnhover={this.onUnhover}
         />
+        <div className="plot-button-bigpanel">
+        <div className="plot-button">
+        <Link to="/assay">
+                <button>{'<< Test <<'}</button>
+        </Link>
+        </div>
+        <div className="plot-button-panel">
+          <div className="plot-button-row">
+            <button
+              className="help-button"
+              onMouseEnter={this.onHelpHover}
+              onMouseLeave={this.onUnHelpHover}
+            >
+              ?
+            </button>
+            x-axis:&nbsp;
+            <button onClick={() => this.relayout("--", "x")}>--</button>
+            {this.state.helpHover && (
+              <div className="help-info-text">
+                <p>
+                  <div>{this.props.help[0]}</div>
+                </p>
+              </div>
+            )}
+            <button onClick={() => this.relayout("logd", "x")}>logD</button>
+            <button onClick={() => this.relayout("pic50", "x")}>pIC50</button>
+            <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button>
+            <button onClick={() => this.relayout("HA", "x")}>HA</button>
+            <button onClick={() => this.relayout("MW", "x")}>MW</button>
+            <button onClick={() => this.relayout("h_acc", "x")}>h acc</button>
+            <button onClick={() => this.relayout("h_don", "x")}>h don</button>
+            <button onClick={() => this.relayout("rings", "x")}>rings</button>
+            <button onClick={() => this.relayout("logP", "x")}>logP</button>
+          </div>
+          <div className="plot-button-row">
+            y-axis:&nbsp;
+            <button onClick={() => this.relayout("--", "y")}>--</button>
+            <button onClick={() => this.relayout("logd", "y")}>logD</button>
+            <button onClick={() => this.relayout("pic50", "y")}>pIC50</button>
+            <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button>
+            <button onClick={() => this.relayout("HA", "y")}>HA</button>
+            <button onClick={() => this.relayout("MW", "y")}>MW</button>
+            <button onClick={() => this.relayout("h_acc", "y")}>h acc</button>
+            <button onClick={() => this.relayout("h_don", "y")}>h don</button>
+            <button onClick={() => this.relayout("rings", "y")}>rings</button>
+            <button onClick={() => this.relayout("logP", "y")}>logP</button>
+          </div>
+          
 
-        <div className="plot-button-row">
-          <button
-            className="help-button"
-            onMouseEnter={this.onHelpHover}
-            onMouseLeave={this.onUnHelpHover}
-          >
-            ?
-          </button>
-          x:&nbsp;
-          <button onClick={() => this.relayout("--", "x")}>--</button>
-          {this.state.helpHover && (
-            <div className="help-info-text">
-              <p>
-                <div>{this.props.help[0]}</div>
-              </p>
-            </div>
-          )}
-          <button onClick={() => this.relayout("logd", "x")}>logD</button>
-          <button onClick={() => this.relayout("pic50", "x")}>pIC50</button>
-          <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button>
-          <button onClick={() => this.relayout("HA", "x")}>HA</button>
-          <button onClick={() => this.relayout("MW", "x")}>MW</button>
-          <button onClick={() => this.relayout("h_acc", "x")}>h acc</button>
-          <button onClick={() => this.relayout("h_don", "x")}>h don</button>
-          <button onClick={() => this.relayout("rings", "x")}>rings</button>
-          <button onClick={() => this.relayout("logP", "x")}>logP</button>
         </div>
-        <div className="plot-button-row">
-          y:&nbsp;
-          <button onClick={() => this.relayout("--", "y")}>--</button>
-          <button onClick={() => this.relayout("logd", "y")}>logD</button>
-          <button onClick={() => this.relayout("pic50", "y")}>pIC50</button>
-          <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button>
-          <button onClick={() => this.relayout("HA", "y")}>HA</button>
-          <button onClick={() => this.relayout("MW", "y")}>MW</button>
-          <button onClick={() => this.relayout("h_acc", "y")}>h acc</button>
-          <button onClick={() => this.relayout("h_don", "y")}>h don</button>
-          <button onClick={() => this.relayout("rings", "y")}>rings</button>
-          <button onClick={() => this.relayout("logP", "y")}>logP</button>
-        </div>
+      </div>
       </div>
     );
   }
