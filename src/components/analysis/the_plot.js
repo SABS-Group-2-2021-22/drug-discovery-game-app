@@ -122,6 +122,16 @@ class ThePlot extends React.Component {
         axes_label[i] = "TPSA (Å\u00b2)";
       } else if (state_iterator[i] == "MW") {
         axes_label[i] = "MW (Da)";
+      } else if (state_iterator[i] == "HA") {
+        axes_label[i] = "Number of Heavy Atoms";
+      } else if (state_iterator[i] == "h_acc") {
+        axes_label[i] = "Number of H Acceptors";
+      } else if (state_iterator[i] == "h_don") {
+        axes_label[i] = "Number of H Donors";
+      } else if (state_iterator[i] == "logP") {
+        axes_label[i] = "LogP";
+      } else if (state_iterator[i] == "rings") {
+        axes_label[i] = "Number of Aromatic Rings";
       } else {
         axes_label[i] = state_iterator[i];
       }
@@ -166,7 +176,7 @@ class ThePlot extends React.Component {
           <button onClick={() => this.relayout("MW", "x")}>MW</button>
           <button onClick={() => this.relayout("h_acc", "x")}>h acc</button>
           <button onClick={() => this.relayout("h_don", "x")}>h don</button>
-          <button onClick={() => this.relayout("rings", "x")}>rings</button>
+          <button onClick={() => this.relayout("rings", "x")}># rings</button>
           <button onClick={() => this.relayout("logP", "x")}>logP</button>
         </div>
         <div className="plot-button-row">
@@ -179,7 +189,7 @@ class ThePlot extends React.Component {
           <button onClick={() => this.relayout("MW", "y")}>MW</button>
           <button onClick={() => this.relayout("h_acc", "y")}>h acc</button>
           <button onClick={() => this.relayout("h_don", "y")}>h don</button>
-          <button onClick={() => this.relayout("rings", "y")}>rings</button>
+          <button onClick={() => this.relayout("rings", "y")}># rings</button>
           <button onClick={() => this.relayout("logP", "y")}>logP</button>
         </div>
       </div>
