@@ -59,11 +59,11 @@
 
 .final-molecule-bar .molecule-widget {
   padding: 15px;
-  width: 100%;
+  width: 80%;
 }
 
 .final-molecule-bar .molecule-widget > .molecule img {
-  width: 100%;
+  width: 80%;
 }
 
 .comparison-graph {
