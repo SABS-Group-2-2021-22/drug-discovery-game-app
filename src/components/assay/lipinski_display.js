@@ -26,7 +26,7 @@ class Lipinski extends React.Component {
           Week {this.props.saved_mols[this.props.mol_id].data.date_created}
         </div>
         <div class="row" className="stats-type-header">
-          Lipinski Rules:
+          Lipinski Filters:
         </div>
         <div class="row">
           MW:{" "}
