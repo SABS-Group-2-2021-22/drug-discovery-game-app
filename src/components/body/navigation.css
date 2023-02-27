@@ -43,7 +43,8 @@
     flex-direction: column;
 }
 
-.navigation-home {
+.navigation-home.active {
+    text-decoration:none;
     color: #FFF;
     text-decoration: none;
 }
@@ -54,7 +55,7 @@
 }
 
 .navigation-link.active {
-    color: red;
+    color: #9a9c9e;
     text-decoration: none;
 }
 

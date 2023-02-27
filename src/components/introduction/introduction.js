@@ -13,6 +13,18 @@ class Introduction extends React.Component {
     super(props);
   }
 
+  state = {
+    textValue: " Matrix metalloproteinase 12 (MMP-12) is an enzyme implicated in emphysema and asthma. It has been identified as a possible drug target. \n MMP-12 is made by immune cells in the lungs, and it is thought that it can cause damage and inflammation in the lungs. \n You are going to try to design a compound with desired properties that inhibits MMP-12 in the body (including the lungs)."
+  }
+
+
+  onNext = () => {
+    this.setState({
+      textValue: "intro2"
+    })
+  }
+
+
   render() {
     return (
       <div className="wrapper">
@@ -21,15 +33,14 @@ class Introduction extends React.Component {
           <div className="pic-and-text">
             <div className="text-and-button">
               <div className="text">
-                <p>Matrix metalloproteinase 12 (MMP-12) is an enzyme implicated in emphysema and asthma. It has been identified as a possible drug target.
-                  {"\n"}  {"\n"}  MMP-12 is made by immune cells in the lungs, and it is thought that it can cause damage and inflammation in the lungs.
-                  {"\n"}  {"\n"} You are going to try to design a compound with desired properties that inhibits MMP-12 in the body (including the lungs).
-                </p>
+                
+              {this.state.textValue}
               </div>
               <div className="control-panel">
-                <Link to="/introduction2">
+                {/* <Link to="/introduction2">
                   <button>Next</button>
-                </Link>
+                </Link> */}
+                <button onNext={() => this.state.setState()}>Next</button>
                 <Link to="/loadingpage">
                   <button>Skip Introduction</button>
                 </Link>

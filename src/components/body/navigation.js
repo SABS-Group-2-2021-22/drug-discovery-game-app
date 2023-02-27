@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 
 import "./navigation.css";
 
+// const { pathname } = useLocation();
+
 class Navigation extends React.Component {
   render() {
     return(
@@ -22,7 +24,9 @@ class Navigation extends React.Component {
                   <NavLink className="navigation-link" to="/introduction">
                     Introduction
                   </NavLink>
+                  
                 </li>
+           
                 <li className="navigation-item">
                   <NavLink className="navigation-link" to="/build">
                     Design
