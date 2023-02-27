@@ -7,6 +7,7 @@
   padding-right: 3vw;
   padding-top: 3vh;
   padding-bottom: 3vh;
+  flex-grow: 1;
 }
 
 .molecule-chooser-bar {
@@ -16,49 +17,7 @@
   min-height: 100%;
   justify-content: center;
   padding-bottom: 10pt;
-  max-width: 250pt;
-}
-
-.assay_button {
-  display: flex;
-  background-color: mediumaquamarine;
-  flex-grow: 1;
-  align-items: center;
-  justify-content: center;
-  outline-style: solid;
-}
-
-.assay > .mol-visbox {
-  display: flex;
-  flex: 3;
-  flex-direction: column;
-}
-
-.assay > .mol-visbox > .rendered-molecule {
-  display: flex;
-  background-color: white;
-  padding: 15px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  justify-content: center;
-  align-content: center;
-  height: 45vh;
-  padding-top: 8vh;
-}
-
-.assay > .mol-visbox > .rendered-molecule > .molecule {
-  display: flex;
-  height: 45vh;
-  flex-direction: column;
-  justify-content: space-around;
-  align-content: space-around;
-}
-
-.assay > .mol-visbox > .rendered-molecule > .molecule img {
-  display: flex;
-  max-height: 100%;
-  justify-content: space-around;
-  align-content: space-around;
+  max-width: 255pt;
 }
 
 .selected-mol-stats {
@@ -91,6 +50,7 @@
   padding: 5px;
   background-color: white;
   overflow-y: scroll;
+  width: 100%;
 }
 
 .molecule-container {
@@ -114,7 +74,7 @@
 }
 
 .molecule-widget > .molecule img {
-  width: 240px;
+  width: 280px;
 }
 
 .mol-stats {
@@ -134,7 +94,7 @@
   background-color: white;
   justify-content: space-between;
   padding: 10px;
-  width: 20%;
+  flex-grow: 1;
 }
 
 .assay-name {
@@ -150,15 +110,27 @@
   padding: 10px;
 }
 
+.assay-panel > .assay-table {
+  display: table-header-group;
+  overflow-y: scroll;
+  width: 800px;
+  top: 150px;
+}
+
+.assay-panel > .assay-table tr.header-cells {
+  border: 1pt solid black;
+}
+
+.assay-panel > .assay-table tr.border-bottom td {
+  border-bottom: 1pt solid black;
+}
+
 .assay-panel button {
   background-color: #212529;
   color: white;
-  border: none;
   border-radius: 8px;
-  min-width: 100px;
   max-width: 200px;
   flex: 1 1 auto;
-  min-height: 40px;
   max-height: 90px;
   margin-bottom: 10px;
   white-space: pre-line;
@@ -179,6 +151,11 @@
 
 .assay-panel > .activebutton button {
   background-color: green;
+}
+
+.assay-panel input[type=checkbox]{
+    opacity: 1;
+    position: relative;
 }
 
 
@@ -202,40 +179,7 @@
   width: max-content;
 }
 
-.help-toggle {
-  z-index: 10;
-  margin-left: max(43vw, 570px);
-  position: absolute;
-}
-
-.help-toggle button {
-  border-width: 1px;
-  border-radius: 8px;
-}
-
-.help-toggle button:active {
-  background-color: #6a6c6e;
-}
-
-.help-toggle > .toggle-inactivebutton button {
-  background-color: #fdfbfb;
-}
-
-.help-toggle > .toggle-activebutton button {
-  background-color: green;
-    color: white;
-    border-radius: 6px;
-    border: hidden; 
-}
-
 /* assay invoice toggle button */
-
-
-.invoice {
-  z-index: 20;
-  margin-left: 80vw;
-  position: absolute;
-}
 
 .invoice button {
   display: flex;
@@ -302,6 +246,7 @@ table {
   text-indent: initial;
   border-spacing: 1px;
   border-color: burlywood;
+  width: 100%;
 }
 
 #cost {font-weight: bold;}
@@ -350,8 +295,8 @@ table {
   border-width: 1px;
   padding: 5px;
   display: flex;
-  margin-left: 22vh;
-  margin-top: 9.5vh;
+  margin-left: 40vh;
+  margin-top: 10px;
   font-size: 15px;
   z-index: 10;
   position: absolute;
@@ -366,8 +311,8 @@ table {
   border-width: 1px;
   padding: 5px;
   display: flex;
-  margin-left: 22vh;
-  margin-top: 18vh;
+  margin-left: 18vh;
+  margin-top: 5vh;
   font-size: 15px;
   z-index: 10;
   position: absolute;
@@ -382,8 +327,8 @@ table {
   border-width: 1px;
   padding: 5px;
   display: flex;
-  margin-left: 22vh;
-  margin-top: 27vh;
+  margin-left: 34vh;
+  margin-top: 5vh;
   font-size: 15px;
   z-index: 10;
   position: absolute;
@@ -427,8 +372,8 @@ table {
   border-width: 1px;
   padding: 5px;
   display: flex;
-  margin-left: 22vh;
-  margin-top: 35.5vh;
+  margin-left: 46vh;
+  margin-top: 5vh;
   font-size: 15px;
   z-index: 10;
   position: absolute;
@@ -475,15 +420,31 @@ table {
   border-width: 1px;
   padding: 5px;
   display: flex;
-  margin-left: 210px;
-  margin-top: 53vh;
+  margin-left: 20vh;
+  margin-top: 5vh;
   font-size: 15px;
   z-index: 10;
   position: absolute;
   border-radius: 5px;
   background-color: #fdfbfb;
   white-space: pre-line;
-  width: 15vw;
+  width: 35vh;
+}
+
+.hover-info-text-help {
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  display: flex;
+  margin-left: 2vh;
+  margin-top: 5vh;
+  font-size: 15px;
+  z-index: 10;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #fdfbfb;
+  white-space: pre-line;
+  width: 35vh;
 }
 
 .mol-stats > .hover-info-button-lip {
@@ -574,4 +535,75 @@ table {
   overflow-y: scroll;
 }
 
+.assay-panel > .final-order {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
 
+.assay-panel > .final-order span {
+  align-self: flex-end;
+}
+
+.assay-panel > .final-order > .invoice {
+  margin-left: 15px;
+}
+
+.assay-panel > .final-order button {
+  position: relative;
+  float: right;
+  margin-left: 30px;
+  height: 60px;
+  width: 130px;
+}
+
+.assay-panel > .final-order > .run-assay-button button {
+  margin-right: 130px;
+  width: 300px;
+}
+
+.assay-panel > .final-order > .nav-buttons button {
+  float: left;
+  position: flex;
+  flex-direction: row;
+}
+
+.assay-panel > .assay-top-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.assay-panel > .assay-top-info > .help-toggle {
+  margin-right: 20px;
+  position: relative;
+  margin-left: 20px;
+}
+
+.assay-panel > .assay-top-info > .help-toggle button {
+  width: 24px;
+  height: 30px;
+  border-radius: 12px;
+  border-width: 1.8px;
+  border-color: black;
+}
+
+.assay-panel > .assay-top-info > .help-toggle button:hover {
+  opacity: 0.7;
+  background-color: #6a6c6e;
+}
+
+.assay-panel > .assay-top-info > .help-toggle button:active {
+  background-color: #6a6c6e;
+}
+
+.assay-panel > .assay-top-info > .help-toggle > .toggle-inactivebutton button {
+  background-color: #fdfbfb;
+  border-width: 1.8px;
+  color: black;
+}
+
+.assay-panel > .assay-top-info > .help-toggle > .toggle-activebutton button {
+  background-color: green;
+  color: white;
+  border-width: 1.8px;
+}
