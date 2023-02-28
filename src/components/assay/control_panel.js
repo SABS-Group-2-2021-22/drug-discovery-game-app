@@ -22,7 +22,7 @@ class ControlPanel extends React.Component {
           <button> {'<< Design << '} </button>
         </Link>
         <Link to="/analysis">
-          <button onClick={this.initPlotData}>{'>> Analysis >>'}</button>
+          <button onClick={this.initPlotData}>Next (Analysis)</button>
         </Link>
       </div>
     );

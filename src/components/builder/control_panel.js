@@ -18,7 +18,8 @@ class ControlPanel extends React.Component {
     else{
     this.props.saveMolecule(
       this.props.saved_mols,
-      this.props.selected_r_groups
+      this.props.selected_r_groups,
+      this.props.time
     );
     }
   };
@@ -60,7 +61,8 @@ function mapStateToProps(state) {
   return {
     selected_r_groups: state.selector.selected_r_groups,
     saved_mols: state.assay.saved_mols,
-    saved_or_not: state.assay.saved_or_not
+    saved_or_not: state.assay.saved_or_not,
+    time: state.game.time,
   };
 }
 
