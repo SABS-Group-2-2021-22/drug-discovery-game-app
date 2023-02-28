@@ -28,15 +28,21 @@
 }
 
  .selector-panel-select-button {
+  align-items: center;
+  justify-content: center;
+  display: flex;
   background-color: #212529;
   color: white;
   border: none;
   border-radius: 10px;
   height: 70px;
+  width: 120px;
   font-size: max(14px, 1vw);
   margin: 2px
 }
-
+.selector-panel-select-button:hover {
+  opacity: 0.7;
+}
 .selector-panel .help-button {
   background-color: #fdfbfb;
   border-radius: 12px;
@@ -53,6 +59,7 @@
   border: none;
   border-radius: 10px;
   height: 70px;
+
   font-size: max(14px, 1vw);
   margin: 2px
 }
@@ -90,7 +97,8 @@
   background-color: #fdfbfb;
   border-radius: 12px;
   border-width: 1.8px;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-top: 1px;
   font-size: min(1vw, 16px);
 }
@@ -109,22 +117,61 @@
   width: 4vw;
   font-size: min(1vw, 16px);
 }
+.plot-button-bigpanel {
+  margin-bottom: 1vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: flex;
+  width: flex;
+}
+.plot-button-panel {
+  margin-bottom: 1vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  width: flex;
+}
+.plot-button{
+  
+  display: flex;
+  background-color: #212529;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  height: flex;
+  width: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: flex;
+  margin: 2px
 
+}
+.plot-button:hover {
+  opacity: 0.7;
+}
 .plot-button-row {
   margin-bottom: 1vh;
   display: flex;
   flex-direction: row;
-  width: 60vw;
-  justify-content: flex-end;
+  width: flex;
+  max-width: 750px;
+  justify-content: right;
+}
+.comparison-graph:hover {
+  opacity: 1;
 }
 
-.comparison-graph button:hover {
-  opacity: 0.7;
+.comparison-graph:active {
+  background-color: white;
+  opacity: 1;
 }
-
-.comparison-graph button:active {
+.plot-button-row  button:active {
   background-color: #e2159e;
   opacity: 1;
+}
+.plot-button-row button:hover {
+  opacity: 0.7;
 }
 
 .show-hover > .molecule img {
