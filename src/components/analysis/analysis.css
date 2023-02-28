@@ -23,38 +23,33 @@
  .selector-panel {
   display: flex;
   justify-content: space-between;
-  padding-left:20px;
-  padding-right:20px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 0px;
+  justify-self: right;
+  flex-direction: column;
 }
 
- .selector-panel-select-button {
+.selector-panel-select-button button {
   background-color: #212529;
   color: white;
   border: none;
   border-radius: 10px;
   height: 70px;
-  font-size: max(14px, 1vw);
-  margin: 2px
+  font-size: max(16px, 1vw);
+  width: 80%;
+  padding-top: 0px;
 }
 
-.selector-panel .help-button {
+.final-molecule-bar .help-button {
   background-color: #fdfbfb;
   border-radius: 12px;
   border-width: 1.8px;
-  margin-right: 20px;
-  margin-top: 1px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   font-size: min(1vw, 16px);
   max-height: 35px;
-}
-
- .selector-panel-select-button button {
-  background-color: #212529;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  height: 70px;
-  font-size: max(14px, 1vw);
-  margin: 2px
+  align-self: flex-end;
 }
 
 .final-molecule-bar .molecule-widget {
@@ -139,9 +134,9 @@
   border-style: solid;
   border-width: 1px;
   padding: 5px;
-  display: flex;
+  display: inline-flex;
   font-size: 15px;
-  z-index: 10;
+  z-index: 50;
   position: absolute;
   border-radius: 5px;
   background-color: #fdfbfb;
