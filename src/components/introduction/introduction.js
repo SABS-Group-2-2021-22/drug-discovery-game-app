@@ -77,4 +77,8 @@ class Introduction extends React.Component {
   }
 }
 
+// const actionCreators = {
+//   setState: assayActions.setState,
+// };
+
 export default (Introduction);
