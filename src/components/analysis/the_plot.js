@@ -127,12 +127,6 @@ class ThePlot extends React.Component {
         axes_label[i] = state_iterator[i];
       }
     }
-
-    const selected_xy_style = {
-      color: (this.state.y_axis == 'logd' ? "red" : "black"),
-      // backgroundColor: (this.props.y_axis == this.props.mol_id ? "#212529" : "#FFFFFF")
-    };
-
     return (
       <div className="plot-container">
         <div>{this.showCard()}</div>
