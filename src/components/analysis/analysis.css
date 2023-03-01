@@ -50,6 +50,7 @@
   font-size: min(1vw, 16px);
   max-height: 35px;
   align-self: flex-end;
+  z-index: 4;
 }
 
 .final-molecule-bar .molecule-widget {
@@ -133,13 +134,14 @@
 .help-info-text {
   border-style: solid;
   border-width: 1px;
-  padding: 5px;
   display: inline-flex;
-  font-size: 15px;
-  z-index: 50;
+  font-size: 14px;
+  z-index: 2;
   position: absolute;
   border-radius: 5px;
   background-color: #fdfbfb;
   white-space: pre-line;
-  margin-right: 47vw;
+  margin-right: 50vw;
+  padding: 3px;
+  margin-left: 26%;
 }

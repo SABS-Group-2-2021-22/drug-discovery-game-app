@@ -49,8 +49,6 @@ class SelectorPanel extends React.Component {
 
   onHelpHover = (event) => {
     this.setState({ helpHover: true });
-    console.log('help')
-    console.log(this.props.help[1])
   };
 
   onUnHelpHover = (event) => {
