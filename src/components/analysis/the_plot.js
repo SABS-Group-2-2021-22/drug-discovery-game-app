@@ -123,6 +123,16 @@ class ThePlot extends React.Component {
         axes_label[i] = "TPSA (Å\u00b2)";
       } else if (state_iterator[i] == "MW") {
         axes_label[i] = "MW (Da)";
+      } else if (state_iterator[i] == "HA") {
+        axes_label[i] = "Number of Heavy Atoms";
+      } else if (state_iterator[i] == "h_acc") {
+        axes_label[i] = "Number of H Acceptors";
+      } else if (state_iterator[i] == "h_don") {
+        axes_label[i] = "Number of H Donors";
+      } else if (state_iterator[i] == "logP") {
+        axes_label[i] = "LogP";
+      } else if (state_iterator[i] == "rings") {
+        axes_label[i] = "Number of Aromatic Rings";
       } else {
         axes_label[i] = state_iterator[i];
       }
@@ -153,7 +163,7 @@ class ThePlot extends React.Component {
         <div className="plot-button-bigpanel">
         <div className="plot-button">
         <Link to="/assay">
-                <button>{'<< Test <<'}</button>
+            <button>{'<< Test <<'}</button>
         </Link>
         </div>
         <div className="plot-button-panel">
@@ -269,6 +279,7 @@ class ThePlot extends React.Component {
             
           </div>
         </div>
+      </div>
       </div>
       </div>
     );
