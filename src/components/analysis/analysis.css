@@ -158,11 +158,18 @@
   opacity: 1;
 }
 .plot-button-row  button:active {
-  background-color: #e2159e;
   opacity: 1;
 }
 .plot-button-row button:hover {
   opacity: 0.7;
+}
+
+.plot-button-row > .inactivebutton button {
+  background-color: #212529;
+}
+
+.plot-button-row > .activebutton button {
+  background-color: green;
 }
 
 .show-hover > .molecule img {
