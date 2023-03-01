@@ -275,7 +275,6 @@ class ThePlot extends React.Component {
         </div>
       </div>
       </div>
-      </div>
     );
   }
 }
