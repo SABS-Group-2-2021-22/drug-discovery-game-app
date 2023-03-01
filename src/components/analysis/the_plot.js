@@ -206,7 +206,7 @@ class ThePlot extends React.Component {
             {this.state.x_axis == 'h_don' && (<div className="activebutton">
               <button onClick={() => this.relayout("h_don", "x")}>h don</button></div>)}
             {this.state.x_axis != 'h_don' && (<div className="inactivebutton">
-              <button onClick={() => this.relayout("h_don", "xy")}>h don</button></div>)}
+              <button onClick={() => this.relayout("h_don", "x")}>h don</button></div>)}
             
             {this.state.x_axis == 'rings' && (<div className="activebutton">
               <button onClick={() => this.relayout("rings", "x")}>rings</button></div>)}
