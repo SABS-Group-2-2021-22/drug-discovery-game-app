@@ -154,6 +154,13 @@ class ThePlot extends React.Component {
           onHover={this.onHover}
           onUnhover={this.onUnhover}
         />
+        <div className="plot-button-bigpanel">
+        <div className="plot-button">
+        <Link to="/assay">
+            <button>{'<< Test <<'}</button>
+        </Link>
+        </div>
+        <div className="plot-button-panel">
         <div className="plot-button-row">
           <button
             className="help-button"
@@ -162,7 +169,7 @@ class ThePlot extends React.Component {
           >
             ?
           </button>
-          x:&nbsp;
+          x-axis:&nbsp;
           {this.state.helpHover && (
             <div className="help-info-text">
               <p>
@@ -181,7 +188,7 @@ class ThePlot extends React.Component {
           <button onClick={() => this.relayout("logP", "x")}>logP</button>
         </div>
         <div className="plot-button-row">
-          y:&nbsp;
+          y-axis:&nbsp;
           <button onClick={() => this.relayout("logd", "y")}>logD</button>
           <button onClick={() => this.relayout("pic50", "y")}>pIC50</button>
           <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button>
@@ -192,6 +199,8 @@ class ThePlot extends React.Component {
           <button onClick={() => this.relayout("rings", "y")}># rings</button>
           <button onClick={() => this.relayout("logP", "y")}>logP</button>
         </div>
+      </div>
+      </div>
       </div>
     );
   }
