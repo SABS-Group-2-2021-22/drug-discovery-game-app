@@ -127,6 +127,12 @@ class ThePlot extends React.Component {
         axes_label[i] = state_iterator[i];
       }
     }
+
+    const selected_xy_style = {
+      color: (this.state.y_axis == 'logd' ? "red" : "black"),
+      // backgroundColor: (this.props.y_axis == this.props.mol_id ? "#212529" : "#FFFFFF")
+    };
+
     return (
       <div className="plot-container">
         <div>{this.showCard()}</div>
@@ -160,7 +166,6 @@ class ThePlot extends React.Component {
               ?
             </button>
             x-axis:&nbsp;
-            <button onClick={() => this.relayout("--", "x")}>--</button>
             {this.state.helpHover && (
               <div className="help-info-text">
                 <p>
@@ -168,31 +173,101 @@ class ThePlot extends React.Component {
                 </p>
               </div>
             )}
-            <button onClick={() => this.relayout("logd", "x")}>logD</button>
-            <button onClick={() => this.relayout("pic50", "x")}>pIC50</button>
-            <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button>
-            <button onClick={() => this.relayout("HA", "x")}>HA</button>
-            <button onClick={() => this.relayout("MW", "x")}>MW</button>
-            <button onClick={() => this.relayout("h_acc", "x")}>h acc</button>
-            <button onClick={() => this.relayout("h_don", "x")}>h don</button>
-            <button onClick={() => this.relayout("rings", "x")}>rings</button>
-            <button onClick={() => this.relayout("logP", "x")}>logP</button>
+            {this.state.x_axis == 'logd' && (<div className="activebutton">
+              <button onClick={() => this.relayout("logd", "x")}>logD</button></div>)}
+            {this.state.x_axis != 'logd' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("logd", "x")}>logD</button></div>)}
+
+            {this.state.x_axis == 'pic50' && (<div className="activebutton">
+              <button onClick={() => this.relayout("pic50", "x")}>pIC50</button></div>)}
+            {this.state.x_axis != 'pic50' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("pic50", "x")}>pIC50</button></div>)}
+
+            {this.state.x_axis == 'TPSA' && (<div className="activebutton">
+              <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button></div>)}
+            {this.state.x_axis != 'TPSA' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button></div>)}
+
+            {this.state.x_axis == 'HA' && (<div className="activebutton">
+              <button onClick={() => this.relayout("HA", "x")}>HA</button></div>)}
+            {this.state.x_axis != 'HA' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("HA", "x")}>HA</button></div>)}
+
+            {this.state.x_axis == 'MW' && (<div className="activebutton">
+              <button onClick={() => this.relayout("MW", "x")}>MW</button></div>)}
+            {this.state.x_axis != 'MW' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("MW", "x")}>MW</button></div>)}
+
+            {this.state.x_axis == 'h_acc' && (<div className="activebutton">
+              <button onClick={() => this.relayout("h_acc", "x")}>h acc</button></div>)}
+            {this.state.x_axis != 'h_acc' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("h_acc", "x")}>h acc</button></div>)}
+
+            {this.state.x_axis == 'h_don' && (<div className="activebutton">
+              <button onClick={() => this.relayout("h_don", "x")}>h don</button></div>)}
+            {this.state.x_axis != 'h_don' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("h_don", "xy")}>h don</button></div>)}
+            
+            {this.state.x_axis == 'rings' && (<div className="activebutton">
+              <button onClick={() => this.relayout("rings", "x")}>rings</button></div>)}
+            {this.state.x_axis != 'rings' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("rings", "x")}>rings</button></div>)}
+
+            {this.state.x_axis == 'logP' && (<div className="activebutton">
+              <button onClick={() => this.relayout("logP", "x")}>logP</button></div>)}
+            {this.state.x_axis != 'logP' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("logP", "x")}>logP</button></div>)}
+  
           </div>
           <div className="plot-button-row">
             y-axis:&nbsp;
-            <button onClick={() => this.relayout("--", "y")}>--</button>
-            <button onClick={() => this.relayout("logd", "y")}>logD</button>
-            <button onClick={() => this.relayout("pic50", "y")}>pIC50</button>
-            <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button>
-            <button onClick={() => this.relayout("HA", "y")}>HA</button>
-            <button onClick={() => this.relayout("MW", "y")}>MW</button>
-            <button onClick={() => this.relayout("h_acc", "y")}>h acc</button>
-            <button onClick={() => this.relayout("h_don", "y")}>h don</button>
-            <button onClick={() => this.relayout("rings", "y")}>rings</button>
-            <button onClick={() => this.relayout("logP", "y")}>logP</button>
-          </div>
-          
 
+            {this.state.y_axis == 'logd' && (<div className="activebutton">
+              <button onClick={() => this.relayout("logd", "y")}>logD</button></div>)}
+            {this.state.y_axis != 'logd' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("logd", "y")}>logD</button></div>)}
+
+            {this.state.y_axis == 'pic50' && (<div className="activebutton">
+              <button onClick={() => this.relayout("pic50", "y")}>pIC50</button></div>)}
+            {this.state.y_axis != 'pic50' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("pic50", "y")}>pIC50</button></div>)}
+
+            {this.state.y_axis == 'TPSA' && (<div className="activebutton">
+              <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button></div>)}
+            {this.state.y_axis != 'TPSA' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button></div>)}
+
+            {this.state.y_axis == 'HA' && (<div className="activebutton">
+              <button onClick={() => this.relayout("HA", "y")}>HA</button></div>)}
+            {this.state.y_axis != 'HA' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("HA", "y")}>HA</button></div>)}
+
+            {this.state.y_axis == 'MW' && (<div className="activebutton">
+              <button onClick={() => this.relayout("MW", "y")}>MW</button></div>)}
+            {this.state.y_axis != 'MW' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("MW", "y")}>MW</button></div>)}
+
+            {this.state.y_axis == 'h_acc' && (<div className="activebutton">
+              <button onClick={() => this.relayout("h_acc", "y")}>h acc</button></div>)}
+            {this.state.y_axis != 'h_acc' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("h_acc", "y")}>h acc</button></div>)}
+
+            {this.state.y_axis == 'h_don' && (<div className="activebutton">
+              <button onClick={() => this.relayout("h_don", "y")}>h don</button></div>)}
+            {this.state.y_axis != 'h_don' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("h_don", "y")}>h don</button></div>)}
+            
+            {this.state.y_axis == 'rings' && (<div className="activebutton">
+              <button onClick={() => this.relayout("rings", "y")}>rings</button></div>)}
+            {this.state.y_axis != 'rings' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("rings", "y")}>rings</button></div>)}
+
+            {this.state.y_axis == 'logP' && (<div className="activebutton">
+              <button onClick={() => this.relayout("logP", "y")}>logP</button></div>)}
+            {this.state.y_axis != 'logP' && (<div className="inactivebutton">
+              <button onClick={() => this.relayout("logP", "y")}>logP</button></div>)}
+            
+          </div>
         </div>
       </div>
       </div>
