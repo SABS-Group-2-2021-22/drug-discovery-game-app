@@ -7,23 +7,24 @@ import { initActions, selectorActions } from "../../actions";
 import sabs from "../../assets/sabs-logo-tight.png";
 import oxuni from "../../assets/oxlogo-sq-border.png";
 import epsrc from "../../assets/EPSRC_logo.png";
+import IntroText from "./introtext";  
 
 class Introduction extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  state = {
-    textValue: " Matrix metalloproteinase 12 (MMP-12) is an enzyme implicated in emphysema and asthma. It has been identified as a possible drug target. \n MMP-12 is made by immune cells in the lungs, and it is thought that it can cause damage and inflammation in the lungs. \n You are going to try to design a compound with desired properties that inhibits MMP-12 in the body (including the lungs)."
+    this.state = {
+      count: 0    }
   }
 
 
   onNext = () => {
-    this.setState({
-      textValue: "intro2"
-    })
+    this.setState({count: this.state.count + 1})
   }
 
+  onBack = () => {
+    this.setState({count: this.state.count - 1})
+
+  }
 
   render() {
     return (
@@ -34,16 +35,32 @@ class Introduction extends React.Component {
             <div className="text-and-button">
               <div className="text">
                 
-              {this.state.textValue}
+              <IntroText id={this.state.count} />
               </div>
               <div className="control-panel">
-                {/* <Link to="/introduction2">
-                  <button>Next</button>
-                </Link> */}
-                <button onNext={() => this.state.setState()}>Next</button>
-                <Link to="/loadingpage">
-                  <button>Skip Introduction</button>
+              
+                {/* <button onClick={this.onNext}>Next</button> */}
+                {this.state.count < 2 &&
+                  <div>
+                  <button onClick={this.onNext}>Next</button>
+                  <Link to="/loadingpage">
+                  <button>Skip</button>
                 </Link>
+                </div>
+                }
+                {this.state.count > 0 &&
+                  <div>
+                  <button onClick={this.onBack}>Back</button>
+                  {/* <Link to="/loadingpage">
+                  <button>Skip</button>
+                </Link> */}
+                </div>
+                }
+                {this.state.count === 2 &&
+                  <Link to="/loadingpage">
+                            <button>Proceed to Game</button>
+                </Link>}
+
               </div>
             </div>
             <div className="picture">
@@ -55,7 +72,7 @@ class Introduction extends React.Component {
 
           <div className="button-and-logo-area">
             {" "}
-            {/*actually no longer conatins the start button */}
+            {/*actually no longer contains the start button */}
             <div className="logos-area">
               <div className="logo">
                 {" "}
@@ -77,8 +94,5 @@ class Introduction extends React.Component {
   }
 }
 
-// const actionCreators = {
-//   setState: assayActions.setState,
-// };
 
 export default (Introduction);
