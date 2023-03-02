@@ -3,10 +3,6 @@ import "./introduction.css";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-// import Lipinski from "./lipinski_display.js";
-// import Descriptors from "./descriptor_display.js";
-// import Assays from "./assay_display.js";
-
 class IntroText extends React.Component {
   constructor(props) {
     super(props);

@@ -182,12 +182,9 @@
 }
 
 
-/* .introtext {
-  width:250px; /* or whatever width you want. */
-  /* align-items: margin-left; */
 .introtext {
   width: 38vw;
-  height: 35vh;
+  height: 27vh;
 }
 
 .control-panel {

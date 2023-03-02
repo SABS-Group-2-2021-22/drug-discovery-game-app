@@ -10,7 +10,6 @@ import rootReducer from './reducers'
 import { connect } from "react-redux";
 import { devToolsEnhancer } from 'redux-devtools-extension'
 
-// import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import {
   Navigation,
