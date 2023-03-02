@@ -31,7 +31,7 @@ class ControlPanel extends React.Component {
 
 
   resetRGroups = () => {
-    this.props.selectRGroup('A00', 'B00', '800,800');
+    this.props.selectRGroup('A00', 'B00', '500,500');
   }
 
   render() {
