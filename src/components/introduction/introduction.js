@@ -25,6 +25,16 @@ class Introduction extends React.Component {
     this.setState({count: this.state.count - 1})
 
   }
+  
+  componentWillMount() {
+    this.props.num < 100 && this.props.fetchRGroup(this.props.countRGroup);
+    this.props.selectRGroup(
+      this.props.selected_r_groups["A"],
+      this.props.selected_r_groups["B"],
+      "800,800"
+    );
+    this.props.fetchHelp();
+  }
 
   render() {
     return (
@@ -69,18 +79,27 @@ class Introduction extends React.Component {
           <div className="button-and-logo-area">
             {" "}
             {/*actually no longer contains the start button */}
+            {""}
+            {/*actually no longer conatins the start button */}
             <div className="logos-area">
               <div className="logo">
-                {" "}
-                <img src={sabs} height="120px" />{" "}
+                {""} 
+                <img src={sabs} height="120px" />{""}
+                <div class="logo-text">
+                  <span>EPSRC SABS R³ CDT: Sustainable Approaches to Biomedical Science Responsible & Reproducible Research</span>
               </div>
+              </div>
+              
               <div className="logo">
                 {" "}
                 <img src={epsrc} height="100px" />{" "}
               </div>
               <div className="logo">
                 {" "}
-                <img src={oxuni} height="100px" />{" "}
+                <img src={oxuni} height="10px" />{""}
+                <div class="logo-text">
+                  <span>University of Oxford</span>
+              </div>
               </div>
             </div>
           </div>
@@ -91,4 +110,18 @@ class Introduction extends React.Component {
 }
 
 
-export default (Introduction);
+function mapStateToProps(state) {
+  return {
+    num: state.init.num,
+    selected_r_groups: state.selector.selected_r_groups,
+  };
+}
+
+const actionCreators = {
+  fetchHelp: initActions.fetchHelp,
+  fetchRGroup: initActions.fetchRGroup,
+  countRGroup: initActions.countRGroup,
+  selectRGroup: selectorActions.selectRGroup,
+};
+
+export default connect(mapStateToProps, actionCreators)(Introduction);

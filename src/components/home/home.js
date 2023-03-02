@@ -16,7 +16,7 @@ class Home extends React.Component {
   // fetches the r groups from the BE and selects the first r groups at each position
   // ... for rapid rendering of the builder and sketcher pages
   componentWillMount() {
-    this.props.fetchRGroup(this.props.countRGroup);
+    this.props.num < 100 && this.props.fetchRGroup(this.props.countRGroup);
     this.props.selectRGroup(
       this.props.selected_r_groups["A"],
       this.props.selected_r_groups["B"],
@@ -92,16 +92,23 @@ class Home extends React.Component {
             {/*actually no longer contains the start button */}
             <div className="logos-area">
               <div className="logo">
-                {" "}
-                <img src={sabs} height="120px" />{" "}
+                {""} 
+                <img src={sabs} height="120px" />{""}
+                <div class="logo-text">
+                  <span>EPSRC SABS R³ CDT: Sustainable Approaches to Biomedical Science Responsible & Reproducible Research</span>
               </div>
+              </div>
+              
               <div className="logo">
                 {" "}
                 <img src={epsrc} height="100px" />{" "}
               </div>
               <div className="logo">
                 {" "}
-                <img src={oxuni} height="100px" />{" "}
+                <img src={oxuni} height="10px" />{""}
+                <div class="logo-text">
+                  <span>University of Oxford</span>
+              </div>
               </div>
             </div>
           </div>
@@ -115,6 +122,7 @@ function mapStateToProps(state) {
   return {
     loggedIn: state.login.login,
     r_groups: state.init.r_groups,
+    num: state.init.num,
     selected_r_groups: state.selector.selected_r_groups,
   };
 }
