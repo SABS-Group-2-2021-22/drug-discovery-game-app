@@ -11,13 +11,13 @@ import { connect } from "react-redux";
 import { devToolsEnhancer } from 'redux-devtools-extension'
 
 // import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import {
   Navigation,
   Home,
   Introduction,
-  Introduction2,
-  Introduction3,
+  // Introduction2,
+  // Introduction3,
   Loadingpage,
   Builder,
   Assay,
@@ -47,10 +47,11 @@ class Index extends React.Component {
       <Router>
         <Navigation />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to='/home' />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/introduction" element={<Introduction />} />
-          <Route path="/introduction2" element={<Introduction2 />} />
-          <Route path="/introduction3" element={<Introduction3 />} />
+          {/* <Route path="/introduction2" element={<Introduction2 />} />
+          <Route path="/introduction3" element={<Introduction3 />} /> */}
           <Route path="/loadingpage" element={<Loadingpage />} />
           <Route path="/build" element={(this.props.gamemode === 'builder') ? <Builder /> : <SketcherAppRedux />} />
           <Route path="/assay" element={< Assay />} />

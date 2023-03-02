@@ -12,7 +12,7 @@ import {
   } from "./components/body";
 
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -29,7 +29,9 @@ import ReactDOM from 'react-dom';
   render() {
     return (
         <Routes>
+            {/* <Route path="/" element={<Navigate to='/home' />} /> */}
             <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/loadingpage" element={<Loadingpage />} />
             <Route path="/app" element={(this.props.gamemode === 'builder') ? <Builder />: <SketcherAppRedux/>} />
             <Route path="/assay" element={(this.props.gamemode === 'builder') ?< Assay />: <SketcherAssayRedux/>}  />
