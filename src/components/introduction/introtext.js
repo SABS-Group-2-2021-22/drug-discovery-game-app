@@ -42,10 +42,19 @@ render()
          {"\n"}3. Compare the properties of the different molecules you have designed.
          {"\n"}4. Find out how your drug compares to the optimal molecule for targeting MMP12.
 
-         {"\n"}  {"\n"}You start the game with £100,000 and 30 weeks, running experiments will reduce both of these. 
+         {/* {"\n"}  {"\n"}You start the game with £100,000 and 30 weeks, running experiments will reduce both of these. 
+         The game ends when you run out of budget, time or if you are happy with the molecule you have made and decide to end the game. */}
+       </p>
+       </div>} 
+
+       {this.props.id === 3 &&
+        <div className="introtext">
+         <p>
+         You start the game with £100,000 and 30 weeks, running experiments will reduce both of these. 
          The game ends when you run out of budget, time or if you are happy with the molecule you have made and decide to end the game.
        </p>
-       </div>}       
+       </div>} 
+
         </div>
     );
 }

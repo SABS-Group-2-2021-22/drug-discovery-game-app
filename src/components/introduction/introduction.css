@@ -33,6 +33,7 @@
     align-items: center;
     background-color: white;
     z-index:20;
+    margin-left: 4%;
   }
   
   .picture{
@@ -70,6 +71,7 @@
     text-align: justify;
     margin-bottom: 10pt;
     white-space:pre-line;
+    /* margin-left: 10%; */
   }
 
   .button-and-logo-area{

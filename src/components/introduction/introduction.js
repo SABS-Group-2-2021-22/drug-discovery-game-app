@@ -57,7 +57,7 @@ class Introduction extends React.Component {
                 </div>
                 }
               
-                {this.state.count < 2 &&
+                {this.state.count < 3 &&
                   <div>
                   <button className='next-button' onClick={this.onNext}>Next</button>
                   <Link to="/loadingpage">
@@ -66,7 +66,7 @@ class Introduction extends React.Component {
                 </div>
                 }
           
-                {this.state.count === 2 &&
+                {this.state.count === 3 &&
                   <Link to="/loadingpage">
                             <button className='start-button'>Start game</button>
                 </Link>}
