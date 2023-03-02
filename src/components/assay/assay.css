@@ -197,7 +197,7 @@
   padding-right: 15px;
   padding-left: 15px;
   margin-right: 4vw;
-  justify-content: stretch;
+  /* justify-content: stretch; */
   width: auto;
 }
 
