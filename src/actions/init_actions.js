@@ -95,7 +95,7 @@ export function fetchRocheSucceeded(Roche) {
  */
 export function fetchRoche() {
   return (dispatch) => {
-    api.fetchMolecule("A05", "B07", "800,800").then((response) => {
+    api.fetchMolecule("A05", "B07", "500,500").then((response) => {
       dispatch(fetchRocheSucceeded(response));
     });
   };
