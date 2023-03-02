@@ -76,8 +76,7 @@
     display:flex;
     flex-direction: row;
     background-color:white;
-    width:120%;
-    /* height: 15%; */
+    width:100%;
     min-height:5%;
     max-height:15%;
     justify-content: space-around;
@@ -92,20 +91,20 @@
     width:flex;
     min-width:5%;
     max-width:100%;
+    width:100%;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: left;
+    justify-content: space-around;
     background-color: white;
   }
 
-  .logo{
+  .logo-img-text{
     display:flex;
-    flex-direction: row;
     height:flex;
     width:flex;
     min-width:5%;
     max-width:100%;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     background-color:white;
     object-fit: 'contain';

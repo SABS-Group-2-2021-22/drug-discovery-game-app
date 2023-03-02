@@ -91,7 +91,7 @@ class Home extends React.Component {
             {" "}
             {/*actually no longer contains the start button */}
             <div className="logos-area">
-              <div className="logo">
+              <div className="logo-img-text">
                 {""} 
                 <img src={sabs} height="120px" />{""}
                 <div class="logo-text">
@@ -99,11 +99,11 @@ class Home extends React.Component {
               </div>
               </div>
               
-              <div className="logo">
+              <div className="logo-img-text" >
                 {" "}
                 <img src={epsrc} height="100px" />{" "}
               </div>
-              <div className="logo">
+              <div className="logo-img-text">
                 {" "}
                 <img src={oxuni} height="10px" />{""}
                 <div class="logo-text">
