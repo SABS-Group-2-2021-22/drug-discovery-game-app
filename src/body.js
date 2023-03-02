@@ -29,7 +29,6 @@ import ReactDOM from 'react-dom';
   render() {
     return (
         <Routes>
-            {/* <Route path="/" element={<Navigate to='/home' />} /> */}
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/loadingpage" element={<Loadingpage />} />

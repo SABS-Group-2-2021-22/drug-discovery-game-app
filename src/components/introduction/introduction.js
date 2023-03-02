@@ -46,6 +46,16 @@ class Introduction extends React.Component {
               <IntroText id={this.state.count} />
               </div>
               <div className="control-panel">
+              {this.state.count === 0 &&
+                  <Link to="/home">
+                  <button>Back</button>
+                </Link>
+                }
+              {this.state.count > 0 &&
+                  <div>
+                  <button className='back-button' onClick={this.onBack}>Back</button>
+                </div>
+                }
               
                 {this.state.count < 2 &&
                   <div>
@@ -55,11 +65,7 @@ class Introduction extends React.Component {
                 </Link>
                 </div>
                 }
-                {this.state.count > 0 &&
-                  <div>
-                  <button className='back-button' onClick={this.onBack}>Back</button>
-                </div>
-                }
+          
                 {this.state.count === 2 &&
                   <Link to="/loadingpage">
                             <button className='start-button'>Start game</button>
