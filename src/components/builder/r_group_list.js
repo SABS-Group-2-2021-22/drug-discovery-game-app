@@ -22,7 +22,7 @@ class RGroupList extends React.Component {
           <RGroupWidget
             key={this.createRGroupID(this.props.r_group_pos, i + 1)}
             r_group_id={this.createRGroupID(this.props.r_group_pos, i + 1)}
-            size="800,800"
+            size="500,500" // changed from 800,800
           />
         ))}
       </div>

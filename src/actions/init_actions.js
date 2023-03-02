@@ -27,6 +27,7 @@ function fetchHelp() {
 /**
  * Synchronous action that sends the r group object to the store when dispatched
  * @param {state object} r_group_obj the r_group state object
+ * @param {txt} size the desired size tuple of the image
  * @returns {} the r_group object for a state change by the initReducer
  */
 function fetchRGroupSucceeded(r_group_obj) {
@@ -46,14 +47,14 @@ function fetchRGroupSucceeded(r_group_obj) {
  * @returns {dispatch} dispatches fetchRGroupSucceeded with the r group object
  */
 
-function fetchRGroup(coutr) {
+function fetchRGroup(coutr,size) {
   const positions = ["A", "B"];
   var r_group_obj = {};
   for (const pos of positions) {
     for (let i = 1; i < 51; i++) {
       if (i < 10) {
         let id = String(pos + 0 + i);
-        api.fetchRGroup(id).then((response) => {
+        api.fetchRGroup(id,size).then((response) => {
           r_group_obj[id] = response;
         }).then(() => {
           coutr(Object.keys(r_group_obj).length);
@@ -61,7 +62,7 @@ function fetchRGroup(coutr) {
       } 
       else {
         let id = String(pos + i);
-        api.fetchRGroup(id).then((response) => {
+        api.fetchRGroup(id,size).then((response) => {
           r_group_obj[id] = response;
         }).then(() => {
           coutr(Object.keys(r_group_obj).length);
@@ -95,7 +96,7 @@ export function fetchRocheSucceeded(Roche) {
  */
 export function fetchRoche() {
   return (dispatch) => {
-    api.fetchMolecule("A05", "B07", "800,800").then((response) => {
+    api.fetchMolecule("A05", "B07", "500,500").then((response) => {
       dispatch(fetchRocheSucceeded(response));
     });
   };
