@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 import pymolpic from "../../assets/pymolMMP12.png";
 import { connect } from "react-redux";
 import { initActions, selectorActions } from "../../actions";
-import sabs from "../../assets/sabs-logo-tight.png";
-import oxuni from "../../assets/oxlogo-sq-border.png";
-import epsrc from "../../assets/EPSRC_logo.png";
+import { LogoBanner } from "../body";
 
 class Introduction extends React.Component {
   constructor(props) {
@@ -51,32 +49,7 @@ class Introduction extends React.Component {
               <div className="text">MMP-12</div>
             </div>
           </div>
-
-          <div className="button-and-logo-area">
-            {""}
-            {/*actually no longer conatins the start button */}
-            <div className="logos-area">
-              <div className="logo">
-                {""} 
-                <img src={sabs} height="120px" />{""}
-                <div class="logo-text">
-                  <span>EPSRC SABS R³ CDT: Sustainable Approaches to Biomedical Science Responsible & Reproducible Research</span>
-              </div>
-              </div>
-              
-              <div className="logo">
-                {" "}
-                <img src={epsrc} height="100px" />{" "}
-              </div>
-              <div className="logo">
-                {" "}
-                <img src={oxuni} height="10px" />{""}
-                <div class="logo-text">
-                  <span>University of Oxford</span>
-              </div>
-              </div>
-            </div>
-          </div>
+          <LogoBanner/>
         </div>
       </div>
     );
