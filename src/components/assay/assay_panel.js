@@ -265,58 +265,13 @@ class AssayPanel extends React.Component {
   render() {
     const data = Object.keys(this.props.all_molecules_assay_data);
     const cost_color = {
-      color: (this.props.money - this.runAssaysLimit().money >= 0 ? "black" : "red"),
+      color: (this.props.money - this.runAssaysLimit().money >= 0 ? "white" : "red"),
     };
     const duration_color = {
-      color: (this.props.time - this.runAssaysLimit().time >= 0 ? "black" : "red"),
+      color: (this.props.time - this.runAssaysLimit().time >= 0 ? "white" : "red"),
     };
     return(
       <div className="assay-panel">
-        <div className="assay-top-info">
-          <div className="invoice">
-            <b>Order assays here: </b>
-            <div className="invoice-amount">
-              <div style={duration_color}>
-                Duration: {this.runAssaysLimit().time} weeks
-              </div>
-              <div style={cost_color}>
-                Cost: £{this.runAssaysLimit().money}
-              </div>
-            </div>
-          </div>
-          <div className="help-toggle">
-            {this.props.toggle_help && (
-              <div className="toggle-activebutton">
-                <button 
-                  onClick={() => this.toggleHelp()}
-                  onMouseEnter={() => {
-                    this.onHover("help");
-                  }}
-                  onMouseLeave={() => {
-                    this.onUnHover();
-                  }}
-                >
-                  ?
-                </button>
-              </div>
-            )}
-            {this.props.toggle_help == false && (
-              <div className="toggle-inactivebutton">
-                <button 
-                  onClick={() => this.toggleHelp()}
-                  onMouseEnter={() => {
-                    this.onHover("help");
-                  }}
-                  onMouseLeave={() => {
-                    this.onUnHover();
-                  }}
-                >
-                  ?
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
         <table className="assay-table" style={{overflowWrap: 'break-word'}}>
         <colgroup>
           <col width="15%"/>
@@ -326,9 +281,42 @@ class AssayPanel extends React.Component {
           <col width="17%"/>
           <col width="17%"/>
         </colgroup>
-          <thead>
+          <thead style={{ verticalAlign: "text-top" }}>
             <tr class="header-cells">
-              <th>{" "}</th>
+              <th>
+                <div className="help-toggle">
+                  {this.props.toggle_help && (
+                    <div className="toggle-activebutton">
+                      <button 
+                        onClick={() => this.toggleHelp()}
+                        onMouseEnter={() => {
+                          this.onHover("help");
+                        }}
+                        onMouseLeave={() => {
+                          this.onUnHover();
+                        }}
+                      >
+                        ?
+                      </button>
+                    </div>
+                  )}
+                  {this.props.toggle_help == false && (
+                    <div className="toggle-inactivebutton">
+                      <button 
+                        onClick={() => this.toggleHelp()}
+                        onMouseEnter={() => {
+                          this.onHover("help");
+                        }}
+                        onMouseLeave={() => {
+                          this.onUnHover();
+                        }}
+                      >
+                        ?
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </th>
               <th
                 onMouseEnter={() => {
                   this.onHover("pic50");
@@ -406,8 +394,8 @@ class AssayPanel extends React.Component {
               <td>{" "}</td>
               <td>{" "}</td>
             </tr>
-            {data.map((val) => (
-              <tr key={val}>
+            {data.map((val, index) => (
+              <tr key={val} className={index % 2 === 0 ? 'even' : 'odd'}>
                 <td>{val}</td>
                 <td>
                   <input type="checkbox"  
@@ -530,7 +518,15 @@ class AssayPanel extends React.Component {
                 this.onUnHover();
               }}
             >
-              <div className="assay-name">Run Assays</div>
+              <div className="assay-name"><b>Run Assays</b></div>
+                <div className="invoice-amount">
+                  <div style={duration_color}>
+                    Duration: {this.runAssaysLimit().time} weeks
+                  </div>
+                  <div style={cost_color}>
+                    Cost: £{this.runAssaysLimit().money}
+                  </div>
+                </div>
             </button>
             {this.state.hover == "run" && this.props.toggle_help && (
               <div className="hover-info-text-run">
@@ -539,23 +535,6 @@ class AssayPanel extends React.Component {
                 </p>
               </div>
             )}
-          </div>
-          <div className="nav-buttons">
-            <Link to="/build">
-              <button 
-                label="Back_Build" 
-              >
-                Back (Design)
-              </button>
-            </Link>
-            <Link to="/analysis">
-              <button 
-                label="Next_Analysis" 
-                onClick={this.initPlotData}
-              >
-                Next (Analysis)
-              </button>
-            </Link>
           </div>
         </div>
       </div>

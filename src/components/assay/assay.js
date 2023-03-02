@@ -31,7 +31,26 @@ class Assay extends React.Component {
           <div className="molecule-chooser-bar">
             <MoleculeList />
           </div>
-          <AssayPanel />
+          <div className="main-content">
+            <AssayPanel />
+            <div className="nav-buttons">
+              <Link to="/build">
+                <button
+                  label="Back_Build"
+                >
+                  Back (Design)
+                </button>
+              </Link>
+              <Link to="/analysis">
+                <button
+                  label="Next_Analysis"
+                  onClick={this.initPlotData}
+                >
+                  Next (Analysis)
+                </button>
+              </Link>
+            </div>
+          </div>
             </div>) : (<div className='unsavedmol'>       
                     <Link to="/loadingpage">
                       <button className="mk_pre_test_button">Please make a molecule before test!</button>

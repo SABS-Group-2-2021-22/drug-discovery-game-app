@@ -1,3 +1,7 @@
+.wrapper {
+  width: 100%;
+}
+
 .assay {
   display: flex;
   flex-direction: row;
@@ -17,7 +21,7 @@
   min-height: 100%;
   justify-content: center;
   padding-bottom: 10pt;
-  max-width: 255pt;
+  width: 25%;
 }
 
 .selected-mol-stats {
@@ -74,7 +78,7 @@
 }
 
 .molecule-widget > .molecule img {
-  width: 280px;
+  width: 100%;
 }
 
 .mol-stats {
@@ -92,9 +96,9 @@
   display: flex;
   flex-direction: column;
   background-color: white;
-  justify-content: space-between;
   padding: 10px;
   flex-grow: 1;
+  height: 90%;
 }
 
 .assay-name {
@@ -111,9 +115,10 @@
 }
 
 .assay-panel > .assay-table {
+  left: 50%;
   display: table-header-group;
   overflow-y: scroll;
-  width: 800px;
+  width: 100%;
   top: 150px;
 }
 
@@ -129,9 +134,7 @@
   background-color: #212529;
   color: white;
   border-radius: 8px;
-  max-width: 200px;
   flex: 1 1 auto;
-  max-height: 90px;
   margin-bottom: 10px;
   white-space: pre-line;
   width: 200px;
@@ -179,66 +182,6 @@
   width: max-content;
 }
 
-/* assay invoice toggle button */
-
-.invoice button {
-  display: flex;
-  border-width: 1px;
-  border-radius: 8px;
-}
-
-.invoice button:active {
-  background-color: #6a6c6e;
-}
-
-.invoice > .invoice-activebutton button {
-  background-color: #fdfbfb;
-}
-
-.invoice > .invoice-inactivebutton button {
-  background-color: #fdfbfb;
-}
-
-.invoice > .invoice-inactivebutton > .info-invoice button:active {
-  background-color: #6a6c6e;
-}
-
-
-.invoice > .invoice-activebutton > .info-invoice {
-  display: flex;
-  flex-direction: column;
-  border-style: solid;
-  border-width: 1px;
-  padding: 2px;
-  display: flex;
-  margin-left: 15px;
-  font-size: 15px;
-  z-index: 10;
-  position: absolute;
-  border-radius: 5px;
-  background-color: #fdfbfb;
-  white-space: pre-line;
-  width: 30vh;
-}
-
-.info-invoice {
-  display: flex;
-  flex-direction: column;
-  border-style: solid;
-  border-width: 1px;
-  padding: 2px;
-  display: flex;
-  margin-left: 70vw;
-  margin-top: 5vh;
-  font-size: 15px;
-  z-index: 10;
-  position: absolute;
-  border-radius: 5px;
-  background-color: #fdfbfb;
-  white-space: pre-line;
-  width: 30vh;
-}
-
 table {
   display: flex;
   border-collapse: separate;
@@ -280,7 +223,7 @@ table {
   padding: 5px;
   display: flex;
   margin-left: 22vh;
-  margin-top: 5px;
+  margin-top: 40px;
   font-size: 15px;
   z-index: 10;
   position: absolute;
@@ -296,7 +239,7 @@ table {
   padding: 5px;
   display: flex;
   margin-left: 40vh;
-  margin-top: 10px;
+  margin-top: 40px;
   font-size: 15px;
   z-index: 10;
   position: absolute;
@@ -536,36 +479,40 @@ table {
 }
 
 .assay-panel > .final-order {
-  display: flex;
-  flex-direction: row;
+  margin: auto;
+}
+
+.run-assay-button button {
+  position: relative;
+  float: right;
+  height: 100px;
+  width: 500px;
+  border: none;
   margin-top: 10px;
 }
 
-.assay-panel > .final-order span {
-  align-self: flex-end;
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin-left: 20px;
 }
 
-.assay-panel > .final-order > .invoice {
-  margin-left: 15px;
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  height: 10%;
 }
 
-.assay-panel > .final-order button {
-  position: relative;
-  float: right;
-  margin-left: 30px;
-  height: 60px;
-  width: 130px;
-}
-
-.assay-panel > .final-order > .run-assay-button button {
-  margin-right: 130px;
-  width: 300px;
-}
-
-.assay-panel > .final-order > .nav-buttons button {
+.nav-buttons button {
   float: left;
-  position: flex;
-  flex-direction: row;
+  border: none;
+  background-color: #212529;
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  white-space: pre-line;
+  width: 200px;
 }
 
 .assay-panel > .assay-top-info {
@@ -573,13 +520,13 @@ table {
   flex-direction: row;
 }
 
-.assay-panel > .assay-top-info > .help-toggle {
+.help-toggle {
   margin-right: 20px;
   position: relative;
   margin-left: 20px;
 }
 
-.assay-panel > .assay-top-info > .help-toggle button {
+.help-toggle button {
   width: 24px;
   height: 30px;
   border-radius: 12px;
@@ -587,23 +534,31 @@ table {
   border-color: black;
 }
 
-.assay-panel > .assay-top-info > .help-toggle button:hover {
+.help-toggle button:hover {
   opacity: 0.7;
   background-color: #6a6c6e;
 }
 
-.assay-panel > .assay-top-info > .help-toggle button:active {
+.help-toggle button:active {
   background-color: #6a6c6e;
 }
 
-.assay-panel > .assay-top-info > .help-toggle > .toggle-inactivebutton button {
+.help-toggle > .toggle-inactivebutton button {
   background-color: #fdfbfb;
   border-width: 1.8px;
   color: black;
 }
 
-.assay-panel > .assay-top-info > .help-toggle > .toggle-activebutton button {
+.toggle-activebutton button {
   background-color: green;
   color: white;
   border-width: 1.8px;
+}
+
+.even {
+  background-color: #f2f2f2;
+}
+
+.odd {
+  background-color: #ffffff;
 }
