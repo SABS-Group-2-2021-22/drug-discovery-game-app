@@ -84,57 +84,6 @@
   }
 
 
-  .logos-area {
-    display: flex;
-    flex-direction: row;
-    height:flex;
-    width:flex;
-    min-width:5%;
-    max-width:100%;
-    width:100%;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    background-color: white;
-  }
-
-  .logo-img-text{
-    display:flex;
-    height:flex;
-    width:flex;
-    min-width:5%;
-    max-width:100%;
-    justify-content: center;
-    align-items: center;
-    background-color:white;
-    object-fit: 'contain';
-  }
-  .logo-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width:flex;
-    min-width:5%;
-    max-width:50%;
-    margin-left: 16px; /* adjust as needed */
-  }
-  .logo-text span {
-    font-size: 12px; /* adjust as needed */
-    font-weight: bold; /* adjust as needed */
-    justify-content: center;/* adjust as needed */
-    color: #333; /* adjust as needed */
-    
-  }
-  .logo > img {
-    max-width:100%;
-    max-height:70%;
-    margin-right: 1px; 
-    width: auto;
-    height: auto;
-  }
-
-
   .loadingpage{
     height: 100%;
     display: flex;
