@@ -98,16 +98,6 @@
   background-color: #fdfbfb;
 }
 
-.comparison-graph button:not(.help-button) {
-  background-color: #212529;
-  color: white;
-  border: none;
-  margin-right: 3px;
-  /* margin-bottom: 9px; */
-  border-radius: 8px;
-  width: 4vw;
-  font-size: min(1vw, 16px);
-}
 .plot-button-bigpanel {
   margin-bottom: 1vh;
   display: flex;
@@ -123,19 +113,20 @@
   justify-content: right;
   width: flex;
 }
-.plot-button{
-  
-  display: flex;
-  background-color: #212529;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  height: flex;
-  width: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-size: flex;
-  margin: 2px
+.plot-button button{
+    display: flex;
+    background-color: #212529;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height: flex;
+    width: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 16px;
+    margin: 2px;
+    padding: 10px;
+    padding-bottom: 15px;
 
 }
 .plot-button:hover {
@@ -148,6 +139,17 @@
   width: flex;
   max-width: 750px;
   justify-content: right;
+}
+
+.plot-button-row button{
+  background-color: #212529;
+  color: white;
+  border: none;
+  margin-right: 3px;
+  /* margin-bottom: 9px; */
+  border-radius: 8px;
+  width: 4vw;
+  font-size: min(1vw, 16px);
 }
 .comparison-graph:hover {
   opacity: 1;
@@ -193,4 +195,8 @@
   margin-right: 50vw;
   padding: 3px;
   margin-left: 26%;
+}
+
+.plot-button a {
+  text-decoration: none;
 }
