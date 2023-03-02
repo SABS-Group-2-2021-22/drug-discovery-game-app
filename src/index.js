@@ -17,8 +17,6 @@ import {
   Navigation,
   Home,
   Introduction,
-  Introduction2,
-  Introduction3,
   Builder,
   Assay,
   Analysis,
