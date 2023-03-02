@@ -183,8 +183,6 @@
 
 
 .control-panel {
-  text-align:right;
-  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -197,7 +195,6 @@
   padding-right: 15px;
   padding-left: 15px;
   margin-right: 4vw;
-  /* justify-content: stretch; */
   width: auto;
 }
 
