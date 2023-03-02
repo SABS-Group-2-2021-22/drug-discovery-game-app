@@ -16,8 +16,6 @@ import {
   Navigation,
   Home,
   Introduction,
-  // Introduction2,
-  // Introduction3,
   Loadingpage,
   Builder,
   Assay,
@@ -50,8 +48,6 @@ class Index extends React.Component {
           <Route path="/" element={<Navigate to='/home' />} />
           <Route path="/home" element={<Home />} />
           <Route path="/introduction" element={<Introduction />} />
-          {/* <Route path="/introduction2" element={<Introduction2 />} />
-          <Route path="/introduction3" element={<Introduction3 />} /> */}
           <Route path="/loadingpage" element={<Loadingpage />} />
           <Route path="/build" element={(this.props.gamemode === 'builder') ? <Builder /> : <SketcherAppRedux />} />
           <Route path="/assay" element={< Assay />} />

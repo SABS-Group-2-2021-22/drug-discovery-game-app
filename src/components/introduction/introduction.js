@@ -39,10 +39,9 @@ class Introduction extends React.Component {
               </div>
               <div className="control-panel">
               
-                {/* <button onClick={this.onNext}>Next</button> */}
                 {this.state.count < 2 &&
                   <div>
-                  <button onClick={this.onNext}>Next</button>
+                  <button className='next-button' onClick={this.onNext}>Next</button>
                   <Link to="/loadingpage">
                   <button>Skip</button>
                 </Link>
@@ -50,15 +49,12 @@ class Introduction extends React.Component {
                 }
                 {this.state.count > 0 &&
                   <div>
-                  <button onClick={this.onBack}>Back</button>
-                  {/* <Link to="/loadingpage">
-                  <button>Skip</button>
-                </Link> */}
+                  <button className='back-button' onClick={this.onBack}>Back</button>
                 </div>
                 }
                 {this.state.count === 2 &&
                   <Link to="/loadingpage">
-                            <button>Proceed to Game</button>
+                            <button className='start-button'>Start game</button>
                 </Link>}
 
               </div>

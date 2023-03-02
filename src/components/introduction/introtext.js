@@ -1,5 +1,5 @@
 import React from "react";
-// import "./assay.css";
+import "./introduction.css";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -17,12 +17,15 @@ render()
     return(
         <div>
         {this.props.id === 0 &&
+        <div className="introtext">
         <p>Matrix metalloproteinase 12 (MMP-12) is an enzyme implicated in emphysema and asthma. It has been identified as a possible drug target.
         {"\n"}  {"\n"}  MMP-12 is made by immune cells in the lungs, and it is thought that it can cause damage and inflammation in the lungs.
         {"\n"}  {"\n"} You are going to try to design a compound with desired properties that inhibits MMP-12 in the body (including the lungs).
-      </p>}
+      </p>
+      </div>}
         
         {this.props.id === 1 &&
+        <div className="introtext">
         <p>The optimal properties of a certain drug depend on the specific condition you are trying to treat.
         {"\n"}  {"\n"}
         The target compound profile or TCP (in terms of desired properties) for MMP-12 is indicated below:
@@ -30,9 +33,11 @@ render()
         {"\n"}  - Medium to high permeability (PAMPA),
         {"\n"}  -  Good metabolic stability (low clearance) in mouse and human, and
         {"\n"}  -  High potency (i.e. pIC50 ≥ 6).
-      </p>}
+      </p>
+      </div>}
 
         {this.props.id === 2 &&
+        <div className="introtext">
          <p>There are 4 stages.
          {"\n"}1. Design potential lead compounds.
          {"\n"}2. Perform assays (experiments) and run calculations to determine the properties 
@@ -43,17 +48,8 @@ render()
 
          {"\n"}  {"\n"}You start the game with £100,000 and 30 weeks, running experiments will reduce both of these. 
          The game ends when you run out of budget, time or if you are happy with the molecule you have made and decide to end the game.
-
-       </p>}
-
-
-       {/* {this.props.id === 3 &&
-         <Link to="/loadingpage">
-         <button>Skip Introduction</button>
-       </Link>
-         } */}
-
-        
+       </p>
+       </div>}       
         </div>
     );
 }
