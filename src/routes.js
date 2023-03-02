@@ -25,6 +25,8 @@ import {
   Results,
   Footer,
   LoginPage,
+  PrivateRoute,
+  PublicRoute,
   SketcherAppRedux,
   SketcherAssayRedux,
   SketcherAnalysisRedux,
@@ -48,16 +50,23 @@ class Index extends React.Component {
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/introduction" element={<Introduction />} />
-          <Route path="/introduction2" element={<Introduction2 />} />
-          <Route path="/introduction3" element={<Introduction3 />} />
-          <Route path="/loadingpage" element={<Loadingpage />} />
-          <Route path="/build" element={(this.props.gamemode === 'builder') ? <Builder /> : <SketcherAppRedux />} />
-          <Route path="/assay" element={< Assay />} />
-          <Route path="/analysis" element={< Analysis />} />
-          <Route path="/results" element={< Results />} />
+          <Route path="/home" element={<Home />} />
 
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="*" element={
+            <PrivateRoute>
+              <Routes>
+                <Route path="/introduction" element={<Introduction />} />
+                <Route path="/introduction2" element={<Introduction2 />} />
+                <Route path="/introduction3" element={<Introduction3 />} />
+                <Route path="/loadingpage" element={<Loadingpage />} />
+                <Route path="/build" element={(this.props.gamemode === 'builder') ? <Builder /> : <SketcherAppRedux />} />
+                <Route path="/assay" element={< Assay />} />
+                <Route path="/analysis" element={< Analysis />} />
+                <Route path="/results" element={< Results />} />
+              </Routes>
+            </PrivateRoute>
+          }/>
+          <Route path="/login" element={<PublicRoute><LoginPage /></PublicRoute>} />
         </Routes>
         <Footer />
       </Router>

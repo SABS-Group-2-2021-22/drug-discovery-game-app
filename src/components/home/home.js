@@ -70,7 +70,7 @@ class Home extends React.Component {
                 ) : (
                   <div className="control-panel">
                     <div className="beginner-button">
-                      <Link to="/login">
+                      <Link to="/build">
                         <button onClick={this.setBuilderMode}>Beginner</button>
                       </Link>
                     </div>
