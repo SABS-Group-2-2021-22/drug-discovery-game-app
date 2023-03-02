@@ -12,9 +12,9 @@ const client = axios.create({
   },
 });
 
-export function fetchRGroup(id) {
+export function fetchRGroup(id,size) {
   client.defaults.headers["username"] = localStorage.user;
-  return client.get("/r-group-" + id);
+  return client.get("/r-group?rgroup=" + id + "&size=" + size);
 }
 
 export function fetchHelp() {

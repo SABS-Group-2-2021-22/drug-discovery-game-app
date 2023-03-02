@@ -25,11 +25,11 @@ class Introduction extends React.Component {
   }
   
   componentWillMount() {
-    this.props.num < 100 && this.props.fetchRGroup(this.props.countRGroup);
+    this.props.num < 100 && this.props.fetchRGroup(this.props.countRGroup,"300,300");
     this.props.selectRGroup(
       this.props.selected_r_groups["A"],
       this.props.selected_r_groups["B"],
-      "800,800"
+      "500,500"
     );
     this.props.fetchHelp();
   }
