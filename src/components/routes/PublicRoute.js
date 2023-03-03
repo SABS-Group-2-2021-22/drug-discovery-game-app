@@ -1,18 +1,15 @@
 import { Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function PublicRoute({ children }) {
-  const user = localStorage.getItem('user');
-  console.log(user);
-  console.log(user === undefined);
+  const user = useSelector(state => state.login.user);
   if (user === undefined){
-    return null;
+    return children;
   }
   else if (user) {
-    console.log(user);
     return <Navigate to="/" />
   }
   else {
-    console.log(user);
     return children;
   }
 }

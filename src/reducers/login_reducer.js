@@ -21,12 +21,10 @@ export function loginReducer(state = initialState, action) {
         case userConstants.LOGOUT_REQUEST:
             return {
                 loggingOut: true,
-                user: action.user
             };
         case userConstants.LOGOUT_SUCCESS:
             return {
                 loggedIn: false,
-                user: action.user
             };
         case userConstants.LOGOUT_FAILURE:
             return {};
