@@ -182,10 +182,14 @@
 }
 
 
+.introtext {
+  width: 38vw;
+  height: 27vh;
+}
+
 .control-panel {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   padding: 10px;
 }
 
@@ -195,7 +199,7 @@
   padding-right: 15px;
   padding-left: 15px;
   margin-right: 4vw;
-  width: auto;
+  width: max-content;
 }
 
 .help-toggle {

@@ -27,21 +27,15 @@ class SelectorPanel extends React.Component {
   };
 
   render() {
-    return ( <div>
+    return (
         <div className="selector-panel">
-        <div className="selector-panel-select-button">
-          <Link to="/results">
-              <button>Select Final Candidate</button>
-          </Link>
-        </div>
-        <button
+          <button
             className="help-button"
             onMouseEnter={this.onHelpHover}
             onMouseLeave={this.onUnHelpHover}
           >
             ?
         </button>
-        </div>
         {this.state.helpHover && (
             <div className="help-info-text">
               <p>
@@ -49,6 +43,11 @@ class SelectorPanel extends React.Component {
               </p>
             </div>
           )}
+        <div className="selector-panel-select-button">
+          <Link to="/results">
+              <button onClick={this.chooseMolecule}> Select Final Candidate</button>
+          </Link>
+        </div>
       </div>
     );
   }
@@ -59,7 +58,6 @@ function mapStateToProps(state) {
     saved_mols: state.assay.saved_mols,
     selected_mol: state.selector.selected_mol,
     selected_or_not: state.selector.selected_or_not,
-    chosen_mol: state.selector.chosen_mol,
     gamemode: state.game.gamemode,
     help: state.init.help.analysis,
   };
