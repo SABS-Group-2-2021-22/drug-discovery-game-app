@@ -7,7 +7,7 @@ export default function PublicRoute({ children }) {
     return children;
   }
   else if (user) {
-    return <Navigate to="/" />
+    return <Navigate to="/build" />
   }
   else {
     return children;
