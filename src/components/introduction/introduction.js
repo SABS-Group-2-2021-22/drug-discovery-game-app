@@ -5,10 +5,23 @@ import pymolpic from "../../assets/pymolMMP12.png";
 import { connect } from "react-redux";
 import { initActions, selectorActions } from "../../actions";
 import { LogoBanner } from "../body";
+import IntroText from "./introtext";
 
 class Introduction extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      count: 0    }
+  }
+
+
+  onNext = () => {
+    this.setState({count: this.state.count + 1})
+  }
+
+  onBack = () => {
+    this.setState({count: this.state.count - 1})
+
   }
   
   componentWillMount() {
@@ -29,18 +42,35 @@ class Introduction extends React.Component {
           <div className="pic-and-text">
             <div className="text-and-button">
               <div className="text">
-                <p>Matrix metalloproteinase 12 (MMP-12) is an enzyme implicated in emphysema and asthma. It has been identified as a possible drug target.
-                  {"\n"}  {"\n"}  MMP-12 is made by immune cells in the lungs, and it is thought that it can cause damage and inflammation in the lungs.
-                  {"\n"}  {"\n"} You are going to try to design a compound with desired properties that inhibits MMP-12 in the body (including the lungs).
-                </p>
+                
+              <IntroText id={this.state.count} />
               </div>
               <div className="control-panel">
-                <Link to="/introduction2">
-                  <button>Next</button>
+              {this.state.count === 0 &&
+                  <Link to="/home">
+                  <button>Back</button>
                 </Link>
-                <Link to="/loadingpage">
-                  <button>Skip Introduction</button>
+                }
+              {this.state.count > 0 &&
+                  <div>
+                  <button className='back-button' onClick={this.onBack}>Back</button>
+                </div>
+                }
+              
+                {this.state.count < 3 &&
+                  <div>
+                  <button className='next-button' onClick={this.onNext}>Next</button>
+                  <Link to="/loadingpage">
+                  <button>Skip</button>
                 </Link>
+                </div>
+                }
+          
+                {this.state.count === 3 &&
+                  <Link to="/loadingpage">
+                            <button className='start-button'>Start game</button>
+                </Link>}
+
               </div>
             </div>
             <div className="picture">
@@ -55,6 +85,7 @@ class Introduction extends React.Component {
     );
   }
 }
+
 
 function mapStateToProps(state) {
   return {
