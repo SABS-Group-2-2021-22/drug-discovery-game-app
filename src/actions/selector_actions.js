@@ -3,8 +3,8 @@ import * as api from "../api";
 export const selectorActions = {
   selectRGroup,
   selectMolecule,
-  chooseMolecule,
-  postChosenSucceeded,
+  fetchCompTextSucceeded,
+  fetchSpiderObjSucceeded,
 };
 
 /**
@@ -52,10 +52,21 @@ function selectRGroup(r_group_id_A, r_group_id_B, size) {
  * id of the selected molecule
  */
 function selectMolecule(selected_mol) {
-  return (dispatch) => {
+  return async (dispatch) => {
+    const r_group_A = selected_mol.slice(0, 3);
+    const r_group_B = selected_mol.slice(3, 6);
+    api.postChosen(r_group_A, r_group_B);
+    api.fetchSpiderObj().then((response) => {
+      dispatch(fetchSpiderObjSucceeded(response));
+    });
+    api.fetchCompText().then((response) => {
+      dispatch(fetchCompTextSucceeded(response));
+    });
+    api.fetchSpiderObj().then((response) => {
+      dispatch(fetchSpiderObjSucceeded(response));
+    });
     dispatch(selectMoleculeSucceeded(selected_mol));
-  };
-}
+  }}
 
 /**
  * Synchronous action that sends the selected mol id to the store when dispatched
@@ -70,40 +81,33 @@ function selectMoleculeSucceeded(selected_mol) {
     },
   };
 }
+function fetchSpiderObjSucceeded(spider_data) {
+  return {
+    type: "FETCH_SPIDER_SUCCEEDED",
+    payload: {
+      spider_data: spider_data,
+    },
+  };
+}
+
+
+/**
+ * Synchronous action that sends the comparison text to the store when dispatched
+ * This happens once the final molecule is submitted to reduce lag on the results page
+ * @param {state object} comparison_text text comparing chosen and target molecules
+ * @returns comparison text
+ */
+function fetchCompTextSucceeded(comp_text) {
+  return {
+    type: "FETCH_COMP_TEXT_SUCCEEDED",
+    payload: {
+      comp_text: comp_text,
+    },
+  };
+}
 
 /**
  * Synchronous action that sends the chosen mol id to the store when dispatched
  * @param {state object} selected_mol text id object of the chosen molecule
  * @returns {} the selected_mol text id for a state change by the selectorReducer
  */
-function chooseMoleculeSucceeded(selected_mol) {
-  return {
-    type: "CHOOSE_MOLECULE_SUCCEEDED",
-    payload: {
-      chosen_mol: selected_mol,
-    },
-  };
-}
-
-/**
- * Asynchronous action that dispatches the chosen molecule to chooseMoleculeSucceeded,
- * and fires an api call to send the chosen molecule to the BE
- * @param {state object} selected_mol text id object of the selected/chosen molecule
- * @returns {dispatch} dispatches chooseMoleculeSucceeded to the selectorReducer,
- * and dispatches postChosenSucceeded to signal a succesful api call.
- */
-function chooseMolecule(selected_mol) {
-  return async (dispatch) => {
-    dispatch(chooseMoleculeSucceeded(selected_mol));
-    const r_group_A = selected_mol.slice(0, 3);
-    const r_group_B = selected_mol.slice(3, 6);
-    await api.postChosen(r_group_A, r_group_B);
-    dispatch(postChosenSucceeded());
-  };
-}
-
-function postChosenSucceeded() {
-  return {
-    type: "POST_CHOSEN_SUCCEEDED",
-  };
-}

@@ -30,17 +30,9 @@ export function selectorReducer(state = initialState, action) {
         ...state,
         selected_or_not : false,
         selected_mol: action.payload.selected_mol,
-
-
       };
     }
-    case "CHOOSE_MOLECULE_SUCCEEDED": {
-      return {
-        ...state,
-        selected_or_not : true,
-        chosen_mol: action.payload.chosen_mol,
-      };
-    }
+
     case "CHOOSE_SKETCHED_MOLECULE_SUCCEEDED": {
       return {
         ...state,

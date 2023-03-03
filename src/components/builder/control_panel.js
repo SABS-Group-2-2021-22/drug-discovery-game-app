@@ -1,7 +1,7 @@
 import React from "react";
 import "./builder.css";
 import { connect } from "react-redux";
-import { selectorActions, assayActions } from "../../actions";
+import { selectorActions, assayActions, analysisActions } from "../../actions";
 import { Link } from "react-router-dom";
 
 class ControlPanel extends React.Component {
@@ -27,8 +27,17 @@ class ControlPanel extends React.Component {
   // set the first saved molecule as the selected molecule for the assay page
   initSelectMolecule = () => {
     this.props.selectMolecule(Object.keys(this.props.saved_mols)[0]);
+
   };
 
+  fetchSpider = () => {
+      this.props.fetchSpiderObj();
+  };
+
+  // retrieve data for the comparison text on the results page
+  fetchCompText = () => {
+      this.props.fetchCompText();
+  };
 
   resetRGroups = () => {
     this.props.selectRGroup('A00', 'B00', '800,800');
@@ -63,6 +72,8 @@ function mapStateToProps(state) {
     saved_mols: state.assay.saved_mols,
     saved_or_not: state.assay.saved_or_not,
     time: state.game.time,
+    gamemode: state.game.gamemode,
+    help: state.init.help.analysis,
   };
 }
 
