@@ -1,7 +1,7 @@
 import React from "react";
 import Plot from "react-plotly.js";
 import { connect } from "react-redux";
-import Spinner from "react-bootstrap/Spinner";
+
 class SpiderPlot extends React.Component {
   constructor(props) {
     super(props);
@@ -10,6 +10,7 @@ class SpiderPlot extends React.Component {
       user_params: [],
       ref_r: [],
       ref_params: [], 
+      features : ['Human Clearance','Mouse Clearance','LogD','PAMPA','pIC50'],
     };
   }
 
@@ -27,24 +28,27 @@ class SpiderPlot extends React.Component {
   }
   addTraces = () => {
     this.restructureData();
+    let feature = this.state.features;
+    let value = this.state.user_r;
+    let valueref = this.state.ref_r;
     let data = [
-      {
-        type: "bar",
-        y: this.state.user_r,
-        x: this.state.user_params,
-        fill: "toself",
-        name: "Chosen Molecule",
-      },
-      {
-        type: "bar",
-        y: this.state.ref_r,
-        x: this.state.ref_params,
-        fill: "toself",
-        name: "Desired profile",
-      },
-    ];
-    
-    return data;
+    {
+      type: "bar",
+      y: value,
+      x: feature,
+      fill: "toself",
+      name: "Chosen Molecule",
+    },
+    {
+      type: "bar",
+      y: valueref,
+      x: feature,
+      fill: "toself",
+      name: "Desired profile",
+    },
+  ];
+
+  return data;
   }
 
   layout() {
@@ -56,9 +60,9 @@ class SpiderPlot extends React.Component {
       },
       yaxis: {
         title: 'Value',
-        range: [0, 8],
+        range: ['low', 'high'],
       },
-      
+
       barmode: 'group',
       showlegend: true
     };
@@ -66,17 +70,7 @@ class SpiderPlot extends React.Component {
   }
   
   render() {
-    // setTimeout(() => {
-    //   this.setState({ shouldRenderPlot: true });
-    // }, 2500);
-  
-    // if (!this.state.shouldRenderPlot) {
-    //   return (
-    //     <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
-    //       <Spinner animation="border" variant="primary" />
-    //     </div>
-    //   );
-    // }
+
     return (
       <div className="spider-plot-container">
         <Plot
