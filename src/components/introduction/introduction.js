@@ -61,14 +61,14 @@ class Introduction extends React.Component {
                   <div>
                   <button className='next-button' onClick={this.onNext}>Next</button>
                   <Link to="/loadingpage">
-                  <button>Skip</button>
+                  <button>Skip →</button>
                 </Link>
                 </div>
                 }
           
                 {this.state.count === 3 &&
                   <Link to="/loadingpage">
-                            <button className='start-button'>Start game</button>
+                            <button className='start-button'>Start game →</button>
                 </Link>}
 
               </div>

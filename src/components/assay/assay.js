@@ -38,7 +38,7 @@ class Assay extends React.Component {
                 <button
                   label="Back_Build"
                 >
-                  Back (Design)
+                  ← Design 
                 </button>
               </Link>
               <Link to="/analysis">
@@ -46,7 +46,7 @@ class Assay extends React.Component {
                   label="Next_Analysis"
                   onClick={this.initPlotData}
                 >
-                  Next (Analysis)
+                  Analysis →
                 </button>
               </Link>
             </div>
