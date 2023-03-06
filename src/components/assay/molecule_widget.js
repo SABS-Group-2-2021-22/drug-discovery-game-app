@@ -11,8 +11,7 @@ class MoleculeWidget extends React.Component {
 
   render() {
     const selected_mol_style = {
-      color: (this.props.selected_mol == this.props.mol_id ? "white" : "black"),
-      backgroundColor: (this.props.selected_mol == this.props.mol_id ? "#212529" : "#FFFFFF")
+      borderWidth:  (this.props.selected_mol == this.props.mol_id ? "8px" : "1px")
     };
     return (
       <div className="molecule-container">
