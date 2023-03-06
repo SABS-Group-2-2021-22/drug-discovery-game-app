@@ -4,7 +4,7 @@ const initialState = {
   rgfetched: false,
   rochefetched: false,
   helpfetched: false,
-  num: -1,
+  num: 0,
 };
 
 export function initReducer(state = initialState, action) {
