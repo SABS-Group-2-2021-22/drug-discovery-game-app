@@ -2,12 +2,18 @@ import React from "react";
 import "./analysis.css";
 import MoleculeImage from "./molecule_image.js";
 import MoleculeStats from "./molecule_stats.js";
+import { selectorActions } from "../../actions";
 import { connect } from "react-redux"
 
 class MoleculeWidget extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  // fires the selectMolecule action when clicking the molecule's image
+  selectMolecule = () => {
+    this.props.selectMolecule(this.props.mol_id);
+  };
 
   render() {
     const selected_mol_style = {
@@ -16,7 +22,10 @@ class MoleculeWidget extends React.Component {
     };
     return (
       <div className="molecule-container">
-        <div className="molecule-widget" style={selected_mol_style}>
+        <div className="molecule-widget" 
+          style={selected_mol_style}
+          onClick={this.selectMolecule}
+        >
           <MoleculeImage mol_id={this.props.mol_id} />
           {this.props.mol_id}
           <MoleculeStats mol_id={this.props.mol_id} />
@@ -32,4 +41,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(MoleculeWidget);
+const actionCreators = {
+  selectMolecule: selectorActions.selectMolecule,
+};
+
+export default connect(mapStateToProps, actionCreators)(MoleculeWidget);
