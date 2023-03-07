@@ -104,6 +104,7 @@
   border: none;
   border-radius: 8px;
   width: 80px;
+  position: relative;
 }
 
 .control-panel button:hover {
