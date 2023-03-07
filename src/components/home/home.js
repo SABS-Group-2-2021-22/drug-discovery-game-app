@@ -71,16 +71,16 @@ class Home extends React.Component {
                   <div className="control-panel">
                     <div className="beginner-button">
                       <Link to="/login">
-                        <button onClick={this.setBuilderMode}>Beginner</button>
+                        <button onClick={this.setBuilderMode}>Start</button>
                       </Link>
                     </div>
-                    <div className="advanced-button-wrapper">
+                    {/* <div className="advanced-button-wrapper">
                       <div className="advanced-button">
                         <Link to="/login">
                           <button onClick={this.setSketcherMode}>Advanced</button>
                         </Link>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 )}
             </div>
