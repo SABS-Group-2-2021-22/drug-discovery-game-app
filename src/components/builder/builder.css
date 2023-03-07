@@ -167,10 +167,12 @@
   align-items: end;
   padding-bottom: 10pt;
   justify-content: flex-start;
+  text-align: left;
+  max-width: 175px;
 }
 
-.build > .molecule-chooser-bar p{
-  margin-right: 60px;
+.build > .molecule-chooser-bar > p {
+  margin-right: 49px;
 }
 
 .build > .molecule-chooser-bar > .molecule-list {
@@ -184,6 +186,7 @@
 
 .build > .molecule-chooser-bar > .molecule-list > .molecule-container {
   padding-top: 5px;
+  max-width: 170px;
 }
 
 .build > .molecule-chooser-bar > .molecule-list > .molecule-container > .molecule-card{

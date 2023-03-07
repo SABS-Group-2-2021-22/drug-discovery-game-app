@@ -37,7 +37,7 @@ class Descriptors extends React.Component {
           {this.props.saved_mols[this.props.mol_id].data.descriptors.h_don}
         </div>
         <div class="row">
-          logP:{" "}
+          LogP:{" "}
           {Number(
             this.props.saved_mols[this.props.mol_id].data.descriptors.logP
           ).toFixed(1)}
