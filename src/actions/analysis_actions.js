@@ -41,11 +41,9 @@ function constructPlotObj(saved_mols) {
         assay_obj[K] = V;
       }
     }
-    if (v.data.assays_run.descriptors) {
-      var descriptor_obj = v.data.descriptors;
-    } else {
-      var descriptor_obj = {};
-    }
+    // add descriptors to plot data (are run no matter what)
+    {var descriptor_obj = v.data.descriptors;} 
+
     let blank = { "--": 0 }; //initial 'blank' data plotted on page load
     let metrics = {
       ...assay_obj,

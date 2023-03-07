@@ -28,8 +28,7 @@ class RGroupWidget extends React.Component {
 
   render() {
     const selected_r_group_style = {
-      color: (this.props.selected_r_groups["A"] == this.props.r_group_id || this.props.selected_r_groups["B"] == this.props.r_group_id ? "white" : "black"),
-      backgroundColor: (this.props.selected_r_groups["A"] == this.props.r_group_id || this.props.selected_r_groups["B"] == this.props.r_group_id ? "#212529" : "#FFFFFF")
+      borderWidth:  (this.props.selected_r_groups["A"] == this.props.r_group_id || this.props.selected_r_groups["B"] == this.props.r_group_id ? "8px" : "1px")
     };
     return (
       <div className="r-group-container">
@@ -40,6 +39,7 @@ class RGroupWidget extends React.Component {
             alt="R Group"
             onClick={this.selectRGroups}
           />
+          {this.props.r_group_id}
           <RGroupStats
             stats={this.props.r_groups[[this.props.r_group_id]].data.stats}
             func = {this.selectRGroups}

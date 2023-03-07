@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 import pymolpic from "../../assets/pymolMMP12.png";
 import { connect } from "react-redux";
 import { initActions, selectorActions, gameActions } from "../../actions";
-import sabs from "../../assets/sabs-logo-tight.png";
-import oxuni from "../../assets/oxlogo-sq-border.png";
-import epsrc from "../../assets/EPSRC_logo.png";
+import { LogoBanner } from  '../body';
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -16,11 +15,11 @@ class Home extends React.Component {
   // fetches the r groups from the BE and selects the first r groups at each position
   // ... for rapid rendering of the builder and sketcher pages
   componentWillMount() {
-    this.props.num < 100 && this.props.fetchRGroup(this.props.countRGroup);
+    this.props.num < 100 && this.props.fetchRGroup(this.props.countRGroup,"300,300");
     this.props.selectRGroup(
       this.props.selected_r_groups["A"],
       this.props.selected_r_groups["B"],
-      "800,800"
+      "500,500"
     );
     this.props.fetchHelp();
   }
@@ -72,39 +71,21 @@ class Home extends React.Component {
                   <div className="control-panel">
                     <div className="beginner-button">
                       <Link to="/login">
-                        <button onClick={this.setBuilderMode}>Beginner</button>
+                        <button onClick={this.setBuilderMode}>Start</button>
                       </Link>
                     </div>
-                    <div className="advanced-button-wrapper">
+                    {/* <div className="advanced-button-wrapper">
                       <div className="advanced-button">
                         <Link to="/login">
                           <button onClick={this.setSketcherMode}>Advanced</button>
                         </Link>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 )}
             </div>
           </div>
-
-          <div className="button-and-logo-area">
-            {" "}
-            {/*actually no longer contains the start button */}
-            <div className="logos-area">
-              <div className="logo">
-                {" "}
-                <img src={sabs} height="120px" />{" "}
-              </div>
-              <div className="logo">
-                {" "}
-                <img src={epsrc} height="100px" />{" "}
-              </div>
-              <div className="logo">
-                {" "}
-                <img src={oxuni} height="100px" />{" "}
-              </div>
-            </div>
-          </div>
+          <LogoBanner/>
         </div>
       </div>
     );

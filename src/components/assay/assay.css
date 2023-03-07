@@ -182,17 +182,24 @@
 }
 
 
+.introtext {
+  width: 38vw;
+  height: 27vh;
+}
+
 .control-panel {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  align-items: flex-end;
   padding: 10px;
 }
 
 .control-panel button {
-  padding: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
   margin-right: 4vw;
-  width: 100px;
+  width: max-content;
 }
 
 .help-toggle {

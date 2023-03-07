@@ -26,11 +26,9 @@ class MoleculeStats extends React.Component {
   render() {
     return (
       <div className="mol-stats">
-        {this.props.lipinski_run && (
-          <Lipinski mol_id={this.props.selected_mol} help_label={this.state.help_label} />
-        )}
+        <Lipinski mol_id={this.props.selected_mol} help_label={this.state.help_label} />
         <div className="hover-info-button-lip">
-          {this.props.toggle_help && this.props.lipinski_run && (
+          {this.props.toggle_help && (
             <button
               className="hover-info-button-lip"
               onClick={() => {
@@ -41,14 +39,12 @@ class MoleculeStats extends React.Component {
             </button>
           )}
         </div>
-        {this.props.descriptors_run && (
-          <Descriptors
-            mol_id={this.props.selected_mol}
-            help_label={this.state.help_label}
-          />
-        )}
+        <Descriptors
+          mol_id={this.props.selected_mol}
+          help_label={this.state.help_label}
+        />
         <div className="hover-info-button-desc">
-          {this.props.toggle_help && this.props.descriptors_run && (
+          {this.props.toggle_help && (
             <button
               className="hover-info-button-desc"
               onClick={() => {

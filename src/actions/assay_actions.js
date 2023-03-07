@@ -30,11 +30,11 @@ function saveMoleculeSucceeded(saved_mols) {
  * @returns {dispatch} dispatches saveMolecule succeeded, fetchDescriptorsSucceeded, and fetchFiltersSucceeded
  * for the assayReducer
  */
-function saveMolecule(saved_mols, selected_r_groups) {
+function saveMolecule(saved_mols, selected_r_groups, current_time) {
   const mol_id = selected_r_groups.A + selected_r_groups.B; //create molecule id
   saved_mols[mol_id] = selected_r_groups.molecule; //inserts the molecule into the local saved_mols object
   saved_mols[mol_id].data.toggle_assay = {pIC50: false, clearance_mouse: false, clearance_human: false, logd:false, pampa:false} // adds initial state for toggle_assay when you save the molecule
-  
+  saved_mols[mol_id].data.date_created = 30 - current_time
   return async (dispatch) => {
     const { post_saved } = await api.postSaved(
       selected_r_groups.A,
