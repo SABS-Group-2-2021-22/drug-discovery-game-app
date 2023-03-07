@@ -52,6 +52,7 @@ render()
          <p>
          You start the game with £100,000 and 30 weeks, running experiments will reduce both of these. 
          The game ends when you run out of budget, time or if you are happy with the molecule you have made and decide to end the game.
+         In the following page you are given a base scaffold with which you can start designing your molecule by adding R-groups (R1 and R2).
        </p>
        </div>} 
 
