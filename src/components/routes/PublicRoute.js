@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 
 export default function PublicRoute({ children }) {
   const user = useSelector(state => state.login.user);
-  if (user === undefined){
+  if (user === undefined || user.loggedIn === false){
     return children;
   }
-  else if (user) {
+  else if (user.loggedIn) {
     return <Navigate to="/build" />
   }
   else {
