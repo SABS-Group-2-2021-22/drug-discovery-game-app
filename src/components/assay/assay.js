@@ -7,6 +7,7 @@ import AssayPanel from "./assay_panel.js";
 import MoleculeStats from "./molecule_stats.js";
 import ControlPanel from "./control_panel.js";
 import { assayActions } from "../../actions";
+import { analysisActions } from "../../actions";
 import { Link } from "react-router-dom"
 
 class Assay extends React.Component {
@@ -22,6 +23,13 @@ class Assay extends React.Component {
     }
     console.log(this.props.toggle_help)
   }
+
+  initPlotData = () => {
+    // creates object for plotting - firing it here just speeds 
+    // ...things up a bit
+    console.log(this.props.saved_mols);
+    this.props.constructPlotObj(this.props.saved_mols);
+  };
 
   render() {
     return (
@@ -69,11 +77,13 @@ function mapStateToProps(state) {
     all_molecules_assay_data: state.assay.saved_mols,
     money: state.game.money,
     time: state.game.time,
+    saved_mols: state.assay.saved_mols,
   };
 }
 
 const actionCreators = {
   toggleHelp: assayActions.toggleHelp,
+  constructPlotObj: analysisActions.constructPlotObj,
 };
 
 export default connect(mapStateToProps, actionCreators)(Assay);

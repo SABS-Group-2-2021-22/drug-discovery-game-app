@@ -283,7 +283,7 @@ class AssayPanel extends React.Component {
         </colgroup>
           <thead style={{ verticalAlign: "text-top" }}>
             <tr class="header-cells">
-              <th>
+              <th style={{ backgroundColor: 'white' }}>
                 <div className="help-toggle">
                   {this.props.toggle_help && (
                     <div className="toggle-activebutton">
@@ -335,7 +335,7 @@ class AssayPanel extends React.Component {
                   this.onUnHover();
                 }}
               >
-                Mouse Clearance
+                Mouse <br /> Clearance
               </th>
               <th
                 onMouseEnter={() => {
@@ -345,7 +345,7 @@ class AssayPanel extends React.Component {
                   this.onUnHover();
                 }}
               >
-                Human Clearance
+                {" "}Human <br />Clearance
               </th>
               <th
                 onMouseEnter={() => {

@@ -102,7 +102,7 @@
 }
 
 .assay-name {
-  font-size: 2vh;
+  font-size: 18px;
 }
 
 .assay-cost-and-time {
@@ -120,6 +120,14 @@
   overflow-y: scroll;
   width: 100%;
   top: 150px;
+}
+
+.assay-panel > .assay-table th{
+  padding: 5px;
+}
+
+.assay-panel > .assay-table td{
+  padding: 5px;
 }
 
 .assay-panel > .assay-table tr.header-cells {
@@ -486,7 +494,7 @@ table {
   position: relative;
   float: right;
   height: 100px;
-  width: 500px;
+  width: 400px;
   border: none;
   margin-top: 10px;
 }
@@ -555,10 +563,18 @@ table {
   border-width: 1.8px;
 }
 
+.invoice-amount {
+  font-size: 12px;
+}
+
 .even {
   background-color: #f2f2f2;
 }
 
 .odd {
   background-color: #ffffff;
+}
+
+.header-cells {
+  background-color: #f2f2f2;
 }
