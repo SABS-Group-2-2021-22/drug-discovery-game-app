@@ -126,10 +126,8 @@ class AssayPanel extends React.Component {
     // iterate through all saved molecules at once
     let max_time = 0.
     let total_cost = 0.
-
-    // Ensure that total assay costs/times are under the limit
     let cost_sum = 0;
-    let time_sum = 0;
+    
     for ( var molecule_key in this.props.all_molecules_assay_data ) {
       let assays_run = this.props.all_molecules_assay_data[molecule_key].data.assays_run;
       let toggle_assay_dict = this.props.all_molecules_assay_data[molecule_key].data.toggle_assay;
@@ -147,12 +145,14 @@ class AssayPanel extends React.Component {
       for (var i = 0; i < selected_assays.length; i++) {
         if (!["drug_props", "lipinski", "descriptors"].includes(selected_assays[i]) && !assays_run[selected_assays[i]]) {
           cost_sum += ASSAY_PRICES[selected_assays[i]];
-          time_sum += ASSAY_TIMES[selected_assays[i]];
+          if (ASSAY_TIMES[selected_assays[i]] > max_time) {
+            max_time = ASSAY_TIMES[selected_assays[i]]
+          }
         }
       }
     }
 
-    if (this.props.money - cost_sum < 0 || this.props.time - time_sum < 0) {
+    if (this.props.money - cost_sum < 0 || this.props.time - max_time < 0) {
       for ( var molecule_key in this.props.all_molecules_assay_data ) {
         let toggle_assay_dict = this.props.all_molecules_assay_data[molecule_key].data.toggle_assay;
 
@@ -196,10 +196,9 @@ class AssayPanel extends React.Component {
         assays_run["drug_props"] = true;
         this.props.runAssay(molecule_key, assays_run);
       }
+      this.updateTime(max_time);
+      this.updateMoney(total_cost);
     }
-
-    this.updateTime(max_time);
-    this.updateMoney(total_cost);
 
   };
 
