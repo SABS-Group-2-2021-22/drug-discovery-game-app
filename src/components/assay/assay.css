@@ -223,14 +223,12 @@ table {
 }
  */
 
-
-
 .hover-info-text-pic50 {
   border-style: solid;
   border-width: 1px;
   padding: 5px;
   display: flex;
-  margin-left: 22vh;
+  margin-left: 70vh;
   margin-top: 40px;
   font-size: 15px;
   z-index: 10;
@@ -246,7 +244,7 @@ table {
   border-width: 1px;
   padding: 5px;
   display: flex;
-  margin-left: 40vh;
+  margin-left: 22vh;
   margin-top: 40px;
   font-size: 15px;
   z-index: 10;
@@ -323,7 +321,7 @@ table {
   border-width: 1px;
   padding: 5px;
   display: flex;
-  margin-left: 46vh;
+  margin-left: 50vh;
   margin-top: 5vh;
   font-size: 15px;
   z-index: 10;
