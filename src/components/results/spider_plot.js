@@ -53,16 +53,11 @@ class SpiderPlot extends React.Component {
 
   layout() {
     let layout = {
-      responsive: true,
+      responsive: false,
       title: 'Comparison Chart',
       xaxis: {
-        title: 'Feature'
+        title: ''
       },
-      yaxis: {
-        title: 'Value',
-        range: ['low', 'high'],
-      },
-
       barmode: 'group',
       showlegend: true
     };

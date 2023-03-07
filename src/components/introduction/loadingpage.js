@@ -16,6 +16,7 @@ class Loadingpage extends React.Component {
   }
 
   render() {
+    console.log(this.props.num)
     return (
       <div className="wrapper">
         {(this.props.num == 100)? (
