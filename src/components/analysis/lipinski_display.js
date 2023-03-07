@@ -11,6 +11,12 @@ class Lipinski extends React.Component {
     return (
       <div class="container" className="filter-stats">
         <div class="row" className="stats-type-header">
+          Date Created:
+        </div>
+        <div class="row">
+          Week {this.props.saved_mols[this.props.mol_id].data.date_created}
+        </div>
+        <div class="row" className="stats-type-header">
           Lipinski Filters:
         </div>
         <div class="row">

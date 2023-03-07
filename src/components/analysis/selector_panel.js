@@ -56,21 +56,15 @@ class SelectorPanel extends React.Component {
   };
 
   render() {
-    return ( <div>
+    return (
         <div className="selector-panel">
-        <div className="selector-panel-select-button">
-          <Link to="/results">
-              <button onClick={this.chooseMolecule}>Select Final Candidate</button>
-          </Link>
-        </div>
-        <button
+          <button
             className="help-button"
             onMouseEnter={this.onHelpHover}
             onMouseLeave={this.onUnHelpHover}
           >
             ?
         </button>
-        </div>
         {this.state.helpHover && (
             <div className="help-info-text">
               <p>
@@ -78,6 +72,11 @@ class SelectorPanel extends React.Component {
               </p>
             </div>
           )}
+        <div className="selector-panel-select-button">
+          <Link to="/results">
+              <button onClick={this.chooseMolecule}> Select Final Candidate</button>
+          </Link>
+        </div>
       </div>
     );
   }

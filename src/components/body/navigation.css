@@ -43,15 +43,28 @@
     flex-direction: column;
 }
 
+.navigation-home.active {
+    text-decoration:none;
+    color: #FFF;
+    text-decoration: none;
+}
+
 .navigation-link {
     color: #FFF;
     text-decoration: none;
+}
+
+.navigation-link.active {
+    color: #9a9c9e;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .navigation-link:hover {
     color: #9a9c9e;
     text-decoration: none;
 }
+
 
 p > h5 {
     font-weight: 400;
