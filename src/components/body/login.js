@@ -33,7 +33,6 @@ class LoginPage extends React.Component {
 
     render() {
         const { username, submitted } = this.state;
-        console.log(this.props.loggedIn)
         if (this.props.loggedIn) {
             return <Navigate to='/build' />
         }
