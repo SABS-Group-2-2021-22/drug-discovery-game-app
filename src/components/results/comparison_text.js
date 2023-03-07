@@ -10,11 +10,11 @@ class ComparisonText extends React.Component {
   dispText() {
     let obj = this.props.comp_text;
     var str = obj["pic50"] + "\n" + obj["logd"] + "\n" + obj["clearance_human"];
-    return str;
+    return str.replace(/pIC50/g, 'pIC<sub>50</sub>');
   }
 
   render() {
-    return this.dispText();
+    return <div dangerouslySetInnerHTML={{__html: this.dispText()}} />
   }
 }
 

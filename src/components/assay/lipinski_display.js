@@ -47,7 +47,7 @@ class Lipinski extends React.Component {
             : "Fail"}
         </div>
         <div class="row">
-          logP:{" "}
+          LogP:{" "}
           {this.props.saved_mols[this.props.mol_id].data.lipinski.logP
             ? "Pass"
             : "Fail"}

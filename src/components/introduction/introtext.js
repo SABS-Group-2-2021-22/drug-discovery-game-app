@@ -25,10 +25,10 @@ render()
         <p>The optimal properties of a certain drug depend on the specific condition you are trying to treat.
         {"\n"}  {"\n"}
         The target compound profile or TCP (in terms of desired properties) for MMP-12 is indicated below:
-        {"\n"}  - Good lipophilicity (i.e. logD ≥ 1 at neutral pH),
+        {"\n"}  - Good lipophilicity (i.e. LogD ≥ 1 at neutral pH),
         {"\n"}  - Medium to high permeability (PAMPA),
         {"\n"}  -  Good metabolic stability (low clearance) in mouse and human, and
-        {"\n"}  -  High potency (i.e. pIC50 ≥ 6).
+        {"\n"}  -  High potency (i.e. pIC<sub>50</sub> ≥ 6).
       </p>
       </div>}
 

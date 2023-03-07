@@ -270,6 +270,7 @@ class AssayPanel extends React.Component {
     const duration_color = {
       color: (this.props.time - this.runAssaysLimit().time >= 0 ? "white" : "red"),
     };
+    const formatted_help = this.props.help[0].replace('^-6', '<sup>-6</sup>').replace(/50/g, '<sub>50</sub>');
     return(
       <div className="assay-panel">
         <table className="assay-table" style={{overflowWrap: 'break-word'}}>
@@ -319,16 +320,6 @@ class AssayPanel extends React.Component {
               </th>
               <th
                 onMouseEnter={() => {
-                  this.onHover("pic50");
-                }}
-                onMouseLeave={() => {
-                  this.onUnHover();
-                }}
-              >
-                pIC50
-              </th>
-              <th
-                onMouseEnter={() => {
                   this.onHover("clrmouse");
                 }}
                 onMouseLeave={() => {
@@ -367,23 +358,33 @@ class AssayPanel extends React.Component {
               >
                 PAMPA
               </th>
+              <th
+                onMouseEnter={() => {
+                  this.onHover("pic50");
+                }}
+                onMouseLeave={() => {
+                  this.onUnHover();
+                }}
+              >
+                pIC<sub>50</sub>
+              </th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><b>Cost per assay</b></td>
-              <td>£70</td>
               <td>£7,000</td>
               <td>£9,000</td>
               <td>£1,000</td>
               <td>£700</td>
+              <td>£70</td>
             </tr>
             <tr class="border-bottom">
               <td><b>Duration</b></td>
-              <td>1 week</td>
               <td>3 weeks</td>
               <td>3.5 weeks</td>
               <td>1.5 weeks</td>
+              <td>1 week</td>
               <td>1 week</td>
             </tr>
             <tr>
@@ -397,18 +398,6 @@ class AssayPanel extends React.Component {
             {data.map((val, index) => (
               <tr key={val} className={index % 2 === 0 ? 'even' : 'odd'}>
                 <td>{val}</td>
-                <td>
-                  <input type="checkbox"  
-                    id={"pIC50" + val}
-                    disabled={this.checkAssaysRun("pIC50", val)}
-                    checked={this.checkAssaysRun("pIC50", val)}
-                    onClick={() => {
-                    this.toggleAssay("pIC50", val); 
-                    const isDisabled = this.checkAssaysRun("pIC50", val);
-                    this.onClick("pIC50", isDisabled);
-                    }}
-                  />
-                </td>
                 <td>
                   <input type="checkbox"
                     id={"clearance_mouse" + val}
@@ -457,17 +446,22 @@ class AssayPanel extends React.Component {
                     }}
                   />
                 </td>
+                <td>
+                  <input type="checkbox"  
+                    id={"pIC50" + val}
+                    disabled={this.checkAssaysRun("pIC50", val)}
+                    checked={this.checkAssaysRun("pIC50", val)}
+                    onClick={() => {
+                    this.toggleAssay("pIC50", val); 
+                    const isDisabled = this.checkAssaysRun("pIC50", val);
+                    this.onClick("pIC50", isDisabled);
+                    }}
+                  />
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
-        {this.state.hover == "pic50" && this.props.toggle_help && (
-        <div className="hover-info-text-pic50">
-          <p>
-            <div>{this.props.help[0]}</div>
-          </p>
-        </div>
-        )}
         {this.state.hover == "clrmouse" && this.props.toggle_help && (
         <div className="hover-info-text-clrmouse">
           <p>
@@ -494,6 +488,11 @@ class AssayPanel extends React.Component {
           <p>
             <div>{this.props.help[4]}</div>
           </p>
+        </div>
+        )}
+        {this.state.hover == "pic50" && this.props.toggle_help && (
+        <div className="hover-info-text-pic50">
+          <p><div><p dangerouslySetInnerHTML={{ __html: formatted_help }}></p></div></p>
         </div>
         )}
         {this.state.hover == "help" && (
