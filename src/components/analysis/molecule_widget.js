@@ -17,7 +17,8 @@ class MoleculeWidget extends React.Component {
 
   render() {
     const selected_mol_style = {
-      borderWidth:  (this.props.selected_mol == this.props.mol_id ? "8px" : "1px")
+      borderWidth:  (this.props.selected_mol == this.props.mol_id ? "8px" : "1px"),
+      padding: (this.props.selected_mol == this.props.mol_id ? "5px" : "13px")
     };
     return (
       <div className="molecule-container">
