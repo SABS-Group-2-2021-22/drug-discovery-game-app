@@ -35,12 +35,12 @@ render()
         {this.props.id === 2 &&
         <div className="introtext">
          <p>There are 4 stages in the drug discovery process, namely:
-         {"\n"}1. <b>Design</b> and <b>make</b> potential lead compounds.
-         {"\n"}2. <b>Test</b>: Perform assays (experiments) and run calculations to determine the properties 
+         {"\n"}1. <b>Design</b> potential lead compounds.
+         {"\n"}2. <b>Make</b>: Perform assays (experiments) and run calculations to determine the properties 
          of the molecules you have designed. With this additional information, you can then go
           back and develop improved compounds.
          {"\n"}3. <b>Analyse</b>: Compare the properties of the different molecules you have designed.
-         {"\n"}4. Find out how your drug compares to the optimal molecule for targeting MMP12.
+         {"\n"}4. <b>Test</b>: Find out how your drug compares to the optimal molecule for targeting MMP12.
 
          {/* {"\n"}  {"\n"}You start the game with £100,000 and 30 weeks, running experiments will reduce both of these. 
          The game ends when you run out of budget, time or if you are happy with the molecule you have made and decide to end the game. */}
