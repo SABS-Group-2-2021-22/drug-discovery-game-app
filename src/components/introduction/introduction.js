@@ -86,7 +86,7 @@ class Introduction extends React.Component {
             <div className="picture">
               {" "}
               <img src={dmta} />{" "}
-              <div className="text">The DMTA Cycle</div>
+              {/* <div className="text">The DMTA Cycle</div> */}
             </div>
             }
             {this.state.count === 3 &&
