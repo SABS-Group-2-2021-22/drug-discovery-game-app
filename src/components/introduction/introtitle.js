@@ -24,7 +24,7 @@ render()
 
         {this.props.id === 2 &&
         <div className="introductiontitle">
-         The Drug Discovery Process
+         The drug discovery Process
        </div>} 
 
        {this.props.id === 3 &&
