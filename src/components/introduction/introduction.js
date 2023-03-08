@@ -2,6 +2,8 @@ import React from "react";
 import "./introduction.css";
 import { Link } from "react-router-dom";
 import pymolpic from "../../assets/pymolMMP12.png";
+import dmta from "../../assets/dmtacycle.png";
+import r1r2 from "../../assets/r1r2.png";
 import { connect } from "react-redux";
 import { initActions, selectorActions } from "../../actions";
 import { LogoBanner } from "../body";
@@ -73,11 +75,27 @@ class Introduction extends React.Component {
 
               </div>
             </div>
+            {this.state.count <= 1 &&
             <div className="picture">
               {" "}
               <img src={pymolpic} />{" "}
               <div className="text">MMP-12</div>
             </div>
+            }
+            {this.state.count === 2 &&
+            <div className="picture">
+              {" "}
+              <img src={dmta} />{" "}
+              {/* <div className="text">The DMTA Cycle</div> */}
+            </div>
+            }
+            {this.state.count === 3 &&
+            <div className="picture">
+              {" "}
+              <img src={r1r2} />
+              <div className="text">The R1 (purple) and R2 (green) groups</div>
+            </div>
+            }
           </div>
           <LogoBanner/>
         </div>
