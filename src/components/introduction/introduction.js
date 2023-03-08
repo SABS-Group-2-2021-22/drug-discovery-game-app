@@ -8,6 +8,8 @@ import { connect } from "react-redux";
 import { initActions, selectorActions } from "../../actions";
 import { LogoBanner } from "../body";
 import IntroText from "./introtext";
+import IntroTitle from "./introtitle";
+
 
 class Introduction extends React.Component {
   constructor(props) {
@@ -35,12 +37,11 @@ class Introduction extends React.Component {
     );
     this.props.fetchHelp();
   }
-
   render() {
     return (
       <div className="wrapper">
         <div className="introduction">
-          <div className="introductiontitle">What are we designing our drug for? </div>
+          <div className="introductiontitle"><IntroTitle id={this.state.count} /></div>
           <div className="pic-and-text">
             <div className="text-and-button">
               <div className="text">
