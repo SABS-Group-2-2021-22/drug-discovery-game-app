@@ -22,7 +22,6 @@ class Assays extends React.Component {
         <div class="row" className="stats-type-header">
           Assay Data:
         </div>
-        <div class="row">pIC50: {Number(this.srcRoute().pic50)}</div>
         <div class="row">
         Mouse Clearance: {this.srcRoute().clearance_mouse}
         </div>
@@ -31,6 +30,7 @@ class Assays extends React.Component {
         </div>
         <div class="row">LogD: {this.srcRoute().logd}</div>
         <div class="row">PAMPA: {this.srcRoute().pampa}</div>
+        <div class="row"><p style={{ paddingLeft: "0"}}>pIC<sub>50</sub>: {Number(this.srcRoute().pic50)}</p></div>
       </div>
     );
   }

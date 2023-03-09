@@ -148,7 +148,7 @@
   margin-right: 3px;
   /* margin-bottom: 9px; */
   border-radius: 8px;
-  width: 4vw;
+  width: 4.3vw;
   font-size: min(1vw, 16px);
 }
 .comparison-graph:hover {
@@ -199,4 +199,8 @@
 
 .plot-button a {
   text-decoration: none;
+}
+
+p {
+    padding-left: 0;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import "./analysis.css";
 import MoleculeImage from "./molecule_image.js";
 import MoleculeStats from "./molecule_stats.js";
+import { selectorActions } from "../../actions";
 import { connect } from "react-redux"
 
 class MoleculeWidget extends React.Component {
@@ -9,14 +10,22 @@ class MoleculeWidget extends React.Component {
     super(props);
   }
 
+  // fires the selectMolecule action when clicking the molecule's image
+  selectMolecule = () => {
+    this.props.selectMolecule(this.props.mol_id);
+  };
+
   render() {
     const selected_mol_style = {
-      color: (this.props.selected_mol == this.props.mol_id ? "white" : "black"),
-      backgroundColor: (this.props.selected_mol == this.props.mol_id ? "#212529" : "#FFFFFF")
+      borderWidth:  (this.props.selected_mol == this.props.mol_id ? "8px" : "1px"),
+      padding: (this.props.selected_mol == this.props.mol_id ? "5px" : "13px")
     };
     return (
       <div className="molecule-container">
-        <div className="molecule-widget" style={selected_mol_style}>
+        <div className="molecule-widget" 
+          style={selected_mol_style}
+          onClick={this.selectMolecule}
+        >
           <MoleculeImage mol_id={this.props.mol_id} />
           {this.props.mol_id}
           <MoleculeStats mol_id={this.props.mol_id} />
@@ -32,4 +41,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(MoleculeWidget);
+const actionCreators = {
+  selectMolecule: selectorActions.selectMolecule,
+};
+
+export default connect(mapStateToProps, actionCreators)(MoleculeWidget);
