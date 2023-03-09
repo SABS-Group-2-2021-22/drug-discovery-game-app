@@ -11,7 +11,13 @@ class Footer extends React.Component {
     return (
       <div className="user-status-box">
         <h5> {this.props.user.username} </h5>
-          <button onClick={this.props.logout} >Log out</button>
+        <Link
+          className="navigation-link"
+          to="/login"
+          onClick={this.props.logout}
+        >
+          <button>Log out</button>
+        </Link>
       </div>
     );
   };

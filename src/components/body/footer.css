@@ -36,9 +36,8 @@ p > h5 {
     font-size: max(2vh, 15px);
 }
 
-.user-status-box > button{
+.user-status-box > .navigation-link button{
     background: transparent;
     border: none;
     color: white;
-    padding:0px;
 }

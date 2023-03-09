@@ -10,6 +10,9 @@ class LoginPage extends React.Component {
     constructor(props) {
         super(props);
 
+        //reset login status when loading login page
+        // this.props.logout();
+
         this.state = {
             username: '',
             submitted: false,
@@ -32,22 +35,12 @@ class LoginPage extends React.Component {
     }
 
     render() {
+        const { loggingIn, loggedIn } = this.props;
         const { username, submitted } = this.state;
-        if (this.props.loggedIn) {
-            return <Navigate to='/build' />
-        }
-        else if (this.props.loggingIn && this.props.user !== undefined && this.props.user.user_status ==='Exists') {
-            return (
-                <div className='wrapper'>
-                    <div >
-                        <h3>Hello
-                        </h3>
-                    </div>
-                </div>
-            );    
-        }
 
-        else
+        if (this.props.loggingIn || this.props.loggedIn) {
+            return <Navigate to='/introduction' />
+        }
         return (
             <div className='wrapper'>
                 <div className="login-page" >
@@ -62,7 +55,7 @@ class LoginPage extends React.Component {
                         </div>
                         <div className='form-group'>
                             <button className='login-button'>Continue</button>
-                            {this.props.loggingIn &&
+                            {loggingIn &&
                                 <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                             }
                         </div>
@@ -74,11 +67,8 @@ class LoginPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {
-        loggingIn: state.login.loggingIn,
-        loggedIn: state.login.loggedIn,
-        user: state.login.user,
-      };
+    const { loggingIn, loggedIn } = state.login;
+    return { loggingIn, loggedIn };
 }
 
 const actionCreators = {
