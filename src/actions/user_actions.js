@@ -10,13 +10,17 @@ export const userActions = {
 // defines login action with request to api via service 
 function login(username) {
     return dispatch => {
-        dispatch(request({ username }));
+        dispatch(request(username.username));
 
         userService.login(username)
-            .then(
-                user => {
-                    dispatch(success(user));
-                },
+            .then(response => {
+                if (response.user_status === 'Exists') {
+                    dispatch(pending(response));
+                }
+                else {
+                    dispatch(success(response));
+                    }
+                }, 
                 error => {
                     dispatch(failure(error.toString()));
                 }
@@ -25,6 +29,7 @@ function login(username) {
 
     // local helper functions
     function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
+    function pending(user) { return { type: userConstants.LOGIN_PENDING, user } }
     function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
     function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
 }
