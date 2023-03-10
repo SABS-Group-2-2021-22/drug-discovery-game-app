@@ -27,12 +27,12 @@ class Loadingpage extends React.Component {
                 </Link> 
                 </div>
                 ):
-                (<div className="loadingpage"> 
-                   <p>Loading... </p>
-                    <div style={{ display: 'block',
-                  width: 400, padding: 10}}>
-                <ProgressBar animated variant="dark" now={this.props.num} label={`${this.props.num}%`} />
-                </div> 
+                (<div className="loadingpage">  
+                  <p>Loading...</p>
+                  <div style={{ display: 'block',
+                    width: 400, padding: 10}}>
+                  <ProgressBar animated variant="dark" now={this.props.num} label={`${this.props.num}%`} />
+                  </div> 
                 </div>)
         }
       </div>

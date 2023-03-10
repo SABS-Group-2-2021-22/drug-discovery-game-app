@@ -23,13 +23,6 @@ class Assays extends React.Component {
           Assay Data:
         </div>
         <div class="row">
-          pIC50:{" "}
-          {this.props.saved_mols[this.props.mol_id].data.assays_run.pIC50 &&
-            Number(
-              this.props.saved_mols[this.props.mol_id].data.drug_props.pic50
-            )}
-        </div>
-        <div class="row">
           Mouse Clearance:{" "}
           {this.props.saved_mols[this.props.mol_id].data.assays_run
             .clearance_mouse &&
@@ -52,6 +45,13 @@ class Assays extends React.Component {
           PAMPA:{" "}
           {this.props.saved_mols[this.props.mol_id].data.assays_run.pampa &&
             this.props.saved_mols[this.props.mol_id].data.drug_props.pampa}
+        </div>
+        <div class="row">
+          <p style={{ paddingLeft: "0"}}>pIC<sub>50</sub>:{" "}
+          {this.props.saved_mols[this.props.mol_id].data.assays_run.pIC50 &&
+            Number(
+              this.props.saved_mols[this.props.mol_id].data.drug_props.pic50
+            )}</p>
         </div>
       </div>
     );

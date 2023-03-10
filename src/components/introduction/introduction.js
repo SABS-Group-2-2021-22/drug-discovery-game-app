@@ -2,10 +2,14 @@ import React from "react";
 import "./introduction.css";
 import { Link } from "react-router-dom";
 import pymolpic from "../../assets/pymolMMP12.png";
+import dmta from "../../assets/dmtacycle.png";
+import r1r2 from "../../assets/r1r2.png";
 import { connect } from "react-redux";
 import { initActions, selectorActions } from "../../actions";
 import { LogoBanner } from "../body";
 import IntroText from "./introtext";
+import IntroTitle from "./introtitle";
+
 
 class Introduction extends React.Component {
   constructor(props) {
@@ -24,21 +28,20 @@ class Introduction extends React.Component {
 
   }
   
-  // componentWillMount() {
-  //   this.props.num < 100 && this.props.fetchRGroup(this.props.countRGroup,"300,300");
-  //   this.props.selectRGroup(
-  //     this.props.selected_r_groups["A"],
-  //     this.props.selected_r_groups["B"],
-  //     "500,500"
-  //   );
-  //   this.props.fetchHelp();
-  // }
-
+  componentWillMount() {
+    this.props.num == 0 && this.props.fetchRGroup(this.props.countRGroup,"300,300");
+    this.props.selectRGroup(
+      this.props.selected_r_groups["A"],
+      this.props.selected_r_groups["B"],
+      "500,500"
+    );
+    this.props.fetchHelp();
+  }
   render() {
     return (
       <div className="wrapper">
         <div className="introduction">
-          <div className="introductiontitle">What are we designing our drug for? </div>
+          <div className="introductiontitle"><IntroTitle id={this.state.count} /></div>
           <div className="pic-and-text">
             <div className="text-and-button">
               <div className="text">
@@ -61,23 +64,39 @@ class Introduction extends React.Component {
                   <div>
                   <button className='next-button' onClick={this.onNext}>Next</button>
                   <Link to="/loadingpage">
-                  <button>Skip</button>
+                  <button>Skip →</button>
                 </Link>
                 </div>
                 }
           
                 {this.state.count === 3 &&
                   <Link to="/loadingpage">
-                            <button className='start-button'>Start game</button>
+                            <button className='start-button'>Start game →</button>
                 </Link>}
 
               </div>
             </div>
+            {this.state.count <= 1 &&
             <div className="picture">
               {" "}
               <img src={pymolpic} />{" "}
               <div className="text">MMP-12</div>
             </div>
+            }
+            {this.state.count === 2 &&
+            <div className="picture">
+              {" "}
+              <img src={dmta} />{" "}
+              {/* <div className="text">The DMTA Cycle</div> */}
+            </div>
+            }
+            {this.state.count === 3 &&
+            <div className="picture">
+              {" "}
+              <img src={r1r2} />
+              <div className="text">The R1 (purple) and R2 (green) groups</div>
+            </div>
+            }
           </div>
           <LogoBanner/>
         </div>

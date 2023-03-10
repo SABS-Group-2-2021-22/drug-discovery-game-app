@@ -60,7 +60,7 @@ class ControlPanel extends React.Component {
           <button onClick={this.resetRGroups}>Clear</button>
           { (this.props.selected_r_groups.A == 'A00' || this.props.selected_r_groups.B == 'B00')? '' : <button onClick={this.saveMolecule}>Make</button>}
           <Link to="/assay">
-            <button onClick={this.initSelectMolecule}>Test</button>
+            <button onClick={this.initSelectMolecule}>Test →</button>
           </Link>
         </div>)
     }

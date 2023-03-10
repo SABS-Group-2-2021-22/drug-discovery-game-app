@@ -9,6 +9,8 @@ export { default as Assay } from "../assay/assay";
 export { default as Analysis } from "../analysis/analysis";
 export { default as Results } from "../results/results";
 export { default as LoginPage } from "./login"
+export { default as PrivateRoute} from "../routes/PrivateRoute"
+export { default as PublicRoute} from "../routes/PublicRoute"
 
 export { default as SketcherAppRedux } from "../sketcher_app_redux/sketcher_app_redux"
 export { default as SketcherAssayRedux } from "../sketcher_assay_redux/sketcher_assay_redux"

@@ -17,7 +17,7 @@ class RGroupStats extends React.Component {
                 </div>
                 <div class="row">
                     <div class="col">
-                        logP: {Number(this.props.stats.logP).toFixed(2)}
+                        LogP: {Number(this.props.stats.logP).toFixed(2)}
                     </div>
                     <div class="col">
                         TPSA: {Number(this.props.stats.TPSA).toFixed(2)} {"Å\u00b2"}
