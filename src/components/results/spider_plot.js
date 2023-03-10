@@ -9,13 +9,18 @@ class SpiderPlot extends React.Component {
       user_r: [],
       user_params: [],
       ref_r: [],
-      ref_params: [],
+      ref_params: [], 
+      user_ori_r:[],
+      ref_ori_r:[],
+      features : ['Human Clearance','Mouse Clearance','LogD','PAMPA','pIC50'],
     };
   }
 
-  // restructure data from the store objec to local state objects
-  restructureData() {
+  //restructure data from the store objec to local state objects
+  restructureData = () => {
+
     for (const [key, value] of Object.entries(this.props.chosen_mol_spider)) {
+      console.log(value)
       this.state.user_r.push(value);
       this.state.user_params.push(key);
     }
@@ -23,46 +28,72 @@ class SpiderPlot extends React.Component {
       this.state.ref_r.push(value);
       this.state.ref_params.push(key);
     }
-  }
+    for (const [key, value] of Object.entries(this.props.saved_mols[this.props.mol_id].data.drug_props)){
+      console.log(value);
+      if (isNaN(value)){
+        this.state.user_ori_r.push(`${value}`);
+      }
+      else {
+        this.state.user_ori_r.push(value);
+      };
 
-  // plot the data
-  addTraces() {
+    }
+    for (const [key, value] of Object.entries(this.props.Roche.data.drug_props)){
+      if (isNaN(value)){
+        this.state.ref_ori_r.push(`${value}`);
+      }
+      else{
+        this.state.ref_ori_r.push(value);
+      }
+    }
+  }
+  addTraces = () => {
     this.restructureData();
+    let feature = this.state.features;
+    let value = this.state.user_r;
+    let valueref = this.state.ref_r;
+    let userbardata = this.state.user_ori_r;
+    let refbardata = this.state.ref_ori_r;
+    let hovertemplate = '<b>%{x}</b><br>%{customdata}';
     let data = [
-      {
-        type: "scatterpolar",
-        r: this.state.user_r,
-        theta: this.state.user_params,
-        fill: "toself",
-        name: "Chosen Molecule",
-      },
-      {
-        type: "scatterpolar",
-        r: this.state.ref_r,
-        theta: this.state.ref_params,
-        fill: "toself",
-        name: "Desired profile",
-      },
-    ];
-    return data;
+    {
+      type: "bar",
+      y: value,
+      x: feature,
+      fill: "toself",
+      name: "Chosen Molecule",
+      hovertemplate: hovertemplate,
+      customdata: userbardata,
+    },
+    {
+      type: "bar",
+      y: valueref,
+      x: feature,
+      fill: "toself",
+      name: "Desired profile",
+      hovertemplate: hovertemplate,
+      customdata: refbardata,
+    },
+  ];
+
+  return data;
   }
 
   layout() {
     let layout = {
-      responsive: true,
-      width: 500,
-      polar: {
-        radialaxis: {
-          visible: true,
-          range: [0, 8],
-        },
+      responsive: false,
+      title: '',
+      xaxis: {
+        title: ''
       },
-      showlegend: true,
+      barmode: 'group',
+      showlegend: true
     };
     return layout;
   }
-
+  
   render() {
+
     return (
       <div className="spider-plot-container">
         <Plot
@@ -70,6 +101,7 @@ class SpiderPlot extends React.Component {
           layout={this.layout()}
           useResizeHandler={true}
           style={{ width: "100%", height: "100%" }}
+          
         />
       </div>
     );
@@ -78,6 +110,8 @@ class SpiderPlot extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    Roche: state.init.Roche,
+    saved_mols: state.assay.saved_mols,
     chosen_mol_spider: state.analysis.spider_data.data.param_dict["0"],
     ref_mol_spider: state.analysis.spider_data.data.param_dict["1"],
   };

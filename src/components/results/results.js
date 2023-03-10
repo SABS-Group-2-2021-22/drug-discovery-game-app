@@ -13,7 +13,6 @@ class Results extends React.Component {
   constructor(props) {
     super(props);
   }
-
   save_and_resetGame = () => {
     let saved_user = JSON.parse(localStorage.getItem('user'));
     // this.props.saveGame(); // temporarily disabling any saving of user data
@@ -49,17 +48,17 @@ class Results extends React.Component {
               <div className="title">Your Molecule</div>
               <div className="molecule-image-and-descriptors">
                 <div className="molecule-image">
-                      <MoleculeImage mol_id={(this.props.gamemode === 'builder') ? this.props.chosen_mol: this.props.chosen_mol[0]} />
+                      <MoleculeImage mol_id={(this.props.gamemode === 'builder') ? this.props.selected_mol: this.props.selected_mol[0]} />
                 </div>
                 <div class="container" className="molecule-descriptors">
-                  <Assays mol_id={(this.props.gamemode === 'builder') ? this.props.chosen_mol: this.props.chosen_mol[0]} />
+                  <Assays mol_id={(this.props.gamemode === 'builder') ? this.props.selected_mol: this.props.selected_mol[0]} />
                 </div>
               </div>
             </div>
           </div>
           <div className="plot-and-explanation">
             <div className="spider-plot">
-              <SpiderPlot />
+               <SpiderPlot mol_id={(this.props.gamemode === 'builder') ? this.props.selected_mol: this.props.selected_mol[0]}/>
             </div>
             <div className="explanation-and-button">
               <div className="explanation">
@@ -85,7 +84,7 @@ function mapStateToProps(state) {
   return {
     spider_data: state.analysis.spider_data,
     comp_text: state.analysis.comp_text,
-    chosen_mol: state.selector.chosen_mol,
+    selected_mol: state.selector.selected_mol,
     gamemode: state.game.gamemode,
   };
 }

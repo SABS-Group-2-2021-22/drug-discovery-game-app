@@ -22,6 +22,8 @@ class MoleculeImage extends React.Component {
 function mapStateToProps(state) {
   return {
     saved_mols: state.assay.saved_mols,
+    selected_mol: state.selector.selected_mol,
+    selected_or_not: state.selector.selected_or_not,
   };
 }
 

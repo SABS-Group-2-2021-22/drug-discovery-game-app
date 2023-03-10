@@ -2,10 +2,6 @@ import * as api from "../api";
 
 export const analysisActions = {
   constructPlotObj,
-  fetchSpiderObj,
-  fetchCompText,
-  fetchSpiderObjSucceeded,
-  fetchCompTextSucceeded,
 };
 
 /**
@@ -54,60 +50,5 @@ function constructPlotObj(saved_mols) {
   }
   return (dispatch) => {
     dispatch(constructPlotObjSucceeded(plot_data));
-  };
-}
-
-/**
- * Synchronous action that sends spider plot data to the store when dispatched
- * @param {state object} plot_data the spider data plotted
- * @returns the spider plot data
- */
-function fetchSpiderObjSucceeded(spider_data) {
-  return {
-    type: "FETCH_SPIDER_SUCCEEDED",
-    payload: {
-      spider_data: spider_data,
-    },
-  };
-}
-
-/**
- * An asynchronous action that fires an api call to fetch spider data from the BE
- * @param {}
- * @returns {dispatch} dispatches fetchSpiderObjectSucceeded to the analysisReducer
- */
-function fetchSpiderObj() {
-  return (dispatch) => {
-    api.fetchSpiderObj().then((response) => {
-      dispatch(fetchSpiderObjSucceeded(response));
-    });
-  };
-}
-
-/**
- * Synchronous action that sends the comparison text to the store when dispatched
- * This happens once the final molecule is submitted to reduce lag on the results page
- * @param {state object} comparison_text text comparing chosen and target molecules
- * @returns comparison text
- */
-function fetchCompTextSucceeded(comp_text) {
-  return {
-    type: "FETCH_COMP_TEXT_SUCCEEDED",
-    payload: {
-      comp_text: comp_text,
-    },
-  };
-}
-
-/**
- * An asynchronous action that fires an api call to fetch comparison from the BE
- * @param {}
- * @returns {dispatch} dispatches fetchCompTextSucceeded to the analysisReducer
- */
-function fetchCompText() {
-  return (dispatch) => {
-    api.fetchCompText().then((response) => {
-      dispatch(fetchCompTextSucceeded(response));
-    });
   };
 }
