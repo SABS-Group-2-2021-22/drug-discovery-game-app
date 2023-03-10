@@ -6,127 +6,83 @@ class SpiderPlot extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_num: [],
-      ref_num: [],
-      user_cat: [],
-      ref_cat: [],
-      catg_features : ['Human Clearance','Mouse Clearance',"PAPMA"],
-      num_features : ['LogD','pIC50'],
+      user_r: [],
+      user_params: [],
+      ref_r: [],
+      ref_params: [], 
+      user_ori_r:[],
+      ref_ori_r:[],
+      features : ['Human Clearance','Mouse Clearance','LogD','PAMPA','pIC50'],
     };
   }
-  srcRoute = () => {
-    if (this.props.mol_id === "Roche") {
-      return this.props.Roche.data.drug_props;
-    } else {
-      return this.props.saved_mols[this.props.mol_id].data.drug_props;
-    }
-  };
+
   //restructure data from the store objec to local state objects
   restructureData = () => {
 
-
- 
-    for (const [key, value] of Object.entries(this.srcRoute())) {
-      console.log(key,"value:",value)
-      let pushval = "";
-      if (isNaN(value) && key !== 'pic50')
-      { if (value.match(/low.*/)) {pushval = 'low'};
-        if (value.match(/med.*/)) {pushval = 'med'};
-        if (value.match(/high.*/)) {pushval = 'high'};
-        if (value.match(/low2med.*/)) {pushval = 'low2med'};
-        if (value.match(/med2high.*/)) {pushval = 'med2high'};
-        this.state.user_cat.push(pushval);
+    for (const [key, value] of Object.entries(this.props.chosen_mol_spider)) {
+      console.log(value)
+      this.state.user_r.push(value);
+      this.state.user_params.push(key);
+    }
+    for (const [key, value] of Object.entries(this.props.ref_mol_spider)) {
+      this.state.ref_r.push(value);
+      this.state.ref_params.push(key);
+    }
+    for (const [key, value] of Object.entries(this.props.saved_mols[this.props.mol_id].data.drug_props)){
+      console.log(value);
+      if (isNaN(value)){
+        this.state.user_ori_r.push(`${value}`);
       }
-      else{
-        this.state.user_num.push(value)
-      }
+      else {
+        this.state.user_ori_r.push(value);
+      };
 
     }
-    for (const [key, value] of Object.entries(this.props.Roche.data.drug_props)) {
-      console.log("ref",key,"value:",value)
-      let pushval = "";
-      if (isNaN(value) && key !== 'pic50')
-      { if (value.match(/low.*/)) {pushval = 'low'};
-        if (value.match(/med.*/)) {pushval = 'med'};
-        if (value.match(/high.*/)) {pushval = 'high'};
-        if (value.match(/low2med.*/)) {pushval = 'low2med'};
-        if (value.match(/med2high.*/)) {pushval = 'med2high'};
-        this.state.ref_cat.push(pushval);
+    for (const [key, value] of Object.entries(this.props.Roche.data.drug_props)){
+      if (isNaN(value)){
+        this.state.ref_ori_r.push(`${value}`);
       }
       else{
-        this.state.ref_num.push(value);
+        this.state.ref_ori_r.push(value);
       }
-
     }
   }
-  addTraces1 = () => {
+  addTraces = () => {
     this.restructureData();
-    let catg_features = this.state.catg_features;
-    let value = this.state.user_cat;
-    let valueref = this.state.ref_cat;
+    let feature = this.state.features;
+    let value = this.state.user_r;
+    let valueref = this.state.ref_r;
+    let userbardata = this.state.user_ori_r;
+    let refbardata = this.state.ref_ori_r;
+    let hovertemplate = '<b>%{x}</b><br>%{customdata}';
     let data = [
     {
       type: "bar",
       y: value,
-      x: catg_features,
+      x: feature,
       fill: "toself",
       name: "Chosen Molecule",
+      hovertemplate: hovertemplate,
+      customdata: userbardata,
     },
     {
       type: "bar",
       y: valueref,
-      x: catg_features,
+      x: feature,
       fill: "toself",
       name: "Desired profile",
+      hovertemplate: hovertemplate,
+      customdata: refbardata,
     },
   ];
 
   return data;
   }
 
-  layout1() {
+  layout() {
     let layout = {
       responsive: false,
-      xaxis: {
-        title: ''
-      },
-      yaxis: {
-        categoryorder: 'array',
-        categoryarray: ['','low', 'low2med', 'med', 'med2high', 'high']
-      },
-      barmode: 'group',
-      showlegend: true
-    };
-    return layout;
-  }
-  addTraces2 = () => {
-    this.restructureData();
-    let num_features = this.state.num_features;
-    let value = this.state.user_num;
-    let valueref = this.state.ref_num;
-    let data = [
-    {
-      type: "bar",
-      y: value,
-      x: num_features,
-      fill: "toself",
-      name: "Chosen Molecule",
-    },
-    {
-      type: "bar",
-      y: valueref,
-      x: num_features,
-      fill: "toself",
-      name: "Desired profile",
-    },
-  ];
-
-  return data;
-  }
-
-  layout2() {
-    let layout = {
-      responsive: false,
+      title: '',
       xaxis: {
         title: ''
       },
@@ -134,21 +90,15 @@ class SpiderPlot extends React.Component {
       showlegend: true
     };
     return layout;
-  }  
+  }
+  
   render() {
 
     return (
       <div className="spider-plot-container">
         <Plot
-          data={this.addTraces1()}
-          layout={this.layout1()}
-          useResizeHandler={true}
-          style={{ width: "100%", height: "100%" }}
-          
-        />
-          <Plot
-          data={this.addTraces2()}
-          layout={this.layout2()}
+          data={this.addTraces()}
+          layout={this.layout()}
           useResizeHandler={true}
           style={{ width: "100%", height: "100%" }}
           
@@ -160,10 +110,10 @@ class SpiderPlot extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    Roche: state.init.Roche,
     saved_mols: state.assay.saved_mols,
     chosen_mol_spider: state.analysis.spider_data.data.param_dict["0"],
     ref_mol_spider: state.analysis.spider_data.data.param_dict["1"],
-    Roche: state.init.Roche,
   };
 }
 
