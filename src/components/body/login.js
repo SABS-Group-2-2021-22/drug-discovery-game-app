@@ -37,14 +37,15 @@ class LoginPage extends React.Component {
             return <Navigate to='/home' />
         }
         else if (this.props.loggingIn && this.props.user !== undefined && this.props.user.user_status ==='Exists') {
-            return (
-                <div className='wrapper'>
-                    <div >
-                        <h3>Hello
-                        </h3>
-                    </div>
-                </div>
-            );    
+            return <Navigate to='/progress_loader' />
+            // return (
+            //     <div className='wrapper'>
+            //         <div >
+            //             <h3>Hello
+            //             </h3>
+            //         </div>
+            //     </div>
+            // );    
         }
 
         else

@@ -31,6 +31,7 @@ import ReactDOM from 'react-dom';
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/progress_loader" element={<Progressloader />} />
             <Route path="/loadingpage" element={<Loadingpage />} />
             <Route path="/app" element={(this.props.gamemode === 'builder') ? <Builder />: <SketcherAppRedux/>} />
             <Route path="/assay" element={(this.props.gamemode === 'builder') ?< Assay />: <SketcherAssayRedux/>}  />
