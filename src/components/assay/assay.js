@@ -49,12 +49,9 @@ class Assay extends React.Component {
                   ← Design 
                 </button>
               </Link>
-              <Link to="/analysis">
-                <button
-                  label="Next_Analysis"
-                  onClick={this.initPlotData}
-                >
-                  Analysis →
+              <Link to="/docking">
+                <button>
+                  Docking →
                 </button>
               </Link>
             </div>

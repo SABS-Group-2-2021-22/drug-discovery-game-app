@@ -156,8 +156,8 @@ class ThePlot extends React.Component {
         />
         <div className="plot-button-bigpanel">
         <div className="plot-button">
-          <Link to="/assay">
-              <button>{'← Test'}</button>
+          <Link to="/docking">
+              <button>{'← Docking'}</button>
           </Link>
         </div>
         <div className="plot-button-panel">
@@ -227,9 +227,9 @@ class ThePlot extends React.Component {
             y-axis:&nbsp;
 
             {this.state.y_axis == 'logd' && (<div className="activebutton">
-              <button onClick={() => this.relayout("logd", "y")}>logD</button></div>)}
+              <button onClick={() => this.relayout("logd", "y")}>LogD</button></div>)}
             {this.state.y_axis != 'logd' && (<div className="inactivebutton">
-              <button onClick={() => this.relayout("logd", "y")}>logD</button></div>)}
+              <button onClick={() => this.relayout("logd", "y")}>LogD</button></div>)}
 
             {this.state.y_axis == 'pic50' && (<div className="activebutton">
               <button onClick={() => this.relayout("pic50", "y")}>pIC<sub>50</sub></button></div>)}

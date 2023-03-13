@@ -13,11 +13,51 @@
   padding-left: 3vw;
   padding-right: 3vw;
   padding-top: 3vh;
-  padding-bottom: 10vh;
+  padding-bottom: 2vh;
 }
 
-  .molstar{
-    flex-grow: 3;
-    min-width: 75%;
-    background-color: white;
+.molstar {
+  flex-grow: 3;
+  min-width: 80%;
+  max-height: 80vh;
+  background-color: white;
+  overflow: hidden;
+}
+
+.molstar .msp-plugin {
+  width: 74%;
+  height: 84%;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  height: 10%;
+}
+
+.nav-buttons button {
+  float: left;
+  border: none;
+  background-color: #212529;
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  white-space: pre-line;
+  width: 200px;
+}
+
+.mol-list {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  justify-content: center;
+  padding-bottom: 10pt;
+  margin-left: 20pt;
+  margin-top: 10pt;
+  margin-right: flex;
+  width: 160pt;
+}
+
+.affinity {
+  width: 115%;
 }
