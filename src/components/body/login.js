@@ -33,11 +33,11 @@ class LoginPage extends React.Component {
 
     render() {
         const { username, submitted } = this.state;
-        if (this.props.loggedIn) {
+        if (this.props.loggedIn && this.props.user.user_status !=='Exists') {
             return <Navigate to='/home' />
         }
-        else if (this.props.loggingIn && this.props.user !== undefined && this.props.user.user_status ==='Exists') {
-            return <Navigate to='/progress_loader' />
+        if (this.props.loggingIn && this.props.user !== undefined && this.props.user.user_status ==='Exists') {
+            return <Navigate to='/progressloader' />
             // return (
             //     <div className='wrapper'>
             //         <div >

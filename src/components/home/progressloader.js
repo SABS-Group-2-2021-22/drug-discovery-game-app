@@ -12,47 +12,73 @@ class Progressloader extends React.Component {
     super(props);
   }
 
-  // fetches the r groups from the BE and selects the first r groups at each position
-  // ... for rapid rendering of the builder and sketcher pages
-//   componentWillMount() {
-//     this.props.num == 0 && this.props.fetchRGroup(this.props.countRGroup,"300,300");
-//     this.props.selectRGroup(
-//       this.props.selected_r_groups["A"],
-//       this.props.selected_r_groups["B"],
-//       "500,500"
-//     );
-//     this.props.fetchHelp();
-//   }
+  render(){
+      return (
+        <div className="wrapper">
+        <div className="home">
+          <div className="hometitle">Welcome back to the game </div>
+          <div className="pic-and-text">
 
-//   setBuilderMode = () => {
-//     console.log("Builder mode set");
-//     this.props.setGamemode("builder");
-//   };
-
-//   setSketcherMode = () => {
-//     console.log("Sketcher mode set");
-//     this.props.setGamemode("sketcher");
-//   };
-
-  render() {
-    return (
-    <h3> Hello this is the progress loader page</h3>);
-
-// function mapStateToProps(state) {
-//   return {
-//     loggedIn: state.login.login,
-//     r_groups: state.init.r_groups,
-//     num: state.init.num,
-//     selected_r_groups: state.selector.selected_r_groups,
-//   };
+            <div className="text-and-button">
+              <div className="text">
+                Would you like to pick up from where you left off (the time and money you had left and the molecules you had designed)
+                the last time or start a new game?
+              </div>
+              {this.props.loggedIn ? (
+                <div className="control-panel">
+                  <div className="beginner-button">
+                    <Link to="/introduction">
+                      <button onClick={this.setBuilderMode}>Beginner</button>
+                    </Link>
+                  </div>
+                  <div className="advanced-button">
+                    <Link to="/introduction">
+                      <button onClick={this.setSketcherMode}>Advanced</button>
+                    </Link>
+                  </div>
+                </div>
+                ) : (
+                  <div className="control-panel">
+                    <div className="beginner-button">
+                      <Link to="/introduction">
+                        <button onClick={this.setBuilderMode}>Start</button>
+                      </Link>
+                    </div>
+                    {/* <div className="advanced-button-wrapper">
+                      <div className="advanced-button">
+                        <Link to="/login">
+                          <button onClick={this.setSketcherMode}>Advanced</button>
+                        </Link>
+                      </div>
+                    </div> */}
+                  </div>
+                )}
+            </div>
+          </div>
+          <LogoBanner/>
+        </div>
+      </div>
+      );
+      }
 }
 
-// const actionCreators = {
-//   fetchHelp: initActions.fetchHelp,
-//   fetchRGroup: initActions.fetchRGroup,
-//   countRGroup: initActions.countRGroup,
-//   selectRGroup: selectorActions.selectRGroup,
-//   setGamemode: gameActions.setGamemodeAction,
-// };
+function mapStateToProps(state) {
+  return {
+    loggedIn: state.login.login,
+    r_groups: state.init.r_groups,
+    num: state.init.num,
+    selected_r_groups: state.selector.selected_r_groups,
+  };
+}
 
-// export default connect(mapStateToProps, actionCreators)(Progressloader);
+const actionCreators = {
+  fetchHelp: initActions.fetchHelp,
+  fetchRGroup: initActions.fetchRGroup,
+  countRGroup: initActions.countRGroup,
+  selectRGroup: selectorActions.selectRGroup,
+  setGamemode: gameActions.setGamemodeAction,
+};
+
+export default connect(mapStateToProps, actionCreators)(Progressloader);
+
+// export default (Progressloader);
