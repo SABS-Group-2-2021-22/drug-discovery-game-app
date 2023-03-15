@@ -70,11 +70,7 @@
 }
 
 .molecule-widget:hover {
-  opacity: 0.5;
-}
-
-.molecule-widget:active {
-  background-color: darkgray;
+  opacity: 1;
 }
 
 .molecule-widget > .molecule img {
@@ -394,6 +390,21 @@ table {
   background-color: #fdfbfb;
   white-space: pre-line;
   width: 35vh;
+}
+
+.hover-info-text-help-large {
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  display: flex;
+  margin-left: 20vh;
+  font-size: 15px;
+  z-index: 10;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #fdfbfb;
+  white-space: pre-line;
+  width: 40vh;
 }
 
 .mol-stats > .hover-info-button-lip {
