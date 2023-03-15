@@ -31,20 +31,24 @@ class LoginPage extends React.Component {
         }
     }
 
+    
     render() {
         const { username, submitted } = this.state;
-        if (this.props.loggedIn && this.props.user.user_status !=='Exists') {
+        // console.log(this.props.loggedIn)
+        // console.log(this.props.loggingIn)
+        // console.log(this.props.user.user_status)
+        if (this.props.loggedIn && this.props.user !== undefined && this.props.user.user_status !=='Exists') {
             return <Navigate to='/home' />
         }
         if (this.props.loggingIn && this.props.user !== undefined && this.props.user.user_status ==='Exists') {
-            return <Navigate to='/progressloader' />
             // return (
-            //     <div className='wrapper'>
-            //         <div >
-            //             <h3>Hello
-            //             </h3>
-            //         </div>
-            //     </div>
+                return <Navigate to='/progressloader' />
+            //     // <div className='wrapper'>
+            //     //     <div >
+            //     //         <h3>Hello
+            //     //         </h3>
+            //     //     </div>
+            //     // </div>
             // );    
         }
 

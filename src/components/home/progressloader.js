@@ -40,17 +40,17 @@ class Progressloader extends React.Component {
                 ) : (
                   <div className="control-panel">
                     <div className="beginner-button">
-                      <Link to="/introduction">
-                        <button onClick={this.setBuilderMode}>Start</button>
+                      <Link to="/loadingpage">
+                        <button onClick={this.setBuilderMode}>Start a new game</button>
                       </Link>
                     </div>
-                    {/* <div className="advanced-button-wrapper">
+                    <div className="advanced-button-wrapper">
                       <div className="advanced-button">
-                        <Link to="/login">
-                          <button onClick={this.setSketcherMode}>Advanced</button>
+                        <Link to="/build">
+                          <button>Continue previous game</button>
                         </Link>
                       </div>
-                    </div> */}
+                    </div>
                   </div>
                 )}
             </div>
