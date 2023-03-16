@@ -21,8 +21,8 @@ class Docking extends React.Component {
   };
 
   render() {
-    console.log(this.props.selected_mol)
-    let url = `http://localhost:5000/docking-${this.props.selected_mol}dock1.pdb`
+    let url = `http://localhost:5000/docking-${this.props.selected_mol}dock1_concatenated.pdb`
+
     let molstar_props = {
       url:url,
       showControls:true,
