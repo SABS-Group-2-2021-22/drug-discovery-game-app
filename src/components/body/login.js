@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import Progressloader from "../home/progressloader";
 import { userActions } from '../../actions';
 
 import './login.css'
@@ -60,8 +60,6 @@ class LoginPage extends React.Component {
                     {this.props.user.user_status !== 'Exists' ?
                     <>
                     <h3>Enter a username
-                        {/* {'[' + this.props.user.username + ']'} */}
-                        {/* {'[' + this.props.user.user_status + ']'} */}
                     </h3>
                     <p>                        Do not enter information that could be used to personally identify you
                     </p>
@@ -79,7 +77,9 @@ class LoginPage extends React.Component {
                     </form>
                     </>
                     :
-                    <h3>Hello</h3>
+                    <div className="text">
+                        {<Progressloader/>}
+                        </div>
                         }
                 </div>
             </div>

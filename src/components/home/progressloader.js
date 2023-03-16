@@ -1,14 +1,23 @@
 import React from "react";
 import "./home.css";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { initActions, selectorActions, gameActions } from "../../actions";
 import { LogoBanner } from  '../body';
+import { connect } from "react-redux";
+
+import { userActions } from "../../actions";
 
 
 class Progressloader extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  completeNewLogin = () => {
+    this.props.new_login(this.props.username)
+  }
+
+  completeLoadedLogin = () => {
+    this.props.loaded_login(this.props.username)
   }
 
   render(){
@@ -19,24 +28,18 @@ class Progressloader extends React.Component {
           <div className="pic-and-text">
 
             <div className="text-and-button">
-              <h3>
+              <h5>
                 Would you like to pick up from where you left off (the time and money you had left and the molecules you had designed)
                 the last time or start a new game?
-              </h3>
+              </h5>
               {
                   <div className="control-panel">
                     <div className="beginner-button">
-                      <Link to="/loadingpage">
-                        <button onClick={this.setBuilderMode}>Start a new game</button>
-                      </Link>
+                        <button onClick={this.completeNewLogin}>Start a new game</button>
                     </div>
-                    <div className="advanced-button-wrapper">
-                      <div className="advanced-button">
-                        <Link to="/build">
-                          <button>Continue previous game</button>
-                        </Link>
+                      <div className="beginner-button">
+                          <button onClick={this.completeLoadedLogin}>Continue previous game</button>
                       </div>
-                    </div>
                   </div>
                 }
             </div>
@@ -50,21 +53,13 @@ class Progressloader extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    loggedIn: state.login.login,
-    r_groups: state.init.r_groups,
-    num: state.init.num,
-    selected_r_groups: state.selector.selected_r_groups,
+    username: state.login.user.username,
   };
 }
 
 const actionCreators = {
-  fetchHelp: initActions.fetchHelp,
-  fetchRGroup: initActions.fetchRGroup,
-  countRGroup: initActions.countRGroup,
-  selectRGroup: selectorActions.selectRGroup,
-  setGamemode: gameActions.setGamemodeAction,
+  new_login: userActions.new_login,
+  loaded_login: userActions.loaded_login
 };
 
-export default connect(mapStateToProps, actionCreators)(Progressloader);
-
-// export default (Progressloader);
+export default connect(mapStateToProps,actionCreators)(Progressloader);
