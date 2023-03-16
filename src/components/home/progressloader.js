@@ -1,7 +1,6 @@
 import React from "react";
 import "./home.css";
 import { Link } from "react-router-dom";
-import pymolpic from "../../assets/pymolMMP12.png";
 import { connect } from "react-redux";
 import { initActions, selectorActions, gameActions } from "../../actions";
 import { LogoBanner } from  '../body';
@@ -20,24 +19,11 @@ class Progressloader extends React.Component {
           <div className="pic-and-text">
 
             <div className="text-and-button">
-              <div className="text">
+              <h3>
                 Would you like to pick up from where you left off (the time and money you had left and the molecules you had designed)
                 the last time or start a new game?
-              </div>
-              {this.props.loggedIn ? (
-                <div className="control-panel">
-                  <div className="beginner-button">
-                    <Link to="/introduction">
-                      <button onClick={this.setBuilderMode}>Beginner</button>
-                    </Link>
-                  </div>
-                  <div className="advanced-button">
-                    <Link to="/introduction">
-                      <button onClick={this.setSketcherMode}>Advanced</button>
-                    </Link>
-                  </div>
-                </div>
-                ) : (
+              </h3>
+              {
                   <div className="control-panel">
                     <div className="beginner-button">
                       <Link to="/loadingpage">
@@ -52,7 +38,7 @@ class Progressloader extends React.Component {
                       </div>
                     </div>
                   </div>
-                )}
+                }
             </div>
           </div>
           <LogoBanner/>

@@ -9,11 +9,12 @@ export const userActions = {
 
 // defines login action with request to api via service 
 function login(username) {
-    return dispatch => {
+    return async dispatch => {
         dispatch(request(username.username));
 
-        userService.login(username)
+        await userService.login(username)
             .then(response => {
+                console.log(response)
                 if (response.user_status === 'Exists') {
                     dispatch(pending(response));
                 }
