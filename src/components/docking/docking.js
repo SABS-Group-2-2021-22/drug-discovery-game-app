@@ -2,7 +2,7 @@ import React from "react";
 import "./docking.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { initActions, selectorActions, gameActions } from "../../actions";
+import { initActions, selectorActions, gameActions, analysisActions } from "../../actions";
 import MoleculeList from "../analysis/molecule_list.js";
 import Molstar from "molstar-react";
 
@@ -13,6 +13,12 @@ class Docking extends React.Component {
       toggle_controls: false,
     };
   }
+
+  initPlotData = () => {
+    // creates object for plotting - firing it here just speeds 
+    // ...things up a bit
+    this.props.constructPlotObj(this.props.saved_mols);
+  };
 
   render() {
     console.log(this.props.selected_mol)
@@ -33,8 +39,8 @@ class Docking extends React.Component {
               <Molstar {...molstar_props}/>
             </div>
             <div className="affinity">
-              Affinity score: -8.0
-
+              Affinity score:  
+              {this.props.saved_mols[this.props.selected_mol].data.drug_props.docking_affinity} kcal/mol
               <div className="nav-buttons">
                 <Link to="/assay">
                   <button>
@@ -60,9 +66,12 @@ class Docking extends React.Component {
 function mapStateToProps(state) {
   return {
     selected_mol: state.selector.selected_mol,
+    saved_mols: state.assay.saved_mols,
   };
 }
 
-const actionCreators = {};
+const actionCreators = {
+  constructPlotObj: analysisActions.constructPlotObj,
+};
 
 export default connect(mapStateToProps, actionCreators)(Docking);
