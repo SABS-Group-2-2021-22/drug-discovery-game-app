@@ -27,6 +27,7 @@
 .molstar .msp-plugin {
   width: 74%;
   height: 84%;
+
 }
 
 .nav-buttons {
@@ -60,4 +61,5 @@
 
 .affinity {
   width: 115%;
+  z-index:100;
 }

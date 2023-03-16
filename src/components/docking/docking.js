@@ -39,7 +39,7 @@ class Docking extends React.Component {
               <Molstar {...molstar_props}/>
             </div>
             <div className="affinity">
-              Affinity score:  
+              Affinity score:{" "} 
               {this.props.saved_mols[this.props.selected_mol].data.drug_props.docking_affinity} kcal/mol
               <div className="nav-buttons">
                 <Link to="/assay">
