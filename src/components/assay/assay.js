@@ -13,6 +13,9 @@ import { Link } from "react-router-dom"
 class Assay extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      hover: [],
+    };
   }
 
   toggleHelp() {
@@ -31,12 +34,34 @@ class Assay extends React.Component {
     this.props.constructPlotObj(this.props.saved_mols);
   };
 
+  onHover = (label) => {
+    this.setState({ hover: label });
+  };
+
+  onUnHover = () => {
+    this.setState({ hover: [] });
+  };
+
   render() {
     return (
       <div className="wrapper">
         {this.props.saved_or_not ? (
         <div className="assay">
-          <div className="molecule-chooser-bar">
+          <div className="molecule-chooser-bar"        
+            onMouseEnter={() => {
+            this.onHover("lipinski");
+          }}
+          onMouseLeave={() => {
+            this.onUnHover();
+          }}>
+          {this.state.hover == "lipinski" && this.props.toggle_help && (
+          <div className="hover-info-text-help-large">
+            <p>
+              <div>{this.props.help[7]}</div>
+              <div>{this.props.help[8]}</div>
+            </p>
+          </div>
+          )}
             <MoleculeList />
           </div>
           <div className="main-content">
@@ -75,6 +100,7 @@ function mapStateToProps(state) {
     money: state.game.money,
     time: state.game.time,
     saved_mols: state.assay.saved_mols,
+    help: state.init.help.assay,
   };
 }
 
