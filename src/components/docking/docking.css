@@ -25,7 +25,7 @@
 }
 
 .molstar .msp-plugin {
-  width: 74%;
+  width: 70%;
   height: 84%;
 
 }
@@ -56,10 +56,10 @@
   margin-left: 20pt;
   margin-top: 10pt;
   margin-right: flex;
-  width: 160pt;
+  width: 185pt;
 }
 
 .affinity {
-  width: 115%;
+  width: 110%;
   z-index:100;
 }
