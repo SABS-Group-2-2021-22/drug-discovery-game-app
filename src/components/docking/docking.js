@@ -25,7 +25,7 @@ class Docking extends React.Component {
 
     let molstar_props = {
       url:url,
-      showControls:true,
+      showControls:false,
       useInterface:true,
     }
     return (
