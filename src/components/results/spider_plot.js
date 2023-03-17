@@ -30,20 +30,23 @@ class SpiderPlot extends React.Component {
     }
     for (const [key, value] of Object.entries(this.props.saved_mols[this.props.mol_id].data.drug_props)){
       console.log(value);
+      if (key !== "docking_affinity"){
       if (isNaN(value)){
         this.state.user_ori_r.push(`${value}`);
       }
       else {
         this.state.user_ori_r.push(value);
       };
-
+    }
     }
     for (const [key, value] of Object.entries(this.props.Roche.data.drug_props)){
+      if (key !== "docking_affinity"){
       if (isNaN(value)){
         this.state.ref_ori_r.push(`${value}`);
       }
       else{
         this.state.ref_ori_r.push(value);
+      };
       }
     }
   }
