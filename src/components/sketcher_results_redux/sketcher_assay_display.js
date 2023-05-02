@@ -3,10 +3,6 @@ import "../analysis/analysis.css";
 import { connect } from "react-redux";
 
 class SketcherAssays extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   srcRoute = () => {
     if (this.props.mol_id === "Roche") {
       return this.props.Roche.data.drug_props;
@@ -17,32 +13,32 @@ class SketcherAssays extends React.Component {
 
   render() {
     return (
-      <div class="container" className="assay-stats">
-        <div class="row" className="stats-type-header">
+      <div className="assay-stats">
+        <div className="stats-type-header">
           Assay Data:
         </div>
-        <div class="row">
+        <div className="row">
           pIC50:{" "}
           {Number(
             this.srcRoute().pic50
           )}
         </div>
-        <div class="row">
+        <div className="row">
           Mouse Clearance:{" "}
           {
               this.srcRoute().clearance_mouse
           }
         </div>
-        <div class="row">
+        <div className="row">
           Human Clearance:{" "}
           {
             this.srcRoute().clearance_human
           }
         </div>
-        <div class="row">
+        <div className="row">
           LogD: {this.srcRoute().logd}
         </div>
-        <div class="row">
+        <div className="row">
           PAMPA:{" "}
           {this.srcRoute().pampa}
         </div>

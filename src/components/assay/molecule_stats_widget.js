@@ -6,10 +6,6 @@ import Descriptors from "./descriptor_display.js";
 import Assays from "./assay_display.js";
 
 class MoleculeStats extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="mol-stats">

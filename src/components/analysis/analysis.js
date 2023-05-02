@@ -7,9 +7,6 @@ import { connect } from "react-redux";
 import { initActions } from "../../actions";
 import { Link } from "react-router-dom"
 class Analysis extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   // Retrieves Roche's target compound from the BE for reduced lag
   // ...on the results page

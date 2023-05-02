@@ -15,7 +15,7 @@ class MoleculeStats extends React.Component {
 
   toggleHelp = (label) => {
     console.log(this.state.help_label)
-    if (this.state.help_label != label) {
+    if (this.state.help_label !== label) {
       this.setState({ help_label: label });
     }
     else {
@@ -69,7 +69,6 @@ class MoleculeStats extends React.Component {
               ?
             </button>
           )}
-        </div>
       </div>
     );
   }

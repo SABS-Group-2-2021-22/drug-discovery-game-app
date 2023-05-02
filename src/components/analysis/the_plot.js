@@ -46,9 +46,9 @@ class ThePlot extends React.Component {
 
   // update the plot axes (metrics) when the metric buttons are clicked
   relayout(param, axis) {
-    if (axis == "x") {
+    if (axis === "x") {
       this.setState({ x_axis: param });
-    } else if (axis == "y") {
+    } else if (axis === "y") {
       this.setState({ y_axis: param });
     }
   }
@@ -56,7 +56,7 @@ class ThePlot extends React.Component {
   // when the mouse hovers over plot's data points, the molecule image
   // ...and id for that compound is displayed as per the hover state being true
   showCard() {
-    if (this.state.hover == true) {
+    if (this.state.hover === true) {
       return (
         <figure
           className="show-hover"
@@ -115,23 +115,23 @@ class ThePlot extends React.Component {
     var axes_label = [];
     var state_iterator = [this.state.x_axis, this.state.y_axis];
     for (var i = 0, l = state_iterator.length; i < l; i++) {
-      if (state_iterator[i] == "logd") {
+      if (state_iterator[i] === "logd") {
         axes_label[i] = "LogD";
-      } else if (state_iterator[i] == "pic50") {
+      } else if (state_iterator[i] === "pic50") {
         axes_label[i] = "pIC50";
-      } else if (state_iterator[i] == "TPSA") {
+      } else if (state_iterator[i] === "TPSA") {
         axes_label[i] = "TPSA (Å\u00b2)";
-      } else if (state_iterator[i] == "MW") {
+      } else if (state_iterator[i] === "MW") {
         axes_label[i] = "MW (Da)";
-      } else if (state_iterator[i] == "HA") {
+      } else if (state_iterator[i] === "HA") {
         axes_label[i] = "Number of Heavy Atoms";
-      } else if (state_iterator[i] == "h_acc") {
+      } else if (state_iterator[i] === "h_acc") {
         axes_label[i] = "Number of H Acceptors";
-      } else if (state_iterator[i] == "h_don") {
+      } else if (state_iterator[i] === "h_don") {
         axes_label[i] = "Number of H Donors";
-      } else if (state_iterator[i] == "logP") {
+      } else if (state_iterator[i] === "logP") {
         axes_label[i] = "LogP";
-      } else if (state_iterator[i] == "rings") {
+      } else if (state_iterator[i] === "rings") {
         axes_label[i] = "Number of Aromatic Rings";
       } else {
         axes_label[i] = state_iterator[i];
@@ -165,49 +165,49 @@ class ThePlot extends React.Component {
             <p>
             x-axis:&nbsp;
             </p>
-            {this.state.x_axis == 'logd' && (<div className="activebutton">
+            {this.state.x_axis === 'logd' && (<div className="activebutton">
               <button onClick={() => this.relayout("logd", "x")}>LogD</button></div>)}
-            {this.state.x_axis != 'logd' && (<div className="inactivebutton">
+            {this.state.x_axis !== 'logd' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("logd", "x")}>LogD</button></div>)}
 
-            {this.state.x_axis == 'pic50' && (<div className="activebutton">
+            {this.state.x_axis === 'pic50' && (<div className="activebutton">
               <button onClick={() => this.relayout("pic50", "x")}>pIC<sub>50</sub></button></div>)}
-            {this.state.x_axis != 'pic50' && (<div className="inactivebutton">
+            {this.state.x_axis !== 'pic50' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("pic50", "x")}>pIC<sub>50</sub></button></div>)}
 
-            {this.state.x_axis == 'TPSA' && (<div className="activebutton">
+            {this.state.x_axis === 'TPSA' && (<div className="activebutton">
               <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button></div>)}
-            {this.state.x_axis != 'TPSA' && (<div className="inactivebutton">
+            {this.state.x_axis !== 'TPSA' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("TPSA", "x")}>TPSA</button></div>)}
 
-            {this.state.x_axis == 'HA' && (<div className="activebutton">
+            {this.state.x_axis === 'HA' && (<div className="activebutton">
               <button onClick={() => this.relayout("HA", "x")}>HA</button></div>)}
-            {this.state.x_axis != 'HA' && (<div className="inactivebutton">
+            {this.state.x_axis !== 'HA' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("HA", "x")}>HA</button></div>)}
 
-            {this.state.x_axis == 'MW' && (<div className="activebutton">
+            {this.state.x_axis === 'MW' && (<div className="activebutton">
               <button onClick={() => this.relayout("MW", "x")}>MW</button></div>)}
-            {this.state.x_axis != 'MW' && (<div className="inactivebutton">
+            {this.state.x_axis !== 'MW' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("MW", "x")}>MW</button></div>)}
 
-            {this.state.x_axis == 'h_acc' && (<div className="activebutton">
+            {this.state.x_axis === 'h_acc' && (<div className="activebutton">
               <button onClick={() => this.relayout("h_acc", "x")}>H Acc.</button></div>)}
-            {this.state.x_axis != 'h_acc' && (<div className="inactivebutton">
+            {this.state.x_axis !== 'h_acc' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("h_acc", "x")}>H Acc.</button></div>)}
 
-            {this.state.x_axis == 'h_don' && (<div className="activebutton">
+            {this.state.x_axis === 'h_don' && (<div className="activebutton">
               <button onClick={() => this.relayout("h_don", "x")}>H Don.</button></div>)}
-            {this.state.x_axis != 'h_don' && (<div className="inactivebutton">
+            {this.state.x_axis !== 'h_don' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("h_don", "x")}>H Don.</button></div>)}
             
-            {this.state.x_axis == 'rings' && (<div className="activebutton">
+            {this.state.x_axis === 'rings' && (<div className="activebutton">
               <button onClick={() => this.relayout("rings", "x")}>Rings</button></div>)}
-            {this.state.x_axis != 'rings' && (<div className="inactivebutton">
+            {this.state.x_axis !== 'rings' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("rings", "x")}>Rings</button></div>)}
 
-            {this.state.x_axis == 'logP' && (<div className="activebutton">
+            {this.state.x_axis === 'logP' && (<div className="activebutton">
               <button onClick={() => this.relayout("logP", "x")}>LogP</button></div>)}
-            {this.state.x_axis != 'logP' && (<div className="inactivebutton">
+            {this.state.x_axis !== 'logP' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("logP", "x")}>LogP</button></div>)}
   
           </div>
@@ -215,49 +215,49 @@ class ThePlot extends React.Component {
             <p>
             y-axis:&nbsp;
             </p>
-            {this.state.y_axis == 'logd' && (<div className="activebutton">
+            {this.state.y_axis === 'logd' && (<div className="activebutton">
               <button onClick={() => this.relayout("logd", "y")}>logD</button></div>)}
-            {this.state.y_axis != 'logd' && (<div className="inactivebutton">
+            {this.state.y_axis !== 'logd' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("logd", "y")}>logD</button></div>)}
 
-            {this.state.y_axis == 'pic50' && (<div className="activebutton">
+            {this.state.y_axis === 'pic50' && (<div className="activebutton">
               <button onClick={() => this.relayout("pic50", "y")}>pIC<sub>50</sub></button></div>)}
-            {this.state.y_axis != 'pic50' && (<div className="inactivebutton">
+            {this.state.y_axis !== 'pic50' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("pic50", "y")}>pIC<sub>50</sub></button></div>)}
 
-            {this.state.y_axis == 'TPSA' && (<div className="activebutton">
+            {this.state.y_axis === 'TPSA' && (<div className="activebutton">
               <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button></div>)}
-            {this.state.y_axis != 'TPSA' && (<div className="inactivebutton">
+            {this.state.y_axis !== 'TPSA' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("TPSA", "y")}>TPSA</button></div>)}
 
-            {this.state.y_axis == 'HA' && (<div className="activebutton">
+            {this.state.y_axis === 'HA' && (<div className="activebutton">
               <button onClick={() => this.relayout("HA", "y")}>HA</button></div>)}
-            {this.state.y_axis != 'HA' && (<div className="inactivebutton">
+            {this.state.y_axis !== 'HA' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("HA", "y")}>HA</button></div>)}
 
-            {this.state.y_axis == 'MW' && (<div className="activebutton">
+            {this.state.y_axis === 'MW' && (<div className="activebutton">
               <button onClick={() => this.relayout("MW", "y")}>MW</button></div>)}
-            {this.state.y_axis != 'MW' && (<div className="inactivebutton">
+            {this.state.y_axis !== 'MW' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("MW", "y")}>MW</button></div>)}
 
-            {this.state.y_axis == 'h_acc' && (<div className="activebutton">
+            {this.state.y_axis === 'h_acc' && (<div className="activebutton">
               <button onClick={() => this.relayout("h_acc", "y")}>H Acc.</button></div>)}
-            {this.state.y_axis != 'h_acc' && (<div className="inactivebutton">
+            {this.state.y_axis !== 'h_acc' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("h_acc", "y")}>H Acc.</button></div>)}
 
-            {this.state.y_axis == 'h_don' && (<div className="activebutton">
+            {this.state.y_axis === 'h_don' && (<div className="activebutton">
               <button onClick={() => this.relayout("h_don", "y")}>H Don.</button></div>)}
-            {this.state.y_axis != 'h_don' && (<div className="inactivebutton">
+            {this.state.y_axis !== 'h_don' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("h_don", "y")}>H Don.</button></div>)}
             
-            {this.state.y_axis == 'rings' && (<div className="activebutton">
+            {this.state.y_axis === 'rings' && (<div className="activebutton">
               <button onClick={() => this.relayout("rings", "y")}>Rings</button></div>)}
-            {this.state.y_axis != 'rings' && (<div className="inactivebutton">
+            {this.state.y_axis !== 'rings' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("rings", "y")}>Rings</button></div>)}
 
-            {this.state.y_axis == 'logP' && (<div className="activebutton">
+            {this.state.y_axis === 'logP' && (<div className="activebutton">
               <button onClick={() => this.relayout("logP", "y")}>LogP</button></div>)}
-            {this.state.y_axis != 'logP' && (<div className="inactivebutton">
+            {this.state.y_axis !== 'logP' && (<div className="inactivebutton">
               <button onClick={() => this.relayout("logP", "y")}>LogP</button></div>)}
             
           </div>

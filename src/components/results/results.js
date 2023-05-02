@@ -67,7 +67,7 @@ class Results extends React.Component {
 
 
                 </div>
-                <div class="container" className="molecule-descriptors">
+                <div className="molecule-descriptors">
                   <Assays mol_id={"Roche"} />
                 </div>
               </div>
@@ -78,7 +78,7 @@ class Results extends React.Component {
                 <div className="molecule-image">
                   <MoleculeImage mol_id={(this.props.gamemode === 'builder') ? this.props.selected_mol : this.props.selected_mol[0]} />
                 </div>
-                <div class="container" className="molecule-descriptors">
+                <div className="molecule-descriptors">
                   <Assays mol_id={(this.props.gamemode === 'builder') ? this.props.selected_mol : this.props.selected_mol[0]} />
                 </div>
               </div>

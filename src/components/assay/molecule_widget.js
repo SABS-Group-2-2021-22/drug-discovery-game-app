@@ -4,10 +4,6 @@ import MoleculeImage from "./molecule_image.js";
 import MoleculeStats from "./molecule_stats_widget.js";
 
 class MoleculeWidget extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="molecule-container">

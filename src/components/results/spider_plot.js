@@ -28,7 +28,7 @@ class SpiderPlot extends React.Component {
       this.state.ref_r.push(value);
       this.state.ref_params.push(key);
     }
-    for (const [key, value] of Object.entries(this.props.saved_mols[this.props.mol_id].data.drug_props)){
+    for (const value of Object.values(this.props.saved_mols[this.props.mol_id].data.drug_props)){
       console.log(value);
       if (isNaN(value)){
         this.state.user_ori_r.push(`${value}`);
@@ -38,7 +38,7 @@ class SpiderPlot extends React.Component {
       };
 
     }
-    for (const [key, value] of Object.entries(this.props.Roche.data.drug_props)){
+    for (const value of Object.values(this.props.Roche.data.drug_props)){
       if (isNaN(value)){
         this.state.ref_ori_r.push(`${value}`);
       }

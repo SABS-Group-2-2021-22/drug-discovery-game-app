@@ -41,15 +41,15 @@ class SketcherThePlot extends React.Component {
   }
 
   relayout(param, axis) {
-    if (axis == "x") {
+    if (axis === "x") {
       this.setState({ x_axis: param });
-    } else if (axis == "y") {
+    } else if (axis === "y") {
       this.setState({ y_axis: param });
     }
   }
 
   showCard() {
-    if (this.state.hover == true) {
+    if (this.state.hover === true) {
       return (
         <figure
           className="show-hover"

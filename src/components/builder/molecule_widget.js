@@ -3,10 +3,6 @@ import "./builder.css";
 import MoleculeImage from "./molecule_image.js";
 
 class MoleculeWidget extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="molecule-container">

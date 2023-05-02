@@ -39,7 +39,7 @@ class SelectorPanel extends React.Component {
         {this.state.helpHover && (
             <div className="help-info-text">
               <p>
-                <div>{this.props.help[1]}</div>
+                {this.props.help[1]}
               </p>
             </div>
           )}

@@ -3,10 +3,6 @@ import { connect } from "react-redux";
 
 
 class SketcherComparisonText extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   dispText() {
     let obj = this.props.comp_text;
     var str = obj["pic50"] + "\n" + obj["logd"] + "\n" + obj["clearance_human"];

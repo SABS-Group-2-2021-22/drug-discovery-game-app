@@ -28,8 +28,8 @@ class Introduction extends React.Component {
 
   }
   
-  componentWillMount() {
-    this.props.num == 0 && this.props.fetchRGroup(this.props.countRGroup,"300,300");
+  componentDidMount() {
+    this.props.num === 0 && this.props.fetchRGroup(this.props.countRGroup,"300,300");
     this.props.selectRGroup(
       this.props.selected_r_groups["A"],
       this.props.selected_r_groups["B"],
@@ -79,21 +79,21 @@ class Introduction extends React.Component {
             {this.state.count <= 1 &&
             <div className="picture">
               {" "}
-              <img src={pymolpic} />{" "}
+              <img alt='' src={pymolpic} />{" "}
               <div className="text">MMP-12</div>
             </div>
             }
             {this.state.count === 2 &&
             <div className="picture">
               {" "}
-              <img src={dmta} />{" "}
+              <img alt='' src={dmta} />{" "}
               {/* <div className="text">The DMTA Cycle</div> */}
             </div>
             }
             {this.state.count === 3 &&
             <div className="picture">
               {" "}
-              <img src={r1r2} />
+              <img alt='' src={r1r2} />
               <div className="text">The R1 (purple) and R2 (green) groups</div>
             </div>
             }

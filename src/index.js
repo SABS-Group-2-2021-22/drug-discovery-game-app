@@ -4,30 +4,12 @@ import "./index.css";
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
-import r_groups from './reducers'
-import Body from './body'
 import rootReducer from './reducers'
-import { connect } from "react-redux";
 import { devToolsEnhancer } from 'redux-devtools-extension'
 import reduxReset from 'redux-reset'
 
 // import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import {
-  Navigation,
-  Home,
-  Introduction,
-  Builder,
-  Assay,
-  Analysis,
-  Results,
-  Footer,
-  LoginPage,
-  SketcherAppRedux,
-  SketcherAssayRedux,
-  SketcherAnalysisRedux,
-  SketcherResultsRedux,
-} from "./components/body";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Index from './routes'
 

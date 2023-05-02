@@ -3,46 +3,42 @@ import "./analysis.css";
 import { connect } from "react-redux";
 
 class Descriptors extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
-      <div class="container" className="descriptor-stats">
-        <div class="row" className="stats-type-header">
+      <div className="descriptor-stats">
+        <div className="stats-type-header">
           Molecule Descriptors:
         </div>
-        <div class="row">
+        <div className="row">
           HA: {this.props.saved_mols[this.props.mol_id].data.descriptors.HA}
         </div>
-        <div class="row">
+        <div className="row">
           MW:{" "}
           {Number(
             this.props.saved_mols[this.props.mol_id].data.descriptors.MW
           ).toFixed(1)}  Da
         </div>
-        <div class="row">
+        <div className="row">
           TPSA:{" "}
           {Number(
             this.props.saved_mols[this.props.mol_id].data.descriptors.TPSA
           ).toFixed(1)} {"Å\u00b2"}
         </div>
-        <div class="row">
+        <div className="row">
           H Acc.:{" "}
           {this.props.saved_mols[this.props.mol_id].data.descriptors.h_acc}
         </div>
-        <div class="row">
+        <div className="row">
           H Don.:{" "}
           {this.props.saved_mols[this.props.mol_id].data.descriptors.h_don}
         </div>
-        <div class="row">
+        <div className="row">
           LogP:{" "}
           {Number(
             this.props.saved_mols[this.props.mol_id].data.descriptors.logP
           ).toFixed(1)}
         </div>
-        <div class="row">
+        <div className="row">
           Rings:{" "}
           {this.props.saved_mols[this.props.mol_id].data.descriptors.rings}
         </div>

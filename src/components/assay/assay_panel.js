@@ -1,7 +1,6 @@
 import React from "react";
 import "./assay.css";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { assayActions, gameActions } from "../../actions";
 
 class AssayPanel extends React.Component {
@@ -9,8 +8,8 @@ class AssayPanel extends React.Component {
     super(props);
     this.state = {
       selected_assays: [],
-      assays_run: null,
-      selected_mol: null,
+      assays_run: '',
+      selected_mol: '',
       hover: [],
     };
   }
@@ -152,36 +151,36 @@ class AssayPanel extends React.Component {
     }
 
     if (this.props.money - cost_sum < 0 || this.props.time - max_time < 0) {
-      for (var molecule_key in this.props.all_molecules_assay_data) {
+      for (let molecule_key in this.props.all_molecules_assay_data) {
         let toggle_assay_dict = this.props.all_molecules_assay_data[molecule_key].data.toggle_assay;
 
         let arr = []
-        for (var key in toggle_assay_dict) {
+        for (let key in toggle_assay_dict) {
           if (toggle_assay_dict[key]) {
             arr.push(key)
           }
         }
         let selected_assays = arr;
 
-        for (var i = 0; i < selected_assays.length; i++) {
+        for (let i = 0; i < selected_assays.length; i++) {
           this.removeselectedAssays(selected_assays[i]);
         }
       }
       window.alert("Your choice of assays exceeds the cost and time limits! Please unselect some assays or proceed to Analysis");
     } else {
-      for (var molecule_key in this.props.all_molecules_assay_data) {
+      for (let molecule_key in this.props.all_molecules_assay_data) {
         let assays_run = this.props.all_molecules_assay_data[molecule_key].data.assays_run;
         let toggle_assay_dict = this.props.all_molecules_assay_data[molecule_key].data.toggle_assay;
 
         let arr = []
-        for (var key in toggle_assay_dict) {
+        for (let key in toggle_assay_dict) {
           if (toggle_assay_dict[key]) {
             arr.push(key)
           }
         }
         let selected_assays = arr;
 
-        for (var i = 0; i < selected_assays.length; i++) {
+        for (let i = 0; i < selected_assays.length; i++) {
           if (!["drug_props", "lipinski", "descriptors"].includes(selected_assays[i])) {
             if (!assays_run[selected_assays[i]]) {
               assays_run[selected_assays[i]] = true;
@@ -281,7 +280,7 @@ class AssayPanel extends React.Component {
             <col className="assay-table-column" />
           </colgroup>
           <thead style={{ verticalAlign: "text-top" }}>
-            <tr class="header-cells">
+            <tr className="header-cells">
               <th style={{ backgroundColor: 'white' }}>
                 <div className="help-toggle">
                   {this.props.toggle_help && (
@@ -299,7 +298,7 @@ class AssayPanel extends React.Component {
                       </button>
                     </div>
                   )}
-                  {this.props.toggle_help == false && (
+                  {this.props.toggle_help === false && (
                     <div className="toggle-inactivebutton">
                       <button
                         onClick={() => this.toggleHelp()}
@@ -377,7 +376,7 @@ class AssayPanel extends React.Component {
               <td>£700</td>
               <td>£70</td>
             </tr>
-            <tr class="border-bottom">
+            <tr className="border-bottom">
               <td><b>Duration</b></td>
               <td>3 weeks</td>
               <td>3.5 weeks</td>
@@ -399,9 +398,9 @@ class AssayPanel extends React.Component {
                 <td>
                   <input type="checkbox"
                     id={"clearance_mouse" + val}
-                    disabled={this.checkAssaysRun("clearance_mouse", val)}
+                    disabled={this.checkAssaysRun("clearance_mouse", val) || false}
                     checked={this.checkAssaysRun("clearance_mouse", val)}
-                    onClick={() => {
+                    onChange={() => {
                       this.toggleAssay("clearance_mouse", val);
                       const isDisabled = this.checkAssaysRun("clearance_mouse", val);
                       this.onClick("clearance_mouse", isDisabled);
@@ -411,9 +410,9 @@ class AssayPanel extends React.Component {
                 <td>
                   <input type="checkbox"
                     id={"clearance_human" + val}
-                    disabled={this.checkAssaysRun("clearance_human", val)}
+                    disabled={this.checkAssaysRun("clearance_human", val) || false}
                     checked={this.checkAssaysRun("clearance_human", val)}
-                    onClick={() => {
+                    onChange={() => {
                       this.toggleAssay("clearance_human", val);
                       const isDisabled = this.checkAssaysRun("clearance_human", val);
                       this.onClick("clearance_human", isDisabled);
@@ -423,9 +422,9 @@ class AssayPanel extends React.Component {
                 <td>
                   <input type="checkbox"
                     id={"logd" + val}
-                    disabled={this.checkAssaysRun("logd", val)}
+                    disabled={this.checkAssaysRun("logd", val) || false}
                     checked={this.checkAssaysRun("logd", val)}
-                    onClick={() => {
+                    onChange={() => {
                       this.toggleAssay("logd", val);
                       const isDisabled = this.checkAssaysRun("logd", val);
                       this.onClick("logd", isDisabled);
@@ -435,9 +434,9 @@ class AssayPanel extends React.Component {
                 <td>
                   <input type="checkbox"
                     id={"pampa" + val}
-                    disabled={this.checkAssaysRun("pampa", val)}
+                    disabled={this.checkAssaysRun("pampa", val) || false}
                     checked={this.checkAssaysRun("pampa", val)}
-                    onClick={() => {
+                    onChange={() => {
                       this.toggleAssay("pampa", val);
                       const isDisabled = this.checkAssaysRun("pampa", val);
                       this.onClick("pampa", isDisabled);
@@ -447,9 +446,9 @@ class AssayPanel extends React.Component {
                 <td>
                   <input type="checkbox"
                     id={"pIC50" + val}
-                    disabled={this.checkAssaysRun("pIC50", val)}
+                    disabled={this.checkAssaysRun("pIC50", val) || false}
                     checked={this.checkAssaysRun("pIC50", val)}
-                    onClick={() => {
+                    onChange={() => {
                       this.toggleAssay("pIC50", val);
                       const isDisabled = this.checkAssaysRun("pIC50", val);
                       this.onClick("pIC50", isDisabled);
@@ -460,40 +459,40 @@ class AssayPanel extends React.Component {
             ))}
           </tbody>
         </table>
-        {this.state.hover == "clrmouse" && this.props.toggle_help && (
+        {this.state.hover === "clrmouse" && this.props.toggle_help && (
           <div className="hover-info-text-clrmouse">
             <p>
               <div>{this.props.help[1]}</div>
             </p>
           </div>
         )}
-        {this.state.hover == "clrhuman" && this.props.toggle_help && (
+        {this.state.hover === "clrhuman" && this.props.toggle_help && (
           <div className="hover-info-text-clrhuman">
             <p>
               <div>{this.props.help[2]}</div>
             </p>
           </div>
         )}
-        {this.state.hover == "logd" && this.props.toggle_help && (
+        {this.state.hover === "logd" && this.props.toggle_help && (
           <div className="hover-info-text-logd">
             <p>
               <div>{this.props.help[3]}</div>
             </p>
           </div>
         )}
-        {this.state.hover == "pampa" && this.props.toggle_help && (
+        {this.state.hover === "pampa" && this.props.toggle_help && (
           <div className="hover-info-text-pampa">
             <p>
               <div>{this.props.help[4]}</div>
             </p>
           </div>
         )}
-        {this.state.hover == "pic50" && this.props.toggle_help && (
+        {this.state.hover === "pic50" && this.props.toggle_help && (
           <div className="hover-info-text-pic50">
             <p><div><p dangerouslySetInnerHTML={{ __html: formatted_help }}></p></div></p>
           </div>
         )}
-        {this.state.hover == "help" && (
+        {this.state.hover === "help" && (
           <div className="hover-info-text-help">
             <p>
               <div>{this.props.help[9]}</div>
@@ -525,7 +524,7 @@ class AssayPanel extends React.Component {
                 </div>
               </div>
             </button>
-            {this.state.hover == "run" && this.props.toggle_help && (
+            {this.state.hover === "run" && this.props.toggle_help && (
               <div className="hover-info-text-run">
                 <p>
                   <div>{this.props.help[6]}</div>

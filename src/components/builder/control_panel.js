@@ -1,18 +1,14 @@
 import React from "react";
 import "./builder.css";
 import { connect } from "react-redux";
-import { selectorActions, assayActions, analysisActions } from "../../actions";
+import { selectorActions, assayActions } from "../../actions";
 import { Link } from "react-router-dom";
 
 class ControlPanel extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   // save the built molecule in the store
   saveMolecule = () => {
     console.log(this.props.selected_r_groups)
-    if (this.props.selected_r_groups.A == 'A00' || this.props.selected_r_groups.B == 'B00'){
+    if (this.props.selected_r_groups.A === 'A00' || this.props.selected_r_groups.B === 'B00'){
       console.log('Blocked')
     }
     else{
@@ -45,11 +41,11 @@ class ControlPanel extends React.Component {
 
   render() {
 
-    if (this.props.saved_or_not == false) {
+    if (this.props.saved_or_not === false) {
       return (
         <div className="control-panel">
           <button onClick={this.resetRGroups}>Clear</button>
-          { (this.props.selected_r_groups.A == 'A00' || this.props.selected_r_groups.B == 'B00')? '' : <button onClick={this.saveMolecule}>Make</button>}
+          { (this.props.selected_r_groups.A === 'A00' || this.props.selected_r_groups.B === 'B00')? '' : <button onClick={this.saveMolecule}>Make</button>}
         </div>)
     }
 
@@ -58,7 +54,7 @@ class ControlPanel extends React.Component {
       return (
         <div className="control-panel">
           <button onClick={this.resetRGroups}>Clear</button>
-          { (this.props.selected_r_groups.A == 'A00' || this.props.selected_r_groups.B == 'B00')? '' : <button onClick={this.saveMolecule}>Make</button>}
+          { (this.props.selected_r_groups.A === 'A00' || this.props.selected_r_groups.B === 'B00')? '' : <button onClick={this.saveMolecule}>Make</button>}
           <Link to="/assay">
             <button onClick={this.initSelectMolecule}>Test →</button>
           </Link>

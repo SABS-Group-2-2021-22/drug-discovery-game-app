@@ -1,21 +1,10 @@
 import React from "react";
 import "../analysis/analysis.css";
 import { connect } from "react-redux";
-import { chooseSketchedMolecule } from "../../actions";
 import { sketcherActions } from "../../actions";
-import { postSketchedChosen } from "../../actions";
 import { Link } from "react-router-dom";
 
 class SketcherSelectorPanel extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  // chooseMolecule = () => {
-  //   console.log("SELECTED " + this.props.selected_mol)
-  //   this.props.dispatch(sketcherActions.chooseSketchedMolecule(this.props.selected_mol, this.props.saved_mols[this.props.selected_mol].data.smiles));
-  // }
-
   submitMolecule = () => {
     console.log("SELECTED " + this.props.chosen_mol)
       this.props.dispatch(sketcherActions.postSketchedChosen(this.props.chosen_mol[0], this.props.chosen_mol[1]));

@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { gameActions, userActions } from "../../actions";
 
@@ -41,8 +40,9 @@ class Footer extends React.Component {
   userStatus = () => {
     return (
       <div className="user-status-box">
-        <h5> {this.props.user.username} </h5>
-        <button onClick={this.save_and_logout} >Log out</button>
+        <span style={{fontSize:'22px'}}>{this.props.user.username}</span>
+        <br />
+        <button onClick={this.props.save_and_logout}>Log out</button>
       </div>
     );
   };
@@ -50,18 +50,16 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="footer">
-        <div class="container">
+        <div className="container">
           <div className="user-status">
-            <p class="m-0 text-start text-white">
-              {this.props.loggedIn && this.userStatus()}
-            </p>
-          </div>
+            {this.props.loggedIn && <div className="m-0 text-start text-white">{this.userStatus()}</div>}
+          </div>        
           <div className="time-money-status">
-            <p class="m-0 text-end text-white">
-              <h5>🕑: {this.props.time} weeks left</h5>
+            <p className="m-0 text-end text-white">
+              🕑: {this.props.time} weeks left
             </p>
-            <p class="m-0 text-end text-white">
-              <h5>💰: £{this.props.money}</h5>
+            <p className="m-0 text-end text-white" style={{ marginBottom: '10px' }}>
+              💰: £{this.props.money}
             </p>
           </div>
         </div>

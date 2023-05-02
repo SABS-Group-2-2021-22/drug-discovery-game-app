@@ -4,10 +4,6 @@ import { connect } from "react-redux"
 import  SketcherMoleculeImage  from "./sketcher_molecule_image.js"
 
 class SketcherMoleculeWidget extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="molecule-container">

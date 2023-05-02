@@ -2,10 +2,7 @@ import React from "react";
 import "./assay.css";
 import { connect } from "react-redux";
 import MoleculeList from "./molecule_list.js";
-import MoleculeImage from "./molecule_image.js";
 import AssayPanel from "./assay_panel.js";
-import MoleculeStats from "./molecule_stats.js";
-import ControlPanel from "./control_panel.js";
 import { assayActions } from "../../actions";
 import { analysisActions } from "../../actions";
 import { Link } from "react-router-dom"
@@ -53,7 +50,7 @@ class Assay extends React.Component {
               onMouseLeave={() => {
                 this.onUnHover();
               }}>
-              {this.state.hover == "lipinski" && this.props.toggle_help && (
+              {this.state.hover === "lipinski" && this.props.toggle_help && (
                 <div className="hover-info-text-help-large">
                   <p>
                     <div>{this.props.help[7]}</div>

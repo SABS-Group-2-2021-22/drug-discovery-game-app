@@ -94,23 +94,23 @@ export const sketcherActions = {
     for (const [k, v] of Object.entries(saved_sketched_mols)) {
       let assay_obj = {};
       const assays_run = Object.keys(v.data.assays_run).reduce(
-        (c, k) => ((c[k.toLowerCase().trim()] = v.data.assays_run[k]), c),
-        {}
+        (c, k) => {
+          c[k.toLowerCase().trim()] = v.data.assays_run[k];
+          return c;
+        }
       );
       for (const [K, V] of Object.entries(v.data.drug_props)) {
         if (K in assays_run) {
           assay_obj[K] = V;
         }
       }
+      var descriptor_obj = {};
       if (v.data.assays_run.descriptors) {
-        var descriptor_obj = v.data.descriptors;
-      } else {
-        var descriptor_obj = {};
+        descriptor_obj = v.data.descriptors;
       }
+      var tanimoto_obj = {}; 
       if (v.data.assays_run.tanimoto) {
-        var tanimoto_obj = {tanimoto: v.data.tanimoto};
-      } else {
-        var tanimoto_obj = {};
+        tanimoto_obj = {tanimoto: v.data.tanimoto};
       }
       let blank = { "--": 0 };
       let metrics = {
@@ -146,7 +146,6 @@ export const sketcherActions = {
   
    function postSketchedChosen(id, smiles) {
     return async (dispatch) => {
-      const { post_chosen } = await api.postChosen(id, smiles);
       await dispatch(selectorActions.postChosenSucceeded());
       await api.fetchSketchedSpiderObj().then((response) => {
         dispatch(analysisActions.fetchSpiderObjSucceeded(response));

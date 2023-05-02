@@ -9,10 +9,6 @@ import { Link } from "react-router-dom";
 
 
 class SketcherResultsRedux extends React.Component {
-    constructor(props) {
-        super(props)
-    };
-
     render() {
         if (!this.props.spider_data.data || !this.props.comp_text.data) {
             return <div />
@@ -31,7 +27,7 @@ class SketcherResultsRedux extends React.Component {
                         </div>
                       </figure>
                     </div>
-                    <div class="container" className="molecule-descriptors">
+                    <div className="molecule-descriptors">
                       <SketcherAssays mol_id={"Roche"} />
                     </div>
                   </div>
@@ -46,7 +42,7 @@ class SketcherResultsRedux extends React.Component {
                         </div>
                       </figure>
                     </div>
-                    <div class="container" className="molecule-descriptors">
+                    <div className="molecule-descriptors">
                       <SketcherAssays mol_id={this.props.chosen_mol[0]} />
                     </div>
                   </div>

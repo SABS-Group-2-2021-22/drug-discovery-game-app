@@ -1,14 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import "./index.css";
-import { createStore, applyMiddleware, compose } from 'redux'
-import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
-import r_groups from './reducers'
-import Body from './body'
-import rootReducer from './reducers'
 import { connect } from "react-redux";
-import { devToolsEnhancer } from 'redux-devtools-extension'
 
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import {
@@ -26,9 +18,6 @@ import {
   PrivateRoute,
   PublicRoute,
   SketcherAppRedux,
-  SketcherAssayRedux,
-  SketcherAnalysisRedux,
-  SketcherResultsRedux,
 } from "./components/body";
 
 

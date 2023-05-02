@@ -5,10 +5,6 @@ import { connect } from "react-redux";
 import { selectorActions } from "../../actions";
 
 class RGroupWidget extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   // store the r group id and positions when selected
   selectRGroups = () => {
     if (this.props.r_group_id.charAt(0) === "A") {
@@ -28,8 +24,8 @@ class RGroupWidget extends React.Component {
 
   render() {
     const selected_r_group_style = {
-      borderWidth:  (this.props.selected_r_groups["A"] == this.props.r_group_id || this.props.selected_r_groups["B"] == this.props.r_group_id ? "8px" : "1px"),
-      padding: (this.props.selected_r_groups["A"] == this.props.r_group_id || this.props.selected_r_groups["B"] == this.props.r_group_id ? "5px" : "13px")
+      borderWidth:  (this.props.selected_r_groups["A"] === this.props.r_group_id || this.props.selected_r_groups["B"] === this.props.r_group_id ? "8px" : "1px"),
+      padding: (this.props.selected_r_groups["A"] === this.props.r_group_id || this.props.selected_r_groups["B"] === this.props.r_group_id ? "5px" : "13px")
     };
     return (
       <div className="r-group-container">

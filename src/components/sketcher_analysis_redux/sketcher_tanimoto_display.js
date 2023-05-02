@@ -3,17 +3,13 @@ import "../assay/assay.css";
 import { connect } from "react-redux";
 
 class SketcherTanimoto extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
-      <div class="container" className="descriptor-stats">
-        <div class="row" className="stats-type-header">
+      <div className="descriptor-stats">
+        <div className="stats-type-header">
           Tanimoto Similarity:
         </div>
-        <div class="row">
+        <div className="row">
           = {Number(this.props.saved_mols[this.props.mol_id].data.tanimoto).toFixed(3)}
         </div>
       </div>

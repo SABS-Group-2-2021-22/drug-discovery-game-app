@@ -44,7 +44,7 @@ export function fetchMolecule(r_group_id_A, r_group_id_B, size) {
 
 export function fetchsketchedMolecule(mol_block) {
   client.defaults.headers["username"] = localStorage.user;
-  return client.get("/sketcher_save_molecule" + "?mol=" + mol_block);
+  return client.get(`/sketcher_save_molecule?mol=${mol_block}`);
 }
 
 export function postSaved(r_group_id_A, r_group_id_B) {

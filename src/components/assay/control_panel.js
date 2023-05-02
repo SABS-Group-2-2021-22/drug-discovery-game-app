@@ -5,10 +5,6 @@ import { Link } from "react-router-dom";
 import { analysisActions } from "../../actions";
 
 class ControlPanel extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   initPlotData = () => {
     // creates object for plotting - firing it here just speeds 
     // ...things up a bit

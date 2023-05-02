@@ -8,14 +8,10 @@ import { LogoBanner } from  '../body';
 
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   // fetches the r groups from the BE and selects the first r groups at each position
   // ... for rapid rendering of the builder and sketcher pages
-  componentWillMount() {
-    this.props.num == 0 && this.props.fetchRGroup(this.props.countRGroup,"300,300");
+  componentDidMount() {
+    this.props.num === 0 && this.props.fetchRGroup(this.props.countRGroup,"300,300");
     this.props.selectRGroup(
       this.props.selected_r_groups["A"],
       this.props.selected_r_groups["B"],
@@ -42,7 +38,7 @@ class Home extends React.Component {
           <div className="pic-and-text">
             <div className="picture">
               {" "}
-              <img src={pymolpic} />{" "}
+              <img alt='' src={pymolpic} />{" "}
             </div>
             <div className="text-and-button">
               <div className="text">

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { selectorActions, sketcherActions } from "../../actions";
+import { selectorActions } from "../../actions";
 import '../builder/builder.css';
 import { connect } from "react-redux";
 
@@ -14,7 +14,7 @@ initSelectMolecule = () => {
 
 render() {
 
-  if (this.props.saved_or_not == false) {
+  if (this.props.saved_or_not === false) {
     return (
       <div className="sketcher-control-panel">
         <button>Clear</button>

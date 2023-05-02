@@ -3,10 +3,6 @@ import "./results.css";
 import { connect } from "react-redux";
 
 class Assays extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   //ensure the metrics for the correct molecule are displayed
   srcRoute = () => {
     if (this.props.mol_id === "Roche") {
@@ -18,19 +14,19 @@ class Assays extends React.Component {
 
   render() {
     return (
-      <div class="container" className="assay-stats">
-        <div class="row" className="stats-type-header">
+      <div className="assay-stats">
+        <div className="stats-type-header">
           Assay Data:
         </div>
-        <div class="row">
+        <div className="row">
         Mouse Clearance: {this.srcRoute().clearance_mouse}
         </div>
-        <div class="row">
+        <div className="row">
           Human Clearance: {this.srcRoute().clearance_human}
         </div>
-        <div class="row">LogD: {this.srcRoute().logd}</div>
-        <div class="row">PAMPA: {this.srcRoute().pampa}</div>
-        <div class="row"><p style={{ paddingLeft: "0"}}>pIC<sub>50</sub>: {Number(this.srcRoute().pic50)}</p></div>
+        <div className="row">LogD: {this.srcRoute().logd}</div>
+        <div className="row">PAMPA: {this.srcRoute().pampa}</div>
+        <div className="row"><p style={{ paddingLeft: "0"}}>pIC<sub>50</sub>: {Number(this.srcRoute().pic50)}</p></div>
       </div>
     );
   }

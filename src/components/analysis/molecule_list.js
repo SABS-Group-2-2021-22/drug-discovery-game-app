@@ -4,10 +4,6 @@ import MoleculeWidget from "./molecule_widget.js";
 import { connect } from "react-redux";
 
 class MoleculeList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="molecule-list">

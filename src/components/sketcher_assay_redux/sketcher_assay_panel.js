@@ -35,7 +35,7 @@ class SketcherAssayPanel extends React.Component {
   onClick = (label) => {
     console.log(this.state.assays_run)
     let arr = this.state.selected_assays;
-    if (arr.includes(label) == false){
+    if (arr.includes(label) === false){
       arr.push(label);
     }
     this.setState({ selected_assays: arr });

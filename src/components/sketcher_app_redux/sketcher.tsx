@@ -21,10 +21,6 @@ type SketcherType = {
 export class Sketcher extends React.Component <SketcherType>{
   ketcher: Ketcher;
 
-  constructor(props: any) {
-    super(props);
-  }
-
   static defaultProps = {profileStore:{}}
 
     handleOnInit = async (ketcher: any) => {          // change type to 'any' to resolve type conflict mentioned here https://github.com/epam/ketcher/issues/1970

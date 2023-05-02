@@ -6,10 +6,6 @@ import React from "react";
 import './logo_banner.css'
 
 class LogoBanner extends React.Component{
-    constructor(props) {
-        super(props);
-      }
-
       render() {
         return (
             <div className="button-and-logo-area">
@@ -17,20 +13,20 @@ class LogoBanner extends React.Component{
             <div className="logos-area">
             <div className="logo-img-text">
                 {""} 
-                <img src={sabs} />{""}
-                <div class="logo-text">
+                <img alt='' src={sabs} />{""}
+                <div className="logo-text">
                 <span>EPSRC SABS R³ CDT: Sustainable Approaches to Biomedical Science Responsible & Reproducible Research</span>
             </div>
             </div>
             
             <div className="logo-img-text" >
                 {" "}
-                <img src={epsrc} />{" "}
+                <img alt='' src={epsrc} />{" "}
             </div>
             <div className="logo-img-text">
                 {" "}
-                <img src={oxuni} />{""}
-                <div class="logo-text">
+                <img alt='' src={oxuni} />{""}
+                <div className="logo-text">
                 <span>University of Oxford</span>
             </div>
             </div>

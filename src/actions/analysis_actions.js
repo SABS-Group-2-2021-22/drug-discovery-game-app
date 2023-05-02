@@ -1,5 +1,3 @@
-import * as api from "../api";
-
 export const analysisActions = {
   constructPlotObj,
 };
@@ -29,7 +27,8 @@ function constructPlotObj(saved_mols) {
   for (const [k, v] of Object.entries(saved_mols)) {
     let assay_obj = {};
     const assays_run = Object.keys(v.data.assays_run).reduce(
-      (c, k) => ((c[k.toLowerCase().trim()] = v.data.assays_run[k]), c),
+      (c, k) => {
+          return ((c[k.toLowerCase().trim()] = v.data.assays_run[k]), c)},
       {}
     );
     for (const [K, V] of Object.entries(v.data.drug_props)) {
@@ -38,7 +37,7 @@ function constructPlotObj(saved_mols) {
       }
     }
     // add descriptors to plot data (are run no matter what)
-    {var descriptor_obj = v.data.descriptors;} 
+    var descriptor_obj = v.data.descriptors;
 
     let blank = { "--": 0 }; //initial 'blank' data plotted on page load
     let metrics = {
