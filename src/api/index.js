@@ -21,6 +21,11 @@ export function logoutRequest() {
   return client.post("/logout");
 }
 
+export function loadGameState() {
+  client.defaults.headers["username"] = localStorage.user;
+  return client.get("/loadgamestate");
+}
+
 export function fetchRGroup(id,size) {
   client.defaults.headers["username"] = localStorage.user;
   return client.get("/r-group?rgroup=" + id + "&size=" + size);
