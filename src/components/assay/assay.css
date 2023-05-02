@@ -91,6 +91,7 @@
   .assay-panel {
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-color: white;
     padding: 10px;
     flex-grow: 1;
@@ -111,9 +112,8 @@
   }
 
   .assay-panel>.assay-table {
-    left: 50%;
     width: 100%;
-    top: 150px;
+    max-width: 800px;
   }
 
   .assay-panel>.assay-table th {
