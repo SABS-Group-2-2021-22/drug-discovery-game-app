@@ -32,8 +32,9 @@ function saveMoleculeSucceeded(saved_mols) {
  */
 function saveMolecule(saved_mols, selected_r_groups, current_time) {
   const mol_id = selected_r_groups.A + selected_r_groups.B; //create molecule id
+  console.log('CP3', selected_r_groups);
   saved_mols[mol_id] = selected_r_groups.molecule; //inserts the molecule into the local saved_mols object
-  saved_mols[mol_id].data.toggle_assay = {pIC50: false, clearance_mouse: false, clearance_human: false, logd:false, pampa:false} // adds initial state for toggle_assay when you save the molecule
+  saved_mols[mol_id].data.toggle_assay = { pIC50: false, clearance_mouse: false, clearance_human: false, logd: false, pampa: false } // adds initial state for toggle_assay when you save the molecule
   saved_mols[mol_id].data.date_created = 30 - current_time
   return async (dispatch) => {
     const { post_saved } = await api.postSaved(
@@ -96,7 +97,7 @@ function toggleHelp(bool) {
  * @param {state object} is_selected the true/false state of teh assay toggle
  * @returns the selected_mol, assay button, and its true/false state for a state change by the assayReducer
  */
-function toggleAssaySucceeded(selected_mol,assay_type,is_selected) {
+function toggleAssaySucceeded(selected_mol, assay_type, is_selected) {
   return {
     type: "TOGGLE_ASSAY_SUCCEEDED",
     payload: {
@@ -113,9 +114,9 @@ function toggleAssaySucceeded(selected_mol,assay_type,is_selected) {
  * @param {state object} is_selected the true/false state of the assay toggle
  * @returns dispatches toggleAssaySucceeded
  */
-function toggleAssay(selected_mol,assay_type,is_selected){
+function toggleAssay(selected_mol, assay_type, is_selected) {
   return (dispatch) => {
-    dispatch(toggleAssaySucceeded(selected_mol,assay_type,is_selected));
+    dispatch(toggleAssaySucceeded(selected_mol, assay_type, is_selected));
   };
 }
 

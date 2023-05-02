@@ -169,19 +169,11 @@
     height: 27vh;
   }
 
-<<<<<<< HEAD
   .control-panel {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     padding: 10px;
   }
-=======
-.control-panel {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
->>>>>>> #265
 
   .control-panel button {
     padding-top: 5px;
