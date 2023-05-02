@@ -17,7 +17,6 @@ function login(username) {
 
         await userService.login(username)
             .then(response => {
-                console.log(response)
                 if (response.user_status === 'Exists') {
                     dispatch(pending(response));
                 }
@@ -42,7 +41,6 @@ function login(username) {
 function logout() {
     return dispatch => {
         dispatch(request());
-
         userService.logout()
             .then(() => {
                 dispatch(success());
@@ -60,14 +58,11 @@ function logout() {
 
 
 function new_login(username) {
-    console.log('new login');
-
     return async dispatch => {
         dispatch(request(username.username));
 
         await userService.login(username)
             .then(response => {
-                console.log(response)
                 dispatch(success(response));
             },
                 error => {
@@ -91,7 +86,6 @@ function loaded_login(username) {
 
         await userService.login(username)
             .then(response => {
-                console.log(response)
                 dispatch(success(response));
             },
                 error => {
@@ -100,83 +94,47 @@ function loaded_login(username) {
             );
         await userService.loadgamestate(username)
             .then(async game_data => {
-                console.log(game_data);
-                console.log(username);
-                // console.log( username.username);
-                console.log(game_data[username]);
                 let user_game_data = game_data[username]
-                console.log(Object.keys(user_game_data));
                 await Promise.all(Object.keys(user_game_data).map(async key => {
-                    console.log(key);
-
                     if (key === 'time') {
-                        console.log(user_game_data[key])
                         const time = user_game_data[key]
                         dispatch(updateTimeSucceeded(time))
                     }
                     else if (key === 'money') {
-                        console.log(user_game_data[key])
-
                         const money = user_game_data[key]
                         dispatch(updateMoneySucceeded(money))
                     }
                     else if (key === 'molecule_info') {
-                        console.log('CP1')
                         let mol_data = user_game_data[key]
                         let saved_mols = {}
-                        console.log('CP8', mol_data);
                         await Promise.all(Object.keys(mol_data).map(async mol_key => {
-                            console.log(mol_key)
-                            const saved_mol = mol_data[mol_key]
                             const r_group_id_A = mol_data[mol_key]["keys"][0]
                             const r_group_id_B = mol_data[mol_key]["keys"][1]
-
 
                             await api.fetchMolecule(r_group_id_A, r_group_id_B, '(500, 500)').then((response) => {
                                 let molecule = {};
                                 molecule['data'] = response.data;
-                                console.log('CP7', molecule)
                                 saved_mols[mol_key] = molecule
                                 saved_mols[mol_key].data.toggle_assay = { pIC50: false, clearance_mouse: false, clearance_human: false, logd: false, pampa: false } // adds initial state for toggle_assay when you save the molecule
                                 saved_mols[mol_key].data.assays_run = mol_data[mol_key]["assays_run"]
                                 saved_mols[mol_key].data.date_created = mol_data[mol_key]["date_created"]
-                                console.log('CP9', saved_mols)
                                 dispatch(loadSavedMoleculesSucceeded(saved_mols))
                             }).then(async () => {
                                 await api.fetchDescriptors(r_group_id_A, r_group_id_B) //fire api call to fetch the descriptors
                                     .then((response) => {
                                         let descriptors = response.data.descriptors[mol_key];
                                         dispatch(fetchDescriptorsSucceeded(mol_key, descriptors));
-                                    }); // dispatch fetchDescriptorsSucceeded synchronous action with the descriptors
+                                    });
                                 await api.fetchLipinski(r_group_id_A, r_group_id_B) //fire api call to fetch the filters
                                     .then((response) => {
                                         let lipinski = response.data.lipinski[mol_key];
                                         dispatch(fetchLipinskiSucceeded(mol_key, lipinski));
                                     });
                             });
-                            // console.log(saved_mol)
-                            // Object.keys(saved_mol).map(property_key => {
-                            //     // if (property_key === 'lipinski'){
-                            //     //     dispatch(set_lipinski_values())
-                            //     // }
-                            //     console.log(property_key)
-                            //     if (property_key === 'descriptors') {
-                            //         console.log(mol_key)
-                            //         console.log(saved_mol[property_key])
-                            //         dispatch(fetchDescriptorsSucceeded(mol_key, saved_mol[property_key]))
-                            //     }
-                            // else if (property_key === 'assays_run'){
-                            //     dispatch(set_assays_run_values())
-                            // }
-
                         }))
-                        console.log(saved_mols)
-
                     }
                 }))
-                // }
             })
-        // })
     }
 }
 
