@@ -71,14 +71,14 @@ class AssayPanel extends React.Component {
     let max_time = 0.
     let total_cost = 0.
 
-    for ( var molecule_key in this.props.all_molecules_assay_data ) {
+    for (var molecule_key in this.props.all_molecules_assay_data) {
 
       let assays_run = this.props.all_molecules_assay_data[molecule_key].data.assays_run;
       let toggle_assay_dict = this.props.all_molecules_assay_data[molecule_key].data.toggle_assay;
 
       // iterate through toggle_assay, if assay_value is true, add to selected assay
       let arr = []
-      for (var key in toggle_assay_dict){
+      for (var key in toggle_assay_dict) {
         if (toggle_assay_dict[key]) {
           arr.push(key)
         }
@@ -88,22 +88,21 @@ class AssayPanel extends React.Component {
       for (var i = 0; i < selected_assays.length; i++) {
         if (
           ["drug_props", "lipinski", "descriptors"].includes(selected_assays[i])
-        ) 
-          {} 
+        ) { }
         else {
-            if (!assays_run[selected_assays[i]]){
-              if (max_time < ASSAY_TIMES[selected_assays[i]]) {
-                max_time = ASSAY_TIMES[selected_assays[i]] ;
-              }
-              total_cost = total_cost + ASSAY_PRICES[selected_assays[i]] ;
+          if (!assays_run[selected_assays[i]]) {
+            if (max_time < ASSAY_TIMES[selected_assays[i]]) {
+              max_time = ASSAY_TIMES[selected_assays[i]];
+            }
+            total_cost = total_cost + ASSAY_PRICES[selected_assays[i]];
           }
         }
       }
     }
     let cost = {
-      'time': max_time, 
+      'time': max_time,
       'money': total_cost,
-  }
+    }
     return cost
   };
 
@@ -127,14 +126,14 @@ class AssayPanel extends React.Component {
     let max_time = 0.
     let total_cost = 0.
     let cost_sum = 0;
-    
-    for ( var molecule_key in this.props.all_molecules_assay_data ) {
+
+    for (var molecule_key in this.props.all_molecules_assay_data) {
       let assays_run = this.props.all_molecules_assay_data[molecule_key].data.assays_run;
       let toggle_assay_dict = this.props.all_molecules_assay_data[molecule_key].data.toggle_assay;
 
       // iterate through toggle_assay, if assay_value is true, add to selected assay
       let arr = []
-      for (var key in toggle_assay_dict){
+      for (var key in toggle_assay_dict) {
         if (toggle_assay_dict[key]) {
           arr.push(key)
         }
@@ -153,11 +152,11 @@ class AssayPanel extends React.Component {
     }
 
     if (this.props.money - cost_sum < 0 || this.props.time - max_time < 0) {
-      for ( var molecule_key in this.props.all_molecules_assay_data ) {
+      for (var molecule_key in this.props.all_molecules_assay_data) {
         let toggle_assay_dict = this.props.all_molecules_assay_data[molecule_key].data.toggle_assay;
 
         let arr = []
-        for (var key in toggle_assay_dict){
+        for (var key in toggle_assay_dict) {
           if (toggle_assay_dict[key]) {
             arr.push(key)
           }
@@ -170,12 +169,12 @@ class AssayPanel extends React.Component {
       }
       window.alert("Your choice of assays exceeds the cost and time limits! Please unselect some assays or proceed to Analysis");
     } else {
-      for ( var molecule_key in this.props.all_molecules_assay_data ) {
+      for (var molecule_key in this.props.all_molecules_assay_data) {
         let assays_run = this.props.all_molecules_assay_data[molecule_key].data.assays_run;
         let toggle_assay_dict = this.props.all_molecules_assay_data[molecule_key].data.toggle_assay;
 
         let arr = []
-        for (var key in toggle_assay_dict){
+        for (var key in toggle_assay_dict) {
           if (toggle_assay_dict[key]) {
             arr.push(key)
           }
@@ -184,12 +183,12 @@ class AssayPanel extends React.Component {
 
         for (var i = 0; i < selected_assays.length; i++) {
           if (!["drug_props", "lipinski", "descriptors"].includes(selected_assays[i])) {
-            if (!assays_run[selected_assays[i]]){
+            if (!assays_run[selected_assays[i]]) {
               assays_run[selected_assays[i]] = true;
               if (max_time < ASSAY_TIMES[selected_assays[i]]) {
-                max_time = ASSAY_TIMES[selected_assays[i]] ;
+                max_time = ASSAY_TIMES[selected_assays[i]];
               }
-              total_cost = total_cost + ASSAY_PRICES[selected_assays[i]] ;
+              total_cost = total_cost + ASSAY_PRICES[selected_assays[i]];
             }
           }
         }
@@ -248,11 +247,11 @@ class AssayPanel extends React.Component {
   };
 
   toggleAssay = (assay_type, mol_id) => {
-      let toggle_assay = this.props.saved_mols[mol_id].data.toggle_assay;
-      if (toggle_assay[assay_type]) {
-      this.props.toggleAssay(mol_id,assay_type,false);
+    let toggle_assay = this.props.saved_mols[mol_id].data.toggle_assay;
+    if (toggle_assay[assay_type]) {
+      this.props.toggleAssay(mol_id, assay_type, false);
     } else {
-      this.props.toggleAssay(mol_id,assay_type,true);
+      this.props.toggleAssay(mol_id, assay_type, true);
     }
   }
 
@@ -270,24 +269,24 @@ class AssayPanel extends React.Component {
       color: (this.props.time - this.runAssaysLimit().time >= 0 ? "white" : "red"),
     };
     const formatted_help = this.props.help[0].replace('^-6', '<sup>-6</sup>').replace(/50/g, '<sub>50</sub>');
-    return(
+    return (
       <div className="assay-panel">
-        <table className="assay-table" style={{overflowWrap: 'break-word'}}>
-        <colgroup>
-          <col width="15%"/>
-          <col width="17%"/>
-          <col width="17%"/>
-          <col width="17%"/>
-          <col width="17%"/>
-          <col width="17%"/>
-        </colgroup>
+        <table className="assay-table" style={{ overflowWrap: 'break-word' }}>
+          <colgroup width="100%">
+            <col width="15%" />
+            <col className="assay-table-column" />
+            <col className="assay-table-column" />
+            <col className="assay-table-column" />
+            <col className="assay-table-column" />
+            <col className="assay-table-column" />
+          </colgroup>
           <thead style={{ verticalAlign: "text-top" }}>
             <tr class="header-cells">
               <th style={{ backgroundColor: 'white' }}>
                 <div className="help-toggle">
                   {this.props.toggle_help && (
                     <div className="toggle-activebutton">
-                      <button 
+                      <button
                         onClick={() => this.toggleHelp()}
                         onMouseEnter={() => {
                           this.onHover("help");
@@ -302,7 +301,7 @@ class AssayPanel extends React.Component {
                   )}
                   {this.props.toggle_help == false && (
                     <div className="toggle-inactivebutton">
-                      <button 
+                      <button
                         onClick={() => this.toggleHelp()}
                         onMouseEnter={() => {
                           this.onHover("help");
@@ -403,33 +402,33 @@ class AssayPanel extends React.Component {
                     disabled={this.checkAssaysRun("clearance_mouse", val)}
                     checked={this.checkAssaysRun("clearance_mouse", val)}
                     onClick={() => {
-                    this.toggleAssay("clearance_mouse", val);
-                    const isDisabled = this.checkAssaysRun("clearance_mouse", val);
-                    this.onClick("clearance_mouse", isDisabled);
+                      this.toggleAssay("clearance_mouse", val);
+                      const isDisabled = this.checkAssaysRun("clearance_mouse", val);
+                      this.onClick("clearance_mouse", isDisabled);
                     }}
                   />
                 </td>
                 <td>
-                  <input type="checkbox" 
+                  <input type="checkbox"
                     id={"clearance_human" + val}
                     disabled={this.checkAssaysRun("clearance_human", val)}
                     checked={this.checkAssaysRun("clearance_human", val)}
                     onClick={() => {
-                    this.toggleAssay("clearance_human", val);
-                    const isDisabled = this.checkAssaysRun("clearance_human", val);
-                    this.onClick("clearance_human", isDisabled);
+                      this.toggleAssay("clearance_human", val);
+                      const isDisabled = this.checkAssaysRun("clearance_human", val);
+                      this.onClick("clearance_human", isDisabled);
                     }}
                   />
                 </td>
                 <td>
-                  <input type="checkbox" 
+                  <input type="checkbox"
                     id={"logd" + val}
                     disabled={this.checkAssaysRun("logd", val)}
                     checked={this.checkAssaysRun("logd", val)}
                     onClick={() => {
-                    this.toggleAssay("logd", val);
-                    const isDisabled = this.checkAssaysRun("logd", val);
-                    this.onClick("logd", isDisabled);
+                      this.toggleAssay("logd", val);
+                      const isDisabled = this.checkAssaysRun("logd", val);
+                      this.onClick("logd", isDisabled);
                     }}
                   />
                 </td>
@@ -439,21 +438,21 @@ class AssayPanel extends React.Component {
                     disabled={this.checkAssaysRun("pampa", val)}
                     checked={this.checkAssaysRun("pampa", val)}
                     onClick={() => {
-                    this.toggleAssay("pampa", val);
-                    const isDisabled = this.checkAssaysRun("pampa", val);
-                    this.onClick("pampa", isDisabled);
+                      this.toggleAssay("pampa", val);
+                      const isDisabled = this.checkAssaysRun("pampa", val);
+                      this.onClick("pampa", isDisabled);
                     }}
                   />
                 </td>
                 <td>
-                  <input type="checkbox"  
+                  <input type="checkbox"
                     id={"pIC50" + val}
                     disabled={this.checkAssaysRun("pIC50", val)}
                     checked={this.checkAssaysRun("pIC50", val)}
                     onClick={() => {
-                    this.toggleAssay("pIC50", val); 
-                    const isDisabled = this.checkAssaysRun("pIC50", val);
-                    this.onClick("pIC50", isDisabled);
+                      this.toggleAssay("pIC50", val);
+                      const isDisabled = this.checkAssaysRun("pIC50", val);
+                      this.onClick("pIC50", isDisabled);
                     }}
                   />
                 </td>
@@ -462,44 +461,44 @@ class AssayPanel extends React.Component {
           </tbody>
         </table>
         {this.state.hover == "clrmouse" && this.props.toggle_help && (
-        <div className="hover-info-text-clrmouse">
-          <p>
-            <div>{this.props.help[1]}</div>
-          </p>
-        </div>
+          <div className="hover-info-text-clrmouse">
+            <p>
+              <div>{this.props.help[1]}</div>
+            </p>
+          </div>
         )}
         {this.state.hover == "clrhuman" && this.props.toggle_help && (
-        <div className="hover-info-text-clrhuman">
-          <p>
-            <div>{this.props.help[2]}</div>
-          </p>
-        </div>
+          <div className="hover-info-text-clrhuman">
+            <p>
+              <div>{this.props.help[2]}</div>
+            </p>
+          </div>
         )}
         {this.state.hover == "logd" && this.props.toggle_help && (
-        <div className="hover-info-text-logd">
-          <p>
-            <div>{this.props.help[3]}</div>
-          </p>
-        </div>
+          <div className="hover-info-text-logd">
+            <p>
+              <div>{this.props.help[3]}</div>
+            </p>
+          </div>
         )}
         {this.state.hover == "pampa" && this.props.toggle_help && (
-        <div className="hover-info-text-pampa">
-          <p>
-            <div>{this.props.help[4]}</div>
-          </p>
-        </div>
+          <div className="hover-info-text-pampa">
+            <p>
+              <div>{this.props.help[4]}</div>
+            </p>
+          </div>
         )}
         {this.state.hover == "pic50" && this.props.toggle_help && (
-        <div className="hover-info-text-pic50">
-          <p><div><p dangerouslySetInnerHTML={{ __html: formatted_help }}></p></div></p>
-        </div>
+          <div className="hover-info-text-pic50">
+            <p><div><p dangerouslySetInnerHTML={{ __html: formatted_help }}></p></div></p>
+          </div>
         )}
         {this.state.hover == "help" && (
-        <div className="hover-info-text-help">
-          <p>
-            <div>{this.props.help[9]}</div>
-          </p>
-        </div>
+          <div className="hover-info-text-help">
+            <p>
+              <div>{this.props.help[9]}</div>
+            </p>
+          </div>
         )}
         <div className="final-order">
           <div className="run-assay-button">
@@ -517,14 +516,14 @@ class AssayPanel extends React.Component {
               }}
             >
               <div className="assay-name"><b>Run Assays</b></div>
-                <div className="invoice-amount">
-                  <div style={duration_color}>
-                    Duration: {this.runAssaysLimit().time} weeks
-                  </div>
-                  <div style={cost_color}>
-                    Cost: £{this.runAssaysLimit().money}
-                  </div>
+              <div className="invoice-amount">
+                <div style={duration_color}>
+                  Duration: {this.runAssaysLimit().time} weeks
                 </div>
+                <div style={cost_color}>
+                  Cost: £{this.runAssaysLimit().money}
+                </div>
+              </div>
             </button>
             {this.state.hover == "run" && this.props.toggle_help && (
               <div className="hover-info-text-run">
