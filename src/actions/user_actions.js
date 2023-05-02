@@ -138,7 +138,8 @@ function loaded_login(username) {
                                 console.log('CP7', molecule)
                                 saved_mols[mol_key] = molecule
                                 saved_mols[mol_key].data.toggle_assay = { pIC50: false, clearance_mouse: false, clearance_human: false, logd: false, pampa: false } // adds initial state for toggle_assay when you save the molecule
-                                saved_mols[mol_key].data.date_created = -1
+                                saved_mols[mol_key].data.assays_run = mol_data[mol_key]["assays_run"]
+                                saved_mols[mol_key].data.date_created = mol_data[mol_key]["date_created"]
                                 console.log('CP9', saved_mols)
                                 dispatch(loadSavedMoleculesSucceeded(saved_mols))
                             }).then(async () => {
