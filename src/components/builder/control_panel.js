@@ -49,7 +49,7 @@ class ControlPanel extends React.Component {
       return (
         <div className="control-panel">
           <button onClick={this.resetRGroups}>Clear</button>
-          { (this.props.selected_r_groups.A == 'A00' || this.props.selected_r_groups.B == 'B00')? '' : <button onClick={this.saveMolecule}>Make</button>}
+          { (this.props.selected_r_groups.A == 'A00' || this.props.selected_r_groups.B == 'B00')? '' : <button onClick={() => {this.saveMolecule(); this.initSelectMolecule();}}>Make</button>}
         </div>)
     }
 
@@ -58,9 +58,9 @@ class ControlPanel extends React.Component {
       return (
         <div className="control-panel">
           <button onClick={this.resetRGroups}>Clear</button>
-          { (this.props.selected_r_groups.A == 'A00' || this.props.selected_r_groups.B == 'B00')? '' : <button onClick={this.saveMolecule}>Make</button>}
+          { (this.props.selected_r_groups.A == 'A00' || this.props.selected_r_groups.B == 'B00')? '' : <button onClick={() => {this.saveMolecule(); this.initSelectMolecule();}}>Make</button>}
           <Link to="/assay">
-            <button onClick={this.initSelectMolecule}>Test →</button>
+            <button>Test →</button>
           </Link>
         </div>)
     }

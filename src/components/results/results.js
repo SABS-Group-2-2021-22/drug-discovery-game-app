@@ -66,7 +66,7 @@ class Results extends React.Component {
               </div>
               <div className="control-panel">
                 <Link to="/analysis">
-                  <button> {'← Analysis'} </button>
+                  <button> {'<<Analysis<<'} </button>
                 </Link>
                 <Link to="/">
                   <button onClick={this.save_and_resetGame}> End Game </button>
