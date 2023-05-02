@@ -35,6 +35,9 @@ jobs:
 
     - name: Build
       run: npm run build
+      env:
+        CI: false
+      
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
 
