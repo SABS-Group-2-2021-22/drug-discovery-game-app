@@ -15,8 +15,6 @@ const initialState = {
 export function assayReducer(state = initialState, action) {
   switch (action.type) {
     case "SAVE_MOLECULE_SUCCEEDED": {
-      console.log('CP2', action.payload)
-
       return {
         ...state,
         saved_or_not: true,
@@ -31,7 +29,6 @@ export function assayReducer(state = initialState, action) {
       };
     }
     case "FETCH_DESCRIPTORS_SUCCEEDED": {
-      console.log(action.payload)
       return {
         ...state,
         saved_mols: {
@@ -137,7 +134,7 @@ export function assayReducer(state = initialState, action) {
         },
       };
     }
-
+    
     default: {
       return state;
     }

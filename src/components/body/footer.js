@@ -2,45 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { gameActions, userActions } from "../../actions";
+import { userActions } from "../../actions";
 
 import "./footer.css";
 
 class Footer extends React.Component {
-  compile_game_data = () => {
-
-    let molecule_info = {}
-    Object.keys(this.props.saved_mols).map(mol_key => {
-      console.log(this.props.saved_mols[mol_key])
-      console.log(this.props.saved_mols[mol_key].data.descriptors)
-      molecule_info[mol_key] = {
-        "keys": [mol_key.slice(0, 3), mol_key.slice(3, 6)],
-        "descriptors": this.props.saved_mols[mol_key].data.descriptors,
-        "lipinski": this.props.saved_mols[mol_key].data.lipinski,
-        "assays_run": this.props.saved_mols[mol_key].data.assays_run,
-        "date_created": this.props.saved_mols[mol_key].date_created
-      }
-    })
-
-    let game_data = {
-      "money": this.props.money,
-      "time": this.props.time,
-      "molecule_info": molecule_info
-    }
-    return game_data
-  }
-
-  save_and_logout = () => {
-    let game_data = JSON.stringify(this.compile_game_data())
-    this.props.saveGame(game_data)
-    this.props.logout()
-  }
-
   userStatus = () => {
     return (
       <div className="user-status-box">
         <h5> {this.props.user.username} </h5>
-        <button onClick={this.save_and_logout} >Log out</button>
+          <button onClick={this.props.logout} >Log out</button>
       </div>
     );
   };
@@ -53,7 +24,7 @@ class Footer extends React.Component {
             <p class="m-0 text-start text-white">
               {this.props.loggedIn && this.userStatus()}
             </p>
-          </div>
+          </div>        
           <div className="time-money-status">
             <p class="m-0 text-end text-white">
               <h5>🕑: {this.props.time} weeks left</h5>
@@ -75,12 +46,10 @@ function mapStateToProps(state) {
     subtotal: state.game.subtotal,
     loggedIn: state.login.loggedIn,
     user: state.login.user,
-    saved_mols: state.assay.saved_mols
   };
 }
 
 const actionCreators = {
-  saveGame: gameActions.saveGame,
   logout: userActions.logout,
 };
 

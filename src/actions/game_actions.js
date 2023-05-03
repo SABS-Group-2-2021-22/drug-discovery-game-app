@@ -30,11 +30,11 @@ function updateTimeSucceeded(time) {
  * @param {state object} current_time the current time remaining
  * @returns dispatches updateTimeSucceeded with the new time
  */
-function updateTime(time_cost, current_time) {
-  let time = current_time - time_cost; //calculate new time
-  return (dispatch) => {
-    dispatch(updateTimeSucceeded(time));
-  }; //dispatch time to the store via the updateTimeSucceeded synchronous action
+  function updateTime(time_cost, current_time) {
+    let time = current_time - time_cost; //calculate new time
+    return (dispatch) => {
+      dispatch(updateTimeSucceeded(time));
+    }; //dispatch time to the store via the updateTimeSucceeded synchronous action
 }
 
 /**
@@ -68,33 +68,33 @@ function updateSubTotalSucceeded(subtotal) {
  * @returns dispatches updateMoneySucceeded with the new amount of money
  */
 function updateMoney(cost, current_money) {
-  let money = current_money - cost
+  let money =  current_money - cost  
   return (dispatch) => {
-    dispatch(updateMoneySucceeded(money));
-  }; //dispatch money to the store via the updateMoneySucceded synchronous action
-}
+      dispatch(updateMoneySucceeded(money));
+    }; //dispatch money to the store via the updateMoneySucceded synchronous action
+} 
 
 function updateSubTotal(assays, cost_sum) {
-  console.log(assays)
-  const assay_prices = {
-    pIC50: 70.0,
-    clearance_mouse: 7000.0,
-    clearance_human: 9000.0,
-    logd: 1000.0,
-    pampa: 700.0,
-  }; //predfined cost of each assay
-  cost_sum = 0
-  for (const i of assays) {
-    for (const [k, v] of Object.entries(assay_prices)) {
-      if (i === k) {
-        cost_sum += v; //add money for each assay to total cost
+    console.log(assays)
+    const assay_prices = {
+      pIC50: 70.0,
+      clearance_mouse: 7000.0,
+      clearance_human: 9000.0,
+      logd: 1000.0,
+      pampa: 700.0,
+    }; //predfined cost of each assay
+    cost_sum = 0
+    for (const i of assays) {
+      for (const [k, v] of Object.entries(assay_prices)) {
+        if (i === k) {
+          cost_sum += v; //add money for each assay to total cost
+          }
+        }
       }
-    }
+    return (dispatch) => {
+      dispatch(updateSubTotalSucceeded(cost_sum));
+    }; //dispatch money to the store via the updateMoneySucceded synchronous action
   }
-  return (dispatch) => {
-    dispatch(updateSubTotalSucceeded(cost_sum));
-  }; //dispatch money to the store via the updateMoneySucceded synchronous action
-}
 
 
 /**
@@ -136,9 +136,9 @@ function saveGameSucceeded() {
  * @returns Asychnronous action that fires a saveGame api call to back end
  * and dispatches saveGameSucceeded
  */
-function saveGame(game_data) {
+function saveGame() {
   return (dispatch) => {
-    api.saveGame(game_data);
+    api.saveGame();
     dispatch(saveGameSucceeded());
   };
 }

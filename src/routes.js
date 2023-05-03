@@ -15,7 +15,6 @@ import {
   Navigation,
   Home,
   Introduction,
-  Progressloader,
   Loadingpage,
   Builder,
   Assay,
@@ -53,7 +52,6 @@ class Index extends React.Component {
           <Route path="*" element={
             <PrivateRoute>
               <Routes>
-                {/* <Route path="/progressloader" element={<Progressloader />} /> */}
                 <Route path="/introduction" element={<Introduction />} />
                 <Route path="/loadingpage" element={<Loadingpage />} />
                 <Route path="/build" element={(this.props.gamemode === 'builder') ? <Builder /> : <SketcherAppRedux />} />

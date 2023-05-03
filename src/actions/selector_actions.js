@@ -36,11 +36,9 @@ function selectRGroupSucceeded(r_group_id_A, r_group_id_B, molecule) {
  * passes in the r group ids and the molecule object)
  */
 function selectRGroup(r_group_id_A, r_group_id_B, size) {
-  console.log('CP1', r_group_id_A, r_group_id_B, size)
   return (dispatch) => {
     api.fetchMolecule(r_group_id_A, r_group_id_B, size).then((response) => {
-      let molecule = {};
-      molecule['data'] = response.data;
+      const molecule = response;
       dispatch(selectRGroupSucceeded(r_group_id_A, r_group_id_B, molecule));
     });
   };
@@ -68,8 +66,7 @@ function selectMolecule(selected_mol) {
       dispatch(fetchSpiderObjSucceeded(response));
     });
     dispatch(selectMoleculeSucceeded(selected_mol));
-  }
-}
+  }}
 
 /**
  * Synchronous action that sends the selected mol id to the store when dispatched
