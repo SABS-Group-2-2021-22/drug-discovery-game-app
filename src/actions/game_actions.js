@@ -75,7 +75,6 @@ function updateMoney(cost, current_money) {
 }
 
 function updateSubTotal(assays, cost_sum) {
-  console.log(assays)
   const assay_prices = {
     pIC50: 70.0,
     clearance_mouse: 7000.0,

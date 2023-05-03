@@ -25,6 +25,7 @@ class Footer extends React.Component {
     let game_data = {
       "money": this.props.money,
       "time": this.props.time,
+      "chosen_mol": [this.props.selected_mol.slice(0, 3), this.props.selected_mol.slice(3, 6)],
       "molecule_info": molecule_info
     }
     return game_data
@@ -34,6 +35,7 @@ class Footer extends React.Component {
     let game_data = JSON.stringify(this.compile_game_data())
     this.props.saveGame(game_data)
     this.props.logout()
+    this.props.resetGame();
   }
 
   userStatus = () => {
@@ -75,12 +77,14 @@ function mapStateToProps(state) {
     subtotal: state.game.subtotal,
     loggedIn: state.login.loggedIn,
     user: state.login.user,
-    saved_mols: state.assay.saved_mols
+    saved_mols: state.assay.saved_mols,
+    selected_mol: state.selector.selected_mol
   };
 }
 
 const actionCreators = {
   saveGame: gameActions.saveGame,
+  resetGame: gameActions.resetGame,
   logout: userActions.logout,
 };
 

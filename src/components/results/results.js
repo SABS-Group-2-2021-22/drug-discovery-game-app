@@ -44,7 +44,7 @@ class Results extends React.Component {
 
     let game_data = JSON.stringify(this.compile_game_data())
     this.props.saveGame(game_data); // temporarily disabling any saving of user data
-    // this.props.resetGame();
+    this.props.resetGame();
     // this.props.login(saved_user);
   };
 
