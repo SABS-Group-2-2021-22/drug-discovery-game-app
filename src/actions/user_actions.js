@@ -80,7 +80,6 @@ function new_login(username) {
 
 
 function loaded_login(username) {
-    console.log('loaded login');
     return async dispatch => {
         dispatch(request(username.username));
 
@@ -94,6 +93,7 @@ function loaded_login(username) {
             );
         await userService.loadgamestate(username)
             .then(async game_data => {
+                console.log(game_data)
                 let user_game_data = game_data[username]
                 await Promise.all(Object.keys(user_game_data).map(async key => {
                     if (key === 'time') {

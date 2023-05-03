@@ -32,6 +32,7 @@ class Results extends React.Component {
     let game_data = {
       "money": this.props.money,
       "time": this.props.time,
+      "chosen_mol": [this.props.selected_mol.slice(0, 3), this.props.selected_mol.slice(3, 6)],
       "molecule_info": molecule_info
     }
     return game_data
@@ -115,7 +116,7 @@ function mapStateToProps(state) {
     gamemode: state.game.gamemode,
     saved_mols: state.assay.saved_mols,
     time: state.game.time,
-    money: state.game.money
+    money: state.game.money,
   };
 }
 

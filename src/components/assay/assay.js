@@ -24,7 +24,6 @@ class Assay extends React.Component {
     } else {
       this.props.toggleHelp(true);
     }
-    console.log(this.props.toggle_help)
   }
 
   initPlotData = () => {
@@ -46,51 +45,51 @@ class Assay extends React.Component {
     return (
       <div className="wrapper">
         {this.props.saved_or_not ? (
-        <div className="assay">
-          <div className="molecule-chooser-bar"        
-            onMouseEnter={() => {
-            this.onHover("lipinski");
-          }}
-          onMouseLeave={() => {
-            this.onUnHover();
-          }}>
-          {this.state.hover == "lipinski" && this.props.toggle_help && (
-          <div className="hover-info-text-help-large">
-            <p>
-              <div>{this.props.help[7]}</div>
-              <div>{this.props.help[8]}</div>
-            </p>
-          </div>
-          )}
-            <MoleculeList />
-          </div>
-          <div className="main-content">
-            <AssayPanel />
-            <div className="nav-buttons">
-              <Link to="/build">
-                <button
-                  label="Back_Build"
-                >
-                  ← Design 
-                </button>
-              </Link>
-              <Link to="/analysis">
-                <button
-                  label="Next_Analysis"
-                  onClick={this.initPlotData}
-                >
-                  Analysis →
-                </button>
-              </Link>
+          <div className="assay">
+            <div className="molecule-chooser-bar"
+              onMouseEnter={() => {
+                this.onHover("lipinski");
+              }}
+              onMouseLeave={() => {
+                this.onUnHover();
+              }}>
+              {this.state.hover == "lipinski" && this.props.toggle_help && (
+                <div className="hover-info-text-help-large">
+                  <p>
+                    <div>{this.props.help[7]}</div>
+                    <div>{this.props.help[8]}</div>
+                  </p>
+                </div>
+              )}
+              <MoleculeList />
             </div>
-          </div>
-            </div>) : (<div className='unsavedmol'>       
-                    <Link to="/loadingpage">
-                      <button className="mk_pre_test_button">Please make a molecule before test!</button>
-                    </Link></div>)
-            }
-        </div>
-      );
+            <div className="main-content">
+              <AssayPanel />
+              <div className="nav-buttons">
+                <Link to="/build">
+                  <button
+                    label="Back_Build"
+                  >
+                    ← Design
+                  </button>
+                </Link>
+                <Link to="/analysis">
+                  <button
+                    label="Next_Analysis"
+                    onClick={this.initPlotData}
+                  >
+                    Analysis →
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>) : (<div className='unsavedmol'>
+            <Link to="/loadingpage">
+              <button className="mk_pre_test_button">Please make a molecule before test!</button>
+            </Link></div>)
+        }
+      </div>
+    );
 
   }
 }
