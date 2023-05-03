@@ -162,14 +162,9 @@ class ThePlot extends React.Component {
         </div>
         <div className="plot-button-panel">
           <div className="plot-button-row">
+            <p>
             x-axis:&nbsp;
-            {this.state.helpHover && (
-              <div className="help-info-text">
-                <p>
-                  <div>{this.props.help[0]}</div>
-                </p>
-              </div>
-            )}
+            </p>
             {this.state.x_axis == 'logd' && (<div className="activebutton">
               <button onClick={() => this.relayout("logd", "x")}>LogD</button></div>)}
             {this.state.x_axis != 'logd' && (<div className="inactivebutton">
@@ -217,8 +212,9 @@ class ThePlot extends React.Component {
   
           </div>
           <div className="plot-button-row">
+            <p>
             y-axis:&nbsp;
-
+            </p>
             {this.state.y_axis == 'logd' && (<div className="activebutton">
               <button onClick={() => this.relayout("logd", "y")}>logD</button></div>)}
             {this.state.y_axis != 'logd' && (<div className="inactivebutton">

@@ -205,4 +205,5 @@
 
 p {
     padding-left: 0;
+    white-space: nowrap;
 }
