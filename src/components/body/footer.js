@@ -12,10 +12,10 @@ class Footer extends React.Component {
     Object.keys(this.props.saved_mols).map(mol_key => {
       console.log(this.props.saved_mols[mol_key])
       console.log(this.props.saved_mols[mol_key].data.descriptors)
-      molecule_info[mol_key] = {
+      return molecule_info[mol_key] = {
         "keys": [mol_key.slice(0, 3), mol_key.slice(3, 6)],
         "descriptors": this.props.saved_mols[mol_key].data.descriptors,
-        "lipinski": this.props.saved_mols[mol_key].data.lipinski,
+        "lipinski": this.props.saved,
         "assays_run": this.props.saved_mols[mol_key].data.assays_run,
         "date_created": this.props.saved_mols[mol_key].date_created
       }

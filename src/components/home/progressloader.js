@@ -1,6 +1,5 @@
 import React from "react";
 import "./home.css";
-import { Link } from "react-router-dom";
 import { LogoBanner } from  '../body';
 import { connect } from "react-redux";
 
@@ -8,10 +7,6 @@ import { userActions } from "../../actions";
 
 
 class Progressloader extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   completeNewLogin = () => {
     this.props.new_login(this.props.username)
   }

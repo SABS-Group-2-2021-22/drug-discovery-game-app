@@ -7,7 +7,6 @@ import {
   Navigation,
   Home,
   Introduction,
-  Progressloader,
   Loadingpage,
   Builder,
   Assay,

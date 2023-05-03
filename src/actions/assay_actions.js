@@ -36,6 +36,10 @@ function saveMolecule(saved_mols, selected_r_groups, current_time) {
   saved_mols[mol_id].data.toggle_assay = { pIC50: false, clearance_mouse: false, clearance_human: false, logd: false, pampa: false } // adds initial state for toggle_assay when you save the molecule
   saved_mols[mol_id].data.date_created = 30 - current_time
   return async (dispatch) => {
+    const { post_saved } = await api.postSaved(
+      selected_r_groups.A,
+      selected_r_groups.B
+    ); //send saved r groups to the backend
     await dispatch(saveMoleculeSucceeded(saved_mols)); //wait until the molecule has been saved
     api
       .fetchDescriptors(selected_r_groups.A, selected_r_groups.B) //fire api call to fetch the descriptors

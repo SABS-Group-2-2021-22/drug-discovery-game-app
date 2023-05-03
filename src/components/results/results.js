@@ -10,17 +10,13 @@ import { Link } from "react-router-dom";
 import { userActions } from '../../actions';
 
 class Results extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   compile_game_data = () => {
 
     let molecule_info = {}
     Object.keys(this.props.saved_mols).map(mol_key => {
       console.log(this.props.saved_mols[mol_key])
       console.log(this.props.saved_mols[mol_key].data.descriptors)
-      molecule_info[mol_key] = {
+      return molecule_info[mol_key] = {
         "keys": [mol_key.slice(0, 3), mol_key.slice(3, 6)],
         "descriptors": this.props.saved_mols[mol_key].data.descriptors,
         "lipinski": this.props.saved_mols[mol_key].data.lipinski,
