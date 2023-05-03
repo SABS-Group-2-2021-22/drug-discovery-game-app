@@ -162,13 +162,6 @@ class ThePlot extends React.Component {
         </div>
         <div className="plot-button-panel">
           <div className="plot-button-row">
-            <button
-              className="help-button"
-              onMouseEnter={this.onHelpHover}
-              onMouseLeave={this.onUnHelpHover}
-            >
-              ?
-            </button>
             x-axis:&nbsp;
             {this.state.helpHover && (
               <div className="help-info-text">

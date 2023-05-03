@@ -102,10 +102,12 @@
   margin-bottom: 1vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   height: flex;
-  width: flex;
+  width: 100%;
+  margin-left: 10%;
 }
+
 .plot-button-panel {
   margin-bottom: 1vh;
   display: flex;
