@@ -13,12 +13,39 @@ class Results extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  compile_game_data = () => {
+
+    let molecule_info = {}
+    Object.keys(this.props.saved_mols).map(mol_key => {
+      console.log(this.props.saved_mols[mol_key])
+      console.log(this.props.saved_mols[mol_key].data.descriptors)
+      molecule_info[mol_key] = {
+        "keys": [mol_key.slice(0, 3), mol_key.slice(3, 6)],
+        "descriptors": this.props.saved_mols[mol_key].data.descriptors,
+        "lipinski": this.props.saved_mols[mol_key].data.lipinski,
+        "assays_run": this.props.saved_mols[mol_key].data.assays_run,
+        "date_created": this.props.saved_mols[mol_key].date_created
+      }
+    })
+
+    let game_data = {
+      "money": this.props.money,
+      "time": this.props.time,
+      "molecule_info": molecule_info
+    }
+    return game_data
+  }
+
+
   save_and_resetGame = () => {
-    let saved_user = JSON.parse(localStorage.getItem('user'));
-    // this.props.saveGame(); // temporarily disabling any saving of user data
-    this.props.resetGame();
-    this.props.login(saved_user);
-    window.location.href="/";
+    // let saved_user = JSON.parse(localStorage.getItem('user'));
+
+
+    let game_data = JSON.stringify(this.compile_game_data())
+    this.props.saveGame(game_data); // temporarily disabling any saving of user data
+    // this.props.resetGame();
+    // this.props.login(saved_user);
   };
 
   render() {
@@ -33,11 +60,11 @@ class Results extends React.Component {
               <div className="title">Molecule with desired profile</div>
               <div className="molecule-image-and-descriptors">
                 <div className="molecule-image">
-                  
-                    
-                      <MoleculeImage mol_id={"Roche"} />
-                    
-                  
+
+
+                  <MoleculeImage mol_id={"Roche"} />
+
+
                 </div>
                 <div class="container" className="molecule-descriptors">
                   <Assays mol_id={"Roche"} />
@@ -48,17 +75,17 @@ class Results extends React.Component {
               <div className="title">Your Molecule</div>
               <div className="molecule-image-and-descriptors">
                 <div className="molecule-image">
-                      <MoleculeImage mol_id={(this.props.gamemode === 'builder') ? this.props.selected_mol: this.props.selected_mol[0]} />
+                  <MoleculeImage mol_id={(this.props.gamemode === 'builder') ? this.props.selected_mol : this.props.selected_mol[0]} />
                 </div>
                 <div class="container" className="molecule-descriptors">
-                  <Assays mol_id={(this.props.gamemode === 'builder') ? this.props.selected_mol: this.props.selected_mol[0]} />
+                  <Assays mol_id={(this.props.gamemode === 'builder') ? this.props.selected_mol : this.props.selected_mol[0]} />
                 </div>
               </div>
             </div>
           </div>
           <div className="plot-and-explanation">
             <div className="spider-plot">
-               <SpiderPlot mol_id={(this.props.gamemode === 'builder') ? this.props.selected_mol: this.props.selected_mol[0]}/>
+              <SpiderPlot mol_id={(this.props.gamemode === 'builder') ? this.props.selected_mol : this.props.selected_mol[0]} />
             </div>
             <div className="explanation-and-button">
               <div className="explanation">
@@ -86,6 +113,9 @@ function mapStateToProps(state) {
     comp_text: state.analysis.comp_text,
     selected_mol: state.selector.selected_mol,
     gamemode: state.game.gamemode,
+    saved_mols: state.assay.saved_mols,
+    time: state.game.time,
+    money: state.game.money
   };
 }
 
