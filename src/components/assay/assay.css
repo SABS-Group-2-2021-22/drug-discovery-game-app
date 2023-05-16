@@ -98,6 +98,10 @@
     height: 90%;
   }
 
+  .assay-table-div {
+    overflow-y: scroll;
+  }
+
   .assay-name {
     font-size: 18px;
   }
@@ -111,24 +115,24 @@
     padding: 10px;
   }
 
-  .assay-panel>.assay-table {
+  .assay-table-div>.assay-table {
     width: 100%;
     max-width: 800px;
   }
 
-  .assay-panel>.assay-table th {
+  .assay-table-div>.assay-table th {
     padding: 5px;
   }
 
-  .assay-panel>.assay-table td {
+  .assay-table-div>.assay-table td {
     padding: 5px;
   }
 
-  .assay-panel>.assay-table tr.header-cells {
+  .assay-table-div>.assay-table tr.header-cells {
     border: 1pt solid black;
   }
 
-  .assay-panel>.assay-table tr.border-bottom td {
+  .assay-table-div>.assay-table tr.border-bottom td {
     border-bottom: 1pt solid black;
   }
 

@@ -271,195 +271,197 @@ class AssayPanel extends React.Component {
     const formatted_help = this.props.help[0].replace('^-6', '<sup>-6</sup>').replace(/50/g, '<sub>50</sub>');
     return (
       <div className="assay-panel">
-        <table className="assay-table" style={{ overflowWrap: 'break-word' }}>
-          <colgroup width="100%">
-            <col width="15%" />
-            <col className="assay-table-column" />
-            <col className="assay-table-column" />
-            <col className="assay-table-column" />
-            <col className="assay-table-column" />
-            <col className="assay-table-column" />
-          </colgroup>
-          <thead style={{ verticalAlign: "text-top" }}>
-            <tr class="header-cells">
-              <th style={{ backgroundColor: 'white' }}>
-                <div className="help-toggle">
-                  {this.props.toggle_help && (
-                    <div className="toggle-activebutton">
-                      <button
-                        onClick={() => this.toggleHelp()}
-                        onMouseEnter={() => {
-                          this.onHover("help");
-                        }}
-                        onMouseLeave={() => {
-                          this.onUnHover();
-                        }}
-                      >
-                        ?
-                      </button>
-                    </div>
-                  )}
-                  {this.props.toggle_help == false && (
-                    <div className="toggle-inactivebutton">
-                      <button
-                        onClick={() => this.toggleHelp()}
-                        onMouseEnter={() => {
-                          this.onHover("help");
-                        }}
-                        onMouseLeave={() => {
-                          this.onUnHover();
-                        }}
-                      >
-                        ?
-                      </button>
-                    </div>
-                  )}
-                </div>
-              </th>
-              <th
-                onMouseEnter={() => {
-                  this.onHover("clrmouse");
-                }}
-                onMouseLeave={() => {
-                  this.onUnHover();
-                }}
-              >
-                Mouse <br /> Clearance
-              </th>
-              <th
-                onMouseEnter={() => {
-                  this.onHover("clrhuman");
-                }}
-                onMouseLeave={() => {
-                  this.onUnHover();
-                }}
-              >
-                {" "}Human <br />Clearance
-              </th>
-              <th
-                onMouseEnter={() => {
-                  this.onHover("logd");
-                }}
-                onMouseLeave={() => {
-                  this.onUnHover();
-                }}
-              >
-                LogD
-              </th>
-              <th
-                onMouseEnter={() => {
-                  this.onHover("pampa");
-                }}
-                onMouseLeave={() => {
-                  this.onUnHover();
-                }}
-              >
-                PAMPA
-              </th>
-              <th
-                onMouseEnter={() => {
-                  this.onHover("pic50");
-                }}
-                onMouseLeave={() => {
-                  this.onUnHover();
-                }}
-              >
-                pIC<sub>50</sub>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><b>Cost per assay</b></td>
-              <td>£7,000</td>
-              <td>£9,000</td>
-              <td>£1,000</td>
-              <td>£700</td>
-              <td>£70</td>
-            </tr>
-            <tr class="border-bottom">
-              <td><b>Duration</b></td>
-              <td>3 weeks</td>
-              <td>3.5 weeks</td>
-              <td>1.5 weeks</td>
-              <td>1 week</td>
-              <td>1 week</td>
-            </tr>
-            <tr>
-              <td><b>Molecule</b></td>
-              <td>{" "}</td>
-              <td>{" "}</td>
-              <td>{" "}</td>
-              <td>{" "}</td>
-              <td>{" "}</td>
-            </tr>
-            {data.map((val, index) => (
-              <tr key={val} className={index % 2 === 0 ? 'even' : 'odd'}>
-                <td>{val}</td>
-                <td>
-                  <input type="checkbox"
-                    id={"clearance_mouse" + val}
-                    disabled={this.checkAssaysRun("clearance_mouse", val)}
-                    checked={this.checkAssaysRun("clearance_mouse", val)}
-                    onClick={() => {
-                      this.toggleAssay("clearance_mouse", val);
-                      const isDisabled = this.checkAssaysRun("clearance_mouse", val);
-                      this.onClick("clearance_mouse", isDisabled);
-                    }}
-                  />
-                </td>
-                <td>
-                  <input type="checkbox"
-                    id={"clearance_human" + val}
-                    disabled={this.checkAssaysRun("clearance_human", val)}
-                    checked={this.checkAssaysRun("clearance_human", val)}
-                    onClick={() => {
-                      this.toggleAssay("clearance_human", val);
-                      const isDisabled = this.checkAssaysRun("clearance_human", val);
-                      this.onClick("clearance_human", isDisabled);
-                    }}
-                  />
-                </td>
-                <td>
-                  <input type="checkbox"
-                    id={"logd" + val}
-                    disabled={this.checkAssaysRun("logd", val)}
-                    checked={this.checkAssaysRun("logd", val)}
-                    onClick={() => {
-                      this.toggleAssay("logd", val);
-                      const isDisabled = this.checkAssaysRun("logd", val);
-                      this.onClick("logd", isDisabled);
-                    }}
-                  />
-                </td>
-                <td>
-                  <input type="checkbox"
-                    id={"pampa" + val}
-                    disabled={this.checkAssaysRun("pampa", val)}
-                    checked={this.checkAssaysRun("pampa", val)}
-                    onClick={() => {
-                      this.toggleAssay("pampa", val);
-                      const isDisabled = this.checkAssaysRun("pampa", val);
-                      this.onClick("pampa", isDisabled);
-                    }}
-                  />
-                </td>
-                <td>
-                  <input type="checkbox"
-                    id={"pIC50" + val}
-                    disabled={this.checkAssaysRun("pIC50", val)}
-                    checked={this.checkAssaysRun("pIC50", val)}
-                    onClick={() => {
-                      this.toggleAssay("pIC50", val);
-                      const isDisabled = this.checkAssaysRun("pIC50", val);
-                      this.onClick("pIC50", isDisabled);
-                    }}
-                  />
-                </td>
+        <div className="assay-table-div">
+          <table className="assay-table" style={{ overflowWrap: 'break-word' }}>
+            <colgroup width="100%">
+              <col width="15%" />
+              <col className="assay-table-column" />
+              <col className="assay-table-column" />
+              <col className="assay-table-column" />
+              <col className="assay-table-column" />
+              <col className="assay-table-column" />
+            </colgroup>
+            <thead style={{ verticalAlign: "text-top" }}>
+              <tr class="header-cells">
+                <th style={{ backgroundColor: 'white' }}>
+                  <div className="help-toggle">
+                    {this.props.toggle_help && (
+                      <div className="toggle-activebutton">
+                        <button
+                          onClick={() => this.toggleHelp()}
+                          onMouseEnter={() => {
+                            this.onHover("help");
+                          }}
+                          onMouseLeave={() => {
+                            this.onUnHover();
+                          }}
+                        >
+                          ?
+                        </button>
+                      </div>
+                    )}
+                    {this.props.toggle_help == false && (
+                      <div className="toggle-inactivebutton">
+                        <button
+                          onClick={() => this.toggleHelp()}
+                          onMouseEnter={() => {
+                            this.onHover("help");
+                          }}
+                          onMouseLeave={() => {
+                            this.onUnHover();
+                          }}
+                        >
+                          ?
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </th>
+                <th
+                  onMouseEnter={() => {
+                    this.onHover("clrmouse");
+                  }}
+                  onMouseLeave={() => {
+                    this.onUnHover();
+                  }}
+                >
+                  Mouse <br /> Clearance
+                </th>
+                <th
+                  onMouseEnter={() => {
+                    this.onHover("clrhuman");
+                  }}
+                  onMouseLeave={() => {
+                    this.onUnHover();
+                  }}
+                >
+                  {" "}Human <br />Clearance
+                </th>
+                <th
+                  onMouseEnter={() => {
+                    this.onHover("logd");
+                  }}
+                  onMouseLeave={() => {
+                    this.onUnHover();
+                  }}
+                >
+                  LogD
+                </th>
+                <th
+                  onMouseEnter={() => {
+                    this.onHover("pampa");
+                  }}
+                  onMouseLeave={() => {
+                    this.onUnHover();
+                  }}
+                >
+                  PAMPA
+                </th>
+                <th
+                  onMouseEnter={() => {
+                    this.onHover("pic50");
+                  }}
+                  onMouseLeave={() => {
+                    this.onUnHover();
+                  }}
+                >
+                  pIC<sub>50</sub>
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Cost per assay</b></td>
+                <td>£7,000</td>
+                <td>£9,000</td>
+                <td>£1,000</td>
+                <td>£700</td>
+                <td>£70</td>
+              </tr>
+              <tr class="border-bottom">
+                <td><b>Duration</b></td>
+                <td>3 weeks</td>
+                <td>3.5 weeks</td>
+                <td>1.5 weeks</td>
+                <td>1 week</td>
+                <td>1 week</td>
+              </tr>
+              <tr>
+                <td><b>Molecule</b></td>
+                <td>{" "}</td>
+                <td>{" "}</td>
+                <td>{" "}</td>
+                <td>{" "}</td>
+                <td>{" "}</td>
+              </tr>
+              {data.map((val, index) => (
+                <tr key={val} className={index % 2 === 0 ? 'even' : 'odd'}>
+                  <td>{val}</td>
+                  <td>
+                    <input type="checkbox"
+                      id={"clearance_mouse" + val}
+                      disabled={this.checkAssaysRun("clearance_mouse", val)}
+                      checked={this.checkAssaysRun("clearance_mouse", val)}
+                      onClick={() => {
+                        this.toggleAssay("clearance_mouse", val);
+                        const isDisabled = this.checkAssaysRun("clearance_mouse", val);
+                        this.onClick("clearance_mouse", isDisabled);
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <input type="checkbox"
+                      id={"clearance_human" + val}
+                      disabled={this.checkAssaysRun("clearance_human", val)}
+                      checked={this.checkAssaysRun("clearance_human", val)}
+                      onClick={() => {
+                        this.toggleAssay("clearance_human", val);
+                        const isDisabled = this.checkAssaysRun("clearance_human", val);
+                        this.onClick("clearance_human", isDisabled);
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <input type="checkbox"
+                      id={"logd" + val}
+                      disabled={this.checkAssaysRun("logd", val)}
+                      checked={this.checkAssaysRun("logd", val)}
+                      onClick={() => {
+                        this.toggleAssay("logd", val);
+                        const isDisabled = this.checkAssaysRun("logd", val);
+                        this.onClick("logd", isDisabled);
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <input type="checkbox"
+                      id={"pampa" + val}
+                      disabled={this.checkAssaysRun("pampa", val)}
+                      checked={this.checkAssaysRun("pampa", val)}
+                      onClick={() => {
+                        this.toggleAssay("pampa", val);
+                        const isDisabled = this.checkAssaysRun("pampa", val);
+                        this.onClick("pampa", isDisabled);
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <input type="checkbox"
+                      id={"pIC50" + val}
+                      disabled={this.checkAssaysRun("pIC50", val)}
+                      checked={this.checkAssaysRun("pIC50", val)}
+                      onClick={() => {
+                        this.toggleAssay("pIC50", val);
+                        const isDisabled = this.checkAssaysRun("pIC50", val);
+                        this.onClick("pIC50", isDisabled);
+                      }}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         {this.state.hover == "clrmouse" && this.props.toggle_help && (
           <div className="hover-info-text-clrmouse">
             <p>
