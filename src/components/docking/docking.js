@@ -40,18 +40,17 @@ class Docking extends React.Component {
       <div className="wrapper">
         <div className="docking-elements">
           <div className="mol-list">
-            <MoleculeList />                      // Display list of molecules using the MoleculeList component
+            <MoleculeList />                      
           </div>
           <div className="docking-and-button">
             <div className="molstar">
-              <Molstar {...molstar_props}/>       // Display the molecule viewer using the Molstar component with defined props
+              <Molstar {...molstar_props}/>      
             </div>
             <div className="affinity">
-              // Display the affinity score of the selected molecule
               Affinity score:{" "} 
               {this.props.saved_mols[this.props.selected_mol].data.drug_props.docking_affinity} kcal/mol
               <div className="nav-buttons">
-                // Navigation buttons to go to assay and analysis views
+
                 <Link to="/assay">
                   <button>
                     ← Test 
