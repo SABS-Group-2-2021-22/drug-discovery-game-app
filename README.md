@@ -85,3 +85,34 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+# Docking Feature
+We are excited to introduce the new "Docking" feature to our app. With this feature, users can now explore docking poses and affinity scores of ligands and proteins.
+
+## How it Works
+AutoDock Integration: Initially, we utilize AutoDock to calculate the docking pose and the affinity score of the ligand and the protein for all ligands in our database.
+Data Documentation: Once the calculations are complete, we document and store the docking results for future reference and retrieval.
+MolStar Viewer: To visually represent the docking poses, we have integrated the MolStar viewer into our application. This feature allows users to view the molecular structures directly within our platform.
+## MolStar Viewer Interface
+The MolStar viewer is seamlessly integrated into our user interface, offering a holistic view of the molecular structures.
+
+3D Canvas: This is where the PDB structure is displayed, offering a three-dimensional perspective. It's prominently located on the left side of the screen.
+
+Docking Data: Alongside the molecular visualization, users can see the affinity score derived from the docking process, providing a comprehensive understanding of the ligand-protein interaction.
+
+Navigation: Users can navigate to different sections of the app, such as the assay or analysis views, directly from the Docking interface.
+
+Updated Mouse Controls for MolStar
+In the Docking view, users can interact with the displayed molecule using mouse controls. These controls allow for manipulation of the molecular structures, such as rotating, translating, zooming, and more.
+
+Rotate: Click and drag using the left mouse button. Alternatively, hold the Shift key and drag with the left mouse button.
+
+Translate: Click and drag with the right mouse button. Or, use the Control key with the left mouse button. For touchscreen devices, a two-finger drag works.
+
+Zoom: Use the mouse wheel or a two-finger drag on touchpads and touchscreen devices.
+
+Center and Zoom: Click on a specific part of the structure with the right mouse button to focus on it.
+
+Clip: Adjust the clipping planes using the Shift key combined with the mouse wheel or a two-finger drag on touchpads.
+
+By hovering over any part of the 3D structure, it gets highlighted, and detailed information is shown in the lower right corner of the 3D canvas. This includes the PDB ID, model number, instance, chain ID, residue number, and chain name.

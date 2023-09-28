@@ -1,65 +1,72 @@
+/* Styling for the main container of docking elements */
 .docking-elements {
-  display: flex;
-  flex-direction: row;
-  flex: 1 5 auto;
-  height: 100%;
+  display: flex;               /* Use flexbox for layout */
+  flex-direction: row;         /* Lay out child elements in a row */
+  flex: 1 5 auto;              /* Flex grow, shrink and basis values */
+  height: 100%;                /* Take up the full height of its parent */
 }
 
+/* Styling for the container that wraps the molecule viewer and navigation buttons */
 .docking-and-button {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-width: 70%;
-  padding-left: 3vw;
-  padding-right: 3vw;
-  padding-top: 3vh;
-  padding-bottom: 2vh;
+  display: flex;               /* Use flexbox for layout */
+  flex-direction: column;      /* Lay out child elements in a column */
+  height: 100%;                /* Take up the full height of its parent */
+  min-width: 70%;              /* Minimum width set to 70% of parent */
+  padding-left: 3vw;           /* Padding from left as 3% of viewport width */
+  padding-right: 3vw;          /* Padding from right as 3% of viewport width */
+  padding-top: 3vh;            /* Padding from top as 3% of viewport height */
+  padding-bottom: 2vh;         /* Padding from bottom as 2% of viewport height */
 }
 
+/* Styling for the Molstar molecule viewer container */
 .molstar {
-  flex-grow: 3;
-  min-width: 80%;
-  max-height: 80vh;
-  background-color: white;
-  overflow: hidden;
+  flex-grow: 3;                /* Allow it to grow three times compared to other flex siblings */
+  min-width: 80%;              /* Minimum width set to 80% of parent */
+  max-height: 80vh;            /* Maximum height set to 80% of viewport height */
+  background-color: white;    /* Set background color to white */
+  overflow: hidden;            /* Hide any overflowing content */
 }
 
+/* Styling for a child element within the Molstar viewer container */
 .molstar .msp-plugin {
-  width: 70%;
-  height: 84%;
-
+  width: 70%;                  /* Set width to 70% of its parent */
+  height: 84%;                 /* Set height to 84% of its parent */
 }
 
+/* Styling for the navigation buttons container */
 .nav-buttons {
-  display: flex;
-  justify-content: space-between;
-  height: 10%;
+  display: flex;               /* Use flexbox for layout */
+  justify-content: space-between; /* Distribute child elements evenly with maximum space in between */
+  height: 10%;                 /* Set height to 10% of its parent */
 }
 
+/* Styling for individual navigation buttons */
 .nav-buttons button {
-  float: left;
-  border: none;
-  background-color: #212529;
-  color: white;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  white-space: pre-line;
-  width: 200px;
+  float: left;                 /* Float the button to the left */
+  border: none;                /* Remove the border */
+  background-color: #212529;  /* Set background color to a dark shade */
+  color: white;                /* Set text color to white */
+  border-radius: 8px;          /* Rounded corners for the button */
+  margin-bottom: 10px;         /* Margin at the bottom */
+  white-space: pre-line;       /* Preserve whitespace and line breaks */
+  width: 200px;                /* Set a fixed width for the button */
 }
 
+/* Styling for the list of molecules container */
 .mol-list {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  justify-content: center;
-  padding-bottom: 10pt;
-  margin-left: 20pt;
-  margin-top: 10pt;
-  margin-right: flex;
-  width: 185pt;
+  display: flex;               /* Use flexbox for layout */
+  flex-direction: column;      /* Lay out child elements in a column */
+  min-height: 100%;            /* Minimum height set to 100% of its parent */
+  justify-content: center;     /* Center child elements vertically */
+  padding-bottom: 10pt;        /* Padding at the bottom */
+  margin-left: 20pt;           /* Margin from the left */
+  margin-top: 10pt;            /* Margin from the top */
+  margin-right: flex;        
+  width: 185pt;                /* Set a fixed width */
 }
 
+/* Styling for the affinity score container */
 .affinity {
-  width: 110%;
-  z-index:100;
+  width: 110%;                 /* Set width to 110% of its parent  */
+  z-index: 100;                /* Set stacking order to a high value to ensure it's on top of other overlapping elements */
 }
