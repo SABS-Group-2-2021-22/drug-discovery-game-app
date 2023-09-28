@@ -91,7 +91,9 @@ We are excited to introduce the new "Docking" feature to our app. With this feat
 
 ## How it Works
 AutoDock Integration: Initially, we utilize AutoDock to calculate the docking pose and the affinity score of the ligand and the protein for all ligands in our database.
+
 Data Documentation: Once the calculations are complete, we document and store the docking results for future reference and retrieval.
+
 MolStar Viewer: To visually represent the docking poses, we have integrated the MolStar viewer into our application. This feature allows users to view the molecular structures directly within our platform.
 ## MolStar Viewer Interface
 The MolStar viewer is seamlessly integrated into our user interface, offering a holistic view of the molecular structures.
