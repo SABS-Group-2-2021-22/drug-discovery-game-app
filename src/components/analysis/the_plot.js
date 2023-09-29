@@ -155,9 +155,9 @@ class ThePlot extends React.Component {
           onUnhover={this.onUnhover}
         />
         <div className="plot-button-bigpanel">
-        <div className="plot-button">
-          <Link to="/docking">
-              <button>{'← Docking'}</button>
+        <div className="nav-buttons">
+          <Link to="/assay">
+              <button>{'← Test'}</button>
           </Link>
         </div>
         <div className="plot-button-panel">

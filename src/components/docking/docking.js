@@ -38,36 +38,41 @@ class Docking extends React.Component {
     // Return the JSX that defines the UI
     return (
       <div className="wrapper">
+      {this.props.saved_or_not ? (
         <div className="docking-elements">
           <div className="mol-list">
-            <MoleculeList />                      // Display list of molecules using the MoleculeList component
+            <MoleculeList />                      
           </div>
           <div className="docking-and-button">
             <div className="molstar">
-              <Molstar {...molstar_props}/>       // Display the molecule viewer using the Molstar component with defined props
+              <Molstar {...molstar_props}/>      
             </div>
             <div className="affinity">
-              // Display the affinity score of the selected molecule
               Affinity score:{" "} 
               {this.props.saved_mols[this.props.selected_mol].data.drug_props.docking_affinity} kcal/mol
               <div className="nav-buttons">
-                // Navigation buttons to go to assay and analysis views
-                <Link to="/assay">
+                <Link to="/build">
                   <button>
-                    ← Test 
+                    ← Design 
                   </button>
                 </Link>
-                <Link to="/analysis">
+                <Link to="/assay">
                   <button
                     onClick={this.initPlotData}   // When clicking on Analysis, it initializes the plot data
                   >
-                    Analysis →
+                    Test →
                   </button>
                 </Link>
               </div>
             </div>
           </div>
-        </div>
+        </div> ) : (
+          <div className='unsavedmol'>       
+          <Link to="/Loadingpage">
+            <button className="mk_pre_test_button">Go back to design your molecules first!</button>
+          </Link></div>
+        )
+      }
       </div>
     );
   }
@@ -78,6 +83,7 @@ function mapStateToProps(state) {
   return {
     selected_mol: state.selector.selected_mol,     // The currently selected molecule from the selector part of the state
     saved_mols: state.assay.saved_mols,            // The saved molecules from the assay part of the state
+    saved_or_not: state.assay.saved_or_not,
   };
 }
 

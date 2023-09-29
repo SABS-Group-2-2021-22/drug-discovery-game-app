@@ -5,8 +5,8 @@ export { default as Home } from "../home/home";
 export { default as Introduction } from "../introduction/introduction";
 export { default as Loadingpage } from "../introduction/loadingpage";
 export { default as Builder } from "../builder/builder";
-export { default as Assay } from "../assay/assay";
 export { default as Docking } from "../docking/docking";
+export { default as Assay } from "../assay/assay";
 export { default as Analysis } from "../analysis/analysis";
 export { default as Results } from "../results/results";
 export { default as LoginPage } from "./login"

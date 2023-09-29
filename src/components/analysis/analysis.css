@@ -106,6 +106,18 @@
   height: flex;
   width: flex;
 }
+
+.nav-buttons button {
+  float: left;                 /* Float the button to the left */
+  border: none;                /* Remove the border */
+  background-color: #212529;  /* Set background color to a dark shade */
+  color: white;                /* Set text color to white */
+  border-radius: 8px;          /* Rounded corners for the button */
+  margin-bottom: 10px;         /* Margin at the bottom */
+  white-space: pre-line;       /* Preserve whitespace and line breaks */
+  width: 100px;                /* Set a fixed width for the button */
+}
+
 .plot-button-panel {
   margin-bottom: 1vh;
   display: flex;
@@ -192,7 +204,7 @@
   border-radius: 5px;
   background-color: #fdfbfb;
   white-space: pre-line;
-  margin-right: 50vw;
+  margin-right: 40vw;
   padding: 3px;
   margin-left: 26%;
 }
