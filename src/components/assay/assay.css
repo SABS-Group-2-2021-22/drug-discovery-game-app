@@ -53,12 +53,19 @@
 .molecule-list {
   padding: 5px;
   background-color: white;
-  overflow-y: scroll;
+  overflow: auto;
   width: 100%;
 }
 
-.molecule-container {
-  padding-top: 5px;
+.assay-table {
+  width: 100%;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background-color: #f2f2f2;
+  z-index: 2; /* Add this line */
 }
 
 .molecule-widget {
@@ -397,7 +404,7 @@ table {
   border-width: 1px;
   padding: 5px;
   display: flex;
-  margin-left: 20vh;
+  margin-left: 80vh;
   font-size: 15px;
   z-index: 10;
   position: absolute;
@@ -502,8 +509,8 @@ table {
 .run-assay-button button {
   position: relative;
   float: right;
-  height: 100px;
-  width: 400px;
+  height: 90px;
+  width: 300px;
   border: none;
   margin-top: 10px;
 }
