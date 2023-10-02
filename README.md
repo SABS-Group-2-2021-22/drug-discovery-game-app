@@ -1,8 +1,14 @@
 # Drug Design Game Webapp
-This is the code repository of the frontend of the drug design game web-app.
-The frontend relies on the backend, the instructions include how to run the backend. 
+This is the code repository of the frontend of the drug design game web-app and app can be accessed at https://drug-design-game.onrender.com
+![image](https://github.com/SABS-Group-2-2021-22/drug-discovery-game-app/assets/43485111/502aac00-0f13-4207-8fc3-d3edf96f6775)
+Our game was featured in the Summer 2023 edition of the [Royal Society of Chemistry-CICAG Newsletter](http://www.rsccicag.org/index_htm_files/CICAG%20Newsletter%20Summer%202023%20FINAL.pdf)
+## A brief introduction to the game
+* Our game is meant to be an educational tool which gamifies the process of designing drugs ​
+* Our target users are junior medicinal chemists  ​
+* The goal of the game is to produce an inhibitor to MMP-12 which matches the target compound profile (TCP)​​
+  
 ## Installation and run instructions
-
+The frontend relies on the [backend](https://github.com/SABS-Group-2-2021-22/drug-discovery-game-backend), the instructions include how to run the backend. 
 ### Prerequisites
 
 You must have node and npm installed for the frontend server: [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
