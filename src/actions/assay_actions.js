@@ -72,7 +72,11 @@ function runAssaySucceeded(selected_mol, assays) {
   };
 }
 
-// Synchronous action that sends the boolean state of toggle help button to the store when dispatched
+/**
+ * Synchronous action that sends the boolean state of toggle help button to the store when dispatched
+ * @param {state object} bool the boolean state of toggle help button
+ * @returns the true/false state of help toggle
+ */
 function toggleHelpSucceeded(bool) {
   return {
     type: "TOGGLE_HELP_SUCCEEDED",
@@ -82,6 +86,11 @@ function toggleHelpSucceeded(bool) {
   };
 }
 
+/**
+ * Asynchronous action that dispatches the toggleHelpSucceeded action
+ * @param {state object} bool the state of toggle help button
+ * @returns dispatches toggleHelpSucceeded
+ */
 function toggleHelp(bool) {
   return (dispatch) => {
     dispatch(toggleHelpSucceeded(bool));
