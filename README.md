@@ -49,7 +49,7 @@ Run the web-app server:
 ```
 npm start
 ```
-View the web-app locally in your browser: `http://localhost:3000`
+
 
 # Getting Started with Create React App
 
