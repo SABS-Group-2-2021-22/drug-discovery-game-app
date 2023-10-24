@@ -20,7 +20,7 @@
   width: min(28vw, 350px);
 }
 
- .selector-panel {
+.selector-panel {
   display: flex;
   justify-content: space-between;
   padding-left: 4px;
@@ -40,9 +40,11 @@
   width: 80%;
   padding-top: 0px;
 }
+
 .selector-panel-select-button:hover {
   opacity: 0.7;
 }
+
 .final-molecule-bar .help-button {
   background-color: #fdfbfb;
   border-radius: 12px;
@@ -60,7 +62,7 @@
   width: 80%;
 }
 
-.final-molecule-bar .molecule-widget > .molecule img {
+.final-molecule-bar .molecule-widget>.molecule img {
   width: 80%;
 }
 
@@ -102,20 +104,29 @@
   margin-bottom: 1vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   height: flex;
-  width: flex;
+  width: 100%;
+  margin-left: 10%;
 }
 
 .nav-buttons button {
-  float: left;                 /* Float the button to the left */
-  border: none;                /* Remove the border */
-  background-color: #212529;  /* Set background color to a dark shade */
-  color: white;                /* Set text color to white */
-  border-radius: 8px;          /* Rounded corners for the button */
-  margin-bottom: 10px;         /* Margin at the bottom */
-  white-space: pre-line;       /* Preserve whitespace and line breaks */
-  width: 100px;                /* Set a fixed width for the button */
+  float: left;
+  /* Float the button to the left */
+  border: none;
+  /* Remove the border */
+  background-color: #212529;
+  /* Set background color to a dark shade */
+  color: white;
+  /* Set text color to white */
+  border-radius: 8px;
+  /* Rounded corners for the button */
+  margin-bottom: 10px;
+  /* Margin at the bottom */
+  white-space: pre-line;
+  /* Preserve whitespace and line breaks */
+  width: 100px;
+  /* Set a fixed width for the button */
 }
 
 .plot-button-panel {
@@ -125,25 +136,28 @@
   justify-content: right;
   width: flex;
 }
-.plot-button button{
-    display: flex;
-    background-color: #212529;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    height: flex;
-    width: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-size: 16px;
-    margin: 2px;
-    padding: 10px;
-    padding-bottom: 15px;
+
+.plot-button button {
+  display: flex;
+  background-color: #212529;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  height: flex;
+  width: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 16px;
+  margin: 2px;
+  padding: 10px;
+  padding-bottom: 15px;
 
 }
+
 .plot-button:hover {
   opacity: 0.7;
 }
+
 .plot-button-row {
   margin-bottom: 1vh;
   display: flex;
@@ -153,7 +167,7 @@
   justify-content: right;
 }
 
-.plot-button-row button{
+.plot-button-row button {
   background-color: #212529;
   color: white;
   border: none;
@@ -163,6 +177,7 @@
   width: 4.3vw;
   font-size: min(1vw, 16px);
 }
+
 .comparison-graph:hover {
   opacity: 1;
 }
@@ -171,22 +186,24 @@
   background-color: white;
   opacity: 1;
 }
-.plot-button-row  button:active {
+
+.plot-button-row button:active {
   opacity: 1;
 }
+
 .plot-button-row button:hover {
   opacity: 0.7;
 }
 
-.plot-button-row > .inactivebutton button {
+.plot-button-row>.inactivebutton button {
   background-color: #212529;
 }
 
-.plot-button-row > .activebutton button {
+.plot-button-row>.activebutton button {
   background-color: green;
 }
 
-.show-hover > .molecule img {
+.show-hover>.molecule img {
   border: 1px solid rgb(12, 10, 10);
   width: 120px;
   z-index: 3;
@@ -213,6 +230,7 @@
   text-decoration: none;
 }
 
-p {
-    padding-left: 0;
+.plot-button-row>p {
+  padding-left: 0;
+  white-space: nowrap;
 }

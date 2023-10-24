@@ -1,5 +1,6 @@
 import {
     Home,
+    Progressloader,
     Builder,
     Docking,
     Assay,
@@ -32,6 +33,7 @@ import ReactDOM from 'react-dom';
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/progressloader" element={<Progressloader />} />
             <Route path="/loadingpage" element={<Loadingpage />} />
             <Route path="/app" element={(this.props.gamemode === 'builder') ? <Builder />: <SketcherAppRedux/>} />
             <Route path="/docking" element={<Docking />} />
