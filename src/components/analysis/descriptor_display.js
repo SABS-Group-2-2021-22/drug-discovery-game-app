@@ -26,42 +26,42 @@ class Descriptors extends React.Component {
     if (HA_value >= 6) {
       HA_color = "green";
     } else if (HA_value >= 4) {
-      HA_color = "yellow";
+      HA_color = "orange";
     }
 
     let MW_color = "red";
     if (MW_value >= 700) {
       MW_color = "green";
     } else if (MW_value >= 500) {
-      MW_color = "yellow";
+      MW_color = "orange";
     }
     
     let TPSA_color = "green";
     if (TPSA_value >= 140) {
       TPSA_color = "red";
     } else if (TPSA_value >= 90) {
-      TPSA_color = "yellow";
+      TPSA_color = "orange";
     }
     
     let h_acc_color = "green";
     if (h_acc_value >= 10) {
       h_acc_color = "red";
     } else if (h_acc_value >= 3) {
-      h_acc_color = "yellow";
+      h_acc_color = "orange";
     }
     
     let h_don_color = "green";
     if (h_don_value >= 5) {
       h_don_color = "red";
     } else if (h_don_value >= 3) {
-      h_don_color = "yellow";
+      h_don_color = "orange";
     }
     
     let LogP_color = "green";
     if (LogP_value >= 5) {
       LogP_color = "red";
     } else if (LogP_value >= 3) {
-      LogP_color = "yellow";
+      LogP_color = "orange";
     }
   
     //return the variable_values in with the correct colours based on thresholds above

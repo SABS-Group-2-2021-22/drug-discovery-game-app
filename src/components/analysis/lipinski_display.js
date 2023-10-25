@@ -19,25 +19,25 @@ class Lipinski extends React.Component {
         <div class="row" className="stats-type-header">
           Lipinski Filters:
         </div>
-        <div class="row">
+        <div className="row" style={{ color: this.props.saved_mols[this.props.mol_id].data.lipinski.MW ? "green" : "red" }}>
           MW:{" "}
           {this.props.saved_mols[this.props.mol_id].data.lipinski.MW
             ? "Pass"
             : "Fail"}
         </div>
-        <div class="row">
+        <div className="row" style={{ color: this.props.saved_mols[this.props.mol_id].data.lipinski.h_acc ? "green" : "red" }}>
           H Acc.:{" "}
           {this.props.saved_mols[this.props.mol_id].data.lipinski.h_acc
             ? "Pass"
             : "Fail"}
         </div>
-        <div class="row">
+        <div className="row" style={{color : this.props.saved_mols[this.props.mol_id].data.lipinski.h_don ? "green" : "red"}}>
           H Don.:{" "}
           {this.props.saved_mols[this.props.mol_id].data.lipinski.h_don
             ? "Pass"
             : "Fail"}
         </div>
-        <div class="row">
+        <div className="row" style={{color : this.props.saved_mols[this.props.mol_id].data.lipinski.logP ? "green" : "red"}}>
           LogP:{" "}
           {this.props.saved_mols[this.props.mol_id].data.lipinski.logP
             ? "Pass"
