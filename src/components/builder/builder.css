@@ -222,7 +222,7 @@
 
 .rendered-molecule > .tcp-description {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-size: 0.75em; 
   text-align: center;
   justify-content: space-around;

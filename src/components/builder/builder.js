@@ -69,8 +69,7 @@ class Builder extends React.Component {
               <MoleculeImage />
               {/* Adding TCP description to top middle of buidler page*/}
               <div className="tcp-description">
-                <b>TCP</b>:
-                LogD ≥ 1 at neutral pH; medium to high permeability (PAMPA); low clearance; high potency (pIC50 ≥ 6).
+                <b>TCP</b> LogD ≥ 1 at neutral pH; medium to high permeability (PAMPA); low clearance; high potency (pIC50 ≥ 6).
               </div>
             </div>
             <ControlPanel />
