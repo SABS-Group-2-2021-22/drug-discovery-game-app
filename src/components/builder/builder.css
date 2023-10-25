@@ -67,8 +67,6 @@
 }
 
 .rendered-molecule {
-  display: flex;
-  flex: 1;
   background-color: white;
   padding: 15px;
   justify-content: center;
@@ -78,7 +76,7 @@
 .rendered-molecule > .molecule {
   display: flex;
   height: 55vh;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
   align-content: space-around;
 }
@@ -220,4 +218,13 @@
 
 .build > .molecule-chooser-bar > .molecule-list > .molecule-container > .molecule img {
   width: 160px;
+}
+
+.rendered-molecule > .tcp-description {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75em; 
+  text-align: center;
+  justify-content: space-around;
+  align-content: space-around;
 }
