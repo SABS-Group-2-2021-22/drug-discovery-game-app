@@ -1,4 +1,4 @@
-import React from "react";
+
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./builder.css";
 import RGroupList from "./r_group_list.js";
@@ -7,6 +7,7 @@ import MoleculeImage from "./molecule_display.js";
 import MoleculeList from "./molecule_list.js";
 import ControlPanel from "./control_panel.js";
 import { connect } from "react-redux";
+import React, { Fragment } from "react";
 
 class Builder extends React.Component {
   constructor(props) {
@@ -66,15 +67,20 @@ class Builder extends React.Component {
           <div className="mol-visbox">
             <div className="rendered-molecule">
               <MoleculeImage />
+              {/* Adding TCP description to top middle of buidler page*/}
+              <div className="tcp-description">
+                <b>TCP</b>:
+                LogD ≥ 1 at neutral pH; medium to high permeability (PAMPA); low clearance; high potency (pIC50 ≥ 6).
+              </div>
             </div>
             <ControlPanel />
           </div>
-          { Object.keys(this.props.saved_mols).length > 0 && 
+          { Object.keys(this.props.saved_mols).length > 0 && (
           <div className="molecule-chooser-bar">
               <p>Your molecules:</p>
               <MoleculeList />
           </div>
-          }
+          )}
         </div>
       </div>
     );
