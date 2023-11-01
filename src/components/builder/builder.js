@@ -66,6 +66,10 @@ class Builder extends React.Component {
           <div className="mol-visbox">
             <div className="rendered-molecule">
               <MoleculeImage />
+              {/* Adding TCP description to top middle of buidler page*/}
+              <div className="tcp-description">
+                <b>Target Compound Profile</b> LogD ≥ 1 at neutral pH; medium to high permeability (PAMPA); low clearance; high potency (pIC50 ≥ 6).
+              </div>
             </div>
             <ControlPanel />
           </div>
