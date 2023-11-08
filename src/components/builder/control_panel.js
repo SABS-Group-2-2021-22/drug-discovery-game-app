@@ -1,8 +1,9 @@
 import React from "react";
 import "./builder.css";
 import { connect } from "react-redux";
-import { selectorActions, assayActions, analysisActions } from "../../actions";
+import { selectorActions, assayActions, gameActions } from "../../actions";
 import { Link } from "react-router-dom";
+import { compile_game_data } from "../helpers/helpers";
 
 class ControlPanel extends React.Component {
   constructor(props) {
@@ -27,10 +28,11 @@ class ControlPanel extends React.Component {
   // set the first saved molecule as the selected molecule for the assay page
   initSelectMolecule = () => {
     this.props.selectMolecule(Object.keys(this.props.saved_mols)[0]);
-
+    let game_data = JSON.stringify(compile_game_data(this.props.saved_mols, this.props.money, this.props.time, this.props.selected_mol))
+    this.props.saveGame(game_data)
   };
 
-  fetchSpider = () => {
+    fetchSpider = () => {
       this.props.fetchSpiderObj();
   };
 
@@ -74,6 +76,8 @@ function mapStateToProps(state) {
     time: state.game.time,
     gamemode: state.game.gamemode,
     help: state.init.help.analysis,
+    selected_mol: state.selector.selected_mol
+
   };
 }
 
@@ -81,6 +85,8 @@ const actionCreators = {
   selectMolecule: selectorActions.selectMolecule,
   saveMolecule: assayActions.saveMolecule,
   selectRGroup: selectorActions.selectRGroup,
+  saveGame: gameActions.saveGame,
+
 };
 
 export default connect(mapStateToProps, actionCreators)(ControlPanel);
