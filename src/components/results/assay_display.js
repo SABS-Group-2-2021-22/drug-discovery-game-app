@@ -17,20 +17,34 @@ class Assays extends React.Component {
   };
 
   render() {
+
     return (
       <div class="container" className="assay-stats">
         <div class="row" className="stats-type-header">
           Assay Data:
         </div>
-        <div class="row">
-        Mouse Clearance: {this.srcRoute().clearance_mouse}
+        <div class="row" style={{ color: this.srcRoute().clearance_mouse && this.props.Roche.data.drug_props.clearance_mouse === this.srcRoute().clearance_mouse ? "green" : "red" }}>
+        Mouse Clearance:
+            {this.srcRoute() ? this.srcRoute().clearance_mouse : "N/A"}
         </div>
-        <div class="row">
-          Human Clearance: {this.srcRoute().clearance_human}
+        <div class="row" style={{ color: this.srcRoute().clearance_human && this.props.Roche.data.drug_props.clearance_human === this.srcRoute().clearance_human ? "green" : "red" }}>
+          Human Clearance: 
+            {this.srcRoute() ? this.srcRoute().clearance_human : "N/A"}
         </div>
-        <div class="row">LogD: {this.srcRoute().logd}</div>
-        <div class="row">PAMPA: {this.srcRoute().pampa}</div>
-        <div class="row"><p style={{ paddingLeft: "0"}}>pIC<sub>50</sub>: {Number(this.srcRoute().pic50)}</p></div>
+        <div class="row" style={{ color: this.srcRoute().logd && this.props.Roche.data.drug_props.logd === this.srcRoute().logd ? "green" : "red" }}>
+          LogD: 
+          {this.srcRoute() ? this.srcRoute().logd : "N/A"}
+        </div>
+        <div class="row" style={{ color: this.srcRoute().pampa && this.props.Roche.data.drug_props.pampa === this.srcRoute().pampa ? "green" : "red" }}>
+          PAMPA: 
+          {this.srcRoute() ? this.srcRoute().pampa : "N/A"}
+        </div>
+        <div class="row" style={{ color: this.srcRoute().pic50 && this.props.Roche.data.drug_props.pic50 === this.srcRoute().pic50 ? "green" : "red" }}>
+            <p style={{ paddingLeft: "0"}}>
+              pIC<sub>50</sub>: 
+                {Number(this.srcRoute() ? this.srcRoute().pic50 : "N/A")}
+            </p>
+          </div>
       </div>
     );
   }
