@@ -5,6 +5,7 @@ import pymolpic from "../../assets/pymolMMP12.png";
 import { connect } from "react-redux";
 import { initActions, selectorActions, gameActions } from "../../actions";
 import { LogoBanner } from  '../body';
+import DDProcessImage from '../../assets/DD_process.png'; 
 
 
 class Home extends React.Component {
@@ -83,6 +84,12 @@ class Home extends React.Component {
                     </div> */}
                   </div>
                 )}
+                {/* New button to view the DD-pipepline  */}
+                < div className="view-picture-button">
+                  <a href={DDProcessImage} target="_blank" rel="noopener noreferrer"> 
+                    <button> View Drug Discovery process</button>
+                  </a>
+                </div>
             </div>
           </div>
           <LogoBanner/>
