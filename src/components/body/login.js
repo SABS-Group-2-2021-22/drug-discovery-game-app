@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import Progressloader from "../home/progressloader";
 import { userActions } from '../../actions';
 
 import './login.css'
@@ -26,35 +26,43 @@ class LoginPage extends React.Component {
 
         this.setState({ submitted: true });
         const { username } = this.state;
+        console.log('login fired')
         if (username) {
             this.props.login(username);
         }
     }
 
+    
     render() {
         const { username, submitted } = this.state;
-        if (this.props.loggedIn) {
+        console.log(this.props);
+        if (this.props.loggedIn){ // && this.props.user !== undefined){ //&& this.props.user.user_status !=='Exists') {
             return <Navigate to='/home' />
         }
-        else if (this.props.loggingIn && this.props.user !== undefined && this.props.user.user_status ==='Exists') {
-            return (
-                <div className='wrapper'>
-                    <div >
-                        <h3>Hello
-                        </h3>
-                    </div>
-                </div>
-            );    
-        }
+        // else if (this.props.loggingIn &&  this.props.user !== undefined && this.props.user.user_status ==='Exists' ) {
+            // this.props.user !== undefined &&
+            // return (
+                // return <Navigate to='/progressloader' />
+            //     // <div className='wrapper'>
+            //     //     <div >
+            //     //         <h3>Hello
+            //     //         </h3>
+            //     //     </div>
+            //     // </div>
+            // );    
+        // }
 
-        else
+        else {
         return (
             <div className='wrapper'>
                 <div className="login-page" >
+                    
+                    {this.props.user.user_status !== 'Exists' ?
+                    <>
                     <h3>Enter a username
                     </h3>
-                    <text>                        Do not enter information that could be used to personally identify you
-                    </text>
+                    <p>                        Do not enter information that could be used to personally identify you
+                    </p>
                     <form name="form" onSubmit={this.handleSubmit}>
                         <div className={'form-group' + (submitted && !username ? ' has error' : '')}>
                             <label htmlFor='username'></label>
@@ -67,17 +75,27 @@ class LoginPage extends React.Component {
                             }
                         </div>
                     </form>
+                    </>
+                    :
+                    <div className="text">
+                        {<Progressloader/>}
+                        </div>
+                        }
                 </div>
             </div>
         );
     }
 }
+}
 
 function mapStateToProps(state) {
+    console.log(state.login)
     return {
         loggingIn: state.login.loggingIn,
         loggedIn: state.login.loggedIn,
         user: state.login.user,
+        // username: state.login.user.username,
+        // user_status: state.login.user.user_status,
       };
 }
 

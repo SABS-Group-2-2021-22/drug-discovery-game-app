@@ -7,6 +7,14 @@
     align-items: left;
   }
 
+  .progressloaderpage{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
   .hometitle{
     display: flex;
     min-height: 15%;
@@ -50,6 +58,12 @@
 
   .text-and-button{
     flex: 1;
+  }
+
+  .control-panel {
+    display: flex;
+    align-items: center;
+    padding: 10px;
   }
 
   .advanced-button-wrapper{

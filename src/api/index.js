@@ -21,7 +21,12 @@ export function logoutRequest() {
   return client.post("/logout");
 }
 
-export function fetchRGroup(id,size) {
+export function loadGameState() {
+  client.defaults.headers["username"] = localStorage.user;
+  return client.get("/loadgamestate");
+}
+
+export function fetchRGroup(id, size) {
   client.defaults.headers["username"] = localStorage.user;
   return client.get("/r-group?rgroup=" + id + "&size=" + size);
 }
@@ -92,7 +97,7 @@ export function resetGame() {
   return client.get("/reset");
 }
 
-export function saveGame() {
+export function saveGame(game_data) {
   client.defaults.headers["username"] = localStorage.user;
-  return client.get("/save_game_data");
+  return client.post("/save_game_data", game_data);
 }
