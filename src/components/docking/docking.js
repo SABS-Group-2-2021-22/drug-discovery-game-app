@@ -17,6 +17,16 @@ class Docking extends React.Component {
     };
   }
 
+  toggleHelp = (event) => {
+    console.log(this.state.toggle_help)
+    if (this.state.toggle_help) {
+      this.setState({ toggle_help: false });
+    }
+    else {
+      this.setState({ toggle_help: true });
+    }
+  };
+
   // Method to initialize plot data
   initPlotData = () => {
     // This method is constructing an object for plotting using the saved_mols prop
@@ -41,7 +51,25 @@ class Docking extends React.Component {
       {this.props.saved_or_not ? (
         <div className="docking-elements">
           <div className="mol-list">
-            <MoleculeList />                      
+            <MoleculeList /> 
+            <div className="hover-info">
+              <button onClick={this.toggleHelp}>
+                ?
+              </button>
+              {this.state.toggle_help && (
+                <div className="info-text">
+                  <p>
+                  {"\n"}
+                  <div>{this.props.help[10]}</div>
+                  <div>{this.props.help[11]}</div>
+                  <div>{this.props.help[12]}</div>
+                  <div>{this.props.help[13]}</div>
+                  <div>{this.props.help[14]}</div>
+                  {"\n"}
+                  </p>
+                </div>
+              )}
+            </div>                     
           </div>
           <div className="docking-and-button">
             <div className="molstar">
@@ -81,6 +109,7 @@ class Docking extends React.Component {
 // This function maps parts of the Redux state to this component's props
 function mapStateToProps(state) {
   return {
+    help: state.init.help.build,
     selected_mol: state.selector.selected_mol,     // The currently selected molecule from the selector part of the state
     saved_mols: state.assay.saved_mols,            // The saved molecules from the assay part of the state
     saved_or_not: state.assay.saved_or_not,
