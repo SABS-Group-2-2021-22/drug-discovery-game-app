@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { initActions, selectorActions, gameActions } from "../../actions";
 import { LogoBanner } from  '../body';
 
-
 class Home extends React.Component {
   constructor(props) {
     super(props);
