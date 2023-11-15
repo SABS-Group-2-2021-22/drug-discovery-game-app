@@ -12,7 +12,6 @@ class ControlPanel extends React.Component {
 
   // save the built molecule in the store
   saveMolecule = () => {
-    console.log(this.props.selected_r_groups)
     if (this.props.selected_r_groups.A == 'A00' || this.props.selected_r_groups.B == 'B00'){
       console.log('Blocked')
     }
@@ -23,6 +22,9 @@ class ControlPanel extends React.Component {
       this.props.time
     );
     }
+    let game_data = JSON.stringify(compile_game_data(this.props.saved_mols, this.props.money, this.props.time, this.props.selected_mol))
+    this.props.saveGame(game_data)
+    console.log(game_data)
   };
 
   // set the first saved molecule as the selected molecule for the assay page
@@ -74,6 +76,7 @@ function mapStateToProps(state) {
     saved_mols: state.assay.saved_mols,
     saved_or_not: state.assay.saved_or_not,
     time: state.game.time,
+    money: state.game.money,
     gamemode: state.game.gamemode,
     help: state.init.help.analysis,
     selected_mol: state.selector.selected_mol

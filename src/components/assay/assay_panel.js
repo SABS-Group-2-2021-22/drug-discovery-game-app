@@ -3,6 +3,8 @@ import "./assay.css";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { assayActions, gameActions } from "../../actions";
+import { compile_game_data } from "../helpers/helpers";
+
 
 class AssayPanel extends React.Component {
   constructor(props) {
@@ -198,7 +200,10 @@ class AssayPanel extends React.Component {
       this.updateTime(max_time);
       this.updateMoney(total_cost);
     }
-
+    // saving game data during Run Assay click
+    let game_data = JSON.stringify(compile_game_data(this.props.saved_mols, this.props.money, this.props.time, this.props.selected_mol))
+    this.props.saveGame(game_data)
+    console.log(game_data)
   };
 
   runDescriptorsOrLipinski = () => {
@@ -542,9 +547,12 @@ class AssayPanel extends React.Component {
 }
 
 
+
 function mapStateToProps(state) {
   return {
     selected_mol: state.selector.selected_mol,
+    saved_or_not: state.assay.saved_or_not,
+
     assays_run:
       state.assay.saved_mols[state.selector.selected_mol].data.assays_run,
     time: state.game.time,
@@ -554,6 +562,7 @@ function mapStateToProps(state) {
     toggle_help: state.assay.toggle_help,
     saved_mols: state.assay.saved_mols,
     all_molecules_assay_data: state.assay.saved_mols,
+
   };
 }
 
@@ -563,6 +572,8 @@ const actionCreators = {
   runAssay: assayActions.runAssay,
   toggleAssay: assayActions.toggleAssay,
   toggleHelp: assayActions.toggleHelp,
+  saveGame: gameActions.saveGame,
+
 };
 
 export default connect(mapStateToProps, actionCreators)(AssayPanel);

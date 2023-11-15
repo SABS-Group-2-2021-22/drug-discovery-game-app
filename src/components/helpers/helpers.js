@@ -1,7 +1,6 @@
 
 // A helper function to compile game data for clean code usage
 export function compile_game_data(saved_mols, money, time, selected_mol){
-
     let molecule_info = {}
     Object.keys(saved_mols).map(mol_key => {
       molecule_info[mol_key] = {
