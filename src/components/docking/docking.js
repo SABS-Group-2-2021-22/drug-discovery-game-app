@@ -65,6 +65,8 @@ class Docking extends React.Component {
                   <div>{this.props.help[12]}</div>
                   <div>{this.props.help[13]}</div>
                   <div>{this.props.help[14]}</div>
+                  <div>{this.props.help[15]}</div>
+                  <div>{this.props.help[16]}</div>
                   {"\n"}
                   </p>
                 </div>
