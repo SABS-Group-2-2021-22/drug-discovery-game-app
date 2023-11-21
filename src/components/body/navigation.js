@@ -32,6 +32,11 @@ class Navigation extends React.Component {
                   
                 </li>
                 <li className="navigation-item">
+                  <NavLink className="navigation-link" to="/docking">
+                    Docking
+                  </NavLink>
+                </li>
+                <li className="navigation-item">
                   <NavLink className="navigation-link" to="/assay">
                     Test
                   </NavLink>

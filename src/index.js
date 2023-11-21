@@ -18,6 +18,7 @@ import {
   Home,
   Introduction,
   Builder,
+  Docking,
   Assay,
   Analysis,
   Results,

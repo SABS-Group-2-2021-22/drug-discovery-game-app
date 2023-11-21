@@ -50,11 +50,9 @@ class Results extends React.Component {
   };
 
   render() {
-    if (!this.props.spider_data.data || !this.props.comp_text.data) {
-      return <div />;
-    }
     return (
       <div className="wrapper">
+       {(this.props.spider_data.data && this.props.comp_text.data) ? (
         <div className="results">
           <div className="molecule-choices">
             <div className="real-molecule">
@@ -102,7 +100,13 @@ class Results extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> ) : (
+          <div className='unsavedmol'>       
+          <Link to="/Loadingpage">
+            <button className="mk_pre_test_button">Go back to design your molecules first!</button>
+          </Link></div>
+          )
+        }
       </div>
     );
   }

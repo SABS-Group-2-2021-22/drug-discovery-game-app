@@ -2,6 +2,7 @@ import React from "react";
 import "./introduction.css";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import DDProcessImage from '../../assets/DD_process.png'; 
 
 class IntroText extends React.Component {
   constructor(props) {
@@ -47,6 +48,15 @@ render()
          The game ends when you run out of budget, time or if you are happy with the molecule you have made and decide to end the game. */}
        </p>
        </div>} 
+
+       {/* Button to view DD process  */}
+       {this.props.id === 2 &&
+              < div className="view-picture-button">
+                <a href={DDProcessImage} target="_blank" rel="noopener noreferrer"> 
+                  <button> View Drug Discovery process</button>
+                </a>
+              </div>
+       }
 
        {this.props.id === 3 &&
         <div className="introtext">

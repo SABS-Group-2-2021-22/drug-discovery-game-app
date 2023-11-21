@@ -66,11 +66,11 @@ class Assay extends React.Component {
             <div className="main-content">
               <AssayPanel />
               <div className="nav-buttons">
-                <Link to="/build">
+                <Link to="/docking">
                   <button
                     label="Back_Build"
                   >
-                    ← Design
+                    ← Docking
                   </button>
                 </Link>
                 <Link to="/analysis">
@@ -85,7 +85,7 @@ class Assay extends React.Component {
             </div>
           </div>) : (<div className='unsavedmol'>
             <Link to="/loadingpage">
-              <button className="mk_pre_test_button">Please make a molecule before test!</button>
+              <button className="mk_pre_test_button">Go back to design your molecules first!</button>
             </Link></div>)
         }
       </div>
