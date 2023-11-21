@@ -11,14 +11,26 @@ class MoleculeWidget extends React.Component {
   }
 
   render() {
+    // Check if there is any assay data for the specified molecule ID
+    const assayData =
+      this.props.saved_mols[this.props.mol_id] &&
+      this.props.saved_mols[this.props.mol_id].data.assays_run;
+
+    // Check if there is data for at least one of pIC50, clearance_mouse, clearance_human, logd, or pampa
+    const hasAssayData =
+      assayData &&
+      (assayData.pIC50 ||
+        assayData.clearance_mouse ||
+        assayData.clearance_human ||
+        assayData.logd ||
+        assayData.pampa);
     return (
       <div className="molecule-container">
         <div className="molecule-card">
           <MoleculeImage mol_id={this.props.mol_id} />
           {this.props.mol_id}
           <div className = "assay_text">
-            {this.props.saved_mols[this.props.mol_id].data.assays_run
-            .drug_props && <Assays mol_id={this.props.mol_id} />}
+            {hasAssayData && <Assays mol_id={this.props.mol_id} />}
           </div>
         </div>
       </div>
