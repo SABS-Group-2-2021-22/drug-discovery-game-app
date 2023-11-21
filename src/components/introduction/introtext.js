@@ -15,13 +15,36 @@ render()
         <div>
         {this.props.id === 0 &&
         <div className="introtext">
+         <p>There are 4 stages in the drug discovery process, namely:
+         {"\n"}1. <b>Design</b> and <b>make</b> potential lead compounds. Compound design can be guided 
+         by observation of <a href="https://en.wikipedia.org/wiki/Lipinski%27s_rule_of_five#cite_note-Lipinski_2001-1">Lipinski's rule of five</a> as well as other metrics for quantifying desirable
+          <a href="https://en.wikipedia.org/wiki/ADME"> ADMET</a> properties such as <a href="https://en.wikipedia.org/wiki/Polar_surface_area">TPSA</a> and <a href="https://en.wikipedia.org/wiki/Partition_coefficient#Partition_coefficient_and_log_P">LogP</a>.
+         {"\n"}2. <b>Test</b>: Perform assays (experiments) and run calculations to determine the properties 
+         of the molecules you have designed. With this additional information, you can then go
+          back and develop improved compounds.
+         {"\n"}3. <b>Analyse</b>: Compare the properties of the different molecules you have designed.
+         {"\n"}4. Find out how your drug compares to the optimal molecule for targeting MMP-12.
+       </p>
+       </div>} 
+
+       {/* Button to view DD process  */}
+       {this.props.id === 0 &&
+              < div className="view-picture-button">
+                <a href={DDProcessImage} target="_blank" rel="noopener noreferrer"> 
+                  <button> View Drug Discovery process</button>
+                </a>
+              </div>
+       }
+
+        {this.props.id === 1 &&
+        <div className="introtext">
         <p>Matrix metalloproteinase 12 (<a href="https://en.wikipedia.org/wiki/Matrix_metallopeptidase_12">MMP-12</a>) is an enzyme implicated in emphysema and asthma. It has been identified as a possible drug target.
         {"\n"}  {"\n"}  MMP-12 is made by immune cells in the lungs, and it is thought that it can cause damage and inflammation in the lungs.
         {"\n"}  {"\n"} You are going to try to design a compound with desired properties that inhibits MMP-12 in the body (including the lungs).
       </p>
       </div>}
         
-        {this.props.id === 1 &&
+        {this.props.id === 2 &&
         <div className="introtext">
         <p>The optimal properties of a certain drug depend on the specific condition you are trying to treat.
         {"\n"}  {"\n"}
@@ -33,38 +56,11 @@ render()
       </p>
       </div>}
 
-        {this.props.id === 2 &&
+        {this.props.id === 3 &&
         <div className="introtext">
-         <p>There are 4 stages in the drug discovery process, namely:
-         {"\n"}1. <b>Design</b> and <b>make</b> potential lead compounds. Compound design can be guided 
-         by observation of <a href="https://en.wikipedia.org/wiki/Lipinski%27s_rule_of_five#cite_note-Lipinski_2001-1">Lipinski's rule of five</a> as well as other metrics for quantifying desirable
-          <a href="https://en.wikipedia.org/wiki/ADME"> ADMET</a> properties such as <a href="https://en.wikipedia.org/wiki/Polar_surface_area">TPSA</a> and <a href="https://en.wikipedia.org/wiki/Partition_coefficient#Partition_coefficient_and_log_P">LogP</a>.
-         {"\n"}2. <b>Test</b>: Perform assays (experiments) and run calculations to determine the properties 
-         of the molecules you have designed. With this additional information, you can then go
-          back and develop improved compounds.
-         {"\n"}3. <b>Analyse</b>: Compare the properties of the different molecules you have designed.
-         {"\n"}4. Find out how your drug compares to the optimal molecule for targeting MMP-12.
-
-         {/* {"\n"}  {"\n"}You start the game with £100,000 and 30 weeks, running experiments will reduce both of these. 
-         The game ends when you run out of budget, time or if you are happy with the molecule you have made and decide to end the game. */}
-       </p>
-       </div>} 
-
-       {/* Button to view DD process  */}
-       {this.props.id === 2 &&
-              < div className="view-picture-button">
-                <a href={DDProcessImage} target="_blank" rel="noopener noreferrer"> 
-                  <button> View Drug Discovery process</button>
-                </a>
-              </div>
-       }
-
-       {this.props.id === 3 &&
-        <div className="introtext">
-         <p>
-         You start the game with £100,000 and 30 weeks, running experiments will reduce both of these. 
-         The game ends when you run out of budget, time or if you are happy with the molecule you have made and decide to end the game.
-         In the following page you are given a base scaffold with which you can start designing your molecule by adding R-groups (R1 and R2).
+         <p>You start the game with £100,000 and 30 weeks, running experiments will reduce both of these. 
+         {"\n"} {"\n"}The game ends when you run out of budget, time or if you are happy with the molecule you have made and decide to end the game.
+         {"\n"} {"\n"}In the following page you are given a base scaffold with which you can start designing your molecule by adding R-groups (R1 and R2).
        </p>
        </div>} 
 
