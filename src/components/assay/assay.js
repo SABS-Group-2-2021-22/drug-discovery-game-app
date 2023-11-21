@@ -74,7 +74,10 @@ class Assay extends React.Component {
                   </button>
                 </Link>
                 <Link to="/analysis">
-                  <button>
+                  <button
+                    label="Next_Analysis"
+                    onClick={this.initPlotData}
+                  >
                     Analysis →
                   </button>
                 </Link>
