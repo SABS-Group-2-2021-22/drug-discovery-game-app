@@ -90,7 +90,6 @@
   position: absolute;
   border-radius: 5px;
   background-color: #fdfbfb;
-  white-space: pre-line;
   width: 20vw;
   max-height: 50vh;
   overflow-y: scroll;
