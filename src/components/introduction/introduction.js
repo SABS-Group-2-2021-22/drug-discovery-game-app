@@ -9,7 +9,7 @@ import { initActions, selectorActions } from "../../actions";
 import { LogoBanner } from "../body";
 import IntroText from "./introtext";
 import IntroTitle from "./introtitle";
-
+import gameobjective from "../../assets/game_objective.png";
 
 class Introduction extends React.Component {
   constructor(props) {
@@ -76,7 +76,14 @@ class Introduction extends React.Component {
 
               </div>
             </div>
-            {this.state.count <= 1 &&
+            {this.state.count === 0 &&
+            <div className="picture">
+              {" "}
+              <img src={dmta} />{" "}
+              {/* <div className="text">The DMTA Cycle</div> */}
+            </div>
+            }
+            {this.state.count === 1 &&
             <div className="picture">
               {" "}
               <img src={pymolpic} />{" "}
@@ -86,15 +93,15 @@ class Introduction extends React.Component {
             {this.state.count === 2 &&
             <div className="picture">
               {" "}
-              <img src={dmta} />{" "}
-              {/* <div className="text">The DMTA Cycle</div> */}
+              <img src={r1r2} />
+              <div className="text">The R1 (purple) and R2 (green) groups</div>
             </div>
             }
             {this.state.count === 3 &&
             <div className="picture">
               {" "}
-              <img src={r1r2} />
-              <div className="text">The R1 (purple) and R2 (green) groups</div>
+              <img src={gameobjective} />
+              <div className="text">Inhibitor Scaffold</div>
             </div>
             }
           </div>
