@@ -3,7 +3,7 @@ import React from "react";                          // Importing the main React 
 import "./docking.css";                            // Importing styles specific to this Docking component
 import { Link } from "react-router-dom";           // Importing 'Link' from react-router-dom to navigate between views
 import { connect } from "react-redux";             // Importing connect function from react-redux to bind Redux store to this component
-import { initActions, selectorActions, gameActions } from "../../actions"; // Importing various action creators
+import { initActions, selectorActions, gameActions, analysisActions } from "../../actions"; // Importing various action creators
 import MoleculeList from "../analysis/molecule_list.js"; // Importing the MoleculeList component
 import Molstar from "molstar-react";               // Importing Molstar component(a molecule viewer)
 
@@ -16,6 +16,22 @@ class Docking extends React.Component {
       toggle_controls: false,                      // Initial state for toggle_controls set to false
     };
   }
+
+  toggleHelp = (event) => {
+    console.log(this.state.toggle_help)
+    if (this.state.toggle_help) {
+      this.setState({ toggle_help: false });
+    }
+    else {
+      this.setState({ toggle_help: true });
+    }
+  };
+
+  // Method to initialize plot data
+  initPlotData = () => {
+    // This method is constructing an object for plotting using the saved_mols prop
+    this.props.constructPlotObj(this.props.saved_mols);
+  };
 
   // Render method defines the UI of the component
   render() {
@@ -35,7 +51,27 @@ class Docking extends React.Component {
       {this.props.saved_or_not ? (
         <div className="docking-elements">
           <div className="mol-list">
-            <MoleculeList />                      
+            <MoleculeList /> 
+            <div className="hover-info">
+              <button onClick={this.toggleHelp}>
+                ?
+              </button>
+              {this.state.toggle_help && (
+                <div className="info-text">
+                  <p>
+                  {"\n"}
+                  <div>{this.props.help[10]}</div>
+                  <div>{this.props.help[11]}</div>
+                  <div>{this.props.help[12]}</div>
+                  <div>{this.props.help[13]}</div>
+                  <div>{this.props.help[14]}</div>
+                  <div>{this.props.help[15]}</div>
+                  <div>{this.props.help[16]}</div>
+                  {"\n"}
+                  </p>
+                </div>
+              )}
+            </div>                     
           </div>
           <div className="docking-and-button">
             <div className="molstar">
@@ -51,7 +87,9 @@ class Docking extends React.Component {
                   </button>
                 </Link>
                 <Link to="/assay">
-                  <button>
+                  <button
+                    onClick={this.initPlotData}   // When clicking on Analysis, it initializes the plot data
+                  >
                     Test →
                   </button>
                 </Link>
@@ -73,11 +111,18 @@ class Docking extends React.Component {
 // This function maps parts of the Redux state to this component's props
 function mapStateToProps(state) {
   return {
+    help: state.init.help.build,
     selected_mol: state.selector.selected_mol,     // The currently selected molecule from the selector part of the state
     saved_mols: state.assay.saved_mols,            // The saved molecules from the assay part of the state
     saved_or_not: state.assay.saved_or_not,
   };
 }
 
+// Define the action creators used in this component
+const actionCreators = {
+  constructPlotObj: analysisActions.constructPlotObj, // The action to construct the plot object
+};
+
 // Connect the Docking component to the Redux store and export it
-export default connect(mapStateToProps)(Docking);
+export default connect(mapStateToProps, actionCreators)(Docking);
+
