@@ -30,6 +30,18 @@ export function assayReducer(state = initialState, action) {
         saved_mols: action.payload.saved_mols, //store molecule in saved_mols
       };
     }
+
+    case "DELETE_MOLECULE":{
+      const newSavedMols = { ...state.saved_mols};
+      delete newSavedMols[action.payload]; //Removes the molecule with mold_id
+      return{
+        ...state,
+        saved_mols: newSavedMols,
+      };
+    }
+
+
+
     case "FETCH_DESCRIPTORS_SUCCEEDED": {
       console.log(action.payload)
       return {

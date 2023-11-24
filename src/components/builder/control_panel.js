@@ -3,6 +3,7 @@ import "./builder.css";
 import { connect } from "react-redux";
 import { selectorActions, assayActions, analysisActions } from "../../actions";
 import { Link } from "react-router-dom";
+import { render } from "react-dom";
 
 class ControlPanel extends React.Component {
   constructor(props) {
@@ -43,29 +44,26 @@ class ControlPanel extends React.Component {
     this.props.selectRGroup('A00', 'B00', '500,500');
   }
 
-  render() {
-
-    if (this.props.saved_or_not == false) {
-      return (
-        <div className="control-panel">
-          <button onClick={this.resetRGroups}>Clear</button>
-          { (this.props.selected_r_groups.A == 'A00' || this.props.selected_r_groups.B == 'B00')? '' : <button onClick={this.saveMolecule}>Make</button>}
-        </div>)
-    }
-
-    else {
-
-      return (
-        <div className="control-panel">
-          <button onClick={this.resetRGroups}>Clear</button>
-          { (this.props.selected_r_groups.A == 'A00' || this.props.selected_r_groups.B == 'B00')? '' : <button onClick={this.saveMolecule}>Make</button>}
-          <Link to="/docking">
-            <button onClick={this.initSelectMolecule}>Docking →</button>
-          </Link>
-        </div>)
-    }
-  }        
+   render() {
+     const hasSavedMolecules = Object.keys(this.props.saved_mols).length > 0;
+  
+     return(
+       <div className="control-panel">
+         <button onClick={this.resetRGroups}>Clear</button>
+         { (this.props.selected_r_groups.A === 'A00' || this.props.selected_r_groups.B == 'B00' )
+           ? null
+           : <button onClick={this.saveMolecule}>Make</button>
+         }
+         {hasSavedMolecules && (
+           <Link to="/docking">
+             <button onClick={this.initSelectMolecule}>Docking →</button>
+           </Link>
+         )}
+       </div>
+     );
+  }
 }
+  
 function mapStateToProps(state) {
   return {
     selected_r_groups: state.selector.selected_r_groups,

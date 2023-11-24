@@ -97,6 +97,13 @@ function toggleHelp(bool) {
   };
 }
 
+// Add a new action creator for deleting a molecule
+export function deleteMolecule(mol_id) {
+  return {
+    type: "DELETE_MOLECULE",
+    payload: mol_id,
+  };
+}
 
 /**
  * Synchronous action that sends the boolean values of toggled assay buttons to the assayReducer

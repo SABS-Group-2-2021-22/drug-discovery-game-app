@@ -237,3 +237,25 @@
   justify-content: space-around;
   align-content: space-around;
 }
+
+.delete-button {
+  background-color: #f41d1d;
+  color: white;
+  border: none;
+  border-radius: 5px; 
+  /* padding: 5px 10px; */
+  margin: 5px;
+  width: auto; 
+  height: auto;
+  font-size: 10px;
+  cursor: pointer;
+
+}
+
+.delete-button:hover {
+  opacity: 0.7;
+}
+
+.delete-button:active {
+  background-color: #ebedf0
+}

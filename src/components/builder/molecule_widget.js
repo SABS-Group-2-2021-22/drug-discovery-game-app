@@ -3,11 +3,17 @@ import "./builder.css";
 import { connect } from "react-redux";
 import MoleculeImage from "./molecule_image.js";
 import Assays from "../assay/assay_display.js";
+import { deleteMolecule } from "../../actions/assay_actions.js";
 
 
 class MoleculeWidget extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  handleDelete = (mol_id) => {
+    // Dispatch the delete action
+    this.props.deleteMolecule(this.props.mol_id)
   }
 
   render() {
@@ -27,10 +33,10 @@ class MoleculeWidget extends React.Component {
     return (
       <div className="molecule-container">
         <div className="molecule-card">
-          <MoleculeImage mol_id={this.props.mol_id} />
-          {this.props.mol_id}
+          <MoleculeImage mol_id={this.props.mol_id} /> {this.props.mol_id}
           <div className = "assay_text">
             {hasAssayData && <Assays mol_id={this.props.mol_id} />}
+            <button className="delete-button" onClick={this.handleDelete}>X</button>
           </div>
         </div>
       </div>
@@ -45,6 +51,9 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(MoleculeWidget);
+// Connect the deleteMolecule action creator to the component's props
+const mapDispatchToProps = {
+  deleteMolecule
+};
 
-
+export default connect(mapStateToProps, mapDispatchToProps)(MoleculeWidget);

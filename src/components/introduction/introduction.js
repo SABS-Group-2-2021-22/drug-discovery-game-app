@@ -10,6 +10,7 @@ import { LogoBanner } from "../body";
 import IntroText from "./introtext";
 import IntroTitle from "./introtitle";
 import gameobjective from "../../assets/game_objective.png";
+import DDProcessImage from '../../assets/DD_process.png'; 
 
 class Introduction extends React.Component {
   constructor(props) {
@@ -73,9 +74,17 @@ class Introduction extends React.Component {
                   <Link to="/loadingpage">
                             <button className='start-button'>Start game →</button>
                 </Link>}
+                
+                 {this.state.count === 0 && 
+                 < div className="DDButton"> 
+                 <a href={DDProcessImage} target="_blank" rel="noopener noreferrer"> 
+                 {/* <button></button>  */}
+                 </a>                 
+               </div>}
 
               </div>
             </div>
+            
             {this.state.count === 0 &&
             <div className="picture">
               {" "}
