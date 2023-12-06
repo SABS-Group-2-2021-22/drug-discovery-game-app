@@ -22,37 +22,45 @@ class Assays extends React.Component {
         <div class="row" className="stats-type-header">
           Assay Data:
         </div>
-        <div class="row">
-          Mouse Clearance:{" "}
           {this.props.saved_mols[this.props.mol_id].data.assays_run
             .clearance_mouse &&
-            this.props.saved_mols[this.props.mol_id].data.drug_props
+        <div class="row">
+            Mouse Clearance:{" "}
+            {this.props.saved_mols[this.props.mol_id].data.drug_props
               .clearance_mouse}
         </div>
-        <div class="row">
-        Human Clearance:{" "}
+          }
+        
           {this.props.saved_mols[this.props.mol_id].data.assays_run
-            .clearance_human &&
-            this.props.saved_mols[this.props.mol_id].data.drug_props
-              .clearance_human}
+            .clearance_human &&  
+        <div class="row">
+             Human Clearance:{" "}
+             {this.props.saved_mols[this.props.mol_id].data.drug_props
+             .clearance_human}
         </div>
+          }
+          {this.props.saved_mols[this.props.mol_id].data.assays_run.logd &&
         <div class="row">
           LogD:{" "}
-          {this.props.saved_mols[this.props.mol_id].data.assays_run.logd &&
-            this.props.saved_mols[this.props.mol_id].data.drug_props.logd}
+          
+          {this.props.saved_mols[this.props.mol_id].data.drug_props.logd}
         </div>
+        }
+        {this.props.saved_mols[this.props.mol_id].data.assays_run.pampa &&
         <div class="row">
           PAMPA:{" "}
-          {this.props.saved_mols[this.props.mol_id].data.assays_run.pampa &&
-            this.props.saved_mols[this.props.mol_id].data.drug_props.pampa}
+          
+          {this.props.saved_mols[this.props.mol_id].data.drug_props.pampa}
         </div>
+        }
+        {this.props.saved_mols[this.props.mol_id].data.assays_run.pIC50 &&
         <div class="row">
           <p style={{ paddingLeft: "0"}}>pIC<sub>50</sub>:{" "}
-          {this.props.saved_mols[this.props.mol_id].data.assays_run.pIC50 &&
-            Number(
+           {Number(
               this.props.saved_mols[this.props.mol_id].data.drug_props.pic50
             )}</p>
         </div>
+        }
       </div>
     );
   }
