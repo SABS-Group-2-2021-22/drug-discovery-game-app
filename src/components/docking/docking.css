@@ -22,7 +22,7 @@
 .molstar {
   flex-grow: 3;                /* Allow it to grow three times compared to other flex siblings */
   min-width: 80%;              /* Minimum width set to 80% of parent */
-  max-width: 65% !important;
+  max-width: 70% !important; 
   max-height: 80vh;            /* Maximum height set to 80% of viewport height */
   background-color: white;    /* Set background color to white */
   overflow: hidden;            /* Hide any overflowing content */
