@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "@types/react-redux": "^7.1.22",
@@ -83,10 +82,9 @@
     "@babel/core": "^7.23.6",
     "@babel/preset-env": "^7.23.6",
     "@babel/preset-react": "^7.23.3",
+    "@testing-library/jest-dom": "^6.1.5",
     "babel-jest": "^29.7.0",
     "canvas": "^2.11.2",
     "redux-mock-store": "^1.5.4"
   }
 }
-
-

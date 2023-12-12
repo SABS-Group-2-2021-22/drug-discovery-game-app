@@ -21,6 +21,7 @@ class Home extends React.Component {
       "500,500"
     );
     this.props.fetchHelp();
+    console.log(this.props.selected_r_groups);
   }
 
   setBuilderMode = () => {
@@ -94,7 +95,6 @@ class Home extends React.Component {
 function mapStateToProps(state) {
   return {
     loggedIn: state.login.login,
-    r_groups: state.init.r_groups,
     num: state.init.num,
     selected_r_groups: state.selector.selected_r_groups,
   };
