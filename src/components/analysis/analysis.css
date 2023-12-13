@@ -258,24 +258,30 @@
 }
 
 .speech-bubble {
-  position: relative;
+  position: absolute;
+  top: 80px; /* Adjust as needed */
+  left: 50%; 
+  width: 200px; /* Set a specific width */
+  min-height: 100px; /* Set a minimum height */
+  max-width: 80%; /* Optional: Ensure the bubble doesn't get too wide on large screens */
   background: #f0f0f0;
   border-radius: .4em;
   padding: 10px;
-  margin-top: 10px;
+  box-sizing: border-box; /* Make sure padding is included in the width */
 }
 
 .speech-bubble:after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 50%;
+  bottom: 100%; /* Position the arrow at the bottom of the speech bubble */
+  left: 50%; /* Center the arrow horizontally */
   width: 0;
   height: 0;
   border: 15px solid transparent;
-  border-bottom-color: #f0f0f0;
-  border-top: 0;
-  margin-left: -15px;
-  margin-top: -15px;
+  border-top-color: #f0f0f0;
+  border-bottom: 0;
+  margin-left: -15px; /* Center the arrow */
+  margin-bottom: -15px; /* Position the arrow right at the bubble's edge */
 }
+
 
