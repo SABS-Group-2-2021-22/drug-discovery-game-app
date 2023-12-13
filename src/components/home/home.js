@@ -13,8 +13,10 @@ class Home extends React.Component {
 
   // fetches the r groups from the BE and selects the first r groups at each position
   // ... for rapid rendering of the builder and sketcher pages
-  componentWillMount() {
-    this.props.num == 0 && this.props.fetchRGroup(this.props.countRGroup,"300,300");
+  componentDidMount() {
+    if (this.props.num === 0) {
+      this.props.fetchRGroup(this.props.countRGroup, "300,300");
+    }
     this.props.selectRGroup(
       this.props.selected_r_groups["A"],
       this.props.selected_r_groups["B"],
