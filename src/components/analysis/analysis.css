@@ -234,3 +234,48 @@
   padding-left: 0;
   white-space: nowrap;
 }
+
+
+.circle-button {
+  position: relative;
+  display: inline-block;
+  width: 70px; /* Circle size */
+  height: 70px; /* Circle size */
+  background-color: grey; /* Background color */
+  color: white; /* Text color */
+  border-radius: 50%; /* Makes it circular */
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px; /* Centers the text vertically */
+  font-size: 20px; /* Font size of the question mark */
+  border: none; /* Removes border */
+  cursor: pointer; /* Cursor changes to pointer on hover */
+}
+
+/* Optional: Style for hover effect */
+.circle-button:hover {
+  background-color: whitesmoke;
+}
+
+.speech-bubble {
+  position: relative;
+  background: #f0f0f0;
+  border-radius: .4em;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 15px solid transparent;
+  border-bottom-color: #f0f0f0;
+  border-top: 0;
+  margin-left: -15px;
+  margin-top: -15px;
+}
+

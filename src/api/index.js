@@ -101,3 +101,8 @@ export function saveGame(game_data) {
   client.defaults.headers["username"] = localStorage.user;
   return client.post("/save_game_data", game_data);
 }
+
+export function sendPrompt(prompt) {
+  client.defaults.headers["username"] = localStorage.user;
+  return client.post("/post_prompt", { prompt });
+}
