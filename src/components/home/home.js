@@ -13,15 +13,16 @@ class Home extends React.Component {
 
   // fetches the r groups from the BE and selects the first r groups at each position
   // ... for rapid rendering of the builder and sketcher pages
-  componentWillMount() {
-    this.props.num == 0 && this.props.fetchRGroup(this.props.countRGroup,"300,300");
+  componentDidMount() {
+    if (this.props.num === 0) {
+      this.props.fetchRGroup(this.props.countRGroup, "300,300");
+    }
     this.props.selectRGroup(
       this.props.selected_r_groups["A"],
       this.props.selected_r_groups["B"],
       "500,500"
     );
     this.props.fetchHelp();
-    console.log(this.props.selected_r_groups);
   }
 
   setBuilderMode = () => {
@@ -95,6 +96,7 @@ class Home extends React.Component {
 function mapStateToProps(state) {
   return {
     loggedIn: state.login.login,
+    r_groups: state.init.r_groups,
     num: state.init.num,
     selected_r_groups: state.selector.selected_r_groups,
   };
