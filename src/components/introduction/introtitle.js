@@ -29,7 +29,7 @@ render()
 
        {this.props.id === 3 &&
         <div className="introductiontitle">
-       The Game Obective
+       The Game Objective
        </div>} 
 
         </div>
