@@ -15,3 +15,29 @@
   padding: 10px;
   border-top: 1px solid #ddd;
 }
+
+.accordion-arrow {
+  display: inline-block;
+  margin-left: 110px;
+  position: relative;
+  top: 0;
+  left: 0;
+  font-size: 15px;
+}
+
+.accordion-arrow::before {
+  content: '\25BC'; /* Default to down arrow */
+  display: inline-block;
+}
+
+.accordion-arrow.closed::before {
+  content: '\25B2'; /* Change to up arrow when closed */
+}
+
+.accordion-arrow:hover {
+  opacity: 0.7;
+}
+
+.accordion-arrow:active {
+  background-color: #ebedf0
+}
