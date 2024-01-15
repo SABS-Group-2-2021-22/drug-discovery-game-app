@@ -4,9 +4,9 @@
 name: Initial CI
 on:
   push:
-    branches: [ main ]
+    branches: [ main, home-unit-test ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, home-unit-test ]
 
 jobs:
   build:
