@@ -1,7 +1,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Home Unit Test CI1
+name: Home Unit Test CI
 
 on: 
   push:
@@ -14,7 +14,7 @@ on:
       - home-unit-test
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -22,26 +22,18 @@ jobs:
         node-version: [12.x, 14.x, 16.x]
 
     steps:
-    - name: Checkout main branch
-      uses: actions/checkout@v2
-      with:
-        ref: main
-
     - name: Checkout home-unit-test branch
       uses: actions/checkout@v2
       with:
         ref: home-unit-test
-        path: home-unit-test
 
-    - name: Copy main branch code to home-unit-test directory # using rsync to synchronise the code from the main branch to the home-unit-test directory, excluding the home-unit-test/ directory itself to avoid recursion.
+    - name: Merge main branch into home-unit-test
       run: |
-        rsync -av --exclude=home-unit-test/ . home-unit-test/
-
-    - name: Use home-unit-test directory
-      run: cd home-unit-test
+        git fetch origin main
+        git merge origin/main --no-commit --no-ff
 
     - name: Set up Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
 
@@ -55,9 +47,10 @@ jobs:
       run: npm run build
       env:
         CI: false
-      
+
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
+      uses: codecov/codecov-action@v2
+
 
 
 
