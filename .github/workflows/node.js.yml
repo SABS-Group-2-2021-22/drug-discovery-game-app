@@ -14,7 +14,7 @@ on:
       - home-unit-test
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
@@ -27,13 +27,13 @@ jobs:
       with:
         ref: home-unit-test
 
-    - name: Merge main branch into home-unit-test
+    - name: Merge main branch
       run: |
         git fetch origin main
-        git merge origin/main --no-commit --no-ff
+        git merge origin/main
 
     - name: Set up Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
 
@@ -47,9 +47,9 @@ jobs:
       run: npm run build
       env:
         CI: false
-
+      
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v2
+      uses: codecov/codecov-action@v1
 
 
 
