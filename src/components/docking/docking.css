@@ -11,7 +11,7 @@
   display: flex;               /* Use flexbox for layout */
   flex-direction: column;      /* Lay out child elements in a column */
   height: 100%;                /* Take up the full height of its parent */
-  min-width: 70%;              /* Minimum width set to 70% of parent */
+  min-width: 71%;              /* Minimum width set to 71% of parent - This value aligns buttons with edges of docking window */
   padding-left: 3vw;           /* Padding from left as 3% of viewport width */
   padding-right: 3vw;          /* Padding from right as 3% of viewport width */
   padding-top: 3vh;            /* Padding from top as 3% of viewport height */

@@ -80,20 +80,20 @@ class Docking extends React.Component {
             <div className="affinity">
               Affinity score:{" "} 
               {this.props.saved_mols[this.props.selected_mol].data.drug_props.docking_affinity} kcal/mol
-              <div className="nav-buttons">
-                <Link to="/build">
-                  <button>
-                    ← Design 
-                  </button>
-                </Link>
-                <Link to="/assay">
-                  <button
-                    onClick={this.initPlotData}   // When clicking on Analysis, it initializes the plot data
+            </div>
+            <div className="nav-buttons">
+              <Link to="/build">
+                <button>
+                  ← Design 
+                </button>
+              </Link>
+              <Link to="/assay">
+                <button
+                  onClick={this.initPlotData}   // When clicking on Analysis, it initializes the plot data
                   >
-                    Test →
-                  </button>
-                </Link>
-              </div>
+                  Test →
+                </button>
+              </Link>
             </div>
           </div>
         </div> ) : (
