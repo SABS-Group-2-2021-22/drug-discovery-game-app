@@ -1,13 +1,17 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Initial CI
+name: Home Unit Test CI
+
 on: 
   push:
-    branches: [ home-unit-test ]
+    branches: 
+      - main  # Add this line to trigger on push to main
+      - home-unit-test
   pull_request:
-    branches: [ home-unit-test ]
-
+    branches: 
+      - main  # Add this line to trigger on PR to main
+      - home-unit-test
 
 jobs:
   build:
@@ -17,11 +21,12 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        ref: refs/heads/home-unit-test  # Always checks out home-unit-test branch
 
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
@@ -41,4 +46,5 @@ jobs:
       
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
+
 
