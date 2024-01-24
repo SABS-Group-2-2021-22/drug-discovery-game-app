@@ -26,17 +26,6 @@ jobs:
       with:
         ref: refs/heads/home-unit-test
 
-    #- name: Checkout home-unit-test branch
-      #uses: actions/checkout@v2
-     # with:
-     #   ref: home-unit-test
-      #  path: home-unit-test
-
-    #- name: Copy test files and package.json from home-unit-test
-      #run: |
-      #  cp -r home-unit-test/src/components/introduction/__test__ ./
-        #cp home-unit-test/package.json .
-
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
