@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "^7.16.12",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -30,8 +29,9 @@
     "react-native-web": "^0.17.7",
     "react-plotly.js": "^2.5.1",
     "react-redux": "^7.2.6",
+    "react-refresh": "^0.14.0",
     "react-router-dom": "^6.0.2",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^5.0.1",
     "reactjs-popup": "^2.0.5",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
@@ -54,6 +54,17 @@
       "react-app/jest"
     ]
   },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!molstar-react).+\\.js$"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -68,7 +79,15 @@
   },
   "engines": {
     "node": "14.18.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "@babel/preset-react": "^7.23.3",
+    "babel-jest": "^29.7.0",
+    "canvas": "^2.11.2",
+    "ketcher-react": "2.5.1",
+    "react": "^17.0.2",
+    "redux-mock-store": "^1.5.4"
   }
 }
-
-
