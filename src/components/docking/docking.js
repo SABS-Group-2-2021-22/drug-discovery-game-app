@@ -48,38 +48,39 @@ class Docking extends React.Component {
     // Return the JSX that defines the UI
     return (
       <div className="wrapper">
-      {this.props.saved_or_not ? (
-        <div className="docking-elements">
-          <div className="mol-list">
-            <MoleculeList /> 
-            <div className="hover-info">
-              <button onClick={this.toggleHelp}>
-                ?
-              </button>
-              {this.state.toggle_help && (
-                <div className="info-text">
-                  <p>
-                  {"\n"}
-                  <div>{this.props.help[10]}</div>
-                  <div>{this.props.help[11]}</div>
-                  <div>{this.props.help[12]}</div>
-                  <div>{this.props.help[13]}</div>
-                  <div>{this.props.help[14]}</div>
-                  <div>{this.props.help[15]}</div>
-                  <div>{this.props.help[16]}</div>
-                  {"\n"}
-                  </p>
-                </div>
-              )}
-            </div>                     
-          </div>
-          <div className="docking-and-button">
-            <div className="molstar">
-              <Molstar {...molstar_props}/>      
+        {this.props.saved_or_not ? (
+          <div className="docking-elements">
+            <div className="mol-list">
+              <MoleculeList />
+              <div className="hover-info">
+                <button onClick={this.toggleHelp}>
+                  ?
+                </button>
+                {this.state.toggle_help && (
+                  <div className="info-text">
+                    <p>
+                    {"\n"}
+                    <div>{this.props.help[10]}</div>
+                    <div>{this.props.help[11]}</div>
+                    <div>{this.props.help[12]}</div>
+                    <div>{this.props.help[13]}</div>
+                    <div>{this.props.help[14]}</div>
+                    <div>{this.props.help[15]}</div>
+                    <div>{this.props.help[16]}</div>
+                    {"\n"}
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
-            <div className="affinity">
-              Affinity score:{" "} 
-              {this.props.saved_mols[this.props.selected_mol].data.drug_props.docking_affinity} kcal/mol
+            <div className="docking-and-button">
+              <div className="molstar">
+                <Molstar {...molstar_props}/>      
+              </div>
+              <div className="affinity">
+                Affinity score:{" "} 
+                {this.props.saved_mols[this.props.selected_mol].data.drug_props.docking_affinity} kcal/mol
+              </div>
               <div className="nav-buttons">
                 <Link to="/build">
                   <button>
@@ -89,20 +90,20 @@ class Docking extends React.Component {
                 <Link to="/assay">
                   <button
                     onClick={this.initPlotData}   // When clicking on Analysis, it initializes the plot data
-                  >
+                    >
                     Test →
                   </button>
                 </Link>
               </div>
             </div>
           </div>
-        </div> ) : (
+        ) : (
           <div className='unsavedmol'>       
-          <Link to="/Loadingpage">
-            <button className="mk_pre_test_button">Go back to design your molecules first!</button>
-          </Link></div>
-        )
-      }
+            <Link to="/Loadingpage">
+              <button className="mk_pre_test_button">Go back to design your molecules first!</button>
+            </Link>
+          </div>
+        )}
       </div>
     );
   }
