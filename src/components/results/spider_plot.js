@@ -90,7 +90,8 @@ class SpiderPlot extends React.Component {
         title: ''
       },
       barmode: 'group',
-      showlegend: true
+      showlegend: true,
+      displayModeBar: false
     };
     return layout;
   }
@@ -102,6 +103,7 @@ class SpiderPlot extends React.Component {
         <Plot
           data={this.addTraces()}
           layout={this.layout()}
+          config={{ displayModeBar: false }}
           useResizeHandler={true}
           style={{ width: "100%", height: "100%" }}
           
