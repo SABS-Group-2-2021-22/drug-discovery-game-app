@@ -29,6 +29,11 @@ class Analysis extends React.Component {
           <div className="comparison-graph">
             <ThePlot />
           </div>
+          <div className="nav-buttons">
+            <Link to="/assay">
+               <button>{'← Test'}</button>
+            </Link>
+          </div>
         </div>) : (
           <div className='unsavedmol'>       
           <Link to="/Loadingpage">

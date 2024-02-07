@@ -109,6 +109,14 @@
   width: 100%;
   margin-left: 10%;
 }
+.nav-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+  padding: 10px;
+}
+
 
 .nav-buttons button {
   float: left;
