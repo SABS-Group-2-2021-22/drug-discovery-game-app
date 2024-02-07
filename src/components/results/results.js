@@ -12,6 +12,15 @@ import { userActions } from '../../actions';
 class Results extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showMolecule: false
+    };
+    this.toggleMoleculeDisplay = this.toggleMoleculeDisplay.bind(this);
+  }
+  toggleMoleculeDisplay() {
+    this.setState(prevState => ({
+      showMolecule: !prevState.showMolecule
+    }));
   }
 
   compile_game_data = () => {
@@ -50,6 +59,7 @@ class Results extends React.Component {
   };
 
   render() {
+    const { showMolecule } = this.state;
     return (
       <div className="wrapper">
        {(this.props.spider_data.data && this.props.comp_text.data) ? (
@@ -57,18 +67,21 @@ class Results extends React.Component {
           <div className="molecule-choices">
             <div className="real-molecule">
               <div className="title">Molecule with desired profile</div>
-              <div className="molecule-image-and-descriptors">
-                <div className="molecule-image">
-
-
-                  <MoleculeImage mol_id={"Roche"} />
-
-
+              {!showMolecule&&(
+              <button onClick = {this.toggleMoleculeDisplay} className="button-style">
+                {showMolecule ? 'Hide Molecule' : 'Display best candidate compound'}
+              </button>
+              )}
+              {showMolecule && (
+                <div className="molecule-image-and-descriptors">
+                  <div className="molecule-image">
+                    <MoleculeImage mol_id={"Roche"} />
+                  </div>
+                  <div class="container" className="molecule-descriptors">
+                    <Assays mol_id={"Roche"} />
+                  </div>
                 </div>
-                <div class="container" className="molecule-descriptors">
-                  <Assays mol_id={"Roche"} />
-                </div>
-              </div>
+             )}
             </div>
             <div className="chosen-molecule">
               <div className="title">Your Molecule</div>
