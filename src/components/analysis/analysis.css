@@ -285,3 +285,10 @@
 }
 
 
+/* analysis.css or custom-message.css */
+.custom-message {
+  /* Your custom styles here */
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px;
+}

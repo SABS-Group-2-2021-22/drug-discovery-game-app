@@ -3,7 +3,7 @@ import "./analysis.css";
 import SelectorPanel from "./selector_panel.js";
 import MoleculeList from "./molecule_list.js";
 import ThePlot from "./the_plot.js";
-import LLM_button from "./LLM_button"; // Import Descriptors component
+import MyChatbot from '../Chatbot/MyChatbot';
 import { connect } from "react-redux";
 import { initActions } from "../../actions";
 import { Link } from "react-router-dom";
@@ -25,7 +25,7 @@ class Analysis extends React.Component {
                         <div className="comparison-graph">
                             <ThePlot />
                         </div>
-                        <LLM_button {...this.props} /> {/* Use Descriptors component */}
+                        <MyChatbot {...this.props} />
                     </div>
                 ) : (
                     <div className='unsavedmol'>       
