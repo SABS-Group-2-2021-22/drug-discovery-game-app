@@ -65,7 +65,7 @@ class Assay extends React.Component {
             </div>
             <div className="main-content">
               <AssayPanel />
-              <div className="nav-buttons">
+              <div className="nav-buttons-assay-page">
                 <Link to="/docking">
                   <button
                     label="Back_Build"

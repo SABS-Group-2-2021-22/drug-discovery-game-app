@@ -59,7 +59,7 @@
 
 .final-molecule-bar .molecule-widget {
   padding: 15px;
-  width: 80%;
+  width: 90%;
 }
 
 .final-molecule-bar .molecule-widget>.molecule img {
@@ -241,4 +241,56 @@
 .plot-button-row>p {
   padding-left: 0;
   white-space: nowrap;
+}
+
+.assay-data-table {
+  font-family: Arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px; /* Adjust as needed */
+  overflow: auto;
+}
+
+.assay-data-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.assay-data-table th,
+.assay-data-table td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd; /* Light grey border for each row */
+}
+
+.assay-data-table th {
+  background-color: #f2f2f2; /* Light grey background for headers */
+  color: #333; /* Dark text color for contrast */
+}
+
+.assay-data-table tr:hover {
+  background-color: #f5f5f5; /* Slightly darker row hover state */
+}
+
+.assay-data-table td {
+  color: #666; /* Slightly lighter text color for table data */
+}
+
+/* Adjust the first column width if needed */
+.assay-data-table th:first-child,
+.assay-data-table td:first-child {
+  width: 20%;
+}
+
+/* Style for not available data */
+.assay-data-table .na {
+  color: #999; /* Light grey text for "N/A" data */
+  font-style: italic;
+}
+
+.molecule-image-container img {
+  width: 175px; 
+  height: auto; 
+  display: block; 
+  padding: 10px; /* Add some padding around the image */
 }

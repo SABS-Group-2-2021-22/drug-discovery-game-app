@@ -3,6 +3,7 @@ import "./analysis.css";
 import SelectorPanel from "./selector_panel.js";
 import MoleculeList from "./molecule_list.js";
 import ThePlot from "./the_plot.js";
+import AssayDataTable from "./AssayDataTable.js";
 import { connect } from "react-redux";
 import { initActions } from "../../actions";
 import { Link } from "react-router-dom"
@@ -26,8 +27,8 @@ class Analysis extends React.Component {
             <SelectorPanel />
             <MoleculeList />
           </div>
-          <div className="comparison-graph">
-            <ThePlot />
+          <div className="assay-data-table">
+            <AssayDataTable />
           </div>
           <div className="nav-buttons">
             <Link to="/assay">
