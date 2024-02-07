@@ -294,3 +294,7 @@
   display: block; 
   padding: 10px; /* Add some padding around the image */
 }
+
+.bold-separator td {
+  border-bottom: 2px solid black; /* This creates a bold line */
+}
