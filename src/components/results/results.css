@@ -27,13 +27,15 @@
 
 .title {
   display: flex;
+  flex-direction: column;
   max-height: 100%;
-  min-height: 25%;
+  min-height: 0%;
   width:100%;
   align-items: center;
-  justify-content: center;
+  text-align: center;
+  justify-content: flex-start;
   font-size: max(23px, 1vw);
-  font-weight: bold;  /* Red bold text for title */
+  font-weight: bold;  /* Bold text for title */
 }
 
 .molecule-image-and-descriptors {
@@ -84,13 +86,15 @@ figcaption {
   height:90%;
   width:45%;
   align-items: center; 
-  justify-content: center;
+  justify-content: flex-start;
   border-style: solid;
   border-width: 1px;
   border-color: #212529;
   border-radius: 5px;
   padding: 5px;
   margin:15px;
+  gap:45px;
+  overflow: hidden;
   
 }
 
@@ -100,13 +104,15 @@ figcaption {
   height:90%;
   width:45%;
   align-items: center; 
-  justify-content: center;
+  justify-content: flex-start;
   border-style: solid;
   border-width: 1px;
   border-color: #212529;
   border-radius: 5px;
   padding: 5px;
   margin:15px;
+  gap: 45px;
+  overflow: auto;
 }
 
 
