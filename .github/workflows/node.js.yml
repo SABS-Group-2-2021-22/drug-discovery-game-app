@@ -25,8 +25,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-      with:
-        ref: refs/heads/assay-actions-test
+      #with:
+        #ref: refs/heads/assay-actions-test
 
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
