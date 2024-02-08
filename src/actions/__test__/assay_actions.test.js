@@ -1,3 +1,5 @@
+// synchronus test
+
 // Importing dependencies required for testing. This includes a mock store creator for Redux (configureMockStore),
 // a middleware for handling asynchronous actions (thunk), and the specific actions (assayActions) we want to test.
 import configureMockStore from 'redux-mock-store';

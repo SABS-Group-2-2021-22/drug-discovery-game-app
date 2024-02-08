@@ -8,10 +8,12 @@ on:
     branches: 
       - main
       - home-unit-test
+      - assay-actions-test
   pull_request:
     branches: 
       - main
       - home-unit-test
+      - assay-actions-test
 jobs:
   build:
     runs-on: ubuntu-latest
