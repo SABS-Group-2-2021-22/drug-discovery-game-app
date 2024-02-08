@@ -4,7 +4,12 @@ export const assayActions = {
   saveMolecule,
   runAssay,
   toggleHelp,
-  toggleAssay
+  toggleAssay,
+  saveMoleculeSucceeded,
+  runAssaySucceeded,
+  fetchDescriptorsSucceeded,
+  toggleHelpSucceeded,
+  toggleAssaySucceeded
 };
 
 /**
@@ -171,3 +176,4 @@ export function fetchLipinskiSucceeded(mol, lipinski) {
     },
   };
 }
+
