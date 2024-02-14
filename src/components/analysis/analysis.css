@@ -24,7 +24,8 @@
   display: flex;
   justify-content: space-between;
   padding-left: 4px;
-  padding-right: 4px;
+  padding-right: 0px;
+  width: 105%;
   padding-top: 0px;
   justify-self: right;
   flex-direction: column;
@@ -111,10 +112,10 @@
 }
 .nav-buttons {
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   height: 100%;
-  padding: 10px;
 }
 
 
@@ -297,4 +298,33 @@
 
 .bold-separator td {
   border-bottom: 2px solid black; /* This creates a bold line */
+}
+
+
+.toggle-component-button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  padding-top: 40px;
+}
+
+.toggle-component-button button {
+  float: left;
+  /* Float the button to the left */
+  border: none;
+  /* Remove the border */
+  background-color: #212529;
+  /* Set background color to a dark shade */
+  color: white;
+  /* Set text color to white */
+  border-radius: 8px;
+  /* Rounded corners for the button */
+  margin-bottom: 10px;
+  /* Margin at the bottom */
+  white-space: pre-line;
+  /* Preserve whitespace and line breaks */
+  width: 100px;
+  /* Set a fixed width for the button */
+
 }

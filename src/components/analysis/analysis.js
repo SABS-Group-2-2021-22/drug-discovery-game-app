@@ -12,20 +12,17 @@ class Analysis extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showTable: true, // Initial state to show the table
+      showComponent: 'table', // Initial state to show the table
     };
   }
 
-  // Retrieves Roche's target compound from the BE for reduced lag
-  // ...on the results page
   componentDidMount() {
     this.props.fetchRoche();
   }
 
-  // Toggle function to show/hide the assay table
-  toggleTableVisibility = () => {
+  toggleComponentVisibility = () => {
     this.setState(prevState => ({
-      showTable: !prevState.showTable
+      showComponent: prevState.showComponent === 'table' ? 'plot' : 'table'
     }));
   };
 
@@ -34,22 +31,27 @@ class Analysis extends React.Component {
       <div className="wrapper">
         {this.props.saved_or_not ? (
           <div className="analysis">
-            <div className="final-molecule-bar">
-              <SelectorPanel />
-              <MoleculeList />
-            </div>
-            <div className="assay-data-table">
-              {this.state.showTable && <AssayDataTable />}
-            </div>
-            <div className="toggle-table-button">
-              <button onClick={this.toggleTableVisibility}>
-                {this.state.showTable ? 'Hide Assay Table' : 'Show Assay Table'}
-              </button>
-            </div>
             <div className="nav-buttons">
+              
+              <div className="toggle-component-button">
+                <button onClick={this.toggleComponentVisibility}>
+                  {this.state.showComponent === 'table' ? 'Show Plot' : 'Show Assay Table'}
+                </button>
+              </div>
               <Link to="/assay">
                 <button>{'← Test'}</button>
               </Link>
+            </div>
+            {this.state.showComponent === 'table' && (
+              <div className="assay-data-table">
+                <AssayDataTable />
+              </div>
+            )}
+            {this.state.showComponent === 'plot' && <ThePlot />}
+  
+            <div className="final-molecule-bar">
+              <SelectorPanel />
+              <MoleculeList />
             </div>
           </div>
         ) : (
@@ -62,10 +64,14 @@ class Analysis extends React.Component {
       </div>
     );
   }
+  
+  
 }
 
 function mapStateToProps(state) {
-  return {saved_or_not: state.assay.saved_or_not};
+  return {
+    saved_or_not: state.assay.saved_or_not,
+  };
 }
 
 const actionCreators = {
