@@ -29,6 +29,7 @@
   padding-top: 0px;
   justify-self: right;
   flex-direction: column;
+  position: relative;
 }
 
 .selector-panel-select-button button {
@@ -46,7 +47,7 @@
   opacity: 0.7;
 }
 
-.final-molecule-bar .help-button {
+.selector-panel .help-button {
   background-color: #fdfbfb;
   border-radius: 12px;
   border-width: 1.8px;
@@ -54,9 +55,11 @@
   margin-bottom: 0px;
   font-size: min(1vw, 16px);
   max-height: 35px;
-  align-self: flex-end;
-  z-index: 4;
+  align-self: flex-start;
+  position: relative;
+  z-index: 5;
 }
+
 
 .final-molecule-bar .molecule-widget {
   padding: 15px;
@@ -220,7 +223,9 @@
   display: flex;
 }
 
-.help-info-text {
+.selector-panel .help-info-text {
+  top: 100%;
+  left: 0%;
   border-style: solid;
   border-width: 1px;
   display: inline-flex;
@@ -230,10 +235,9 @@
   border-radius: 5px;
   background-color: #fdfbfb;
   white-space: pre-line;
-  margin-right: 40vw;
   padding: 3px;
-  margin-left: 26%;
 }
+
 
 .plot-button a {
   text-decoration: none;

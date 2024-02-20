@@ -112,6 +112,8 @@ class ThePlot extends React.Component {
   };
 
   render() {
+    
+    
     var axes_label = [];
     var state_iterator = [this.state.x_axis, this.state.y_axis];
     for (var i = 0, l = state_iterator.length; i < l; i++) {
