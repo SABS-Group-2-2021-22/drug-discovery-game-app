@@ -520,13 +520,13 @@
     margin-left: 20px;
   }
 
-  .nav-buttons {
+  .nav-buttons-assay-page {
     display: flex;
     justify-content: space-between;
     height: 10%;
   }
 
-  .nav-buttons button {
+  .nav-buttons-assay-page button {
     float: left;
     border: none;
     background-color: #212529;

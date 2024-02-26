@@ -35,7 +35,7 @@ class Assays extends React.Component {
         }
         {this.props.saved_mols[this.props.mol_id].data.assays_run.logd &&
         <div class="row" style={{ color: this.props.saved_mols[this.props.mol_id].data.drug_props
-            .logd <= 1.08 ? 'green' : 'red' }}>
+            .logd >= 1.00 ? 'green' : 'red' }}>
           LogD:{" "}
           
           {this.props.saved_mols[this.props.mol_id].data.drug_props.logd}
@@ -50,7 +50,7 @@ class Assays extends React.Component {
         }
         {this.props.saved_mols[this.props.mol_id].data.assays_run.pIC50 &&
         <div class="row" style={{ color: this.props.saved_mols[this.props.mol_id].data.drug_props
-            .pic50 === "7.7" ? 'green' : 'red' }}>
+            .pic50 >= 6.0 ? 'green' : 'red' }}>
           <p style={{ paddingLeft: "0"}}>pIC<sub>50</sub>:{" "}
           
           {Number(

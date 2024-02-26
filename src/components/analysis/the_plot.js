@@ -112,6 +112,8 @@ class ThePlot extends React.Component {
   };
 
   render() {
+    
+    
     var axes_label = [];
     var state_iterator = [this.state.x_axis, this.state.y_axis];
     for (var i = 0, l = state_iterator.length; i < l; i++) {
@@ -155,11 +157,6 @@ class ThePlot extends React.Component {
           onUnhover={this.onUnhover}
         />
         <div className="plot-button-bigpanel">
-        <div className="nav-buttons">
-          <Link to="/assay">
-              <button>{'← Test'}</button>
-          </Link>
-        </div>
         <div className="plot-button-panel">
           <div className="plot-button-row">
             <p>

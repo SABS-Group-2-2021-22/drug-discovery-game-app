@@ -81,7 +81,7 @@ class Docking extends React.Component {
                 Affinity score:{" "} 
                 {this.props.saved_mols[this.props.selected_mol].data.drug_props.docking_affinity} kcal/mol
               </div>
-              <div className="nav-buttons">
+              <div className="nav-buttons-docking-page">
                 <Link to="/build">
                   <button>
                     ← Design 

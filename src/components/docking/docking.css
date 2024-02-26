@@ -34,14 +34,14 @@
 }
 
 /* Styling for the navigation buttons container */
-.nav-buttons {
+.nav-buttons-docking-page {
   display: flex;               /* Use flexbox for layout */
   justify-content: space-between; /* Distribute child elements evenly with maximum space in between */
   height: 10%;                 /* Set height to 10% of its parent */
 }
 
 /* Styling for individual navigation buttons */
-.nav-buttons button {
+.nav-buttons-docking-page button {
   float: left;                 /* Float the button to the left */
   border: none;                /* Remove the border */
   background-color: #212529;  /* Set background color to a dark shade */

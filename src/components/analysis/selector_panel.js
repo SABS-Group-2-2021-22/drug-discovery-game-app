@@ -35,13 +35,13 @@ class SelectorPanel extends React.Component {
             onMouseLeave={this.onUnHelpHover}
           >
             ?
-        </button>
-        {this.state.helpHover && (
-            <div className="help-info-text">
-              <p>
-                <div>{this.props.help[1]}</div>
-              </p>
-            </div>
+          </button>
+         {this.state.helpHover && (
+          <div className="help-info-text">
+            <p>
+              <div>{this.props.help[1]}</div>
+            </p>
+          </div>
           )}
         <div className="selector-panel-select-button">
           <Link to="/results">
