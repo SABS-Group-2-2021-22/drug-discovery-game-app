@@ -67,7 +67,11 @@ class Footer extends React.Component {
               <h5>💰: £{this.props.money}</h5>
             </p>
           </div>
-          {this.state.showChatbot && <ChatbotBase />}
+          {this.state.showChatbot && (
+            <div className="chatbot-container"> {/* New container specifically for chatbot */}
+              <ChatbotBase />
+            </div>
+          )}
         </div>
       </div>
     );

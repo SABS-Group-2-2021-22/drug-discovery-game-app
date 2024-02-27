@@ -8,37 +8,41 @@
     padding-top: 1vh;
 }
 
-.container{
+.container {
     display: flex;
-    flex-direction: flex;
-    width: 100%;
+    flex-direction: row; 
     justify-content: space-between;
+    align-items: center; 
+    height: 100%; 
 }
 
-.user-status-box h5{
-    font-weight: 400;
-    font-size: max(3vh, 15px);
+.time-money-status {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end; 
+    justify-content: center; 
+    padding-right: 20px; 
 }
 
-.user-status-box h5{
-    font-weight: 400;
-    font-size: max(3vh, 15px);
-    margin: 0;
-}
-
-.user-status-box a{
-    font-weight: 400;
-    font-size: max(2vh, 15px);
-}
-
+.user-status-box h5,
+.user-status-box a,
 p > h5 {
     font-weight: 400;
     font-size: max(2vh, 15px);
+    margin: 0; 
 }
 
 .user-status-box > button{
     background: transparent;
     border: none;
     color: white;
-    padding:0px;
+    padding: 0px;
+}
+
+
+.chatbot-container {
+    position: absolute; 
+    bottom: 10px; 
+    right: 10px; 
+    width: 200px; 
 }
