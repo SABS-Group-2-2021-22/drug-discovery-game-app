@@ -8,7 +8,8 @@ export const initActions = {
   fetchRocheSucceeded,
   fetchHelpSucceeded,
   fetchRGroupSucceeded,
-  countRGroupNum
+  countRGroupNum,
+  
 };
 
 function fetchHelpSucceeded(help) {
