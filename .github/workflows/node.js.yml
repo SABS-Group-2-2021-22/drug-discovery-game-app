@@ -9,11 +9,13 @@ on:
       - main
       - home-unit-test
       - assay-actions-test
+      - analysis_actions_test
   pull_request:
     branches: 
       - main
       - home-unit-test
       - assay-actions-test
+      - analysis_actions_test
 jobs:
   build:
     runs-on: ubuntu-latest
