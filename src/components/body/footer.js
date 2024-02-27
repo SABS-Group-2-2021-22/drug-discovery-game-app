@@ -1,12 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
 import { gameActions, userActions } from "../../actions";
-
+import ChatbotBase from "../Chatbot/Chatbot.js"; // Adjust this import path to where your ChatbotBase component is
 import "./footer.css";
 
 class Footer extends React.Component {
+  state = {
+    showChatbot: false // State to control the visibility of the chatbot
+  };
+
+  toggleChatbot = () => {
+    this.setState(prevState => ({
+      showChatbot: !prevState.showChatbot // Toggle the state
+    }));
+  };
+
   compile_game_data = () => {
 
     let molecule_info = {}
@@ -63,7 +72,9 @@ class Footer extends React.Component {
             <p class="m-0 text-end text-white">
               <h5>💰: £{this.props.money}</h5>
             </p>
-          </div>
+            </div>
+          <button onClick={this.toggleChatbot}>Chat with us</button> {/* Button to toggle chatbot */}
+          {this.state.showChatbot && <ChatbotBase />} {/* Conditional rendering of ChatbotBase */}
         </div>
       </div>
     );
