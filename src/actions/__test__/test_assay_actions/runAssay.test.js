@@ -1,15 +1,15 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import * as api from '../../api'; // Assuming this is where your API call is defined
-import { assayActions } from '../assay_actions.js';
+import * as api from '../../../api'; // Assuming this is where your API call is defined
+import { assayActions } from '../../assay_actions.js';
 
 // Setup mock store with thunk middleware
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 // At the top of your test file, mock the entire api module
-jest.mock('../../api', () => ({
-    ...jest.requireActual('../../api'), // This line is optional, it retains the original implementations of other functions
+jest.mock('../../../api', () => ({
+    ...jest.requireActual('../../../api'), // This line is optional, it retains the original implementations of other functions
     postChosen: jest.fn(), // Explicitly mock postChosen
     postSaved: jest.fn(),
   }));

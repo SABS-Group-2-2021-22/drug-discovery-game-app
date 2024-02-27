@@ -2,6 +2,7 @@ import * as api from "../api";
 
 export const analysisActions = {
   constructPlotObj,
+  constructPlotObjSucceeded,
 };
 
 /**

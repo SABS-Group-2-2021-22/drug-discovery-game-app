@@ -4,8 +4,8 @@
 // a middleware for handling asynchronous actions (thunk), and the specific actions (assayActions) we want to test.
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { assayActions } from '../assay_actions.js';
-import { fetchLipinskiSucceeded } from '../assay_actions.js'; // Adjust the path as necessary
+import { assayActions } from '../../assay_actions.js';
+import { fetchLipinskiSucceeded } from '../../assay_actions.js'; // Adjust the path as necessary
 
 // Setting up Redux middleware (thunk) for asynchronous action support and creating a mock store for testing.
 // This avoids affecting the actual application state.
