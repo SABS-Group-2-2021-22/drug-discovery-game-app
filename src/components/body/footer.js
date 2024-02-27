@@ -7,13 +7,7 @@ import "./footer.css";
 
 class Footer extends React.Component {
   state = {
-    showChatbot: false // State to control the visibility of the chatbot
-  };
-
-  toggleChatbot = () => {
-    this.setState(prevState => ({
-      showChatbot: !prevState.showChatbot // Toggle the state
-    }));
+    showChatbot: true // Chatbot is now visible by default
   };
 
   compile_game_data = () => {
@@ -59,22 +53,21 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="footer">
-        <div class="container">
+        <div className="container">
           <div className="user-status">
-            <p class="m-0 text-start text-white">
+            <p className="m-0 text-start text-white">
               {this.props.loggedIn && this.userStatus()}
             </p>
           </div>
           <div className="time-money-status">
-            <p class="m-0 text-end text-white">
+            <p className="m-0 text-end text-white">
               <h5>🕑: {this.props.time} weeks left</h5>
             </p>
-            <p class="m-0 text-end text-white">
+            <p className="m-0 text-end text-white">
               <h5>💰: £{this.props.money}</h5>
             </p>
-            </div>
-          <button onClick={this.toggleChatbot}>Chat with us</button> {/* Button to toggle chatbot */}
-          {this.state.showChatbot && <ChatbotBase />} {/* Conditional rendering of ChatbotBase */}
+          </div>
+          {this.state.showChatbot && <ChatbotBase />}
         </div>
       </div>
     );
