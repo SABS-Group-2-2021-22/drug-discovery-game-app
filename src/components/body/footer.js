@@ -53,25 +53,21 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="footer">
-        <div className="container">
+        <div class="container">
           <div className="user-status">
-            <p className="m-0 text-start text-white">
+            <p class="m-0 text-start text-white">
               {this.props.loggedIn && this.userStatus()}
             </p>
           </div>
           <div className="time-money-status">
-            <p className="m-0 text-end text-white">
+            <p class="m-0 text-end text-white">
               <h5>🕑: {this.props.time} weeks left</h5>
             </p>
-            <p className="m-0 text-end text-white">
+            <p class="m-0 text-end text-white">
               <h5>💰: £{this.props.money}</h5>
             </p>
-          </div>
-          {this.state.showChatbot && (
-            <div className="chatbot-container"> {/* New container specifically for chatbot */}
-              <ChatbotBase />
             </div>
-          )}
+          {this.state.showChatbot && <ChatbotBase />} {/* Conditional rendering of ChatbotBase */}
         </div>
       </div>
     );
