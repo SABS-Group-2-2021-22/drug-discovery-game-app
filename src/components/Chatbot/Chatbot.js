@@ -1,4 +1,3 @@
-import { connect } from 'react-redux';
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Chatbot.css';
@@ -6,31 +5,19 @@ import './Chatbot.css';
 const ChatbotBase = ({ saved_mols, selected_mol, Roche, ...props }) => {
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { text: "Use the buttons to get help with whatever you need :)", user: false }
+    { text: "Type your message to get started!", user: false }
   ]);
+  const [userInput, setUserInput] = useState('');
 
-
-  const constructPrompt = (userInput) => {
-
-    const myMolecule = saved_mols[selected_mol]?.data.drug_props;
-    const rocheMolecule = Roche.data.drug_props;
-
-
-    const myMoleculeData = `Mouse clearance: ${myMolecule.clearance_mouse}, Human clearance: ${myMolecule.clearance_human}, logD: ${myMolecule.logd}, PAMPA: ${myMolecule.pampa}, pIC50: ${myMolecule.pic50}`;
-    const rocheMoleculeData = `Mouse clearance: ${rocheMolecule.clearance_mouse}, Human clearance: ${rocheMolecule.clearance_human}, logD: ${rocheMolecule.logd}, PAMPA: ${rocheMolecule.pampa}, pIC50: ${rocheMolecule.pic50}`;
-
-    return `I am designing a drug to bind a target molecule. My binding molecule is a dipeptide which consists of two R groups. My test results are: ${myMoleculeData}. The ideal test results are ${rocheMoleculeData}. ${userInput}`;
-  };
-
-  const chatWithGPT3 = async (userInput) => {
-    const apiEndpoint = ''; 
+  const chatWithGPT3 = async (input) => {
+    const apiEndpoint = ''; // Your API endpoint
     const headers = {
       'Content-Type': 'application/json',
-      'Authorization': `*` 
+      'Authorization': `Bearer YOUR_API_KEY` // Your actual API key
     };
 
     const data = {
-      prompt: constructPrompt(userInput), 
+      prompt: input, // Directly use the user input as the prompt
       max_tokens: 150
     };
 
@@ -43,23 +30,27 @@ const ChatbotBase = ({ saved_mols, selected_mol, Roche, ...props }) => {
     }
   };
 
-  const handlePresetPrompt = async (presetInput) => {
-      const prompt = constructPrompt(presetInput);
-      const userMessage = { text: presetInput, user: true };
-      setMessages((prevMessages) => [...prevMessages, userMessage]);
-      
-      const aiMessage = { text: '...', user: false };
-      setMessages((prevMessages) => [...prevMessages, aiMessage]);
-  
-      const response = await chatWithGPT3(prompt);
-      const newAiMessage = { text: response || 'Error connecting to chatbot', user: false };
-      setMessages((prevMessages) => [...prevMessages.slice(0, -1), newAiMessage]);
-    };
+  const handleUserInput = async (event) => {
+    event.preventDefault(); // Prevent form from refreshing the page
+    const trimmedInput = userInput.trim();
+    if (!trimmedInput) return; // Do nothing if the input is empty
 
-    const toggleChatbot = () => {
-      setIsChatbotOpen(!isChatbotOpen);
-    };
+    const userMessage = { text: trimmedInput, user: true };
+    setMessages((prevMessages) => [...prevMessages, userMessage]);
 
+    const aiMessage = { text: '...', user: false };
+    setMessages((prevMessages) => [...prevMessages, aiMessage]);
+
+    const response = await chatWithGPT3(trimmedInput);
+    const newAiMessage = { text: response || 'Error connecting to chatbot', user: false };
+    setMessages((prevMessages) => [...prevMessages.slice(0, -1), newAiMessage]);
+
+    setUserInput(''); // Clear the input field after sending
+  };
+
+  const toggleChatbot = () => {
+    setIsChatbotOpen(!isChatbotOpen);
+  };
 
   return (
     <>
@@ -70,7 +61,7 @@ const ChatbotBase = ({ saved_mols, selected_mol, Roche, ...props }) => {
       {isChatbotOpen && (
         <div className="chatbot-container">
           <div className="chatbot-header">
-                <button className="chatbot-close" onClick={toggleChatbot}>✕</button>
+            <button className="chatbot-close" onClick={toggleChatbot}>✕</button>
           </div>
           <div className="chatbot-messages">
             {messages.map((message, index) => (
@@ -79,24 +70,20 @@ const ChatbotBase = ({ saved_mols, selected_mol, Roche, ...props }) => {
               </div>
             ))}
           </div>
-          <div className="chatbot-buttons">
-            <button onClick={() => handlePresetPrompt('Hello')}>Hello</button>
-            <button onClick={() => handlePresetPrompt('Help')}>Help</button>
-            {/* Add more buttons as needed */}
-          </div>
+          <form onSubmit={handleUserInput} className="chatbot-input-form">
+            <input
+              type="text"
+              placeholder="Type your message..."
+              value={userInput}
+              onChange={(e) => setUserInput(e.target.value)}
+              className="chatbot-input"
+            />
+            <button type="submit" className="send-message-button">Send</button>
+          </form>
         </div>
       )}
     </>
   );
 };
 
-const mapStateToProps = (state) => ({
-  Roche: state.init.Roche,
-  selected_mol: state.selector.selected_mol,
-  saved_mols: state.assay.saved_mols,
-});
-
-
-const ConnectedChatbot = connect(mapStateToProps)(ChatbotBase);
-
-export default ConnectedChatbot;
+export default ChatbotBase;
