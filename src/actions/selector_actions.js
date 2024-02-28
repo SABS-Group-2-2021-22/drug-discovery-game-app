@@ -5,6 +5,8 @@ export const selectorActions = {
   selectMolecule,
   fetchCompTextSucceeded,
   fetchSpiderObjSucceeded,
+  selectRGroupSucceeded,
+  selectMoleculeSucceeded,
 };
 
 /**
