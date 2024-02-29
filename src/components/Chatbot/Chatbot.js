@@ -9,21 +9,15 @@ const ChatbotBase = ({ saved_mols, selected_mol, Roche, ...props }) => {
   ]);
   const [userInput, setUserInput] = useState('');
 
-  const chatWithGPT3 = async (input) => {
-    const apiEndpoint = ''; // Your API endpoint
-    const headers = {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer YOUR_API_KEY` // Your actual API key
-    };
-
+  const chatWithGPT4 = async (input) => {
+    const apiEndpoint = 'http://localhost:5000/api/chat'; // Your API endpoint
     const data = {
       prompt: input, // Directly use the user input as the prompt
-      max_tokens: 150
     };
 
     try {
-      const response = await axios.post(apiEndpoint, data, { headers });
-      return response.data.choices[0].text.trim();
+      const response = await axios.post(apiEndpoint, data);
+      return response.data.answertrim();
     } catch (error) {
       console.error('Error communicating with the API:', error.message);
       return 'Error connecting to chatbot';
@@ -41,7 +35,7 @@ const ChatbotBase = ({ saved_mols, selected_mol, Roche, ...props }) => {
     const aiMessage = { text: '...', user: false };
     setMessages((prevMessages) => [...prevMessages, aiMessage]);
 
-    const response = await chatWithGPT3(trimmedInput);
+    const response = await chatWithGPT4(trimmedInput);
     const newAiMessage = { text: response || 'Error connecting to chatbot', user: false };
     setMessages((prevMessages) => [...prevMessages.slice(0, -1), newAiMessage]);
 
