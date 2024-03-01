@@ -37,8 +37,8 @@ describe('loaded_login action creator tests', () => {
     userService.login = jest.fn().mockResolvedValue(mockLoginResponse);
     userService.loadgamestate = jest.fn().mockResolvedValue(mockGameData);
     api.fetchMolecule = jest.fn();  // Mocking this but implementation detail would need to be fleshed out based on actual usage
-    api.fetchDescriptors = jest.fn();  // As above
-    api.fetchLipinski = jest.fn();  // As above
+    api.fetchDescriptors = jest.fn();  
+    api.fetchLipinski = jest.fn(); 
 
     const expectedActions = [
       { type: userConstants.LOGIN_REQUEST, user: username },
