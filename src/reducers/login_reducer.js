@@ -11,9 +11,11 @@ export function loginReducer(state = initialState, action) {
             console.log(action.user);
             return {
                 loggingIn: true,
-                user: {username: action.user, user_status: ''},
+                user: { username: action.user ? action.user.username : '', 
+                user_status: '', 
+                },  // Assuming action.user is an object
                 loggedIn: false,
-            };
+              };
         case userConstants.LOGIN_PENDING:
             console.log(action.user);
             return {
