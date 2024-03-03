@@ -52,15 +52,29 @@ function selectRGroupSucceeded(r_group_id_A, r_group_id_B, molecule) {
 function selectRGroup(r_group_id_A, r_group_id_B, size) {
   console.log('CP1', r_group_id_A, r_group_id_B, size);
   return (dispatch) => {
-    // Ensure the promise returned by api.fetchMolecule is returned from this function
     return api.fetchMolecule(r_group_id_A, r_group_id_B, size).then((response) => {
       let molecule = { data: response.data };
       dispatch(selectRGroupSucceeded(r_group_id_A, r_group_id_B, molecule));
     }).catch(error => {
       console.error('An error occurred:', error);
+      // Dispatching an action when an error occurs
+      dispatch(selectRGroupFailed(error));
     });
   };
 }
+
+/**
+ * Synchronous action creator for handling fetch molecule failure.
+ * @param {Error} error The error that occurred.
+ * @returns An action with the error information.
+ */
+function selectRGroupFailed(error) {
+  return {
+    type: 'SEL_R_FETCH_MOL_FAILED',
+    error: error.toString(),
+  };
+}
+
 
 
 /**

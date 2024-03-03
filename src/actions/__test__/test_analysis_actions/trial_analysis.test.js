@@ -16,59 +16,72 @@ describe('analysisActions', () => {
 
   describe('constructPlotObjSucceeded', () => {
     it('returns the correct action type and payload for plot data', () => {
-      // Define the plot data to test with
       const plotData = { x: [1, 2, 3], y: [4, 5, 6] };
-
-      // Expected action structure
       const expectedAction = {
         type: 'CONSTRUCT_PLOT_OBJECT_SUCCEEDED',
-        payload: {
-          plot_data: plotData,
-        },
+        payload: { plot_data: plotData },
       };
 
-      // Dispatch the action directly since it's synchronous and doesn't need the store
       const action = analysisActions.constructPlotObjSucceeded(plotData);
-
-      // Assert that the action created matches the expected action structure
       expect(action).toEqual(expectedAction);
     });
   });
 
   describe('constructPlotObj', () => {
     it('processes saved_mols and dispatches constructPlotObjSucceeded with correct plot data', async () => {
-      // Ensure mock data matches the function's expectations
       const savedMolsMock = {
         mol1: {
           data: {
-            assays_run: { assay1: true }, // Use lowercase to match key reduction logic
-            drug_props: { assay1: 'value1' }, // Ensure keys match exactly after reduction
-            descriptors: { Descriptor1: 'value1' }
-          }
-        }
+            assays_run: { assay1: true },
+            drug_props: { assay1: 'value1' },
+            descriptors: { Descriptor1: 'value1' },
+          },
+        },
       };
 
-      // Adjust expected plot data to reflect actual logic
       const expectedPlotData = {
         mol1: {
-          assay1: 'value1', // Key should match the reduced form from savedMolsMock
+          assay1: 'value1',
           Descriptor1: 'value1',
-          "--": 0
-        }
+          "--": 0,
+        },
       };
 
-      // Expected action structure should now match the revised expectation
       const expectedActions = [{
         type: 'CONSTRUCT_PLOT_OBJECT_SUCCEEDED',
-        payload: { plot_data: expectedPlotData }
+        payload: { plot_data: expectedPlotData },
       }];
 
-      // Dispatch the action
       await store.dispatch(analysisActions.constructPlotObj(savedMolsMock));
+      expect(store.getActions()).toEqual(expectedActions);
+    });
 
-      // Verify the actions dispatched match expectations
+    it('handles empty saved_mols object correctly', async () => {
+      const expectedActions = [{
+        type: 'CONSTRUCT_PLOT_OBJECT_SUCCEEDED',
+        payload: { plot_data: {} },
+      }];
+
+      await store.dispatch(analysisActions.constructPlotObj({}));
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+
+    it('handles saved_mols with missing properties correctly', async () => {
+      const incompleteSavedMols = {
+        mol1: { data: {} }, // Adjusted to reflect truly missing properties
+      };
+
+      const expectedPlotData = {
+        mol1: { "--": 0 }, // Expected minimal plot data structure
+      };
+
+      const expectedActions = [{
+        type: 'CONSTRUCT_PLOT_OBJECT_SUCCEEDED',
+        payload: { plot_data: expectedPlotData },
+      }];
+
+      await store.dispatch(analysisActions.constructPlotObj(incompleteSavedMols));
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
 });
-
