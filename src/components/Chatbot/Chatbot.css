@@ -103,6 +103,39 @@
     justify-content: flex-end;
     padding: 5px;
   }
+
+  .chatbot-header {
+    display: flex;
+    justify-content: space-between; /* Adjusted for spacing */
+    padding: 5px;
+  }
+  
+  /* Style for the switching button */
+  .chat-mode-toggle {
+    border: none;
+    background: #007bff;
+    color: #fff;
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: auto; /* This will push the button to the right */
+  }
+  
+  .chat-mode-toggle:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Adjustments for close button */
+  .chatbot-close {
+    border: none;
+    background: none;
+    color: #333;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: auto; /* This will push the button to the left */
+  }
+  
   
   .chatbot-close {
     border: none;
