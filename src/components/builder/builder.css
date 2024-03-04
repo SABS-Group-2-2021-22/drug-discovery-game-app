@@ -161,7 +161,7 @@
   background-color: white;
   flex-grow: 2;
   min-height: 100%;
-  align-items: end;
+  align-items: flex-end;
   padding-bottom: 10pt;
   justify-content: flex-start;
   text-align: left;
