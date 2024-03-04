@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import MoleculeImage from "./molecule_image.js";
 import "./analysis.css";
-import { selectorActions } from "../../actions"; // Import your action creator
+import { selectorActions } from "../../actions"; 
 
 const AssayDataTable = ({ saved_mols, selectMolecule, selected_mol }) => {
   
 
   const selectRow = (mol_id) => {
-    selectMolecule(mol_id); // Also select the molecule as the final compound
+    selectMolecule(mol_id); 
   };
 
   const renderRows = () => {
@@ -35,7 +35,7 @@ const AssayDataTable = ({ saved_mols, selectMolecule, selected_mol }) => {
         style={{ 
           cursor: 'pointer',
           borderWidth: isSelected ? '6px' : '1px',
-          borderColor: isSelected ? '#b30000' : 'transparent', // Dark red for selected, transparent for others
+          borderColor: isSelected ? '#b30000' : 'transparent', 
           borderStyle: isSelected ? 'solid' : 'none',
           borderRadius: isSelected ? '8px' : '0',
            }}

@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 class MoleculeList extends React.Component {
   constructor(props) {
     super(props);
-    // Initialize refs for each molecule widget
+    
     this.widgetRefs = Object.keys(this.props.saved_mols).reduce((acc, mol_id) => {
       acc[mol_id] = React.createRef();
       return acc;

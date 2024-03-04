@@ -1,5 +1,5 @@
 import React from "react";
-import "./analysis.css"; // Make sure the path is correct for your project structure
+import "./analysis.css"; 
 import MoleculeImage from "./molecule_image.js";
 import MoleculeStats from "./molecule_stats.js"; 
 import Accordion from "./accordion_analysis.js"; 
@@ -18,7 +18,7 @@ class MoleculeWidget extends React.Component {
 
     const selectedStyle = isOpen ? {
       borderWidth: "8px",
-      borderColor: "#b30000", // Dark red for selected
+      borderColor: "#b30000", 
       padding: "5px",
     } : {};
 
