@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import MoleculeImage from "./molecule_image.js";
 import "./analysis.css";
+import { selectorActions } from "../../actions"; // Import your action creator
 
-const AssayDataTable = ({ saved_mols }) => {
-  const [expandedRow, setExpandedRow] = useState(null); // Track the ID of the expanded row
+const AssayDataTable = ({ saved_mols, selectMolecule, selected_mol }) => {
+  
 
-  const toggleRowExpansion = (mol_id) => {
-    setExpandedRow(expandedRow === mol_id ? null : mol_id);
+  const selectRow = (mol_id) => {
+    selectMolecule(mol_id); // Also select the molecule as the final compound
   };
 
   const renderRows = () => {
-    // Start by defining the target compound profile row
+  
     const targetProfileRow = [
       <tr key="target-profile" className="bold-separator">
         <td>Target compound profile</td>
@@ -23,13 +24,22 @@ const AssayDataTable = ({ saved_mols }) => {
       </tr>
     ];
 
-    // Then map over saved_mols to create rows for each molecule
+    
     const moleculeRows = Object.keys(saved_mols).flatMap(mol_id => {
       const molecule = saved_mols[mol_id];
       const assaysRun = molecule.data.assays_run;
-      const isExpanded = expandedRow === mol_id;
+      const isSelected = selected_mol === mol_id;
       return [
-        <tr key={`row-${mol_id}`} onClick={() => toggleRowExpansion(mol_id)} style={{ cursor: 'pointer' }}>
+        <tr key={`row-${mol_id}`} 
+        onClick={() => selectRow(mol_id)} 
+        style={{ 
+          cursor: 'pointer',
+          borderWidth: isSelected ? '6px' : '1px',
+          borderColor: isSelected ? '#b30000' : 'transparent', // Dark red for selected, transparent for others
+          borderStyle: isSelected ? 'solid' : 'none',
+          borderRadius: isSelected ? '8px' : '0',
+           }}
+        >
           <td>{mol_id}</td>
           <td style={{ color: assaysRun.clearance_mouse ? (molecule.data.drug_props.clearance_mouse === "low (< 5.6)" ? 'green' : 'red') : 'black' }}>
             {assaysRun.clearance_mouse ? molecule.data.drug_props.clearance_mouse : 'N/A'}
@@ -47,19 +57,10 @@ const AssayDataTable = ({ saved_mols }) => {
             {assaysRun.pIC50 ? molecule.data.drug_props.pic50 : 'N/A'}
           </td>
         </tr>,
-        isExpanded && (
-          <tr key={`detail-${mol_id}`}>
-            <td colSpan="6">
-                <div className="molecule-image-container">
-                  <MoleculeImage mol_id={mol_id} />
-                </div>
-            </td>
-          </tr>
-        )
       ];
     });
 
-    // Combine the target profile row with the molecule rows
+    
     return [...targetProfileRow, ...moleculeRows];
   };
 
@@ -85,13 +86,19 @@ function renderTableHeader() {
       <th>Human Clearance (mL/min)</th>
       <th>LogD</th>
       <th>PAMPA</th>
-      <th>pIC50</th>
+      <th>pIC<sub>50</sub></th>
     </tr>
   );
 }
 
+
 const mapStateToProps = (state) => ({
   saved_mols: state.assay.saved_mols,
+  selected_mol: state.selector.selected_mol, // Selected_mol is mapped from state to props
 });
 
-export default connect(mapStateToProps)(AssayDataTable);
+const mapDispatchToProps = {
+  selectMolecule: selectorActions.selectMolecule, // Map the selectMolecule action creator to props
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AssayDataTable);

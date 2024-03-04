@@ -4,7 +4,7 @@ import "./docking.css";                            // Importing styles specific 
 import { Link } from "react-router-dom";           // Importing 'Link' from react-router-dom to navigate between views
 import { connect } from "react-redux";             // Importing connect function from react-redux to bind Redux store to this component
 import { initActions, selectorActions, gameActions, analysisActions } from "../../actions"; // Importing various action creators
-import MoleculeList from "../analysis/molecule_list.js"; // Importing the MoleculeList component
+import MoleculeList from "./molecule_list_docking.js"; // Importing the MoleculeList component
 import Molstar from "molstar-react";               // Importing Molstar component(a molecule viewer)
 
 // Define the main Docking component

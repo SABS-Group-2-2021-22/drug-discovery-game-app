@@ -1,48 +1,46 @@
 import React from "react";
-import "./analysis.css";
+import "./analysis.css"; // Make sure the path is correct for your project structure
 import MoleculeImage from "./molecule_image.js";
-import MoleculeStats from "./molecule_stats.js";
+import MoleculeStats from "./molecule_stats.js"; 
+import Accordion from "./accordion_analysis.js"; 
 import { selectorActions } from "../../actions";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
+import './accordion_analysis.css';
 
 class MoleculeWidget extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  // fires the selectMolecule action when clicking the molecule's image
-  selectMolecule = () => {
-    this.props.selectMolecule(this.props.mol_id);
-  };
-
   render() {
-    const selected_mol_style = {
-      borderWidth:  (this.props.selected_mol == this.props.mol_id ? "8px" : "1px"),
-      padding: (this.props.selected_mol == this.props.mol_id ? "5px" : "13px")
+    const { mol_id, selected_mol, selectMolecule } = this.props;
+    const isOpen = selected_mol === mol_id;
+    
+    const toggleAccordion = () => {
+      selectMolecule(mol_id);
     };
+
+    const selectedStyle = isOpen ? {
+      borderWidth: "8px",
+      borderColor: "#b30000", // Dark red for selected
+      padding: "5px",
+    } : {};
+
     return (
       <div className="molecule-container">
-        <div className="molecule-widget" 
-          style={selected_mol_style}
-          onClick={this.selectMolecule}
-        >
-          <MoleculeImage mol_id={this.props.mol_id} />
-          {this.props.mol_id}
-          <MoleculeStats mol_id={this.props.mol_id} />
-        </div>
+        <Accordion title={`Molecule ${mol_id}`} isOpen={isOpen} toggleAccordion={toggleAccordion}>
+          <div className="molecule-widget" style={selectedStyle}>
+            <MoleculeImage mol_id={mol_id} />
+            <MoleculeStats mol_id={mol_id} />
+          </div>
+        </Accordion>
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    selected_mol: state.selector.selected_mol
-  };
-}
+const mapStateToProps = state => ({
+  selected_mol: state.selector.selected_mol,
+});
 
-const actionCreators = {
+const mapDispatchToProps = {
   selectMolecule: selectorActions.selectMolecule,
 };
 
-export default connect(mapStateToProps, actionCreators)(MoleculeWidget);
+export default connect(mapStateToProps, mapDispatchToProps)(MoleculeWidget);
