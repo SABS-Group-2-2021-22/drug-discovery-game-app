@@ -10,7 +10,7 @@ const ChatbotBase = ({ saved_mols, selected_mol, Roche, ...props }) => {
   const [userInput, setUserInput] = useState('');
 
   const chatWithGPT4 = async (input) => {
-    const apiEndpoint = 'http://localhost:5000/api/chat'; // Your API endpoint
+    const apiEndpoint = 'http://localhost:5001/api/chat'; // Your API endpoint
     const data = {
       prompt: input, // Directly use the user input as the prompt
     };
