@@ -15,12 +15,17 @@ const initialState = {
 export function assayReducer(state = initialState, action) {
   switch (action.type) {
     case "SAVE_MOLECULE_SUCCEEDED": {
-      console.log('CP2', action.payload)
+      console.log('CP2', action.payload);
+
+      // Check if action.payload.saved_mols exists; otherwise, keep the current state's saved_mols
+      const updatedSavedMols = action.payload && action.payload.saved_mols !== undefined
+        ? action.payload.saved_mols
+        : state.saved_mols;
 
       return {
         ...state,
-        saved_or_not: true,
-        saved_mols: action.payload.saved_mols, //store molecule in saved_mols
+        saved_or_not: !!action.payload && action.payload.saved_mols !== undefined,
+        saved_mols: updatedSavedMols,
       };
     }
     case "SAVE_SKETCHED_MOLECULE_SUCCEEDED": {
@@ -31,21 +36,30 @@ export function assayReducer(state = initialState, action) {
       };
     }
     case "FETCH_DESCRIPTORS_SUCCEEDED": {
-      console.log(action.payload)
+      console.log(action.payload);
+      // Check if the necessary properties exist in the payload.
+      if (!action.payload || typeof action.payload.molecule !== 'string' || !action.payload.descriptors) {
+        return state; // Return the current state if the payload is not valid.
+      }
+    
+      // Ensure that the molecule exists in saved_mols; if not, just use an empty object to avoid errors.
+      const existingMoleculeData = state.saved_mols[action.payload.molecule] || { data: {} };
+    
       return {
         ...state,
         saved_mols: {
           ...state.saved_mols,
           [action.payload.molecule]: {
-            ...state.saved_mols[action.payload.molecule],
+            ...existingMoleculeData,
             data: {
-              ...state.saved_mols[action.payload.molecule].data,
-              descriptors: action.payload.descriptors, //store descriptors in saved_mols.molecule.data.descriptors
+              ...existingMoleculeData.data,
+              descriptors: action.payload.descriptors,
             },
           },
         },
       };
     }
+    
     case "FETCH_LIPINSKI_SUCCEEDED": {
       return {
         ...state,

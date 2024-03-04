@@ -1,14 +1,14 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import * as api from '../../api'; // Adjust the import path as necessary
-import { assayActions } from '../assay_actions'; // Adjust the import path as necessary
+import * as api from '../../../api'; // Adjust the import path as necessary
+import { assayActions } from '../../assay_actions'; // Adjust the import path as necessary
 
 // Setup mock store with thunk middleware
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 // Mock the entire api module
-jest.mock('../../api', () => ({
+jest.mock('../../../api', () => ({
     postSaved: jest.fn(),
     fetchDescriptors: jest.fn(),
     fetchLipinski: jest.fn(),

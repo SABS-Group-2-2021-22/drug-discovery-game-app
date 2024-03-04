@@ -5,6 +5,8 @@ export const selectorActions = {
   selectMolecule,
   fetchCompTextSucceeded,
   fetchSpiderObjSucceeded,
+  selectRGroupSucceeded,
+  selectMoleculeSucceeded,
 };
 
 /**
@@ -35,16 +37,45 @@ function selectRGroupSucceeded(r_group_id_A, r_group_id_B, molecule) {
  * @returns {dispatch} dispatches selectRGroupSuceeded for the selectorReducer (
  * passes in the r group ids and the molecule object)
  */
+
+//function selectRGroup(r_group_id_A, r_group_id_B, size) {
+  //console.log('CP1', r_group_id_A, r_group_id_B, size)
+  //return (dispatch) => {
+    //api.fetchMolecule(r_group_id_A, r_group_id_B, size).then((response) => {
+      //let molecule = {};
+      //molecule['data'] = response.data;
+      //dispatch(selectRGroupSucceeded(r_group_id_A, r_group_id_B, molecule));
+    //});
+  //};
+//}
+
 function selectRGroup(r_group_id_A, r_group_id_B, size) {
-  console.log('CP1', r_group_id_A, r_group_id_B, size)
+  console.log('CP1', r_group_id_A, r_group_id_B, size);
   return (dispatch) => {
-    api.fetchMolecule(r_group_id_A, r_group_id_B, size).then((response) => {
-      let molecule = {};
-      molecule['data'] = response.data;
+    return api.fetchMolecule(r_group_id_A, r_group_id_B, size).then((response) => {
+      let molecule = { data: response.data };
       dispatch(selectRGroupSucceeded(r_group_id_A, r_group_id_B, molecule));
+    }).catch(error => {
+      console.error('An error occurred:', error);
+      // Dispatching an action when an error occurs
+      dispatch(selectRGroupFailed(error));
     });
   };
 }
+
+/**
+ * Synchronous action creator for handling fetch molecule failure.
+ * @param {Error} error The error that occurred.
+ * @returns An action with the error information.
+ */
+function selectRGroupFailed(error) {
+  return {
+    type: 'SEL_R_FETCH_MOL_FAILED',
+    error: error.toString(),
+  };
+}
+
+
 
 /**
  * Asynchronous action that dispatches selectMoleculeSucceeded with
@@ -53,6 +84,7 @@ function selectRGroup(r_group_id_A, r_group_id_B, size) {
  * @returns {dispatch} dispatches selectMoleculeSucceeded with the
  * id of the selected molecule
  */
+
 function selectMolecule(selected_mol) {
   return async (dispatch) => {
     const r_group_A = selected_mol.slice(0, 3);
@@ -114,3 +146,56 @@ function fetchCompTextSucceeded(comp_text) {
  * @param {state object} selected_mol text id object of the chosen molecule
  * @returns {} the selected_mol text id for a state change by the selectorReducer
  */
+
+
+
+
+//function selectMolecule(selected_mol) {
+  //return async (dispatch) => {
+    //const r_group_A = selected_mol.slice(0, 3);
+    //const r_group_B = selected_mol.slice(3, 6);
+
+    //await api.postChosen(r_group_A, r_group_B);
+
+    //const compTextResponse = await api.fetchCompText();
+    //if (compTextResponse && compTextResponse.data) {
+      //dispatch(fetchCompTextSucceeded(compTextResponse.data || {}));
+    //}
+
+    //dispatch(selectMoleculeSucceeded(selected_mol));
+  //}
+//}
+
+//function selectMolecule(selected_mol) {
+  //return async (dispatch) => {
+    //const r_group_A = selected_mol.slice(0, 3);
+    //const r_group_B = selected_mol.slice(3, 6);
+
+    // Post the chosen R groups and wait for the operation to complete.
+    //await api.postChosen(r_group_A, r_group_B);
+
+    // Fetch the comparison text and dispatch the success action if the response is valid.
+    //const compTextResponse = await api.fetchCompText();
+    //if (compTextResponse && compTextResponse.data) {
+      //dispatch(fetchCompTextSucceeded(compTextResponse.data));
+    //}
+
+    // After all operations and their respective dispatches are complete,
+     //dispatch the action to indicate the successful selection of a molecule.
+    //dispatch(selectMoleculeSucceeded(selected_mol));
+  //}
+//}
+
+//function selectMolecule(selected_mol) {
+  //return async (dispatch) => {
+    //const r_group_A = selected_mol.slice(0, 3);
+    //const r_group_B = selected_mol.slice(3, 6);
+
+    //api.postChosen(r_group_A, r_group_B);
+    
+    //api.fetchCompText().then((response) => {
+      //dispatch(fetchCompTextSucceeded(response));
+    //});
+    //dispatch(selectMoleculeSucceeded(selected_mol));
+  //}
+//}

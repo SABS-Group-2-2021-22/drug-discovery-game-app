@@ -7,6 +7,12 @@ export const gameActions = {
   saveGame,
   setGamemodeAction,
   updateSubTotal,
+  resetGameSucceeded,
+  saveGameSucceeded,
+  setGamemodeActionSucceeded,
+  updateTimeSucceeded,
+  updateMoneySucceeded,
+  updateSubTotalSucceeded,
 };
 
 /**

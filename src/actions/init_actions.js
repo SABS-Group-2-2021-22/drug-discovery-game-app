@@ -4,7 +4,12 @@ export const initActions = {
   fetchRGroup,
   fetchRoche,
   fetchHelp,
-  countRGroup
+  countRGroup,
+  fetchRocheSucceeded,
+  fetchHelpSucceeded,
+  fetchRGroupSucceeded,
+  countRGroupNum,
+  
 };
 
 function fetchHelpSucceeded(help) {
