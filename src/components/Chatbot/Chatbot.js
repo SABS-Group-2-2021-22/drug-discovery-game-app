@@ -17,7 +17,7 @@ const ChatbotBase = ({ saved_mols, selected_mol, Roche, ...props }) => {
 
     try {
       const response = await axios.post(apiEndpoint, data);
-      return response.data.answertrim();
+      return response.data.answer;
     } catch (error) {
       console.error('Error communicating with the API:', error.message);
       return 'Error connecting to chatbot';
