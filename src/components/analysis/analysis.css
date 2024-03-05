@@ -13,7 +13,8 @@
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  justify-content: center;
+  justify-content: flex-start;
+  align-content: flex-start;
   padding-bottom: 10pt;
   margin-left: 0vw;
   margin-right: flex;
@@ -63,7 +64,7 @@
 
 .final-molecule-bar .molecule-widget {
   padding: 15px;
-  width: 90%;
+  width: 100%;
 }
 
 .final-molecule-bar .molecule-widget>.molecule img {
@@ -252,7 +253,7 @@
   font-family: Arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  margin-top: 20px; /* Adjust as needed */
+  margin-top: 20px; 
   overflow: auto;
 }
 
@@ -265,31 +266,31 @@
 .assay-data-table td {
   text-align: left;
   padding: 8px;
-  border-bottom: 1px solid #ddd; /* Light grey border for each row */
+  border-bottom: 1px solid #ddd; 
 }
 
 .assay-data-table th {
-  background-color: #f2f2f2; /* Light grey background for headers */
-  color: #333; /* Dark text color for contrast */
+  background-color: #f2f2f2; 
+  color: #333; 
 }
 
 .assay-data-table tr:hover {
-  background-color: #f5f5f5; /* Slightly darker row hover state */
+  background-color: #f5f5f5; 
 }
 
 .assay-data-table td {
-  color: #666; /* Slightly lighter text color for table data */
+  color: #666; 
 }
 
-/* Adjust the first column width if needed */
+
 .assay-data-table th:first-child,
 .assay-data-table td:first-child {
   width: 20%;
 }
 
-/* Style for not available data */
+
 .assay-data-table .na {
-  color: #999; /* Light grey text for "N/A" data */
+  color: #999; 
   font-style: italic;
 }
 
@@ -297,11 +298,11 @@
   width: 175px; 
   height: auto; 
   display: block; 
-  padding: 10px; /* Add some padding around the image */
+  padding: 10px; 
 }
 
 .bold-separator td {
-  border-bottom: 2px solid black; /* This creates a bold line */
+  border-bottom: 2px solid black; 
 }
 
 

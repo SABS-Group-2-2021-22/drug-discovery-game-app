@@ -12,8 +12,8 @@ class SelectorPanel extends React.Component {
     };
   }
 
-  // Fire the chooseMolecule or chooseSketcherMolecule (mode dependent) when
-  // ...the choose molecule button is clicked
+  
+  
   selectMolecule = () => {
     this.props.selectMolecule(this.props.mol_id);
   };
