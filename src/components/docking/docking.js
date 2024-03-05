@@ -36,7 +36,7 @@ class Docking extends React.Component {
   // Render method defines the UI of the component
   render() {
     // Define a URL which is used to fetch molecule data
-    let url = `http://localhost:5000/docking-${this.props.selected_mol}dock1_concatenated.pdb`;
+    let url = `http://localhost:8000/docking-${this.props.selected_mol}dock1_concatenated.pdb`;
 
     // Define properties for the Molstar component
     let molstar_props = {
