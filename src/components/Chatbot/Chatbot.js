@@ -10,14 +10,23 @@ const ChatbotBase = ({ saved_mols, selected_mol, Roche, ...props }) => {
   const [userInput, setUserInput] = useState('');
 
   const chatWithGPT4 = async (input) => {
-    const apiEndpoint = 'http://localhost:5001/api/chat'; // Your API endpoint
-    const data = {
-      prompt: input, // Directly use the user input as the prompt
-    };
-
     try {
+      const apiEndpoint = 'http://localhost:8000/api/chat'; // Your API endpoint
+      const data = {
+        prompt: input, // Directly use the user input as the prompt
+      };
+  
       const response = await axios.post(apiEndpoint, data);
-      return response.data.answer;
+      const { thread_id, run_id } = response.data;
+  
+      const pollResponse = async () => {
+        const pollEndpoint = `http://localhost:8000/api/chat/response?thread_id=${thread_id}&run_id=${run_id}`;
+        const pollResult = await axios.get(pollEndpoint);
+        return pollResult.data.answer;
+      };
+  
+      const answer = await pollResponse();
+      return answer;
     } catch (error) {
       console.error('Error communicating with the API:', error.message);
       return 'Error connecting to chatbot';
