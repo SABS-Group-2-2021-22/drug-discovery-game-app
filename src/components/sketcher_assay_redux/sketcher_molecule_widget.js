@@ -5,10 +5,6 @@ import  SketcherMoleculeImage  from "./sketcher_molecule_image.js"
 import SketcherMoleculeStats from "./sketcher_molecule_stats_widget.js"
 
 class SketcherMoleculeWidget extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     console.log(this.props.mol_id)
     return (

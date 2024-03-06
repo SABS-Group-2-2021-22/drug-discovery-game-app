@@ -3,10 +3,7 @@ import "./assay.css";
 import { connect } from "react-redux";
 
 class Lipinski extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
   render() {
     return (
       <div class="container" className="lipinski-stats">

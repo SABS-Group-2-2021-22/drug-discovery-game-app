@@ -3,9 +3,6 @@ import { connect } from "react-redux";
 
 
 class ComparisonText extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   dispText() {
     let obj = this.props.comp_text;

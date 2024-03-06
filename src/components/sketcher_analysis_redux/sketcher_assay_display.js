@@ -3,10 +3,6 @@ import "../assay/assay.css";
 import { connect } from "react-redux";
 
 class SketcherAssays extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div class="container" className="assay-stats">

@@ -4,9 +4,6 @@ import { connect } from "react-redux";
 import { selectorActions, } from "../../actions";
 
 class SketcherMoleculeImage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   selectMolecule = () => {
     this.props.dispatch(selectorActions.selectMolecule(this.props.mol_id));

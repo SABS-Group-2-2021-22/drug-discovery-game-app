@@ -7,10 +7,6 @@ import Button from 'react-bootstrap/Button';
 import "./sketcher_app.css"
 
 class SketcherPopUp extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     turn_error_off = () => {
         this.props.dispatch(sketcherActions.closePopUp())
     }

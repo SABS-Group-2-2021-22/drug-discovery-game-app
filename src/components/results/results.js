@@ -26,7 +26,7 @@ class Results extends React.Component {
   compile_game_data = () => {
 
     let molecule_info = {}
-    Object.keys(this.props.saved_mols).map(mol_key => {
+    Object.keys(this.props.saved_mols).forEach(mol_key => {
       console.log(this.props.saved_mols[mol_key])
       console.log(this.props.saved_mols[mol_key].data.descriptors)
       molecule_info[mol_key] = {

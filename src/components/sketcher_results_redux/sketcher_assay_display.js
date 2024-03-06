@@ -3,10 +3,6 @@ import "../analysis/analysis.css";
 import { connect } from "react-redux";
 
 class SketcherAssays extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   srcRoute = () => {
     if (this.props.mol_id === "Roche") {
       return this.props.Roche.data.drug_props;

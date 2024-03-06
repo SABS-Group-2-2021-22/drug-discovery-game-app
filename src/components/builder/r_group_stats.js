@@ -3,10 +3,6 @@ import "./builder.css"
 
 
 class RGroupStats extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div class="container" className="r_group_stats" onClick={this.props.func}>

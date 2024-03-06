@@ -7,10 +7,6 @@ import { initActions, selectorActions, gameActions } from "../../actions";
 import { LogoBanner } from  '../body';
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   // fetches the r groups from the BE and selects the first r groups at each position
   // ... for rapid rendering of the builder and sketcher pages
   componentDidMount() {

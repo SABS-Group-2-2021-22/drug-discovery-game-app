@@ -3,9 +3,6 @@ import "./results.css";
 import { connect } from "react-redux";
 
 class MoleculeImage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   // ensure the image of the correct molecule is displayed
   srcRoute = () => {

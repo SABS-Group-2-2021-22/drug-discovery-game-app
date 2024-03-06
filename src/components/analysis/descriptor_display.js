@@ -3,10 +3,7 @@ import "./analysis.css";
 import { connect } from "react-redux";
 
 class Descriptors extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
 
   render() {
 

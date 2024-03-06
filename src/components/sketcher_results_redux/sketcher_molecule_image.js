@@ -3,9 +3,6 @@ import "../results/results.css";
 import { connect } from "react-redux";
 
 class SketcherMoleculeImage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   srcRoute = () => {
     if (this.props.mol_id === "Roche") {

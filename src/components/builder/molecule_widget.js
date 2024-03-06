@@ -6,9 +6,6 @@ import Assays from "../assay/assay_display.js";
 
 
 class MoleculeWidget extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     // Check if there is any assay data for the specified molecule ID

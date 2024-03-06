@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import "./analysis.css";
 import MoleculeWidget from "./molecule_widget.js";
 import { connect } from "react-redux";

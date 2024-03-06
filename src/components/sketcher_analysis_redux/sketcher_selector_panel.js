@@ -1,15 +1,10 @@
 import React from "react";
 import "../analysis/analysis.css";
 import { connect } from "react-redux";
-import { chooseSketchedMolecule } from "../../actions";
 import { sketcherActions } from "../../actions";
-import { postSketchedChosen } from "../../actions";
 import { Link } from "react-router-dom";
 
 class SketcherSelectorPanel extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   // chooseMolecule = () => {
   //   console.log("SELECTED " + this.props.selected_mol)

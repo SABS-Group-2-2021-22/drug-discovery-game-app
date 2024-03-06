@@ -5,10 +5,6 @@ import { connect } from "react-redux";
 import { selectorActions } from "../../actions";
 
 class RGroupWidget extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   // store the r group id and positions when selected
   selectRGroups = () => {
     if (this.props.r_group_id.charAt(0) === "A") {

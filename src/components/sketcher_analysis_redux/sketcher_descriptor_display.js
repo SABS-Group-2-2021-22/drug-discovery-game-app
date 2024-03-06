@@ -3,9 +3,6 @@ import "../assay/assay.css";
 import { connect } from "react-redux";
 
 class SketcherDescriptors extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (

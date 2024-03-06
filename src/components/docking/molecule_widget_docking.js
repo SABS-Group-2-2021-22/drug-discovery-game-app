@@ -6,10 +6,6 @@ import { selectorActions } from "../../actions";
 import { connect } from "react-redux"
 
 class MoleculeWidget extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   // fires the selectMolecule action when clicking the molecule's image
   selectMolecule = () => {
     this.props.selectMolecule(this.props.mol_id);

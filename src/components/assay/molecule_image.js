@@ -3,9 +3,7 @@ import "./assay.css";
 import { connect } from "react-redux";
 import { selectorActions } from "../../actions";
 class MoleculeImage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  
 
   // updates id of selected molecule in the store
   selectMolecule = () => {

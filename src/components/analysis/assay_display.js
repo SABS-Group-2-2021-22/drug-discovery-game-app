@@ -3,9 +3,7 @@ import "./analysis.css";
 import { connect } from "react-redux";
 
 class Assays extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  
 
   render() {
     return (
