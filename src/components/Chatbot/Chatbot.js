@@ -2,31 +2,24 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Chatbot.css';
 
+const API_BASE_URL = 'http://localhost:8000'; // Flask API endpoint
+
+
 const ChatbotBase = ({ saved_mols, selected_mol, Roche, ...props }) => {
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
   const [messages, setMessages] = useState([
     { text: "Type your message to get started!", user: false }
   ]);
   const [userInput, setUserInput] = useState('');
-
   const chatWithGPT4 = async (input) => {
     try {
-      const apiEndpoint = 'http://localhost:8000/api/chat'; // Your API endpoint
       const data = {
-        prompt: input, // Directly use the user input as the prompt
+        prompt: input,
       };
+      console.log('Sending data to the API:', data);
   
-      const response = await axios.post(apiEndpoint, data);
-      const { thread_id, run_id } = response.data;
-  
-      const pollResponse = async () => {
-        const pollEndpoint = `http://localhost:8000/api/chat/response?thread_id=${thread_id}&run_id=${run_id}`;
-        const pollResult = await axios.get(pollEndpoint);
-        return pollResult.data.answer;
-      };
-  
-      const answer = await pollResponse();
-      return answer;
+      const response = await axios.post(`${API_BASE_URL}/api/chat`, data);
+      return response.data;
     } catch (error) {
       console.error('Error communicating with the API:', error.message);
       return 'Error connecting to chatbot';
