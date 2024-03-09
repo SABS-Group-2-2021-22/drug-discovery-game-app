@@ -37,12 +37,18 @@ const ChatbotBase = ({ saved_mols, selected_mol, Roche, ...props }) => {
     const aiMessage = { text: '...', user: false };
     setMessages((prevMessages) => [...prevMessages, aiMessage]);
 
-    const response = await chatWithGPT4(trimmedInput);
-    const newAiMessage = { text: response || 'Error connecting to chatbot', user: false };
-    setMessages((prevMessages) => [...prevMessages.slice(0, -1), newAiMessage]);
+    try {
+      const response = await chatWithGPT4(trimmedInput);
+      console.log(response);
+      const newAiMessage = { text: response.answer || 'Error connecting to chatbot', user: false };
+      setMessages((prevMessages) => [...prevMessages.slice(0, -1), newAiMessage]);
+      } catch (error) {
+      console.error('Error communicating with the API:', error.message);
+      setMessages((prevMessages) => [...prevMessages.slice(0, -1), { text: 'Error connecting to chatbot', user: false }]);
+  }
 
-    setUserInput(''); // Clear the input field after sending
-  };
+  setUserInput(''); // Clear the input field after sending
+};
 
   const toggleChatbot = () => {
     setIsChatbotOpen(!isChatbotOpen);
