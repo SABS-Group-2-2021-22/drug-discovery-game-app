@@ -3,10 +3,6 @@ import "../assay/assay.css";
 import { connect } from "react-redux";
 
 class SketcherTanimoto extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div class="container" className="descriptor-stats">

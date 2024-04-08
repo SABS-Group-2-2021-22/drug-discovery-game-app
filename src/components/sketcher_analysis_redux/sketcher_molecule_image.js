@@ -3,10 +3,6 @@ import "../analysis/analysis.css";
 import { connect } from "react-redux";
 
 class SketcherMoleculeImage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     console.log(this.props.mol_id)
     return (

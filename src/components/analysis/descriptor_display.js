@@ -3,10 +3,7 @@ import "./analysis.css";
 import { connect } from "react-redux";
 
 class Descriptors extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
 
   render() {
 
@@ -70,22 +67,22 @@ class Descriptors extends React.Component {
         <div class="row" className="stats-type-header">
           Molecule Descriptors:
         </div>
-        <div class="row" style={{ color: HA_color }}>
+        <div className="row" style={{ color: HA_color }}>
           HA: {HA_value}
         </div>
-        <div class="row" style={{ color: MW_color }}>
+        <div className="row" style={{ color: MW_color }}>
           MW: {MW_value} Da
         </div>
-        <div class="row" style={{ color: TPSA_color }}>
+        <div className="row" style={{ color: TPSA_color }}>
           TPSA: {TPSA_value} {"Å\u00b2"}
         </div>
-        <div class="row" style={{ color: h_acc_color }}>
+        <div className="row" style={{ color: h_acc_color }}>
           H Acc.: {h_acc_value}
         </div>
-        <div class="row" style={{ color: h_don_color }}>
+        <div className="row" style={{ color: h_don_color }}>
           H Don.: {h_don_value}
         </div>
-        <div class="row" style={{ color: LogP_color }}>
+        <div className="row" style={{ color: LogP_color }}>
           LogP: {LogP_value}
         </div>
       </div>

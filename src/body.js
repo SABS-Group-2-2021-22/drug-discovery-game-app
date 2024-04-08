@@ -14,10 +14,10 @@ import {
   } from "./components/body";
 
 
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter as  Route, Routes} from "react-router-dom";
 import { connect } from "react-redux";
 import React from 'react';
-import ReactDOM from 'react-dom';
+
 
   class Body extends React.Component {
     constructor(props) {

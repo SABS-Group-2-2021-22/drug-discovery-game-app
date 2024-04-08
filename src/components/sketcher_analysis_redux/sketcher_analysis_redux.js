@@ -7,10 +7,6 @@ import { initActions } from "../../actions";
 import { connect } from "react-redux";
 
 class SketcherAnalysisRedux extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.dispatch(initActions.fetchRoche())
   }

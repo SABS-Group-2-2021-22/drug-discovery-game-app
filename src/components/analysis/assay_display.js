@@ -3,9 +3,7 @@ import "./analysis.css";
 import { connect } from "react-redux";
 
 class Assays extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  
 
   render() {
     return (
@@ -15,7 +13,7 @@ class Assays extends React.Component {
         </div>
         {this.props.saved_mols[this.props.mol_id].data.assays_run
             .clearance_mouse &&
-        <div class="row" style={{ color: this.props.saved_mols[this.props.mol_id].data.drug_props
+        <div className="row" style={{ color: this.props.saved_mols[this.props.mol_id].data.drug_props
             .clearance_mouse === "low (< 5.6)" ? 'green' : 'red' }} >
         
             Mouse Clearance:{" "}
@@ -25,7 +23,7 @@ class Assays extends React.Component {
         }
         {this.props.saved_mols[this.props.mol_id].data.assays_run
             .clearance_human &&
-        <div class="row" style={{ color: this.props.saved_mols[this.props.mol_id].data.drug_props
+        <div className="row" style={{ color: this.props.saved_mols[this.props.mol_id].data.drug_props
             .clearance_human === "low (< 12)" ? 'green' : 'red' }}>
           Human Clearance:{" "}
           
@@ -34,7 +32,7 @@ class Assays extends React.Component {
         </div>
         }
         {this.props.saved_mols[this.props.mol_id].data.assays_run.logd &&
-        <div class="row" style={{ color: this.props.saved_mols[this.props.mol_id].data.drug_props
+        <div className="row" style={{ color: this.props.saved_mols[this.props.mol_id].data.drug_props
             .logd >= 1.00 ? 'green' : 'red' }}>
           LogD:{" "}
           
@@ -42,14 +40,14 @@ class Assays extends React.Component {
         </div>
         }
         {this.props.saved_mols[this.props.mol_id].data.assays_run.pampa &&
-        <div class="row" style={{ color: this.props.saved_mols[this.props.mol_id].data.drug_props.pampa === "med2high" ? 'green' : 'red' }}>
+        <div className="row" style={{ color: this.props.saved_mols[this.props.mol_id].data.drug_props.pampa === "med2high" ? 'green' : 'red' }}>
           PAMPA:{" "}
           
           {this.props.saved_mols[this.props.mol_id].data.drug_props.pampa}
         </div>
         }
         {this.props.saved_mols[this.props.mol_id].data.assays_run.pIC50 &&
-        <div class="row" style={{ color: this.props.saved_mols[this.props.mol_id].data.drug_props
+        <div className="row" style={{ color: this.props.saved_mols[this.props.mol_id].data.drug_props
             .pic50 >= 6.0 ? 'green' : 'red' }}>
           <p style={{ paddingLeft: "0"}}>pIC<sub>50</sub>:{" "}
           

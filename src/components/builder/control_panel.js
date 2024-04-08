@@ -1,13 +1,10 @@
 import React from "react";
 import "./builder.css";
 import { connect } from "react-redux";
-import { selectorActions, assayActions, analysisActions } from "../../actions";
+import { selectorActions, assayActions } from "../../actions";
 import { Link } from "react-router-dom";
 
 class ControlPanel extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   // save the built molecule in the store
   saveMolecule = () => {

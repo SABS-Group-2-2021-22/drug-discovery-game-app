@@ -3,9 +3,6 @@ import "./results.css";
 import { connect } from "react-redux";
 
 class Assays extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   //ensure the metrics for the correct molecule are displayed
   srcRoute = () => {

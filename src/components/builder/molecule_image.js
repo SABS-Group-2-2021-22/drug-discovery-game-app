@@ -2,12 +2,7 @@ import React from "react";
 import "./builder.css";
 import { connect } from "react-redux";
 import { selectorActions } from "../../actions";
-import { analysisActions } from "../../actions";
-import { sketcherActions } from "../../actions";
 class MoleculeImage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   // updates id of selected molecule in the store
 

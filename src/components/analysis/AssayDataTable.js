@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import MoleculeImage from "./molecule_image.js";
 import "./analysis.css";
 import { selectorActions } from "../../actions"; 
 

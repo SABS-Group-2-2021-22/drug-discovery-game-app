@@ -1,7 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-
 import { gameActions, userActions } from "../../actions";
 
 import "./footer.css";
@@ -10,7 +8,7 @@ class Footer extends React.Component {
   compile_game_data = () => {
 
     let molecule_info = {}
-    Object.keys(this.props.saved_mols).map(mol_key => {
+    Object.keys(this.props.saved_mols).forEach(mol_key => {
       console.log(this.props.saved_mols[mol_key])
       console.log(this.props.saved_mols[mol_key].data.descriptors)
       molecule_info[mol_key] = {
@@ -50,19 +48,19 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="footer">
-        <div class="container">
+        <div className="container">
           <div className="user-status">
-            <p class="m-0 text-start text-white">
+            <div className="m-0 text-start text-white">
               {this.props.loggedIn && this.userStatus()}
-            </p>
+            </div>
           </div>
           <div className="time-money-status">
-            <p class="m-0 text-end text-white">
+            <div className="m-0 text-end text-white">
               <h5>🕑: {this.props.time} weeks left</h5>
-            </p>
-            <p class="m-0 text-end text-white">
+            </div>
+            <div className="m-0 text-end text-white">
               <h5>💰: £{this.props.money}</h5>
-            </p>
+            </div>
           </div>
         </div>
       </div>

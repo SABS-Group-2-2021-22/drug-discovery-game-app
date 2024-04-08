@@ -3,10 +3,6 @@ import "../assay/assay.css";
 import { connect } from "react-redux";
 
 class SketcherFilters extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     console.log(this.props.mol_id)
     return (

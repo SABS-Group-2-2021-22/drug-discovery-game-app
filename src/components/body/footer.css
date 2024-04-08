@@ -31,7 +31,7 @@
     font-size: max(2vh, 15px);
 }
 
-p > h5 {
+div > h5 {
     font-weight: 400;
     font-size: max(2vh, 15px);
 }

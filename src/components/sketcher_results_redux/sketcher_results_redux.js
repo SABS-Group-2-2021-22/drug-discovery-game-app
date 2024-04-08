@@ -9,9 +9,6 @@ import { Link } from "react-router-dom";
 
 
 class SketcherResultsRedux extends React.Component {
-    constructor(props) {
-        super(props)
-    };
 
     render() {
         if (!this.props.spider_data.data || !this.props.comp_text.data) {

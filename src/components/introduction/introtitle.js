@@ -1,12 +1,8 @@
 import React from "react";
 import "./introduction.css";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+
 
 class IntroTitle extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
 render()
 {

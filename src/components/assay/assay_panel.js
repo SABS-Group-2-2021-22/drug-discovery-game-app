@@ -1,7 +1,6 @@
 import React from "react";
 import "./assay.css";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { assayActions, gameActions } from "../../actions";
 
 class AssayPanel extends React.Component {

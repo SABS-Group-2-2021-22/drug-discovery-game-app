@@ -1,17 +1,12 @@
 import React from "react";
 import "../assay/assay.css";
 import { connect } from "react-redux";
-import SketcherFilters from "./sketcher_filter_display.js"
 import SketcherAssays from "./sketcher_assay_display.js"
-import SketcherDescriptors from "./sketcher_descriptor_display.js"
-import SketcherTanimoto from "./sketcher_tanimoto_display.js"
+
+
 
 
 class SketcherMoleculeStats extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="mol-stats">

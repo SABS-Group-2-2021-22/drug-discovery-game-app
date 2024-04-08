@@ -3,9 +3,6 @@ import "./builder.css";
 import RGroupWidget from "./r_group_widget.js";
 
 class RGroupList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   createRGroupID = (pos, nr) => {
     if (nr < 10) {

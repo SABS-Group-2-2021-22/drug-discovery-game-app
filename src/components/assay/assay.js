@@ -2,10 +2,7 @@ import React from "react";
 import "./assay.css";
 import { connect } from "react-redux";
 import MoleculeList from "./molecule_list.js";
-import MoleculeImage from "./molecule_image.js";
 import AssayPanel from "./assay_panel.js";
-import MoleculeStats from "./molecule_stats.js";
-import ControlPanel from "./control_panel.js";
 import { assayActions } from "../../actions";
 import { analysisActions } from "../../actions";
 import { Link } from "react-router-dom"

@@ -8,10 +8,6 @@ import SketcherMoleculeStats from "./sketcher_molecule_stats.js";
 import SketcherControlPanel from "./sketcher_control_panel.js"
 
 class SketcherAssayRedux extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="wrapper">

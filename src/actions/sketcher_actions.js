@@ -146,7 +146,7 @@ export const sketcherActions = {
   
    function postSketchedChosen(id, smiles) {
     return async (dispatch) => {
-      const { post_chosen } = await api.postChosen(id, smiles);
+      await api.postChosen(id, smiles); // Call without destructuring if the response is not needed
       await dispatch(selectorActions.postChosenSucceeded());
       await api.fetchSketchedSpiderObj().then((response) => {
         dispatch(analysisActions.fetchSpiderObjSucceeded(response));
