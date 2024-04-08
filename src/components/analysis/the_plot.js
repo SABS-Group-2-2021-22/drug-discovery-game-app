@@ -3,7 +3,7 @@ import Plot from "react-plotly.js";
 import MoleculeImage from "./molecule_image.js";
 import "./analysis.css";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+
 
 class ThePlot extends React.Component {
   constructor(props) {

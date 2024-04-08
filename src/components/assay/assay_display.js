@@ -22,7 +22,7 @@ class Assays extends React.Component {
         </div>
           {this.props.saved_mols[this.props.mol_id].data.assays_run
             .clearance_mouse &&
-        <div class="row">
+        <div className="row">
             Mouse Clearance:{" "}
             {this.props.saved_mols[this.props.mol_id].data.drug_props
               .clearance_mouse}
@@ -31,28 +31,28 @@ class Assays extends React.Component {
         
           {this.props.saved_mols[this.props.mol_id].data.assays_run
             .clearance_human &&  
-        <div class="row">
+        <div className="row">
              Human Clearance:{" "}
              {this.props.saved_mols[this.props.mol_id].data.drug_props
              .clearance_human}
         </div>
           }
           {this.props.saved_mols[this.props.mol_id].data.assays_run.logd &&
-        <div class="row">
+        <div className="row">
           LogD:{" "}
           
           {this.props.saved_mols[this.props.mol_id].data.drug_props.logd}
         </div>
         }
         {this.props.saved_mols[this.props.mol_id].data.assays_run.pampa &&
-        <div class="row">
+        <div className="row">
           PAMPA:{" "}
           
           {this.props.saved_mols[this.props.mol_id].data.drug_props.pampa}
         </div>
         }
         {this.props.saved_mols[this.props.mol_id].data.assays_run.pIC50 &&
-        <div class="row">
+        <div className="row">
           <p style={{ paddingLeft: "0"}}>pIC<sub>50</sub>:{" "}
            {Number(
               this.props.saved_mols[this.props.mol_id].data.drug_props.pic50
