@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+
+
 import './Chatbot.css';
 
 const API_BASE_URL = 'http://localhost:8000'; // Flask API endpoint
@@ -34,7 +36,7 @@ const ChatbotBase = ({ saved_mols, selected_mol, Roche, ...props }) => {
     const userMessage = { text: trimmedInput, user: true };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
 
-    const aiMessage = { text: '...', user: false };
+    const aiMessage = { text:<i>thinking...working hard...</i>, user: false};
     setMessages((prevMessages) => [...prevMessages, aiMessage]);
 
     try {
@@ -62,6 +64,7 @@ const ChatbotBase = ({ saved_mols, selected_mol, Roche, ...props }) => {
 
       {isChatbotOpen && (
         <div className="chatbot-container">
+          <div className="chatbot-title">Drug Discovery Assistant</div>
           <div className="chatbot-header">
             <button className="chatbot-close" onClick={toggleChatbot}>✕</button>
           </div>
