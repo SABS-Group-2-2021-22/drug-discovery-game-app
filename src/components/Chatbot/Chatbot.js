@@ -7,6 +7,10 @@ import './Chatbot.css';
 const API_BASE_URL = 'http://localhost:8000'; // Flask API endpoint
 
 
+
+
+
+
 const ChatbotBase = ({ saved_mols, selected_mol, Roche, ...props }) => {
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
   const [messages, setMessages] = useState([
